@@ -24,12 +24,14 @@
 			max="2"
 		/>
 	</div>
-	<div class="form-group">
-	   {{#if isZeroPool}}
-	     <label>{{localize "DIE_RPG.Dialog.SubstituteClassDie"}}? {{#if classDieType}}({{classDieType}}){{else}}(None Available){{/if}}</label>
-	   {{else}}
-	     <label>{{localize "DIE_RPG.Dialog.AddClassDie"}}? {{#if classDieType}}({{classDieType}}){{else}}(None Available){{/if}}</label>
-	   {{/if}}
-		<input type="checkbox" name="addClassDie" id="addClassDie" {{#unless classDieType}}disabled{{/unless}}/>
-	</div>
+		{{#if classDieType}} {{!-- Only show if a class die exists --}}
+		 <div class="form-group">
+		    {{#if isZeroPool}}
+		      <label>{{localize "DIE_RPG.Dialog.SubstituteClassDie"}}? ({{classDieType}})</label>
+		    {{else}}
+		      <label>{{localize "DIE_RPG.Dialog.AddClassDie"}}? ({{classDieType}})</label>
+		    {{/if}}
+		  <input type="checkbox" name="addClassDie" id="addClassDie"/> {{!-- No need for disabled if group is hidden --}}
+		 </div>
+		{{/if}}
 </form>

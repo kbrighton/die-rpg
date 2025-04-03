@@ -157,10 +157,11 @@
 			   "Advantages": "Advantages",
 			   "Disadvantages": "Disadvantages",
 			   "Difficulty": "Difficulty",
-			   "AddClassDie": "Add Class Die"
+			   "AddClassDie": "Add Class Die",
+			      "SubstituteClassDie": "Substitute Class Die?"
 			 }
-  },
-  "TYPES": {
+		},
+		"TYPES": {
     "Actor": {
       "character": "Character",
       "npc": "NPC"

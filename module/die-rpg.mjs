@@ -38,6 +38,7 @@ Hooks.once('init', function () {
    * Set an initiative formula for the system
    * @type {String}
    */
+  //TODO: fix this to use the correct formula or remove it
   CONFIG.Combat.initiative = {
     formula: '1d20 + @stats.dex.value',
     decimals: 2,
@@ -61,6 +62,14 @@ Hooks.once('init', function () {
     class: models.DieRpgClass,
     persona: models.DieRpgPersona,
   };
+  // Define labels for Item subtypes used in UI
+  CONFIG.Item.typeLabels = {
+    gear: "TYPES.Item.gear",
+    feature: "TYPES.Item.feature",
+    ability: "TYPES.Item.ability",
+    class: "TYPES.Item.class",
+    persona: "TYPES.Item.persona"
+  }
 
   // Active Effects are never copied to the Actor,
   // but will still apply to the Actor from within the Item

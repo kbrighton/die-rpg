@@ -185,22 +185,33 @@ function _rollDicePool(statValue, advantages = 0, disadvantages = 0, addClassDie
  * @param {number} results.specialDice Count of dice >= 6.
  * @param {boolean} results.isCriticalFail Whether the roll was a critical fail.
  * @param {Array<object>} results.diceResults The individual dice results.
+ * @param {string|null} results.classDieType The type of class die used, if any.
+ * @param {boolean} results.isMixedPool Whether the roll was a mixed pool (1d6 + 1dX).
  */
 function _buildChatRollMessage(roll, label, actor, results) {
-  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults } = results;
-  const poolSize = advantages - disadvantages + statValue; // Calculate intended pool size for display
-  const isZeroPool = poolSize <= 0;
-  const isSubstituted = isZeroPool && addClassDie && classDieType && /^d(4|6|8|10|12|20)$/.test(classDieType); // Check if substitution happened
+  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool } = results;
+  const calculatedPoolSize = advantages - disadvantages + statValue; // Calculate intended pool size for display
+  const isZeroPool = calculatedPoolSize <= 0;
+  // Substitution occurs if pool was <=0 AND addClassDie was true AND a valid classDieType exists
+  const isSubstituted = isZeroPool && results.addClassDie && classDieType;
 
   // Build Dice HTML with styling
-  const diceHTML = diceResults.map(r => {
+  const diceHTML = diceResults.map((r, index) => {
     let classes = [];
+    let dieLabel = '';
     // Mark discarded die for kl1 rolls (which are only non-substituted zero pool rolls)
-    if (isZeroPool && !isSubstituted && !r.active) classes.push('discarded');
+    if (isZeroPool && !isSubstituted && !r.active) {
+        classes.push('discarded');
+    }
+    // Label dice in mixed pools
+    if (isMixedPool) {
+        dieLabel = (index === 0) ? '(d6)' : `(${classDieType || 'Class'})`;
+    }
+
     if (r.result >= 6) classes.push('special-die');
     else if (r.result >= 4) classes.push('success');
     if (r.result === 1) classes.push('critfail-die');
-    return `<span class="${classes.join(' ')}">${r.result}</span>`;
+    return `<span class="${classes.join(' ')}">${r.result} ${dieLabel}</span>`;
   }).join(', ');
 
   // Build Result Text
@@ -219,10 +230,18 @@ function _buildChatRollMessage(roll, label, actor, results) {
   }
 
   // Build Message Content
+  // Build Message Content
+  let poolDescription = `${statValue} (Stat) + ${advantages} (Adv) - ${disadvantages} (Disadv)`;
+  if (results.addClassDie && classDieType && !isSubstituted) poolDescription += ` + 1${classDieType}`;
+  poolDescription += ` = ${calculatedPoolSize <= 0 ? '0' : calculatedPoolSize}d6`;
+  if (isSubstituted) poolDescription += ` (Substituted Class Die: 1d6 + 1${classDieType})`;
+  else if (isZeroPool) poolDescription += ` (Roll 2d6kl1)`;
+
+
   let messageContent = `
     <div class="die-rpg-roll"> {{!-- Add class for potential styling --}}
       <div><strong>Rolled ${label}</strong></div>
-      <div>Pool: ${statValue} (Stat) + ${advantages} (Adv) - ${disadvantages} (Disadv) = ${poolSize}d6 ${poolSize <= 0 ? '(Roll 2d6kl1)' : ''}</div>
+      <div>Pool: ${poolDescription}</div>
       <div>Dice: ${diceHTML}</div>
       <div>Initial Successes (>=4): ${initialSuccesses}</div>
       <div>Difficulty: ${difficulty}</div>
