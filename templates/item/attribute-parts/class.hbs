@@ -5,8 +5,16 @@
   data-tab='attributes'
 >
   <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.baseClassType.label'}}</label>
+    <select name="system.baseClassType">
+      {{selectOptions config.classBaseTypes selected=system.baseClassType localize=true}} {{!-- Assuming config.classBaseTypes exists --}}
+    </select>
+  </div>
+  <div class="form-group">
     <label>{{localize 'DIE_RPG.Item.Class.FIELDS.classDie.label'}}</label>
-    <input type="text" name="system.classDie" value="{{system.classDie}}" placeholder="e.g., d8"/>
+    <select name="system.classDie">
+      {{selectOptions config.classDice selected=system.classDie localize=false}}
+    </select>
   </div>
 
   <div class="form-group stacked">
@@ -19,9 +27,9 @@
     {{editor system.play_style_text target="system.play_style_text" button=true owner=owner editable=editable}}
   </div>
 
-   <div class="form-group">
+   <div class="form-group stacked"> {{!-- Changed to stacked for editor --}}
     <label>{{localize 'DIE_RPG.Item.Class.FIELDS.core_mechanic_special.label'}}</label>
-    <input type="text" name="system.core_mechanic_special" value="{{system.core_mechanic_special}}"/>
+    {{editor system.core_mechanic_special target="system.core_mechanic_special" button=true owner=owner editable=editable}}
   </div>
 
   <div class="form-group stacked">
@@ -64,11 +72,143 @@
   <hr>
   <h4>Class Specific Fields</h4>
   {{!-- Add inputs/editors for dictator_*, godbinder_*, neo_*, fool_*, ek_*, master_* fields here --}}
-  {{!-- Example for Dictator --}}
-  <div class="form-group">
-    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_emotion_palette.label'}}</label>
-    <input type="text" name="system.dictator_emotion_palette" value="{{system.dictator_emotion_palette}}"/>
-  </div>
-  {{!-- ... add other class-specific fields similarly ... --}}
+
+  {{!-- Dictator Fields --}}
+  {{#eq system.baseClassType "Dictator"}}
+    <fieldset>
+      <legend>Dictator</legend>
+      <div class="form-group">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_emotion_palette.label'}}</label>
+        <input type="text" name="system.dictator_emotion_palette" value="{{system.dictator_emotion_palette}}"/>
+      </div>
+       <div class="form-group">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_tell.label'}}</label>
+        <input type="text" name="system.dictator_tell" value="{{system.dictator_tell}}"/>
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_performance_effect.label'}}</label>
+         {{editor system.dictator_performance_effect target="system.dictator_performance_effect" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_performance_control.label'}}</label>
+         {{editor system.dictator_performance_control target="system.dictator_performance_control" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_performance_attack.label'}}</label>
+         {{editor system.dictator_performance_attack target="system.dictator_performance_attack" button=true owner=owner editable=editable}}
+      </div>
+    </fieldset>
+  {{/eq}}
+
+  {{!-- Godbinder Fields --}}
+  {{#eq system.baseClassType "Godbinder"}}
+     <fieldset>
+      <legend>Godbinder</legend>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.godbinder_contract.label'}}</label>
+         {{editor system.godbinder_contract target="system.godbinder_contract" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.godbinder_scripture.label'}}</label>
+         {{editor system.godbinder_scripture target="system.godbinder_scripture" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.godbinder_debt.label'}}</label>
+         {{editor system.godbinder_debt target="system.godbinder_debt" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.godbinder_miracles.label'}}</label>
+         {{editor system.godbinder_miracles target="system.godbinder_miracles" button=true owner=owner editable=editable}}
+      </div>
+    </fieldset>
+  {{/eq}}
+
+   {{!-- Neo Fields --}}
+  {{#eq system.baseClassType "Neo"}}
+     <fieldset>
+      <legend>Neo</legend>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.neo_fair_gold.label'}}</label>
+         {{editor system.neo_fair_gold target="system.neo_fair_gold" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.neo_gifts.label'}}</label>
+         {{editor system.neo_gifts target="system.neo_gifts" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.neo_neotech.label'}}</label>
+         {{editor system.neo_neotech target="system.neo_neotech" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.neo_overcharge.label'}}</label>
+         {{editor system.neo_overcharge target="system.neo_overcharge" button=true owner=owner editable=editable}}
+      </div>
+    </fieldset>
+  {{/eq}}
+
+   {{!-- Fool Fields --}}
+  {{#eq system.baseClassType "Fool"}}
+     <fieldset>
+      <legend>Fool</legend>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.fool_trade.label'}}</label>
+         {{editor system.fool_trade target="system.fool_trade" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.fool_flukes.label'}}</label>
+         {{editor system.fool_flukes target="system.fool_flukes" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.fool_if_all_else_fails.label'}}</label>
+         {{editor system.fool_if_all_else_fails target="system.fool_if_all_else_fails" button=true owner=owner editable=editable}}
+      </div>
+    </fieldset>
+  {{/eq}}
+
+   {{!-- Emotion Knight Fields --}}
+  {{#eq system.baseClassType "Emotion Knight"}}
+     <fieldset>
+      <legend>Emotion Knight</legend>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.ek_sacred_emotion.label'}}</label>
+         {{editor system.ek_sacred_emotion target="system.ek_sacred_emotion" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.ek_arcane_weapon_types.label'}}</label>
+         {{editor system.ek_arcane_weapon_types target="system.ek_arcane_weapon_types" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.ek_arcane_weapon_personality.label'}}</label>
+         {{editor system.ek_arcane_weapon_personality target="system.ek_arcane_weapon_personality" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.ek_arcane_weapon_main_trait.label'}}</label>
+         {{editor system.ek_arcane_weapon_main_trait target="system.ek_arcane_weapon_main_trait" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.ek_emotional_scale.label'}}</label>
+         {{editor system.ek_emotional_scale target="system.ek_emotional_scale" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.ek_creative_violence.label'}}</label>
+         {{editor system.ek_creative_violence target="system.ek_creative_violence" button=true owner=owner editable=editable}}
+      </div>
+    </fieldset>
+  {{/eq}}
+
+   {{!-- Master Fields --}}
+  {{#eq system.baseClassType "Master"}}
+     <fieldset>
+      <legend>Master</legend>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.master_cheating.label'}}</label>
+         {{editor system.master_cheating target="system.master_cheating" button=true owner=owner editable=editable}}
+      </div>
+       <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Class.FIELDS.master_rules.label'}}</label>
+         {{editor system.master_rules target="system.master_rules" button=true owner=owner editable=editable}}
+      </div>
+    </fieldset>
+  {{/eq}}
 
 </section>

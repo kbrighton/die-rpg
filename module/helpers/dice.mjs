@@ -72,7 +72,8 @@ export async function rollStat(dataset, actor) {
     isCriticalFail,
     diceResults,
     classDieType, // Pass the type of class die used
-    isMixedPool // Pass flag indicating if it was a mixed roll (1d6+1dX)
+    isMixedPool, // Pass flag indicating if it was a mixed roll (1d6+1dX)
+    availableSpecials: [] // Placeholder for actual specials based on context
   });
 
   return roll; // Return the original Roll object for potential further use
@@ -187,9 +188,10 @@ function _rollDicePool(statValue, advantages = 0, disadvantages = 0, addClassDie
  * @param {Array<object>} results.diceResults The individual dice results.
  * @param {string|null} results.classDieType The type of class die used, if any.
  * @param {boolean} results.isMixedPool Whether the roll was a mixed pool (1d6 + 1dX).
+ * @param {Array<object>} results.availableSpecials Placeholder for specials relevant to this roll.
  */
 function _buildChatRollMessage(roll, label, actor, results) {
-  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool } = results;
+  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool, availableSpecials } = results;
   const calculatedPoolSize = advantages - disadvantages + statValue; // Calculate intended pool size for display
   const isZeroPool = calculatedPoolSize <= 0;
   // Substitution occurs if pool was <=0 AND addClassDie was true AND a valid classDieType exists
@@ -221,10 +223,12 @@ function _buildChatRollMessage(roll, label, actor, results) {
   } else if (finalSuccesses > 0) {
     resultText = `<span style="color: green; font-weight: bold;">Success!</span> (${finalSuccesses} Final Successes)`;
   } else {
-    // Check for Failing Forward (initial successes > 0 but final <= 0)
-    if (initialSuccesses > 0 && difficulty > 0) {
-       resultText = `<span style="color: orange; font-weight: bold;">Fail Forward?</span> (Successes reduced by Difficulty)`;
+    // Check for Failing Forward (initial successes > 0 but final <= 0 due to difficulty)
+    if (initialSuccesses > 0 && difficulty >= initialSuccesses) {
+       // More explicit Fail Forward message
+       resultText = `<span style="color: orange; font-weight: bold;">Fail Forward!</span> (${initialSuccesses} successes vs Difficulty ${difficulty}. Action succeeds with cost or complication - GM narrates.)`;
     } else {
+       // Standard failure
        resultText = `<span style="color: red; font-weight: bold;">Failure.</span> (0 Final Successes)`;
     }
   }
@@ -246,7 +250,8 @@ function _buildChatRollMessage(roll, label, actor, results) {
       <div>Initial Successes (>=4): ${initialSuccesses}</div>
       <div>Difficulty: ${difficulty}</div>
       <div><strong>Final Result: ${resultText}</strong></div>
-      ${specialDice > 0 ? `<div>Specials Available (6s): ${specialDice}</div>` : ''}
+      ${specialDice > 0 ? `<div>Specials Available (6s rolled): ${specialDice}</div>` : ''}
+      ${_buildSpecialsHTML(actor, availableSpecials, specialDice)} {{!-- Add Specials buttons/links --}}
     </div>
   `;
 
@@ -255,4 +260,49 @@ function _buildChatRollMessage(roll, label, actor, results) {
     content: messageContent,
     rollMode: game.settings.get('core', 'rollMode'),
   });
+}
+
+/**
+ * Generates HTML for clickable special activation buttons.
+ * @param {Actor} actor The actor who rolled.
+ * @param {Array<object>} availableSpecials List of potential specials.
+ * @param {number} specialDiceCount Number of 6s rolled.
+ * @returns {string} HTML string for special buttons.
+ * @private
+ */
+function _buildSpecialsHTML(actor, availableSpecials, specialDiceCount) {
+  // NOTE: This function is defined but currently unused as interactive specials are deferred.
+  if (!availableSpecials || availableSpecials.length === 0 || specialDiceCount === 0) {
+    return '';
+  }
+
+  let html = '<div class="specials-list"><strong>Activate Specials:</strong><ul>';
+
+  availableSpecials.forEach(special => {
+    // Placeholder logic: Assume special object has 'name', 'cost' (e.g., 1 for 6+, 2 for Double 6+), 'id' or 'key'
+    const cost = special.cost || 1; // Default cost to 1 (single 6+)
+    const name = special.name || 'Unnamed Special';
+    const specialKey = special.key || name.slugify(); // Use slugified name as key fallback
+
+    if (specialDiceCount >= cost) {
+      // Add button/link if enough 6s were rolled
+      // TODO: Add check if special was already used this roll (needs state tracking)
+      // TODO: Handle mandatory specials
+      html += `
+        <li>
+          <a class="activate-special"
+             data-action="activateSpecial"
+             data-actor-id="${actor.id}"
+             data-special-key="${specialKey}"
+             data-special-cost="${cost}"
+             title="${name} (Cost: ${cost})">
+             <i class="fas fa-star"></i> ${name} (Cost: ${cost})
+          </a>
+        </li>
+      `;
+    }
+  });
+
+  html += '</ul></div>';
+  return html;
 }

@@ -90,6 +90,7 @@
       },
       "Class": {
         "FIELDS": {
+          "baseClassType": {"label": "Base Class Type"},
           "classDie": {"label": "Class Die"},
           "abilities_text": {"label": "Abilities"},
           "play_style_text": {"label": "Play Style"},

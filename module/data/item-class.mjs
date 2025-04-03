@@ -15,6 +15,14 @@ export default class DieRpgClass extends DieRpgItemBase {
     const schema = super.defineSchema(); // Inherits description
 
     // --- Core Class Fields ---
+    schema.baseClassType = new fields.StringField({
+      required: true,
+      blank: false,
+      initial: 'Dictator', // Default to one type
+      choices: ['Dictator', 'Fool', 'Emotion Knight', 'Godbinder', 'Neo', 'Master'], // Define base types
+      label: 'DIE_RPG.Item.Class.FIELDS.baseClassType.label'
+    });
+
     schema.classDie = new fields.StringField({
       required: true,
       blank: false,

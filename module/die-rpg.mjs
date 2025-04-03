@@ -34,16 +34,6 @@ Hooks.once('init', function () {
   // Add custom constants for configuration.
   CONFIG.DIE_RPG = DIE_RPG;
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  //TODO: fix this to use the correct formula or remove it
-  CONFIG.Combat.initiative = {
-    formula: '1d20 + @stats.dex.value',
-    decimals: 2,
-  };
-
   // Define custom Document and DataModel classes
   CONFIG.Actor.documentClass = DieRpgActor;
 
@@ -93,10 +83,7 @@ Hooks.once('init', function () {
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-// If you need to add Handlebars helpers, here is a useful example:
-Handlebars.registerHelper('toLowerCase', function (str) {
-  return str.toLowerCase();
-});
+// Add any custom Handlebars helpers here
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */

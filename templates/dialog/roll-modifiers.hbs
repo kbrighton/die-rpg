@@ -26,12 +26,15 @@
 	</div>
 		{{#if classDieType}} {{!-- Only show if a class die exists --}}
 		 <div class="form-group">
-		    {{#if isZeroPool}}
-		      <label>{{localize "DIE_RPG.Dialog.SubstituteClassDie"}}? ({{classDieType}})</label>
-		    {{else}}
-		      <label>{{localize "DIE_RPG.Dialog.AddClassDie"}}? ({{classDieType}})</label>
-		    {{/if}}
-		  <input type="checkbox" name="addClassDie" id="addClassDie"/> {{!-- No need for disabled if group is hidden --}}
+		    <label>
+		      {{#if isZeroPool}}
+		        {{localize "DIE_RPG.Dialog.SubstituteClassDie"}}?
+		      {{else}}
+		        {{localize "DIE_RPG.Dialog.AddClassDie"}}?
+		      {{/if}}
+		       ({{classDieType}})
+		    </label>
+		  <input type="checkbox" name="addClassDie" id="addClassDie"/>
 		 </div>
 		{{/if}}
 </form>
