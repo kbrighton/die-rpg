@@ -1,0 +1,74 @@
+{{! Class Attributes Tab }}
+<section
+  class='tab attributes {{tab.cssClass}}'
+  data-group='primary'
+  data-tab='attributes'
+>
+  <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.classDie.label'}}</label>
+    <input type="text" name="system.classDie" value="{{system.classDie}}" placeholder="e.g., d8"/>
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.abilities_text.label'}}</label>
+    {{editor system.abilities_text target="system.abilities_text" button=true owner=owner editable=editable}}
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.play_style_text.label'}}</label>
+    {{editor system.play_style_text target="system.play_style_text" button=true owner=owner editable=editable}}
+  </div>
+
+   <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.core_mechanic_special.label'}}</label>
+    <input type="text" name="system.core_mechanic_special" value="{{system.core_mechanic_special}}"/>
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.equipment_choices.label'}}</label>
+    {{editor system.equipment_choices target="system.equipment_choices" button=true owner=owner editable=editable}}
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.look_choices.label'}}</label>
+    {{editor system.look_choices target="system.look_choices" button=true owner=owner editable=editable}}
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.advancements_text.label'}} (Manual Reference)</label>
+    {{editor system.advancements_text target="system.advancements_text" button=true owner=owner editable=editable}}
+  </div>
+
+  <hr>
+  <h4>{{localize 'DIE_RPG.Item.Class.FIELDS.advancementChoices.label'}} (Structured - Read Only)</h4>
+  {{#if system.advancementChoices}}
+    {{#each system.advancementChoices as |levelChoice|}}
+      <h5>Level {{levelChoice.level}}</h5>
+      <ul>
+        {{#each levelChoice.options as |option|}}
+          <li>
+            <strong>{{option.name}}</strong> ({{option.type}}):
+            {{#if option.description}} {{{option.description}}} {{/if}}
+            {{#if option.details}} <pre>{{JSON.stringify option.details}}</pre> {{/if}}
+          </li>
+        {{else}}
+          <li>No options defined for this level.</li>
+        {{/each}}
+      </ul>
+    {{/each}}
+  {{else}}
+    <p>No structured advancement choices defined.</p>
+  {{/if}}
+  {{!-- TODO: Add UI for managing advancementChoices array --}}
+
+  <hr>
+  <h4>Class Specific Fields</h4>
+  {{!-- Add inputs/editors for dictator_*, godbinder_*, neo_*, fool_*, ek_*, master_* fields here --}}
+  {{!-- Example for Dictator --}}
+  <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Class.FIELDS.dictator_emotion_palette.label'}}</label>
+    <input type="text" name="system.dictator_emotion_palette" value="{{system.dictator_emotion_palette}}"/>
+  </div>
+  {{!-- ... add other class-specific fields similarly ... --}}
+
+</section>

@@ -64,11 +64,71 @@
       },
       "Ability": {
         "FIELDS": {
-          "cost": {"label": "Cost"},
+          "abilityType": {"label": "Ability Type"},
+          "activation.type": {"label": "Activation Type"},
+          "activation.cost": {"label": "Activation Cost"},
           "range": {"label": "Range"},
           "duration": {"label": "Duration"},
+          "target": {"label": "Target"},
+          "roll.stat": {"label": "Roll Stat"},
+          "roll.add_class_die": {"label": "Always Add Class Die?"},
+          "roll.fixed_adv": {"label": "Fixed Advantages"},
+          "roll.fixed_disadv": {"label": "Fixed Disadvantages"},
+          "roll.base_difficulty": {"label": "Base Difficulty"},
           "effectDescription": {"label": "Effect Details"},
-          "specialText": {"label": "Special (on 6+)"}
+          "special.trigger": {"label": "Special Trigger"},
+          "special.text": {"label": "Special Text"},
+          "special.is_mandatory": {"label": "Mandatory Special?"},
+          "isAttack": {"label": "Is Attack?"},
+          "isSpellAttack": {"label": "Is Spell Attack?"},
+          "grantedBy": {"label": "Granted By"},
+          "requirements": {"label": "Requirements"},
+          "scriptureGod": {"label": "Scripture God"},
+          "giftUpgrades": {"label": "Gift Upgrades"},
+          "isDefensiveUpgrade": {"label": "Is Defensive Upgrade?"}
+        }
+      },
+      "Class": {
+        "FIELDS": {
+          "classDie": {"label": "Class Die"},
+          "abilities_text": {"label": "Abilities"},
+          "play_style_text": {"label": "Play Style"},
+          "core_mechanic_special": {"label": "Core Mechanic Special"},
+          "equipment_choices": {"label": "Equipment Choices"},
+          "look_choices": {"label": "Look Choices"},
+          "advancements_text": {"label": "Advancements"},
+          "dictator_emotion_palette": {"label": "Emotion Palette (Dictator)"},
+          "dictator_tell": {"label": "Tell (Dictator)"},
+          "dictator_performance_effect": {"label": "Performance Effect (Dictator)"},
+          "dictator_performance_control": {"label": "Performance Control (Dictator)"},
+          "dictator_performance_attack": {"label": "Performance Attack (Dictator)"},
+          "godbinder_contract": {"label": "Contract with God (Godbinder)"},
+          "godbinder_scripture": {"label": "Scripture (Godbinder)"},
+          "godbinder_debt": {"label": "God Debt (Godbinder)"},
+          "advancementChoices": {"label": "Advancement Choices"},
+          "godbinder_miracles": {"label": "Miracles (Godbinder)"},
+          "neo_fair_gold": {"label": "Fair Gold (Neo)"},
+          "neo_gifts": {"label": "Gifts of the Fair (Neo)"},
+          "neo_neotech": {"label": "Neotech (Neo)"},
+          "neo_overcharge": {"label": "Overcharge (Neo)"},
+          "fool_trade": {"label": "Trade (Fool)"},
+          "fool_flukes": {"label": "Flukes (Fool)"},
+          "fool_if_all_else_fails": {"label": "If All Else Fails (Fool)"},
+          "ek_sacred_emotion": {"label": "Sacred Emotion (Emotion Knight)"},
+          "ek_arcane_weapon_types": {"label": "Arcane Weapon Types (EK)"},
+          "ek_arcane_weapon_personality": {"label": "Arcane Weapon Personality (EK)"},
+          "ek_arcane_weapon_main_trait": {"label": "Arcane Weapon Main Trait (EK)"},
+          "ek_emotional_scale": {"label": "Emotional Scale (EK)"},
+          "ek_creative_violence": {"label": "Creative Violence (EK)"},
+          "master_cheating": {"label": "Hardcore Cheating (Master)"},
+          "master_rules": {"label": "My World, My Rules (Master)"}
+        }
+      },
+      "Persona": {
+        "FIELDS": {
+          "sharedHistory": {"label": "Shared History"},
+          "familiarObsessions": {"label": "Familiar Obsessions"},
+          "playerNotes": {"label": "Player Notes"}
         }
       }
     },
@@ -114,3 +174,4 @@
     }
   }
 }
+

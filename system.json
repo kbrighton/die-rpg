@@ -43,10 +43,10 @@
       "paths": ["css", "lang", "templates"]
     }
   },
-  "url": "Replace this with a link to your public repository",
+  "url": "",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "",
   "changelog": "CHANGELOG.md",
   "media": [
     {
@@ -73,13 +73,13 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
+  "manifest": "",
+  "download": "",
   "background": null,
   "grid": {
     "type": 1,
-    "distance": 5,
-    "units": "ft",
+    "distance": null,
+    "units": "",
     "diagonals": 0
   },
   "primaryTokenAttribute": "health",

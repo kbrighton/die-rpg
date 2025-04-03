@@ -33,8 +33,13 @@ export default class DieRpgPersona extends DieRpgItemBase {
     // 'Notes' field from data.yaml - Base description might cover this, or add a separate notes field if needed.
     // schema.notes = new fields.HTMLField({ required: false, blank: true, label: '...' });
 
+   schema.playerNotes = new fields.HTMLField({
+     required: false,
+     blank: true,
+     label: 'DIE_RPG.Item.Persona.FIELDS.playerNotes.label' // Assuming localization key
+   });
 
-    return schema;
+   return schema;
   }
 
   // prepareDerivedData() {

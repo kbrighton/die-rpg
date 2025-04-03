@@ -11,12 +11,24 @@ This file tracks the project's progress using a task list format.
 *   [2025-04-02 20:05:57] Completed core implementation for Phase 2: Roll Mechanics (DialogV2 structure, success counting, difficulty, specials, crits, chat message). TODOs remain for Class Die, Failing Forward, item mods.
 *   [2025-04-02 23:55:37] Roll dialog data retrieval fixed (using DialogV2.wait and result.object).
 *   [2025-04-03 00:08:33] Implemented initial Class Die logic in roll helper (finding die, adding to pool/formula, basic substitution logic). TODOs remain for dialog conditionality and substitution choice.
+*   [2025-04-03 02:12:56] Completed initial definition of Item Models ('class', 'persona', 'ability', 'gear') and corresponding attribute templates/localization.
+*   [2025-04-03 16:21:28] Refined 'ability' item model, template, and localization based on rules doc.
+*   [2025-04-03 00:38:51] Implemented Defense calculation in Actor `prepareDerivedData`.
 *   [2025-04-02 19:33:06] Completed structural setup for 'class' and 'persona' item types (system.json, data models, registration, localization).
 *   [2025-04-02 19:49:52] Completed structural repurposing of 'spell' item type to 'ability' (file renames, code references, localization).
+*   [Blocked] Phase 3: Flesh out Item Models - Waiting for user to provide extracted text data from Character Sheet PDF.
+*   [Unblocked] Phase 3: Flesh out Item Models - Rules available in `raw/DIE-Rules.md`.
+*   [Next Step] Continue fleshing out Item Models ('class', 'persona', 'gear') OR Refine Roll Mechanics OR Boilerplate Cleanup.
+*   [Next Step] Refine Roll Mechanics (Class Die substitution dialog, Failing Forward, item roll mods) OR Boilerplate Cleanup.
+*   [Blocked] Phase 3: Flesh out Item Models ('ability', 'persona', refine 'class'/'gear') - Waiting for user to provide extracted text/markdown data from Rules PDF.
 *   [2025-04-02 19:54:58] Completed Phase 3: Class, Abilities & Items (structural setup).
 ## Completed Tasks
 
 *   
+*   [Next Step] Refine 'ability' item model using `raw/DIE-Rules.md`.
+*   [Next Step] Refine Roll Mechanics (Failing Forward, Specials interaction) OR flesh out Item Models OR begin Boilerplate Cleanup.
+*   [Next Step] Decide on interim task: Refine Roll Mechanics OR Boilerplate Cleanup.
+*   [Next Step] Decide on interim task: Refine Roll Mechanics OR Boilerplate Cleanup.
 *   [Next Step] Implement Defense calculation in Actor `prepareDerivedData` OR refine Roll Mechanics (Failing Forward, Specials interaction) OR flesh out Item Models OR begin Boilerplate Cleanup.
 
 *   [Next Step] Implement Defense calculation in Actor `prepareDerivedData` OR begin Post-Refactor Task (Boilerplate Cleanup).

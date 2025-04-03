@@ -7,11 +7,17 @@ export async function rollStat(dataset, actor) {
   const classItem = actor?._getClassDieItem();
   const classDieType = classItem?.system?.classDie || null; // Get die type (e.g., "d8") or null
 
+  // Define initial mods before dialog
+  const initialAdvantages = 0; // Placeholder for context-based advantages
+  const initialDisadvantages = 0; // Placeholder for context-based disadvantages
+
   // Show dialog to get modifiers
   const rollModifiers = await _showRollDialog({
     statName: label,
     initialStatValue: statValue,
-    classDieType: classDieType // Pass only the die type string
+    classDieType: classDieType, // Pass the die type string
+    initialAdvantages: initialAdvantages, // Pass initial values
+    initialDisadvantages: initialDisadvantages // Pass initial values
   });
 
   // If dialog is cancelled, stop the roll
@@ -64,7 +70,9 @@ export async function rollStat(dataset, actor) {
     finalSuccesses,
     specialDice,
     isCriticalFail,
-    diceResults
+    diceResults,
+    classDieType, // Pass the type of class die used
+    isMixedPool // Pass flag indicating if it was a mixed roll (1d6+1dX)
   });
 
   return roll; // Return the original Roll object for potential further use
@@ -76,13 +84,20 @@ export async function rollStat(dataset, actor) {
  * @param {string} options.statName Name of the stat being rolled.
  * @param {number} options.initialStatValue Initial value of the stat.
  * @param {string|null} options.classDieType The type of class die available (e.g., "d8") or null.
+ * @param {number} options.initialAdvantages Initial advantages before dialog input.
+ * @param {number} options.initialDisadvantages Initial disadvantages before dialog input.
  * @returns {Promise<object|null>} A promise resolving to the modifier object or null if cancelled.
  */
-async function _showRollDialog({ statName, initialStatValue, classDieType }) { // Added classDieType parameter
+async function _showRollDialog({ statName, initialStatValue, classDieType, initialAdvantages = 0, initialDisadvantages = 0 }) {
   const template = "systems/die-rpg/templates/dialog/roll-modifiers.hbs";
 
+  // Calculate preliminary pool size based on initial mods to determine dialog state
+  const preliminaryPoolSize = initialStatValue + initialAdvantages - initialDisadvantages;
+  const isZeroPool = preliminaryPoolSize <= 0;
+
   const templateData = {
-    classDieType: classDieType // Pass die type to template
+    classDieType: classDieType,
+    isZeroPool: isZeroPool // Pass flag to template
   };
   const title = `Roll ${statName} (Base: ${initialStatValue}d6)`;
 

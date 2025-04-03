@@ -11,15 +11,55 @@
 
 2025-04-01 23:32:25 - Updated Current Focus & Open Questions: Need detailed DIE RPG ruleset.
 
+
+
+
+
+
+2025-04-03 16:18:46 - Completed reading rules doc. Updated System Patterns and identified final implementation needs.
+2025-04-03 16:18:05 - Updated System Patterns and identified further implementation needs after reading rules doc (part 4).
+*   Read rules doc (part 5 - end). Detailed Neo/Godbinder/Master mechanics & advancement, Rituals/Game Structure, Safety Tools.
+2025-04-03 16:17:20 - Updated System Patterns and identified further implementation needs after reading rules doc (part 3).
+*   Read rules doc (part 4). Detailed Neo Gifts/Upgrades/Advancement (Fair Gold, Overcharge, Neotech), Godbinder core mechanics (Scriptures, Miracles, God Debt/Trust), specific God examples.
+2025-04-03 16:15:59 - Updated System Patterns and identified further implementation needs after reading rules doc (part 2).
+*   Read rules doc (part 3). Detailed Dictator/Fool advancements, EK core mechanics (Sacred Emotion, Arcane Weapon, Emotional Scale, Creative Violence, Stances, Venting).
+2025-04-03 16:14:24 - Updated System Patterns and identified refined implementation needs after reading rules doc (part 1).
+*   Read rules doc (part 2). Detailed Dictator performance/advancement, Fool core mechanics (D6 add, Special, Flukes, If All Else Fails), advancement structure.
 2025-04-02 17:49:03 - Updated Current Focus & System Patterns after clarifying core roll mechanic.
+*   Read first part of `DIE-Rules.md`. Confirmed core mechanics, combat flow, stats, resources, specials, flashbacks. Noted Dictator specifics.
 *   Completed initial codebase analysis (Data Models, Sheets, Templates, Helpers, Document Classes).
 *   Confirmed core roll mechanic details (d6 pool, >=4 success, Adv/Disadv, Difficulty, Specials).
 *   Plan refinement blocked pending detailed DIE RPG ruleset information.
 
+*   [Refined] Need to implement Class Die substitution logic for <=0 dice pools.
 *   Need specific rules for Stats, Rolls, Classes, Items, Spells, NPCs.
+*   [Refined] Need specific roll logic for Dictator Performance.
+*   [Refined] Need to implement optional rules like Critical Fail and Failing Forward.
+*   [Refined] Need data model/UI for tracking EK Emotional Scale.
+*   [Refined] Need specific roll logic/tracking for Fool's D6 add & Special.
+*   [Refined] Need data model/UI for tracking Neo Fair Gold.
+*   [Refined] Need data model/UI for EK Arcane Weapon details (type, trait, personality).
+*   [Refined] Need data model/UI for tracking Master Cheat Tokens.
+*   [Refined] Need data model/UI for tracking Godbinder God Debt & Trust (per god).
+*   [Refined] Need specific roll logic for Neo Overcharge.
 *   Developed a 3-phase plan to correct core mechanics (Stats, Rolls, Spells) and UI elements to align with DIE RPG rules.
+*   [Refined] Need to model Neo Gifts/Upgrades (likely as 'ability' items with Fair Gold cost).
+*   [Refined] Need specific roll logic for Neo Overcharge & Neotech.
+*   [Refined] Need to model Godbinder Scriptures (as 'ability' items).
+*   [Refined] Need data model/UI for tracking chosen Advancements (potentially structured).
+*   [Refined] Need robust Advancement tracking on Actor sheet.
+*   [Refined] Need specific roll logic for Godbinder Scriptures (WIS+D12, Debt on 1) & Miracles (negotiation).
+*   [Refined] Need data model/UI for tracking Fool's Flukes (marked dice faces).
+*   [Refined] Need to decide how to model Neo Gifts (Gear? Ability? New Type?).
+*   [Refined] Need specific roll logic for EK Creative Violence.
+*   [Refined] Need to handle specific attack stats (Melee=STR, Ranged=DEX, Spells=INT/WIS/CHA).
+*   [Refined] Need to handle passive Stances and active Venting abilities.
+*   [Refined] Need data model/UI for tracking class-specific resources/states (EK Scale, Neo Gold, Godbinder Debt, Master Tokens).
 
+*   [Refined] Item models ('class', 'ability') need significant refinement to handle specific advancement choices and unique mechanics.
+*   [Refined] Need to handle consequences of 0 successes on attack rolls.
 *   Awaiting user review and approval of the proposed plan.
+*   [Refined] Need to implement Flashback tracking/usage.
 
 
 

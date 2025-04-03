@@ -56,6 +56,9 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       template:
         'systems/die-rpg/templates/item/attribute-parts/ability.hbs', // Updated path
     },
+    attributesClass: { // Added for Class type
+      template: 'systems/die-rpg/templates/item/attribute-parts/class.hbs',
+    },
     effects: {
       template: 'systems/die-rpg/templates/item/effects.hbs',
     },
@@ -79,6 +82,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       case 'ability': // Renamed from 'spell'
         options.parts.push('attributesAbility'); // Renamed from 'attributesSpell'
         break;
+      case 'class':
+        options.parts.push('attributesClass');
+        break;
+      // TODO: Add case for 'persona' if it needs a specific attribute template
     }
   }
 
@@ -114,6 +121,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       case 'attributesFeature':
       case 'attributesGear':
       case 'attributesAbility': // Renamed from attributesSpell
+      case 'attributesClass': // Added class
         // Necessary for preserving active tab on re-render
         context.tab = context.tabs[partId];
         break;
@@ -175,6 +183,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         case 'attributesFeature':
         case 'attributesGear':
         case 'attributesAbility': // Renamed from attributesSpell
+        case 'attributesClass': // Added class
           tab.id = 'attributes';
           tab.label += 'Attributes';
           break;

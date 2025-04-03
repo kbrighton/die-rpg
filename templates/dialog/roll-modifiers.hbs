@@ -25,7 +25,11 @@
 		/>
 	</div>
 	<div class="form-group">
-		<label>{{localize "DIE_RPG.Dialog.AddClassDie"}}? {{#if classDieType}}({{classDieType}}){{else}}(None Available){{/if}}</label>
+	   {{#if isZeroPool}}
+	     <label>{{localize "DIE_RPG.Dialog.SubstituteClassDie"}}? {{#if classDieType}}({{classDieType}}){{else}}(None Available){{/if}}</label>
+	   {{else}}
+	     <label>{{localize "DIE_RPG.Dialog.AddClassDie"}}? {{#if classDieType}}({{classDieType}}){{else}}(None Available){{/if}}</label>
+	   {{/if}}
 		<input type="checkbox" name="addClassDie" id="addClassDie" {{#unless classDieType}}disabled{{/unless}}/>
 	</div>
 </form>

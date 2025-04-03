@@ -4,33 +4,155 @@
   data-group='primary'
   data-tab='attributes'
 >
-  <div class='form-group'>
-    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.cost.label'}}</label>
-    <input type='text' name='system.cost' value='{{system.cost}}' />
+  {{!-- Core Fields --}}
+  <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.abilityType.label'}}</label>
+    <select name="system.abilityType">
+      {{#select system.abilityType}}
+        <option value="general">{{localize "DIE_RPG.AbilityType.general"}}</option> {{!-- Assuming localization keys --}}
+        <option value="scripture">{{localize "DIE_RPG.AbilityType.scripture"}}</option>
+        <option value="gift">{{localize "DIE_RPG.AbilityType.gift"}}</option>
+        <option value="stance">{{localize "DIE_RPG.AbilityType.stance"}}</option>
+        <option value="venting">{{localize "DIE_RPG.AbilityType.venting"}}</option>
+        <option value="special">{{localize "DIE_RPG.AbilityType.special"}}</option>
+        <option value="attack">{{localize "DIE_RPG.AbilityType.attack"}}</option>
+        <option value="passive">{{localize "DIE_RPG.AbilityType.passive"}}</option>
+      {{/select}}
+    </select>
   </div>
 
-  <div class='form-group'>
+  <fieldset>
+    <legend>Activation</legend>
+    <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.activation.type.label'}}</label>
+      <input type="text" name="system.activation.type" value="{{system.activation.type}}" placeholder="e.g., Action, Free, Passive"/>
+    </div>
+    <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.activation.cost.label'}}</label>
+      <input type="text" name="system.activation.cost" value="{{system.activation.cost}}" placeholder="e.g., 1 Willpower, 1 Fair Gold"/>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
     <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.range.label'}}</label>
-    <input type='text' name='system.range' value='{{system.range}}' />
+    <input type="text" name="system.range" value="{{system.range}}" placeholder="e.g., Self, Close, Medium"/>
   </div>
 
-  <div class='form-group'>
+  <div class="form-group">
     <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.duration.label'}}</label>
-    <input type='text' name='system.duration' value='{{system.duration}}' />
+    <input type="text" name="system.duration" value="{{system.duration}}" placeholder="e.g., Instant, Concentration"/>
   </div>
 
-  <div class='form-group'>
-    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.specialText.label'}}</label>
-    <input
-      type='text'
-      name='system.specialText'
-      value='{{system.specialText}}'
-    />
+  <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.target.label'}}</label>
+    <input type="text" name="system.target" value="{{system.target}}" placeholder="e.g., 1 creature, Self"/>
   </div>
 
-  <div class='form-group stacked'>
+   <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.requirements.label'}}</label>
+    <input type="text" name="system.requirements" value="{{system.requirements}}" placeholder="e.g., Emotion Scale >= 1"/>
+  </div>
+
+   <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.grantedBy.label'}}</label>
+    <input type="text" name="system.grantedBy" value="{{system.grantedBy}}" placeholder="e.g., Dictator Class, Arcane Weapon"/>
+  </div>
+
+  {{!-- Roll Details --}}
+  <fieldset>
+    <legend>Roll Details (If Applicable)</legend>
+    <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.roll.stat.label'}}</label>
+      <select name="system.roll.stat">
+        <option value="">None</option>
+        {{#select system.roll.stat}}
+          {{#each @root.config.stats as |label key|}}
+          <option value="{{key}}">{{localize label}}</option>
+          {{/each}}
+        {{/select}}
+      </select>
+    </div>
+    <div class="form-group slim">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.roll.add_class_die.label'}}</label>
+      <input type="checkbox" name="system.roll.add_class_die" {{checked system.roll.add_class_die}}/>
+    </div>
+     <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.roll.fixed_adv.label'}}</label>
+      <input type="number" name="system.roll.fixed_adv" value="{{system.roll.fixed_adv}}" min="0"/>
+    </div>
+     <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.roll.fixed_disadv.label'}}</label>
+      <input type="number" name="system.roll.fixed_disadv" value="{{system.roll.fixed_disadv}}" min="0"/>
+    </div>
+     <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.roll.base_difficulty.label'}}</label>
+      <input type="number" name="system.roll.base_difficulty" value="{{system.roll.base_difficulty}}" min="0" max="2"/>
+    </div>
+  </fieldset>
+
+  {{!-- Effect & Special --}}
+   <div class="form-group stacked">
     <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.effectDescription.label'}}</label>
     {{editor system.effectDescription target="system.effectDescription" button=true owner=owner editable=editable}}
   </div>
+
+  <fieldset>
+     <legend>Special Details (If Applicable)</legend>
+     <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.special.trigger.label'}}</label>
+      <input type="text" name="system.special.trigger" value="{{system.special.trigger}}" placeholder="e.g., 6+, Double 6+"/>
+    </div>
+     <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.special.text.label'}}</label>
+      <input type="text" name="system.special.text" value="{{system.special.text}}"/>
+    </div>
+     <div class="form-group slim">
+      <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.special.is_mandatory.label'}}</label>
+      <input type="checkbox" name="system.special.is_mandatory" {{checked system.special.is_mandatory}}/>
+    </div>
+  </fieldset>
+
+  {{!-- Attack Flags --}}
+   <fieldset>
+     <legend>Attack Flags</legend>
+    <div class="form-group slim">
+        <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.isAttack.label'}}</label>
+        <input type="checkbox" name="system.isAttack" {{checked system.isAttack}}/>
+    </div>
+    <div class="form-group slim">
+        <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.isSpellAttack.label'}}</label>
+        <input type="checkbox" name="system.isSpellAttack" {{checked system.isSpellAttack}}/>
+    </div>
+   </fieldset>
+
+  {{!-- Scripture/Gift Specific --}}
+  <fieldset>
+     <legend>Scripture/Gift Details</legend>
+     <div class="form-group">
+        <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.scriptureGod.label'}}</label>
+        <input type="text" name="system.scriptureGod" value="{{system.scriptureGod}}" placeholder="Name of God"/>
+     </div>
+      <div class="form-group slim">
+        <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.isDefensiveUpgrade.label'}}</label>
+        <input type="checkbox" name="system.isDefensiveUpgrade" {{checked system.isDefensiveUpgrade}}/>
+     </div>
+     {{!-- Display Gift Upgrades (Read-only for now) --}}
+     <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.giftUpgrades.label'}}</label>
+        {{#if system.giftUpgrades}}
+        <ul>
+           {{#each system.giftUpgrades as |upgrade index|}}
+           <li>
+               <strong>{{upgrade.name}}</strong>{{#if upgrade.isDefensive}} (Defensive){{/if}}: {{#if upgrade.description}}{{{upgrade.description}}}{{else}}No description.{{/if}}
+               {{!-- TODO: Add Edit/Delete buttons here later, requiring JS in item-sheet.mjs --}}
+           </li>
+           {{/each}}
+        </ul>
+        {{else}}
+        <p>No upgrades selected.</p>
+        {{/if}}
+        {{!-- TODO: Add 'Add Upgrade' button here later, requiring JS in item-sheet.mjs --}}
+     </div>
+  </fieldset>
 
 </section>

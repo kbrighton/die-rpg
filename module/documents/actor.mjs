@@ -49,9 +49,18 @@ export class DieRpgActor extends Actor {
     // systemData.willpowerMax = (stats.wis?.value ?? 0) + (stats.int?.value ?? 0);
 
     // Calculate Defense (Base 0 + Items/Effects)
-    // Base defense is already 0 from the data model.
-    // Add logic here later to incorporate bonuses from items/effects.
-    // resources.defense.value = 0 + calculatedBonuses;
+    let defenseBonus = 0;
+    for (const item of this.items) {
+      // TODO: Add check for equipped status if applicable
+      if (item.type === 'gear' && item.system?.defenseBonus) {
+        defenseBonus += item.system.defenseBonus;
+      }
+    }
+    // Add bonuses from Active Effects if needed later
+    // defenseBonus += activeEffectBonuses;
+
+    // Set the final defense value (base is 0 from data model)
+    resources.defense.value = defenseBonus;
 
     // Ensure current values don't exceed new maximums (optional, but good practice)
     if (resources.guard) {
