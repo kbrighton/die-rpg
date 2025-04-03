@@ -42,7 +42,7 @@
     {{! The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  }}
-    <div class='resources grid grid-3col'>
+    <div class='resources grid grid-4col'> {{!-- Changed from 3col --}}
 
       {{! "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
@@ -69,61 +69,57 @@
       </div>
 
       <div class='resource flex-group-center'>
-        <label for='system.power.value' class='resource-label'>
-          {{localize 'DIE_RPG.Actor.base.FIELDS.power.label'}}
+        <label for='system.resources.guard.value' class='resource-label'>
+          {{localize 'DIE_RPG.Resources.gua.long'}}
         </label>
         <div class='resource-content flexrow flex-center flex-between'>
           <input
             type='text'
-            name='system.power.value'
-            value='{{system.power.value}}'
+            name='system.resources.guard.value'
+            value='{{system.resources.guard.value}}'
             data-dtype='Number'
           />
           <span> / </span>
           <input
             type='text'
-            name='system.power.max'
-            value='{{system.power.max}}'
+            name='system.resources.guard.max'
+            value='{{system.resources.guard.max}}'
             data-dtype='Number'
           />
         </div>
       </div>
 
+      {{!-- Willpower --}}
       <div class='resource flex-group-center'>
-        {{#if (eq actor.type 'character')}}
-          <label class='resource-label'>
-            {{localize 'DIE_RPG.Actor.Character.FIELDS.level.label'}}
-          </label>
-          <div class='resource-content flexrow flex-center flex-between'>
-            <input
-              type='number'
-              name='system.attributes.level.value'
-              value='{{system.attributes.level.value}}'
-              data-dtype='Number'
-            />
-          </div>
-        {{/if}}
-        {{#if (eq actor.type 'npc')}}
-          <label class='resource-label'>
-            {{localize 'DIE_RPG.Actor.NPC.FIELDS.cr.label'}} / {{localize 'DIE_RPG.Actor.NPC.FIELDS.xp.label'}}
-          </label>
-          <div class='resource-content flexrow flex-center flex-between'>
-            <input
-              type='text'
-              name='system.cr'
-              value='{{system.cr}}'
-              data-dtype='Number'
-            />
-            <span></span>
-            <input
-              type='text'
-              disabled='true'
-              name='system.xp'
-              value='{{system.xp}}'
-              data-dtype='Number'
-            />
-          </div>
-        {{/if}}
+        <label for='system.resources.willpower.value' class='resource-label'>
+          {{localize 'DIE_RPG.Resources.wil.long'}}
+        </label>
+        <div class='resource-content flexrow flex-center flex-between'>
+          <input
+            type='text'
+            name='system.resources.willpower.value'
+            value='{{system.resources.willpower.value}}'
+            data-dtype='Number'
+          />
+          {{!-- Max Willpower is derived but not stored directly in the base model currently --}}
+          {{!-- <span> / {{system.willpowerMax}}</span> --}}
+        </div>
+      </div>
+
+      {{!-- Defense --}}
+      <div class='resource flex-group-center'>
+        <label for='system.resources.defense.value' class='resource-label'>
+          {{localize 'DIE_RPG.Resources.def.long'}}
+        </label>
+        <div class='resource-content flexrow flex-center flex-between'>
+          <input
+            type='text'
+            name='system.resources.defense.value'
+            value='{{system.resources.defense.value}}'
+            data-dtype='Number'
+          />
+          {{!-- Defense does not typically have a max --}}
+        </div>
       </div>
     </div>
   </div>

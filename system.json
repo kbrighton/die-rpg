@@ -1,7 +1,7 @@
 {
   "id": "die-rpg",
   "title": "DIE: The Roleplaying Game",
-  "description": "The DIE: The Roleplaying Game system for FoundryVTT!",
+  "description": "The DIE: The Roleplaying Game system for FoundryVTT",
   "authors": [
     {
       "name": "ephson",
@@ -26,7 +26,13 @@
         "gear": {
             "htmlFields": ["description"]
         },
-        "spell": {
+        "ability": {
+            "htmlFields": ["description", "effectDescription"]
+        },
+        "class": {
+            "htmlFields": ["description"]
+        },
+        "persona": {
             "htmlFields": ["description"]
         }
     }
@@ -52,7 +58,7 @@
   "version": "0.0.1",
   "compatibility": {
     "minimum": 12,
-    "verified": "12.330",
+    "verified": "12.331",
     "maximum": 12
   },
   "esmodules": ["module/die-rpg.mjs"],

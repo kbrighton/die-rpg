@@ -1,0 +1,73 @@
+{{! Abilities Tab (Renamed from Spells) }}
+<section
+  class='tab abilities {{tab.cssClass}}' {{!-- Renamed class --}}
+  data-group='primary'
+  data-tab='abilities' {{!-- Renamed data-tab --}}
+>
+  <ol class='items-list'>
+    {{!-- Removed outer #each loop that grouped by spellLevel --}}
+    <li class='item flexrow items-header'>
+      <div class='item-name'>
+        {{localize 'DIE_RPG.Actor.Tabs.Abilities'}} {{!-- Assuming new localization key --}}
+      </div>
+      <div class='item-controls'>
+        {{#if @root.editable}}
+          <a
+            class='item-control item-create'
+            title='{{localize "DOCUMENT.Create" type="Ability"}}' {{!-- Updated type --}}
+            data-action='createDoc'
+            data-document-class='Item'
+            data-type='ability' {{!-- Updated type --}}
+            {{!-- Removed data-system.spell-level --}}
+          >
+            <i class='fas fa-plus'></i>
+            {{localize 'DOCUMENT.New' type='Ability'}} {{!-- Updated type --}}
+          </a>
+        {{/if}}
+      </div>
+    </li>
+    {{#each abilities as |item id|}} {{!-- Changed from inner spells loop --}}
+      <li
+        class='item flexrow'
+        data-item-id='{{item._id}}'
+        data-drag='true'
+        data-document-class='Item'
+      >
+        <div class='item-name flexrow'>
+          <div class='item-image'>
+            <a class='rollable' data-roll-type='item' data-action='roll'>
+              <img
+                src='{{item.img}}'
+                title='{{item.name}}'
+                width='24'
+                height='24'
+              />
+            </a>
+          </div>
+          <div>{{item.name}}</div>
+        </div>
+        {{!-- TODO: Add display for key ability info like cost/range/duration? --}}
+        <div class='item-controls'>
+          <a
+            class='item-control item-edit'
+            title='{{localize "DOCUMENT.Edit" type="Ability"}}' {{!-- Updated type --}}
+            data-action='viewDoc'
+          >
+            <i class='fas fa-edit'></i>
+          </a>
+          {{#if @root.editable}}
+            <a
+              class='item-control item-delete'
+              title='{{localize "DOCUMENT.Delete" type="Ability"}}' {{!-- Updated type --}}
+              data-action='deleteDoc'
+            >
+              <i class='fas fa-trash'></i>
+            </a>
+          {{/if}}
+        </div>
+      </li>
+    {{/each}}
+    {{!-- Removed outer closing #each --}}
+  </ol>
+
+</section>

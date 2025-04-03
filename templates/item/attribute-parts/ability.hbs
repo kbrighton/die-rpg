@@ -1,0 +1,36 @@
+{{! Attributes Tab }}
+<section
+  class='tab attributes {{tab.cssClass}}'
+  data-group='primary'
+  data-tab='attributes'
+>
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.cost.label'}}</label>
+    <input type='text' name='system.cost' value='{{system.cost}}' />
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.range.label'}}</label>
+    <input type='text' name='system.range' value='{{system.range}}' />
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.duration.label'}}</label>
+    <input type='text' name='system.duration' value='{{system.duration}}' />
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.specialText.label'}}</label>
+    <input
+      type='text'
+      name='system.specialText'
+      value='{{system.specialText}}'
+    />
+  </div>
+
+  <div class='form-group stacked'>
+    <label>{{localize 'DIE_RPG.Item.Ability.FIELDS.effectDescription.label'}}</label>
+    {{editor system.effectDescription target="system.effectDescription" button=true owner=owner editable=editable}}
+  </div>
+
+</section>

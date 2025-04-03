@@ -1,4 +1,7 @@
 /**
+import { rollStat } from '../helpers/dice.mjs'; // Import the refactored roll helper
+
+/**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
@@ -39,33 +42,43 @@ export class DieRpgItem extends Item {
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
-    const rollMode = game.settings.get('core', 'rollMode');
+    const rollMode = game.settings.get('core', 'rollMode'); // Keep rollMode if needed for dialogs later
     const label = `[${item.type}] ${item.name}`;
 
-    // If there's no roll data, send a chat message.
-    if (!this.system.formula) {
+    // Determine the relevant stat for the item roll
+    // TODO: This needs proper implementation based on item type/data
+    // For now, let's assume Gear uses STR, Features/Spells use CHA as placeholders
+    let relevantStat = 'cha'; // Default placeholder
+    if (item.type === 'gear') {
+      relevantStat = 'str'; // Placeholder for gear
+    }
+
+    // Check if the actor has the relevant stat
+    if (!this.actor || !this.actor.system.stats[relevantStat]) {
+      ui.notifications.warn(`Actor does not have the required stat (${relevantStat}) for this item roll.`);
+      // Optionally, still output description to chat
       ChatMessage.create({
         speaker: speaker,
-        rollMode: rollMode,
         flavor: label,
         content: item.system.description ?? '',
       });
+      return;
     }
-    // Otherwise, create a roll and send a chat message from it.
-    else {
-      // Retrieve roll data.
-      const rollData = this.getRollData();
 
-      // Invoke the roll and submit it to chat.
-      const roll = new Roll(rollData.formula, rollData.actor);
-      // If you need to store the value first, uncomment the next line.
-      // const result = await roll.evaluate();
-      roll.toMessage({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-      });
-      return roll;
-    }
+    // Prepare dataset for the rollStat helper
+    // TODO: Add logic to get advantages/disadvantages/difficulty from the item or context
+    const dataset = {
+      label: label,
+      statName: relevantStat,
+      // Placeholder values for now
+      advantages: 0,
+      disadvantages: 0,
+      difficulty: 0,
+      addClassDie: false, // Placeholder
+    };
+
+    // Call the refactored rollStat helper
+    // The helper now handles dice pool calculation, rolling, success counting, and chat message creation
+    return rollStat(dataset, this.actor);
   }
 }

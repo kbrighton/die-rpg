@@ -55,9 +55,11 @@ Hooks.once('init', function () {
   };
   CONFIG.Item.documentClass = DieRpgItem;
   CONFIG.Item.dataModels = {
-    gear: models.DieRpgGear,
+    gear: models.DieRpgGear, // Class name in item-gear.mjs is now DieRpgGear
     feature: models.DieRpgFeature,
-    spell: models.DieRpgSpell,
+    ability: models.DieRpgAbility, // Renamed from spell: DieRpgSpell
+    class: models.DieRpgClass,
+    persona: models.DieRpgPersona,
   };
 
   // Active Effects are never copied to the Actor,
@@ -161,3 +163,53 @@ function rollItemMacro(itemUuid) {
     item.roll();
   });
 }
+
+
+Hooks.on("renderSettings", (app, html) => {
+  const header = document.createElement("h2");
+  header.innerText = game.i18n.localize('DIE_RPG.Settings.game.heading');
+
+  const pbtaSettings = document.createElement("div");
+  html.find("#settings-game")?.after(header, pbtaSettings);
+
+  const buttons = [
+      {
+          action: (ev) => {
+              ev.preventDefault();
+              window.open("https://rowanrookanddecard.com/product-category/game-systems/die-rpg/", "_blank");
+          },
+          iconClasses: ["fa-solid", "fa-book"],
+          label: game.i18n.localize('DIE_RPG.Settings.game.publisher.title')
+      },
+      {
+          action: (ev) => {
+              ev.preventDefault();
+              window.open("https://github.com/philote/die-rpg", "_blank");
+          },
+          iconClasses: ["fab", "fa-github"],
+          label: game.i18n.localize(`DIE_RPG.Settings.game.github.title`)
+      },
+      {
+          action: (ev) => {
+              ev.preventDefault();
+              window.open("https://ko-fi.com/ephson", "_blank");
+          },
+          iconClasses: ["fa-solid", "fa-mug-hot"],
+          label: game.i18n.localize("DIE_RPG.Settings.game.kofi.title")
+      },
+  ].map(({ action, iconClasses, label }) => {
+      const button = document.createElement("button");
+      button.type = "button";
+
+      const icon = document.createElement("i");
+      icon.classList.add(...iconClasses);
+
+      button.append(icon, game.i18n.localize(label));
+
+      button.addEventListener("click", action);
+
+      return button;
+  });
+
+  pbtaSettings.append(...buttons);
+});

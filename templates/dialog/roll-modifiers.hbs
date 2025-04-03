@@ -1,0 +1,32 @@
+<form>
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Dialog.Advantages"}}:</label>
+		<input type="number" name="advantages" id="advantages" value="0" min="0" />
+	</div>
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Dialog.Disadvantages"}}:</label>
+		<input
+			type="number"
+			name="disadvantages"
+			id="disadvantages"
+			value="0"
+			min="0"
+		/>
+	</div>
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Dialog.Difficulty"}}:</label>
+		<input
+			type="number"
+			name="difficulty"
+			id="difficulty"
+			value="0"
+			min="0"
+			max="2"
+		/>
+	</div>
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Dialog.AddClassDie"}}?</label>
+		<input type="checkbox" name="addClassDie" id="addClassDie" />
+		{{!-- TODO: Display available class die (e.g., {{classDieType}}) --}}
+	</div>
+</form>

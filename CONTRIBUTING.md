@@ -8,15 +8,15 @@ With the change to LevelDB, there is an extra step to create the packs locally.
 
 - Clone the repository as usual
 - You need to have a node.js installation done
-- You must be in Foundry welcome page (or have it completely closed) and NOT in a world. In the system directory, do : 
-    - npm install will generate the node_modules depending on package.json and package-lock.json
-    - npm run pullJSONtoLDB will create the packs depending of the content of src/packs directory
+- run `npm install`: will generate the node_modules depending on package.json and package-lock.json
+- then `npm run build` to build once or `npm run watch` to have a SCSS watcher running to update the CSS when SCSS is updated automatically.
+- If you want Foundry to hot-reload pages as you make updates, you will need to launch Foundry with the `--hotReload` flag. See [Using Command Line Flags](https://foundryvtt.com/article/configuration/)
+- To save the compendiums to JSON for better version control (and go from JSON to LevelDB):
+    - You must be in the Foundry welcome page (or have it completely closed) and NOT in a world you want to convert compendium from. 
+    - To convert JSON to LevelDB after a fresh pull from git or manually editing the JSON file: In the system directory use `npm run pullJSONtoLDB` will create the packs depending of the content of src/packs directory
+    - To convert LevelDB to JSON after making changes to compendiums in Foundry: In the system directory use `npm run pushLDBtoJSON` will create JSON in the src/packs folder, then you can push your updates upstream.
 
-## To update the packs
+# To update the packs
 Make sure Foundry is not running first.
--  LDB to JSON for syncing to git : npm run pushLDBtoJSON will create the src/packs files and export all actors/items in json files
--  JSON to LDB for testing locally : npm run pullJSONtoLDB will create the LevelDB folders from the JSON files in the src/packs folder
-
-## Compiling the CSS
-
-This repo includes both CSS for the theme and SCSS source files. If you're new to CSS, it's probably easier to just work in those files directly and delete the SCSS directory. If you're interested in using a CSS preprocessor to add support for nesting, variables, and more, you can run `npm install` in this directory to install the dependencies for the scss compiler. After that, just run `npm run build` to compile the SCSS or run `npm run watch` to start a process that watches for new changes.
+-  LDB to JSON for syncing to git : `npm run pushLDBtoJSON` will create the src/packs files and export all actors/items in json files
+-  JSON to LDB for testing locally : `npm run pullJSONtoLDB` will create the LevelDB folders from the JSON files in the src/packs folder

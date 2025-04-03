@@ -26,8 +26,43 @@ export class DieRpgActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this;
-    const flags = actorData.flags.dierpg || {};
+    super.prepareDerivedData(); // Ensure upstream preparation runs if needed in the future.
+
+    const systemData = this.system;
+    const stats = systemData.stats;
+    const resources = systemData.resources;
+
+    // Calculate Max Guard based on Dexterity
+    if (resources.guard) {
+      resources.guard.max = stats.dex?.value ?? 0;
+    }
+
+    // Calculate Max Health based on Constitution
+    if (resources.health) {
+      resources.health.max = stats.con?.value ?? 0;
+    }
+
+    // Calculate Max Willpower based on Wisdom + Intelligence
+    // Note: Willpower doesn't have a 'max' in the current base model, only 'value'.
+    // If a max is needed later, it should be added to base-actor.mjs.
+    // For now, we'll calculate a potential max value if needed elsewhere.
+    // systemData.willpowerMax = (stats.wis?.value ?? 0) + (stats.int?.value ?? 0);
+
+    // Calculate Defense (Base 0 + Items/Effects)
+    // Base defense is already 0 from the data model.
+    // Add logic here later to incorporate bonuses from items/effects.
+    // resources.defense.value = 0 + calculatedBonuses;
+
+    // Ensure current values don't exceed new maximums (optional, but good practice)
+    if (resources.guard) {
+      resources.guard.value = Math.min(resources.guard.value, resources.guard.max);
+    }
+    if (resources.health) {
+      resources.health.value = Math.min(resources.health.value, resources.health.max);
+    }
+    // if (resources.willpower && systemData.willpowerMax !== undefined) {
+    //   resources.willpower.value = Math.min(resources.willpower.value, systemData.willpowerMax);
+    // }
   }
 
   /**

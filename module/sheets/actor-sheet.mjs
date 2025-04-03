@@ -56,8 +56,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     gear: {
       template: 'systems/die-rpg/templates/actor/gear.hbs',
     },
-    spells: {
-      template: 'systems/die-rpg/templates/actor/spells.hbs',
+    abilities: { // Renamed from spells
+      template: 'systems/die-rpg/templates/actor/abilities.hbs', // Updated path
     },
     effects: {
       template: 'systems/die-rpg/templates/actor/effects.hbs',
@@ -74,7 +74,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('features', 'gear', 'spells', 'effects');
+        options.parts.push('features', 'gear', 'abilities', 'effects'); // Renamed spells -> abilities
         break;
       case 'npc':
         options.parts.push('gear', 'effects');
@@ -115,7 +115,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'features':
-      case 'spells':
+      case 'abilities': // Renamed from spells
       case 'gear':
         context.tab = context.tabs[partId];
         break;
@@ -186,9 +186,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'gear';
           tab.label += 'Gear';
           break;
-        case 'spells':
-          tab.id = 'spells';
-          tab.label += 'Spells';
+        case 'abilities': // Renamed from spells
+          tab.id = 'abilities'; // Renamed from spells
+          tab.label += 'Abilities'; // Updated label
           break;
         case 'effects':
           tab.id = 'effects';
@@ -210,21 +210,11 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Initialize containers.
     // You can just use `this.document.itemTypes` instead
     // if you don't need to subdivide a given type like
-    // this sheet does with spells
+    // this sheet does with abilities
     const gear = [];
     const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
+    const abilities = []; // Changed from spells object to simple array
+    // TODO: Consider adding Class and Persona item arrays here too
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
@@ -236,22 +226,17 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       else if (i.type === 'feature') {
         features.push(i);
       }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
+      // Append to abilities.
+      else if (i.type === 'ability') { // Changed from 'spell'
+        abilities.push(i); // Changed from level-based push
       }
-    }
-
-    for (const s of Object.values(spells)) {
-      s.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+      // TODO: Add handling for 'class' and 'persona' types if they need separate lists
     }
 
     // Sort then assign
     context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.spells = spells;
+    context.abilities = abilities.sort((a, b) => (a.sort || 0) - (b.sort || 0)); // Changed from spells
   }
 
   /**

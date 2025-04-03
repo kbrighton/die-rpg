@@ -23,14 +23,13 @@
         "Biography": "Biography",
         "Features": "Features",
         "Gear": "Gear",
-        "Spells": "Spells",
+        "Abilities": "Abilities",
         "Effects": "Effects"
       },
       "base": {
         "FIELDS": {
           "biography": {"label": "Biography"},
-          "health": {"label": "Health"},
-          "power": {"label": "Power"}
+          "health": {"label": "Health"}
         }
       },
       "Character": {
@@ -40,8 +39,6 @@
       },
       "NPC": {
         "FIELDS": {
-          "cr": {"label": "CR"},
-          "xp": {"label": "XP"}
         }
       }
     },
@@ -59,14 +56,20 @@
           "rollMod": {"label": "Roll Modifier"},
           "quantity": {"label": "Quantity"},
           "weight": {"label": "Weight"}
-        }
-      },
-      "Spell": {
-        "FIELDS": {
-          "level": {"label": "Spell Level"}
         },
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
+          "defenseBonus": {"label": "Defense Bonus"},
+          "rollModType": {"label": "Roll Modification Type"},
+          "rollModValue": {"label": "Roll Modification Value"},
+          "specialText": {"label": "Special (on 6+)"}
+      },
+      "Ability": {
+        "FIELDS": {
+          "cost": {"label": "Cost"},
+          "range": {"label": "Range"},
+          "duration": {"label": "Duration"},
+          "effectDescription": {"label": "Effect Details"},
+          "specialText": {"label": "Special (on 6+)"}
+        }
       }
     },
     "Effect": {
@@ -75,7 +78,27 @@
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
-    }
+    },
+    "Settings": {
+			"game": {
+				"heading": "DIE: The Roleplaying Game",
+				"publisher": {
+					"title": "Rowan, Rook and Decard"
+				},
+				"github": {
+					"title": "Module Repository"
+				},
+				"kofi": {
+					"title": "Support me on Ko-fi"
+				}
+			}
+			  },
+			 "Dialog": {
+			   "Advantages": "Advantages",
+			   "Disadvantages": "Disadvantages",
+			   "Difficulty": "Difficulty",
+			   "AddClassDie": "Add Class Die"
+			 }
   },
   "TYPES": {
     "Actor": {
@@ -85,7 +108,9 @@
     "Item": {
       "gear": "Gear",
       "feature": "Feature",
-      "spell": "Spell"
+      "ability": "Ability",
+      "class": "Class",
+      "persona": "Persona"
     }
   }
 }

@@ -5,6 +5,8 @@ export { default as DieRpgNPC } from './actor-npc.mjs';
 
 // Export Items
 export { default as DieRpgItemBase } from './base-item.mjs';
-export { default as DieRpgGear } from './item-gear.mjs';
+export { default as DieRpgGear } from './item-gear.mjs'; // Class name was DieRpgItem, now DieRpgGear
 export { default as DieRpgFeature } from './item-feature.mjs';
-export { default as DieRpgSpell } from './item-spell.mjs';
+export { default as DieRpgAbility } from './item-ability.mjs'; // Renamed from DieRpgSpell
+export { default as DieRpgClass } from './item-class.mjs';
+export { default as DieRpgPersona } from './item-persona.mjs';

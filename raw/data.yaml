@@ -24,27 +24,42 @@ Would be nice if you could track collected disadvantages and advantages with the
 
 
 Character
-  Stats (0-4)
-    str
-    dex
-    con 
-    int
-    wis
-    cha
+  STATISTICS number (0-4)
+    str Strength
+    dex Dexterity
+    con Constitution
+    int Intelligence
+    wis Wisdom
+    cha Charisma
   Derived Stats
-    guard
-    health
-    willpower
-    defence
+  DEFENSIVE STATISTICS
+    guard - starts equal to their Dexterity and is depleted when hit
+    health - (Wounds reduce health) starts equal to a character’s Constitution and is reduced when hit. When it reaches 0, life becomes difficult.
+    willpower - starts equal to a character’s Wisdom plus their Intelligence.
+    defense - It is 0 unless stated otherwise. (from items)
   Attributes
-    class
-      dice
+    Name
+    core nature
+    Paragon [Item][Dictator, Fool, Emotion Knight, Neo, Godbinder, *Master]
+      dice [D4, D6, D8, D10, D12, D20]
       class details
-    look
+    Persona [Item?]
+    looks
     notes
-    Eq
+    equipment [Items (can give defense)]
+    Paragon (Class) rules
+    Level 1 - 20
+    Advancement Map (options)
+      QUICK ADVANCEMENT options
+      vs
+      FULL ADVANCEMENT options
 
-Persona
+Persona [Item?]
+  name
+  Shared history [social group]
+  Familiar obsessions
+  Creative Personas with a vivid inner imaginary life
+  Notes
 
 Fallen Character
   Stats (0-4)

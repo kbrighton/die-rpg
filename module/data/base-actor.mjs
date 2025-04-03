@@ -7,11 +7,11 @@ export default class DieRpgActorBase extends foundry.abstract.TypeDataModel {
     schema.resources = new fields.SchemaField({
       health: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        max: new fields.NumberField({ ...requiredInteger, initial: 10 })
+        max: new fields.NumberField({ ...requiredInteger, initial: 0 })  // Derived: Equal to Dexterity
       }),
       guard: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        max: new fields.NumberField({ ...requiredInteger, initial: 10 })
+        max: new fields.NumberField({ ...requiredInteger, initial: 0 })  // Derived: Equal to Constitution
       }),
       willpower: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
@@ -26,7 +26,7 @@ export default class DieRpgActorBase extends foundry.abstract.TypeDataModel {
     // Iterate over stat names and create a new SchemaField for each.
     schema.stats = new fields.SchemaField(Object.keys(CONFIG.DIE_RPG.stats).reduce((obj, stat) => {
       obj[stat] = new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 2, min: 0 }),
+        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 4 }),
       });
       return obj;
     }, {}));
