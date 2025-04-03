@@ -9,12 +9,15 @@ This file tracks the project's progress using a task list format.
 *   [2025-04-02 19:25:48] Completed Phase 1: Core Data & Derived Stats.
 *   [2025-04-02 19:27:48] Completed initial refactoring for Phase 2: Roll Mechanics Implementation (dice helper structure, item roll method). Further implementation (dialog, difficulty, specials, item mods) pending.
 *   [2025-04-02 20:05:57] Completed core implementation for Phase 2: Roll Mechanics (DialogV2 structure, success counting, difficulty, specials, crits, chat message). TODOs remain for Class Die, Failing Forward, item mods.
+*   [2025-04-02 23:55:37] Roll dialog data retrieval fixed (using DialogV2.wait and result.object).
+*   [2025-04-03 00:08:33] Implemented initial Class Die logic in roll helper (finding die, adding to pool/formula, basic substitution logic). TODOs remain for dialog conditionality and substitution choice.
 *   [2025-04-02 19:33:06] Completed structural setup for 'class' and 'persona' item types (system.json, data models, registration, localization).
 *   [2025-04-02 19:49:52] Completed structural repurposing of 'spell' item type to 'ability' (file renames, code references, localization).
 *   [2025-04-02 19:54:58] Completed Phase 3: Class, Abilities & Items (structural setup).
 ## Completed Tasks
 
 *   
+*   [Next Step] Implement Defense calculation in Actor `prepareDerivedData` OR refine Roll Mechanics (Failing Forward, Specials interaction) OR flesh out Item Models OR begin Boilerplate Cleanup.
 
 *   [Next Step] Implement Defense calculation in Actor `prepareDerivedData` OR begin Post-Refactor Task (Boilerplate Cleanup).
 *   [Next Step] Further implementation of Phase 2 (Roll Mechanics - dialog, difficulty, specials) or begin Post-Refactor Task (Boilerplate Cleanup).

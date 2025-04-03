@@ -76,4 +76,14 @@ export class DieRpgActor extends Actor {
   getRollData() {
     return { ...super.getRollData(), ...(this.system.getRollData?.() ?? null) };
   }
+
+  /**
+   * Find the first equipped item of type 'class' on the actor.
+   * @returns {DieRpgItem|null} The found class item or null.
+   * @protected
+   */
+  _getClassDieItem() {
+    // TODO: Add check for 'equipped' status if applicable
+    return this.items.find(item => item.type === 'class');
+  }
 }
