@@ -140,6 +140,14 @@
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
     },
+    "Class": {
+      "Dictator": "Dictator",
+      "Fool": "Fool",
+      "EmotionKnight": "Emotion Knight",
+      "Godbinder": "Godbinder",
+      "Neo": "Neo",
+      "Master": "Master"
+    },
     "Settings": {
 			"game": {
 				"heading": "DIE: The Roleplaying Game",

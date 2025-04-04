@@ -7,13 +7,13 @@
   <div class="form-group">
     <label>{{localize 'DIE_RPG.Item.Class.FIELDS.baseClassType.label'}}</label>
     <select name="system.baseClassType">
-      {{selectOptions config.classBaseTypes selected=system.baseClassType localize=true}} {{!-- Assuming config.classBaseTypes exists --}}
+      {{selectOptions config.classBaseTypes selected=system.baseClassType localize=true}} {{!-- Added localize=true back --}}
     </select>
   </div>
   <div class="form-group">
     <label>{{localize 'DIE_RPG.Item.Class.FIELDS.classDie.label'}}</label>
     <select name="system.classDie">
-      {{selectOptions config.classDice selected=system.classDie localize=false}}
+      {{selectOptions config.classDice selected=system.classDie localize=true}}
     </select>
   </div>
 

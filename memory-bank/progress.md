@@ -22,6 +22,7 @@ This file tracks the project's progress using a task list format.
 *   [2025-04-02 19:49:52] Completed structural repurposing of 'spell' item type to 'ability' (file renames, code references, localization).
 *   [Blocked] Phase 3: Flesh out Item Models - Waiting for user to provide extracted text data from Character Sheet PDF.
 *   [Unblocked] Phase 3: Flesh out Item Models - Rules available in `raw/DIE-Rules.md`.
+*   [Next Step] Refine Roll Mechanics (Class Die substitution dialog, Failing Forward, item roll mods).
 *   [Next Step] Boilerplate Cleanup.
 *   [Next Step] Boilerplate Cleanup OR Final Roll Refinements (Dialog conditionality, Special interactivity).
 *   [Next Step] Refine Roll Mechanics (Failing Forward) OR Boilerplate Cleanup.
