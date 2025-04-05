@@ -2,14 +2,36 @@ export async function rollStat(dataset, actor) {
   let label = dataset.label;
   let statName = dataset.statName;
   let statValue = actor.system.stats[statName].value;
+  // Start with specials passed from the item roll context
+  let combinedSpecials = dataset.availableSpecials || [];
+
+  // --- Gather Specials from Actor's Owned Items ---
+  // Filter owned items that have a 'specials' array and it's not empty.
+  // TODO: Refine filtering logic if needed (e.g., only active equipped gear, passive features)
+  const actorSpecials = actor.items
+    .filter(item => item.system?.specials && Array.isArray(item.system.specials) && item.system.specials.length > 0)
+    .flatMap(item => item.system.specials); // Extract the specials arrays
+
+  // Merge and deduplicate specials (using 'key' or 'name' as identifier)
+  const specialKeys = new Set(combinedSpecials.map(s => s.key || s.name));
+  actorSpecials.forEach(s => {
+    const identifier = s.key || s.name;
+    if (!specialKeys.has(identifier)) {
+      combinedSpecials.push(s);
+      specialKeys.add(identifier);
+    }
+  });
+  // --- End Gather Actor Specials ---
+
 
   // Get Class Die info from Actor
   const classItem = actor?._getClassDieItem();
   const classDieType = classItem?.system?.classDie || null; // Get die type (e.g., "d8") or null
 
-  // Define initial mods before dialog
-  const initialAdvantages = 0; // Placeholder for context-based advantages
-  const initialDisadvantages = 0; // Placeholder for context-based disadvantages
+  // Define initial mods before dialog, using values from dataset if provided
+  const initialAdvantages = dataset.advantages || 0;
+  const initialDisadvantages = dataset.disadvantages || 0;
+  // TODO: Consider passing dataset.difficulty as initialDifficulty to dialog as well?
 
   // Show dialog to get modifiers
   const rollModifiers = await _showRollDialog({
@@ -73,7 +95,7 @@ export async function rollStat(dataset, actor) {
     diceResults,
     classDieType, // Pass the type of class die used
     isMixedPool, // Pass flag indicating if it was a mixed roll (1d6+1dX)
-    availableSpecials: [] // Placeholder for actual specials based on context
+    availableSpecials: combinedSpecials // Pass the combined list of specials
   });
 
   return roll; // Return the original Roll object for potential further use
@@ -224,11 +246,13 @@ function _buildChatRollMessage(roll, label, actor, results) {
     resultText = `<span style="color: green; font-weight: bold;">Success!</span> (${finalSuccesses} Final Successes)`;
   } else {
     // Check for Failing Forward (initial successes > 0 but final <= 0 due to difficulty)
-    if (initialSuccesses > 0 && difficulty >= initialSuccesses) {
+    // Only apply if the setting is enabled
+    const useFailingForward = game.settings.get('die-rpg', 'enableFailingForward');
+    if (useFailingForward && initialSuccesses > 0 && difficulty >= initialSuccesses) {
        // More explicit Fail Forward message
        resultText = `<span style="color: orange; font-weight: bold;">Fail Forward!</span> (${initialSuccesses} successes vs Difficulty ${difficulty}. Action succeeds with cost or complication - GM narrates.)`;
     } else {
-       // Standard failure
+       // Standard failure (or Failing Forward disabled)
        resultText = `<span style="color: red; font-weight: bold;">Failure.</span> (0 Final Successes)`;
     }
   }
@@ -271,36 +295,42 @@ function _buildChatRollMessage(roll, label, actor, results) {
  * @private
  */
 function _buildSpecialsHTML(actor, availableSpecials, specialDiceCount) {
-  // NOTE: This function is defined but currently unused as interactive specials are deferred.
   if (!availableSpecials || availableSpecials.length === 0 || specialDiceCount === 0) {
     return '';
   }
 
-  let html = '<div class="specials-list"><strong>Activate Specials:</strong><ul>';
+  // Filter specials that can be afforded with the rolled 6s
+  const affordableSpecials = availableSpecials.filter(s => specialDiceCount >= (s.cost || 1));
 
-  availableSpecials.forEach(special => {
-    // Placeholder logic: Assume special object has 'name', 'cost' (e.g., 1 for 6+, 2 for Double 6+), 'id' or 'key'
-    const cost = special.cost || 1; // Default cost to 1 (single 6+)
-    const name = special.name || 'Unnamed Special';
-    const specialKey = special.key || name.slugify(); // Use slugified name as key fallback
+  if (affordableSpecials.length === 0) {
+    return '';
+  }
 
-    if (specialDiceCount >= cost) {
-      // Add button/link if enough 6s were rolled
-      // TODO: Add check if special was already used this roll (needs state tracking)
-      // TODO: Handle mandatory specials
-      html += `
-        <li>
-          <a class="activate-special"
-             data-action="activateSpecial"
-             data-actor-id="${actor.id}"
-             data-special-key="${specialKey}"
-             data-special-cost="${cost}"
-             title="${name} (Cost: ${cost})">
-             <i class="fas fa-star"></i> ${name} (Cost: ${cost})
-          </a>
-        </li>
-      `;
+  // Sort specials: Mandatory first, then by cost, then by name
+  affordableSpecials.sort((a, b) => {
+    if (a.mandatory !== b.mandatory) {
+      return a.mandatory ? -1 : 1; // Mandatory first
     }
+    if ((a.cost || 1) !== (b.cost || 1)) {
+      return (a.cost || 1) - (b.cost || 1); // Lower cost first
+    }
+    return (a.name || '').localeCompare(b.name || ''); // Alphabetical by name
+  });
+
+  let html = '<div class="specials-list"><strong>Available Specials:</strong><ul>';
+
+  affordableSpecials.forEach(special => {
+    const cost = special.cost || 1;
+    const name = special.name || 'Unnamed Special';
+    const description = special.description || '';
+    const mandatoryText = special.mandatory ? ' <strong style="color:orange;">(Mandatory)</strong>' : '';
+
+    // Just list the special for now, interaction deferred
+    html += `
+      <li title="${description}">
+         <i class="fas fa-star"></i> ${name} (Cost: ${cost})${mandatoryText}
+      </li>
+    `;
   });
 
   html += '</ul></div>';

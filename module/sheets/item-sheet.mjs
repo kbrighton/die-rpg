@@ -15,8 +15,30 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
+  get defaultOptions() {
+    const options = super.defaultOptions;
+    let width = 400;
+    let height = 500;
+
+    // Set dimensions based on item type
+    if (this.item.type === 'class' || this.item.type === 'ability') {
+      width = 600;
+      height = 700;
+    }
+
+    options.position = { width, height };
+    return options;
+  }
+
+
+  /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['die-rpg', 'item'],
+    // Base options moved to getter
+    classes: ['die-rpg', 'item', 'sheet'],
+    position: {
+      // Default dimensions removed, will be set dynamically
+    },
+    resizable: true, // Allow resizing
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -38,54 +60,55 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     header: {
       template: 'systems/die-rpg/templates/item/header.hbs',
     },
-    tabs: {
-      // Foundry-provided generic template
-      template: 'templates/generic/tab-navigation.hbs',
+    // Define body parts per item type
+    bodyAbility: {
+      template: 'systems/die-rpg/templates/item/sheet-ability.hbs', // New template
     },
-    description: {
-      template: 'systems/die-rpg/templates/item/description.hbs',
+    bodyClass: {
+      template: 'systems/die-rpg/templates/item/sheet-class.hbs', // New template
     },
-    attributesFeature: {
-      template:
-        'systems/die-rpg/templates/item/attribute-parts/feature.hbs',
+    bodyFeature: {
+      template: 'systems/die-rpg/templates/item/sheet-feature.hbs', // New template
     },
-    attributesGear: {
-      template: 'systems/die-rpg/templates/item/attribute-parts/gear.hbs',
+    bodyGear: {
+      template: 'systems/die-rpg/templates/item/sheet-gear.hbs', // New template
     },
-    attributesAbility: { // Renamed from attributesSpell
-      template:
-        'systems/die-rpg/templates/item/attribute-parts/ability.hbs', // Updated path
-    },
-    attributesClass: { // Added for Class type
-      template: 'systems/die-rpg/templates/item/attribute-parts/class.hbs',
-    },
-    effects: {
-      template: 'systems/die-rpg/templates/item/effects.hbs',
-    },
+    bodyPersona: {
+       template: 'systems/die-rpg/templates/item/sheet-persona.hbs', // New template
+    }
+    // Removed description, attributes*, effects parts
   };
 
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    // Not all parts always render
-    options.parts = ['header', 'tabs', 'description'];
-    // Don't show the other tabs if only limited view
+    // Start with just the header
+    options.parts = ['header'];
+
+    // Don't show body if limited view
     if (this.document.limited) return;
-    // Control which parts show based on document subtype
+
+    // Add the appropriate body part based on item type
     switch (this.document.type) {
       case 'feature':
-        options.parts.push('attributesFeature', 'effects');
+        options.parts.push('bodyFeature');
         break;
       case 'gear':
-        options.parts.push('attributesGear');
+        options.parts.push('bodyGear');
         break;
-      case 'ability': // Renamed from 'spell'
-        options.parts.push('attributesAbility'); // Renamed from 'attributesSpell'
+      case 'ability':
+        options.parts.push('bodyAbility');
         break;
       case 'class':
-        options.parts.push('attributesClass');
+        options.parts.push('bodyClass');
         break;
-      // TODO: Add case for 'persona' if it needs a specific attribute template
+      case 'persona':
+        options.parts.push('bodyPersona');
+        break;
+      default:
+        // Optionally handle unknown types or fallback to a default body
+        console.warn(`DIE RPG | Unknown item type "${this.document.type}" for sheet rendering.`);
+        break;
     }
   }
 
@@ -106,7 +129,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       // Adding a pointer to CONFIG.DIE_RPG
       config: CONFIG.DIE_RPG,
       // You can factor out context construction to helper functions
-      tabs: this._getTabs(options.parts),
+      // tabs: this._getTabs(options.parts), // Removed call to deleted method
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields,
@@ -117,19 +140,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   async _preparePartContext(partId, context) {
-    switch (partId) {
-      case 'attributesFeature':
-      case 'attributesGear':
-      case 'attributesAbility': // Renamed from attributesSpell
-      case 'attributesClass': // Added class
-        // Necessary for preserving active tab on re-render
-        context.tab = context.tabs[partId];
-        break;
-      case 'description':
-        context.tab = context.tabs[partId];
-        // Enrich description info for display
-        // Enrichment turns text like `[[/r 1d20]]` into buttons
-        context.enrichedDescription = await TextEditor.enrichHTML(
+    // Prepare context for the specific body part being rendered
+    if (partId.startsWith('body')) {
+       // Enrich description for all body parts
+       context.enrichedDescription = await TextEditor.enrichHTML(
           this.item.system.description,
           {
             // Whether to show secret blocks in the finished html
@@ -139,64 +153,20 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
             // Relative UUID resolution
             relativeTo: this.item,
           }
-        );
-        break;
-      case 'effects':
-        context.tab = context.tabs[partId];
-        // Prepare active effects for easier access
-        context.effects = prepareActiveEffectCategories(this.item.effects);
-        break;
+        ); // Merged the closing parenthesis and semicolon here
+
+       // Prepare effects if the body part should include them
+       if (['bodyFeature', 'bodyGear', 'bodyAbility', 'bodyClass'].includes(partId)) { // Add other types as needed
+            context.effects = prepareActiveEffectCategories(this.item.effects);
+       }
     }
+    // Handle other parts if necessary (e.g., header)
+    // switch (partId) { ... }
+
     return context;
   }
 
-  /**
-   * Generates the data for the generic tab navigation template
-   * @param {string[]} parts An array of named template parts to render
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   * @protected
-   */
-  _getTabs(parts) {
-    // If you have sub-tabs this is necessary to change
-    const tabGroup = 'primary';
-    // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'description';
-    return parts.reduce((tabs, partId) => {
-      const tab = {
-        cssClass: '',
-        group: tabGroup,
-        // Matches tab property to
-        id: '',
-        // FontAwesome Icon, if you so choose
-        icon: '',
-        // Run through localization
-        label: 'DIE_RPG.Item.Tabs.',
-      };
-      switch (partId) {
-        case 'header':
-        case 'tabs':
-          return tabs;
-        case 'description':
-          tab.id = 'description';
-          tab.label += 'Description';
-          break;
-        case 'attributesFeature':
-        case 'attributesGear':
-        case 'attributesAbility': // Renamed from attributesSpell
-        case 'attributesClass': // Added class
-          tab.id = 'attributes';
-          tab.label += 'Attributes';
-          break;
-        case 'effects':
-          tab.id = 'effects';
-          tab.label += 'Effects';
-          break;
-      }
-      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
-      tabs[partId] = tab;
-      return tabs;
-    }, {});
-  }
+  // Removed _getTabs method
 
   /**
    * Actions performed after any render of the Application.

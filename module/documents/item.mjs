@@ -104,9 +104,11 @@ export class DieRpgItem extends Item {
       disadvantages: initialDisadvantages,
       difficulty: baseDifficulty,
       addClassDie: forceAddClassDie, // Use item's flag
+      availableSpecials: (system.specials && Array.isArray(system.specials)) ? system.specials : [] // Pass item specials
     };
 
     // --- Call the roll helper ---
+    // Note: rollStat will need to be updated to accept and pass availableSpecials
     return rollStat(dataset, this.actor);
   }
 }

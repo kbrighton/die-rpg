@@ -133,3 +133,18 @@ The Fair
   Defence
   Abilities
   coin flip for all rolls
+
+
+prioritized list of player-facing rules
+  Core Roll Mechanic Interface: Buttons/triggers for stat rolls, Advantage/Disadvantage input, clear results display (pool, successes, 6+s).
+  Core Stats Display (STR-CHA): Clearly visible values near roll triggers.
+  Defensive Stats & Resource Trackers (Guard, Health, Willpower): Prominent, easily modifiable trackers with current/max values.
+  Defence Value Display: Clearly visible static value.
+  Class-Specific Resource/State Trackers: Prominent trackers for EK Scale, Neo Gold, Godbinder Debt/Trust, Fool Flukes/D6 Status, Dictator Palette/Intensity, Master Tokens.
+  Combat Actions (Attack Rolls): Buttons integrated with inventory items (weapons, spells, abilities) using correct stats.
+  Available Specials List: Accessible list of available Specials, potentially highlighted dynamically after rolls.
+  Inventory/Equipment List (Gear, Abilities, Items): Organized lists showing relevant stats, Specials, equip toggles.
+  Class-Specific Action Buttons: Dedicated buttons for key class abilities (Performance, Venting, Activate Gift, Cast Scripture, Use Rule, Add D6, etc.).
+  Flashback Tracker/Button: Simple tracker/button for once-per-session use.
+  Character Info (Name, Class, Look, Bio, Persona): Clearly displayed, likely in header or info tab.
+  Advancement Display: List/section showing chosen advancements, primarily for reference/level-up.

@@ -33,7 +33,9 @@ foundry
 
 #OS
 .DS_Store
-raw/DIE-Rules.pdf
-raw/DIE-Character Sheets.pdf
-raw/DIE-Rules.md
-raw/Classes.json
+
+# working files
+raw/*
+memory-bank/*
+.roomodes
+.clinerules-default

@@ -20,36 +20,52 @@ export default class DieRpgAbility extends DieRpgItemBase {
       required: true,
       blank: false,
       initial: 'general', // Default type
-      // More specific choices based on rules
-      choices: ['general', 'scripture', 'gift', 'stance', 'venting', 'special', 'attack', 'passive'],
+      choices: ['general', 'scripture', 'gift', 'stance', 'venting', 'knack', 'fool_spell', 'dictator_performance', 'signature_piece', 'master_rule', 'cheat', 'attack', 'passive', 'other'], // Expanded choices
       label: 'DIE_RPG.Item.Ability.FIELDS.abilityType.label'
     });
 
-    schema.activation = new fields.SchemaField({
-      type: new fields.StringField({ // e.g., "Action", "Reaction", "Free", "Passive"
-        required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.activation.type.label'
-      }),
-      cost: new fields.StringField({ // e.g., "1 Willpower", "1 Class Die", "1 Fair Gold"
-        required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.activation.cost.label'
-      })
+    // Refined Activation Cost Structure
+    schema.costType = new fields.StringField({
+        required: true, blank: false, initial: 'none',
+        choices: ['none', 'action', 'resource', 'condition'],
+        label: 'DIE_RPG.Item.Ability.FIELDS.costType.label'
     });
+    schema.costAction = new fields.StringField({ // Type of action if costType is 'action'
+        required: false, blank: true, initial: 'action',
+        choices: ['action', 'reaction', 'free', 'passive', 'special'], // 'special' for unique timings
+        label: 'DIE_RPG.Item.Ability.FIELDS.costAction.label'
+    });
+    schema.costResource = new fields.StringField({ // Type of resource if costType is 'resource'
+        required: false, blank: true, initial: 'none',
+        choices: ['none', 'fair_gold', 'god_debt', 'ek_scale', 'cheat_token', 'health', 'guard', 'willpower'],
+        label: 'DIE_RPG.Item.Ability.FIELDS.costResource.label'
+    });
+    schema.costAmount = new fields.NumberField({ // Amount of resource/action if applicable
+        required: false, integer: true, nullable: true, initial: null, min: 0,
+        label: 'DIE_RPG.Item.Ability.FIELDS.costAmount.label'
+    });
+     schema.costCondition = new fields.StringField({ // Text description if costType is 'condition'
+        required: false, blank: true, initial: '',
+        label: 'DIE_RPG.Item.Ability.FIELDS.costCondition.label'
+    });
+    // Removed old activation schema
 
-    schema.range = new fields.StringField({ // e.g., "Self", "Touch", "Close", "Medium", "Far"
+    schema.range = new fields.StringField({ // e.g., "Self", "Touch", "Close", "Medium", "Far", "Special"
       required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.range.label'
     });
 
-    schema.duration = new fields.StringField({ // e.g., "Instantaneous", "1 round", "Concentration", "Special"
+    schema.duration = new fields.StringField({ // e.g., "Instantaneous", "Encounter", "Concentration", "Until Dawn", "Permanent", "Special"
       required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.duration.label'
     });
 
-    schema.target = new fields.StringField({ // e.g., "Self", "1 creature", "All enemies in Close range"
+    schema.target = new fields.StringField({ // e.g., "Self", "1 creature", "Area", "All enemies in Close range"
       required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.target.label'
     });
 
     // --- Roll Details (Optional) ---
     schema.roll = new fields.SchemaField({
       stat: new fields.StringField({ // Which stat to use (str, dex, cha, etc.)
-        required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.roll.stat.label'
+        required: false, blank: true, initial: '', choices: ['', ...Object.keys(CONFIG.DIE_RPG.stats)], label: 'DIE_RPG.Item.Ability.FIELDS.roll.stat.label'
       }),
       add_class_die: new fields.BooleanField({ // Always add class die for this ability?
         required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.roll.add_class_die.label'
@@ -65,62 +81,127 @@ export default class DieRpgAbility extends DieRpgItemBase {
       })
     }, { required: false, nullable: true, initial: null }); // Make the whole roll object optional
 
-    // --- Effect & Special ---
+    // --- Effect & Specials ---
     schema.effectDescription = new fields.HTMLField({ // Detailed effect text
       required: false, blank: true, label: 'DIE_RPG.Item.Ability.FIELDS.effectDescription.label'
     });
 
-    schema.special = new fields.SchemaField({
-       trigger: new fields.StringField({ // e.g., "6+", "Double 6+", "20-Special"
-         required: false, blank: true, initial: '6+', label: 'DIE_RPG.Item.Ability.FIELDS.special.trigger.label'
-       }),
-       text: new fields.StringField({ // The special effect text
-         required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.special.text.label'
-       }),
-       is_mandatory: new fields.BooleanField({
-         required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.special.is_mandatory.label'
-       })
-    }, { required: false, nullable: true, initial: null }); // Make special object optional
+    // Replaced simple 'special' object with structured 'specials' array
+    schema.specials = new fields.ArrayField(new fields.SchemaField({
+        name: new fields.StringField({ required: true, blank: false, label: 'DIE_RPG.Item.Special.FIELDS.name.label' }),
+        description: new fields.StringField({ required: true, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.description.label' }),
+        cost: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, label: 'DIE_RPG.Item.Special.FIELDS.cost.label' }), // Cost in 6+ dice
+        mandatory: new fields.BooleanField({ required: true, initial: false, label: 'DIE_RPG.Item.Special.FIELDS.mandatory.label' }),
+        key: new fields.StringField({ required: false, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.key.label' }) // Optional unique key
+      }), {
+        label: 'DIE_RPG.Item.Ability.FIELDS.specials.label',
+        elementLabel: 'DIE_RPG.Item.Special.label'
+    });
 
-    // --- Attack Flags ---
+    // --- Attack Details (Optional) ---
     schema.isAttack = new fields.BooleanField({
       required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isAttack.label'
     });
     schema.isSpellAttack = new fields.BooleanField({ // For abilities that check casting success AND attack
       required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isSpellAttack.label'
     });
+    schema.attackType = new fields.StringField({
+        required: false, blank: true, initial: 'none',
+        choices: ['none', 'melee', 'ranged', 'spell'],
+        label: 'DIE_RPG.Item.Ability.FIELDS.attackType.label'
+    });
+     schema.damageType = new fields.StringField({
+        required: false, blank: true, initial: '',
+        label: 'DIE_RPG.Item.Ability.FIELDS.damageType.label'
+    });
 
-    // --- New/Modified Fields ---
-    schema.grantedBy = new fields.StringField({ // e.g., Class name, Item name
+
+    // --- Context & Requirements ---
+    schema.grantedBy = new fields.StringField({ // e.g., Class name, Item name, Advancement
       required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.grantedBy.label'
     });
 
-    schema.requirements = new fields.StringField({ // e.g., "Emotion Scale >= 1"
+    schema.requirements = new fields.StringField({ // e.g., "Emotion Scale >= 1", "Level 3"
       required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.requirements.label'
     });
 
+    schema.source = new fields.StringField({ // e.g., "DIE Core Rulebook p. 88"
+      required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.source.label'
+    });
+
+    // --- Class Specific Fields ---
+
+    // Godbinder
     schema.scriptureGod = new fields.StringField({ // For Scriptures, which god grants it
       required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.scriptureGod.label'
     });
-
-    // Structure for Neo Gift Upgrades
-    const upgradeSchema = new fields.SchemaField({
-        name: new fields.StringField({required: true, blank: false}),
-        description: new fields.HTMLField({required: false, blank: true}),
-        isDefensive: new fields.BooleanField({required: false, initial: false})
+    schema.scriptureLevel = new fields.NumberField({ // Level required in god relationship
+      required: false, integer: true, nullable: true, initial: null, min: 1, max: 3, label: 'DIE_RPG.Item.Ability.FIELDS.scriptureLevel.label'
     });
-    schema.giftUpgrades = new fields.ArrayField(upgradeSchema, {
-        required: false, initial: [], label: 'DIE_RPG.Item.Ability.FIELDS.giftUpgrades.label'
+     schema.incursGodDebt = new fields.BooleanField({ // Does rolling a 1 on d12 incur debt?
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.incursGodDebt.label'
     });
 
-    schema.isDefensiveUpgrade = new fields.BooleanField({ // Flag for Neo Gift upgrades themselves
-      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isDefensiveUpgrade.label'
+    // Neo
+    schema.isGift = new fields.BooleanField({
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isGift.label'
+    });
+    schema.giftActivationCost = new fields.NumberField({ // Cost in Fair Gold to activate
+      required: false, integer: true, nullable: true, initial: null, min: 0, label: 'DIE_RPG.Item.Ability.FIELDS.giftActivationCost.label'
+    });
+    // Structure for Neo Gift Upgrades (can be represented as separate 'ability' items linked via requirements/grantedBy, or nested here)
+    // Let's assume upgrades are separate items for now to avoid deep nesting.
+    // schema.giftUpgrades = new fields.ArrayField(...) // Removed for now
+
+    // Emotion Knight
+    schema.isStance = new fields.BooleanField({
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isStance.label'
+    });
+    schema.isVenting = new fields.BooleanField({
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isVenting.label'
+    });
+    schema.ekScaleCost = new fields.NumberField({ // Cost in EK Scale points
+      required: false, integer: true, nullable: true, initial: null, min: 0, label: 'DIE_RPG.Item.Ability.FIELDS.ekScaleCost.label'
+    });
+    schema.ekScaleRequirement = new fields.NumberField({ // Min EK Scale needed
+      required: false, integer: true, nullable: true, initial: null, min: 0, label: 'DIE_RPG.Item.Ability.FIELDS.ekScaleRequirement.label'
+    });
+    schema.ekSacredEmotion = new fields.StringField({ // Associated sacred emotion
+      required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.ekSacredEmotion.label'
     });
 
-    // --- Linked Effect ---
-    // schema.linkedEffect = new fields.StringField({ // UUID of an Active Effect document
-    //   required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.linkedEffect.label'
-    // });
+    // Fool
+    schema.isKnack = new fields.BooleanField({
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isKnack.label'
+    });
+    schema.isFoolSpell = new fields.BooleanField({
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isFoolSpell.label'
+    });
+    schema.foolCondition = new fields.StringField({ // Condition for adding D6
+      required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.foolCondition.label'
+    });
+
+    // Dictator
+    schema.isDictatorPerformance = new fields.BooleanField({
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isDictatorPerformance.label'
+    });
+    schema.dictatorEmotion = new fields.StringField({ // Associated emotion
+      required: false, blank: true, initial: '', label: 'DIE_RPG.Item.Ability.FIELDS.dictatorEmotion.label'
+    });
+    schema.isSignaturePiece = new fields.BooleanField({ // Dictator spell
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isSignaturePiece.label'
+    });
+
+    // Master
+    schema.isMasterRule = new fields.BooleanField({ // Master spell
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isMasterRule.label'
+    });
+    schema.isCheat = new fields.BooleanField({ // Hardcore Cheat
+      required: false, initial: false, label: 'DIE_RPG.Item.Ability.FIELDS.isCheat.label'
+    });
+    schema.cheatCost = new fields.NumberField({ // Cost in Cheat Tokens
+      required: false, integer: true, nullable: true, initial: null, min: 0, label: 'DIE_RPG.Item.Ability.FIELDS.cheatCost.label'
+    });
 
     return schema;
   }

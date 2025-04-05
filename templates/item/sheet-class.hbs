@@ -1,0 +1,16 @@
+{{!-- Main Body Template for Class Items --}}
+<div class="sheet-body die-rpg item class"> {{!-- Add classes for styling/scrolling --}}
+
+  {{!-- Render Header --}}
+  {{> "systems/die-rpg/templates/item/header.hbs"}}
+
+  {{!-- Render Class Attributes, explicitly passing config --}}
+  {{> "systems/die-rpg/templates/item/attribute-parts/class.hbs" config=config}}
+
+  {{!-- Render Description --}}
+  {{> "systems/die-rpg/templates/item/description.hbs"}}
+
+  {{!-- Render Effects --}}
+  {{> "systems/die-rpg/templates/item/effects.hbs"}}
+
+</div>

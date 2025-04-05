@@ -263,7 +263,15 @@
 }
 .die-rpg .tox .tox-edit-area {
   padding: 0 8px;
+
+
+/* Item Sheet Specific Styles */
+.die-rpg.item.sheet .sheet-body {
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 5px; /* Add some padding */
+  height: calc(100% - 30px); /* Adjust height calculation if header height changes */
 }
+/* Removed extra closing brace */
 .die-rpg .resources {
   margin: 10px 0 0 0;
 }
@@ -489,4 +497,5 @@
 }
 .die-rpg .effects .item .effect-controls {
   border: none;
+}
 }

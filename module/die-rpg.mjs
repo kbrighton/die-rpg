@@ -77,6 +77,18 @@ Hooks.once('init', function () {
     makeDefault: true,
     label: 'DIE_RPG.SheetLabels.Item',
   });
+
+
+  // Register system settings
+  game.settings.register('die-rpg', 'enableFailingForward', {
+    name: 'DIE_RPG.Settings.enableFailingForward.name',
+    hint: 'DIE_RPG.Settings.enableFailingForward.hint',
+    scope: 'world', // GM controls this setting per world
+    config: true, // Show in settings menu
+    type: Boolean,
+    default: true, // Enabled by default
+    onChange: value => console.log(`DIE RPG | Failing Forward setting changed to: ${value}`)
+  });
 });
 
 /* -------------------------------------------- */

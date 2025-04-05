@@ -73,3 +73,54 @@ DIE_RPG.classBaseTypes = {
   "Neo": "DIE_RPG.Class.Neo",
   "Master": "DIE_RPG.Class.Master"
 };
+
+
+DIE_RPG.abilityTypes = {
+  general: "DIE_RPG.AbilityType.general",
+  scripture: "DIE_RPG.AbilityType.scripture",
+  gift: "DIE_RPG.AbilityType.gift",
+  stance: "DIE_RPG.AbilityType.stance",
+  venting: "DIE_RPG.AbilityType.venting",
+  knack: "DIE_RPG.AbilityType.knack",
+  fool_spell: "DIE_RPG.AbilityType.fool_spell",
+  dictator_performance: "DIE_RPG.AbilityType.dictator_performance",
+  signature_piece: "DIE_RPG.AbilityType.signature_piece",
+  master_rule: "DIE_RPG.AbilityType.master_rule",
+  cheat: "DIE_RPG.AbilityType.cheat",
+  attack: "DIE_RPG.AbilityType.attack",
+  passive: "DIE_RPG.AbilityType.passive",
+  other: "DIE_RPG.AbilityType.other"
+};
+
+DIE_RPG.costTypes = {
+  none: "DIE_RPG.CostType.none",
+  action: "DIE_RPG.CostType.action",
+  resource: "DIE_RPG.CostType.resource",
+  condition: "DIE_RPG.CostType.condition"
+};
+
+DIE_RPG.actionCosts = {
+  action: "DIE_RPG.ActionCost.action",
+  reaction: "DIE_RPG.ActionCost.reaction",
+  free: "DIE_RPG.ActionCost.free",
+  passive: "DIE_RPG.ActionCost.passive",
+  special: "DIE_RPG.ActionCost.special"
+};
+
+DIE_RPG.resourceCosts = {
+  none: "DIE_RPG.ResourceCost.none",
+  fair_gold: "DIE_RPG.ResourceCost.fair_gold",
+  god_debt: "DIE_RPG.ResourceCost.god_debt",
+  ek_scale: "DIE_RPG.ResourceCost.ek_scale",
+  cheat_token: "DIE_RPG.ResourceCost.cheat_token",
+  health: "DIE_RPG.ResourceCost.health",
+  guard: "DIE_RPG.ResourceCost.guard",
+  willpower: "DIE_RPG.ResourceCost.willpower"
+};
+
+DIE_RPG.attackTypes = {
+  none: "DIE_RPG.AttackType.none",
+  melee: "DIE_RPG.AttackType.melee",
+  ranged: "DIE_RPG.AttackType.ranged",
+  spell: "DIE_RPG.AttackType.spell"
+};

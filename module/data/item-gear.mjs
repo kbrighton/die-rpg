@@ -55,12 +55,18 @@ export default class DieRpgGear extends DieRpgItemBase { // Changed class name f
       label: 'DIE_RPG.Item.Gear.FIELDS.rollModValue.label' // Assuming localization key
     });
 
-    schema.specialText = new fields.StringField({ // Text for the Special triggered on a 6+
-      required: false,
-      blank: true,
-      initial: '',
-      label: 'DIE_RPG.Item.Gear.FIELDS.specialText.label' // Assuming localization key
+    // Structured field for Specials
+    schema.specials = new fields.ArrayField(new fields.SchemaField({
+        name: new fields.StringField({ required: true, blank: false, label: 'DIE_RPG.Item.Special.FIELDS.name.label' }),
+        description: new fields.StringField({ required: true, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.description.label' }),
+        cost: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, label: 'DIE_RPG.Item.Special.FIELDS.cost.label' }), // Cost in 6+ dice
+        mandatory: new fields.BooleanField({ required: true, initial: false, label: 'DIE_RPG.Item.Special.FIELDS.mandatory.label' }),
+        key: new fields.StringField({ required: false, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.key.label' }) // Optional unique key
+      }), {
+        label: 'DIE_RPG.Item.Gear.FIELDS.specials.label', // Assuming localization key
+        elementLabel: 'DIE_RPG.Item.Special.label' // Assuming localization key for individual special entry
     });
+
 
     return schema;
   }

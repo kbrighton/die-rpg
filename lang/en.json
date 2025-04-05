@@ -86,7 +86,23 @@
           "scriptureGod": {"label": "Scripture God"},
           "giftUpgrades": {"label": "Gift Upgrades"},
           "isDefensiveUpgrade": {"label": "Is Defensive Upgrade?"}
-        }
+        },
+        "Special": {
+          "label": "Special",
+          "FIELDS": {
+            "name": {"label": "Name"},
+            "description": {"label": "Description"},
+            "cost": {"label": "Cost (6+s)"},
+            "mandatory": {"label": "Mandatory?"},
+            "key": {"label": "Unique Key"}
+          }
+        },
+        "ActivationCost": "Activation Cost",
+        "UsageDetails": "Usage Details",
+        "Context": "Context & Requirements",
+        "RollDetails": "Roll Details (If Applicable)",
+        "AttackDetails": "Attack Details (If Applicable)",
+        "ClassSpecific": "Class Specific Details"
       },
       "Class": {
         "FIELDS": {
@@ -148,9 +164,54 @@
       "Neo": "Neo",
       "Master": "Master"
     },
+    "AbilityType": {
+      "general": "General",
+      "scripture": "Scripture (Godbinder)",
+      "gift": "Gift (Neo)",
+      "stance": "Stance (EK)",
+      "venting": "Venting (EK)",
+      "knack": "Knack (Fool)",
+      "fool_spell": "Spell (Fool)",
+      "dictator_performance": "Performance (Dictator)",
+      "signature_piece": "Signature Piece (Dictator)",
+      "master_rule": "Rule (Master)",
+      "cheat": "Cheat (Master)",
+      "attack": "Basic Attack",
+      "passive": "Passive",
+      "other": "Other"
+    },
+    "CostType": {
+      "none": "None",
+      "action": "Action",
+      "resource": "Resource",
+      "condition": "Condition"
+    },
+    "ActionCost": {
+      "action": "Action",
+      "reaction": "Reaction",
+      "free": "Free Action",
+      "passive": "Passive",
+      "special": "Special"
+    },
+    "ResourceCost": {
+      "none": "None",
+      "fair_gold": "Fair Gold",
+      "god_debt": "God Debt",
+      "ek_scale": "Emotion Scale",
+      "cheat_token": "Cheat Token",
+      "health": "Health",
+      "guard": "Guard",
+      "willpower": "Willpower"
+    },
+     "AttackType": {
+      "none": "None",
+      "melee": "Melee",
+      "ranged": "Ranged",
+      "spell": "Spell"
+    },
     "Settings": {
-			"game": {
-				"heading": "DIE: The Roleplaying Game",
+   "game": {
+    "heading": "DIE: The Roleplaying Game",
 				"publisher": {
 					"title": "Rowan, Rook and Decard"
 				},
@@ -160,15 +221,20 @@
 				"kofi": {
 					"title": "Support me on Ko-fi"
 				}
-			}
-			  },
-			 "Dialog": {
-			   "Advantages": "Advantages",
+			},
+					 "enableFailingForward": {
+					   "name": "Enable Failing Forward",
+					   "hint": "If enabled, rolls with 0 final successes but >0 initial successes will succeed with a cost or complication (as per optional rule)."
+					 }
+					},
+				"Dialog": {
+					 "Advantages": "Advantages",
 			   "Disadvantages": "Disadvantages",
 			   "Difficulty": "Difficulty",
 			   "AddClassDie": "Add Class Die",
 			      "SubstituteClassDie": "Substitute Class Die?"
-			 }
+			 },
+			  "None": "None"
 		},
 		"TYPES": {
     "Actor": {
