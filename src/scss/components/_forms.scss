@@ -2,9 +2,15 @@
   font-family: $font-primary;
 }
 
+.window-content {
+  --scroll-margin: 0.75rem;
+  padding-right: var(--scroll-margin) !important;
+  overflow: hidden auto;
+}
+
+
 .sheet-header {
   flex: 0 auto;
-  overflow: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

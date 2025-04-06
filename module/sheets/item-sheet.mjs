@@ -15,30 +15,8 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
-  get defaultOptions() {
-    const options = super.defaultOptions;
-    let width = 400;
-    let height = 500;
-
-    // Set dimensions based on item type
-    if (this.item.type === 'class' || this.item.type === 'ability') {
-      width = 600;
-      height = 700;
-    }
-
-    options.position = { width, height };
-    return options;
-  }
-
-
-  /** @override */
   static DEFAULT_OPTIONS = {
-    // Base options moved to getter
     classes: ['die-rpg', 'item', 'sheet'],
-    position: {
-      // Default dimensions removed, will be set dynamically
-    },
-    resizable: true, // Allow resizing
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -46,6 +24,9 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       deleteDoc: this._deleteEffect,
       toggleEffect: this._toggleEffect,
     },
+    window: {
+			resizable: true,
+		},
     form: {
       submitOnChange: true,
     },
@@ -60,50 +41,61 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     header: {
       template: 'systems/die-rpg/templates/item/header.hbs',
     },
-    // Define body parts per item type
-    bodyAbility: {
-      template: 'systems/die-rpg/templates/item/sheet-ability.hbs', // New template
+    ability: {
+      template: 'systems/die-rpg/templates/item/attribute-parts/ability.hbs',
     },
-    bodyClass: {
-      template: 'systems/die-rpg/templates/item/sheet-class.hbs', // New template
+    class: {
+      template: 'systems/die-rpg/templates/item/attribute-parts/class.hbs',
     },
-    bodyFeature: {
-      template: 'systems/die-rpg/templates/item/sheet-feature.hbs', // New template
+    feature: {
+      template: 'systems/die-rpg/templates/item/attribute-parts/feature.hbs',
     },
-    bodyGear: {
-      template: 'systems/die-rpg/templates/item/sheet-gear.hbs', // New template
+    gear: {
+      template: 'systems/die-rpg/templates/item/attribute-parts/gear.hbs',
     },
-    bodyPersona: {
-       template: 'systems/die-rpg/templates/item/sheet-persona.hbs', // New template
-    }
-    // Removed description, attributes*, effects parts
+    persona: {
+       template: 'systems/die-rpg/templates/item/attribute-parts/persona.hbs',
+    },
+    description: {
+			template: "systems/die-rpg/templates/item/description.hbs",
+		},
   };
 
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
+
+    // Set dimensions based on item type
+    let width = 400;
+    let height = 500;
+    if (this.item.type === 'class' || this.item.type === 'ability') {
+      width = 600;
+      height = 700;
+    }
+    options.position.height = width;
+    options.position.width = height;
+
     // Start with just the header
     options.parts = ['header'];
-
     // Don't show body if limited view
     if (this.document.limited) return;
 
     // Add the appropriate body part based on item type
     switch (this.document.type) {
       case 'feature':
-        options.parts.push('bodyFeature');
+        options.parts.push('description', 'feature');
         break;
       case 'gear':
-        options.parts.push('bodyGear');
+        options.parts.push('description', 'gear');
         break;
       case 'ability':
-        options.parts.push('bodyAbility');
+        options.parts.push('description', 'ability');
         break;
       case 'class':
-        options.parts.push('bodyClass');
+        options.parts.push('description', 'class');
         break;
       case 'persona':
-        options.parts.push('bodyPersona');
+        options.parts.push('description', 'persona');
         break;
       default:
         // Optionally handle unknown types or fallback to a default body

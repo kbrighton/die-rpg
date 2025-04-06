@@ -227,9 +227,13 @@
 .die-rpg .item-form {
   font-family: "Roboto", sans-serif;
 }
+.die-rpg .window-content {
+  --scroll-margin: 0.75rem;
+  padding-right: var(--scroll-margin) !important;
+  overflow: hidden auto;
+}
 .die-rpg .sheet-header {
   flex: 0 auto;
-  overflow: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -263,15 +267,7 @@
 }
 .die-rpg .tox .tox-edit-area {
   padding: 0 8px;
-
-
-/* Item Sheet Specific Styles */
-.die-rpg.item.sheet .sheet-body {
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding: 5px; /* Add some padding */
-  height: calc(100% - 30px); /* Adjust height calculation if header height changes */
 }
-/* Removed extra closing brace */
 .die-rpg .resources {
   margin: 10px 0 0 0;
 }
@@ -498,4 +494,5 @@
 .die-rpg .effects .item .effect-controls {
   border: none;
 }
-}
+
+/*# sourceMappingURL=die-rpg.css.map */

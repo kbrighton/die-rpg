@@ -43,11 +43,6 @@
       }
     },
     "Item": {
-      "Tabs": {
-        "Attributes": "Attributes",
-        "Description": "Description",
-        "Effects": "Effects"
-      },
       "Gear": {
         "FIELDS": {
           "rollFormula": {"label": "Roll Formula"},
@@ -55,12 +50,12 @@
           "dieSize": {"label": "Die Size"},
           "rollMod": {"label": "Roll Modifier"},
           "quantity": {"label": "Quantity"},
-          "weight": {"label": "Weight"}
-        },
+          "weight": {"label": "Weight"},
           "defenseBonus": {"label": "Defense Bonus"},
           "rollModType": {"label": "Roll Modification Type"},
           "rollModValue": {"label": "Roll Modification Value"},
           "specialText": {"label": "Special (on 6+)"}
+        }
       },
       "Ability": {
         "FIELDS": {
@@ -85,7 +80,33 @@
           "requirements": {"label": "Requirements"},
           "scriptureGod": {"label": "Scripture God"},
           "giftUpgrades": {"label": "Gift Upgrades"},
-          "isDefensiveUpgrade": {"label": "Is Defensive Upgrade?"}
+          "isDefensiveUpgrade": {"label": "Is Defensive Upgrade?"},
+          "costType.label": "Cost Type",
+          "costAction.label": "Cost Action",
+          "costResource.label": "Cost Resource",
+          "costAmount.label": "Cost Amount",
+          "costCondition.label": "Cost Condition",
+          "attackType.label": "Attack Type",
+          "damageType.label": "Damage Type",
+          "specials.label": "Specials",
+          "scriptureLevel.label": "Scripture Level",
+          "incursGodDebt.label": "Incurs God Debt?",
+          "isGift.label": "Is Gift?",
+          "giftActivationCost.label": "Gift Activation Cost",
+          "isStance.label": "Is Stance?",
+          "isVenting.label": "Is Venting?",
+          "ekScaleCost.label": "Emotion Scale Cost",
+          "ekScaleRequirement.label": "Emotion Scale Requirement",
+          "ekSacredEmotion.label": "Sacred Emotion",
+          "isKnack.label": "Is Knack?",
+          "isFoolSpell.label": "Is Fool Spell?",
+          "foolCondition.label": "Fool Condition",
+          "isDictatorPerformance.label": "Is Dictator Performance?",
+          "isSignaturePiece.label": "Is Signature Piece?",
+          "dictatorEmotion.label": "Dictator Emotion",
+          "isMasterRule.label": "Is Master Rule?",
+          "isCheat.label": "Is Cheat?",
+          "cheatCost.label": "Cheat Cost"
         },
         "Special": {
           "label": "Special",
@@ -209,6 +230,12 @@
       "ranged": "Ranged",
       "spell": "Spell"
     },
+    "RollModType": {
+      "none": "None",
+      "advantage": "Advantage",
+      "disadvantage": "Disadvantage",
+      "add_dice": "Add Dice"
+    },
     "Settings": {
    "game": {
     "heading": "DIE: The Roleplaying Game",
@@ -250,4 +277,3 @@
     }
   }
 }
-

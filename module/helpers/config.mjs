@@ -124,3 +124,11 @@ DIE_RPG.attackTypes = {
   ranged: "DIE_RPG.AttackType.ranged",
   spell: "DIE_RPG.AttackType.spell"
 };
+
+
+DIE_RPG.rollModTypes = {
+  none: "DIE_RPG.RollModType.none",
+  advantage: "DIE_RPG.RollModType.advantage",
+  disadvantage: "DIE_RPG.RollModType.disadvantage",
+  add_dice: "DIE_RPG.RollModType.add_dice"
+};
