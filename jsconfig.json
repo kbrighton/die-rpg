@@ -7,7 +7,8 @@
 			"@common/*": ["./foundry/common/*"]
 		}
 	},
-	"include": ["module/die-rpg.mjs", "foundry/client/client.mjs"],
+	"exclude": ["node_modules", "**/node_modules/*"],
+	"include": ["module/die-rpg.mjs", "foundry/client/client.mjs", "foundry/client/global.d.mts"],
 	"typeAcquisition": {
 		"include": ["jquery"]
 	}

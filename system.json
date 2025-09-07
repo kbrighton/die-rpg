@@ -43,23 +43,14 @@
       "paths": ["css", "lang", "templates"]
     }
   },
-  "url": "",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "",
+  "bugs": "https://github.com/philote/die-rpg/issues",
   "changelog": "CHANGELOG.md",
-  "media": [
-    {
-      "type": "setup",
-      "url": "systems/die-rpg/assets/package_image.webp",
-      "thumbnail": "systems/die-rpg/assets/package_image_thumb.webp"
-    }
-  ],
-  "version": "0.0.1",
+  "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": 12,
-    "verified": "12.331",
-    "maximum": 12
+    "minimum": 13,
+    "verified": 13.348
   },
   "esmodules": ["module/die-rpg.mjs"],
   "styles": ["css/die-rpg.css"],
@@ -73,15 +64,17 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "",
-  "download": "",
-  "background": null,
-  "grid": {
-    "type": 1,
-    "distance": null,
-    "units": "",
-    "diagonals": 0
-  },
+  "url": "#{URL}#",
+	"manifest": "#{MANIFEST}#",
+	"download": "#{DOWNLOAD}#",
+  "background": "systems/die-rpg/assets/cover.webp",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": null
+  "secondaryTokenAttribute": null,
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/die-rpg/assets/package_image.webp",
+      "thumbnail": "systems/die-rpg/assets/package_image_thumb.webp"
+    }
+  ]
 }

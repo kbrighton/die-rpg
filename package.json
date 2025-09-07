@@ -6,7 +6,8 @@
     "build": "sass src/scss/die-rpg.scss css/die-rpg.css --style=expanded --no-source-map",
     "watch": "sass src/scss/die-rpg.scss css/die-rpg.css --style=expanded --source-map --watch",
     "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
-    "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs"
+    "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
+    "createSymlinks": "node ./tools/create-symlinks.mjs"
   },
   "browserslist": [
     "last 3 versions"
@@ -16,6 +17,7 @@
   "private": true,
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^1.0.3",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "js-yaml": "^4.1.0"
   }
 }
