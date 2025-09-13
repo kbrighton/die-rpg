@@ -1,7 +1,10 @@
 import DieRpgActorBase from './base-actor.mjs';
 
 export default class DieRpgNPC extends DieRpgActorBase {
-  static LOCALIZATION_PREFIXES = ['DIE_RPG.Actor.NPC'];
+  static LOCALIZATION_PREFIXES = [
+    ...super.LOCALIZATION_PREFIXES,
+    'DIE_RPG.Actor.NPC',
+  ];
 
   static defineSchema() {
     const fields = foundry.data.fields;

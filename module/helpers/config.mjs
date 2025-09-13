@@ -57,21 +57,21 @@ DIE_RPG.npcParagonPowerLevel = {
 };
 
 DIE_RPG.classDice = {
-  "d4": "d4",
-  "d6": "d6",
-  "d8": "d8",
-  "d10": "d10",
-  "d12": "d12",
-  "d20": "d20"
-}; // Close classDice object
+  4: "d4",
+  6: "d6",
+  8: "d8",
+  10: "d10",
+  12: "d12",
+  20: "d20"
+};
 
 DIE_RPG.classBaseTypes = {
-  "Dictator": "DIE_RPG.Class.Dictator", // Assuming localization keys like this
-  "Fool": "DIE_RPG.Class.Fool",
-  "Emotion Knight": "DIE_RPG.Class.EmotionKnight",
-  "Godbinder": "DIE_RPG.Class.Godbinder",
-  "Neo": "DIE_RPG.Class.Neo",
-  "Master": "DIE_RPG.Class.Master"
+  dictator: "DIE_RPG.Class.Dictator",
+  fool: "DIE_RPG.Class.Fool",
+  emotion_knight: "DIE_RPG.Class.EmotionKnight",
+  godbinder: "DIE_RPG.Class.Godbinder",
+  neo: "DIE_RPG.Class.Neo",
+  master: "DIE_RPG.Class.Master"
 };
 
 

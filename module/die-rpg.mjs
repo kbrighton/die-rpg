@@ -8,6 +8,10 @@ import { DieRpgItemSheet } from './sheets/item-sheet.mjs';
 import { DIE_RPG } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
+import * as utils from "./helpers/utils.mjs";
+
+const collections = foundry.documents.collections;
+const sheets = foundry.appv1.sheets;
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -31,37 +35,17 @@ globalThis.die_rpg = {
 };
 
 Hooks.once('init', function () {
-  console.log('DIE RPG | Initializing DIE RPG System');
-
-  // Pre-load templates
-  const templatePaths = [
-    // Item Sheet Partials
-    'systems/die-rpg/templates/item/header.hbs',
-    'systems/die-rpg/templates/item/description.hbs',
-    'systems/die-rpg/templates/item/effects.hbs',
-    'systems/die-rpg/templates/item/attribute-parts/ability.hbs',
-    'systems/die-rpg/templates/item/attribute-parts/class.hbs',
-    'systems/die-rpg/templates/item/attribute-parts/feature.hbs',
-    'systems/die-rpg/templates/item/attribute-parts/gear.hbs',
-    'systems/die-rpg/templates/item/attribute-parts/persona.hbs',
-
-    // Actor Sheet Partials
-    'systems/die-rpg/templates/actor/header.hbs',
-    'systems/die-rpg/templates/actor/biography.hbs',
-    'systems/die-rpg/templates/actor/abilities.hbs',
-    'systems/die-rpg/templates/actor/features.hbs',
-    'systems/die-rpg/templates/actor/gear.hbs',
-    'systems/die-rpg/templates/actor/effects.hbs',
-
-    // Dialog Partials
-    'systems/die-rpg/templates/dialog/roll-modifiers.hbs'
-  ];
-  loadTemplates(templatePaths);
-  console.log('DIE RPG | Templates loaded');
-
-
   // Add custom constants for configuration.
   CONFIG.DIE_RPG = DIE_RPG;
+
+  /**
+   * Set an initiative formula for the system
+   * @type {String}
+   */
+  CONFIG.Combat.initiative = {
+    formula: '@stats.dex.value',
+    decimals: 2,
+  };
 
   // Define custom Document and DataModel classes
   CONFIG.Actor.documentClass = DieRpgActor;
@@ -75,20 +59,10 @@ Hooks.once('init', function () {
   };
   CONFIG.Item.documentClass = DieRpgItem;
   CONFIG.Item.dataModels = {
-    gear: models.DieRpgGear, // Class name in item-gear.mjs is now DieRpgGear
+    gear: models.DieRpgGear,
     feature: models.DieRpgFeature,
-    ability: models.DieRpgAbility, // Renamed from spell: DieRpgSpell
-    class: models.DieRpgClass,
-    persona: models.DieRpgPersona,
+    ability: models.DieRpgAbility,
   };
-  // Define labels for Item subtypes used in UI
-  CONFIG.Item.typeLabels = {
-    gear: "TYPES.Item.gear",
-    feature: "TYPES.Item.feature",
-    ability: "TYPES.Item.ability",
-    class: "TYPES.Item.class",
-    persona: "TYPES.Item.persona"
-  }
 
   // Active Effects are never copied to the Actor,
   // but will still apply to the Actor from within the Item
@@ -96,17 +70,16 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('die-rpg', DieRpgActorSheet, {
+  collections.Actors.unregisterSheet('core', sheets.ActorSheet);
+  collections.Actors.registerSheet('die-rpg', DieRpgActorSheet, {
     makeDefault: true,
     label: 'DIE_RPG.SheetLabels.Actor',
   });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('die-rpg', DieRpgItemSheet, {
+  collections.Items.unregisterSheet('core', sheets.ItemSheet);
+  collections.Items.registerSheet('die-rpg', DieRpgItemSheet, {
     makeDefault: true,
     label: 'DIE_RPG.SheetLabels.Item',
   });
-
 
   // Register system settings
   game.settings.register('die-rpg', 'enableFailingForward', {
@@ -118,13 +91,20 @@ Hooks.once('init', function () {
     default: true, // Enabled by default
     onChange: value => console.log(`DIE RPG | Failing Forward setting changed to: ${value}`)
   });
+
+  utils.registerHandlebarsHelpers();
+  // Preload Handlebars parts.
+  // utils.preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-// Add any custom Handlebars helpers here
+// If you need to add Handlebars helpers, here is a useful example:
+Handlebars.registerHelper('toLowerCase', function (str) {
+  return str.toLowerCase();
+});
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
@@ -201,52 +181,76 @@ function rollItemMacro(itemUuid) {
   });
 }
 
-
 Hooks.on("renderSettings", (app, html) => {
-  const header = document.createElement("h2");
-  header.innerText = game.i18n.localize('DIE_RPG.Settings.game.heading');
+	// --- Button Creation Logic (Common for both versions) ---
+	const buttonsData = [
+		{
+			action: (ev) => {
+				ev.preventDefault();
+				window.open("https://rowanrookanddecard.com", "_blank");
+			},
+			iconClasses: ["fa-solid", "fa-book"],
+			labelKey: "DIE_RPG.Settings.game.publisher.title",
+		},
+		{
+			action: (ev) => {
+				ev.preventDefault();
+				window.open("https://github.com/philote/die-rpg", "_blank");
+			},
+			iconClasses: ["fab", "fa-github"],
+			labelKey: "DIE_RPG.Settings.game.github.title",
+		},
+		{
+			action: (ev) => {
+				ev.preventDefault();
+				window.open("https://ko-fi.com/ephson", "_blank");
+			},
+			iconClasses: ["fa-solid", "fa-mug-hot"],
+			labelKey: "DIE_RPG.Settings.game.kofi.title",
+		},
+	];
 
-  const pbtaSettings = document.createElement("div");
-  html.find("#settings-game")?.after(header, pbtaSettings);
+	const buttons = buttonsData.map(({ action, iconClasses, labelKey }) => {
+		const button = document.createElement("button");
+		button.type = "button";
 
-  const buttons = [
-      {
-          action: (ev) => {
-              ev.preventDefault();
-              window.open("https://rowanrookanddecard.com/product-category/game-systems/die-rpg/", "_blank");
-          },
-          iconClasses: ["fa-solid", "fa-book"],
-          label: game.i18n.localize('DIE_RPG.Settings.game.publisher.title')
-      },
-      {
-          action: (ev) => {
-              ev.preventDefault();
-              window.open("https://github.com/philote/die-rpg", "_blank");
-          },
-          iconClasses: ["fab", "fa-github"],
-          label: game.i18n.localize(`DIE_RPG.Settings.game.github.title`)
-      },
-      {
-          action: (ev) => {
-              ev.preventDefault();
-              window.open("https://ko-fi.com/ephson", "_blank");
-          },
-          iconClasses: ["fa-solid", "fa-mug-hot"],
-          label: game.i18n.localize("DIE_RPG.Settings.game.kofi.title")
-      },
-  ].map(({ action, iconClasses, label }) => {
-      const button = document.createElement("button");
-      button.type = "button";
+		const icon = document.createElement("i");
+		icon.classList.add(...iconClasses);
 
-      const icon = document.createElement("i");
-      icon.classList.add(...iconClasses);
+		button.append(
+			icon,
+			document.createTextNode(` ${game.i18n.localize(labelKey)}`)
+		);
 
-      button.append(icon, game.i18n.localize(label));
+		button.addEventListener("click", action);
+		return button;
+	});
 
-      button.addEventListener("click", action);
+	// --- Version Specific Logic ---
+	if (game.release.generation >= 13) {
+		// V13+ Logic: Append to the "Documentation" section
+		const documentationSection = html.querySelector("section.documentation");
+		if (documentationSection) {
+			const divider = document.createElement("h4");
+			divider.classList.add("divider");
+			// Using a more specific key might be better, but reusing for now
+			divider.textContent = game.i18n.localize("DIE_RPG.Settings.game.heading");
 
-      return button;
-  });
+			// Append divider and then the buttons
+			documentationSection.append(divider, ...buttons);
+		}
+	} else {
+		// V12 Logic: Insert after the "Game Settings" section
+		const gameSettingsSection = html[0].querySelector("#settings-game");
+		if (gameSettingsSection) {
+			const header = document.createElement("h2");
+			header.innerText = game.i18n.localize("DIE_RPG.Settings.game.heading");
 
-  pbtaSettings.append(...buttons);
+			const settingsDiv = document.createElement("div");
+			settingsDiv.append(...buttons);
+
+			// Insert the header and the div containing buttons after the game settings section
+			gameSettingsSection.after(header, settingsDiv);
+		}
+	}
 });

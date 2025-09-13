@@ -26,49 +26,38 @@ export class DieRpgActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    super.prepareDerivedData(); // Ensure upstream preparation runs if needed in the future.
+    const actorData = this;
+    const systemData = actorData.system;
+    // const flags = actorData.flags.dierpg || {};
+    // const stats = systemData.stats;
+    // const resources = systemData.resources;
 
-    const systemData = this.system;
-    const stats = systemData.stats;
-    const resources = systemData.resources;
+    // Calculate initial Guard value based on Dexterity
+    // resources.guard.value = stats.dex?.value ?? 0;
 
-    // Calculate Max Guard based on Dexterity
-    if (resources.guard) {
-      resources.guard.max = stats.dex?.value ?? 0;
-    }
+    // Calculate initial Health based on Constitution
+    // resources.health.value = stats.con?.value ?? 0;
 
-    // Calculate Max Health based on Constitution
-    if (resources.health) {
-      resources.health.max = stats.con?.value ?? 0;
-    }
-
-    // Calculate Max Willpower based on Wisdom + Intelligence
-    // Note: Willpower doesn't have a 'max' in the current base model, only 'value'.
-    // If a max is needed later, it should be added to base-actor.mjs.
-    // For now, we'll calculate a potential max value if needed elsewhere.
-    // systemData.willpowerMax = (stats.wis?.value ?? 0) + (stats.int?.value ?? 0);
+    // Calculate Willpower based on Wisdom + Intelligence
+    // resources.willpower.value = (stats.wis?.value ?? 0) + (stats.int?.value ?? 0);
 
     // Calculate Defense (Base 0 + Items/Effects)
-    let defenseBonus = 0;
-    for (const item of this.items) {
-      // TODO: Add check for equipped status if applicable
-      if (item.type === 'gear' && item.system?.defenseBonus) {
-        defenseBonus += item.system.defenseBonus;
-      }
-    }
+    // let defenseBonus = 0;
+    // for (const item of this.items) {
+    //   // TODO: Add check for equipped status if applicable
+    //   if (item.type === 'gear' && item.system?.defenseBonus) {
+    //     defenseBonus += item.system.defenseBonus;
+    //   }
+    // }
     // Add bonuses from Active Effects if needed later
     // defenseBonus += activeEffectBonuses;
 
     // Set the final defense value (base is 0 from data model)
-    resources.defense.value = defenseBonus;
+    // resources.defense.value = defenseBonus;
 
     // Ensure current values don't exceed new maximums (optional, but good practice)
-    if (resources.guard) {
-      resources.guard.value = Math.min(resources.guard.value, resources.guard.max);
-    }
-    if (resources.health) {
-      resources.health.value = Math.min(resources.health.value, resources.health.max);
-    }
+    // resources.guard.value = Math.min(resources.guard.value, resources.guard.max);
+    // resources.health.value = Math.min(resources.health.value, resources.health.max);
     // if (resources.willpower && systemData.willpowerMax !== undefined) {
     //   resources.willpower.value = Math.min(resources.willpower.value, systemData.willpowerMax);
     // }

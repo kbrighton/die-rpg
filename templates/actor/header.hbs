@@ -1,126 +1,157 @@
 {{! Sheet Header }}
 <header class='sheet-header'>
-  <img
-    class='profile-img'
-    src='{{actor.img}}'
-    data-edit='img'
-    data-action='onEditImage'
-    title='{{actor.name}}'
-    height='100'
-    width='100'
-  />
-  <div class='header-fields'>
-    <div class='document-name'>
+
+  <div class="header-top flexrow">
+  
+    <div class="left-col flexcol">
+      <h1>Class Name</h1>
       <input
+        class='document-name'
         name='name'
         type='text'
         value='{{actor.name}}'
         placeholder='Name'
       />
     </div>
-    
-    {{!-- <h2>Stats</h2> --}}
-    <div class='stats flexrow'>
-      {{#each system.stats as |stat key|}}
-        <div class='stat flexcol flex-group-center'>
-          <label
-            class='resource-label rollable flexlarge align-left'
-            data-action='statRoll'
-            data-stat-name="{{key}}"
-            data-label='{{localize (lookup @root.config.stats key)}}'
-          >{{localize (lookup @root.config.stats key)}}</label>
-          <input
-            type='text'
-            name='system.stats.{{key}}.value'
-            value='{{stat.value}}'
-            class="stat-score"
-            data-dtype='Number'
-          />
-        </div>
-      {{/each}}
+  
+    <div class="right-col flexrow">
+      <div class="flexcol">
+        <h3>Class Dice: D6</h3>
+        <p>
+          You can add your D6 to your dice pool any time you’re acting in a foolish, daring or cavalier fashion. In any dice pool which includes the Fool’s D6, you gain:
+        </p>
+        <p>
+          <b>Special:</b> Roll another D6 and add it to the present dice pool.
+        </p>
+      </div>
+      <div>
+        <img src="systems/die-rpg/assets/icons/d6-exploded.svg" width="100"/>
+      </div>
     </div>
-    {{! The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns.  }}
-    <div class='resources grid grid-4col'> {{!-- Changed from 3col --}}
+  </div>
 
-      {{! "flex-group-center" is also defined in the _grid.scss file
-        and it will add a small amount of padding, a border, and will
-        center all of its child elements content and text. }}
-      <div class='resource flex-group-center'>
-        <label for='system.health.value' class='resource-label'>
-          {{localize 'DIE_RPG.Actor.base.FIELDS.health.label'}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          <input
-            type='text'
-            name='system.health.value'
-            value='{{system.health.value}}'
-            data-dtype='Number'
-          />
-          <span> / </span>
-          <input
-            type='text'
-            name='system.health.max'
-            value='{{system.health.max}}'
-            data-dtype='Number'
-          />
-        </div>
+  <div class="header-bottom flexrow">
+    <div class="left-col flexcol">
+      <img
+        class='profile-img'
+        src='{{actor.img}}'
+        data-edit='img'
+        data-action='onEditImage'
+        title='{{actor.name}}'
+        height='100'
+        width='100'
+      />
+
+      <div class="class-description">
+        <p>
+          You read a sad story. You cry. Do you think that’s sinister, as if someone has artificially taken over your emotions? Of course not. That’s just what art is.
+        </p>
+        <p>
+          Anyone who’s ever met a Dictator would disagree.
+        </p>
+        <p>
+          By performing, they alter other people’s emotional states. Dictators play people like a musician plays a harp. They can pluck the strings. They can snap them.
+        </p>
+        <p>
+          They’re like bards, if everyone was fucking petrified of bards.
+        </p>
       </div>
+    </div>
 
-      <div class='resource flex-group-center'>
-        <label for='system.resources.guard.value' class='resource-label'>
-          {{localize 'DIE_RPG.Resources.gua.long'}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          <input
-            type='text'
-            name='system.resources.guard.value'
-            value='{{system.resources.guard.value}}'
-            data-dtype='Number'
-          />
-          <span> / </span>
-          <input
-            type='text'
-            name='system.resources.guard.max'
-            value='{{system.resources.guard.max}}'
-            data-dtype='Number'
-          />
-        </div>
+    <div class='header-fields right-col'>
+      <h2>Stats</h2>
+      <div class='stats flexrow'>
+        {{#each system.stats as |stat key|}}
+          <div class='stat flexcol flex-group-center'>
+            <label
+              class='resource-label rollable flexlarge align-left'
+              data-action='statRoll'
+              data-stat-name="{{key}}"
+              data-label='{{localize (lookup @root.config.stats key)}}'
+            >{{localize (lookup @root.config.statAbbreviations key)}}</label>
+            <input
+              type='text'
+              name='system.stats.{{key}}.value'
+              value='{{stat.value}}'
+              class="stat-score"
+              data-dtype='Number'
+            />
+          </div>
+        {{/each}}
       </div>
+      {{! The grid classes are defined in scss/global/_grid.scss. To use,
+        use both the "grid" and "grid-Ncol" class where "N" can be any number
+        from 1 to 12 and will create that number of columns.  }}
+      <div class='resources grid grid-4col'>
 
-      {{!-- Willpower --}}
-      <div class='resource flex-group-center'>
-        <label for='system.resources.willpower.value' class='resource-label'>
-          {{localize 'DIE_RPG.Resources.wil.long'}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          <input
-            type='text'
-            name='system.resources.willpower.value'
-            value='{{system.resources.willpower.value}}'
-            data-dtype='Number'
-          />
-          {{!-- Max Willpower is derived but not stored directly in the base model currently --}}
-          {{!-- <span> / {{system.willpowerMax}}</span> --}}
+        {{! "flex-group-center" is also defined in the _grid.scss file
+          and it will add a small amount of padding, a border, and will
+          center all of its child elements content and text. }}
+
+        {{!-- Health --}}
+        <div class='resource flex-group-center'>
+          <label for='system.health.value' class='resource-label'>
+            {{localize 'DIE_RPG.Resources.hea.long'}}
+          </label>
+          <div class='resource-content flexrow flex-center flex-between'>
+            <input
+              type='text'
+              name='system.resources.health.value'
+              value='{{system.resources.health.value}}'
+              data-dtype='Number'
+            />
+          </div>
         </div>
-      </div>
 
-      {{!-- Defense --}}
-      <div class='resource flex-group-center'>
-        <label for='system.resources.defense.value' class='resource-label'>
-          {{localize 'DIE_RPG.Resources.def.long'}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          <input
-            type='text'
-            name='system.resources.defense.value'
-            value='{{system.resources.defense.value}}'
-            data-dtype='Number'
-          />
-          {{!-- Defense does not typically have a max --}}
+        {{!-- Guard --}}
+        <div class='resource flex-group-center'>
+          <label for='system.resources.guard.value' class='resource-label'>
+            {{localize 'DIE_RPG.Resources.gua.long'}}
+          </label>
+          <div class='resource-content flexrow flex-center flex-between'>
+            <input
+              type='text'
+              name='system.resources.guard.value'
+              value='{{system.resources.guard.value}}'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+
+        {{!-- Willpower --}}
+        <div class='resource flex-group-center'>
+          <label for='system.resources.willpower.value' class='resource-label'>
+            {{localize 'DIE_RPG.Resources.wil.long'}}
+          </label>
+          <div class='resource-content flexrow flex-center flex-between'>
+            <input
+              type='text'
+              name='system.resources.willpower.value'
+              value='{{system.resources.willpower.value}}'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+
+        {{!-- Defense --}}
+        <div class='resource flex-group-center'>
+          <label for='system.resources.defense.value' class='resource-label'>
+            {{localize 'DIE_RPG.Resources.def.long'}}
+          </label>
+          <div class='resource-content flexrow flex-center flex-between'>
+            <input
+              type='text'
+              name='system.resources.defense.value'
+              value='{{system.resources.defense.value}}'
+              data-dtype='Number'
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
+  
+
+  
+  
 </header>

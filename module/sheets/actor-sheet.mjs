@@ -10,11 +10,6 @@ const { api, sheets } = foundry.applications;
 export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
-  constructor(options = {}) {
-    super(options);
-    this.#dragDrop = this.#createDragDropHandlers();
-  }
-
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ['die-rpg', 'actor'],
@@ -32,7 +27,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       statRoll: this._onStatRoll,
     },
     // Custom property that's merged into `this.options`
-    dragDrop: [{ dragSelector: '[data-drag]', dropSelector: null }],
+    // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
       submitOnChange: true,
     },
@@ -49,18 +44,23 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     },
     features: {
       template: 'systems/die-rpg/templates/actor/features.hbs',
+      scrollable: [""],
     },
     biography: {
       template: 'systems/die-rpg/templates/actor/biography.hbs',
+      scrollable: [""],
     },
     gear: {
       template: 'systems/die-rpg/templates/actor/gear.hbs',
+      scrollable: [""],
     },
-    abilities: { // Renamed from spells
-      template: 'systems/die-rpg/templates/actor/abilities.hbs', // Updated path
+    abilities: {
+      template: 'systems/die-rpg/templates/actor/abilities.hbs',
+      scrollable: [""],
     },
     effects: {
       template: 'systems/die-rpg/templates/actor/effects.hbs',
+      scrollable: [""],
     },
   };
 
@@ -74,7 +74,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('features', 'gear', 'abilities', 'effects'); // Renamed spells -> abilities
+        options.parts.push('features', 'gear', 'abilities', 'effects');
         break;
       case 'npc':
         options.parts.push('gear', 'effects');
@@ -115,7 +115,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'features':
-      case 'abilities': // Renamed from spells
+      case 'abilities':
       case 'gear':
         context.tab = context.tabs[partId];
         break;
@@ -186,9 +186,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'gear';
           tab.label += 'Gear';
           break;
-        case 'abilities': // Renamed from spells
-          tab.id = 'abilities'; // Renamed from spells
-          tab.label += 'Abilities'; // Updated label
+        case 'abilities':
+          tab.id = 'abilities';
+          tab.label += 'Abilities';
           break;
         case 'effects':
           tab.id = 'effects';
@@ -214,7 +214,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const gear = [];
     const features = [];
     const abilities = []; // Changed from spells object to simple array
-    // TODO: Consider adding Class and Persona item arrays here too
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
@@ -230,7 +229,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       else if (i.type === 'ability') { // Changed from 'spell'
         abilities.push(i); // Changed from level-based push
       }
-      // TODO: Add handling for 'class' and 'persona' types if they need separate lists
     }
 
     // Sort then assign
@@ -247,8 +245,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    * @override
    */
-  _onRender(context, options) {
-    this.#dragDrop.forEach((d) => d.bind(this.element));
+  async _onRender(context, options) {
+    await super._onRender(context, options);
     this.#disableOverrides();
     // You may want to add other special handling here
     // Foundry comes with a large number of utility classes, e.g. SearchFilter
@@ -263,8 +261,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Handle changing a Document's image.
-   * 
-   * @this GrimwildActorSheet
+   *
+   * @this DieRpgActorSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise}
@@ -273,17 +271,18 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   static async _onEditImage(event, target) {
     const attr = target.dataset.edit;
     const current = foundry.utils.getProperty(this.document, attr);
-    const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {};
+    const { img } =
+      this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
+      {};
     const fp = new FilePicker({
       current,
-      type: "image",
+      type: 'image',
       redirectToRoot: img ? [img] : [],
-      callback: path => {
-        target.src = path;
-        this.document.update({'img': path});
+      callback: (path) => {
+        this.document.update({ [attr]: path });
       },
       top: this.position.top + 40,
-      left: this.position.left + 10
+      left: this.position.left + 10,
     });
     return fp.browse();
   }
@@ -427,77 +426,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    ***************/
 
   /**
-   * Define whether a user is able to begin a dragstart workflow for a given drag selector
-   * @param {string} selector       The candidate HTML selector for dragging
-   * @returns {boolean}             Can the current user drag this selector?
-   * @protected
-   */
-  _canDragStart(selector) {
-    // game.user fetches the current user
-    return this.isEditable;
-  }
-
-  /**
-   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
-   * @param {string} selector       The candidate HTML selector for the drop target
-   * @returns {boolean}             Can the current user drop on this selector?
-   * @protected
-   */
-  _canDragDrop(selector) {
-    // game.user fetches the current user
-    return this.isEditable;
-  }
-
-  /**
-   * Callback actions which occur at the beginning of a drag start workflow.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  _onDragStart(event) {
-    const docRow = event.currentTarget.closest('li');
-    if ('link' in event.target.dataset) return;
-
-    // Chained operation
-    let dragData = this._getEmbeddedDocument(docRow)?.toDragData();
-
-    if (!dragData) return;
-
-    // Set data transfer
-    event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
-  }
-
-  /**
-   * Callback actions which occur when a dragged element is over a drop target.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  _onDragOver(event) {}
-
-  /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event);
-    const actor = this.actor;
-    const allowed = Hooks.call('dropActorSheetData', actor, this, data);
-    if (allowed === false) return;
-
-    // Handle different data types
-    switch (data.type) {
-      case 'ActiveEffect':
-        return this._onDropActiveEffect(event, data);
-      case 'Actor':
-        return this._onDropActor(event, data);
-      case 'Item':
-        return this._onDropItem(event, data);
-      case 'Folder':
-        return this._onDropFolder(event, data);
-    }
-  }
-
-  /**
    * Handle the dropping of ActiveEffect data onto an Actor Sheet
    * @param {DragEvent} event                  The concluding DragEvent which contains drop data
    * @param {object} data                      The data transfer extracted from the event
@@ -588,25 +516,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /* -------------------------------------------- */
 
   /**
-   * Handle dropping of an item reference or item data onto an Actor Sheet
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data
-   * @param {object} data                The data transfer extracted from the event
-   * @returns {Promise<Item[]|boolean>}  The created or updated Item instances, or false if the drop was not permitted.
-   * @protected
-   */
-  async _onDropItem(event, data) {
-    if (!this.actor.isOwner) return false;
-    const item = await Item.implementation.fromDropData(data);
-
-    // Handle item sorting within the same Actor
-    if (this.actor.uuid === item.parent?.uuid)
-      return this._onSortItem(event, item);
-
-    // Create the owned item
-    return this._onDropItemCreate(item, event);
-  }
-
-  /**
    * Handle dropping of a Folder on an Actor Sheet.
    * The core sheet currently supports dropping a Folder of Items to create all items as owned items.
    * @param {DragEvent} event     The concluding DragEvent which contains drop data
@@ -638,79 +547,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   async _onDropItemCreate(itemData, event) {
     itemData = itemData instanceof Array ? itemData : [itemData];
     return this.actor.createEmbeddedDocuments('Item', itemData);
-  }
-
-  /**
-   * Handle a drop event for an existing embedded Item to sort that Item relative to its siblings
-   * @param {Event} event
-   * @param {Item} item
-   * @private
-   */
-  _onSortItem(event, item) {
-    // Get the drag source and drop target
-    const items = this.actor.items;
-    const dropTarget = event.target.closest('[data-item-id]');
-    if (!dropTarget) return;
-    const target = items.get(dropTarget.dataset.itemId);
-
-    // Don't sort on yourself
-    if (item.id === target.id) return;
-
-    // Identify sibling items based on adjacent HTML elements
-    const siblings = [];
-    for (let el of dropTarget.parentElement.children) {
-      const siblingId = el.dataset.itemId;
-      if (siblingId && siblingId !== item.id)
-        siblings.push(items.get(el.dataset.itemId));
-    }
-
-    // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(item, {
-      target,
-      siblings,
-    });
-    const updateData = sortUpdates.map((u) => {
-      const update = u.update;
-      update._id = u.target._id;
-      return update;
-    });
-
-    // Perform the update
-    return this.actor.updateEmbeddedDocuments('Item', updateData);
-  }
-
-  /** The following pieces set up drag handling and are unlikely to need modification  */
-
-  /**
-   * Returns an array of DragDrop instances
-   * @type {DragDrop[]}
-   */
-  get dragDrop() {
-    return this.#dragDrop;
-  }
-
-  // This is marked as private because there's no real need
-  // for subclasses or external hooks to mess with it directly
-  #dragDrop;
-
-  /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this),
-      };
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      };
-      return new DragDrop(d);
-    });
   }
 
   /********************

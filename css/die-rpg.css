@@ -232,10 +232,17 @@
   padding-right: var(--scroll-margin) !important;
   overflow: hidden auto;
 }
+.die-rpg .left-col {
+  flex: 0 0 33%;
+  margin-right: 10px;
+}
+.die-rpg .right-col {
+  flex: 1;
+}
 .die-rpg .sheet-header {
   flex: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;

@@ -1,7 +1,10 @@
 import DieRpgActorBase from './base-actor.mjs';
 
 export default class DieRpgCharacter extends DieRpgActorBase {
-  static LOCALIZATION_PREFIXES = ['DIE_RPG.Actor.Character'];
+  static LOCALIZATION_PREFIXES = [
+    ...super.LOCALIZATION_PREFIXES,
+    'DIE_RPG.Actor.Character',
+  ];
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -23,14 +26,12 @@ export default class DieRpgCharacter extends DieRpgActorBase {
       biography: new fields.HTMLField({required: false, initial: undefined}),
     });
 
-    schema.notes = new fields.HTMLField({required: false, initial: undefined});
-
     return schema;
   }
 
-  prepareDerivedData() {
-    // 
-  }
+  // prepareDerivedData() {
+  //   // 
+  // }
 
   getRollData() {
     const data = super.getRollData();

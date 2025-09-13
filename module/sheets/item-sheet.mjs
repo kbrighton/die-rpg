@@ -1,6 +1,7 @@
 import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
 
 const { api, sheets } = foundry.applications;
+const DragDrop = foundry.applications.ux.DragDrop;
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
@@ -11,12 +12,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
 ) {
   constructor(options = {}) {
     super(options);
-    this.#dragDrop = this.#createDragDropHandlers();
   }
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['die-rpg', 'item', 'sheet'],
+    classes: ['die-rpg', 'item'],
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -24,14 +24,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       deleteDoc: this._deleteEffect,
       toggleEffect: this._toggleEffect,
     },
-    window: {
-			resizable: true,
-		},
     form: {
       submitOnChange: true,
     },
     // Custom property that's merged into `this.options`
-    dragDrop: [{ dragSelector: '[data-drag]', dropSelector: null }],
+    dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
   };
 
   /* -------------------------------------------- */
@@ -111,7 +108,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const context = {
       // Validates both permissions and compendium status
       editable: this.isEditable,
-      owner: this.isOwner,
+      owner: this.document.isOwner,
       limited: this.document.limited,
       // Add the item document.
       item: this.item,
@@ -158,7 +155,52 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
-  // Removed _getTabs method
+  /**
+   * Generates the data for the generic tab navigation template
+   * @param {string[]} parts An array of named template parts to render
+   * @returns {Record<string, Partial<ApplicationTab>>}
+   * @protected
+   */
+  _getTabs(parts) {
+    // If you have sub-tabs this is necessary to change
+    const tabGroup = 'primary';
+    // Default tab for first time it's rendered this session
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'description';
+    return parts.reduce((tabs, partId) => {
+      const tab = {
+        cssClass: '',
+        group: tabGroup,
+        // Matches tab property to
+        id: '',
+        // FontAwesome Icon, if you so choose
+        icon: '',
+        // Run through localization
+        label: 'DIE_RPG.Item.Tabs.',
+      };
+      switch (partId) {
+        case 'header':
+        case 'tabs':
+          return tabs;
+        case 'description':
+          tab.id = 'description';
+          tab.label += 'Description';
+          break;
+        case 'attributesFeature':
+        case 'attributesGear':
+        case 'attributesSpell':
+          tab.id = 'attributes';
+          tab.label += 'Attributes';
+          break;
+        case 'effects':
+          tab.id = 'effects';
+          tab.label += 'Effects';
+          break;
+      }
+      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
+      tabs[partId] = tab;
+      return tabs;
+    }, {});
+  }
 
   /**
    * Actions performed after any render of the Application.
@@ -167,8 +209,21 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    * @param {RenderOptions} options                 Provided render options
    * @protected
    */
-  _onRender(context, options) {
-    this.#dragDrop.forEach((d) => d.bind(this.element));
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    new DragDrop.implementation({
+      dragSelector: ".draggable",
+      dropSelector: null,
+      permissions: {
+        dragstart: this._canDragStart.bind(this),
+        drop: this._canDragDrop.bind(this)
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this)
+      }
+    }).bind(this.element);
     // You may want to add other special handling here
     // Foundry comes with a large number of utility classes, e.g. SearchFilter
     // That you may want to implement yourself.
@@ -182,8 +237,8 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Handle changing a Document's image.
-   * 
-   * @this GrimwildActorSheet
+   *
+   * @this DieRpgItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise}
@@ -192,17 +247,18 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   static async _onEditImage(event, target) {
     const attr = target.dataset.edit;
     const current = foundry.utils.getProperty(this.document, attr);
-    const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {};
+    const { img } =
+      this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
+      {};
     const fp = new FilePicker({
       current,
-      type: "image",
+      type: 'image',
       redirectToRoot: img ? [img] : [],
-      callback: path => {
-        target.src = path;
-        this.document.update({'img': path});
+      callback: (path) => {
+        this.document.update({ [attr]: path });
       },
       top: this.position.top + 40,
-      left: this.position.left + 10
+      left: this.position.left + 10,
     });
     return fp.browse();
   }
@@ -210,7 +266,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Renders an embedded document's sheet
    *
-   * @this DieRpgActorSheet
+   * @this DieRpgItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
@@ -223,7 +279,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handles item deletion
    *
-   * @this DieRpgActorSheet
+   * @this DieRpgItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
@@ -236,7 +292,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
    *
-   * @this DieRpgActorSheet
+   * @this DieRpgItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
@@ -270,7 +326,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Determines effect parent to pass to helper
    *
-   * @this DieRpgActorSheet
+   * @this DieRpgItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
@@ -349,7 +405,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    * @param {DragEvent} event       The originating DragEvent
    * @protected
    */
-  _onDragOver(event) {}
+  _onDragOver(event) { }
 
   /**
    * Callback actions which occur when a dragged element is dropped on a target.
@@ -362,7 +418,15 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const allowed = Hooks.call('dropItemSheetData', item, this, data);
     if (allowed === false) return;
 
-    // Handle different data types
+    // Although you will find implmentations to all doc types here, it is important to keep 
+    // in mind that only Active Effects are "valid" for items.
+    // Actors have items, but items do not have actors.
+    // Items in items is not implemented on Foudry per default. If you need an implementation with that,
+    // try to search how other systems do. Basically they will use the drag and drop, but they will store
+    // the UUID of the item.
+    // Folders can only contain Actors or Items. So, fall on the cases above.
+    // We left them here so you can have an idea of how that would work, if you want to do some kind of
+    // implementation for that.
     switch (data.type) {
       case 'ActiveEffect':
         return this._onDropActiveEffect(event, data);
@@ -471,39 +535,5 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropFolder(event, data) {
     if (!this.item.isOwner) return [];
-  }
-
-  /** The following pieces set up drag handling and are unlikely to need modification  */
-
-  /**
-   * Returns an array of DragDrop instances
-   * @type {DragDrop[]}
-   */
-  get dragDrop() {
-    return this.#dragDrop;
-  }
-
-  // This is marked as private because there's no real need
-  // for subclasses or external hooks to mess with it directly
-  #dragDrop;
-
-  /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this),
-      };
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      };
-      return new DragDrop(d);
-    });
   }
 }

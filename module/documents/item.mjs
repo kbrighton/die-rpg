@@ -1,7 +1,4 @@
 /**
-import { rollStat } from '../helpers/dice.mjs'; // Import the refactored roll helper
-
-/**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
@@ -42,73 +39,33 @@ export class DieRpgItem extends Item {
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
-    const rollMode = game.settings.get('core', 'rollMode'); // Keep rollMode if needed for dialogs later
+    const rollMode = game.settings.get('core', 'rollMode');
     const label = `[${item.type}] ${item.name}`;
-    const system = item.system;
 
-    // --- Determine if item is rollable and gather base parameters ---
-    let isRollable = false;
-    let relevantStat = null;
-    let initialAdvantages = 0;
-    let initialDisadvantages = 0;
-    let baseDifficulty = 0;
-    let forceAddClassDie = false;
-
-    if (item.type === 'gear') {
-      // Basic Gear might not have a roll, but weapons/tools often do.
-      // TODO: Refine Gear stat based on weapon properties (e.g., Rapier uses DEX)
-      relevantStat = 'str'; // Default for now
-      isRollable = true; // Assume gear with roll mods is rollable
-      if (system.rollModType === 'advantage') initialAdvantages = system.rollModValue || 1; // Assume 1 if value missing
-      if (system.rollModType === 'disadvantage') initialDisadvantages = system.rollModValue || 1;
-      // 'add_dice' handled by roll helper based on adv/disadv values
-    } else if (item.type === 'ability') {
-      if (system.roll?.stat) {
-        relevantStat = system.roll.stat;
-        isRollable = true;
-        initialAdvantages = system.roll.fixed_adv || 0;
-        initialDisadvantages = system.roll.fixed_disadv || 0;
-        baseDifficulty = system.roll.base_difficulty || 0;
-        forceAddClassDie = system.roll.add_class_die || false;
-      } else if (system.isAttack || system.isSpellAttack) {
-        // Default attack stat if not specified in roll object? Needs rules clarification.
-        // For now, assume CHA for spell attacks, STR for others if no stat given.
-        relevantStat = system.isSpellAttack ? 'cha' : 'str'; // Placeholder default
-        isRollable = true;
-      }
-    }
-    // Other types ('feature', 'class', 'persona') are not directly rollable via this method
-
-    // --- If not rollable, output description ---
-    if (!isRollable || !relevantStat) {
+    // If there's no roll data, send a chat message.
+    if (!this.system.formula) {
       ChatMessage.create({
         speaker: speaker,
+        rollMode: rollMode,
         flavor: label,
-        content: system.description ?? '',
+        content: item.system.description ?? '',
       });
-      return;
     }
+    // Otherwise, create a roll and send a chat message from it.
+    else {
+      // Retrieve roll data.
+      const rollData = this.getRollData();
 
-    // --- Check Actor and Stat ---
-    if (!this.actor || !this.actor.system.stats[relevantStat]) {
-      ui.notifications.warn(`Actor does not have the required stat (${relevantStat}) for this item roll.`);
-      return;
+      // Invoke the roll and submit it to chat.
+      const roll = new Roll(rollData.formula, rollData.actor);
+      // If you need to store the value first, uncomment the next line.
+      // const result = await roll.evaluate();
+      roll.toMessage({
+        speaker: speaker,
+        rollMode: rollMode,
+        flavor: label,
+      });
+      return roll;
     }
-
-    // --- Prepare dataset for the rollStat helper ---
-    const dataset = {
-      label: label,
-      statName: relevantStat,
-      // Pass initial modifiers from the item
-      advantages: initialAdvantages,
-      disadvantages: initialDisadvantages,
-      difficulty: baseDifficulty,
-      addClassDie: forceAddClassDie, // Use item's flag
-      availableSpecials: (system.specials && Array.isArray(system.specials)) ? system.specials : [] // Pass item specials
-    };
-
-    // --- Call the roll helper ---
-    // Note: rollStat will need to be updated to accept and pass availableSpecials
-    return rollStat(dataset, this.actor);
   }
 }
