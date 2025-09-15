@@ -14,8 +14,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ['die-rpg', 'actor'],
     position: {
-      width: 700,
-      height: 800,
+      width: 600,
+      height: 600,
     },
     actions: {
       onEditImage: this._onEditImage,
@@ -36,34 +36,30 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/die-rpg/templates/actor/header2.hbs',
+      template: 'systems/die-rpg/templates/actor/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
-    sidebar: {
-      template: 'systems/die-rpg/templates/actor/sidebar.hbs',
+    features: {
+      template: 'systems/die-rpg/templates/actor/features.hbs',
       scrollable: [""],
     },
-    stats: {
-      template: 'systems/die-rpg/templates/actor/stats.hbs',
+    biography: {
+      template: 'systems/die-rpg/templates/actor/biography.hbs',
       scrollable: [""],
     },
-    class: {
-      template: 'systems/die-rpg/templates/actor/class.hbs',
+    gear: {
+      template: 'systems/die-rpg/templates/actor/gear.hbs',
       scrollable: [""],
     },
-    advancements: {
-      template: 'systems/die-rpg/templates/actor/advancements.hbs',
+    abilities: {
+      template: 'systems/die-rpg/templates/actor/abilities.hbs',
       scrollable: [""],
     },
-    persona: {
-      template: 'systems/die-rpg/templates/actor/persona.hbs',
-      scrollable: [""],
-    },
-    notes: {
-      template: 'systems/die-rpg/templates/actor/notes.hbs',
+    effects: {
+      template: 'systems/die-rpg/templates/actor/effects.hbs',
       scrollable: [""],
     },
   };
@@ -72,16 +68,16 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'sidebar', 'stats', 'tabs', 'notes'];
+    options.parts = ['header', 'tabs', 'biography'];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('class', 'advancements', 'persona');
+        options.parts.push('features', 'gear', 'abilities', 'effects');
         break;
       case 'npc':
-        // options.parts.push();
+        options.parts.push('gear', 'effects');
         break;
     }
   }
@@ -118,17 +114,17 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
-      case 'class':
-      case 'advancements':
-      case 'persona':
+      case 'features':
+      case 'abilities':
+      case 'gear':
         context.tab = context.tabs[partId];
         break;
-      case 'notes':
+      case 'biography':
         context.tab = context.tabs[partId];
         // Enrich biography info for display
         // Enrichment turns text like `[[/r 1d20]]` into buttons
-        context.enrichedNotes = await TextEditor.enrichHTML(
-          this.actor.system.notes,
+        context.enrichedBiography = await TextEditor.enrichHTML(
+          this.actor.system.biography,
           {
             // Whether to show secret blocks in the finished html
             secrets: this.document.isOwner,
@@ -137,6 +133,15 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
             // Relative UUID resolution
             relativeTo: this.actor,
           }
+        );
+        break;
+      case 'effects':
+        context.tab = context.tabs[partId];
+        // Prepare active effects
+        context.effects = prepareActiveEffectCategories(
+          // A generator that returns all effects stored on the actor
+          // as well as any items
+          this.actor.allApplicableEffects()
         );
         break;
     }
@@ -153,7 +158,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'notes';
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'biography';
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
@@ -169,21 +174,25 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         case 'header':
         case 'tabs':
           return tabs;
-        case 'notes':
-          tab.id = 'notes';
-          tab.label += 'Notes';
+        case 'biography':
+          tab.id = 'biography';
+          tab.label += 'Biography';
           break;
-        case 'class':
-          tab.id = 'class';
-          tab.label += 'Class';
+        case 'features':
+          tab.id = 'features';
+          tab.label += 'Features';
           break;
-        case 'advancements':
-          tab.id = 'advancements';
-          tab.label += 'Advancements';
+        case 'gear':
+          tab.id = 'gear';
+          tab.label += 'Gear';
           break;
-        case 'persona':
-          tab.id = 'persona';
-          tab.label += 'Persona';
+        case 'abilities':
+          tab.id = 'abilities';
+          tab.label += 'Abilities';
+          break;
+        case 'effects':
+          tab.id = 'effects';
+          tab.label += 'Effects';
           break;
       }
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
@@ -202,30 +211,30 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // You can just use `this.document.itemTypes` instead
     // if you don't need to subdivide a given type like
     // this sheet does with abilities
-    // const gear = [];
-    // const features = [];
-    // const abilities = []; // Changed from spells object to simple array
+    const gear = [];
+    const features = [];
+    const abilities = []; // Changed from spells object to simple array
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
-      // // Append to gear.
-      // if (i.type === 'gear') {
-      //   gear.push(i);
-      // }
-      // // Append to features.
-      // else if (i.type === 'feature') {
-      //   features.push(i);
-      // }
-      // // Append to abilities.
-      // else if (i.type === 'ability') { // Changed from 'spell'
-      //   abilities.push(i); // Changed from level-based push
-      // }
+      // Append to gear.
+      if (i.type === 'gear') {
+        gear.push(i);
+      }
+      // Append to features.
+      else if (i.type === 'feature') {
+        features.push(i);
+      }
+      // Append to abilities.
+      else if (i.type === 'ability') { // Changed from 'spell'
+        abilities.push(i); // Changed from level-based push
+      }
     }
 
     // Sort then assign
-    // context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    // context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    // context.abilities = abilities.sort((a, b) => (a.sort || 0) - (b.sort || 0)); // Changed from spells
+    context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.abilities = abilities.sort((a, b) => (a.sort || 0) - (b.sort || 0)); // Changed from spells
   }
 
   /**

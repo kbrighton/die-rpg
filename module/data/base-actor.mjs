@@ -21,7 +21,7 @@ export default class DieRpgActorBase extends foundry.abstract.TypeDataModel {
       }),
     });
     
-    schema.biography = new fields.HTMLField();
+    schema.notes = new fields.HTMLField();
 
     // Iterate over stat names and create a new SchemaField for each.
     schema.stats = new fields.SchemaField(Object.keys(CONFIG.DIE_RPG.stats).reduce((obj, stat) => {
