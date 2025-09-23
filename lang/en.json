@@ -24,7 +24,11 @@
 				"Features": "Features",
 				"Gear": "Gear",
 				"Abilities": "Abilities",
-				"Effects": "Effects"
+				"Effects": "Effects",
+				"Class": "Class",
+				"Advancements": "Advancements",
+				"Persona": "Persona",
+				"Notes": "Notes"
 			},
 			"base": {
 				"FIELDS": {

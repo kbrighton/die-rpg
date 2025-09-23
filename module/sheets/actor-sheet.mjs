@@ -17,6 +17,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       width: 700,
       height: 800,
     },
+    window: {
+			resizable: true,
+		},
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewDoc,
@@ -38,10 +41,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     header: {
       template: 'systems/die-rpg/templates/actor/header2.hbs',
     },
-    tabs: {
-      // Foundry-provided generic template
-      template: 'templates/generic/tab-navigation.hbs',
-    },
     sidebar: {
       template: 'systems/die-rpg/templates/actor/sidebar.hbs',
       scrollable: [""],
@@ -50,6 +49,11 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       template: 'systems/die-rpg/templates/actor/stats.hbs',
       scrollable: [""],
     },
+    tabs: {
+      // Foundry-provided generic template
+      template: 'templates/generic/tab-navigation.hbs',
+    },
+    // Tab sheets
     class: {
       template: 'systems/die-rpg/templates/actor/class.hbs',
       scrollable: [""],
@@ -168,6 +172,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       switch (partId) {
         case 'header':
         case 'tabs':
+        case 'sidebar':
+        case 'stats':
           return tabs;
         case 'notes':
           tab.id = 'notes';
