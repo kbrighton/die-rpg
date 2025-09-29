@@ -24,17 +24,10 @@ DIE_RPG.statAbbreviations = {
 };
 
 DIE_RPG.resources = {
-  guard: 'DIE_RPG.Resources.gua.long',
-  health: 'DIE_RPG.Resources.hea.long',
-  willpower: 'DIE_RPG.Resources.wil.long',
-  defense: 'DIE_RPG.Resources.def.long',
-};
-
-DIE_RPG.resourcesAbbreviations = {
-  guard: 'DIE_RPG.Resources.gua.abbr',
-  health: 'DIE_RPG.Resources.hea.abbr',
-  willpower: 'DIE_RPG.Resources.wil.abbr',
-  defense: 'DIE_RPG.Resources.def.abbr',
+  guard: 'DIE_RPG.Resource.gua.long',
+  health: 'DIE_RPG.Resource.hea.long',
+  willpower: 'DIE_RPG.Resource.wil.long',
+  defense: 'DIE_RPG.Resource.def.long',
 };
 
 DIE_RPG.npcTypes = {

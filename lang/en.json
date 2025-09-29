@@ -8,11 +8,11 @@
 			"Wis": { "long": "Wisdom", "abbr": "Wis" },
 			"Cha": { "long": "Charisma", "abbr": "Cha" }
 		},
-		"Resources": {
-			"gua": { "long": "Guard", "abbr": "gua" },
-			"hea": { "long": "Health", "abbr": "hea" },
-			"wil": { "long": "Willpower", "abbr": "wil" },
-			"def": { "long": "Defense", "abbr": "def" }
+		"Resource": {
+			"gua": { "long": "Guard"},
+			"hea": { "long": "Health"},
+			"wil": { "long": "Willpower"},
+			"def": { "long": "Defense"}
 		},
 		"SheetLabels": {
 			"Actor": "DieRpg Actor Sheet",

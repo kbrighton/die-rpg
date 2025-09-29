@@ -6,23 +6,6 @@ export default class DieRpgActorBase extends foundry.abstract.TypeDataModel {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = {};
 
-    schema.resources = new fields.SchemaField({
-      health: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }), // Derived: Equal to Dexterity
-      }),
-      guard: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }), // Derived: Equal to Constitution
-      }),
-      willpower: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }), //starts equal to a character’s Wisdom plus their Intelligence
-      }),
-      defense: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }), // Derived: from items
-      }),
-    });
-    
-    schema.notes = new fields.HTMLField();
-
     // Iterate over stat names and create a new SchemaField for each.
     schema.stats = new fields.SchemaField(Object.keys(CONFIG.DIE_RPG.stats).reduce((obj, stat) => {
       obj[stat] = new fields.SchemaField({
@@ -31,21 +14,32 @@ export default class DieRpgActorBase extends foundry.abstract.TypeDataModel {
       return obj;
     }, {}));
 
+    // need to make this attribute bar visible with value and max
+    schema.resources = new fields.SchemaField(Object.keys(CONFIG.DIE_RPG.resources).reduce((obj, resource) => {
+      obj[resource] = new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        max: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        modifiedValue: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        modifiedMax: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      });
+      return obj;
+    }, {}));
+    
+    schema.notes = new fields.HTMLField();
+
     return schema;
   }
 
   prepareDerivedData() {
-    // this.resources.guard.max = this.stats["dex"].value;
-    // this.resources.health.max = this.stats["con"].value;
-    // TODO: these need to be set only on character creation
-    // this.resources.guard.value = this.stats["dex"].value;
-    // this.resources.health.value = this.stats["con"].value;
-    // this.resources.willpower.value = this.stats["wis"].value + this.stats["int"].value;
-
-    // Loop through stats scores, and add their modifiers to our sheet output.
     for (const key in this.stats) {
-      // Handle stats label localization.
+      // Handle stats label & abbreviation localization.
       this.stats[key].label = game.i18n.localize(CONFIG.DIE_RPG.stats[key]) ?? key;
+      this.stats[key].abbr = game.i18n.localize(CONFIG.DIE_RPG.statAbbreviations[key]) ?? key;
+    }
+
+    for (const key in this.resources) {
+      // Handle resources label localization.
+      this.resources[key].label = game.i18n.localize(CONFIG.DIE_RPG.resources[key]) ?? key;
     }
   }
 
