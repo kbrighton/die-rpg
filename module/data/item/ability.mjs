@@ -1,4 +1,4 @@
-import DieRpgItemBase from './base-item.mjs';
+import DieRpgItemBase from './base.mjs';
 
 /**
  * Data model for Ability items (repurposed from Spell).

@@ -1,4 +1,4 @@
-import DieRpgItemBase from './base-item.mjs';
+import DieRpgItemBase from './base.mjs';
 
 export default class DieRpgFeature extends DieRpgItemBase {
   static LOCALIZATION_PREFIXES = [

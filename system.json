@@ -13,10 +13,13 @@
   "documentTypes": {
     "Actor": {
         "character": {
-            "htmlFields": ["biography"]
+            "htmlFields": ["notes", "persona.notes", "paragon.nature", "paragon.coreAbility.description"],
+            "filePathFields": {
+              "persona.img": ["IMAGE"]
+            }
         },
         "npc": {
-            "htmlFields": ["biography"]
+            "htmlFields": ["notes"]
         }
     },
     "Item": {
@@ -30,9 +33,6 @@
             "htmlFields": ["description", "effectDescription"]
         },
         "class": {
-            "htmlFields": ["description"]
-        },
-        "persona": {
             "htmlFields": ["description"]
         }
     }
@@ -68,8 +68,8 @@
 	"manifest": "#{MANIFEST}#",
 	"download": "#{DOWNLOAD}#",
   "background": "systems/die-rpg/assets/cover.webp",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": null,
+  "primaryTokenAttribute": "resources.health",
+  "secondaryTokenAttribute": "resources.guard",
   "media": [
     {
       "type": "setup",

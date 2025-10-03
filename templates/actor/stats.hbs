@@ -10,7 +10,7 @@
 					data-label="{{localize (lookup @root.config.stats key)}}"
 				>{{localize (lookup @root.config.statAbbreviations key)}}</label>
 				<input
-					type="text"
+					type="number"
 					name="system.stats.{{key}}.value"
 					value="{{stat.value}}"
 					class="stat-score"
@@ -35,11 +35,13 @@
 			</label>
 			<div class="resource-content flexrow flex-center flex-between">
 				<input
-					type="text"
+					type="number"
 					name="system.resources.health.value"
 					value="{{system.resources.health.value}}"
 					data-dtype="Number"
 				/>
+				<span> / </span>
+				<span>{{system.resources.health.max}}</span>
 			</div>
 		</div>
 
@@ -50,11 +52,13 @@
 			</label>
 			<div class="resource-content flexrow flex-center flex-between">
 				<input
-					type="text"
+					type="number"
 					name="system.resources.guard.value"
 					value="{{system.resources.guard.value}}"
 					data-dtype="Number"
 				/>
+				<span> / </span>
+				<span>{{system.resources.guard.max}}</span>
 			</div>
 		</div>
 
@@ -65,11 +69,13 @@
 			</label>
 			<div class="resource-content flexrow flex-center flex-between">
 				<input
-					type="text"
+					type="number"
 					name="system.resources.willpower.value"
 					value="{{system.resources.willpower.value}}"
 					data-dtype="Number"
 				/>
+				<span> / </span>
+				<span>{{system.resources.willpower.max}}</span>
 			</div>
 		</div>
 

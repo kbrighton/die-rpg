@@ -1,4 +1,4 @@
-import DieRpgItemBase from './base-item.mjs';
+import DieRpgItemBase from './base.mjs';
 
 export default class DieRpgGear extends DieRpgItemBase { // Changed class name for clarity
   static LOCALIZATION_PREFIXES = [

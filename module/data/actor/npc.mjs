@@ -1,4 +1,4 @@
-import DieRpgActorBase from './base-actor.mjs';
+import DieRpgActorBase from './base.mjs';
 
 export default class DieRpgNPC extends DieRpgActorBase {
   static LOCALIZATION_PREFIXES = [
