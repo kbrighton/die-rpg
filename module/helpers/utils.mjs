@@ -4,6 +4,11 @@ import {
   isNodeLocked,
   getNodeDisabledReason
 } from './advancements.mjs';
+import {
+  getTrianglePoints,
+  getTextPosition,
+  calculateViewBox
+} from './advancement-svg.mjs';
 
 /**
  * Register custom Handlebars helpers.
@@ -102,6 +107,23 @@ export function registerHandlebarsHelpers() {
 
 	Handlebars.registerHelper('getNodeDisabledReason', function(actor, nodeId) {
 		return getNodeDisabledReason(actor, nodeId);
+	});
+
+	// SVG advancement map helpers
+	Handlebars.registerHelper('svgTrianglePoints', function(nodeId) {
+		return getTrianglePoints(nodeId);
+	});
+
+	Handlebars.registerHelper('svgTextX', function(nodeId) {
+		return getTextPosition(nodeId).x;
+	});
+
+	Handlebars.registerHelper('svgTextY', function(nodeId) {
+		return getTextPosition(nodeId).y;
+	});
+
+	Handlebars.registerHelper('svgViewBox', function() {
+		return calculateViewBox();
 	});
 }
 

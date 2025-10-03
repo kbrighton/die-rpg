@@ -16,46 +16,48 @@
         value="{{actor.system.level}}"
         min="1"
         max="20"
-        data-dtype="Number"
+        data-type="Number"
       />
     </div>
     <p>Advancements Selected: {{actor.system.paragon.advancements.size}}</p>
     <p>Available Selections: {{subtract actor.system.level actor.system.paragon.advancements.size}}</p>
   </div>
 
-  <div class="advancements-list">
+  <svg viewBox="{{svgViewBox}}" class="advancement-map" preserveAspectRatio="xMidYMid meet">
     {{#each config.PARAGON_ADVANCEMENT_MAP.nodes as |node nodeId|}}
-      <div class="advancement-node
-        {{~#if (isNodeSelected @root.actor nodeId)}} selected{{/if~}}
-        {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}} locked{{/if~}}
-        {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "level")}} level-locked{{/if~}}
-      "
-        {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
-          data-advancement-tooltip="Locked"
-        {{~else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
-          data-advancement-tooltip="Increase level to unlock"
-        {{~/if}}
-      >
-        <label>
-          <input
-            type="checkbox"
-            name="advancements"
-            value="{{nodeId}}"
-            {{checked (isNodeSelected @root.actor nodeId)}}
-            {{~#unless (isNodeSelected @root.actor nodeId)}}
-              {{disabled (not (canSelectNode @root.actor nodeId))}}
-            {{~/unless}}
-            data-action="toggleAdvancement"
-            data-node-id="{{nodeId}}"
-          />
-          <span class="node-label">
-            {{#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
-              <i class="fa-solid fa-lock"></i>
-            {{/if}}
-            {{nodeId}}
-          </span>
-        </label>
-      </div>
+      <g class="advancement-node" data-node-id="{{nodeId}}">
+        <polygon
+          points="{{svgTrianglePoints nodeId}}"
+          class="triangle
+            {{~#if (isNodeSelected @root.actor nodeId)}} selected{{/if~}}
+            {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}} locked{{/if~}}
+            {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "level")}} level-locked{{/if~}}
+          "
+          {{~#unless (isNodeSelected @root.actor nodeId)}}
+            {{~#unless (canSelectNode @root.actor nodeId)}} data-disabled="true"{{/unless~}}
+          {{~/unless}}
+          data-action="toggleAdvancement"
+          data-node-id="{{nodeId}}"
+          {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
+            data-advancement-tooltip="Locked"
+          {{~else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
+            data-advancement-tooltip="Increase level to unlock"
+          {{~/if}}
+        />
+        <text
+          x="{{svgTextX nodeId}}"
+          y="{{svgTextY nodeId}}"
+          class="triangle-label"
+          text-anchor="middle"
+          pointer-events="none"
+        >
+          {{#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
+            <tspan class="lock-icon">🔒</tspan>
+          {{else}}
+            <tspan>{{nodeId}}</tspan>
+          {{/if}}
+        </text>
+      </g>
     {{/each}}
-  </div>
+  </svg>
 </section>
