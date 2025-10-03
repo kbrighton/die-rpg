@@ -30,7 +30,8 @@ export default class DieRpgCharacter extends DieRpgActorBase {
         description: new fields.HTMLField(),
       }),
       advancements: new fields.SetField(
-        new fields.StringField()
+        new fields.StringField(),
+        { initial: ["row0-1"] }
       ),
     });
 

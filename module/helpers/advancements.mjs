@@ -8,6 +8,7 @@
  * @returns {Set<string>} Set of unlocked node IDs
  */
 export function getUnlockedNodes(actor) {
+	if (!actor?.system?.paragon?.advancements) return new Set();
 	const selected = actor.system.paragon.advancements;
 	const unlocked = new Set();
 
@@ -39,6 +40,7 @@ export function getUnlockedNodes(actor) {
  * @returns {boolean} True if the node can be selected
  */
 export function canSelectNode(actor, nodeId) {
+	if (!actor?.system?.paragon?.advancements) return false;
 	const selected = actor.system.paragon.advancements;
 	const unlocked = getUnlockedNodes(actor);
 	const level = actor.system.level;
@@ -62,6 +64,7 @@ export function canSelectNode(actor, nodeId) {
  * @returns {boolean} True if the node is unlocked
  */
 export function isNodeUnlocked(actor, nodeId) {
+	if (!actor?.system?.paragon?.advancements) return false;
 	const selected = actor.system.paragon.advancements;
 	const unlocked = getUnlockedNodes(actor);
 
@@ -75,6 +78,7 @@ export function isNodeUnlocked(actor, nodeId) {
  * @returns {boolean} True if the node is selected
  */
 export function isNodeSelected(actor, nodeId) {
+	if (!actor?.system?.paragon?.advancements) return false;
 	return actor.system.paragon.advancements.has(nodeId);
 }
 
@@ -85,5 +89,32 @@ export function isNodeSelected(actor, nodeId) {
  * @returns {boolean} True if the node is locked
  */
 export function isNodeLocked(actor, nodeId) {
+	if (!actor?.system?.paragon?.advancements) return true;
 	return !isNodeSelected(actor, nodeId) && !isNodeUnlocked(actor, nodeId);
+}
+
+/**
+ * Get the reason why a node is disabled, if any
+ * @param {Actor} actor - The actor to check
+ * @param {string} nodeId - The node ID to check
+ * @returns {string|null} "selected", "locked", "level", or null if can be selected
+ */
+export function getNodeDisabledReason(actor, nodeId) {
+	if (!actor?.system?.paragon?.advancements) return "locked";
+
+	const selected = actor.system.paragon.advancements;
+	const unlocked = getUnlockedNodes(actor);
+	const level = actor.system.level;
+
+	// Already selected
+	if (selected.has(nodeId)) return "selected";
+
+	// Not adjacent to selected nodes
+	if (!unlocked.has(nodeId)) return "locked";
+
+	// Level requirement not met
+	if (level <= selected.size) return "level";
+
+	// Can be selected
+	return null;
 }

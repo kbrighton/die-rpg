@@ -4,5 +4,58 @@
   data-group='primary'
   data-tab='advancements'
 >
-    Advancements
+  <h2>Paragon Advancements</h2>
+
+  <div class="advancement-info">
+    <div class="form-group">
+      <label for="level">Level:</label>
+      <input
+        type="number"
+        name="system.level"
+        id="level"
+        value="{{actor.system.level}}"
+        min="1"
+        max="20"
+        data-dtype="Number"
+      />
+    </div>
+    <p>Advancements Selected: {{actor.system.paragon.advancements.size}}</p>
+    <p>Available Selections: {{subtract actor.system.level actor.system.paragon.advancements.size}}</p>
+  </div>
+
+  <div class="advancements-list">
+    {{#each config.PARAGON_ADVANCEMENT_MAP.nodes as |node nodeId|}}
+      <div class="advancement-node
+        {{~#if (isNodeSelected @root.actor nodeId)}} selected{{/if~}}
+        {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}} locked{{/if~}}
+        {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "level")}} level-locked{{/if~}}
+      "
+        {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
+          data-advancement-tooltip="Locked"
+        {{~else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
+          data-advancement-tooltip="Increase level to unlock"
+        {{~/if}}
+      >
+        <label>
+          <input
+            type="checkbox"
+            name="advancements"
+            value="{{nodeId}}"
+            {{checked (isNodeSelected @root.actor nodeId)}}
+            {{~#unless (isNodeSelected @root.actor nodeId)}}
+              {{disabled (not (canSelectNode @root.actor nodeId))}}
+            {{~/unless}}
+            data-action="toggleAdvancement"
+            data-node-id="{{nodeId}}"
+          />
+          <span class="node-label">
+            {{#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
+              <i class="fa-solid fa-lock"></i>
+            {{/if}}
+            {{nodeId}}
+          </span>
+        </label>
+      </div>
+    {{/each}}
+  </div>
 </section>

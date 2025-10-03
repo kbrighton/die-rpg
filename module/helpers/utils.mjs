@@ -1,3 +1,10 @@
+import {
+  canSelectNode,
+  isNodeSelected,
+  isNodeLocked,
+  getNodeDisabledReason
+} from './advancements.mjs';
+
 /**
  * Register custom Handlebars helpers.
  */
@@ -38,6 +45,10 @@ export function registerHandlebarsHelpers() {
 		return newVale;
 	});
 
+	Handlebars.registerHelper("subtract", function(a, b) {
+		return a - b;
+	});
+
 	/**
 	 * Partitions an array into two groups based on a condition.
 	 * @param {Array} array - The array to partition
@@ -72,8 +83,25 @@ export function registerHandlebarsHelpers() {
 				failure.push(item);
 			}
 		}
-		
+
 		return { success, failure };
+	});
+
+	// Advancement helpers
+	Handlebars.registerHelper('isNodeSelected', function(actor, nodeId) {
+		return isNodeSelected(actor, nodeId);
+	});
+
+	Handlebars.registerHelper('canSelectNode', function(actor, nodeId) {
+		return canSelectNode(actor, nodeId);
+	});
+
+	Handlebars.registerHelper('isNodeLocked', function(actor, nodeId) {
+		return isNodeLocked(actor, nodeId);
+	});
+
+	Handlebars.registerHelper('getNodeDisabledReason', function(actor, nodeId) {
+		return getNodeDisabledReason(actor, nodeId);
 	});
 }
 

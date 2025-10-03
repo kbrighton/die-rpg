@@ -597,5 +597,110 @@
 .die-rpg .effects .item .effect-controls {
   border: none;
 }
+.die-rpg .tab.advancements .advancement-info {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.die-rpg .tab.advancements .advancement-info p {
+  margin: 0.25rem 0;
+}
+.die-rpg .tab.advancements .advancement-info .form-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.die-rpg .tab.advancements .advancement-info .form-group label {
+  margin: 0;
+  font-weight: bold;
+}
+.die-rpg .tab.advancements .advancement-info .form-group input[type=number] {
+  width: 60px;
+}
+.die-rpg .tab.advancements .advancements-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+.die-rpg .tab.advancements .advancement-node {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+}
+.die-rpg .tab.advancements .advancement-node.selected {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: green;
+  font-weight: bold;
+}
+.die-rpg .tab.advancements .advancement-node.locked {
+  background: rgba(128, 128, 128, 0.1);
+  border-color: rgba(153, 153, 153, 0.5);
+}
+.die-rpg .tab.advancements .advancement-node.locked label {
+  opacity: 0.5;
+}
+.die-rpg .tab.advancements .advancement-node.level-locked {
+  background: rgba(255, 165, 0, 0.1);
+  border-color: orange;
+  border-width: 2px;
+}
+.die-rpg .tab.advancements .advancement-node.level-locked label {
+  opacity: 0.7;
+}
+.die-rpg .tab.advancements .advancement-node label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.die-rpg .tab.advancements .advancement-node label input[type=checkbox] {
+  cursor: pointer;
+}
+.die-rpg .tab.advancements .advancement-node label input[type=checkbox]:disabled {
+  cursor: not-allowed;
+}
+.die-rpg .tab.advancements .advancement-node label .node-label {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+.die-rpg .tab.advancements .advancement-node[data-advancement-tooltip]:hover {
+  position: relative;
+  z-index: 1001;
+}
+.die-rpg .tab.advancements .advancement-node[data-advancement-tooltip]:hover::after {
+  content: attr(data-advancement-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgb(0, 0, 0);
+  color: white;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-family: sans-serif;
+  z-index: 1002;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+.die-rpg .tab.advancements .advancement-node[data-advancement-tooltip]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.25rem;
+  border: 6px solid transparent;
+  border-top-color: rgb(0, 0, 0);
+  z-index: 1002;
+  pointer-events: none;
+  opacity: 1;
+}
 
 /*# sourceMappingURL=die-rpg.css.map */

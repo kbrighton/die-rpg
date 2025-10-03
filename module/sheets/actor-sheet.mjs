@@ -28,6 +28,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       toggleEffect: this._toggleEffect,
       roll: this._onRoll,
       statRoll: this._onStatRoll,
+      toggleAdvancement: this._toggleAdvancement,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -393,6 +394,70 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const dataset = target.dataset;
 
     return rollStat(dataset, this.actor);
+  }
+
+  /**
+   * Handle toggling advancement node selection
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _toggleAdvancement(event, target) {
+    event.preventDefault();
+
+    const nodeId = target.dataset.nodeId;
+    const currentAdvancements = new Set(this.actor.system.paragon.advancements);
+
+    // Toggle: if selected, remove; if not selected, add (if allowed)
+    if (currentAdvancements.has(nodeId)) {
+      // Remove the node
+      currentAdvancements.delete(nodeId);
+
+      // Check for orphaned nodes and remove them
+      const { getUnlockedNodes } = await import('../helpers/advancements.mjs');
+      const orphanedNodes = new Set();
+
+      // Create a temporary actor-like object to test unlocked state
+      const tempActor = {
+        system: {
+          paragon: { advancements: currentAdvancements },
+          level: this.actor.system.level
+        }
+      };
+
+      // Find all nodes that are now orphaned (selected but not unlocked)
+      for (const selectedId of currentAdvancements) {
+        const unlocked = getUnlockedNodes(tempActor);
+        if (!unlocked.has(selectedId) && selectedId !== "row0-1") {
+          orphanedNodes.add(selectedId);
+        }
+      }
+
+      // Remove orphaned nodes
+      for (const orphanId of orphanedNodes) {
+        currentAdvancements.delete(orphanId);
+      }
+
+      if (orphanedNodes.size > 0) {
+        ui.notifications.info(`Removed ${orphanedNodes.size} orphaned advancement(s).`);
+      }
+    } else {
+      // Validate before adding
+      const { canSelectNode } = await import('../helpers/advancements.mjs');
+      if (canSelectNode(this.actor, nodeId)) {
+        currentAdvancements.add(nodeId);
+      } else {
+        ui.notifications.warn("Cannot select this advancement. Check level and adjacency requirements.");
+        return;
+      }
+    }
+
+    // Update the actor with the new Set
+    await this.actor.update({
+      'system.paragon.advancements': Array.from(currentAdvancements)
+    });
   }
 
   /** Helper Functions */
