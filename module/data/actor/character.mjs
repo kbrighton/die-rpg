@@ -28,7 +28,10 @@ export default class DieRpgCharacter extends DieRpgActorBase {
       coreAbility: new fields.SchemaField({
         name: new fields.StringField({ required: true, blank: true }),
         description: new fields.HTMLField(),
-      })
+      }),
+      advancements: new fields.SetField(
+        new fields.StringField()
+      ),
     });
 
     schema.persona = new fields.SchemaField({
