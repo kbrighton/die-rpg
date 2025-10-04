@@ -184,6 +184,49 @@
 			},
 			"Paragon": {
 				"FIELDS": {
+					"coreNature": {
+						"label": "Core Nature",
+						"hint": "The fundamental nature and philosophy of this paragon"
+					},
+					"die": {
+						"label": "Class Die",
+						"hint": "The die type used for this paragon's class die"
+					},
+					"importantStat": {
+						"label": "Important Stat",
+						"hint": "The primary stat for this paragon"
+					},
+					"coreAbility": {
+						"label": "Core Ability",
+						"name": { "label": "Ability Name" },
+						"description": { "label": "Ability Description" }
+					},
+					"looks": {
+						"label": "Looks",
+						"hint": "Appearance and clothing options for this paragon"
+					},
+					"look": {
+						"name": { "label": "Look Name" },
+						"description": { "label": "Description" },
+						"defenseBonus": { "label": "Defense Bonus" }
+					},
+					"specials": {
+						"label": "Specials",
+						"hint": "Special abilities that trigger when rolling 6+ on dice"
+					},
+					"special": {
+						"name": { "label": "Special Name" },
+						"key": { "label": "Unique Key" },
+						"description": { "label": "Description" },
+						"cost": {
+							"label": "Cost (6+s)",
+							"hint": "How many 6+ results are needed to activate"
+						},
+						"mandatory": {
+							"label": "Mandatory?",
+							"hint": "If checked, this special must be used when triggered"
+						}
+					},
 					"advancementAssignments": { "label": "Advancement Assignments" },
 					"advancements": { "label": "Advancements" },
 					"advancement": {
@@ -192,7 +235,9 @@
 						"description": { "label": "Advancement Description" },
 						"icon": { "label": "Advancement Icon" }
 					}
-				}
+				},
+				"AddLook": "Add Look",
+				"AddSpecial": "Add Special"
 			}
 		},
 		"Effect": {

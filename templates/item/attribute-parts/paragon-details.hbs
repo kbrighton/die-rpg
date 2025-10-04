@@ -1,0 +1,48 @@
+{{!-- Paragon Details Tab --}}
+<section class="paragon-details">
+
+  {{!-- Core Nature --}}
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.label'}}</label>
+    <div class="editor">
+      {{editor system.coreNature target="system.coreNature" button=true editable=editable}}
+    </div>
+    <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.hint'}}</p>
+  </div>
+
+  {{!-- Die Type --}}
+  <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.die.label'}}</label>
+    <select name="system.die">
+      {{selectOptions config.dieTypes selected=system.die blank=""}}
+    </select>
+    <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.die.hint'}}</p>
+  </div>
+
+  {{!-- Important Stat --}}
+  <div class="form-group">
+    <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.importantStat.label'}}</label>
+    <select name="system.importantStat">
+      {{selectOptions config.stats selected=system.importantStat localize=true blank=""}}
+    </select>
+    <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.importantStat.hint'}}</p>
+  </div>
+
+  {{!-- Core Ability --}}
+  <fieldset class="core-ability">
+    <legend>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.label'}}</legend>
+
+    <div class="form-group">
+      <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.name.label'}}</label>
+      <input type="text" name="system.coreAbility.name" value="{{system.coreAbility.name}}" />
+    </div>
+
+    <div class="form-group stacked">
+      <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.description.label'}}</label>
+      <div class="editor">
+        {{editor system.coreAbility.description target="system.coreAbility.description" button=true editable=editable}}
+      </div>
+    </div>
+  </fieldset>
+
+</section>

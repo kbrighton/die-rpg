@@ -15,6 +15,134 @@ export default class DieRpgParagon extends DieRpgItemBase {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
+    // ========================================
+    // CORE PARAGON FIELDS
+    // ========================================
+
+    // Core Nature - Rich text description of the paragon's nature/theme
+    schema.coreNature = new fields.HTMLField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Item.Paragon.FIELDS.coreNature.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.coreNature.hint'
+    });
+
+    // Die Type - The type of class die this paragon uses
+    schema.die = new fields.StringField({
+      required: true,
+      blank: false,
+      initial: 'd6',
+      choices: ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'],
+      label: 'DIE_RPG.Item.Paragon.FIELDS.die.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.die.hint'
+    });
+
+    // Important Stat - The stat most important to this paragon
+    schema.importantStat = new fields.StringField({
+      required: true,
+      blank: false,
+      initial: 'str',
+      choices: ['str', 'dex', 'con', 'int', 'wis', 'cha'],
+      label: 'DIE_RPG.Item.Paragon.FIELDS.importantStat.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.importantStat.hint'
+    });
+
+    // Core Ability - The paragon's signature ability
+    schema.coreAbility = new fields.SchemaField({
+      name: new fields.StringField({
+        required: true,
+        blank: true,
+        initial: '',
+        label: 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.name.label'
+      }),
+      description: new fields.HTMLField({
+        required: true,
+        blank: true,
+        initial: '',
+        label: 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.description.label'
+      })
+    }, {
+      label: 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.label'
+    });
+
+    // Looks - Array of appearance/clothing options characters can choose from
+    schema.looks = new fields.ArrayField(
+      new fields.SchemaField({
+        name: new fields.StringField({
+          required: true,
+          blank: false,
+          initial: '',
+          label: 'DIE_RPG.Item.Paragon.FIELDS.look.name.label'
+        }),
+        description: new fields.StringField({
+          required: false,
+          blank: true,
+          initial: '',
+          label: 'DIE_RPG.Item.Paragon.FIELDS.look.description.label'
+        }),
+        defenseBonus: new fields.NumberField({
+          required: true,
+          integer: true,
+          initial: 0,
+          min: 0,
+          label: 'DIE_RPG.Item.Paragon.FIELDS.look.defenseBonus.label'
+        })
+      }),
+      {
+        initial: [],
+        label: 'DIE_RPG.Item.Paragon.FIELDS.looks.label'
+      }
+    );
+
+    // Specials - Special abilities that can be activated with 6+ rolls
+    schema.specials = new fields.ArrayField(
+      new fields.SchemaField({
+        name: new fields.StringField({
+          required: true,
+          blank: false,
+          initial: '',
+          label: 'DIE_RPG.Item.Paragon.FIELDS.special.name.label'
+        }),
+        description: new fields.HTMLField({
+          required: true,
+          blank: true,
+          initial: '',
+          label: 'DIE_RPG.Item.Paragon.FIELDS.special.description.label'
+        }),
+        cost: new fields.NumberField({
+          required: true,
+          integer: true,
+          initial: 1,
+          min: 1,
+          max: 4,
+          label: 'DIE_RPG.Item.Paragon.FIELDS.special.cost.label',
+          hint: 'DIE_RPG.Item.Paragon.FIELDS.special.cost.hint'
+        }),
+        mandatory: new fields.BooleanField({
+          required: true,
+          initial: false,
+          label: 'DIE_RPG.Item.Paragon.FIELDS.special.mandatory.label',
+          hint: 'DIE_RPG.Item.Paragon.FIELDS.special.mandatory.hint'
+        }),
+        key: new fields.StringField({
+          required: false,
+          blank: true,
+          initial: '',
+          label: 'DIE_RPG.Item.Paragon.FIELDS.special.key.label',
+          hint: 'DIE_RPG.Item.Paragon.FIELDS.special.key.hint'
+        })
+      }),
+      {
+        initial: [],
+        label: 'DIE_RPG.Item.Paragon.FIELDS.specials.label'
+      }
+    );
+
+    // ========================================
+    // ADVANCEMENT SYSTEM (EXISTING)
+    // ========================================
+
     // --- Advancement Map Assignment ---
     // Maps each of the 20 node positions to an advancement ID
     // Example: { "row0-1": 1, "row1-1": 2, "row1-2": 1, "row1-3": 3, ... }

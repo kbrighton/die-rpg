@@ -1,0 +1,397 @@
+// Paragon Item Sheet Styles
+
+// Constrain image size for paragon items
+.item.paragon {
+  .profile-img {
+    max-height: 200px !important;
+    height: 200px !important;
+  }
+}
+
+.sheet-body.paragon {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: $padding-md;
+    gap: $gap-md;
+
+    // Tab navigation
+    nav.tabs {
+      flex: 0 0 auto;
+      border-bottom: 2px solid $c-faint;
+      display: flex;
+      gap: $gap-sm;
+      margin-bottom: $margin-md;
+
+      a.item {
+        padding: $padding-sm $padding-md;
+        border: 1px solid transparent;
+        border-bottom: none;
+        border-radius: 4px 4px 0 0;
+        background: rgba(0, 0, 0, 0.1);
+        color: $c-tan;
+        text-decoration: none;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: $gap-sm;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.2);
+          color: $c-white;
+        }
+
+        &.active {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: $c-faint;
+          color: $c-white;
+          font-weight: bold;
+        }
+      }
+    }
+
+    // Tab content container
+    .sheet-tabs.tabs-content {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      position: relative;
+
+      .tab {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+
+    // Section styling
+    section {
+      h3 {
+        margin-top: 0;
+        margin-bottom: $margin-md;
+        padding-bottom: $padding-sm;
+        border-bottom: 1px solid $c-faint;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        color: $c-tan;
+        margin-bottom: $margin-md;
+      }
+
+      .notice {
+        padding: $padding-md;
+        background: rgba(255, 200, 100, 0.1);
+        border-left: 3px solid rgba(255, 200, 100, 0.5);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: $gap-md;
+
+        i {
+          font-size: 1.5em;
+          color: rgba(255, 200, 100, 0.8);
+        }
+      }
+    }
+
+    // Paragon Details Tab
+    .paragon-details {
+      .form-group {
+        margin-bottom: $margin-md;
+
+        label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: $margin-sm;
+        }
+
+        select, input[type="text"], input[type="number"] {
+          width: 100%;
+          padding: $padding-sm;
+          background: rgba(0, 0, 0, 0.2);
+          border: 1px solid $c-faint;
+          border-radius: 4px;
+          color: $c-white;
+        }
+
+        p.hint {
+          margin-top: $margin-sm;
+          margin-bottom: 0;
+          font-size: 0.85em;
+        }
+      }
+
+      fieldset.core-ability {
+        border: 1px solid $c-faint;
+        border-radius: 4px;
+        padding: $padding-md;
+        margin-top: $margin-lg;
+
+        legend {
+          padding: 0 $padding-sm;
+          font-weight: bold;
+          color: $c-white;
+        }
+      }
+    }
+
+    // Looks Tab
+    .paragon-looks {
+      .looks-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: $margin-lg;
+
+        .look-item {
+          background: rgba(0, 0, 0, 0.2);
+          border: 1px solid $c-faint;
+          border-radius: 4px;
+          padding: $padding-md;
+          margin-bottom: $margin-md;
+
+          .look-header {
+            display: flex;
+            align-items: flex-start;
+            gap: $gap-md;
+
+            .look-number {
+              flex: 0 0 auto;
+              font-weight: bold;
+              font-size: 1.2em;
+              color: $c-tan;
+            }
+
+            .look-fields {
+              flex: 1 1 auto;
+              display: grid;
+              grid-template-columns: 1fr 1fr auto;
+              gap: $gap-md;
+
+              .form-group {
+                margin-bottom: 0;
+
+                label {
+                  display: block;
+                  font-size: 0.9em;
+                  margin-bottom: $margin-sm;
+                }
+
+                input {
+                  width: 100%;
+                  padding: $padding-sm;
+                  background: rgba(0, 0, 0, 0.3);
+                  border: 1px solid $c-faint;
+                  border-radius: 4px;
+                  color: $c-white;
+                }
+              }
+            }
+
+            button.delete-look {
+              flex: 0 0 auto;
+              background: rgba(200, 0, 0, 0.3);
+              border: 1px solid rgba(200, 0, 0, 0.5);
+              color: $c-white;
+              padding: $padding-sm $padding-md;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: all 0.2s;
+
+              &:hover {
+                background: rgba(200, 0, 0, 0.5);
+              }
+            }
+          }
+        }
+      }
+
+      .no-items {
+        font-style: italic;
+        color: $c-tan;
+        text-align: center;
+        padding: $padding-lg;
+      }
+
+      button.add-look {
+        width: 100%;
+        padding: $padding-md;
+        background: rgba(0, 150, 0, 0.3);
+        border: 1px solid rgba(0, 150, 0, 0.5);
+        color: $c-white;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $gap-sm;
+        transition: all 0.2s;
+
+        &:hover {
+          background: rgba(0, 150, 0, 0.5);
+        }
+      }
+    }
+
+    // Specials Tab
+    .paragon-specials {
+      .specials-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: $margin-lg;
+
+        .special-item {
+          background: rgba(0, 0, 0, 0.2);
+          border: 1px solid $c-faint;
+          border-radius: 4px;
+          padding: $padding-md;
+          margin-bottom: $margin-md;
+          position: relative;
+
+          &.mandatory {
+            border-color: rgba(255, 200, 0, 0.5);
+          }
+
+          .special-header {
+            display: flex;
+            align-items: flex-start;
+            gap: $gap-md;
+            margin-bottom: $margin-md;
+
+            .special-number {
+              flex: 0 0 auto;
+              font-weight: bold;
+              font-size: 1.2em;
+              color: $c-tan;
+            }
+
+            .special-main-fields {
+              flex: 1 1 auto;
+              display: grid;
+              grid-template-columns: 2fr 1fr;
+              gap: $gap-md;
+
+              .form-group {
+                margin-bottom: 0;
+
+                label {
+                  display: block;
+                  font-size: 0.9em;
+                  margin-bottom: $margin-sm;
+                }
+
+                input {
+                  width: 100%;
+                  padding: $padding-sm;
+                  background: rgba(0, 0, 0, 0.3);
+                  border: 1px solid $c-faint;
+                  border-radius: 4px;
+                  color: $c-white;
+                }
+              }
+            }
+          }
+
+          .special-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $gap-md;
+            margin-bottom: $margin-md;
+
+            .form-group {
+              &.checkbox {
+                display: flex;
+                align-items: center;
+                gap: $gap-sm;
+
+                label {
+                  display: flex;
+                  align-items: center;
+                  gap: $gap-sm;
+                  margin-bottom: 0;
+                }
+              }
+
+              label {
+                display: block;
+                font-size: 0.9em;
+                margin-bottom: $margin-sm;
+              }
+
+              input[type="number"] {
+                width: 100px;
+                padding: $padding-sm;
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid $c-faint;
+                border-radius: 4px;
+                color: $c-white;
+              }
+
+              .hint {
+                font-size: 0.8em;
+                color: $c-tan;
+                font-style: italic;
+              }
+            }
+          }
+
+          .form-group.stacked {
+            margin-bottom: $margin-md;
+
+            label {
+              display: block;
+              font-weight: bold;
+              margin-bottom: $margin-sm;
+            }
+          }
+
+          button.delete-special {
+            width: 100%;
+            background: rgba(200, 0, 0, 0.3);
+            border: 1px solid rgba(200, 0, 0, 0.5);
+            color: $c-white;
+            padding: $padding-sm $padding-md;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: $gap-sm;
+
+            &:hover {
+              background: rgba(200, 0, 0, 0.5);
+            }
+          }
+        }
+      }
+
+      .no-items {
+        font-style: italic;
+        color: $c-tan;
+        text-align: center;
+        padding: $padding-lg;
+      }
+
+      button.add-special {
+        width: 100%;
+        padding: $padding-md;
+        background: rgba(0, 150, 0, 0.3);
+        border: 1px solid rgba(0, 150, 0, 0.5);
+        color: $c-white;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $gap-sm;
+        transition: all 0.2s;
+
+        &:hover {
+          background: rgba(0, 150, 0, 0.5);
+        }
+      }
+    }
+}

@@ -58,6 +58,19 @@ DIE_RPG.classDice = {
 	20: "d20",
 };
 
+/**
+ * Die types for paragon class dice
+ * @type {Object}
+ */
+DIE_RPG.dieTypes = {
+	d4: "D4",
+	d6: "D6",
+	d8: "D8",
+	d10: "D10",
+	d12: "D12",
+	d20: "D20",
+};
+
 DIE_RPG.classBaseTypes = {
 	dictator: "DIE_RPG.Class.Dictator",
 	fool: "DIE_RPG.Class.Fool",

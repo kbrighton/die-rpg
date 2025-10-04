@@ -1,0 +1,59 @@
+{{!-- Paragon Specials Tab --}}
+<section class="paragon-specials">
+  <h3>{{localize 'DIE_RPG.Item.Paragon.FIELDS.specials.label'}}</h3>
+  <p class="hint">Special abilities that can be activated when rolling 6+ on dice.</p>
+
+  <ol class="specials-list">
+    {{#each system.specials as |special index|}}
+      <li class="special-item {{#if special.mandatory}}mandatory{{/if}}" data-index="{{index}}">
+        <div class="special-header">
+          <span class="special-number">{{add index 1}}.</span>
+          <div class="special-main-fields">
+            <div class="form-group">
+              <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.special.name.label'}}</label>
+              <input type="text" name="system.specials.{{index}}.name" value="{{special.name}}" placeholder="Special name" />
+            </div>
+            <div class="form-group">
+              <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.special.key.label'}}</label>
+              <input type="text" name="system.specials.{{index}}.key" value="{{special.key}}" placeholder="e.g., neotech (optional)" />
+            </div>
+          </div>
+        </div>
+
+        <div class="special-options">
+          <div class="form-group">
+            <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.special.cost.label'}}</label>
+            <input type="number" name="system.specials.{{index}}.cost" value="{{special.cost}}" min="1" max="4" />
+            <span class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.special.cost.hint'}}</span>
+          </div>
+          <div class="form-group checkbox">
+            <label>
+              <input type="checkbox" name="system.specials.{{index}}.mandatory" {{checked special.mandatory}} />
+              {{localize 'DIE_RPG.Item.Paragon.FIELDS.special.mandatory.label'}}
+            </label>
+            <span class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.special.mandatory.hint'}}</span>
+          </div>
+        </div>
+
+        <div class="form-group stacked">
+          <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.special.description.label'}}</label>
+          <div class="editor">
+            {{editor special.description target=(concat "system.specials." index ".description") button=true editable=editable}}
+          </div>
+        </div>
+
+        <button type="button" class="delete-special" data-action="deleteSpecial" data-index="{{index}}" title="Delete Special">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </li>
+    {{/each}}
+  </ol>
+
+  {{#if (eq system.specials.length 0)}}
+    <p class="no-items">No specials defined. Add one below.</p>
+  {{/if}}
+
+  <button type="button" class="add-special" data-action="addSpecial">
+    <i class="fas fa-plus"></i> {{localize 'DIE_RPG.Item.Paragon.AddSpecial'}}
+  </button>
+</section>

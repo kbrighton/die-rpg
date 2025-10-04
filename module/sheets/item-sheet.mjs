@@ -23,6 +23,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
       toggleEffect: this._toggleEffect,
+      addLook: this._addLook,
+      deleteLook: this._deleteLook,
+      addSpecial: this._addSpecial,
+      deleteSpecial: this._deleteSpecial,
     },
     form: {
       submitOnChange: true,
@@ -53,6 +57,9 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     persona: {
        template: 'systems/die-rpg/templates/item/attribute-parts/persona.hbs',
     },
+    paragon: {
+      template: 'systems/die-rpg/templates/item/sheet-paragon.hbs',
+    },
     description: {
 			template: "systems/die-rpg/templates/item/description.hbs",
 		},
@@ -69,8 +76,12 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       width = 600;
       height = 700;
     }
-    options.position.height = width;
-    options.position.width = height;
+    if (this.item.type === 'paragon') {
+      width = 700;
+      height = 800;
+    }
+    options.position.width = width;
+    options.position.height = height;
 
     // Start with just the header
     options.parts = ['header'];
@@ -93,6 +104,9 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         break;
       case 'persona':
         options.parts.push('description', 'persona');
+        break;
+      case 'paragon':
+        options.parts.push('paragon');
         break;
       default:
         // Optionally handle unknown types or fallback to a default body
@@ -334,6 +348,74 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   static async _toggleEffect(event, target) {
     const effect = this._getEffect(target);
     await effect.update({ disabled: !effect.disabled });
+  }
+
+  /**
+   * Add a new look to the paragon's looks array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addLook(event, target) {
+    event.preventDefault();
+    const looks = this.item.system.looks || [];
+    const newLook = { name: '', description: '', defenseBonus: 0 };
+    await this.item.update({ 'system.looks': [...looks, newLook] });
+  }
+
+  /**
+   * Delete a look from the paragon's looks array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteLook(event, target) {
+    event.preventDefault();
+    const index = parseInt(target.dataset.index);
+    const looks = [...this.item.system.looks];
+    looks.splice(index, 1);
+    await this.item.update({ 'system.looks': looks });
+  }
+
+  /**
+   * Add a new special to the paragon's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addSpecial(event, target) {
+    event.preventDefault();
+    const specials = this.item.system.specials || [];
+    const newSpecial = {
+      name: '',
+      description: '',
+      cost: 1,
+      mandatory: false,
+      key: ''
+    };
+    await this.item.update({ 'system.specials': [...specials, newSpecial] });
+  }
+
+  /**
+   * Delete a special from the paragon's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteSpecial(event, target) {
+    event.preventDefault();
+    const index = parseInt(target.dataset.index);
+    const specials = [...this.item.system.specials];
+    specials.splice(index, 1);
+    await this.item.update({ 'system.specials': specials });
   }
 
   /** Helper Functions */
