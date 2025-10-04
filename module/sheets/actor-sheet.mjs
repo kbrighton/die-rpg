@@ -29,6 +29,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       roll: this._onRoll,
       statRoll: this._onStatRoll,
       toggleAdvancement: this._toggleAdvancement,
+      selectParagon: this._selectParagon,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -132,6 +133,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         // Fetch paragon item data for advancements
         const { getParagonItem } = await import('../helpers/advancements.mjs');
         context.paragonItem = await getParagonItem(this.actor);
+        // Fetch available paragons for selection dropdown
+        const { getParagons } = await import('../helpers/paragons.mjs');
+        context.paragons = await getParagons() || [];
         break;
       case 'notes':
         context.tab = context.tabs[partId];
@@ -463,6 +467,53 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.paragon.advancements': Array.from(currentAdvancements)
     });
+  }
+
+  /**
+   * Handle paragon selection change
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating change event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _selectParagon(event, target) {
+    event.preventDefault();
+
+    const selectedUuid = target.value;
+
+    // If no paragon selected (blank option), just clear the UUID
+    if (!selectedUuid) {
+      await this.actor.update({ 'system.paragon.uuid': '' });
+      return;
+    }
+
+    // Delete existing owned paragon item if it exists
+    const existingParagon = this.actor.items.find(i => i.type === 'paragon');
+    if (existingParagon) {
+      await existingParagon.delete();
+    }
+
+    // Create embedded copy of selected paragon
+    try {
+      const paragonDoc = await fromUuid(selectedUuid);
+      if (!paragonDoc) {
+        ui.notifications.error('Could not find selected paragon item.');
+        return;
+      }
+
+      await this.actor.createEmbeddedDocuments('Item', [paragonDoc.toObject()], {
+        keepId: true
+      });
+
+      // Update the UUID reference
+      await this.actor.update({ 'system.paragon.uuid': selectedUuid });
+
+      ui.notifications.info(`Paragon "${paragonDoc.name}" selected.`);
+    } catch (error) {
+      console.error('DIE RPG | Error selecting paragon:', error);
+      ui.notifications.error('Failed to select paragon.');
+    }
   }
 
   /** Helper Functions */
