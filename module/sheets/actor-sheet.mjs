@@ -421,10 +421,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       currentAdvancements.delete(nodeId);
 
       // Check for orphaned nodes and remove them
-      const { getUnlockedNodes } = await import('../helpers/advancements.mjs');
+      const { getReachableNodes } = await import('../helpers/advancements.mjs');
       const orphanedNodes = new Set();
 
-      // Create a temporary actor-like object to test unlocked state
+      // Create a temporary actor-like object to test reachability
       const tempActor = {
         system: {
           paragon: { advancements: currentAdvancements },
@@ -432,10 +432,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         }
       };
 
-      // Find all nodes that are now orphaned (selected but not unlocked)
+      // Find all nodes that are now orphaned (selected but not reachable from start)
+      const reachable = getReachableNodes(tempActor);
       for (const selectedId of currentAdvancements) {
-        const unlocked = getUnlockedNodes(tempActor);
-        if (!unlocked.has(selectedId) && selectedId !== "row0-1") {
+        if (!reachable.has(selectedId)) {
           orphanedNodes.add(selectedId);
         }
       }

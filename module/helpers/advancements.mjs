@@ -176,6 +176,42 @@ export function getAdvancementsWithPositionsSync(paragonItem, actor) {
 }
 
 /**
+ * Get all selected nodes that are reachable from the starting node
+ * Used to detect orphaned nodes after deselection
+ * @param {Actor} actor - The actor to check
+ * @returns {Set<string>} Set of reachable selected node IDs
+ */
+export function getReachableNodes(actor) {
+	if (!actor?.system?.paragon?.advancements) return new Set();
+	const selected = actor.system.paragon.advancements;
+	const reachable = new Set();
+	const queue = ["row0-1"];
+
+	// Breadth-first search from starting node through selected nodes
+	while (queue.length > 0) {
+		const nodeId = queue.shift();
+
+		// Skip if not selected or already processed
+		if (!selected.has(nodeId) || reachable.has(nodeId)) continue;
+
+		// Mark as reachable
+		reachable.add(nodeId);
+
+		// Add adjacent selected nodes to queue
+		const node = CONFIG.DIE_RPG.PARAGON_ADVANCEMENT_MAP.nodes[nodeId];
+		if (!node) continue;
+
+		for (const adjacentId of node.sides) {
+			if (selected.has(adjacentId) && !reachable.has(adjacentId)) {
+				queue.push(adjacentId);
+			}
+		}
+	}
+
+	return reachable;
+}
+
+/**
  * Get all unlocked advancement nodes for an actor
  * @param {Actor} actor - The actor to check
  * @returns {Set<string>} Set of unlocked node IDs

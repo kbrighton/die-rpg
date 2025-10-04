@@ -62,4 +62,43 @@
       </g>
     {{/each}}
   </svg>
+
+  {{! Advancement Details Accordion }}
+  <div class="advancement-accordion">
+    <h3>Advancement Pool</h3>
+    {{#each (getAdvancementsWithPositions paragonItem actor) as |item|}}
+      <details class="advancement-detail">
+        <summary class="advancement-summary">
+          <span class="advancement-number">[{{item.advancement.id}}]</span>
+          <span class="advancement-name">{{item.advancement.name}}</span>
+        </summary>
+        <div class="advancement-body">
+          {{#if item.advancement.description}}
+            <div class="advancement-description">
+              {{{item.advancement.description}}}
+            </div>
+          {{/if}}
+          <div class="advancement-positions">
+            <strong>Positions on Map:</strong>
+            <ul>
+              {{#each item.positions as |pos|}}
+                <li class="position-{{pos.state}}">
+                  <span class="position-id">{{pos.nodeId}}</span>:
+                  {{#if pos.selected}}
+                    <span class="position-state selected">✓ Selected</span>
+                  {{else if (eq pos.state "locked")}}
+                    <span class="position-state locked">🔒 Locked</span>
+                  {{else if (eq pos.state "level")}}
+                    <span class="position-state level-locked">⚠ Level Required</span>
+                  {{else}}
+                    <span class="position-state available">○ Available</span>
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </details>
+    {{/each}}
+  </div>
 </section>
