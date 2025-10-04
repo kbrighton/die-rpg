@@ -7,7 +7,7 @@ export async function rollStat(dataset, actor) {
 
   // --- Gather Specials from Actor's Owned Items ---
   // Filter owned items that have a 'specials' array and it's not empty.
-  // TODO: Refine filtering logic if needed (e.g., only active equipped gear, passive features)
+  // TODO: Refine filtering logic if needed (e.g., only active equipped Equipment, passive features)
   const actorSpecials = actor.items
     .filter(item => item.system?.specials && Array.isArray(item.system.specials) && item.system.specials.length > 0)
     .flatMap(item => item.system.specials); // Extract the specials arrays

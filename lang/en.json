@@ -23,7 +23,7 @@
 			"Tabs": {
 				"Biography": "Biography",
 				"Features": "Features",
-				"Gear": "Gear",
+				"Equipment": "Equipment",
 				"Abilities": "Abilities",
 				"Effects": "Effects",
 				"Class": "Class",
@@ -55,9 +55,10 @@
 				"Specials": "Specials",
 				"Looks": "Looks",
 				"Advancements": "Advancements",
-				"Details": "Details"
+				"Details": "Details",
+				"Equipment": "Equipment"
 			},
-			"Gear": {
+			"Equipment": {
 				"FIELDS": {
 					"rollFormula": { "label": "Roll Formula" },
 					"numDice": { "label": "Number of Dice" },
@@ -351,7 +352,7 @@
 			"npc": "NPC"
 		},
 		"Item": {
-			"gear": "Gear",
+			"equipment": "Equipment",
 			"feature": "Feature",
 			"ability": "Ability",
 			"class": "Class",

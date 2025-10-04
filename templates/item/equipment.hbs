@@ -1,6 +1,6 @@
-<section class='attributes gear'>
+<section class="tab equipment {{tab.cssClass}}"  data-group="primary" data-tab="equipment" data-subtype="{{document.type}}">
   <div class='form-group'>
-    <label>{{localize 'DIE_RPG.Item.Gear.FIELDS.defenseBonus.label'}}</label>
+    <label>{{localize 'DIE_RPG.Item.Equipment.FIELDS.defenseBonus.label'}}</label>
     <input
       type='number'
       name='system.defenseBonus'
@@ -11,7 +11,7 @@
   </div>
 
   <div class='form-group'>
-    <label>{{localize 'DIE_RPG.Item.Gear.FIELDS.rollModType.label'}}</label>
+    <label>{{localize 'DIE_RPG.Item.Equipment.FIELDS.rollModType.label'}}</label>
     <select name='system.rollModType'>
       {{selectOptions config.rollModTypes name="system.rollModType" selected=system.rollModType localize=true}}
     </select>
@@ -19,7 +19,7 @@
 
   {{#if (eq system.rollModType 'add_dice')}}
     <div class='form-group'>
-      <label>{{localize 'DIE_RPG.Item.Gear.FIELDS.rollModValue.label'}}</label>
+      <label>{{localize 'DIE_RPG.Item.Equipment.FIELDS.rollModValue.label'}}</label>
       <input
         type='number'
         name='system.rollModValue'
@@ -30,7 +30,7 @@
   {{/if}}
 
   <div class='form-group'>
-    <label>{{localize 'DIE_RPG.Item.Gear.FIELDS.specialText.label'}}</label>
+    <label>{{localize 'DIE_RPG.Item.Equipment.FIELDS.specialText.label'}}</label>
     <input
       type='text'
       name='system.specialText'

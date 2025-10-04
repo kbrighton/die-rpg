@@ -45,7 +45,7 @@ export class DieRpgActor extends Actor {
     // let defenseBonus = 0;
     // for (const item of this.items) {
     //   // TODO: Add check for equipped status if applicable
-    //   if (item.type === 'gear' && item.system?.defenseBonus) {
+    //   if (item.type === 'equipment' && item.system?.defenseBonus) {
     //     defenseBonus += item.system.defenseBonus;
     //   }
     // }

@@ -218,15 +218,15 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // You can just use `this.document.itemTypes` instead
     // if you don't need to subdivide a given type like
     // this sheet does with abilities
-    // const gear = [];
+    // const equipment = [];
     // const features = [];
     // const abilities = []; // Changed from spells object to simple array
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
-      // // Append to gear.
-      // if (i.type === 'gear') {
-      //   gear.push(i);
+      // // Append to equipment.
+      // if (i.type === 'equipment') {
+      //   equipment.push(i);
       // }
       // // Append to features.
       // else if (i.type === 'feature') {
@@ -239,7 +239,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     }
 
     // Sort then assign
-    // context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    // context.equipment = equipment.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     // context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     // context.abilities = abilities.sort((a, b) => (a.sort || 0) - (b.sort || 0)); // Changed from spells
   }
