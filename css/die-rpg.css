@@ -707,11 +707,10 @@
   cursor: not-allowed;
 }
 .die-rpg .tab.advancements .triangle-label {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   fill: #fff;
   user-select: none;
-  text-transform: uppercase;
   font-family: sans-serif;
 }
 .die-rpg .tab.advancements .triangle-label .lock-icon {
@@ -722,6 +721,86 @@
 }
 .level-locked ~ .die-rpg .tab.advancements .triangle-label {
   opacity: 0.8;
+}
+.die-rpg .tab.advancements .advancement-accordion {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.die-rpg .tab.advancements .advancement-accordion h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-detail {
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-detail[open] {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-summary {
+  padding: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-summary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-summary .advancement-number {
+  color: #ffa500;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-summary .advancement-name {
+  flex: 1;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-body {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-description {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions li {
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-id {
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #aaa;
+  min-width: 4rem;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.selected {
+  color: #00ff00;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.locked {
+  color: #888;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.level-locked {
+  color: #ffa500;
+}
+.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.available {
+  color: #4a9eff;
 }
 
 /*# sourceMappingURL=die-rpg.css.map */

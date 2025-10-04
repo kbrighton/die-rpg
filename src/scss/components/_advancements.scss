@@ -139,11 +139,10 @@
   }
 
   .triangle-label {
-    font-size: 18px;
+    font-size: 16px; // Smaller for numeric IDs
     font-weight: bold;
     fill: #fff;
     user-select: none;
-    text-transform: uppercase;
     font-family: sans-serif;
 
     // Lock icon
@@ -160,4 +159,112 @@
       opacity: 0.8;
     }
   }
+
+  // ========================================
+  // ADVANCEMENT ACCORDION COMPONENT
+  // (Isolated section - can be moved easily)
+  // ========================================
+  .advancement-accordion {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 0.5rem;
+    }
+
+    .advancement-detail {
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.2);
+
+      &[open] {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .advancement-summary {
+      padding: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .advancement-number {
+        color: #ffa500;
+        font-family: monospace;
+        font-size: 1.1em;
+      }
+
+      .advancement-name {
+        flex: 1;
+      }
+    }
+
+    .advancement-body {
+      padding: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .advancement-description {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .advancement-positions {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0 0;
+      }
+
+      li {
+        padding: 0.25rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .position-id {
+        font-family: monospace;
+        font-size: 0.9em;
+        color: #aaa;
+        min-width: 4rem;
+      }
+
+      .position-state {
+        &.selected {
+          color: #00ff00;
+        }
+
+        &.locked {
+          color: #888;
+        }
+
+        &.level-locked {
+          color: #ffa500;
+        }
+
+        &.available {
+          color: #4a9eff;
+        }
+      }
+    }
+  }
+  // ========================================
+  // END ADVANCEMENT ACCORDION COMPONENT
+  // ========================================
 }
