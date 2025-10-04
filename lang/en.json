@@ -16,7 +16,8 @@
 		},
 		"SheetLabels": {
 			"Actor": "DieRpg Actor Sheet",
-			"Item": "DieRpg Item Sheet"
+			"Item": "DieRpg Item Sheet",
+			"Paragon": "DieRpg Paragon Sheet"
 		},
 		"Actor": {
 			"Tabs": {
@@ -46,6 +47,16 @@
 			}
 		},
 		"Item": {
+			"FIELDS": {
+				"Description": { "label": "Description" }
+			},
+			"Tabs": {
+				"Description": "Description",
+				"Specials": "Specials",
+				"Looks": "Looks",
+				"Advancements": "Advancements",
+				"Details": "Details"
+			},
 			"Gear": {
 				"FIELDS": {
 					"rollFormula": { "label": "Roll Formula" },
@@ -236,6 +247,7 @@
 						"icon": { "label": "Advancement Icon" }
 					}
 				},
+				"Details": {"label": "Details"},
 				"AddLook": "Add Look",
 				"AddSpecial": "Add Special"
 			}

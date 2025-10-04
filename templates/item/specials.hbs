@@ -1,6 +1,7 @@
-{{!-- Paragon Specials Tab --}}
-<section class="paragon-specials">
-  <h3>{{localize 'DIE_RPG.Item.Paragon.FIELDS.specials.label'}}</h3>
+{{!-- Specials Tab --}}
+{{!-- TODO: this needs to be generic NOT just for paragons --}}
+<section class="tab specials {{tab.cssClass}}"  data-group="primary" data-tab="specials" data-subtype="{{document.type}}">
+  <h2>{{localize 'DIE_RPG.Item.Paragon.FIELDS.specials.label'}}</h2>
   <p class="hint">Special abilities that can be activated when rolling 6+ on dice.</p>
 
   <ol class="specials-list">

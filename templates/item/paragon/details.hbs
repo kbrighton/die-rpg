@@ -1,6 +1,6 @@
 {{!-- Paragon Details Tab --}}
-<section class="paragon-details">
-
+<section class="tab details {{tab.cssClass}}"  data-group="primary" data-tab="details" data-subtype="{{document.type}}">
+  <h2>{{localize 'DIE_RPG.Item.Paragon.Details.label'}}</h2>
   {{!-- Core Nature --}}
   <div class="form-group stacked">
     <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.label'}}</label>
@@ -44,5 +44,4 @@
       </div>
     </div>
   </fieldset>
-
 </section>

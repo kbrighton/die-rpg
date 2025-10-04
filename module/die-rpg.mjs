@@ -4,6 +4,7 @@ import { DieRpgItem } from './documents/item.mjs';
 // Import sheet classes.
 import { DieRpgActorSheet } from './sheets/actor-sheet.mjs';
 import { DieRpgItemSheet } from './sheets/item-sheet.mjs';
+import { DieRpgParagonSheet } from './sheets/paragon-item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { DIE_RPG } from './helpers/config.mjs';
 // Import DataModel classes
@@ -27,6 +28,7 @@ globalThis.die_rpg = {
   applications: {
     DieRpgActorSheet,
     DieRpgItemSheet,
+    DieRpgParagonSheet,
   },
   utils: {
     rollItemMacro,
@@ -80,6 +82,11 @@ Hooks.once('init', function () {
   collections.Items.registerSheet('die-rpg', DieRpgItemSheet, {
     makeDefault: true,
     label: 'DIE_RPG.SheetLabels.Item',
+  });
+  collections.Items.registerSheet('die-rpg', DieRpgParagonSheet, {
+    types: ['paragon'],
+    makeDefault: true,
+    label: 'DIE_RPG.SheetLabels.Paragon',
   });
 
   // Register system settings
