@@ -49,7 +49,7 @@
   "license": "LICENSE.txt",
   "readme": "README.md",
   "bugs": "https://github.com/philote/die-rpg/issues",
-  "changelog": "CHANGELOG.md",
+  "changelog": "https://github.com/philote/die-rpg/releases",
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 13,
