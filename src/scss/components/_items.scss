@@ -1,37 +1,80 @@
 &.item {
-  .sheet-header {
-    .profile-img {
-				flex: 0 0 300px;
-				height: 300px;
-				// margin-right: 10px;
-				// width: 100%;
-				object-fit: cover;
-				object-position: center right;
-			}
-  }
+	.profile-img {
+		max-height: 200px !important;
+		height: 200px !important;
+	}
+	.window-content {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: auto auto auto 1fr;
+		gap: $gap-md;
+		height: 100%;
+		// margin: $margin-md 0;
+		// padding-top: 0;
+    grid-template-areas:
+			"name sheet-tabs"
+			"image tab-content"
+			"sidebar tab-content";
+
+		.name {
+      grid-area: name;
+			// grid-column: 1;
+			// grid-row: 1;
+		}
+
+		.image {
+      grid-area: image;
+			// grid-column: 1;
+			// grid-row: 2;
+		}
+
+		.sidebar {
+      grid-area: sidebar;
+			// grid-column: 1;
+			// grid-row: 3;
+		}
+
+		.sheet-tabs {
+      grid-area: sheet-tabs;
+			// grid-column: 2;
+			// grid-row: 1 / -1; /* Span all rows */
+
+			// display: flex;
+			// flex-direction: column;
+		}
+
+		.tab {
+      grid-area: tab-content;
+			// grid-column: 2;
+			// grid-row: 1 / -1; /* Span all rows */
+
+			// display: flex;
+			// flex-direction: column;
+		}
+	}
 }
 
 // Items on Actors
 // Section Header
 .items-header {
-  height: 28px;
-  margin: 2px 0;
-  padding: 0;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.05);
-  border: $border-groove;
-  font-weight: bold;
-  > * {
-    font-size: 14px;
-    text-align: center;
-  }
-  .item-name {
-    font-weight: bold;
-    padding-left: 5px;
-    text-align: left;
-    display: flex;
-    // font-size: 16px;
-  }
+	height: 28px;
+	margin: 2px 0;
+	padding: 0;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.05);
+	border: $border-groove;
+	font-weight: bold;
+	> * {
+		font-size: 14px;
+		text-align: center;
+	}
+	.item-name {
+		font-weight: bold;
+		padding-left: 5px;
+		text-align: left;
+		display: flex;
+		// font-size: 16px;
+	}
 }
 
 // // -----------------------------------------
@@ -129,7 +172,7 @@
 
 // // Example style for DieRpg (can be removed if not needed).
 // .item-formula {
-  
+
 //   flex: 0 0 200px;
 //   padding: 0 8px;
 // }

@@ -54,11 +54,15 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static PARTS = {
-    header: {
-      template: 'systems/die-rpg/templates/item/header.hbs',
+    name: {
+      template: 'systems/die-rpg/templates/item/name.hbs',
+      scrollable: [""],
+    },
+    img: {
+      template: 'systems/die-rpg/templates/item/img.hbs',
     },
     sidebar: {
-      template: 'systems/die-rpg/templates/actor/sidebar.hbs',
+      template: 'systems/die-rpg/templates/item/sidebar.hbs',
       scrollable: [""],
     },
     tabs: {
@@ -94,8 +98,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // options.position.width = width;
     // options.position.height = height;
 
-    // Start with just the header
-    options.parts = ['header', 'sidebar', 'tabs', 'description', 'specials'];
+    options.parts = ['name', 'img', 'sidebar', 'tabs', 'description', 'specials'];
     // Don't show body if limited view
     // if (this.document.limited) return;
 
@@ -186,7 +189,8 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         label: 'DIE_RPG.Item.Tabs.',
       };
       switch (partId) {
-        case 'header':
+        case 'name':
+        case 'img':
         case 'tabs':
         case 'sidebar':
           return tabs;

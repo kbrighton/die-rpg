@@ -23,16 +23,7 @@
         }
     },
     "Item": {
-        "feature": {
-            "htmlFields": ["description"]
-        },
         "equipment": {
-            "htmlFields": ["description"]
-        },
-        "ability": {
-            "htmlFields": ["description", "effectDescription"]
-        },
-        "class": {
             "htmlFields": ["description"]
         },
         "paragon": {

@@ -386,11 +386,32 @@
 .die-rpg .stat-score {
   flex: 0 0 32px;
 }
-.die-rpg.item .sheet-header .profile-img {
-  flex: 0 0 300px;
-  height: 300px;
-  object-fit: cover;
-  object-position: center right;
+.die-rpg.item .profile-img {
+  max-height: 200px !important;
+  height: 200px !important;
+}
+.die-rpg.item .window-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 10px;
+  height: 100%;
+  grid-template-areas: "name sheet-tabs" "image tab-content" "sidebar tab-content";
+}
+.die-rpg.item .window-content .name {
+  grid-area: name;
+}
+.die-rpg.item .window-content .image {
+  grid-area: image;
+}
+.die-rpg.item .window-content .sidebar {
+  grid-area: sidebar;
+}
+.die-rpg.item .window-content .sheet-tabs {
+  grid-area: sheet-tabs;
+}
+.die-rpg.item .window-content .tab {
+  grid-area: tab-content;
 }
 .die-rpg .items-header {
   height: 28px;
