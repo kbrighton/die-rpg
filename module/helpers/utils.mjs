@@ -2,7 +2,10 @@ import {
   canSelectNode,
   isNodeSelected,
   isNodeLocked,
-  getNodeDisabledReason
+  getNodeDisabledReason,
+  getAdvancementNumberSync,
+  getAdvancementDetailsSync,
+  getAdvancementsWithPositionsSync
 } from './advancements.mjs';
 import {
   getTrianglePoints,
@@ -124,6 +127,22 @@ export function registerHandlebarsHelpers() {
 
 	Handlebars.registerHelper('svgViewBox', function() {
 		return calculateViewBox();
+	});
+
+	// Paragon advancement data helpers
+	// These expect paragonItem to be passed from the template context
+	Handlebars.registerHelper('getAdvancementNumber', function(paragonItem, nodeId) {
+		const num = getAdvancementNumberSync(paragonItem, nodeId);
+		return num ?? '?';
+	});
+
+	Handlebars.registerHelper('getAdvancementName', function(paragonItem, nodeId) {
+		const details = getAdvancementDetailsSync(paragonItem, nodeId);
+		return details?.name ?? 'Unknown';
+	});
+
+	Handlebars.registerHelper('getAdvancementsWithPositions', function(paragonItem, actor) {
+		return getAdvancementsWithPositionsSync(paragonItem, actor);
 	});
 }
 

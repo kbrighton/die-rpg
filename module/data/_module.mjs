@@ -10,3 +10,4 @@ export { default as DieRpgAbility } from './item/ability.mjs';
 export { default as DieRpgClass } from './item/class.mjs';
 export { default as DieRpgPersona } from './item/persona.mjs';
 export { default as DieRpgGear } from './item/gear.mjs';
+export { default as DieRpgParagon } from './item/paragon.mjs';

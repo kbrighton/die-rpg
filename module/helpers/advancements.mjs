@@ -3,6 +3,179 @@
  */
 
 /**
+ * Get the paragon item for an actor
+ * @param {Actor} actor - The actor
+ * @returns {Item|null} The paragon item or null
+ */
+export async function getParagonItem(actor) {
+	// Try to get from UUID first
+	const paragonUuid = actor.system.paragon?.uuid;
+	if (paragonUuid) {
+		try {
+			const item = await fromUuid(paragonUuid);
+			if (item && item.type === 'paragon') {
+				return item;
+			}
+		} catch (err) {
+			console.warn(`DIE RPG | Failed to load paragon item from UUID: ${paragonUuid}`, err);
+		}
+	}
+
+	// Fallback: find first paragon item owned by actor
+	return actor.items.find(i => i.type === 'paragon') || null;
+}
+
+/**
+ * Get the advancement number assigned to a specific node position
+ * @param {Actor} actor - The actor
+ * @param {string} nodeId - Node identifier (e.g., "row1-2")
+ * @returns {number|null} The advancement ID number or null if not found
+ */
+export async function getAdvancementNumber(actor, nodeId) {
+	const paragonItem = await getParagonItem(actor);
+	if (!paragonItem?.system?.advancementAssignments) return null;
+
+	return paragonItem.system.advancementAssignments[nodeId] ?? null;
+}
+
+/**
+ * Get the advancement number assigned to a specific node position (synchronous version)
+ * @param {Item} paragonItem - The paragon item
+ * @param {string} nodeId - Node identifier (e.g., "row1-2")
+ * @returns {number|null} The advancement ID number or null if not found
+ */
+export function getAdvancementNumberSync(paragonItem, nodeId) {
+	if (!paragonItem?.system?.advancementAssignments) return null;
+	return paragonItem.system.advancementAssignments[nodeId] ?? null;
+}
+
+/**
+ * Get the full advancement details for a node position
+ * @param {Actor} actor - The actor
+ * @param {string} nodeId - Node identifier (e.g., "row1-2")
+ * @returns {Object|null} Advancement object {id, name, description, icon} or null
+ */
+export async function getAdvancementDetails(actor, nodeId) {
+	const paragonItem = await getParagonItem(actor);
+	if (!paragonItem) return null;
+
+	const advancementId = paragonItem.system.advancementAssignments?.[nodeId];
+	if (!advancementId) return null;
+
+	return paragonItem.system.advancements?.find(a => a.id === advancementId) ?? null;
+}
+
+/**
+ * Get the full advancement details for a node position (synchronous version)
+ * @param {Item} paragonItem - The paragon item
+ * @param {string} nodeId - Node identifier (e.g., "row1-2")
+ * @returns {Object|null} Advancement object {id, name, description, icon} or null
+ */
+export function getAdvancementDetailsSync(paragonItem, nodeId) {
+	if (!paragonItem) return null;
+
+	const advancementId = paragonItem.system.advancementAssignments?.[nodeId];
+	if (!advancementId) return null;
+
+	return paragonItem.system.advancements?.find(a => a.id === advancementId) ?? null;
+}
+
+/**
+ * Get all node positions that use a specific advancement ID
+ * @param {Actor} actor - The actor
+ * @param {number} advancementId - The advancement ID
+ * @returns {Array<string>} Array of node IDs (e.g., ["row1-1", "row3-2"])
+ */
+export async function getAdvancementPositions(actor, advancementId) {
+	const paragonItem = await getParagonItem(actor);
+	if (!paragonItem?.system?.advancementAssignments) return [];
+
+	const positions = [];
+	for (const [nodeId, aId] of Object.entries(paragonItem.system.advancementAssignments)) {
+		if (aId === advancementId) {
+			positions.push(nodeId);
+		}
+	}
+	return positions;
+}
+
+/**
+ * Get all node positions that use a specific advancement ID (synchronous version)
+ * @param {Item} paragonItem - The paragon item
+ * @param {number} advancementId - The advancement ID
+ * @returns {Array<string>} Array of node IDs (e.g., ["row1-1", "row3-2"])
+ */
+export function getAdvancementPositionsSync(paragonItem, advancementId) {
+	if (!paragonItem?.system?.advancementAssignments) return [];
+
+	const positions = [];
+	for (const [nodeId, aId] of Object.entries(paragonItem.system.advancementAssignments)) {
+		if (aId === advancementId) {
+			positions.push(nodeId);
+		}
+	}
+	return positions;
+}
+
+/**
+ * Get all unique advancements with their positions and states
+ * Used for the accordion display
+ * @param {Actor} actor - The actor
+ * @returns {Array} Array of {advancement, positions: [{nodeId, state}]}
+ */
+export async function getAdvancementsWithPositions(actor) {
+	const paragonItem = await getParagonItem(actor);
+	if (!paragonItem?.system?.advancements) return [];
+
+	const result = [];
+
+	for (const advancement of paragonItem.system.advancements) {
+		const positions = await getAdvancementPositions(actor, advancement.id);
+		const positionsWithStates = positions.map(nodeId => ({
+			nodeId,
+			selected: isNodeSelected(actor, nodeId),
+			state: getNodeDisabledReason(actor, nodeId) || 'available'
+		}));
+
+		result.push({
+			advancement,
+			positions: positionsWithStates
+		});
+	}
+
+	return result;
+}
+
+/**
+ * Get all unique advancements with their positions and states (synchronous version)
+ * Used for the accordion display
+ * @param {Item} paragonItem - The paragon item
+ * @param {Actor} actor - The actor (for state checking)
+ * @returns {Array} Array of {advancement, positions: [{nodeId, state}]}
+ */
+export function getAdvancementsWithPositionsSync(paragonItem, actor) {
+	if (!paragonItem?.system?.advancements) return [];
+
+	const result = [];
+
+	for (const advancement of paragonItem.system.advancements) {
+		const positions = getAdvancementPositionsSync(paragonItem, advancement.id);
+		const positionsWithStates = positions.map(nodeId => ({
+			nodeId,
+			selected: isNodeSelected(actor, nodeId),
+			state: getNodeDisabledReason(actor, nodeId) || 'available'
+		}));
+
+		result.push({
+			advancement,
+			positions: positionsWithStates
+		});
+	}
+
+	return result;
+}
+
+/**
  * Get all unlocked advancement nodes for an actor
  * @param {Actor} actor - The actor to check
  * @returns {Set<string>} Set of unlocked node IDs

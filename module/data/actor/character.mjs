@@ -20,6 +20,7 @@ export default class DieRpgCharacter extends DieRpgActorBase {
 
     schema.paragon = new fields.SchemaField({
       name: new fields.StringField({ required: true, blank: true }),
+      uuid: new fields.StringField({ required: false, blank: true, initial: '' }),
       nature: new fields.HTMLField(),
       die: new fields.SetField(setOptions()),
       importantStat: new fields.StringField({ required: true, blank: true }),

@@ -62,6 +62,7 @@ Hooks.once('init', function () {
     gear: models.DieRpgGear,
     feature: models.DieRpgFeature,
     ability: models.DieRpgAbility,
+    paragon: models.DieRpgParagon,
   };
 
   // Active Effects are never copied to the Actor,

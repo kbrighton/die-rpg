@@ -181,6 +181,18 @@
 					"familiarObsessions": { "label": "Familiar Obsessions" },
 					"playerNotes": { "label": "Player Notes" }
 				}
+			},
+			"Paragon": {
+				"FIELDS": {
+					"advancementAssignments": { "label": "Advancement Assignments" },
+					"advancements": { "label": "Advancements" },
+					"advancement": {
+						"id": { "label": "Advancement ID" },
+						"name": { "label": "Advancement Name" },
+						"description": { "label": "Advancement Description" },
+						"icon": { "label": "Advancement Icon" }
+					}
+				}
 			}
 		},
 		"Effect": {
@@ -286,7 +298,8 @@
 			"feature": "Feature",
 			"ability": "Ability",
 			"class": "Class",
-			"persona": "Persona"
+			"persona": "Persona",
+			"paragon": "Paragon"
 		}
 	}
 }

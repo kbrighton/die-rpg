@@ -124,9 +124,14 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'class':
-      case 'advancements':
       case 'persona':
         context.tab = context.tabs[partId];
+        break;
+      case 'advancements':
+        context.tab = context.tabs[partId];
+        // Fetch paragon item data for advancements
+        const { getParagonItem } = await import('../helpers/advancements.mjs');
+        context.paragonItem = await getParagonItem(this.actor);
         break;
       case 'notes':
         context.tab = context.tabs[partId];

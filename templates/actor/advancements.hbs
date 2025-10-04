@@ -42,6 +42,8 @@
             data-advancement-tooltip="Locked"
           {{~else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
             data-advancement-tooltip="Increase level to unlock"
+          {{~else}}
+            data-advancement-tooltip="{{getAdvancementName @root.paragonItem nodeId}}"
           {{~/if}}
         />
         <text
@@ -54,7 +56,7 @@
           {{#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
             <tspan class="lock-icon">🔒</tspan>
           {{else}}
-            <tspan>{{nodeId}}</tspan>
+            <tspan>{{getAdvancementNumber @root.paragonItem nodeId}}</tspan>
           {{/if}}
         </text>
       </g>
