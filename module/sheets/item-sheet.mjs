@@ -1,6 +1,6 @@
 import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
 
-const { api, sheets } = foundry.applications;
+const { api, sheets, ux } = foundry.applications;
 const DragDrop = foundry.applications.ux.DragDrop;
 
 /**
@@ -19,7 +19,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     classes: ['die-rpg', 'item'],
     position: {
       width: 700,
-      height: 400,
+      height: 500,
+    },
+    window: {
+      resizable: true,
     },
     actions: {
       onEditImage: this._onEditImage,
@@ -27,6 +30,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
       toggleEffect: this._toggleEffect,
+      addLook: this._addLook,
+      deleteLook: this._deleteLook,
+      addSpecial: this._addSpecial,
+      deleteSpecial: this._deleteSpecial,
     },
     form: {
       submitOnChange: true,
@@ -41,8 +48,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   static TABS = {
     primary: {
       tabs: [
-        { id: "equipment" },
         { id: "description" },
+        { id: "details" },
+        { id: "equipment" },
+        { id: "advancements" },
+        { id: "looks" },
         { id: "specials" },
       ],
       initial: "description",
@@ -70,16 +80,31 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       template: 'templates/generic/tab-navigation.hbs',
     },
     // Tab sheets
-    equipment: {
-      template: 'systems/die-rpg/templates/item/equipment.hbs',
-      classes: ["scrollable"],
-      scrollable: [""],
-    },
     description: {
 			template: "systems/die-rpg/templates/item/description.hbs",
       classes: ["scrollable"],
       scrollable: [""],
 		},
+    details: {
+      template: 'systems/die-rpg/templates/item/paragon/details.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    equipment: {
+      template: 'systems/die-rpg/templates/item/equipment.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    advancements: {
+      template: 'systems/die-rpg/templates/item/paragon/advancements.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    looks: {
+      template: 'systems/die-rpg/templates/item/paragon/looks.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
     specials: {
       template: 'systems/die-rpg/templates/item/specials.hbs',
       classes: ["scrollable"],
@@ -91,28 +116,23 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
 
-    // Set dimensions based on item type
-    // let width = 400;
-    // let height = 500;
-    // if (this.item.type === 'ability') {
-    //   width = 600;
-    //   height = 700;
-    // }
-    // options.position.width = width;
-    // options.position.height = height;
+    // Base parts for all items
+    options.parts = ['name', 'img', 'tabs'];
 
-    options.parts = ['name', 'img', 'tabs', 'description', 'specials'];
-    // Don't show body if limited view
-    // if (this.document.limited) return;
-
-    // Add the appropriate body part based on item type
+    // Add the appropriate parts based on item type
     switch (this.document.type) {
-      case 'equipment':
-        options.parts.push('equipment');
+      case 'paragon':
+        options.parts.push('description', 'details', 'advancements', 'looks', 'specials');
         break;
+      case 'equipment':
+        options.parts.push('description', 'equipment', 'specials');
+        break;
+      case 'ability':
+      case 'feature':
+      case 'class':
+      case 'persona':
       default:
-        // Optionally handle unknown types or fallback to a default body
-        console.warn(`DIE RPG | Unknown item type "${this.document.type}" for sheet rendering.`);
+        options.parts.push('description', 'specials');
         break;
     }
   }
@@ -145,15 +165,28 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
+      case 'advancements':
+      case 'looks':
       case 'equipment':
       case 'specials':
         context.tab = context.tabs[partId];
+        break;
+      case 'details':
+        context.tab = context.tabs[partId];
+        context.enrichedCoreNature = await ux.TextEditor.enrichHTML(
+          this.item.system.coreNature,
+          {
+            secrets: this.document.isOwner,
+            rollData: this.item.getRollData(),
+            relativeTo: this.item,
+          }
+        );
         break;
       case 'description':
         context.tab = context.tabs[partId];
         // Enrich description for the description tab
         // Enrichment turns text like `[[/r 1d20]]` into buttons
-        context.enrichedDescription = await TextEditor.enrichHTML(
+        context.enrichedDescription = await ux.TextEditor.enrichHTML(
           this.item.system.description,
           {
             // Whether to show secret blocks in the finished html
@@ -201,9 +234,21 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'description';
           tab.label += 'Description';
           break;
+        case 'details':
+          tab.id = 'details';
+          tab.label += 'Details';
+          break;
         case 'equipment':
           tab.id = 'equipment';
           tab.label += 'Equipment';
+          break;
+        case 'advancements':
+          tab.id = 'advancements';
+          tab.label += 'Advancements';
+          break;
+        case 'looks':
+          tab.id = 'looks';
+          tab.label += 'Looks';
           break;
         case 'specials':
           tab.id = 'specials';
@@ -350,6 +395,74 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     await effect.update({ disabled: !effect.disabled });
   }
 
+  /**
+   * Add a new look to the paragon's looks array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addLook(event, target) {
+    event.preventDefault();
+    const looks = this.item.system.looks || [];
+    const newLook = { name: '', description: '', defenseBonus: 0 };
+    await this.item.update({ 'system.looks': [...looks, newLook] });
+  }
+
+  /**
+   * Delete a look from the paragon's looks array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteLook(event, target) {
+    event.preventDefault();
+    const index = parseInt(target.dataset.index);
+    const looks = [...this.item.system.looks];
+    looks.splice(index, 1);
+    await this.item.update({ 'system.looks': looks });
+  }
+
+  /**
+   * Add a new special to the paragon's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addSpecial(event, target) {
+    event.preventDefault();
+    const specials = this.item.system.specials || [];
+    const newSpecial = {
+      name: '',
+      description: '',
+      cost: 'special',
+      mandatory: false,
+      key: ''
+    };
+    await this.item.update({ 'system.specials': [...specials, newSpecial] });
+  }
+
+  /**
+   * Delete a special from the paragon's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteSpecial(event, target) {
+    event.preventDefault();
+    const index = parseInt(target.dataset.index);
+    const specials = [...this.item.system.specials];
+    specials.splice(index, 1);
+    await this.item.update({ 'system.specials': specials });
+  }
+
   /** Helper Functions */
 
   /**
@@ -427,7 +540,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event);
+    const data = ux.TextEditor.getDragEventData(event);
     const item = this.item;
     const allowed = Hooks.call('dropItemSheetData', item, this, data);
     if (allowed === false) return;
