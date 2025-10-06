@@ -300,7 +300,7 @@ function _buildSpecialsHTML(actor, availableSpecials, specialDiceCount) {
   }
 
   // Filter specials that can be afforded with the rolled 6s
-  const affordableSpecials = availableSpecials.filter(s => specialDiceCount >= (s.cost || 1));
+  const affordableSpecials = availableSpecials.filter(s => specialDiceCount >= CONFIG.DIE_RPG.getSpecialCostValue(s.cost));
 
   if (affordableSpecials.length === 0) {
     return '';
@@ -311,8 +311,10 @@ function _buildSpecialsHTML(actor, availableSpecials, specialDiceCount) {
     if (a.mandatory !== b.mandatory) {
       return a.mandatory ? -1 : 1; // Mandatory first
     }
-    if ((a.cost || 1) !== (b.cost || 1)) {
-      return (a.cost || 1) - (b.cost || 1); // Lower cost first
+    const costA = CONFIG.DIE_RPG.getSpecialCostValue(a.cost);
+    const costB = CONFIG.DIE_RPG.getSpecialCostValue(b.cost);
+    if (costA !== costB) {
+      return costA - costB; // Lower cost first
     }
     return (a.name || '').localeCompare(b.name || ''); // Alphabetical by name
   });
@@ -320,7 +322,7 @@ function _buildSpecialsHTML(actor, availableSpecials, specialDiceCount) {
   let html = '<div class="specials-list"><strong>Available Specials:</strong><ul>';
 
   affordableSpecials.forEach(special => {
-    const cost = special.cost || 1;
+    const cost = CONFIG.DIE_RPG.getSpecialCostValue(special.cost);
     const name = special.name || 'Unnamed Special';
     const description = special.description || '';
     const mandatoryText = special.mandatory ? ' <strong style="color:orange;">(Mandatory)</strong>' : '';

@@ -45,12 +45,11 @@ export const specialsArrayField = ({ label = 'DIE_RPG.Item.Paragon.FIELDS.specia
       initial: '',
       label: 'DIE_RPG.Shared.special.description.label'
     }),
-    cost: new NumberField({
+    cost: new StringField({
       required: true,
-      integer: true,
-      initial: 1,
-      min: 1,
-      max: 4,
+      blank: false,
+      initial: 'special',
+      choices: ['special', 'double', 'triple', 'quad', 'twenty'],
       label: 'DIE_RPG.Shared.special.cost.label',
       hint: 'DIE_RPG.Shared.special.cost.hint'
     }),

@@ -137,6 +137,34 @@ DIE_RPG.rollModTypes = {
 	add_dice: "DIE_RPG.RollModType.add_dice",
 };
 
+/**
+ * Special ability cost types
+ * @type {Object}
+ */
+DIE_RPG.specialCostTypes = {
+	special: "DIE_RPG.SpecialCostType.special",
+	double: "DIE_RPG.SpecialCostType.double",
+	triple: "DIE_RPG.SpecialCostType.triple",
+	quad: "DIE_RPG.SpecialCostType.quad",
+	twenty: "DIE_RPG.SpecialCostType.twenty"
+};
+
+/**
+ * Helper function to convert special cost type to numeric value for roll calculations
+ * @param {string} costType - The cost type key (e.g., 'special', 'double', 'triple', 'quad', 'twenty')
+ * @returns {number} The numeric cost value (1-4)
+ */
+DIE_RPG.getSpecialCostValue = function(costType) {
+	const costMap = {
+		special: 1,
+		double: 2,
+		triple: 3,
+		quad: 4,
+		twenty: 1  // 20-Special requires one nat 20, treated as cost 1 for 6+ counting
+	};
+	return costMap[costType] || 1;
+};
+
 // Paragon Advancement Map
 DIE_RPG.PARAGON_ADVANCEMENT_MAP = {
 	nodes: {

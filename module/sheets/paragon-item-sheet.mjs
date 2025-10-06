@@ -328,7 +328,7 @@ export class DieRpgParagonSheet extends api.HandlebarsApplicationMixin(
     const newSpecial = {
       name: '',
       description: '',
-      cost: 1,
+      cost: 'special',
       mandatory: false,
       key: ''
     };

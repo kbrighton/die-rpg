@@ -5,8 +5,8 @@
 				"name": { "label": "Special Name" },
 				"description": { "label": "Description" },
 				"cost": {
-					"label": "Cost (6+s)",
-					"hint": "How many 6+ results are needed to activate"
+					"label": "Special Type",
+					"hint": "The type of special and what is required to activate it"
 				},
 				"mandatory": {
 					"label": "Mandatory?",
@@ -336,6 +336,13 @@
 			"advantage": "Advantage",
 			"disadvantage": "Disadvantage",
 			"add_dice": "Add Dice"
+		},
+		"SpecialCostType": {
+			"special": "Special (6+)",
+			"double": "Double-Special (2×6+)",
+			"triple": "Triple-Special (3×6+)",
+			"quad": "Quad-Special (4×6+)",
+			"twenty": "20-Special (20)"
 		},
 		"Settings": {
 			"game": {
