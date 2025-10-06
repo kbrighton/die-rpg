@@ -263,9 +263,6 @@
   margin-top: 0;
   padding-top: 0;
 }
-.die-rpg .window-content {
-  overflow: hidden auto;
-}
 .die-rpg.actor .window-content {
   display: grid;
   grid-template-columns: 1fr 2fr;

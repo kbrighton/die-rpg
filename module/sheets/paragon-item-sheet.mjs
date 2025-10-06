@@ -19,7 +19,7 @@ export class DieRpgParagonSheet extends api.HandlebarsApplicationMixin(
     classes: ['die-rpg', 'item', 'paragon'],
     position: {
       width: 700,
-      height: 800,
+      height: 600,
     },
     actions: {
       onEditImage: this._onEditImage,
@@ -56,32 +56,45 @@ export class DieRpgParagonSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static PARTS = {
-    header: {
-      template: 'systems/die-rpg/templates/item/header.hbs',
+    name: {
+      template: 'systems/die-rpg/templates/item/name.hbs',
+    },
+    img: {
+      template: 'systems/die-rpg/templates/item/img.hbs',
+    },
+    sidebar: {
+      template: 'systems/die-rpg/templates/item/sidebar.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
     },
     tabs: {
       // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs",
+      template: 'templates/generic/tab-navigation.hbs',
     },
     // Tab sheets
     description: {
       template: 'systems/die-rpg/templates/item/description.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     details: {
       template: 'systems/die-rpg/templates/item/paragon/details.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     advancements: {
       template: 'systems/die-rpg/templates/item/paragon/advancements.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     looks: {
       template: 'systems/die-rpg/templates/item/paragon/looks.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     specials: {
       template: 'systems/die-rpg/templates/item/specials.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
   };
@@ -89,7 +102,7 @@ export class DieRpgParagonSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    options.parts = ['header', 'tabs', 'description', 'details', 'advancements', 'looks', 'specials'];
+    options.parts = ['name', 'img', 'tabs', 'description', 'details', 'advancements', 'looks', 'specials'];
     // Don't show the other tabs if only limited view
     // if (this.document.limited) return;
   }
@@ -128,18 +141,24 @@ export class DieRpgParagonSheet extends api.HandlebarsApplicationMixin(
       case 'specials':
         context.tab = context.tabs[partId];
         break;
+      case 'details':
+        context.tab = context.tabs[partId];
+        context.enrichedCoreNature = await TextEditor.enrichHTML(
+          this.item.system.coreNature,
+          {
+            secrets: this.document.isOwner,
+            rollData: this.item.getRollData(),
+            relativeTo: this.item,
+          }
+        );
+        break;
       case 'description':
         context.tab = context.tabs[partId];
-        // Enrich description for the description tab
-        // Enrichment turns text like `[[/r 1d20]]` into buttons
         context.enrichedDescription = await TextEditor.enrichHTML(
           this.item.system.description,
           {
-            // Whether to show secret blocks in the finished html
             secrets: this.document.isOwner,
-            // Data to fill in for inline rolls
             rollData: this.item.getRollData(),
-            // Relative UUID resolution
             relativeTo: this.item,
           }
         );
@@ -171,8 +190,10 @@ export class DieRpgParagonSheet extends api.HandlebarsApplicationMixin(
         label: 'DIE_RPG.Item.Tabs.',
       };
       switch (partId) {
-        case 'header':
+        case 'name':
+        case 'img':
         case 'tabs':
+        case 'sidebar':
           return tabs;
         case 'description':
           tab.id = 'description';

@@ -1,4 +1,5 @@
 import DieRpgItemBase from './base.mjs';
+import { specialsArrayField } from '../helpers.mjs';
 
 export default class DieRpgEquipment extends DieRpgItemBase { // Changed class name for clarity
   static LOCALIZATION_PREFIXES = [
@@ -56,16 +57,7 @@ export default class DieRpgEquipment extends DieRpgItemBase { // Changed class n
     });
 
     // Structured field for Specials
-    schema.specials = new fields.ArrayField(new fields.SchemaField({
-        name: new fields.StringField({ required: true, blank: false, label: 'DIE_RPG.Item.Special.FIELDS.name.label' }),
-        description: new fields.StringField({ required: true, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.description.label' }),
-        cost: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, label: 'DIE_RPG.Item.Special.FIELDS.cost.label' }), // Cost in 6+ dice
-        mandatory: new fields.BooleanField({ required: true, initial: false, label: 'DIE_RPG.Item.Special.FIELDS.mandatory.label' }),
-        key: new fields.StringField({ required: false, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.key.label' }) // Optional unique key
-      }), {
-        label: 'DIE_RPG.Item.Equipment.FIELDS.specials.label', // Assuming localization key
-        elementLabel: 'DIE_RPG.Item.Special.label' // Assuming localization key for individual special entry
-    });
+    schema.specials = specialsArrayField({ label: 'DIE_RPG.Item.Equipment.FIELDS.specials.label' });
 
 
     return schema;

@@ -1,11 +1,17 @@
 {{!-- Paragon Details Tab --}}
 <section class="tab details {{tab.cssClass}}"  data-group="primary" data-tab="details" data-subtype="{{document.type}}">
-  <h2>{{localize 'DIE_RPG.Item.Paragon.Details.label'}}</h2>
+  {{!-- <h2>{{localize 'DIE_RPG.Item.Paragon.Details.label'}}</h2> --}}
   {{!-- Core Nature --}}
   <div class="form-group stacked">
     <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.label'}}</label>
     <div class="editor">
-      {{editor system.coreNature target="system.coreNature" button=true editable=editable}}
+      {{#if editable}} 
+        <prose-mirror name="system.coreNature" data-document-u-u-i-d="{{item.uuid}}" value="{{system.coreNature}}" collaborate="true" toggled="true">
+          {{{enrichedCoreNature}}}
+        </prose-mirror>
+      {{else}} 
+        {{{enrichedCoreNature}}}
+      {{/if}}
     </div>
     <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.hint'}}</p>
   </div>

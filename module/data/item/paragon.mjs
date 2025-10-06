@@ -1,4 +1,5 @@
 import DieRpgItemBase from './base.mjs';
+import { specialsArrayField } from '../helpers.mjs';
 
 /**
  * Data model for Paragon items.
@@ -71,7 +72,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
       new fields.SchemaField({
         name: new fields.StringField({
           required: true,
-          blank: false,
+          blank: true,
           initial: '',
           label: 'DIE_RPG.Item.Paragon.FIELDS.look.name.label'
         }),
@@ -96,48 +97,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
     );
 
     // Specials - Special abilities that can be activated with 6+ rolls
-    schema.specials = new fields.ArrayField(
-      new fields.SchemaField({
-        name: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: '',
-          label: 'DIE_RPG.Item.Paragon.FIELDS.special.name.label'
-        }),
-        description: new fields.HTMLField({
-          required: true,
-          blank: true,
-          initial: '',
-          label: 'DIE_RPG.Item.Paragon.FIELDS.special.description.label'
-        }),
-        cost: new fields.NumberField({
-          required: true,
-          integer: true,
-          initial: 1,
-          min: 1,
-          max: 4,
-          label: 'DIE_RPG.Item.Paragon.FIELDS.special.cost.label',
-          hint: 'DIE_RPG.Item.Paragon.FIELDS.special.cost.hint'
-        }),
-        mandatory: new fields.BooleanField({
-          required: true,
-          initial: false,
-          label: 'DIE_RPG.Item.Paragon.FIELDS.special.mandatory.label',
-          hint: 'DIE_RPG.Item.Paragon.FIELDS.special.mandatory.hint'
-        }),
-        key: new fields.StringField({
-          required: false,
-          blank: true,
-          initial: '',
-          label: 'DIE_RPG.Item.Paragon.FIELDS.special.key.label',
-          hint: 'DIE_RPG.Item.Paragon.FIELDS.special.key.hint'
-        })
-      }),
-      {
-        initial: [],
-        label: 'DIE_RPG.Item.Paragon.FIELDS.specials.label'
-      }
-    );
+    schema.specials = specialsArrayField();
 
     // ========================================
     // ADVANCEMENT SYSTEM (EXISTING)

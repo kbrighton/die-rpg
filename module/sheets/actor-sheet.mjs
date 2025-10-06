@@ -49,7 +49,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     },
     stats: {
       template: 'systems/die-rpg/templates/actor/stats.hbs',
-      scrollable: [""],
     },
     tabs: {
       // Foundry-provided generic template
@@ -58,18 +57,22 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Tab sheets
     class: {
       template: 'systems/die-rpg/templates/actor/class.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     advancements: {
       template: 'systems/die-rpg/templates/actor/advancements.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     persona: {
       template: 'systems/die-rpg/templates/actor/persona.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     notes: {
       template: 'systems/die-rpg/templates/actor/notes.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
   };

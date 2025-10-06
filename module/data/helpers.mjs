@@ -1,4 +1,4 @@
-const { NumberField, SchemaField, StringField } = foundry.data.fields;
+const { ArrayField, BooleanField, HTMLField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * Constructs a number field that is always a number with a min of 0.
@@ -21,3 +21,55 @@ export const requiredInteger = ({ initial = 0, min = 0, max, label } = {}) => ne
  * @returns A string field that is always truthy.
  */
 export const setOptions = ({ choices, validate } = {}) => new StringField({ required: true, blank: false, choices, validate });
+
+/* -------------------------------------------------- */
+
+/**
+ * Constructs an array field for specials (special abilities activated with 6+ rolls).
+ * Used by Paragon items, Ability items, Equipment items, and potentially character sheets.
+ * @param {object} [options] Options to forward to the ArrayField.
+ * @param {string} [options.label] Label for the array field (defaults to shared label).
+ * @returns An ArrayField containing the specials schema.
+ */
+export const specialsArrayField = ({ label = 'DIE_RPG.Item.Paragon.FIELDS.specials.label' } = {}) => new ArrayField(
+  new SchemaField({
+    name: new StringField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Shared.special.name.label'
+    }),
+    description: new HTMLField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Shared.special.description.label'
+    }),
+    cost: new NumberField({
+      required: true,
+      integer: true,
+      initial: 1,
+      min: 1,
+      max: 4,
+      label: 'DIE_RPG.Shared.special.cost.label',
+      hint: 'DIE_RPG.Shared.special.cost.hint'
+    }),
+    mandatory: new BooleanField({
+      required: true,
+      initial: false,
+      label: 'DIE_RPG.Shared.special.mandatory.label',
+      hint: 'DIE_RPG.Shared.special.mandatory.hint'
+    }),
+    key: new StringField({
+      required: false,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Shared.special.key.label',
+      hint: 'DIE_RPG.Shared.special.key.hint'
+    })
+  }),
+  {
+    initial: [],
+    label
+  }
+);

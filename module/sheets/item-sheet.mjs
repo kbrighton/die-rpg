@@ -56,13 +56,13 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   static PARTS = {
     name: {
       template: 'systems/die-rpg/templates/item/name.hbs',
-      scrollable: [""],
     },
     img: {
       template: 'systems/die-rpg/templates/item/img.hbs',
     },
     sidebar: {
       template: 'systems/die-rpg/templates/item/sidebar.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     tabs: {
@@ -72,14 +72,17 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // Tab sheets
     equipment: {
       template: 'systems/die-rpg/templates/item/equipment.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
     description: {
 			template: "systems/die-rpg/templates/item/description.hbs",
+      classes: ["scrollable"],
       scrollable: [""],
 		},
     specials: {
       template: 'systems/die-rpg/templates/item/specials.hbs',
+      classes: ["scrollable"],
       scrollable: [""],
     },
   };
@@ -98,7 +101,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // options.position.width = width;
     // options.position.height = height;
 
-    options.parts = ['name', 'img', 'sidebar', 'tabs', 'description', 'specials'];
+    options.parts = ['name', 'img', 'tabs', 'description', 'specials'];
     // Don't show body if limited view
     // if (this.document.limited) return;
 

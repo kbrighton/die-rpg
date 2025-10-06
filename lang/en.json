@@ -1,5 +1,23 @@
 {
 	"DIE_RPG": {
+		"Shared": {
+			"special": {
+				"name": { "label": "Special Name" },
+				"description": { "label": "Description" },
+				"cost": {
+					"label": "Cost (6+s)",
+					"hint": "How many 6+ results are needed to activate"
+				},
+				"mandatory": {
+					"label": "Mandatory?",
+					"hint": "If checked, this special must be used when triggered"
+				},
+				"key": {
+					"label": "Unique Key",
+					"hint": "Optional identifier for referencing this special programmatically"
+				}
+			}
+		},
 		"Stat": {
 			"Str": { "long": "Strength", "abbr": "Str" },
 			"Con": { "long": "Constitution", "abbr": "Con" },

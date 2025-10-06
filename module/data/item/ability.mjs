@@ -1,4 +1,5 @@
 import DieRpgItemBase from './base.mjs';
+import { specialsArrayField } from '../helpers.mjs';
 
 /**
  * Data model for Ability items (repurposed from Spell).
@@ -87,16 +88,7 @@ export default class DieRpgAbility extends DieRpgItemBase {
     });
 
     // Replaced simple 'special' object with structured 'specials' array
-    schema.specials = new fields.ArrayField(new fields.SchemaField({
-        name: new fields.StringField({ required: true, blank: false, label: 'DIE_RPG.Item.Special.FIELDS.name.label' }),
-        description: new fields.StringField({ required: true, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.description.label' }),
-        cost: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, label: 'DIE_RPG.Item.Special.FIELDS.cost.label' }), // Cost in 6+ dice
-        mandatory: new fields.BooleanField({ required: true, initial: false, label: 'DIE_RPG.Item.Special.FIELDS.mandatory.label' }),
-        key: new fields.StringField({ required: false, blank: true, label: 'DIE_RPG.Item.Special.FIELDS.key.label' }) // Optional unique key
-      }), {
-        label: 'DIE_RPG.Item.Ability.FIELDS.specials.label',
-        elementLabel: 'DIE_RPG.Item.Special.label'
-    });
+    schema.specials = specialsArrayField({ label: 'DIE_RPG.Item.Ability.FIELDS.specials.label' });
 
     // --- Attack Details (Optional) ---
     schema.isAttack = new fields.BooleanField({
