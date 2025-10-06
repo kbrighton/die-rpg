@@ -60,8 +60,6 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = DieRpgItem;
   CONFIG.Item.dataModels = {
     equipment: models.DieRpgEquipment,
-    feature: models.DieRpgFeature,
-    ability: models.DieRpgAbility,
     paragon: models.DieRpgParagon,
   };
 

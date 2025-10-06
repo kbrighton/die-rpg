@@ -1,7 +1,7 @@
 import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
 import { rollStat } from "../helpers/dice.mjs";
 
-const { api, sheets } = foundry.applications;
+const { api, sheets, ux } = foundry.applications;
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -41,7 +41,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/die-rpg/templates/actor/header2.hbs',
+      template: 'systems/die-rpg/templates/actor/header.hbs',
     },
     sidebar: {
       template: 'systems/die-rpg/templates/actor/sidebar.hbs',
@@ -144,7 +144,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         context.tab = context.tabs[partId];
         // Enrich biography info for display
         // Enrichment turns text like `[[/r 1d20]]` into buttons
-        context.enrichedNotes = await TextEditor.enrichHTML(
+        context.enrichedNotes = await ux.TextEditor.enrichHTML(
           this.actor.system.notes,
           {
             // Whether to show secret blocks in the finished html
@@ -222,8 +222,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // if you don't need to subdivide a given type like
     // this sheet does with abilities
     // const equipment = [];
-    // const features = [];
-    // const abilities = []; // Changed from spells object to simple array
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {

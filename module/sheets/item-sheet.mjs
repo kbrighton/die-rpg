@@ -49,8 +49,8 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     primary: {
       tabs: [
         { id: "description" },
-        { id: "details" },
-        { id: "equipment" },
+        { id: "paragonDetails" },
+        { id: "equipmentDetails" },
         { id: "advancements" },
         { id: "looks" },
         { id: "specials" },
@@ -85,13 +85,13 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
 		},
-    details: {
-      template: 'systems/die-rpg/templates/item/paragon/details.hbs',
+    paragonDetails: {
+      template: 'systems/die-rpg/templates/item/paragon/paragonDetails.hbs',
       classes: ["scrollable"],
       scrollable: [""],
     },
-    equipment: {
-      template: 'systems/die-rpg/templates/item/equipment.hbs',
+    equipmentDetails: {
+      template: 'systems/die-rpg/templates/item/equipmentDetails.hbs',
       classes: ["scrollable"],
       scrollable: [""],
     },
@@ -122,15 +122,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // Add the appropriate parts based on item type
     switch (this.document.type) {
       case 'paragon':
-        options.parts.push('description', 'details', 'advancements', 'looks', 'specials');
+        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'specials');
         break;
       case 'equipment':
-        options.parts.push('description', 'equipment', 'specials');
+        options.parts.push('description', 'equipmentDetails', 'specials');
         break;
-      case 'ability':
-      case 'feature':
-      case 'class':
-      case 'persona':
       default:
         options.parts.push('description', 'specials');
         break;
@@ -167,11 +163,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case 'advancements':
       case 'looks':
-      case 'equipment':
+      case 'equipmentDetails':
       case 'specials':
         context.tab = context.tabs[partId];
         break;
-      case 'details':
+      case 'paragonDetails':
         context.tab = context.tabs[partId];
         context.enrichedCoreNature = await ux.TextEditor.enrichHTML(
           this.item.system.coreNature,
@@ -234,13 +230,13 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'description';
           tab.label += 'Description';
           break;
-        case 'details':
-          tab.id = 'details';
+        case 'paragonDetails':
+          tab.id = 'paragonDetails';
           tab.label += 'Details';
           break;
-        case 'equipment':
-          tab.id = 'equipment';
-          tab.label += 'Equipment';
+        case 'equipmentDetails':
+          tab.id = 'equipmentDetails';
+          tab.label += 'Details';
           break;
         case 'advancements':
           tab.id = 'advancements';

@@ -39,11 +39,6 @@
 		},
 		"Actor": {
 			"Tabs": {
-				"Biography": "Biography",
-				"Features": "Features",
-				"Equipment": "Equipment",
-				"Abilities": "Abilities",
-				"Effects": "Effects",
 				"Class": "Class",
 				"Advancements": "Advancements",
 				"Persona": "Persona",
@@ -51,7 +46,6 @@
 			},
 			"base": {
 				"FIELDS": {
-					"biography": { "label": "Biography" },
 					"health": { "label": "Health" }
 				}
 			},
@@ -73,8 +67,7 @@
 				"Specials": "Specials",
 				"Looks": "Looks",
 				"Advancements": "Advancements",
-				"Details": "Details",
-				"Equipment": "Equipment"
+				"Details": "Details"
 			},
 			"Equipment": {
 				"FIELDS": {
@@ -88,128 +81,6 @@
 					"rollModType": { "label": "Roll Modification Type" },
 					"rollModValue": { "label": "Roll Modification Value" },
 					"specialText": { "label": "Special (on 6+)" }
-				}
-			},
-			"Ability": {
-				"FIELDS": {
-					"abilityType": { "label": "Ability Type" },
-					"activation.type": { "label": "Activation Type" },
-					"activation.cost": { "label": "Activation Cost" },
-					"range": { "label": "Range" },
-					"duration": { "label": "Duration" },
-					"target": { "label": "Target" },
-					"roll.stat": { "label": "Roll Stat" },
-					"roll.add_class_die": { "label": "Always Add Class Die?" },
-					"roll.fixed_adv": { "label": "Fixed Advantages" },
-					"roll.fixed_disadv": { "label": "Fixed Disadvantages" },
-					"roll.base_difficulty": { "label": "Base Difficulty" },
-					"effectDescription": { "label": "Effect Details" },
-					"special.trigger": { "label": "Special Trigger" },
-					"special.text": { "label": "Special Text" },
-					"special.is_mandatory": { "label": "Mandatory Special?" },
-					"isAttack": { "label": "Is Attack?" },
-					"isSpellAttack": { "label": "Is Spell Attack?" },
-					"grantedBy": { "label": "Granted By" },
-					"requirements": { "label": "Requirements" },
-					"scriptureGod": { "label": "Scripture God" },
-					"giftUpgrades": { "label": "Gift Upgrades" },
-					"isDefensiveUpgrade": { "label": "Is Defensive Upgrade?" },
-					"costType.label": "Cost Type",
-					"costAction.label": "Cost Action",
-					"costResource.label": "Cost Resource",
-					"costAmount.label": "Cost Amount",
-					"costCondition.label": "Cost Condition",
-					"attackType.label": "Attack Type",
-					"damageType.label": "Damage Type",
-					"specials.label": "Specials",
-					"scriptureLevel.label": "Scripture Level",
-					"incursGodDebt.label": "Incurs God Debt?",
-					"isGift.label": "Is Gift?",
-					"giftActivationCost.label": "Gift Activation Cost",
-					"isStance.label": "Is Stance?",
-					"isVenting.label": "Is Venting?",
-					"ekScaleCost.label": "Emotion Scale Cost",
-					"ekScaleRequirement.label": "Emotion Scale Requirement",
-					"ekSacredEmotion.label": "Sacred Emotion",
-					"isKnack.label": "Is Knack?",
-					"isFoolSpell.label": "Is Fool Spell?",
-					"foolCondition.label": "Fool Condition",
-					"isDictatorPerformance.label": "Is Dictator Performance?",
-					"isSignaturePiece.label": "Is Signature Piece?",
-					"dictatorEmotion.label": "Dictator Emotion",
-					"isMasterRule.label": "Is Master Rule?",
-					"isCheat.label": "Is Cheat?",
-					"cheatCost.label": "Cheat Cost"
-				},
-				"Special": {
-					"label": "Special",
-					"FIELDS": {
-						"name": { "label": "Name" },
-						"description": { "label": "Description" },
-						"cost": { "label": "Cost (6+s)" },
-						"mandatory": { "label": "Mandatory?" },
-						"key": { "label": "Unique Key" }
-					}
-				},
-				"ActivationCost": "Activation Cost",
-				"UsageDetails": "Usage Details",
-				"Context": "Context & Requirements",
-				"RollDetails": "Roll Details (If Applicable)",
-				"AttackDetails": "Attack Details (If Applicable)",
-				"ClassSpecific": "Class Specific Details"
-			},
-			"Class": {
-				"FIELDS": {
-					"baseClassType": { "label": "Base Class Type" },
-					"classDie": { "label": "Class Die" },
-					"abilities_text": { "label": "Abilities" },
-					"play_style_text": { "label": "Play Style" },
-					"core_mechanic_special": { "label": "Core Mechanic Special" },
-					"equipment_choices": { "label": "Equipment Choices" },
-					"look_choices": { "label": "Look Choices" },
-					"advancements_text": { "label": "Advancements" },
-					"dictator_emotion_palette": { "label": "Emotion Palette (Dictator)" },
-					"dictator_tell": { "label": "Tell (Dictator)" },
-					"dictator_performance_effect": {
-						"label": "Performance Effect (Dictator)"
-					},
-					"dictator_performance_control": {
-						"label": "Performance Control (Dictator)"
-					},
-					"dictator_performance_attack": {
-						"label": "Performance Attack (Dictator)"
-					},
-					"godbinder_contract": { "label": "Contract with God (Godbinder)" },
-					"godbinder_scripture": { "label": "Scripture (Godbinder)" },
-					"godbinder_debt": { "label": "God Debt (Godbinder)" },
-					"advancementChoices": { "label": "Advancement Choices" },
-					"godbinder_miracles": { "label": "Miracles (Godbinder)" },
-					"neo_fair_gold": { "label": "Fair Gold (Neo)" },
-					"neo_gifts": { "label": "Gifts of the Fair (Neo)" },
-					"neo_neotech": { "label": "Neotech (Neo)" },
-					"neo_overcharge": { "label": "Overcharge (Neo)" },
-					"fool_trade": { "label": "Trade (Fool)" },
-					"fool_flukes": { "label": "Flukes (Fool)" },
-					"fool_if_all_else_fails": { "label": "If All Else Fails (Fool)" },
-					"ek_sacred_emotion": { "label": "Sacred Emotion (Emotion Knight)" },
-					"ek_arcane_weapon_types": { "label": "Arcane Weapon Types (EK)" },
-					"ek_arcane_weapon_personality": {
-						"label": "Arcane Weapon Personality (EK)"
-					},
-					"ek_arcane_weapon_main_trait": {
-						"label": "Arcane Weapon Main Trait (EK)"
-					},
-					"ek_emotional_scale": { "label": "Emotional Scale (EK)" },
-					"ek_creative_violence": { "label": "Creative Violence (EK)" },
-					"master_cheating": { "label": "Hardcore Cheating (Master)" },
-					"master_rules": { "label": "My World, My Rules (Master)" }
-				}
-			},
-			"Persona": {
-				"FIELDS": {
-					"sharedHistory": { "label": "Shared History" },
-					"familiarObsessions": { "label": "Familiar Obsessions" },
-					"playerNotes": { "label": "Player Notes" }
 				}
 			},
 			"Paragon": {
@@ -378,10 +249,6 @@
 		},
 		"Item": {
 			"equipment": "Equipment",
-			"feature": "Feature",
-			"ability": "Ability",
-			"class": "Class",
-			"persona": "Persona",
 			"paragon": "Paragon"
 		}
 	}

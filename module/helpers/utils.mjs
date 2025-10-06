@@ -149,30 +149,3 @@ export function registerHandlebarsHelpers() {
 		return getAdvancementsWithPositionsSync(paragonItem, actor);
 	});
 }
-
-/**
- * Define a set of template paths to pre-load
- */
-// export const preloadHandlebarsTemplates = async function () {
-// 	return foundry.applications.handlebars.loadTemplates([
-// 		// Item Sheet Partials
-// 		'systems/die-rpg/templates/item/header.hbs',
-// 		'systems/die-rpg/templates/item/description.hbs',
-// 		'systems/die-rpg/templates/item/effects.hbs',
-// 		'systems/die-rpg/templates/item/ability.hbs',
-// 		'systems/die-rpg/templates/item/class.hbs',
-// 		'systems/die-rpg/templates/item/feature.hbs',
-// 		'systems/die-rpg/templates/item/equipment.hbs',
-
-// 		// Actor Sheet Partials
-// 		'systems/die-rpg/templates/actor/header.hbs',
-// 		'systems/die-rpg/templates/actor/biography.hbs',
-// 		'systems/die-rpg/templates/actor/abilities.hbs',
-// 		'systems/die-rpg/templates/actor/features.hbs',
-// 		'systems/die-rpg/templates/actor/equipment.hbs',
-// 		'systems/die-rpg/templates/actor/effects.hbs',
-
-// 		// Dialog Partials
-// 		'systems/die-rpg/templates/dialog/roll-modifiers.hbs'
-// 	]);
-// };
