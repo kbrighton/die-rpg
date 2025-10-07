@@ -175,7 +175,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'notes';
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'class';
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
