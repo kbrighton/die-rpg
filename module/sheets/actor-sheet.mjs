@@ -31,7 +31,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       roll: this._onRoll,
       statRoll: this._onStatRoll,
       toggleAdvancement: this._toggleAdvancement,
-      selectParagon: this._selectParagon,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -258,9 +257,12 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#disableOverrides();
-    // You may want to add other special handling here
-    // Foundry comes with a large number of utility classes, e.g. SearchFilter
-    // That you may want to implement yourself.
+
+    // Handle paragon selection with custom logic
+    const paragonSelect = this.element.querySelector("#paragon-select");
+    if (paragonSelect) {
+      paragonSelect.addEventListener("change", this._selectParagon.bind(this));
+    }
   }
 
   /**************
@@ -475,22 +477,33 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle paragon selection change
    *
-   * @this DieRpgActorSheet
-   * @param {PointerEvent} event   The originating change event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {Event} event   The originating change event
    * @protected
    */
-  // TODO: fix that you cant select nothing
-  static async _selectParagon(event, target) {
+  async _selectParagon(event) {
     event.preventDefault();
+    event.stopPropagation();
 
-    const selectedUuid = target.value;
+    const selectedUuid = event.target.value;
 
-    // If no paragon selected (blank option), just clear the UUID
-    if (!selectedUuid) {
-      await this.actor.update({ 'system.paragon.uuid': '' });
+    // If selecting the same paragon that's already selected, do nothing
+    if (selectedUuid === this.actor.system.paragon.uuid) {
       return;
     }
+
+    // If no paragon selected (blank option), clear the UUID and delete the paragon
+    if (!selectedUuid) {
+      const existingParagon = this.actor.items.find(i => i.type === 'paragon');
+      if (existingParagon) {
+        await existingParagon.delete();
+      }
+      await this.actor.update({ 'system.paragon.uuid': '' });
+      ui.notifications.info('Paragon cleared.');
+      return;
+    }
+
+    // Update the UUID reference first, so the UI updates immediately
+    await this.actor.update({ 'system.paragon.uuid': selectedUuid });
 
     // Delete existing owned paragon item if it exists
     const existingParagon = this.actor.items.find(i => i.type === 'paragon');
@@ -509,9 +522,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       await this.actor.createEmbeddedDocuments('Item', [paragonDoc.toObject()], {
         keepId: true
       });
-
-      // Update the UUID reference
-      await this.actor.update({ 'system.paragon.uuid': selectedUuid });
 
       ui.notifications.info(`Paragon "${paragonDoc.name}" selected.`);
     } catch (error) {
