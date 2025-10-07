@@ -2,9 +2,28 @@
 	<div class="header-top flexrow">
 
 		<div class="left-col flexcol">
-			<h1 class="class-name">The Dictator</h1>
+			{{! Paragon Selection Dropdown }}
+			<div class="paragon-selection">
+				<h2>
+					<select
+						id="paragon-select"
+						name="system.paragon.uuid"
+						data-action="selectParagon"
+					>
+						{{selectOptions
+							paragons
+							selected=actor.system.paragon.uuid
+							valueAttr="uuid"
+							labelAttr="name"
+							blank="(No Paragon Selected)"
+							sort=false
+						}}
+					</select>
+				</h2>
+			</div>
+
 			<div>
-				<label class="name-label">Your Name:</label>
+				{{!-- <label class="name-label">Your Name:</label> --}}
 				<input
 					class="document-name"
 					name="name"

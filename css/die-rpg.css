@@ -280,9 +280,14 @@
 .die-rpg.actor .window-content .sheet-header .header-top {
   align-items: start;
 }
-.die-rpg.actor .window-content .sheet-header .header-top h1 {
+.die-rpg.actor .window-content .sheet-header .header-top .paragon-selection h2 {
+  font-size: var(--font-size-20);
   margin: 0;
   padding: 0;
+}
+.die-rpg.actor .window-content .sheet-header .header-top .paragon-selection select {
+  height: 2.5rem;
+  text-transform: uppercase;
 }
 .die-rpg.actor .window-content .sheet-header .header-top .name-label {
   font-size: var(--font-size-18);

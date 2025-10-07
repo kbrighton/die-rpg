@@ -76,6 +76,136 @@ export class DieRpgActor extends Actor {
   }
 
   /**
+   * Get all available specials from owned items and actor features.
+   * Intelligently filters based on item type and state (equipped, active, etc.).
+   *
+   * @param {object} [options={}] Filtering options.
+   * @param {boolean} [options.equipped=true] Include equipped equipment.
+   * @param {boolean} [options.active=true] Include active stances/gifts.
+   * @param {boolean} [options.paragon=true] Include paragon specials.
+   * @param {string} [options.abilityId=null] Include specific ability's specials.
+   * @returns {Array<object>} Array of special objects with source metadata.
+   */
+  getAvailableSpecials(options = {}) {
+    const {
+      equipped = true,
+      active = true,
+      paragon = true,
+      abilityId = null
+    } = options;
+
+    const specials = [];
+
+    // Helper to add specials with source info
+    const addSpecials = (item, specialsList) => {
+      if (!specialsList || specialsList.length === 0) return;
+
+      specialsList.forEach(special => {
+        specials.push({
+          ...special,
+          _source: {
+            itemId: item.id,
+            itemName: item.name,
+            itemType: item.type,
+            itemImg: item.img
+          }
+        });
+      });
+    };
+
+    // 1. PARAGON: Always active (core class abilities)
+    if (paragon) {
+      const paragonItem = this.items.find(item => item.type === 'paragon');
+      if (paragonItem?.system?.specials) {
+        addSpecials(paragonItem, paragonItem.system.specials);
+      }
+    }
+
+    // 2. EQUIPMENT: Always active (no equipped/unequipped concept in DIE RPG)
+    if (equipped) {
+      this.items
+        .filter(item => item.type === 'equipment')
+        .forEach(item => {
+          addSpecials(item, item.system.specials);
+        });
+    }
+
+    // 3. STANCES: Only if active
+    if (active) {
+      this.items
+        .filter(item => item.type === 'stance' && item.system.active)
+        .forEach(item => {
+          addSpecials(item, item.system.specials);
+        });
+    }
+
+    // 4. GIFTS: Only if activated
+    if (active) {
+      this.items
+        .filter(item => item.type === 'gift' && item.system.activated)
+        .forEach(item => {
+          // Add gift's direct specials (if any)
+          if (item.system.specials) {
+            addSpecials(item, item.system.specials);
+          }
+
+          // Also add specials from gift upgrades
+          if (item.system.upgrades) {
+            item.system.upgrades.forEach(upgrade => {
+              if (upgrade.specials && upgrade.specials.length > 0) {
+                upgrade.specials.forEach(special => {
+                  specials.push({
+                    ...special,
+                    _source: {
+                      itemId: item.id,
+                      itemName: `${item.name} (${upgrade.name})`,
+                      itemType: 'gift',
+                      itemImg: item.img
+                    }
+                  });
+                });
+              }
+            });
+          }
+        });
+    }
+
+    // 5. GODS: Always active if contracted (Godbinder)
+    this.items
+      .filter(item => item.type === 'god')
+      .forEach(item => {
+        // Add specials from scriptures
+        if (item.system.scriptures) {
+          item.system.scriptures.forEach(scripture => {
+            if (scripture.specials && scripture.specials.length > 0) {
+              scripture.specials.forEach(special => {
+                specials.push({
+                  ...special,
+                  _source: {
+                    itemId: item.id,
+                    itemName: `${item.name} (${scripture.name})`,
+                    itemType: 'god',
+                    itemImg: item.img
+                  }
+                });
+              });
+            }
+          });
+        }
+      });
+
+    // 6. SPELLS: Include if rolling for a specific spell
+    if (abilityId) {
+      const ability = this.items.get(abilityId);
+      if (ability?.system?.specials) {
+        addSpecials(ability, ability.system.specials);
+      }
+    }
+
+    return specials;
+  }
+
+  /**
    * Find the first equipped item of type 'class' on the actor.
    * @returns {DieRpgItem|null} The found class item or null.
    * @protected

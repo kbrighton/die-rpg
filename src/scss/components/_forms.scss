@@ -68,9 +68,16 @@ h6 {
 			.header-top {
 				align-items: start;
 
-				h1 {
-					margin: 0;
-					padding: 0;
+				.paragon-selection {
+					h2 {
+						font-size: var(--font-size-20);
+						margin: 0;
+						padding: 0;
+					}
+					select {
+						height: 2.5rem;
+						text-transform: uppercase;
+					}
 				}
 
 				.name-label {

@@ -59,7 +59,6 @@ export default class DieRpgEquipment extends DieRpgItemBase { // Changed class n
     // Structured field for Specials
     schema.specials = specialsArrayField({ label: 'DIE_RPG.Item.Equipment.FIELDS.specials.label' });
 
-
     return schema;
   }
 

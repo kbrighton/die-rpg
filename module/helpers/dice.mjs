@@ -2,26 +2,26 @@ export async function rollStat(dataset, actor) {
   let label = dataset.label;
   let statName = dataset.statName;
   let statValue = actor.system.stats[statName].value;
-  // Start with specials passed from the item roll context
-  let combinedSpecials = dataset.availableSpecials || [];
 
-  // --- Gather Specials from Actor's Owned Items ---
-  // Filter owned items that have a 'specials' array and it's not empty.
-  // TODO: Refine filtering logic if needed (e.g., only active equipped Equipment, passive features)
-  const actorSpecials = actor.items
-    .filter(item => item.system?.specials && Array.isArray(item.system.specials) && item.system.specials.length > 0)
-    .flatMap(item => item.system.specials); // Extract the specials arrays
-
-  // Merge and deduplicate specials (using 'key' or 'name' as identifier)
-  const specialKeys = new Set(combinedSpecials.map(s => s.key || s.name));
-  actorSpecials.forEach(s => {
-    const identifier = s.key || s.name;
-    if (!specialKeys.has(identifier)) {
-      combinedSpecials.push(s);
-      specialKeys.add(identifier);
-    }
+  // Use the new actor helper method for smart filtering
+  const availableSpecials = actor.getAvailableSpecials({
+    equipped: true,
+    active: true,
+    paragon: true,
+    abilityId: dataset.abilityId || null
   });
-  // --- End Gather Actor Specials ---
+
+  // Merge with any specials passed from item context (if applicable)
+  if (dataset.availableSpecials && Array.isArray(dataset.availableSpecials)) {
+    const specialKeys = new Set(availableSpecials.map(s => s.key || s.name));
+    dataset.availableSpecials.forEach(s => {
+      const identifier = s.key || s.name;
+      if (!specialKeys.has(identifier)) {
+        availableSpecials.push(s);
+        specialKeys.add(identifier);
+      }
+    });
+  }
 
 
   // Get Class Die info from Actor
@@ -95,7 +95,7 @@ export async function rollStat(dataset, actor) {
     diceResults,
     classDieType, // Pass the type of class die used
     isMixedPool, // Pass flag indicating if it was a mixed roll (1d6+1dX)
-    availableSpecials: combinedSpecials // Pass the combined list of specials
+    availableSpecials // Pass the intelligently filtered list of specials
   });
 
   return roll; // Return the original Roll object for potential further use

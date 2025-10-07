@@ -1,5 +1,7 @@
 import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
 import { rollStat } from "../helpers/dice.mjs";
+import { getParagonItem } from "../helpers/advancements.mjs";
+import { getParagons } from "../helpers/paragons.mjs";
 
 const { api, sheets, ux } = foundry.applications;
 
@@ -14,7 +16,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ['die-rpg', 'actor'],
     position: {
-      width: 700,
+      width: 800,
       height: 800,
     },
     window: {
@@ -81,7 +83,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'sidebar', 'stats', 'tabs', 'notes'];
+    options.parts = ['header', 'sidebar', 'stats', 'tabs'];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
@@ -93,6 +95,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         // options.parts.push();
         break;
     }
+    options.parts.push('notes');
   }
 
   /* -------------------------------------------- */
@@ -116,6 +119,11 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields,
+
+      // Fetch paragon item data for advancements
+      paragonItem: await getParagonItem(this.actor),
+      // Fetch available paragons for selection dropdown
+      paragons: await getParagons() || [],
     };
 
     // Offloading context prep to a helper function
@@ -133,12 +141,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case 'advancements':
         context.tab = context.tabs[partId];
-        // Fetch paragon item data for advancements
-        const { getParagonItem } = await import('../helpers/advancements.mjs');
-        context.paragonItem = await getParagonItem(this.actor);
-        // Fetch available paragons for selection dropdown
-        const { getParagons } = await import('../helpers/paragons.mjs');
-        context.paragons = await getParagons() || [];
         break;
       case 'notes':
         context.tab = context.tabs[partId];
@@ -188,10 +190,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         case 'sidebar':
         case 'stats':
           return tabs;
-        case 'notes':
-          tab.id = 'notes';
-          tab.label += 'Notes';
-          break;
         case 'class':
           tab.id = 'class';
           tab.label += 'Class';
@@ -203,6 +201,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         case 'persona':
           tab.id = 'persona';
           tab.label += 'Persona';
+          break;
+        case 'notes':
+          tab.id = 'notes';
+          tab.label += 'Notes';
           break;
       }
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
@@ -478,6 +480,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
+  // TODO: fix that you cant select nothing
   static async _selectParagon(event, target) {
     event.preventDefault();
 

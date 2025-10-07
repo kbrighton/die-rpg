@@ -6,18 +6,6 @@
 >
   <h2>Paragon Advancements</h2>
 
-  {{! Paragon Selection Dropdown }}
-  <div class="paragon-selection">
-    <label for="paragon-select">Select Paragon:</label>
-    <select
-      id="paragon-select"
-      name="system.paragon.uuid"
-      data-action="selectParagon"
-    >
-      {{selectOptions paragons selected=actor.system.paragon.uuid valueAttr="uuid" labelAttr="name" blank="(No Paragon Selected)" sort=false}}
-    </select>
-  </div>
-
   <div class="advancement-info">
     <div class="form-group">
       <label for="level">Level:</label>
