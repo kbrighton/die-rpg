@@ -255,6 +255,14 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
             relativeTo: this.item,
           }
         );
+        context.enrichedCoreAbilityDescription = await ux.TextEditor.enrichHTML(
+          this.item.system.coreAbility.description,
+          {
+            secrets: this.document.isOwner,
+            rollData: this.item.getRollData(),
+            relativeTo: this.item,
+          }
+        );
         break;
       case 'description':
         context.tab = context.tabs[partId];

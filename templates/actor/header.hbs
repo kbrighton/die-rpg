@@ -32,23 +32,32 @@
 			</div>
 		</div>
 
-		<div class="right-col class-dice">
-			<div class="class-dice-description">
-				<h3 class="class-dice-title">Class Dice: D4</h3>
-				<p>
-					A LITTLE EMOTIONAL NUDGE
-				</p>
-				<p>
-					When you have your D4 and could get an edge from subtle emotional
-					manipulation, roll it as part of your dice pool and increase any other
-					dice’s result by its value
-				</p>
+		{{#if paragonItem}}
+			<div class="right-col class-dice">
+				<div class="class-dice-description">
+					<h3 class="class-dice-title">Class Dice: {{uppercase paragonItem.system.die}}</h3>
+					<p>
+						{{uppercase paragonItem.system.coreAbility.name}}
+					</p>
+					<p>
+						{{{paragonItem.system.coreAbility.description}}}
+					</p>
+				</div>
+				<img
+					class="class-dice-img"
+					src="systems/die-rpg/assets/icons/{{paragonItem.system.die}}-exploded.svg"
+					width="100"
+				/>
 			</div>
-			<img
-				class="class-dice-img"
-				src="systems/die-rpg/assets/icons/d4-exploded.svg"
-				width="100"
-			/>
-		</div>
+		{{else}}
+			<div class="right-col class-dice">
+				<div class="class-dice-description">
+					<h3 class="class-dice-title">No Paragon Selected</h3>
+					<p>
+						Please select a paragon to see class dice and core ability
+					</p>
+				</div>
+			</div>
+		{{/if}}
 	</div>
 </header>

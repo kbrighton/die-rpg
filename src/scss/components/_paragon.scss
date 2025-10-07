@@ -1,3 +1,215 @@
+// Actor Sheet - Important Stat Styling
+.important-stat {
+  font-weight: bold !important;
+  color: $c-white !important;
+}
+
+// Actor Sheet - Class Tab Styling
+.tab.class {
+  .class-tab-content {
+    padding: $padding-md;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-lg;
+  }
+
+  // Paragon Info Section
+  .paragon-info-section {
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $margin-md;
+
+      h2 {
+        margin: 0;
+      }
+
+      .paragon-sheet-button {
+        padding: $padding-sm $padding-md;
+        background: rgba(0, 100, 200, 0.3);
+        border: 1px solid rgba(0, 100, 200, 0.5);
+        color: $c-white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: $gap-sm;
+
+        &:hover {
+          background: rgba(0, 100, 200, 0.5);
+        }
+
+        i {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+
+  // Look Selection Section
+  .look-selection-section {
+    h3 {
+      margin-top: 0;
+      margin-bottom: $margin-md;
+      padding-bottom: $padding-sm;
+      border-bottom: 1px solid $c-faint;
+    }
+
+    .look-picker {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-md;
+
+      .form-group {
+        margin-bottom: 0;
+
+        label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: $margin-sm;
+        }
+
+        select, input[type="text"] {
+          width: 100%;
+          padding: $padding-sm;
+          background: rgba(0, 0, 0, 0.2);
+          border: 1px solid $c-faint;
+          border-radius: 4px;
+          color: $c-white;
+        }
+
+        .hint {
+          font-size: 0.85em;
+          font-style: italic;
+          color: $c-tan;
+          margin-top: $margin-sm;
+          margin-bottom: 0;
+        }
+      }
+
+      .look-details {
+        padding: $padding-md;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid $c-faint;
+        border-radius: 4px;
+        font-size: 0.9em;
+
+        .look-description,
+        .look-defense {
+          margin-bottom: $margin-sm;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Specials Section
+  .specials-section {
+    h3 {
+      margin-top: 0;
+      margin-bottom: $margin-md;
+      padding-bottom: $padding-sm;
+      border-bottom: 1px solid $c-faint;
+    }
+
+    .specials-list {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-md;
+
+      .special-card {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid $c-faint;
+        border-radius: 4px;
+        padding: $padding-md;
+
+        .special-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: $margin-sm;
+
+          .special-name {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: $c-white;
+          }
+
+          .special-cost {
+            flex-shrink: 0;
+            padding: 2px $padding-sm;
+            background: rgba(150, 100, 200, 0.3);
+            border: 1px solid rgba(150, 100, 200, 0.5);
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: $c-white;
+          }
+        }
+
+        .special-description {
+          margin-bottom: $margin-md;
+          line-height: 1.5;
+          color: $c-faint;
+
+          p:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        .special-meta {
+          display: flex;
+          gap: $gap-md;
+          flex-wrap: wrap;
+          font-size: 0.85em;
+          color: $c-tan;
+
+          .special-source {
+            font-style: italic;
+          }
+
+          .special-mandatory {
+            padding: 2px $padding-sm;
+            background: rgba(255, 150, 0, 0.3);
+            border: 1px solid rgba(255, 150, 0, 0.5);
+            border-radius: 4px;
+            font-weight: bold;
+          }
+
+          .special-key {
+            padding: 2px $padding-sm;
+            background: rgba(100, 100, 100, 0.3);
+            border: 1px solid rgba(100, 100, 100, 0.5);
+            border-radius: 4px;
+            font-family: monospace;
+          }
+        }
+      }
+    }
+
+    .no-specials {
+      font-style: italic;
+      color: $c-tan;
+      text-align: center;
+      padding: $padding-lg;
+    }
+  }
+
+  // No Paragon Message
+  .no-paragon-message {
+    padding: $padding-lg;
+    text-align: center;
+    color: $c-tan;
+    font-style: italic;
+  }
+}
+
 // // Paragon Item Sheet Styles
 
 // // Constrain image size for paragon items

@@ -19,7 +19,11 @@ import {
 export function registerHandlebarsHelpers() {
     // If you need to add Handlebars helpers, here is a useful example:
     Handlebars.registerHelper("toLowerCase", function (str) {
-        return str.toLowerCase();
+        return str?.toLowerCase() || str;
+    });
+
+    Handlebars.registerHelper("uppercase", function (str) {
+        return str?.toUpperCase() || str;
     });
 
     /**

@@ -4,7 +4,7 @@
 		{{#each system.stats as |stat key|}}
 			<div class="stat flexcol flex-group-center">
 				<label
-					class="resource-label rollable flexlarge align-left"
+					class="resource-label rollable flexlarge align-left{{#if (eq key @root.paragonItem.system.importantStat)}} important-stat{{/if}}"
 					data-action="statRoll"
 					data-stat-name="{{key}}"
 					data-label="{{localize (lookup @root.config.stats key)}}"

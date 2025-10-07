@@ -4,5 +4,125 @@
   data-group='primary'
   data-tab='class'
 >
-    Class
+	{{#if paragonItem}}
+		<div class="class-tab-content">
+			{{! Paragon Info Section }}
+			<div class="paragon-info-section">
+				<div class="section-header">
+					<h2>{{paragonItem.name}}</h2>
+					<button
+						type="button"
+						class="paragon-sheet-button"
+						data-action="viewParagon"
+						data-tooltip="Open Paragon Sheet"
+					>
+						<i class="fas fa-book-open"></i> View Paragon Sheet
+					</button>
+				</div>
+			</div>
+
+			{{! Look Selection Section }}
+			<div class="look-selection-section">
+				<h3>Look</h3>
+				<div class="look-picker">
+					{{#if paragonItem.system.looks}}
+						<div class="form-group">
+							<label for="look-select">Select from Paragon Looks:</label>
+							<select id="look-select" name="system.paragon.selectedLook" data-dtype="String">
+								<option value="">-- Select a Look --</option>
+								{{#each paragonItem.system.looks as |look|}}
+									<option
+										value="{{look.name}}"
+										{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}selected{{/if}}
+									>
+										{{look.name}}{{#if look.defenseBonus}} (+{{look.defenseBonus}} Defense){{/if}}
+									</option>
+								{{/each}}
+							</select>
+						</div>
+						{{#if paragonItem.system.looks.length}}
+							<div class="look-details">
+								{{#each paragonItem.system.looks as |look|}}
+									{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}
+										{{#if look.description}}
+											<div class="look-description">
+												<strong>Description:</strong> {{look.description}}
+											</div>
+										{{/if}}
+										{{#if look.defenseBonus}}
+											<div class="look-defense">
+												<strong>Defense Bonus:</strong> +{{look.defenseBonus}}
+											</div>
+										{{/if}}
+									{{/if}}
+								{{/each}}
+							</div>
+						{{/if}}
+					{{/if}}
+
+					<div class="form-group">
+						<label for="custom-look">Or Enter Custom Look:</label>
+						<input
+							type="text"
+							id="custom-look"
+							name="system.paragon.selectedLook"
+							value="{{actor.system.paragon.selectedLook}}"
+							placeholder="Enter a custom look description"
+							data-dtype="String"
+						/>
+						<p class="hint">Custom look text will override the dropdown selection</p>
+					</div>
+				</div>
+			</div>
+
+			{{! Specials Display Section }}
+			<div class="specials-section">
+				<h3>Specials</h3>
+				{{#if aggregatedSpecials.length}}
+					<div class="specials-list">
+						{{#each aggregatedSpecials as |special|}}
+							<div class="special-card">
+								<div class="special-header">
+									<h4 class="special-name">{{special.name}}</h4>
+									<span class="special-cost" data-tooltip="Cost: {{special.cost}}">
+										{{#if (eq special.cost "special")}}
+											Special (6+)
+										{{else if (eq special.cost "double")}}
+											Double (6,6+)
+										{{else if (eq special.cost "triple")}}
+											Triple (6,6,6+)
+										{{else if (eq special.cost "quad")}}
+											Quad (6,6,6,6)
+										{{else if (eq special.cost "twenty")}}
+											Natural 20
+										{{else}}
+											{{special.cost}}
+										{{/if}}
+									</span>
+								</div>
+								<div class="special-description">
+									{{{special.description}}}
+								</div>
+								<div class="special-meta">
+									<span class="special-source">Source: {{special.sourceName}}</span>
+									{{#if special.mandatory}}
+										<span class="special-mandatory" data-tooltip="Must be used when triggered">Mandatory</span>
+									{{/if}}
+									{{#if special.key}}
+										<span class="special-key" data-tooltip="Special identifier">Key: {{special.key}}</span>
+									{{/if}}
+								</div>
+							</div>
+						{{/each}}
+					</div>
+				{{else}}
+					<p class="no-specials">No specials available. Specials will appear here from your paragon, equipment, and other sources.</p>
+				{{/if}}
+			</div>
+		</div>
+	{{else}}
+		<div class="no-paragon-message">
+			<p>No paragon selected. Please select a paragon from the dropdown in the header to view class information.</p>
+		</div>
+	{{/if}}
 </section>

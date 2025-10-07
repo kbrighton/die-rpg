@@ -46,7 +46,13 @@
     <div class="form-group stacked">
       <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.description.label'}}</label>
       <div class="editor">
-        {{editor system.coreAbility.description target="system.coreAbility.description" button=true editable=editable}}
+        {{#if editable}}
+          <prose-mirror name="system.coreAbility.description" data-document-u-u-i-d="{{item.uuid}}" value="{{system.coreAbility.description}}" collaborate="true" toggled="true">
+            {{{enrichedCoreAbilityDescription}}}
+          </prose-mirror>
+        {{else}}
+          {{{enrichedCoreAbilityDescription}}}
+        {{/if}}
       </div>
     </div>
   </fieldset>

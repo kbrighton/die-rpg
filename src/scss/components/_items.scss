@@ -6,7 +6,7 @@
 	.window-content {
 		display: grid;
 		grid-template-columns: 1fr 2fr;
-		grid-template-rows: auto auto auto 1fr;
+		grid-template-rows: auto auto 1fr;
 		gap: $gap-md;
 		height: 100%;
 		// margin: $margin-md 0;
@@ -48,8 +48,46 @@
 			// grid-column: 2;
 			// grid-row: 1 / -1; /* Span all rows */
 
-			// display: flex;
-			// flex-direction: column;
+			// Default: hide inactive tabs
+			display: none;
+
+			// When active, show with flex layout
+			&.active {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+			}
+
+			// Description tab specific styling for vertical expansion (only when active)
+			&.description.active {
+				flex: 1;
+				min-height: 0; // Important for flex overflow
+
+				prose-mirror {
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+					min-height: 300px;
+
+					.ProseMirror {
+						flex: 1;
+						min-height: 300px;
+						overflow-y: auto;
+					}
+				}
+			}
+
+			// Ensure scrollable tabs work properly with flexbox (only when active)
+			&.scrollable.active {
+				overflow-y: auto;
+
+				// When description is scrollable, adjust flex behavior
+				&.description {
+					prose-mirror {
+						flex: 1 1 auto;
+					}
+				}
+			}
 		}
 	}
 }

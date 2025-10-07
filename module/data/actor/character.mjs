@@ -16,20 +16,10 @@ export default class DieRpgCharacter extends DieRpgActorBase {
     const schema = super.defineSchema();
 
     schema.level = requiredInteger({ initial: 1, max: 20 });
-    schema.look = new fields.StringField({ required: true, blank: true });
 
     schema.paragon = new fields.SchemaField({
-      name: new fields.StringField({ required: true, blank: true }),
       uuid: new fields.StringField({ required: false, blank: true, initial: '' }),
-      nature: new fields.HTMLField(),
-      die: new fields.SetField(setOptions()),
-      importantStat: new fields.StringField({ required: true, blank: true }),
-      looks: new fields.StringField({ required: true, blank: true }),
-      specials: new fields.StringField({ required: true, blank: true }),
-      coreAbility: new fields.SchemaField({
-        name: new fields.StringField({ required: true, blank: true }),
-        description: new fields.HTMLField(),
-      }),
+      selectedLook: new fields.StringField({ required: true, blank: true }),
       advancements: new fields.SetField(
         new fields.StringField(),
         { initial: ["row0-1"] }

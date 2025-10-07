@@ -2,6 +2,7 @@ import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
 import { rollStat } from "../helpers/dice.mjs";
 import { getParagonItem } from "../helpers/advancements.mjs";
 import { getParagons } from "../helpers/paragons.mjs";
+import { getAggregatedSpecials } from "../helpers/specials.mjs";
 
 const { api, sheets, ux } = foundry.applications;
 
@@ -31,6 +32,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       roll: this._onRoll,
       statRoll: this._onStatRoll,
       toggleAdvancement: this._toggleAdvancement,
+      viewParagon: this._viewParagon,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -123,6 +125,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       paragonItem: await getParagonItem(this.actor),
       // Fetch available paragons for selection dropdown
       paragons: await getParagons() || [],
+      // Fetch aggregated specials from all sources
+      aggregatedSpecials: await getAggregatedSpecials(this.actor),
     };
 
     // Offloading context prep to a helper function
@@ -408,6 +412,24 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const dataset = target.dataset;
 
     return rollStat(dataset, this.actor);
+  }
+
+  /**
+   * Handle opening the paragon item sheet
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _viewParagon(event, target) {
+    event.preventDefault();
+    const paragonItem = this.actor.items.find(i => i.type === 'paragon');
+    if (paragonItem) {
+      paragonItem.sheet.render(true);
+    } else {
+      ui.notifications.warn("No paragon item found.");
+    }
   }
 
   /**
