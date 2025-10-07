@@ -1,0 +1,38 @@
+{{!-- Arcane Weapon Details Tab --}}
+<section class="tab arcaneweaponDetails {{tab.cssClass}}" data-group="primary" data-tab="arcaneweaponDetails" data-subtype="{{document.type}}">
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.ArcaneWeapon.FIELDS.weaponType.label'}}</label>
+    <input
+      type='text'
+      name='system.weaponType'
+      value='{{system.weaponType}}'
+      list='weaponTypeList'
+      placeholder='e.g., Sword, Bow, Staff, Spear'
+    />
+    <datalist id='weaponTypeList'>
+      <option value='Sword'></option>
+      <option value='Bow'></option>
+      <option value='Staff'></option>
+      <option value='Spear'></option>
+    </datalist>
+    <p class="hint">{{localize 'DIE_RPG.Item.ArcaneWeapon.FIELDS.weaponType.hint'}}</p>
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.ArcaneWeapon.FIELDS.personality.label'}}</label>
+    <input
+      type='text'
+      name='system.personality'
+      value='{{system.personality}}'
+      list='personalityList'
+      placeholder='e.g., Aggressive, Cautious, Playful, Wise'
+    />
+    <datalist id='personalityList'>
+      <option value='Aggressive'></option>
+      <option value='Cautious'></option>
+      <option value='Playful'></option>
+      <option value='Wise'></option>
+    </datalist>
+    <p class="hint">{{localize 'DIE_RPG.Item.ArcaneWeapon.FIELDS.personality.hint'}}</p>
+  </div>
+</section>

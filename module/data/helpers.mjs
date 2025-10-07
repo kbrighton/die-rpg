@@ -72,3 +72,77 @@ export const specialsArrayField = ({ label = 'DIE_RPG.Item.Paragon.FIELDS.specia
     label
   }
 );
+
+/* -------------------------------------------------- */
+
+/**
+ * Constructs an array field for scriptures (God/Godbinder benefits with specials).
+ * Used by God items - typically 3 scriptures but configurable.
+ * @param {object} [options] Options to forward to the ArrayField.
+ * @param {string} [options.label] Label for the array field.
+ * @param {number} [options.initialCount] Number of initial scriptures (default 3).
+ * @returns An ArrayField containing the scriptures schema.
+ */
+export const scripturesArrayField = ({ label = 'DIE_RPG.Item.God.FIELDS.scriptures.label', initialCount = 3 } = {}) => new ArrayField(
+  new SchemaField({
+    name: new StringField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Item.God.FIELDS.scripture.name.label'
+    }),
+    description: new HTMLField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Item.God.FIELDS.scripture.description.label'
+    }),
+    specials: specialsArrayField({ label: 'DIE_RPG.Item.God.FIELDS.scripture.specials.label' })
+  }),
+  {
+    initial: Array.from({ length: initialCount }, () => ({
+      name: '',
+      description: '',
+      specials: []
+    })),
+    label
+  }
+);
+
+/* -------------------------------------------------- */
+
+/**
+ * Constructs an array field for upgrades (Gifts of the Fair/Neo upgrades).
+ * Used by Gift items - upgrades can be picked multiple times.
+ * @param {object} [options] Options to forward to the ArrayField.
+ * @param {string} [options.label] Label for the array field.
+ * @returns An ArrayField containing the upgrades schema.
+ */
+export const upgradesArrayField = ({ label = 'DIE_RPG.Item.Gift.FIELDS.upgrades.label' } = {}) => new ArrayField(
+  new SchemaField({
+    name: new StringField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Item.Gift.FIELDS.upgrade.name.label'
+    }),
+    description: new HTMLField({
+      required: true,
+      blank: true,
+      initial: '',
+      label: 'DIE_RPG.Item.Gift.FIELDS.upgrade.description.label'
+    }),
+    defenseBonus: new NumberField({
+      required: true,
+      integer: true,
+      initial: 0,
+      min: 0,
+      label: 'DIE_RPG.Item.Gift.FIELDS.upgrade.defenseBonus.label'
+    }),
+    specials: specialsArrayField({ label: 'DIE_RPG.Item.Gift.FIELDS.upgrade.specials.label' })
+  }),
+  {
+    initial: [],
+    label
+  }
+);

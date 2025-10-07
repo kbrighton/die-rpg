@@ -1,0 +1,106 @@
+{{!-- God Details Tab --}}
+<section class="tab godDetails {{tab.cssClass}}" data-group="primary" data-tab="godDetails" data-subtype="{{document.type}}">
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.God.FIELDS.title.label'}}</label>
+    <input
+      type='text'
+      name='system.title'
+      value='{{system.title}}'
+      placeholder='e.g., God of War, Goddess of the Moon'
+    />
+    <p class="hint">{{localize 'DIE_RPG.Item.God.FIELDS.title.hint'}}</p>
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.God.FIELDS.level.label'}}</label>
+    <input
+      type='number'
+      name='system.level'
+      value='{{system.level}}'
+      data-dtype='Number'
+      min='1'
+    />
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.God.FIELDS.trust.label'}}</label>
+    <input
+      type='number'
+      name='system.trust'
+      value='{{system.trust}}'
+      data-dtype='Number'
+      min='0'
+    />
+  </div>
+
+  <div class='form-group'>
+    <label>{{localize 'DIE_RPG.Item.God.FIELDS.debt.label'}}</label>
+    <input
+      type='number'
+      name='system.debt'
+      value='{{system.debt}}'
+      data-dtype='Number'
+      min='0'
+    />
+  </div>
+
+  {{!-- Scriptures/Benefits Section --}}
+  <fieldset class="scriptures-section">
+    <legend>{{localize 'DIE_RPG.Item.God.FIELDS.scriptures.label'}}</legend>
+    <p class="hint">Scriptures are the benefits granted by this god. Typically 3, but more can be added.</p>
+
+    <ol class="scriptures-list">
+      {{#each system.scriptures as |scripture index|}}
+        <li class="scripture-item" data-index="{{index}}">
+          <div class="scripture-header">
+            <span class="scripture-number">{{add index 1}}.</span>
+            <div class="form-group">
+              <label>{{localize 'DIE_RPG.Item.God.FIELDS.scripture.name.label'}}</label>
+              <input type="text" name="system.scriptures.{{index}}.name" value="{{scripture.name}}" placeholder="Scripture name" />
+            </div>
+          </div>
+
+          <div class="form-group stacked">
+            <label>{{localize 'DIE_RPG.Item.God.FIELDS.scripture.description.label'}}</label>
+            <div class="editor">
+              {{editor scripture.description target=(concat "system.scriptures." index ".description") button=true editable=editable}}
+            </div>
+          </div>
+
+          {{!-- Nested Specials for this Scripture --}}
+          {{#if scripture.specials}}
+            <div class="scripture-specials">
+              <h4>Specials for {{scripture.name}}</h4>
+              {{#each scripture.specials as |special specialIndex|}}
+                <div class="special-item-compact" data-special-index="{{specialIndex}}">
+                  <input type="text" name="system.scriptures.{{index}}.specials.{{specialIndex}}.name" value="{{special.name}}" placeholder="Special name" />
+                  <select name="system.scriptures.{{index}}.specials.{{specialIndex}}.cost">
+                    {{selectOptions @root.config.specialCostTypes selected=special.cost localize=true blank=""}}
+                  </select>
+                  <button type="button" class="delete-scripture-special" data-action="deleteScriptureSpecial" data-scripture-index="{{index}}" data-special-index="{{specialIndex}}" title="Delete Special">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              {{/each}}
+              <button type="button" class="add-scripture-special" data-action="addScriptureSpecial" data-scripture-index="{{index}}">
+                <i class="fas fa-plus"></i> Add Special
+              </button>
+            </div>
+          {{/if}}
+
+          <button type="button" class="delete-scripture" data-action="deleteScripture" data-index="{{index}}" title="Delete Scripture">
+            <i class="fas fa-trash"></i> Delete Scripture
+          </button>
+        </li>
+      {{/each}}
+    </ol>
+
+    {{#if (eq system.scriptures.length 0)}}
+      <p class="no-items">No scriptures defined. Add one below.</p>
+    {{/if}}
+
+    <button type="button" class="add-scripture" data-action="addScripture">
+      <i class="fas fa-plus"></i> {{localize 'DIE_RPG.Item.God.AddScripture'}}
+    </button>
+  </fieldset>
+</section>

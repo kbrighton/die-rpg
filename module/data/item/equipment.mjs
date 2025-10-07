@@ -10,7 +10,7 @@ export default class DieRpgEquipment extends DieRpgItemBase { // Changed class n
   static defineSchema() {
     const fields = foundry.data.fields;
     const requiredInteger = { required: true, nullable: false, integer: true };
-    const schema = super.defineSchema(); // Inherits description
+    const schema = super.defineSchema();
 
     schema.quantity = new fields.NumberField({
       ...requiredInteger,

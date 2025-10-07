@@ -69,6 +69,99 @@
 				"Advancements": "Advancements",
 				"Details": "Details"
 			},
+			"Look": {
+				"FIELDS": {
+					"defenseBonus": { "label": "Defense Bonus" }
+				}
+			},
+			"Spell": {
+				"FIELDS": {
+					"specials": {
+						"label": "Specials",
+						"hint": "Special abilities that trigger when rolling 6+ on dice"
+					}
+				}
+			},
+			"God": {
+				"FIELDS": {
+					"title": {
+						"label": "Title",
+						"hint": "e.g., God of War, Goddess of the Moon"
+					},
+					"level": { "label": "God Level" },
+					"trust": { "label": "Trust" },
+					"debt": { "label": "Debt" },
+					"scriptures": {
+						"label": "Scriptures/Benefits",
+						"hint": "Benefits granted by this god"
+					},
+					"scripture": {
+						"name": { "label": "Scripture Name" },
+						"description": { "label": "Description" },
+						"specials": { "label": "Specials" }
+					}
+				},
+				"AddScripture": "Add Scripture"
+			},
+			"Gift": {
+				"FIELDS": {
+					"activated": {
+						"label": "Activated",
+						"hint": "Is this gift currently active?"
+					},
+					"upgrades": {
+						"label": "Upgrades",
+						"hint": "Upgrades can be picked multiple times"
+					},
+					"upgrade": {
+						"name": { "label": "Upgrade Name" },
+						"description": { "label": "Description" },
+						"defenseBonus": { "label": "Defense Bonus" },
+						"specials": { "label": "Specials" }
+					}
+				},
+				"AddUpgrade": "Add Upgrade"
+			},
+			"Stance": {
+				"FIELDS": {
+					"active": {
+						"label": "Active",
+						"hint": "Is this stance currently active?"
+					},
+					"stanceType": {
+						"label": "Stance Type",
+						"hint": "Combat, Social, or Emotion stance"
+					},
+					"emotionSubtype": {
+						"label": "Emotion Type",
+						"hint": "The specific emotion for this stance (EMOTION stances only)"
+					},
+					"specials": {
+						"label": "Specials",
+						"hint": "Special abilities that trigger when rolling 6+ on dice"
+					}
+				}
+			},
+			"Venting": {
+				"FIELDS": {
+					"active": {
+						"label": "Active",
+						"hint": "Is this venting currently active?"
+					}
+				}
+			},
+			"ArcaneWeapon": {
+				"FIELDS": {
+					"weaponType": {
+						"label": "Weapon Type",
+						"hint": "Type of weapon (e.g., Sword, Bow, Staff, Spear)"
+					},
+					"personality": {
+						"label": "Personality",
+						"hint": "The weapon's personality (e.g., Aggressive, Cautious, Playful, Wise)"
+					}
+				}
+			},
 			"Equipment": {
 				"FIELDS": {
 					"rollFormula": { "label": "Roll Formula" },
@@ -249,7 +342,14 @@
 		},
 		"Item": {
 			"equipment": "Equipment",
-			"paragon": "Paragon"
+			"paragon": "Paragon",
+			"look": "Look",
+			"spell": "Spell",
+			"god": "God",
+			"gift": "Gift of the Fair",
+			"stance": "Stance",
+			"venting": "Venting",
+			"arcaneweapon": "Arcane Weapon"
 		}
 	}
 }

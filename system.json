@@ -28,6 +28,27 @@
         },
         "paragon": {
             "htmlFields": ["description", "advancements.*.description"]
+        },
+        "look": {
+            "htmlFields": ["description"]
+        },
+        "spell": {
+            "htmlFields": ["description", "specials.*.description"]
+        },
+        "god": {
+            "htmlFields": ["description", "scriptures.*.description", "scriptures.*.specials.*.description"]
+        },
+        "gift": {
+            "htmlFields": ["description", "upgrades.*.description", "upgrades.*.specials.*.description"]
+        },
+        "stance": {
+            "htmlFields": ["description", "specials.*.description"]
+        },
+        "venting": {
+            "htmlFields": ["description"]
+        },
+        "arcaneweapon": {
+            "htmlFields": ["description"]
         }
     }
   },

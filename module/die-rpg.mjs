@@ -61,6 +61,13 @@ Hooks.once('init', function () {
   CONFIG.Item.dataModels = {
     equipment: models.DieRpgEquipment,
     paragon: models.DieRpgParagon,
+    look: models.DieRpgLook,
+    spell: models.DieRpgSpell,
+    god: models.DieRpgGod,
+    gift: models.DieRpgGift,
+    stance: models.DieRpgStance,
+    venting: models.DieRpgVenting,
+    arcaneweapon: models.DieRpgArcaneWeapon,
   };
 
   // Active Effects are never copied to the Actor,

@@ -34,6 +34,14 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       deleteLook: this._deleteLook,
       addSpecial: this._addSpecial,
       deleteSpecial: this._deleteSpecial,
+      addScripture: this._addScripture,
+      deleteScripture: this._deleteScripture,
+      addScriptureSpecial: this._addScriptureSpecial,
+      deleteScriptureSpecial: this._deleteScriptureSpecial,
+      addUpgrade: this._addUpgrade,
+      deleteUpgrade: this._deleteUpgrade,
+      addUpgradeSpecial: this._addUpgradeSpecial,
+      deleteUpgradeSpecial: this._deleteUpgradeSpecial,
     },
     form: {
       submitOnChange: true,
@@ -51,6 +59,13 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         { id: "description" },
         { id: "paragonDetails" },
         { id: "equipmentDetails" },
+        { id: "lookDetails" },
+        { id: "spellDetails" },
+        { id: "godDetails" },
+        { id: "giftDetails" },
+        { id: "stanceDetails" },
+        { id: "ventingDetails" },
+        { id: "arcaneweaponDetails" },
         { id: "advancements" },
         { id: "looks" },
         { id: "specials" },
@@ -95,6 +110,41 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    lookDetails: {
+      template: 'systems/die-rpg/templates/item/lookDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    spellDetails: {
+      template: 'systems/die-rpg/templates/item/spellDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    godDetails: {
+      template: 'systems/die-rpg/templates/item/godDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    giftDetails: {
+      template: 'systems/die-rpg/templates/item/giftDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    stanceDetails: {
+      template: 'systems/die-rpg/templates/item/stanceDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    ventingDetails: {
+      template: 'systems/die-rpg/templates/item/ventingDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    arcaneweaponDetails: {
+      template: 'systems/die-rpg/templates/item/arcaneweaponDetails.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
     advancements: {
       template: 'systems/die-rpg/templates/item/paragon/advancements.hbs',
       classes: ["scrollable"],
@@ -126,6 +176,27 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         break;
       case 'equipment':
         options.parts.push('description', 'equipmentDetails', 'specials');
+        break;
+      case 'look':
+        options.parts.push('description', 'lookDetails');
+        break;
+      case 'spell':
+        options.parts.push('description', 'spellDetails', 'specials');
+        break;
+      case 'god':
+        options.parts.push('description', 'godDetails');
+        break;
+      case 'gift':
+        options.parts.push('description', 'giftDetails');
+        break;
+      case 'stance':
+        options.parts.push('description', 'stanceDetails', 'specials');
+        break;
+      case 'venting':
+        options.parts.push('description', 'ventingDetails');
+        break;
+      case 'arcaneweapon':
+        options.parts.push('description', 'arcaneweaponDetails');
         break;
       default:
         options.parts.push('description', 'specials');
@@ -164,6 +235,13 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       case 'advancements':
       case 'looks':
       case 'equipmentDetails':
+      case 'lookDetails':
+      case 'spellDetails':
+      case 'godDetails':
+      case 'giftDetails':
+      case 'stanceDetails':
+      case 'ventingDetails':
+      case 'arcaneweaponDetails':
       case 'specials':
         context.tab = context.tabs[partId];
         break;
@@ -236,6 +314,34 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
           break;
         case 'equipmentDetails':
           tab.id = 'equipmentDetails';
+          tab.label += 'Details';
+          break;
+        case 'lookDetails':
+          tab.id = 'lookDetails';
+          tab.label += 'Details';
+          break;
+        case 'spellDetails':
+          tab.id = 'spellDetails';
+          tab.label += 'Details';
+          break;
+        case 'godDetails':
+          tab.id = 'godDetails';
+          tab.label += 'Details';
+          break;
+        case 'giftDetails':
+          tab.id = 'giftDetails';
+          tab.label += 'Details';
+          break;
+        case 'stanceDetails':
+          tab.id = 'stanceDetails';
+          tab.label += 'Details';
+          break;
+        case 'ventingDetails':
+          tab.id = 'ventingDetails';
+          tab.label += 'Details';
+          break;
+        case 'arcaneweaponDetails':
+          tab.id = 'arcaneweaponDetails';
           tab.label += 'Details';
           break;
         case 'advancements':
@@ -457,6 +563,148 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const specials = [...this.item.system.specials];
     specials.splice(index, 1);
     await this.item.update({ 'system.specials': specials });
+  }
+
+  /**
+   * Add a new scripture to the god's scriptures array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addScripture(event, target) {
+    event.preventDefault();
+    const scriptures = this.item.system.scriptures || [];
+    const newScripture = { name: '', description: '', specials: [] };
+    await this.item.update({ 'system.scriptures': [...scriptures, newScripture] });
+  }
+
+  /**
+   * Delete a scripture from the god's scriptures array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteScripture(event, target) {
+    event.preventDefault();
+    const index = parseInt(target.dataset.index);
+    const scriptures = [...this.item.system.scriptures];
+    scriptures.splice(index, 1);
+    await this.item.update({ 'system.scriptures': scriptures });
+  }
+
+  /**
+   * Add a new special to a scripture's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addScriptureSpecial(event, target) {
+    event.preventDefault();
+    const scriptureIndex = parseInt(target.dataset.scriptureIndex);
+    const scriptures = [...this.item.system.scriptures];
+    const newSpecial = {
+      name: '',
+      description: '',
+      cost: 'special',
+      mandatory: false,
+      key: ''
+    };
+    scriptures[scriptureIndex].specials = [...(scriptures[scriptureIndex].specials || []), newSpecial];
+    await this.item.update({ 'system.scriptures': scriptures });
+  }
+
+  /**
+   * Delete a special from a scripture's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteScriptureSpecial(event, target) {
+    event.preventDefault();
+    const scriptureIndex = parseInt(target.dataset.scriptureIndex);
+    const specialIndex = parseInt(target.dataset.specialIndex);
+    const scriptures = [...this.item.system.scriptures];
+    scriptures[scriptureIndex].specials.splice(specialIndex, 1);
+    await this.item.update({ 'system.scriptures': scriptures });
+  }
+
+  /**
+   * Add a new upgrade to the gift's upgrades array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addUpgrade(event, target) {
+    event.preventDefault();
+    const upgrades = this.item.system.upgrades || [];
+    const newUpgrade = { name: '', description: '', defenseBonus: 0, specials: [] };
+    await this.item.update({ 'system.upgrades': [...upgrades, newUpgrade] });
+  }
+
+  /**
+   * Delete an upgrade from the gift's upgrades array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteUpgrade(event, target) {
+    event.preventDefault();
+    const index = parseInt(target.dataset.index);
+    const upgrades = [...this.item.system.upgrades];
+    upgrades.splice(index, 1);
+    await this.item.update({ 'system.upgrades': upgrades });
+  }
+
+  /**
+   * Add a new special to an upgrade's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _addUpgradeSpecial(event, target) {
+    event.preventDefault();
+    const upgradeIndex = parseInt(target.dataset.upgradeIndex);
+    const upgrades = [...this.item.system.upgrades];
+    const newSpecial = {
+      name: '',
+      description: '',
+      cost: 'special',
+      mandatory: false,
+      key: ''
+    };
+    upgrades[upgradeIndex].specials = [...(upgrades[upgradeIndex].specials || []), newSpecial];
+    await this.item.update({ 'system.upgrades': upgrades });
+  }
+
+  /**
+   * Delete a special from an upgrade's specials array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _deleteUpgradeSpecial(event, target) {
+    event.preventDefault();
+    const upgradeIndex = parseInt(target.dataset.upgradeIndex);
+    const specialIndex = parseInt(target.dataset.specialIndex);
+    const upgrades = [...this.item.system.upgrades];
+    upgrades[upgradeIndex].specials.splice(specialIndex, 1);
+    await this.item.update({ 'system.upgrades': upgrades });
   }
 
   /** Helper Functions */

@@ -1,0 +1,10 @@
+{{!-- Venting Details Tab --}}
+<section class="tab ventingDetails {{tab.cssClass}}" data-group="primary" data-tab="ventingDetails" data-subtype="{{document.type}}">
+  <div class='form-group checkbox'>
+    <label>
+      <input type='checkbox' name='system.active' {{checked system.active}} />
+      {{localize 'DIE_RPG.Item.Venting.FIELDS.active.label'}}
+    </label>
+    <p class="hint">{{localize 'DIE_RPG.Item.Venting.FIELDS.active.hint'}}</p>
+  </div>
+</section>
