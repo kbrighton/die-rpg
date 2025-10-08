@@ -5,24 +5,25 @@
   data-tab='advancements'
 >
 
-  <div class="advancement-info">
-    <div class="form-group">
-      <label for="level">Level:</label>
-      <input
-        type="number"
-        name="system.level"
-        id="level"
-        value="{{actor.system.level}}"
-        min="1"
-        max="20"
-        data-type="Number"
-      />
+  <div class="advancements-grid">
+    <div class="advancement-info">
+      <div class="form-group">
+        <label for="level">Level:</label>
+        <input
+          type="number"
+          name="system.level"
+          id="level"
+          value="{{actor.system.level}}"
+          min="1"
+          max="20"
+          data-type="Number"
+        />
+      </div>
+      <p>Advancements Selected: {{actor.system.paragon.advancements.size}}</p>
+      <p>Available Selections: {{subtract actor.system.level actor.system.paragon.advancements.size}}</p>
     </div>
-    <p>Advancements Selected: {{actor.system.paragon.advancements.size}}</p>
-    <p>Available Selections: {{subtract actor.system.level actor.system.paragon.advancements.size}}</p>
-  </div>
 
-  <svg viewBox="{{svgViewBox}}" class="advancement-map" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="{{svgViewBox}}" class="advancement-map" preserveAspectRatio="xMidYMid meet">
     {{#each config.PARAGON_ADVANCEMENT_MAP.nodes as |node nodeId|}}
       <g class="advancement-node" data-node-id="{{nodeId}}">
         <polygon
@@ -60,7 +61,8 @@
         </text>
       </g>
     {{/each}}
-  </svg>
+    </svg>
+  </div>
 
   {{! Advancement Details Accordion }}
   <div class="advancement-accordion">
