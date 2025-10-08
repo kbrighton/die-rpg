@@ -3,8 +3,8 @@
  */
 
 // Triangle dimensions - increased for better readability
-const TRIANGLE_HEIGHT = 180;
-const TRIANGLE_WIDTH = 207.85; // sqrt(3)/2 * height for equilateral triangle
+const TRIANGLE_HEIGHT = 220;
+const TRIANGLE_WIDTH = 254.03; // sqrt(3)/2 * height for equilateral triangle
 const HORIZONTAL_SPACING = TRIANGLE_WIDTH / 2; // Triangles share edges, so half-width spacing
 const VERTICAL_SPACING = TRIANGLE_HEIGHT; // Full height for proper vertical alignment
 
@@ -51,7 +51,7 @@ function isPointingUp(row, position) {
  * @returns {number} Center X coordinate
  */
 function getRowCenterX(row, totalPositions) {
-	const MAP_CENTER_X = 500; // Center of viewBox
+	const MAP_CENTER_X = 400; // Center of viewBox
 	return MAP_CENTER_X;
 }
 
@@ -164,7 +164,7 @@ export function getTextPosition(nodeId) {
  */
 export function calculateViewBox() {
 	// Based on 6 rows of triangles
-	const width = 1000;
-	const height = 100 + (6 * VERTICAL_SPACING) + 100; // Top padding + rows + bottom padding
+	const width = 800;
+	const height = 50 + (6 * VERTICAL_SPACING) + 50; // Top padding + rows + bottom padding
 	return `0 0 ${width} ${height}`;
 }

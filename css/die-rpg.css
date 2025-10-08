@@ -578,7 +578,7 @@
 }
 .die-rpg .tab.advancements .advancements-grid {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 40% 60%;
   gap: 20px;
   margin-bottom: 2rem;
 }
@@ -606,6 +606,7 @@
 .die-rpg .tab.advancements .advancement-map {
   width: 100%;
   max-width: 100%;
+  padding-right: 15px;
   height: auto;
   display: block;
 }
