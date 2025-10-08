@@ -4,5 +4,59 @@
   data-group='primary'
   data-tab='persona'
 >
-    Persona
+  <div class="persona-grid">
+    <div class="persona-image-section">
+      <img
+        class="persona-img"
+        src="{{#if actor.system.persona.img}}{{actor.system.persona.img}}{{else}}icons/svg/mystery-man.svg{{/if}}"
+        data-edit="system.persona.img"
+        data-action="onEditImage"
+        title="{{actor.system.persona.name}}"
+        height="150"
+        width="150"
+      />
+    </div>
+
+    <div class="persona-info-section">
+      <div class="form-group">
+        <label>{{localize 'DIE_RPG.Actor.Character.FIELDS.persona.name.label'}}</label>
+        <input
+          type="text"
+          name="system.persona.name"
+          value="{{actor.system.persona.name}}"
+          placeholder="{{localize 'DIE_RPG.Actor.Character.FIELDS.persona.name.label'}}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>{{localize 'DIE_RPG.Actor.Character.FIELDS.persona.pronouns.label'}}</label>
+        <input
+          type="text"
+          name="system.persona.pronouns"
+          value="{{actor.system.persona.pronouns}}"
+          placeholder="{{localize 'DIE_RPG.Actor.Character.FIELDS.persona.pronouns.label'}}"
+        />
+      </div>
+    </div>
+
+    <div class="persona-notes-section">
+      <div class="form-group stacked">
+        <label>{{localize 'DIE_RPG.Actor.Character.FIELDS.persona.notes.label'}}</label>
+        <div class="editor">
+          {{#if editable}}
+            <prose-mirror
+              name="system.persona.notes"
+              data-document-u-u-i-d="{{actor.uuid}}"
+              value="{{actor.system.persona.notes}}"
+              collaborate="true"
+              toggled="true">
+              {{{enrichedPersonaNotes}}}
+            </prose-mirror>
+          {{else}}
+            {{{enrichedPersonaNotes}}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

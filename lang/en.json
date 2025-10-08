@@ -51,7 +51,12 @@
 			},
 			"Character": {
 				"FIELDS": {
-					"level": { "label": "Level" }
+					"level": { "label": "Level" },
+				"persona": {
+					"name": { "label": "Name" },
+					"pronouns": { "label": "Pronouns" },
+					"notes": { "label": "Notes" }
+				}
 				}
 			},
 			"NPC": {

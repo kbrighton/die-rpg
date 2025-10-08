@@ -29,7 +29,10 @@ export default class DieRpgCharacter extends DieRpgActorBase {
     schema.persona = new fields.SchemaField({
       name: new fields.StringField({ required: true, blank: true }),
       pronouns: new fields.StringField({ required: true, blank: true }),
-      img: new fields.FilePathField({categories: ["IMAGE"]}),
+      img: new fields.FilePathField({
+        categories: ["IMAGE"],
+        initial: "icons/svg/mystery-man.svg"
+      }),
       notes: new fields.HTMLField({required: false, initial: undefined}),
     });
 

@@ -139,8 +139,19 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'class':
+        context.tab = context.tabs[partId];
+        break;
       case 'persona':
         context.tab = context.tabs[partId];
+        // Enrich persona notes for display
+        context.enrichedPersonaNotes = await ux.TextEditor.enrichHTML(
+          this.actor.system.persona.notes,
+          {
+            secrets: this.document.isOwner,
+            rollData: this.actor.getRollData(),
+            relativeTo: this.actor,
+          }
+        );
         break;
       case 'advancements':
         context.tab = context.tabs[partId];
