@@ -3,7 +3,12 @@
 }
 
 .resource-label {
-  font-weight: bold;
+  font-weight: normal;
+}
+
+.stat-score, .resource-score {
+  text-align: center;
+  font-weight: normal;
 }
 
 .stats {

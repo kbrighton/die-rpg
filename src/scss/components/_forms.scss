@@ -31,8 +31,10 @@ h6 {
 
 .editor {
 	height: 100%;
+	border: $border-groove;
 
 	.editor-content {
+		padding: 10px;
 		& > *:first-child {
 			margin-top: 0;
 			padding-top: 0;

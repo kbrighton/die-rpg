@@ -258,6 +258,10 @@
 }
 .die-rpg .editor {
   height: 100%;
+  border: 2px groove var(--die-rpg-c-groove);
+}
+.die-rpg .editor .editor-content {
+  padding: 10px;
 }
 .die-rpg .editor .editor-content > *:first-child {
   margin-top: 0;
@@ -376,7 +380,11 @@
   margin: 10px 0 0 0;
 }
 .die-rpg .resource-label {
-  font-weight: bold;
+  font-weight: normal;
+}
+.die-rpg .stat-score, .die-rpg .resource-score {
+  text-align: center;
+  font-weight: normal;
 }
 .die-rpg .stats {
   margin: 10px 0 0 0;
@@ -784,8 +792,8 @@
   color: #4a9eff;
 }
 .die-rpg .important-stat {
-  font-weight: bold !important;
-  color: var(--die-rpg-c-white) !important;
+  font-weight: 900 !important;
+  color: var(--die-rpg-c-black) !important;
 }
 .die-rpg .tab.class .class-tab-content {
   padding: 10px;
@@ -854,7 +862,7 @@
   grid-area: notes;
   display: flex;
   flex-direction: column;
-  min-height: 300px;
+  min-height: 240px;
 }
 .die-rpg .tab.persona .persona-notes-section .form-group.stacked {
   display: flex;
@@ -879,3 +887,5 @@
   min-height: 200px;
   overflow-y: auto;
 }
+
+/*# sourceMappingURL=die-rpg.css.map */
