@@ -152,4 +152,24 @@ export function registerHandlebarsHelpers() {
 	Handlebars.registerHelper('getAdvancementsWithPositions', function(paragonItem, actor) {
 		return getAdvancementsWithPositionsSync(paragonItem, actor);
 	});
+
+	// Format nodeId for display - converts "row1-2" to "1-2"
+	Handlebars.registerHelper('formatNodeId', function(nodeId) {
+		return nodeId?.replace(/^row/, '') || nodeId;
+	});
+
+	// Check if the selected look is custom
+	Handlebars.registerHelper('isCustomLook', function(selectedLook) {
+		// Show custom input only when "Custom Look" is explicitly selected
+		return selectedLook === '___CUSTOM___';
+	});
+
+	// Math helpers for positioning
+	Handlebars.registerHelper('subtract', function(a, b) {
+		return a - b;
+	});
+
+	Handlebars.registerHelper('add', function(a, b) {
+		return a + b;
+	});
 }

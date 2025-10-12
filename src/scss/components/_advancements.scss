@@ -148,16 +148,11 @@
   }
 
   .triangle-label {
-    font-size: 28px;
+    font-size: 42px;
     font-weight: bold;
     fill: #fff;
     user-select: none;
     font-family: sans-serif;
-
-    // Lock icon
-    .lock-icon {
-      font-size: 0.9em;
-    }
 
     // Dimmed text for locked nodes
     .locked ~ & {

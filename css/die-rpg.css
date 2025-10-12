@@ -691,14 +691,11 @@
   cursor: not-allowed;
 }
 .die-rpg .tab.advancements .triangle-label {
-  font-size: 28px;
+  font-size: 42px;
   font-weight: bold;
   fill: #fff;
   user-select: none;
   font-family: sans-serif;
-}
-.die-rpg .tab.advancements .triangle-label .lock-icon {
-  font-size: 0.9em;
 }
 .locked ~ .die-rpg .tab.advancements .triangle-label {
   opacity: 0.6;
@@ -882,5 +879,3 @@
   min-height: 200px;
   overflow-y: auto;
 }
-
-/*# sourceMappingURL=die-rpg.css.map */

@@ -38,6 +38,12 @@
 										{{look.name}}{{#if look.defenseBonus}} (+{{look.defenseBonus}} Defense){{/if}}
 									</option>
 								{{/each}}
+								<option
+									value="___CUSTOM___"
+									{{#if (eq @root.actor.system.paragon.selectedLook "___CUSTOM___")}}selected{{/if}}
+								>
+									Custom Look
+								</option>
 							</select>
 						</div>
 						{{#if paragonItem.system.looks.length}}
@@ -60,18 +66,19 @@
 						{{/if}}
 					{{/if}}
 
-					<div class="form-group">
-						<label for="custom-look">Or Enter Custom Look:</label>
-						<input
-							type="text"
-							id="custom-look"
-							name="system.paragon.selectedLook"
-							value="{{actor.system.paragon.selectedLook}}"
-							placeholder="Enter a custom look description"
-							data-dtype="String"
-						/>
-						<p class="hint">Custom look text will override the dropdown selection</p>
-					</div>
+					{{#if (isCustomLook actor.system.paragon.selectedLook)}}
+						<div class="form-group">
+							<label for="custom-look">Enter Custom Look:</label>
+							<input
+								type="text"
+								id="custom-look"
+								name="system.paragon.customLookText"
+								value="{{actor.system.paragon.customLookText}}"
+								placeholder="Enter a custom look description"
+								data-dtype="String"
+							/>
+						</div>
+					{{/if}}
 				</div>
 			</div>
 
