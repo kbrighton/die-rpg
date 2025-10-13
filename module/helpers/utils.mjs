@@ -172,4 +172,61 @@ export function registerHandlebarsHelpers() {
 	Handlebars.registerHelper('add', function(a, b) {
 		return a + b;
 	});
+
+	// ========================================
+	// DYNAMIC FIELD RENDERING HELPERS
+	// ========================================
+
+	/**
+	 * Equality helper for comparing values in templates
+	 * @param {*} a - First value
+	 * @param {*} b - Second value
+	 * @returns {boolean} True if equal
+	 */
+	Handlebars.registerHelper('eq', function(a, b) {
+		return a === b;
+	});
+
+	/**
+	 * Checked helper for checkbox inputs
+	 * @param {boolean} value - The boolean value
+	 * @returns {string} "checked" if true, empty string if false
+	 */
+	Handlebars.registerHelper('checked', function(value) {
+		return value ? 'checked' : '';
+	});
+
+	/**
+	 * Contains helper for checking if array contains a value
+	 * @param {Array} array - Array to search
+	 * @param {*} value - Value to find
+	 * @returns {boolean} True if array contains value
+	 */
+	Handlebars.registerHelper('contains', function(array, value) {
+		if (!Array.isArray(array)) return false;
+		return array.includes(value);
+	});
+
+	/**
+	 * Concat helper for concatenating strings
+	 * @param {...string} args - Strings to concatenate
+	 * @returns {string} Concatenated string
+	 */
+	Handlebars.registerHelper('concat', function(...args) {
+		// Last argument is Handlebars options object, remove it
+		args.pop();
+		return args.join('');
+	});
+
+	/**
+	 * Lookup helper for accessing nested properties by key
+	 * Note: Foundry may have this built-in, but adding it for safety
+	 * @param {Object} object - Object to look up property in
+	 * @param {string} key - Property key
+	 * @returns {*} Property value
+	 */
+	Handlebars.registerHelper('lookup', function(object, key) {
+		if (!object || key === undefined) return undefined;
+		return object[key];
+	});
 }
