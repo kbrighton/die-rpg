@@ -229,4 +229,17 @@ export function registerHandlebarsHelpers() {
 		if (!object || key === undefined) return undefined;
 		return object[key];
 	});
+
+	/**
+	 * JSON stringify helper for displaying objects in textareas
+	 * @param {*} context - The value to stringify
+	 * @param {Object} options - Handlebars options object with hash parameters
+	 * @param {number} [options.hash.space] - Number of spaces for indentation (default: 0)
+	 * @returns {Handlebars.SafeString} JSON string
+	 */
+	Handlebars.registerHelper('json', function(context, options) {
+		if (context === null || context === undefined) return '';
+		const space = options.hash.space || 0;
+		return new Handlebars.SafeString(JSON.stringify(context, null, space));
+	});
 }

@@ -450,6 +450,26 @@
 .die-rpg.item .window-content .tab.scrollable.active.description prose-mirror {
   flex: 1 1 auto;
 }
+.die-rpg.item .formDefinitions .form-section {
+  margin-bottom: 20px;
+}
+.die-rpg.item .formDefinitions .field-type-reference {
+  margin-top: 10px;
+}
+.die-rpg.item .formDefinitions .field-type-reference summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+.die-rpg.item .formDefinitions .field-type-reference .reference-content {
+  padding: 10px 20px;
+}
+.die-rpg.item .formDefinitions .field-type-reference .reference-content > p:first-child {
+  margin-bottom: 10px;
+}
+.die-rpg.item .formDefinitions .json-editor {
+  font-family: monospace;
+  font-size: 0.9em;
+}
 .die-rpg .items-header {
   height: 28px;
   margin: 2px 0;

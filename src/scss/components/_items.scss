@@ -11,31 +11,31 @@
 		height: 100%;
 		// margin: $margin-md 0;
 		// padding-top: 0;
-    grid-template-areas:
+		grid-template-areas:
 			"name sheet-tabs"
 			"image tab-content"
 			"sidebar tab-content";
 
 		.name {
-      grid-area: name;
+			grid-area: name;
 			// grid-column: 1;
 			// grid-row: 1;
 		}
 
 		.image {
-      grid-area: image;
+			grid-area: image;
 			// grid-column: 1;
 			// grid-row: 2;
 		}
 
 		.sidebar {
-      grid-area: sidebar;
+			grid-area: sidebar;
 			// grid-column: 1;
 			// grid-row: 3;
 		}
 
 		.sheet-tabs {
-      grid-area: sheet-tabs;
+			grid-area: sheet-tabs;
 			// grid-column: 2;
 			// grid-row: 1 / -1; /* Span all rows */
 
@@ -44,7 +44,7 @@
 		}
 
 		.tab {
-      grid-area: tab-content;
+			grid-area: tab-content;
 			// grid-column: 2;
 			// grid-row: 1 / -1; /* Span all rows */
 
@@ -88,6 +88,35 @@
 					}
 				}
 			}
+		}
+	}
+
+	// Paragon Item Sheet - Form Definitions Tab
+	.formDefinitions {
+		.form-section {
+			margin-bottom: $gap-lg;
+		}
+
+		.field-type-reference {
+			margin-top: $gap-md;
+
+			summary {
+				cursor: pointer;
+				font-weight: bold;
+			}
+
+			.reference-content {
+				padding: $padding-md $gap-lg;
+
+				> p:first-child {
+					margin-bottom: $gap-md;
+				}
+			}
+		}
+
+		.json-editor {
+			font-family: monospace;
+			font-size: 0.9em;
 		}
 	}
 }

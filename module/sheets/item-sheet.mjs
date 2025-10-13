@@ -18,7 +18,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ['die-rpg', 'item'],
     position: {
-      width: 700,
+      width: 800,
       height: 500,
     },
     window: {
@@ -68,6 +68,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         { id: "arcaneweaponDetails" },
         { id: "advancements" },
         { id: "looks" },
+        { id: "formDefinitions" },
         { id: "specials" },
       ],
       initial: "description",
@@ -155,6 +156,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    formDefinitions: {
+      template: 'systems/die-rpg/templates/item/paragon/formDefinitions.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
     specials: {
       template: 'systems/die-rpg/templates/item/specials.hbs',
       classes: ["scrollable"],
@@ -172,7 +178,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // Add the appropriate parts based on item type
     switch (this.document.type) {
       case 'paragon':
-        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'specials');
+        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'formDefinitions', 'specials');
         break;
       case 'equipment':
         options.parts.push('description', 'equipmentDetails', 'specials');
@@ -234,6 +240,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case 'advancements':
       case 'looks':
+      case 'formDefinitions':
       case 'equipmentDetails':
       case 'lookDetails':
       case 'spellDetails':
@@ -359,6 +366,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         case 'looks':
           tab.id = 'looks';
           tab.label += 'Looks';
+          break;
+        case 'formDefinitions':
+          tab.id = 'formDefinitions';
+          tab.label += 'FormDefinitions';
           break;
         case 'specials':
           tab.id = 'specials';
@@ -914,5 +925,45 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropFolder(event, data) {
     if (!this.item.isOwner) return [];
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Process form submission data to parse JSON textareas
+   * @param {SubmitEvent} event                   The originating form submission event
+   * @param {HTMLFormElement} form                The form element that was submitted
+   * @param {object} submitData                   Processed form data
+   * @returns {Promise<void>}
+   * @protected
+   * @override
+   */
+  async _processSubmitData(event, form, submitData) {
+    // Parse JSON textareas for paragon form definitions
+    if (this.document.type === 'paragon') {
+      // Parse classAbilities.fields if present
+      if (submitData['system.classAbilities.fields']) {
+        try {
+          const parsed = JSON.parse(submitData['system.classAbilities.fields']);
+          submitData['system.classAbilities.fields'] = parsed;
+        } catch (error) {
+          ui.notifications.error(`Invalid JSON in Class Abilities Fields: ${error.message}`);
+          throw error; // Prevent form submission with invalid JSON
+        }
+      }
+
+      // Parse advancementForms.fields if present
+      if (submitData['system.advancementForms.fields']) {
+        try {
+          const parsed = JSON.parse(submitData['system.advancementForms.fields']);
+          submitData['system.advancementForms.fields'] = parsed;
+        } catch (error) {
+          ui.notifications.error(`Invalid JSON in Advancement Form Fields: ${error.message}`);
+          throw error; // Prevent form submission with invalid JSON
+        }
+      }
+    }
+
+    return super._processSubmitData?.(event, form, submitData);
   }
 }

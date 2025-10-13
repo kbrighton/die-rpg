@@ -82,7 +82,8 @@
 				"Specials": "Specials",
 				"Looks": "Looks",
 				"Advancements": "Advancements",
-				"Details": "Details"
+				"Details": "Details",
+				"FormDefinitions": "Form Definitions"
 			},
 			"Look": {
 				"FIELDS": {
