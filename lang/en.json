@@ -52,11 +52,21 @@
 			"Character": {
 				"FIELDS": {
 					"level": { "label": "Level" },
-				"persona": {
-					"name": { "label": "Name" },
-					"pronouns": { "label": "Pronouns" },
-					"notes": { "label": "Notes" }
-				}
+					"paragon": {
+						"classAbilityData": {
+							"label": "Class Ability Data",
+							"hint": "Character-specific data for class abilities"
+						},
+						"advancementData": {
+							"label": "Advancement Data",
+							"hint": "Character-specific data for advancement forms"
+						}
+					},
+					"persona": {
+						"name": { "label": "Name" },
+						"pronouns": { "label": "Pronouns" },
+						"notes": { "label": "Notes" }
+					}
 				}
 			},
 			"NPC": {
@@ -233,6 +243,66 @@
 						"name": { "label": "Advancement Name" },
 						"description": { "label": "Advancement Description" },
 						"icon": { "label": "Advancement Icon" }
+					},
+					"classAbilities": {
+						"label": "Class Abilities Form Definition",
+						"hint": "Defines the form fields that appear on the character's Class tab",
+						"fields": {
+							"label": "Form Fields"
+						},
+						"field": {
+							"key": {
+								"label": "Field Key",
+								"hint": "Unique identifier (e.g., 'fairGold', 'emotionPalette')"
+							},
+							"type": {
+								"label": "Field Type"
+							},
+							"label": {
+								"label": "Display Label",
+								"hint": "User-facing label for this field"
+							},
+							"initial": {
+								"label": "Default Value"
+							},
+							"choices": {
+								"label": "Choices (for select/multiSelect)",
+								"hint": "Array of option strings"
+							},
+							"min": {
+								"label": "Minimum (for number)"
+							},
+							"max": {
+								"label": "Maximum (for number)"
+							},
+							"itemType": {
+								"label": "Item Type (for itemList)",
+								"hint": "e.g., 'gift', 'god', 'spell'"
+							},
+							"specialKey": {
+								"label": "Special Key (for special field)",
+								"hint": "References a special in the specials array"
+							},
+							"fields": {
+								"label": "Nested Fields (for group)",
+								"hint": "Array of field definitions for grouped fields"
+							}
+						}
+					},
+					"advancementForms": {
+						"label": "Advancement Forms Definition",
+						"hint": "Defines the form fields that appear on the character's Advancements tab",
+						"fields": {
+							"label": "Form Fields"
+						}
+					},
+					"headerImage": {
+						"label": "Header Image",
+						"hint": "Exploded image for character sheet header"
+					},
+					"backgroundImage": {
+						"label": "Background Image",
+						"hint": "Shape image for stat background"
 					}
 				},
 				"Details": {"label": "Details"},

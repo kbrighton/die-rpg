@@ -27,7 +27,7 @@
             "htmlFields": ["description"]
         },
         "paragon": {
-            "htmlFields": ["description", "advancements.*.description"]
+            "htmlFields": ["description", "coreNature", "coreAbility.description", "advancements.*.description", "specials.*.description"]
         },
         "look": {
             "htmlFields": ["description"]

@@ -154,6 +154,134 @@ export default class DieRpgParagon extends DieRpgItemBase {
       label: 'DIE_RPG.Item.Paragon.FIELDS.advancements.label'
     });
 
+    // ========================================
+    // TEMPLATE-DRIVEN FORM DEFINITIONS
+    // ========================================
+
+    // Defines the fields that should appear on the character sheet's "Class" tab
+    // when this paragon is selected. Stored as an array of field definition objects.
+    schema.classAbilities = new fields.SchemaField({
+      fields: new fields.ArrayField(
+        new fields.SchemaField({
+          key: new fields.StringField({
+            required: true,
+            blank: false,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.key.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.key.hint'
+          }),
+          type: new fields.StringField({
+            required: true,
+            blank: false,
+            choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'itemList', 'group', 'special'],
+            initial: 'text',
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.type.label'
+          }),
+          label: new fields.StringField({
+            required: true,
+            blank: false,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.label.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.label.hint'
+          }),
+          initial: new fields.JSONField({
+            required: false,
+            nullable: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.initial.label'
+          }),
+          // Type-specific options
+          choices: new fields.ArrayField(
+            new fields.StringField(),
+            {
+              required: false,
+              label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.choices.label',
+              hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.choices.hint'
+            }
+          ),
+          min: new fields.NumberField({
+            required: false,
+            nullable: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.min.label'
+          }),
+          max: new fields.NumberField({
+            required: false,
+            nullable: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.max.label'
+          }),
+          itemType: new fields.StringField({
+            required: false,
+            blank: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.itemType.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.itemType.hint'
+          }),
+          specialKey: new fields.StringField({
+            required: false,
+            blank: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.specialKey.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.specialKey.hint'
+          }),
+          fields: new fields.ArrayField(
+            new fields.JSONField(),
+            {
+              required: false,
+              label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.fields.label',
+              hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.fields.hint'
+            }
+          )
+        }),
+        {
+          label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.fields.label',
+          initial: []
+        }
+      )
+    }, {
+      label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.label'
+    });
+
+    // Defines the fields for class-specific advancement forms
+    // Displayed on the character sheet's "Advancements" tab below the advancement map
+    schema.advancementForms = new fields.SchemaField({
+      fields: new fields.ArrayField(
+        new fields.SchemaField({
+          // Same structure as classAbilities.fields
+          key: new fields.StringField({ required: true, blank: false }),
+          type: new fields.StringField({
+            required: true,
+            blank: false,
+            choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'itemList', 'group', 'special'],
+            initial: 'text'
+          }),
+          label: new fields.StringField({ required: true, blank: false }),
+          initial: new fields.JSONField({ required: false, nullable: true }),
+          choices: new fields.ArrayField(new fields.StringField(), { required: false }),
+          min: new fields.NumberField({ required: false, nullable: true }),
+          max: new fields.NumberField({ required: false, nullable: true }),
+          itemType: new fields.StringField({ required: false, blank: true }),
+          specialKey: new fields.StringField({ required: false, blank: true }),
+          fields: new fields.ArrayField(new fields.JSONField(), { required: false })
+        }),
+        {
+          label: 'DIE_RPG.Item.Paragon.FIELDS.advancementForms.fields.label',
+          initial: []
+        }
+      )
+    }, {
+      label: 'DIE_RPG.Item.Paragon.FIELDS.advancementForms.label'
+    });
+
+    // Optional: Images for theming
+    schema.headerImage = new fields.FilePathField({
+      required: false,
+      categories: ['IMAGE'],
+      label: 'DIE_RPG.Item.Paragon.FIELDS.headerImage.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.headerImage.hint'
+    });
+
+    schema.backgroundImage = new fields.FilePathField({
+      required: false,
+      categories: ['IMAGE'],
+      label: 'DIE_RPG.Item.Paragon.FIELDS.backgroundImage.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.backgroundImage.hint'
+    });
+
     return schema;
   }
 }

@@ -25,6 +25,22 @@ export default class DieRpgCharacter extends DieRpgActorBase {
         new fields.StringField(),
         { initial: ["row0-1"] }
       ),
+
+      // Store user's class ability selections/values
+      classAbilityData: new fields.ObjectField({
+        required: true,
+        initial: {},
+        label: 'DIE_RPG.Actor.Character.FIELDS.paragon.classAbilityData.label',
+        hint: 'DIE_RPG.Actor.Character.FIELDS.paragon.classAbilityData.hint'
+      }),
+
+      // Store user's advancement form selections/values
+      advancementData: new fields.ObjectField({
+        required: true,
+        initial: {},
+        label: 'DIE_RPG.Actor.Character.FIELDS.paragon.advancementData.label',
+        hint: 'DIE_RPG.Actor.Character.FIELDS.paragon.advancementData.hint'
+      })
     });
 
     schema.persona = new fields.SchemaField({

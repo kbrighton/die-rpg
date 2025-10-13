@@ -1,0 +1,125 @@
+{{!-- Dynamic Field Renderer --}}
+{{!-- Renders a form field based on field definition from paragon item --}}
+{{!--
+  @param {Object} field - Field definition from paragon (with type, label, initial, etc.)
+  @param {*} value - Current value from character data
+  @param {String} path - Form path for name attribute (e.g., "system.paragon.classAbilityData.fairGold")
+  @param {Boolean} editable - Whether the field is editable
+--}}
+
+{{#if (eq field.type "text")}}
+  <div class="form-group">
+    <label>{{field.label}}</label>
+    <input type="text" name="{{path}}" value="{{value}}" {{#unless editable}}disabled{{/unless}} />
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "number")}}
+  <div class="form-group">
+    <label>{{field.label}}</label>
+    <input
+      type="number"
+      name="{{path}}"
+      value="{{value}}"
+      {{#if field.min}}min="{{field.min}}"{{/if}}
+      {{#if field.max}}max="{{field.max}}"{{/if}}
+      {{#unless editable}}disabled{{/unless}}
+    />
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "boolean")}}
+  <div class="form-group checkbox-field">
+    <label>
+      <input type="checkbox" name="{{path}}" {{checked value}} {{#unless editable}}disabled{{/unless}} />
+      {{field.label}}
+    </label>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "select")}}
+  <div class="form-group">
+    <label>{{field.label}}</label>
+    <select name="{{path}}" {{#unless editable}}disabled{{/unless}}>
+      <option value="">-- Select --</option>
+      {{#each field.choices as |choice|}}
+        <option value="{{choice}}" {{#if (eq choice ../value)}}selected{{/if}}>{{choice}}</option>
+      {{/each}}
+    </select>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "multiSelect")}}
+  <div class="form-group multiselect-field">
+    <label>{{field.label}}</label>
+    <div class="checkbox-group">
+      {{#each field.choices as |choice|}}
+        <label>
+          <input
+            type="checkbox"
+            name="{{../path}}"
+            value="{{choice}}"
+            {{#if (contains ../../value choice)}}checked{{/if}}
+            {{#unless ../../editable}}disabled{{/unless}}
+          />
+          {{choice}}
+        </label>
+      {{/each}}
+    </div>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "html")}}
+  <div class="form-group html-field">
+    <label>{{field.label}}</label>
+    <div class="editor">
+      {{editor value target=path button=true editable=editable}}
+    </div>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "itemList")}}
+  <div class="form-group itemlist-field">
+    <label>{{field.label}}</label>
+    {{!-- TODO: Implement item list rendering --}}
+    {{!-- Show embedded items of type field.itemType, add/remove buttons --}}
+    <div class="item-list-placeholder">
+      <p class="hint">Item list for type: {{field.itemType}}</p>
+      <p class="hint">This will display items of type "{{field.itemType}}" that the character owns.</p>
+      <p class="hint"><em>(Item list rendering will be implemented in a future phase)</em></p>
+    </div>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else if (eq field.type "group")}}
+  <fieldset class="field-group">
+    <legend>{{field.label}}</legend>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+    {{#each field.fields as |subfield|}}
+      {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
+          field=subfield
+          value=(lookup ../../value subfield.key)
+          path=(concat ../../path "." subfield.key)
+          editable=../../editable}}
+    {{/each}}
+  </fieldset>
+
+{{else if (eq field.type "special")}}
+  <div class="form-group special-field">
+    <label>{{field.label}}</label>
+    {{!-- TODO: Link to special ability from paragon specials array --}}
+    <div class="special-reference">
+      <p class="hint">References special: <strong>{{field.specialKey}}</strong></p>
+      <p class="hint"><em>(Special ability linking will be implemented in a future phase)</em></p>
+    </div>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
+{{else}}
+  {{!-- Unknown field type --}}
+  <div class="form-group error-field">
+    <p class="error">Unknown field type: <strong>{{field.type}}</strong></p>
+    <p class="hint">Please check the paragon item's form definition.</p>
+  </div>
+
+{{/if}}
