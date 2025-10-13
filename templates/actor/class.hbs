@@ -127,6 +127,23 @@
 				{{/if}}
 			</div>
 		</div>
+
+			{{! Class Abilities Section - Dynamic Fields from Paragon }}
+			{{#if paragonItem.system.classAbilities.fields.length}}
+				<div class="class-abilities-section">
+					<h3>Class Abilities</h3>
+					<div class="class-abilities-form">
+						{{#each paragonItem.system.classAbilities.fields as |field|}}
+							{{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
+								field=field
+								value=(lookup @root.actor.system.paragon.classAbilityData field.key)
+								path=(concat "system.paragon.classAbilityData." field.key)
+								editable=@root.editable}}
+						{{/each}}
+					</div>
+				</div>
+			{{/if}}
+		</div>
 	{{else}}
 		<div class="no-paragon-message">
 			<p>No paragon selected. Please select a paragon from the dropdown in the header to view class information.</p>

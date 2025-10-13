@@ -132,4 +132,21 @@
       </details>
     {{/each}}
   </div>
+
+  {{! Advancement Forms Section - Dynamic Fields from Paragon }}
+  {{#if paragonItem.system.advancementForms.fields.length}}
+    <div class="advancement-forms-section">
+      <h3>Advancement Forms</h3>
+      <p class="hint">Track class-specific advancement details below:</p>
+      <div class="advancement-forms">
+        {{#each paragonItem.system.advancementForms.fields as |field|}}
+          {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
+            field=field
+            value=(lookup @root.actor.system.paragon.advancementData field.key)
+            path=(concat "system.paragon.advancementData." field.key)
+            editable=@root.editable}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
 </section>
