@@ -335,7 +335,7 @@
 .die-rpg.actor .window-content .sidebar {
   grid-area: sidebar;
   min-width: 0; /* Prevent overflow */
-  align-self: start;
+  height: 100%; /* Fill grid cell */
 }
 .die-rpg.actor .window-content .sidebar .profile-img {
   flex: 0 0 300px;
@@ -345,8 +345,11 @@
   object-position: center right;
 }
 .die-rpg.actor .window-content .sidebar .class-description {
+  flex: 1; /* Take remaining space */
+  min-height: 0; /* Prevent flex overflow */
   margin: 0 0 10px 10px;
   font-style: italic;
+  scrollbar-gutter: stable;
 }
 .die-rpg.actor .window-content .header-fields {
   grid-area: header-fields;

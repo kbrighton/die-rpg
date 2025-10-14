@@ -136,7 +136,7 @@ h6 {
 		.sidebar {
 			grid-area: sidebar;
 			min-width: 0; /* Prevent overflow */
-			align-self: start;
+			height: 100%; /* Fill grid cell */
 
 			.profile-img {
 				flex: 0 0 300px;
@@ -148,8 +148,11 @@ h6 {
 			}
 
 			.class-description {
+				flex: 1; /* Take remaining space */
+				min-height: 0; /* Prevent flex overflow */
 				margin: 0 0 $margin-md $margin-md;
 				font-style: italic;
+				scrollbar-gutter: stable;
 			}
 		}
 
