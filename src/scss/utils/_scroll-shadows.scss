@@ -9,20 +9,19 @@
   // Create overlapping background gradients that change with scroll position
   background:
     // Shadow covers - hide shadows when scrolled to edges
-    linear-gradient($background-color 33%, transparent),
-    linear-gradient(transparent, $background-color 66%) 0 100%,
+    linear-gradient($background-color 30%, transparent) center top,
+    linear-gradient(transparent, $background-color 70%) center bottom,
     // Shadows - visible in middle of scroll area
     radial-gradient(
       farthest-side at 50% 0,
       $shadow-color,
       transparent
-    ),
+    ) center top,
     radial-gradient(
-        farthest-side at 50% 100%,
-        $shadow-color,
-        transparent
-      )
-      0 100%;
+      farthest-side at 50% 100%,
+      $shadow-color,
+      transparent
+    ) center bottom;
 
   background-repeat: no-repeat;
   background-size: 100% 50px, 100% 50px, 100% $shadow-size, 100% $shadow-size;
