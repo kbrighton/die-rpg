@@ -68,7 +68,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         { id: "arcaneweaponDetails" },
         { id: "advancements" },
         { id: "looks" },
-        { id: "formDefinitions" },
+        { id: "abilities" },
         { id: "specials" },
       ],
       initial: "description",
@@ -156,8 +156,8 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
-    formDefinitions: {
-      template: 'systems/die-rpg/templates/item/paragon/formDefinitions.hbs',
+    abilities: {
+      template: 'systems/die-rpg/templates/item/paragon/abilities.hbs',
       classes: ["scrollable"],
       scrollable: [""],
     },
@@ -178,7 +178,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // Add the appropriate parts based on item type
     switch (this.document.type) {
       case 'paragon':
-        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'formDefinitions', 'specials');
+        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'abilities', 'specials');
         break;
       case 'equipment':
         options.parts.push('description', 'equipmentDetails', 'specials');
@@ -240,7 +240,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case 'advancements':
       case 'looks':
-      case 'formDefinitions':
+      case 'abilities':
       case 'equipmentDetails':
       case 'lookDetails':
       case 'spellDetails':
@@ -249,8 +249,25 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       case 'stanceDetails':
       case 'ventingDetails':
       case 'arcaneweaponDetails':
+        context.tab = context.tabs[partId];
+        break;
       case 'specials':
         context.tab = context.tabs[partId];
+        // Enrich all special descriptions for toggled ProseMirror editors
+        context.enrichedSpecialDescriptions = [];
+        if (this.item.system.specials?.length) {
+          for (const special of this.item.system.specials) {
+            const enriched = await ux.TextEditor.enrichHTML(
+              special.description || '',
+              {
+                secrets: this.document.isOwner,
+                rollData: this.item.getRollData(),
+                relativeTo: this.item,
+              }
+            );
+            context.enrichedSpecialDescriptions.push(enriched);
+          }
+        }
         break;
       case 'paragonDetails':
         context.tab = context.tabs[partId];
@@ -367,9 +384,9 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'looks';
           tab.label += 'Looks';
           break;
-        case 'formDefinitions':
-          tab.id = 'formDefinitions';
-          tab.label += 'FormDefinitions';
+        case 'abilities':
+          tab.id = 'abilities';
+          tab.label += 'abilities';
           break;
         case 'specials':
           tab.id = 'specials';

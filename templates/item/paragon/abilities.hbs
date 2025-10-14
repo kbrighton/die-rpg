@@ -1,32 +1,30 @@
-{{! Paragon Advancements Tab }}
+{{! Paragon Form Definitions Tab }}
 <section
-	class="tab advancements {{tab.cssClass}}"
+	class="tab abilities {{tab.cssClass}}"
 	data-group="primary"
-	data-tab="advancements"
+	data-tab="abilities"
 	data-subtype="{{document.type}}"
 >
-	{{!-- <h2>{{localize "DIE_RPG.Item.Paragon.FIELDS.advancements.label"}}</h2> --}}
-  <p class="hint">Define the dynamic form fields that appear on character sheets
+	<p class="hint">Define the dynamic form fields that appear on character sheets
 		when this paragon is selected.</p>
 
-	{{! Advancement Form Fields }}
-	<fieldset class="form-section advancement-form-fields">
-		<legend>Advancement Form Fields</legend>
+	{{! Class Abilities Form Fields }}
+	<fieldset class="form-section class-abilities-fields">
+		<legend>Class Abilities Form Fields</legend>
 		<p class="hint">These fields appear on the character's
-			<strong>Advancements tab</strong>
-			below the advancement map.</p>
+			<strong>Class tab</strong>. Define the form structure as a JSON array.</p>
 
 		<div class="form-group stacked">
-			<label>Advancement Form Fields (JSON)</label>
+			<label>Class Abilities Fields (JSON)</label>
 			<textarea
-				name="system.advancementForms.fields"
+				name="system.classAbilities.fields"
 				rows="10"
 				class="json-editor"
-				placeholder='[{"key": "exampleAdvancement", "type": "text", "label": "Example Advancement Field", "initial": ""}]'
-			>{{json system.advancementForms.fields space=2}}</textarea>
+				placeholder='[{"key": "exampleField", "type": "text", "label": "Example Field", "initial": ""}]'
+			>{{json system.classAbilities.fields space=2}}</textarea>
 			<p class="hint">
-				Uses the same field types as Class Abilities. See reference above for
-				examples.
+				See Field Type Reference below for all available types and required
+				properties.
 			</p>
 		</div>
 

@@ -35,7 +35,14 @@
         <div class="form-group stacked">
           <label>{{localize 'DIE_RPG.Shared.special.description.label'}}</label>
           <div class="editor">
-            {{editor special.description target=(concat "system.specials." index ".description") button=true editable=editable}}
+            <prose-mirror
+              name="system.specials.{{index}}.description"
+              data-document-uuid="{{item.uuid}}"
+              value="{{special.description}}"
+              toggled="true"
+              compact="true">
+              {{{lookup @root.enrichedSpecialDescriptions index}}}
+            </prose-mirror>
           </div>
         </div>
 

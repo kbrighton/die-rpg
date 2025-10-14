@@ -80,7 +80,7 @@
 						value="{{system.coreAbility.description}}"
 						collaborate="true"
 						toggled="true"
-            compact="true"
+						compact="true"
 					>
 						{{{enrichedCoreAbilityDescription}}}
 					</prose-mirror>
@@ -88,6 +88,33 @@
 					{{{enrichedCoreAbilityDescription}}}
 				{{/if}}
 			</div>
+		</div>
+	</fieldset>
+
+	{{! Optional: Theme Images }}
+	<fieldset class="form-section theme-images">
+		<legend>Theme Images (Optional)</legend>
+		<p class="hint">Custom header and background images for character sheet
+			theming.</p>
+
+		<div class="form-group">
+			<label>Header Image Path</label>
+			<input
+				type="text"
+				name="system.headerImage"
+				value="{{system.headerImage}}"
+				placeholder="systems/die-rpg/assets/headers/paragon-name.webp"
+			/>
+		</div>
+
+		<div class="form-group">
+			<label>Background Image Path</label>
+			<input
+				type="text"
+				name="system.backgroundImage"
+				value="{{system.backgroundImage}}"
+				placeholder="systems/die-rpg/assets/backgrounds/paragon-name.webp"
+			/>
 		</div>
 	</fieldset>
 </section>
