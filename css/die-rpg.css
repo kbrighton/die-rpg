@@ -257,7 +257,6 @@
   flex: 2;
 }
 .die-rpg .editor {
-  height: 100%;
   border: 2px groove var(--die-rpg-c-groove);
 }
 .die-rpg .editor .editor-content {

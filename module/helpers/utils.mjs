@@ -14,6 +14,17 @@ import {
 } from './advancement-svg.mjs';
 
 /**
+ * Preload Handlebars templates for partials and components
+ * @returns {Promise}
+ */
+export async function preloadHandlebarsTemplates() {
+  return foundry.applications.handlebars.loadTemplates([
+	// Partial templates
+	'systems/die-rpg/templates/partials/dynamic-field.hbs',
+  ]);
+}
+
+/**
  * Register custom Handlebars helpers.
  */
 export function registerHandlebarsHelpers() {

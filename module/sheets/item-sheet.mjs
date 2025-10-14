@@ -930,40 +930,76 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /* -------------------------------------------- */
 
   /**
-   * Process form submission data to parse JSON textareas
-   * @param {SubmitEvent} event                   The originating form submission event
-   * @param {HTMLFormElement} form                The form element that was submitted
-   * @param {object} submitData                   Processed form data
-   * @returns {Promise<void>}
+   * Process form data, parsing JSON textareas before expansion
+   * @param {SubmitEvent} event             The form submission event
+   * @param {HTMLFormElement} form          The form element
+   * @param {FormDataExtended} formData     Processed form data
+   * @returns {object}                      Expanded form data
    * @protected
    * @override
    */
-  async _processSubmitData(event, form, submitData) {
-    // Parse JSON textareas for paragon form definitions
+  _processFormData(event, form, formData) {
+    // For paragon items, parse JSON textareas BEFORE expanding the object
     if (this.document.type === 'paragon') {
-      // Parse classAbilities.fields if present
-      if (submitData['system.classAbilities.fields']) {
-        try {
-          const parsed = JSON.parse(submitData['system.classAbilities.fields']);
-          submitData['system.classAbilities.fields'] = parsed;
-        } catch (error) {
-          ui.notifications.error(`Invalid JSON in Class Abilities Fields: ${error.message}`);
-          throw error; // Prevent form submission with invalid JSON
+      const rawData = formData.object;
+
+      // Parse classAbilities.fields JSON textarea
+      if ('system.classAbilities.fields' in rawData) {
+        const value = rawData['system.classAbilities.fields'];
+
+        if (typeof value === 'string') {
+          if (value.trim() === '') {
+            rawData['system.classAbilities.fields'] = [];
+          } else {
+            try {
+              const parsed = JSON.parse(value);
+              if (!Array.isArray(parsed)) {
+                throw new Error('Expected an array');
+              }
+              for (let i = 0; i < parsed.length; i++) {
+                const field = parsed[i];
+                if (!field.key || !field.type || !field.label) {
+                  throw new Error(`Field at index ${i} is missing required properties (key, type, label)`);
+                }
+              }
+              rawData['system.classAbilities.fields'] = parsed;
+            } catch (error) {
+              ui.notifications.error(`Invalid JSON in Class Abilities Fields: ${error.message}`);
+              throw error;
+            }
+          }
         }
       }
 
-      // Parse advancementForms.fields if present
-      if (submitData['system.advancementForms.fields']) {
-        try {
-          const parsed = JSON.parse(submitData['system.advancementForms.fields']);
-          submitData['system.advancementForms.fields'] = parsed;
-        } catch (error) {
-          ui.notifications.error(`Invalid JSON in Advancement Form Fields: ${error.message}`);
-          throw error; // Prevent form submission with invalid JSON
+      // Parse advancementForms.fields JSON textarea
+      if ('system.advancementForms.fields' in rawData) {
+        const value = rawData['system.advancementForms.fields'];
+
+        if (typeof value === 'string') {
+          if (value.trim() === '') {
+            rawData['system.advancementForms.fields'] = [];
+          } else {
+            try {
+              const parsed = JSON.parse(value);
+              if (!Array.isArray(parsed)) {
+                throw new Error('Expected an array');
+              }
+              for (let i = 0; i < parsed.length; i++) {
+                const field = parsed[i];
+                if (!field.key || !field.type || !field.label) {
+                  throw new Error(`Field at index ${i} is missing required properties (key, type, label)`);
+                }
+              }
+              rawData['system.advancementForms.fields'] = parsed;
+            } catch (error) {
+              ui.notifications.error(`Invalid JSON in Advancement Form Fields: ${error.message}`);
+              throw error;
+            }
+          }
         }
       }
     }
 
-    return super._processSubmitData?.(event, form, submitData);
+    return foundry.utils.expandObject(formData.object);
   }
 }
