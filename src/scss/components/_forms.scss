@@ -32,6 +32,11 @@ h6 {
 .editor {
 	border: $border-groove;
 
+	@include scroll-shadows(
+		$shadow-color: rgba(255, 255, 255, 0.4),
+		$shadow-size: 12px,
+	);
+
 	.editor-content {
 		padding: 10px;
 		& > *:first-child {
@@ -146,6 +151,11 @@ h6 {
 				margin: 0 0 $margin-md $margin-md;
 				font-style: italic;
 				scrollbar-gutter: stable;
+
+				@include scroll-shadows(
+					$shadow-color: rgba(255, 255, 255, 0.4),
+					$shadow-size: 12px,
+				);
 			}
 		}
 
