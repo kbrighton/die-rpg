@@ -257,7 +257,6 @@
   flex: 2;
 }
 .die-rpg .editor {
-  height: 100%;
   border: 2px groove var(--die-rpg-c-groove);
 }
 .die-rpg .editor .editor-content {
@@ -336,7 +335,7 @@
 .die-rpg.actor .window-content .sidebar {
   grid-area: sidebar;
   min-width: 0; /* Prevent overflow */
-  align-self: start;
+  height: 100%; /* Fill grid cell */
 }
 .die-rpg.actor .window-content .sidebar .profile-img {
   flex: 0 0 300px;
@@ -346,8 +345,11 @@
   object-position: center right;
 }
 .die-rpg.actor .window-content .sidebar .class-description {
+  flex: 1; /* Take remaining space */
+  min-height: 0; /* Prevent flex overflow */
   margin: 0 0 10px 10px;
   font-style: italic;
+  scrollbar-gutter: stable;
 }
 .die-rpg.actor .window-content .header-fields {
   grid-area: header-fields;
@@ -375,6 +377,12 @@
   background-color: rgba(255, 255, 255, 0.04);
   margin: 0 10px 0 0;
   padding: 10px;
+}
+.die-rpg.actor .window-content .tab h3 {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.die-rpg.actor .window-content .tab.notes .editor {
+  height: 100%;
 }
 .die-rpg .resources {
   margin: 10px 0 0 0;
@@ -449,6 +457,26 @@
 }
 .die-rpg.item .window-content .tab.scrollable.active.description prose-mirror {
   flex: 1 1 auto;
+}
+.die-rpg.item .abilities .form-section {
+  margin-bottom: 20px;
+}
+.die-rpg.item .abilities .field-type-reference {
+  margin-top: 10px;
+}
+.die-rpg.item .abilities .field-type-reference summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+.die-rpg.item .abilities .field-type-reference .reference-content {
+  padding: 10px 20px;
+}
+.die-rpg.item .abilities .field-type-reference .reference-content > p:first-child {
+  margin-bottom: 10px;
+}
+.die-rpg.item .abilities .json-editor {
+  font-family: monospace;
+  font-size: 0.9em;
 }
 .die-rpg .items-header {
   height: 28px;
