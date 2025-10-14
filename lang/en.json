@@ -11,10 +11,6 @@
 				"mandatory": {
 					"label": "Mandatory?",
 					"hint": "If checked, this special must be used when triggered"
-				},
-				"key": {
-					"label": "Unique Key",
-					"hint": "Optional identifier for referencing this special programmatically"
 				}
 			}
 		},
