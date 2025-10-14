@@ -30,7 +30,6 @@ h6 {
 }
 
 .editor {
-	// height: 100%;
 	border: $border-groove;
 
 	.editor-content {
@@ -40,12 +39,6 @@ h6 {
 			padding-top: 0;
 		}
 	}
-}
-
-.window-content {
-	// --scroll-margin: 0.75rem;
-	// padding-right: var(--scroll-margin) !important;
-	// overflow: hidden auto;
 }
 
 &.actor {
@@ -186,7 +179,15 @@ h6 {
 			margin: 0 $margin-md 0 0;
 			padding: $padding-md;
 
-			// &.notes {}
+			h3 {
+				border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+			}
+
+			&.notes {
+				.editor {
+					height: 100%;
+				}
+			}
 		}
 	}
 }

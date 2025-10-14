@@ -378,6 +378,12 @@
   margin: 0 10px 0 0;
   padding: 10px;
 }
+.die-rpg.actor .window-content .tab h3 {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.die-rpg.actor .window-content .tab.notes .editor {
+  height: 100%;
+}
 .die-rpg .resources {
   margin: 10px 0 0 0;
 }
