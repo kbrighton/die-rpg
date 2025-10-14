@@ -165,6 +165,22 @@ DIE_RPG.getSpecialCostValue = function(costType) {
 	return costMap[costType] || 1;
 };
 
+/**
+ * Field types for dynamic form rendering in paragon templates
+ * @type {Object}
+ */
+DIE_RPG.fieldTypes = {
+	text: 'Text Input',
+	number: 'Number Input',
+	boolean: 'Checkbox',
+	select: 'Dropdown',
+	multiSelect: 'Multi-Select',
+	html: 'Rich Text Editor',
+	itemList: 'Item List',
+	group: 'Grouped Fields',
+	special: 'Special Reference'
+};
+
 // Paragon Advancement Map
 DIE_RPG.PARAGON_ADVANCEMENT_MAP = {
 	nodes: {

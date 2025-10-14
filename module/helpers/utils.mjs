@@ -14,6 +14,17 @@ import {
 } from './advancement-svg.mjs';
 
 /**
+ * Preload Handlebars templates for partials and components
+ * @returns {Promise}
+ */
+export async function preloadHandlebarsTemplates() {
+  return foundry.applications.handlebars.loadTemplates([
+	// Partial templates
+	'systems/die-rpg/templates/partials/dynamic-field.hbs',
+  ]);
+}
+
+/**
  * Register custom Handlebars helpers.
  */
 export function registerHandlebarsHelpers() {
@@ -171,5 +182,75 @@ export function registerHandlebarsHelpers() {
 
 	Handlebars.registerHelper('add', function(a, b) {
 		return a + b;
+	});
+
+	// ========================================
+	// DYNAMIC FIELD RENDERING HELPERS
+	// ========================================
+
+	/**
+	 * Equality helper for comparing values in templates
+	 * @param {*} a - First value
+	 * @param {*} b - Second value
+	 * @returns {boolean} True if equal
+	 */
+	Handlebars.registerHelper('eq', function(a, b) {
+		return a === b;
+	});
+
+	/**
+	 * Checked helper for checkbox inputs
+	 * @param {boolean} value - The boolean value
+	 * @returns {string} "checked" if true, empty string if false
+	 */
+	Handlebars.registerHelper('checked', function(value) {
+		return value ? 'checked' : '';
+	});
+
+	/**
+	 * Contains helper for checking if array contains a value
+	 * @param {Array} array - Array to search
+	 * @param {*} value - Value to find
+	 * @returns {boolean} True if array contains value
+	 */
+	Handlebars.registerHelper('contains', function(array, value) {
+		if (!Array.isArray(array)) return false;
+		return array.includes(value);
+	});
+
+	/**
+	 * Concat helper for concatenating strings
+	 * @param {...string} args - Strings to concatenate
+	 * @returns {string} Concatenated string
+	 */
+	Handlebars.registerHelper('concat', function(...args) {
+		// Last argument is Handlebars options object, remove it
+		args.pop();
+		return args.join('');
+	});
+
+	/**
+	 * Lookup helper for accessing nested properties by key
+	 * Note: Foundry may have this built-in, but adding it for safety
+	 * @param {Object} object - Object to look up property in
+	 * @param {string} key - Property key
+	 * @returns {*} Property value
+	 */
+	Handlebars.registerHelper('lookup', function(object, key) {
+		if (!object || key === undefined) return undefined;
+		return object[key];
+	});
+
+	/**
+	 * JSON stringify helper for displaying objects in textareas
+	 * @param {*} context - The value to stringify
+	 * @param {Object} options - Handlebars options object with hash parameters
+	 * @param {number} [options.hash.space] - Number of spaces for indentation (default: 0)
+	 * @returns {Handlebars.SafeString} JSON string
+	 */
+	Handlebars.registerHelper('json', function(context, options) {
+		if (context === null || context === undefined) return '';
+		const space = options.hash.space || 0;
+		return new Handlebars.SafeString(JSON.stringify(context, null, space));
 	});
 }

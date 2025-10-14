@@ -115,9 +115,6 @@
 									{{#if special.mandatory}}
 										<span class="special-mandatory" data-tooltip="Must be used when triggered">Mandatory</span>
 									{{/if}}
-									{{#if special.key}}
-										<span class="special-key" data-tooltip="Special identifier">Key: {{special.key}}</span>
-									{{/if}}
 								</div>
 							</div>
 						{{/each}}
@@ -126,6 +123,23 @@
 					<p class="no-specials">No specials available. Specials will appear here from your paragon, equipment, and other sources.</p>
 				{{/if}}
 			</div>
+		</div>
+
+			{{! Class Abilities Section - Dynamic Fields from Paragon }}
+			{{#if paragonItem.system.classAbilities.fields.length}}
+				<div class="class-abilities-section">
+					<h3>Class Abilities</h3>
+					<div class="class-abilities-form">
+						{{#each paragonItem.system.classAbilities.fields as |field|}}
+							{{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
+								field=field
+								value=(lookup @root.actor.system.paragon.classAbilityData field.key)
+								path=(concat "system.paragon.classAbilityData." field.key)
+								editable=@root.editable}}
+						{{/each}}
+					</div>
+				</div>
+			{{/if}}
 		</div>
 	{{else}}
 		<div class="no-paragon-message">

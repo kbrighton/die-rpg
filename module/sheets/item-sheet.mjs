@@ -18,7 +18,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ['die-rpg', 'item'],
     position: {
-      width: 700,
+      width: 800,
       height: 500,
     },
     window: {
@@ -68,6 +68,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         { id: "arcaneweaponDetails" },
         { id: "advancements" },
         { id: "looks" },
+        { id: "abilities" },
         { id: "specials" },
       ],
       initial: "description",
@@ -155,6 +156,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    abilities: {
+      template: 'systems/die-rpg/templates/item/paragon/abilities.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
     specials: {
       template: 'systems/die-rpg/templates/item/specials.hbs',
       classes: ["scrollable"],
@@ -172,7 +178,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // Add the appropriate parts based on item type
     switch (this.document.type) {
       case 'paragon':
-        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'specials');
+        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'abilities', 'specials');
         break;
       case 'equipment':
         options.parts.push('description', 'equipmentDetails', 'specials');
@@ -234,6 +240,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case 'advancements':
       case 'looks':
+      case 'abilities':
       case 'equipmentDetails':
       case 'lookDetails':
       case 'spellDetails':
@@ -242,8 +249,25 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       case 'stanceDetails':
       case 'ventingDetails':
       case 'arcaneweaponDetails':
+        context.tab = context.tabs[partId];
+        break;
       case 'specials':
         context.tab = context.tabs[partId];
+        // Enrich all special descriptions for toggled ProseMirror editors
+        context.enrichedSpecialDescriptions = [];
+        if (this.item.system.specials?.length) {
+          for (const special of this.item.system.specials) {
+            const enriched = await ux.TextEditor.enrichHTML(
+              special.description || '',
+              {
+                secrets: this.document.isOwner,
+                rollData: this.item.getRollData(),
+                relativeTo: this.item,
+              }
+            );
+            context.enrichedSpecialDescriptions.push(enriched);
+          }
+        }
         break;
       case 'paragonDetails':
         context.tab = context.tabs[partId];
@@ -359,6 +383,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         case 'looks':
           tab.id = 'looks';
           tab.label += 'Looks';
+          break;
+        case 'abilities':
+          tab.id = 'abilities';
+          tab.label += 'abilities';
           break;
         case 'specials':
           tab.id = 'specials';
@@ -914,5 +942,81 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropFolder(event, data) {
     if (!this.item.isOwner) return [];
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Process form data, parsing JSON textareas before expansion
+   * @param {SubmitEvent} event             The form submission event
+   * @param {HTMLFormElement} form          The form element
+   * @param {FormDataExtended} formData     Processed form data
+   * @returns {object}                      Expanded form data
+   * @protected
+   * @override
+   */
+  _processFormData(event, form, formData) {
+    // For paragon items, parse JSON textareas BEFORE expanding the object
+    if (this.document.type === 'paragon') {
+      const rawData = formData.object;
+
+      // Parse classAbilities.fields JSON textarea
+      if ('system.classAbilities.fields' in rawData) {
+        const value = rawData['system.classAbilities.fields'];
+
+        if (typeof value === 'string') {
+          if (value.trim() === '') {
+            rawData['system.classAbilities.fields'] = [];
+          } else {
+            try {
+              const parsed = JSON.parse(value);
+              if (!Array.isArray(parsed)) {
+                throw new Error('Expected an array');
+              }
+              for (let i = 0; i < parsed.length; i++) {
+                const field = parsed[i];
+                if (!field.key || !field.type || !field.label) {
+                  throw new Error(`Field at index ${i} is missing required properties (key, type, label)`);
+                }
+              }
+              rawData['system.classAbilities.fields'] = parsed;
+            } catch (error) {
+              ui.notifications.error(`Invalid JSON in Class Abilities Fields: ${error.message}`);
+              throw error;
+            }
+          }
+        }
+      }
+
+      // Parse advancementForms.fields JSON textarea
+      if ('system.advancementForms.fields' in rawData) {
+        const value = rawData['system.advancementForms.fields'];
+
+        if (typeof value === 'string') {
+          if (value.trim() === '') {
+            rawData['system.advancementForms.fields'] = [];
+          } else {
+            try {
+              const parsed = JSON.parse(value);
+              if (!Array.isArray(parsed)) {
+                throw new Error('Expected an array');
+              }
+              for (let i = 0; i < parsed.length; i++) {
+                const field = parsed[i];
+                if (!field.key || !field.type || !field.label) {
+                  throw new Error(`Field at index ${i} is missing required properties (key, type, label)`);
+                }
+              }
+              rawData['system.advancementForms.fields'] = parsed;
+            } catch (error) {
+              ui.notifications.error(`Invalid JSON in Advancement Form Fields: ${error.message}`);
+              throw error;
+            }
+          }
+        }
+      }
+    }
+
+    return foundry.utils.expandObject(formData.object);
   }
 }

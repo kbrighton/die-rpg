@@ -13,9 +13,9 @@ export async function rollStat(dataset, actor) {
 
   // Merge with any specials passed from item context (if applicable)
   if (dataset.availableSpecials && Array.isArray(dataset.availableSpecials)) {
-    const specialKeys = new Set(availableSpecials.map(s => s.key || s.name));
+    const specialKeys = new Set(availableSpecials.map(s => `${s.source}-${s.name}`));
     dataset.availableSpecials.forEach(s => {
-      const identifier = s.key || s.name;
+      const identifier = `${s.source}-${s.name}`;
       if (!specialKeys.has(identifier)) {
         availableSpecials.push(s);
         specialKeys.add(identifier);

@@ -609,9 +609,6 @@
 .die-rpg .effects .item .effect-controls {
   border: none;
 }
-.die-rpg .tab.advancements {
-  padding: 10px;
-}
 .die-rpg .tab.advancements .advancements-grid {
   display: grid;
   grid-template-columns: 40% 60%;

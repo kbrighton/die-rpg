@@ -1,59 +1,120 @@
-{{!-- Paragon Details Tab --}}
-<section class="tab paragonDetails {{tab.cssClass}}"  data-group="primary" data-tab="paragonDetails" data-subtype="{{document.type}}">
-  {{!-- <h2>{{localize 'DIE_RPG.Item.Paragon.Details.label'}}</h2> --}}
-  {{!-- Core Nature --}}
-  <div class="form-group stacked">
-    <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.label'}}</label>
-    <div class="editor">
-      {{#if editable}} 
-        <prose-mirror name="system.coreNature" data-document-u-u-i-d="{{item.uuid}}" value="{{system.coreNature}}" collaborate="true" toggled="true">
-          {{{enrichedCoreNature}}}
-        </prose-mirror>
-      {{else}} 
-        {{{enrichedCoreNature}}}
-      {{/if}}
-    </div>
-    <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreNature.hint'}}</p>
-  </div>
+{{! Paragon Details Tab }}
+<section
+	class="tab paragonDetails {{tab.cssClass}}"
+	data-group="primary"
+	data-tab="paragonDetails"
+	data-subtype="{{document.type}}"
+>
+	{{!-- <h2>{{localize 'DIE_RPG.Item.Paragon.Details.label'}}</h2> --}}
+	{{! Core Nature }}
+	<div class="form-group stacked">
+		<label>{{localize "DIE_RPG.Item.Paragon.FIELDS.coreNature.label"}}</label>
+		<div class="editor">
+			{{#if editable}}
+				<prose-mirror
+					name="system.coreNature"
+					data-document-u-u-i-d="{{item.uuid}}"
+					value="{{system.coreNature}}"
+					collaborate="true"
+					toggled="true"
+					compact="true"
+				>
+					{{{enrichedCoreNature}}}
+				</prose-mirror>
+			{{else}}
+				{{{enrichedCoreNature}}}
+			{{/if}}
+		</div>
+		<p class="hint">{{localize "DIE_RPG.Item.Paragon.FIELDS.coreNature.hint"}}</p>
+	</div>
 
-  {{!-- Die Type --}}
-  <div class="form-group">
-    <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.die.label'}}</label>
-    <select name="system.die">
-      {{selectOptions config.dieTypes selected=system.die blank=""}}
-    </select>
-    <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.die.hint'}}</p>
-  </div>
+	{{! Die Type }}
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Item.Paragon.FIELDS.die.label"}}</label>
+		<select name="system.die">
+			{{selectOptions config.dieTypes selected=system.die blank=""}}
+		</select>
+		<p class="hint">{{localize "DIE_RPG.Item.Paragon.FIELDS.die.hint"}}</p>
+	</div>
 
-  {{!-- Important Stat --}}
-  <div class="form-group">
-    <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.importantStat.label'}}</label>
-    <select name="system.importantStat">
-      {{selectOptions config.stats selected=system.importantStat localize=true blank=""}}
-    </select>
-    <p class="hint">{{localize 'DIE_RPG.Item.Paragon.FIELDS.importantStat.hint'}}</p>
-  </div>
+	{{! Important Stat }}
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Item.Paragon.FIELDS.importantStat.label"}}</label>
+		<select name="system.importantStat">
+			{{selectOptions
+				config.stats
+				selected=system.importantStat
+				localize=true
+				blank=""
+			}}
+		</select>
+		<p class="hint">{{localize
+				"DIE_RPG.Item.Paragon.FIELDS.importantStat.hint"
+			}}</p>
+	</div>
 
-  {{!-- Core Ability --}}
-  <fieldset class="core-ability">
-    <legend>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.label'}}</legend>
+	{{! Core Ability }}
+	<fieldset class="core-ability">
+		<legend>{{localize "DIE_RPG.Item.Paragon.FIELDS.coreAbility.label"}}</legend>
 
-    <div class="form-group">
-      <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.name.label'}}</label>
-      <input type="text" name="system.coreAbility.name" value="{{system.coreAbility.name}}" />
-    </div>
+		<div class="form-group">
+			<label>{{localize
+					"DIE_RPG.Item.Paragon.FIELDS.coreAbility.name.label"
+				}}</label>
+			<input
+				type="text"
+				name="system.coreAbility.name"
+				value="{{system.coreAbility.name}}"
+			/>
+		</div>
 
-    <div class="form-group stacked">
-      <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.coreAbility.description.label'}}</label>
-      <div class="editor">
-        {{#if editable}}
-          <prose-mirror name="system.coreAbility.description" data-document-u-u-i-d="{{item.uuid}}" value="{{system.coreAbility.description}}" collaborate="true" toggled="true">
-            {{{enrichedCoreAbilityDescription}}}
-          </prose-mirror>
-        {{else}}
-          {{{enrichedCoreAbilityDescription}}}
-        {{/if}}
-      </div>
-    </div>
-  </fieldset>
+		<div class="form-group stacked">
+			<label>{{localize
+					"DIE_RPG.Item.Paragon.FIELDS.coreAbility.description.label"
+				}}</label>
+			<div class="editor">
+				{{#if editable}}
+					<prose-mirror
+						name="system.coreAbility.description"
+						data-document-u-u-i-d="{{item.uuid}}"
+						value="{{system.coreAbility.description}}"
+						collaborate="true"
+						toggled="true"
+						compact="true"
+					>
+						{{{enrichedCoreAbilityDescription}}}
+					</prose-mirror>
+				{{else}}
+					{{{enrichedCoreAbilityDescription}}}
+				{{/if}}
+			</div>
+		</div>
+	</fieldset>
+
+	{{! Optional: Theme Images }}
+	<fieldset class="form-section theme-images">
+		<legend>Theme Images (Optional)</legend>
+		<p class="hint">Custom header and background images for character sheet
+			theming.</p>
+
+		<div class="form-group">
+			<label>Header Image Path</label>
+			<input
+				type="text"
+				name="system.headerImage"
+				value="{{system.headerImage}}"
+				placeholder="systems/die-rpg/assets/headers/paragon-name.webp"
+			/>
+		</div>
+
+		<div class="form-group">
+			<label>Background Image Path</label>
+			<input
+				type="text"
+				name="system.backgroundImage"
+				value="{{system.backgroundImage}}"
+				placeholder="systems/die-rpg/assets/backgrounds/paragon-name.webp"
+			/>
+		</div>
+	</fieldset>
 </section>

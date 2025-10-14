@@ -262,6 +262,40 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
+   * Process form data to handle multi-select checkboxes
+   * @param {SubmitEvent} event             The form submission event
+   * @param {HTMLFormElement} form          The form element
+   * @param {FormDataExtended} formData     Processed form data
+   * @returns {object}                      Expanded form data
+   * @protected
+   * @override
+   */
+  _processFormData(event, form, formData) {
+    const rawData = formData.object;
+
+    // Handle multi-select checkboxes from dynamic fields
+    const multiSelects = form.querySelectorAll('input[type="checkbox"][data-multi-select]');
+    const multiSelectGroups = {};
+
+    for (const checkbox of multiSelects) {
+      const fieldPath = checkbox.dataset.multiSelect;
+      if (!multiSelectGroups[fieldPath]) {
+        multiSelectGroups[fieldPath] = [];
+      }
+      if (checkbox.checked) {
+        multiSelectGroups[fieldPath].push(checkbox.value);
+      }
+    }
+
+    // Set the collected values
+    for (const [path, values] of Object.entries(multiSelectGroups)) {
+      foundry.utils.setProperty(rawData, path, values);
+    }
+
+    return foundry.utils.expandObject(rawData);
+  }
+
+  /**
    * Actions performed after any render of the Application.
    * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data

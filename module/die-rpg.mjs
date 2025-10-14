@@ -100,7 +100,7 @@ Hooks.once('init', function () {
 
   utils.registerHandlebarsHelpers();
   // Preload Handlebars parts.
-  // utils.preloadHandlebarsTemplates();
+  utils.preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */

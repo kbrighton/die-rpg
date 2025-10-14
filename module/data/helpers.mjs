@@ -58,13 +58,6 @@ export const specialsArrayField = ({ label = 'DIE_RPG.Item.Paragon.FIELDS.specia
       initial: false,
       label: 'DIE_RPG.Shared.special.mandatory.label',
       hint: 'DIE_RPG.Shared.special.mandatory.hint'
-    }),
-    key: new StringField({
-      required: false,
-      blank: true,
-      initial: '',
-      label: 'DIE_RPG.Shared.special.key.label',
-      hint: 'DIE_RPG.Shared.special.key.hint'
     })
   }),
   {
