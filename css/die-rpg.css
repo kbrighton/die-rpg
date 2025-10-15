@@ -25,6 +25,95 @@
   --die-rpg-c-groove: #7e7e7e;
 }
 
+/**
+ * Scroll Indicators
+ * Self-contained, portable scroll indicator system for scrollable elements.
+ *
+ * Usage: Add the .scroll-indicators class to any scrollable element
+ *
+ * This utility is completely standalone and can be copied to any Foundry project.
+ * It includes its own theme-aware CSS custom properties that work with .theme-dark
+ */
+:root {
+  --scroll-indicator-shadow-color: rgba(0, 0, 0, 0.5);
+  --scroll-indicator-shadow-size: 14px;
+  --scroll-indicator-shadow-spread: 8px;
+}
+
+.theme-dark {
+  --scroll-indicator-shadow-color: rgba(255, 255, 255, 0.3);
+  --scroll-indicator-shadow-size: 14px;
+  --scroll-indicator-shadow-spread: 8px;
+}
+
+.scroll-indicators {
+  position: relative;
+}
+.scroll-indicators::before, .scroll-indicators::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  height: var(--scroll-indicator-shadow-size);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 9999;
+}
+.scroll-indicators::before {
+  top: 2px;
+  background: linear-gradient(to bottom, var(--scroll-indicator-shadow-color) 0%, transparent 100%);
+}
+.scroll-indicators::after {
+  bottom: 2px;
+  background: linear-gradient(to top, var(--scroll-indicator-shadow-color) 0%, transparent 100%);
+}
+
+.scroll-indicators-self {
+  position: relative;
+}
+.scroll-indicators-self::before, .scroll-indicators-self::after {
+  content: "";
+  position: sticky;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 2px;
+  height: var(--scroll-indicator-shadow-size);
+  flex-shrink: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 9999;
+}
+.scroll-indicators-self::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--scroll-indicator-shadow-color) 0%, transparent 100%);
+}
+.scroll-indicators-self::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--scroll-indicator-shadow-color) 0%, transparent 100%);
+}
+
+.scroll-indicators.scroll-indicators--bottom::after,
+.scroll-indicators-self.scroll-indicators--bottom::after {
+  opacity: 1;
+}
+.scroll-indicators.scroll-indicators--top::before,
+.scroll-indicators-self.scroll-indicators--top::before {
+  opacity: 1;
+}
+.scroll-indicators.scroll-indicators--both::before, .scroll-indicators.scroll-indicators--both::after,
+.scroll-indicators-self.scroll-indicators--both::before,
+.scroll-indicators-self.scroll-indicators--both::after {
+  opacity: 1;
+}
+.scroll-indicators.scroll-indicators--none::before, .scroll-indicators.scroll-indicators--none::after,
+.scroll-indicators-self.scroll-indicators--none::before,
+.scroll-indicators-self.scroll-indicators--none::after {
+  opacity: 0;
+}
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;

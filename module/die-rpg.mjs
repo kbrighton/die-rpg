@@ -6,6 +6,7 @@ import { DieRpgActorSheet } from './sheets/actor-sheet.mjs';
 import { DieRpgItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { DIE_RPG } from './helpers/config.mjs';
+import { initializeScrollIndicators } from './helpers/scroll-indicators.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 import * as utils from "./helpers/utils.mjs";
@@ -117,6 +118,9 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 /* -------------------------------------------- */
 
 Hooks.once('ready', function () {
+  // Initialize scroll indicators for all elements with .scroll-indicators class
+  initializeScrollIndicators();
+
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
 });

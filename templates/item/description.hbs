@@ -5,6 +5,7 @@
 	data-subtype="{{document.type}}"
 >
 	{{!-- <h2>{{localize 'DIE_RPG.Item.FIELDS.Description.label'}}</h2> --}}
+	<div class="editor scroll-indicators">
 	{{#if editable}}
 		<prose-mirror
 			name="system.description"
@@ -12,11 +13,12 @@
 			value="{{system.description}}"
 			collaborate="true"
 			toggled="true"
-      compact="true"
+			compact="true"
 		>
 			{{{enrichedDescription}}}
 		</prose-mirror>
 	{{else}}
 		{{{enrichedDescription}}}
 	{{/if}}
+	</div>
 </section>

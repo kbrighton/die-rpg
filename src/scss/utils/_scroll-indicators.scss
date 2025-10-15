@@ -1,0 +1,131 @@
+/**
+ * Scroll Indicators
+ * Self-contained, portable scroll indicator system for scrollable elements.
+ *
+ * Usage: Add the .scroll-indicators class to any scrollable element
+ *
+ * This utility is completely standalone and can be copied to any Foundry project.
+ * It includes its own theme-aware CSS custom properties that work with .theme-dark
+ */
+
+// Theme-aware CSS custom properties
+// Light theme (default) - dark shadows on light backgrounds
+:root {
+  --scroll-indicator-shadow-color: rgba(0, 0, 0, 0.5);
+  --scroll-indicator-shadow-size: 14px;
+  --scroll-indicator-shadow-spread: 8px;
+}
+
+// Dark theme - light shadows on dark backgrounds
+.theme-dark {
+  --scroll-indicator-shadow-color: rgba(255, 255, 255, 0.3);
+  --scroll-indicator-shadow-size: 14px;
+  --scroll-indicator-shadow-spread: 8px;
+}
+
+// Base scroll indicators class (for child scrollers like editors)
+.scroll-indicators {
+  position: relative;
+
+  // Pseudo-elements for shadows
+  &::before,
+  &::after {
+    content: '';
+    position: absolute; // Fixed to container edges
+    left: 2px; // Account for borders
+    right: 2px;
+    height: var(--scroll-indicator-shadow-size);
+    pointer-events: none; // Don't block clicks
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 9999; // Above all content including prose-mirror
+  }
+
+  // Top shadow
+  &::before {
+    top: 2px; // Account for top border
+    background: linear-gradient(
+      to bottom,
+      var(--scroll-indicator-shadow-color) 0%,
+      transparent 100%
+    );
+  }
+
+  // Bottom shadow
+  &::after {
+    bottom: 2px; // Account for bottom border
+    background: linear-gradient(
+      to top,
+      var(--scroll-indicator-shadow-color) 0%,
+      transparent 100%
+    );
+  }
+}
+
+// Variant for self-scrolling elements (like sidebar)
+.scroll-indicators-self {
+  position: relative;
+
+  // Pseudo-elements for shadows
+  &::before,
+  &::after {
+    content: '';
+    position: sticky; // Stick to visible viewport edges
+    display: block;
+    left: 0;
+    right: 0;
+    margin: 0 2px; // Account for borders
+    height: var(--scroll-indicator-shadow-size);
+    flex-shrink: 0; // Don't shrink in flex layouts
+    pointer-events: none; // Don't block clicks
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 9999; // Above all content
+  }
+
+  // Top shadow
+  &::before {
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--scroll-indicator-shadow-color) 0%,
+      transparent 100%
+    );
+  }
+
+  // Bottom shadow
+  &::after {
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      var(--scroll-indicator-shadow-color) 0%,
+      transparent 100%
+    );
+  }
+}
+
+// Shared state classes for both variants
+.scroll-indicators,
+.scroll-indicators-self {
+  // State: Can scroll down (show bottom shadow)
+  &.scroll-indicators--bottom::after {
+    opacity: 1;
+  }
+
+  // State: Can scroll up (show top shadow)
+  &.scroll-indicators--top::before {
+    opacity: 1;
+  }
+
+  // State: Can scroll both directions (show both shadows)
+  &.scroll-indicators--both::before,
+  &.scroll-indicators--both::after {
+    opacity: 1;
+  }
+
+  // State: Not scrollable or at both edges (hide both shadows)
+  &.scroll-indicators--none::before,
+  &.scroll-indicators--none::after {
+    opacity: 0;
+  }
+}
