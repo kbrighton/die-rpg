@@ -25,20 +25,6 @@
   --die-rpg-c-groove: #7e7e7e;
 }
 
-.scroll-shadows {
-  background: linear-gradient(transparent 30%, transparent) center top, linear-gradient(transparent, transparent 70%) center bottom, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.3), transparent) center top, radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.3), transparent) center bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 50px, 100% 50px, 100% 14px, 100% 14px;
-  background-attachment: local, local, scroll, scroll;
-}
-
-.scroll-shadows-dark {
-  background: linear-gradient(var(--die-rpg-c-dark) 30%, transparent) center top, linear-gradient(transparent, var(--die-rpg-c-dark) 70%) center bottom, radial-gradient(farthest-side at 50% 0, rgba(255, 255, 255, 0.3), transparent) center top, radial-gradient(farthest-side at 50% 100%, rgba(255, 255, 255, 0.3), transparent) center bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 50px, 100% 50px, 100% 14px, 100% 14px;
-  background-attachment: local, local, scroll, scroll;
-}
-
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
@@ -272,10 +258,6 @@
 }
 .die-rpg .editor {
   border: 2px groove var(--die-rpg-c-groove);
-  background: linear-gradient(transparent 30%, transparent) center top, linear-gradient(transparent, transparent 70%) center bottom, radial-gradient(farthest-side at 50% 0, rgba(255, 255, 255, 0.4), transparent) center top, radial-gradient(farthest-side at 50% 100%, rgba(255, 255, 255, 0.4), transparent) center bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 50px, 100% 50px, 100% 12px, 100% 12px;
-  background-attachment: local, local, scroll, scroll;
 }
 .die-rpg .editor .editor-content {
   padding: 10px;
@@ -368,10 +350,6 @@
   margin: 0 0 10px 10px;
   font-style: italic;
   scrollbar-gutter: stable;
-  background: linear-gradient(transparent 30%, transparent) center top, linear-gradient(transparent, transparent 70%) center bottom, radial-gradient(farthest-side at 50% 0, rgba(255, 255, 255, 0.4), transparent) center top, radial-gradient(farthest-side at 50% 100%, rgba(255, 255, 255, 0.4), transparent) center bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 50px, 100% 50px, 100% 12px, 100% 12px;
-  background-attachment: local, local, scroll, scroll;
 }
 .die-rpg.actor .window-content .header-fields {
   grid-area: header-fields;
