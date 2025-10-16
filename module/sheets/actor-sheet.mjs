@@ -58,8 +58,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       template: 'templates/generic/tab-navigation.hbs',
     },
     // Tab sheets
-    class: {
-      template: 'systems/die-rpg/templates/actor/class.hbs',
+    paragon: {
+      template: 'systems/die-rpg/templates/actor/paragon.hbs',
       classes: ["scrollable"],
       scrollable: [""],
     },
@@ -90,7 +90,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('class', 'advancements', 'persona');
+        options.parts.push('paragon', 'advancements', 'persona');
         break;
       case 'npc':
         // options.parts.push();
@@ -138,7 +138,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
-      case 'class':
+      case 'paragon':
         context.tab = context.tabs[partId];
         break;
       case 'persona':
@@ -186,7 +186,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'class';
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'paragon';
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
@@ -204,9 +204,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         case 'sidebar':
         case 'stats':
           return tabs;
-        case 'class':
-          tab.id = 'class';
-          tab.label += 'Class';
+        case 'paragon':
+          tab.id = 'paragon';
+          tab.label += 'Paragon';
           break;
         case 'advancements':
           tab.id = 'advancements';

@@ -35,7 +35,7 @@
 		},
 		"Actor": {
 			"Tabs": {
-				"Class": "Class",
+				"Paragon": "Paragon",
 				"Advancements": "Advancements",
 				"Persona": "Persona",
 				"Notes": "Notes"
@@ -243,7 +243,7 @@
 					},
 					"classAbilities": {
 						"label": "Class Abilities Form Definition",
-						"hint": "Defines the form fields that appear on the character's Class tab",
+						"hint": "Defines the form fields that appear on the character's Paragon tab",
 						"fields": {
 							"label": "Form Fields"
 						},

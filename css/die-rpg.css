@@ -948,35 +948,35 @@
   font-weight: 900 !important;
   color: var(--die-rpg-c-black) !important;
 }
-.die-rpg .tab.class .class-tab-content {
+.die-rpg .tab.paragon .paragon-tab-content {
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.die-rpg .tab.class .paragon-info-section .section-header {
+.die-rpg .tab.paragon .paragon-info-section .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
-.die-rpg .tab.class .look-selection-section .look-picker {
+.die-rpg .tab.paragon .look-selection-section .look-picker {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.die-rpg .tab.class .specials-section .specials-list {
+.die-rpg .tab.paragon .specials-section .specials-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.die-rpg .tab.class .specials-section .special-header {
+.die-rpg .tab.paragon .specials-section .special-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 5px;
 }
-.die-rpg .tab.class .specials-section .special-meta {
+.die-rpg .tab.paragon .specials-section .special-meta {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
