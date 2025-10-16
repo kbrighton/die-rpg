@@ -91,8 +91,18 @@
 		}
 	}
 
+	// Fix for stacked form groups in item sheets
+	// Foundry's .form-group.stacked only sets flex: 0 0 100% on children
+	// but doesn't set flex-direction: column, causing layout issues with 3+ children
+	// Also need to override Foundry's display: block with display: flex
+	.form-group.stacked {
+		display: flex;
+		flex-direction: column;
+		gap: $gap-sm;
+	}
+
 	// Paragon Item Sheet - Form Definitions Tab
-	.abilities {
+	.abilities, .advancements {
 		.form-section {
 			margin-bottom: $gap-lg;
 		}
@@ -117,6 +127,7 @@
 		.json-editor {
 			font-family: monospace;
 			font-size: 0.9em;
+			min-height: 250px;
 		}
 	}
 }

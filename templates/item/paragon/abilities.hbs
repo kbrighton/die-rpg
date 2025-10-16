@@ -5,9 +5,6 @@
 	data-tab="abilities"
 	data-subtype="{{document.type}}"
 >
-	<p class="hint">Define the dynamic form fields that appear on character sheets
-		when this paragon is selected.</p>
-
 	{{! Class Abilities Form Fields }}
 	<fieldset class="form-section class-abilities-fields">
 		<legend>Class Abilities Form Fields</legend>
@@ -15,7 +12,7 @@
 			<strong>Class tab</strong>. Define the form structure as a JSON array.</p>
 
 		<div class="form-group stacked">
-			<label>Class Abilities Fields (JSON)</label>
+			{{!-- <label>Class Abilities Fields (JSON)</label> --}}
 			<textarea
 				name="system.classAbilities.fields"
 				rows="10"

@@ -547,25 +547,31 @@
 .die-rpg.item .window-content .tab.scrollable.active.description prose-mirror {
   flex: 1 1 auto;
 }
-.die-rpg.item .abilities .form-section {
+.die-rpg.item .form-group.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.die-rpg.item .abilities .form-section, .die-rpg.item .advancements .form-section {
   margin-bottom: 20px;
 }
-.die-rpg.item .abilities .field-type-reference {
+.die-rpg.item .abilities .field-type-reference, .die-rpg.item .advancements .field-type-reference {
   margin-top: 10px;
 }
-.die-rpg.item .abilities .field-type-reference summary {
+.die-rpg.item .abilities .field-type-reference summary, .die-rpg.item .advancements .field-type-reference summary {
   cursor: pointer;
   font-weight: bold;
 }
-.die-rpg.item .abilities .field-type-reference .reference-content {
+.die-rpg.item .abilities .field-type-reference .reference-content, .die-rpg.item .advancements .field-type-reference .reference-content {
   padding: 10px 20px;
 }
-.die-rpg.item .abilities .field-type-reference .reference-content > p:first-child {
+.die-rpg.item .abilities .field-type-reference .reference-content > p:first-child, .die-rpg.item .advancements .field-type-reference .reference-content > p:first-child {
   margin-bottom: 10px;
 }
-.die-rpg.item .abilities .json-editor {
+.die-rpg.item .abilities .json-editor, .die-rpg.item .advancements .json-editor {
   font-family: monospace;
   font-size: 0.9em;
+  min-height: 250px;
 }
 .die-rpg .items-header {
   height: 28px;

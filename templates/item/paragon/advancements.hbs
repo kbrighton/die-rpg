@@ -5,10 +5,6 @@
 	data-tab="advancements"
 	data-subtype="{{document.type}}"
 >
-	{{!-- <h2>{{localize "DIE_RPG.Item.Paragon.FIELDS.advancements.label"}}</h2> --}}
-  <p class="hint">Define the dynamic form fields that appear on character sheets
-		when this paragon is selected.</p>
-
 	{{! Advancement Form Fields }}
 	<fieldset class="form-section advancement-form-fields">
 		<legend>Advancement Form Fields</legend>
@@ -17,7 +13,7 @@
 			below the advancement map.</p>
 
 		<div class="form-group stacked">
-			<label>Advancement Form Fields (JSON)</label>
+			{{!-- <label>Advancement Form Fields (JSON)</label> --}}
 			<textarea
 				name="system.advancementForms.fields"
 				rows="10"
