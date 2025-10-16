@@ -74,20 +74,21 @@ function setupScrollIndicator(element) {
   // Find the actual scrollable element (might be a child)
   const scrollableElement = findScrollableElement(element);
 
-  if (!scrollableElement) {
-    // No scrollable element found, mark as none
-    element.classList.add('scroll-indicators--none');
-    return;
-  }
-
-  // Store reference to scrollable element for cleanup
+  // Store reference to scrollable element (might be null initially)
   element._scrollableElement = scrollableElement;
 
   /**
    * Update scroll state classes based on current scroll position
    */
   function updateScrollState() {
-    const { scrollTop, scrollHeight, clientHeight } = scrollableElement;
+    // Always use the current scrollable element (in case it changed)
+    const currentScrollable = element._scrollableElement;
+    if (!currentScrollable) {
+      element.classList.add('scroll-indicators--none');
+      return;
+    }
+
+    const { scrollTop, scrollHeight, clientHeight } = currentScrollable;
     const isScrollable = scrollHeight > clientHeight;
 
     if (!isScrollable) {
@@ -114,18 +115,52 @@ function setupScrollIndicator(element) {
     }
   }
 
+  /**
+   * Attach scroll listener to a scrollable element
+   */
+  function attachScrollListener(scrollable) {
+    if (!scrollable || scrollable._scrollIndicatorListenerAttached) return;
+    scrollable.addEventListener('scroll', updateScrollState, { passive: true });
+    scrollable._scrollIndicatorListenerAttached = true;
+  }
+
   // Initial state check
   updateScrollState();
 
-  // Listen for scroll events on the actual scrollable element
-  scrollableElement.addEventListener('scroll', updateScrollState, { passive: true });
+  // Listen for scroll events on the actual scrollable element (if found)
+  if (scrollableElement) {
+    attachScrollListener(scrollableElement);
+  }
+
+  // ALSO listen on the container itself to catch async content loads
+  // If scroll happens on container, it means content loaded and we should re-check
+  element.addEventListener('scroll', function handleContainerScroll() {
+    // Re-find scrollable element in case it appeared after initialization
+    const newScrollable = findScrollableElement(element);
+    if (newScrollable && newScrollable !== element._scrollableElement) {
+      // Found a new scrollable element! Re-setup
+      console.log('Scroll indicators: Found scrollable element after initial load');
+      element._scrollableElement = newScrollable;
+      attachScrollListener(newScrollable);
+      updateScrollState();
+    }
+  }, { passive: true });
 
   // Watch for content changes that might affect scrollability
   if (window.ResizeObserver) {
     const resizeObserver = new ResizeObserver(() => {
+      // Check if scrollable element appeared
+      if (!element._scrollableElement) {
+        const newScrollable = findScrollableElement(element);
+        if (newScrollable) {
+          element._scrollableElement = newScrollable;
+          attachScrollListener(newScrollable);
+        }
+      }
       updateScrollState();
     });
-    resizeObserver.observe(scrollableElement);
+    // Observe the container itself, not just the scrollable element
+    resizeObserver.observe(element);
 
     // Store observer for cleanup if needed
     element._scrollIndicatorResizeObserver = resizeObserver;
@@ -137,10 +172,9 @@ function setupScrollIndicator(element) {
       // Re-find scrollable element in case DOM changed
       const newScrollable = findScrollableElement(element);
       if (newScrollable && newScrollable !== element._scrollableElement) {
-        // Scrollable element changed, re-setup
+        // Scrollable element changed or appeared, re-setup
         element._scrollableElement = newScrollable;
-        scrollableElement.removeEventListener('scroll', updateScrollState);
-        newScrollable.addEventListener('scroll', updateScrollState, { passive: true });
+        attachScrollListener(newScrollable);
       }
       updateScrollState();
     });
