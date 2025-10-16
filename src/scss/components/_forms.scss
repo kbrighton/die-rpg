@@ -64,6 +64,10 @@ h6 {
 				align-items: start;
 
 				.paragon-selection {
+					display: flex;
+					align-items: center;
+					gap: $gap-sm;
+
 					h2 {
 						font-size: var(--font-size-20);
 						margin: 0;
@@ -72,6 +76,38 @@ h6 {
 					select {
 						height: 2.5rem;
 						text-transform: uppercase;
+					}
+
+					.paragon-sheet-icon-btn {
+						padding: 0.5rem 0.75rem;
+						background: rgba(0, 0, 0, 0.3);
+						border: 1px solid rgba(255, 255, 255, 0.3);
+						border-radius: 4px;
+						color: rgba(255, 255, 255, 0.9);
+						cursor: pointer;
+						transition: all 0.2s ease;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						min-width: 2.5rem;
+						height: 2.5rem;
+
+						i {
+							font-size: 1rem;
+						}
+
+						&:hover:not(:disabled) {
+							background: rgba(255, 255, 255, 0.1);
+							border-color: rgba(255, 255, 255, 0.5);
+							color: white;
+						}
+
+						&:disabled {
+							opacity: 0.4;
+							cursor: not-allowed;
+							background: rgba(0, 0, 0, 0.2);
+							border-color: rgba(255, 255, 255, 0.15);
+						}
 					}
 				}
 
