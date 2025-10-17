@@ -50,7 +50,7 @@ export default class DieRpgCharacter extends DieRpgActorBase {
         categories: ["IMAGE"],
         initial: "icons/svg/mystery-man.svg"
       }),
-      notes: new fields.HTMLField({required: false, initial: undefined}),
+      notes: new fields.HTMLField({ required: false, blank: true, initial: '' }),
     });
 
     return schema;

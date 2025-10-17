@@ -53,8 +53,8 @@
   <div class="form-group multiselect-field">
     <label>{{field.label}}</label>
     <div class="checkbox-group">
-      {{!-- Hidden input ensures field exists even if nothing selected --}}
-      <input type="hidden" name="{{path}}" value="" data-dtype="JSON" />
+      {{!-- Hidden input ensures field exists; custom _processFormData handles array creation --}}
+      <input type="hidden" name="{{path}}" value="" />
 
       {{#each field.choices as |choice|}}
         <label class="checkbox-option">

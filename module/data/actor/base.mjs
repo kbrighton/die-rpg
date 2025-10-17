@@ -27,8 +27,8 @@ export default class DieRpgActorBase extends foundry.abstract.TypeDataModel {
       });
       return obj;
     }, {}));
-    
-    schema.notes = new fields.HTMLField();
+
+    schema.notes = new fields.HTMLField({ required: false, blank: true, initial: '' });
 
     return schema;
   }
