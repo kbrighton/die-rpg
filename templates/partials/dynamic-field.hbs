@@ -10,7 +10,7 @@
 {{#if (eq field.type "text")}}
   <div class="form-group">
     <label>{{field.label}}</label>
-    <input type="text" name="{{path}}" value="{{value}}" {{#unless editable}}disabled{{/unless}} />
+    <input type="text" name="{{path}}" value="{{value}}" data-dtype="String" {{#unless editable}}disabled{{/unless}} />
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
@@ -21,6 +21,7 @@
       type="number"
       name="{{path}}"
       value="{{value}}"
+      data-dtype="Number"
       {{#if field.min}}min="{{field.min}}"{{/if}}
       {{#if field.max}}max="{{field.max}}"{{/if}}
       {{#unless editable}}disabled{{/unless}}
@@ -31,7 +32,7 @@
 {{else if (eq field.type "boolean")}}
   <div class="form-group checkbox-field">
     <label>
-      <input type="checkbox" name="{{path}}" {{checked value}} {{#unless editable}}disabled{{/unless}} />
+      <input type="checkbox" name="{{path}}" data-dtype="Boolean" {{checked value}} {{#unless editable}}disabled{{/unless}} />
       {{field.label}}
     </label>
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
@@ -40,7 +41,7 @@
 {{else if (eq field.type "select")}}
   <div class="form-group">
     <label>{{field.label}}</label>
-    <select name="{{path}}" {{#unless editable}}disabled{{/unless}}>
+    <select name="{{path}}" data-dtype="String" {{#unless editable}}disabled{{/unless}}>
       <option value="">-- Select --</option>
       {{#each field.choices as |choice|}}
         <option value="{{choice}}" {{#if (eq choice ../value)}}selected{{/if}}>{{choice}}</option>
@@ -53,9 +54,6 @@
   <div class="form-group multiselect-field">
     <label>{{field.label}}</label>
     <div class="checkbox-group">
-      {{!-- Hidden input ensures field exists; custom _processFormData handles array creation --}}
-      <input type="hidden" name="{{path}}" value="" />
-
       {{#each field.choices as |choice|}}
         <label class="checkbox-option">
           <input
