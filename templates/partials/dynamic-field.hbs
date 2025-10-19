@@ -73,7 +73,20 @@
 {{else if (eq field.type "html")}}
   <div class="form-group html-field">
     <label>{{field.label}}</label>
-    {{editor value target=path button=true editable=editable}}
+    {{#if editable}}
+      <prose-mirror
+        name="{{path}}"
+        data-document-u-u-i-d="{{@root.actor.uuid}}"
+        value="{{value}}"
+        collaborate="true"
+        toggled="true"
+        compact="true"
+      >
+        {{{enrichedValue}}}
+      </prose-mirror>
+    {{else}}
+      {{{enrichedValue}}}
+    {{/if}}
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
@@ -98,6 +111,7 @@
       {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
           field=subfield
           value=(lookup ../value subfield.key)
+          enrichedValue=(lookup ../enrichedValue subfield.key)
           path=(concat ../path "." subfield.key)
           editable=../editable}}
     {{/each}}

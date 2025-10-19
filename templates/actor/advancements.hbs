@@ -143,6 +143,7 @@
           {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
             field=field
             value=(lookup @root.actor.system.paragon.advancementData field.key)
+            enrichedValue=(lookup @root.enrichedAdvancementData field.key)
             path=(concat "system.paragon.advancementData." field.key)
             editable=@root.editable}}
         {{/each}}

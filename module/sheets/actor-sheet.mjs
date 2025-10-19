@@ -101,6 +101,52 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
   /* -------------------------------------------- */
 
+  /**
+   * Enrich HTML content for dynamic fields
+   * @param {Array} fieldDefinitions - Array of field definitions from paragon
+   * @param {Object} fieldData - Object containing field values
+   * @returns {Object} Object mapping field keys to enriched HTML
+   * @private
+   */
+  async _enrichDynamicFields(fieldDefinitions, fieldData) {
+    const enriched = {};
+
+    for (const field of fieldDefinitions) {
+      if (field.type === 'html') {
+        const rawValue = fieldData?.[field.key] || '';
+        enriched[field.key] = await ux.TextEditor.enrichHTML(
+          rawValue,
+          {
+            secrets: this.document.isOwner,
+            rollData: this.actor.getRollData(),
+            relativeTo: this.actor,
+          }
+        );
+      } else if (field.type === 'group' && field.fields) {
+        // Recursively enrich nested group fields
+        const groupData = fieldData?.[field.key] || {};
+        enriched[field.key] = {};
+        for (const subfield of field.fields) {
+          if (subfield.type === 'html') {
+            const rawValue = groupData[subfield.key] || '';
+            enriched[field.key][subfield.key] = await ux.TextEditor.enrichHTML(
+              rawValue,
+              {
+                secrets: this.document.isOwner,
+                rollData: this.actor.getRollData(),
+                relativeTo: this.actor,
+              }
+            );
+          }
+        }
+      }
+    }
+
+    return enriched;
+  }
+
+  /* -------------------------------------------- */
+
   /** @override */
   async _prepareContext(options) {
     // Output initialization
@@ -128,6 +174,26 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       // Fetch aggregated specials from all sources
       aggregatedSpecials: await getAggregatedSpecials(this.actor),
     };
+
+    // Enrich dynamic HTML fields from class abilities and advancement forms
+    context.enrichedClassAbilityData = {};
+    context.enrichedAdvancementData = {};
+
+    if (context.paragonItem) {
+      if (context.paragonItem.system.classAbilities?.fields?.length) {
+        context.enrichedClassAbilityData = await this._enrichDynamicFields(
+          context.paragonItem.system.classAbilities.fields,
+          this.actor.system.paragon.classAbilityData
+        );
+      }
+
+      if (context.paragonItem.system.advancementForms?.fields?.length) {
+        context.enrichedAdvancementData = await this._enrichDynamicFields(
+          context.paragonItem.system.advancementForms.fields,
+          this.actor.system.paragon.advancementData
+        );
+      }
+    }
 
     // Offloading context prep to a helper function
     this._prepareItems(context);
