@@ -273,6 +273,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   _processFormData(event, form, formData) {
     const rawData = formData.object;
 
+    // Expand object FIRST to create proper nested structure
+    // This prevents conflicts between flat keys and nested objects
+    const expandedData = foundry.utils.expandObject(rawData);
+
     // Handle multi-select checkboxes from dynamic fields
     const multiSelects = form.querySelectorAll('input[type="checkbox"][data-multi-select]');
     const multiSelectGroups = {};
@@ -287,12 +291,15 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       }
     }
 
-    // Set the collected values
+    // Set the collected values on the EXPANDED object
+    // Only set non-empty arrays to prevent overwriting existing data
     for (const [path, values] of Object.entries(multiSelectGroups)) {
-      foundry.utils.setProperty(rawData, path, values);
+      if (values.length > 0) {
+        foundry.utils.setProperty(expandedData, path, values);
+      }
     }
 
-    return foundry.utils.expandObject(rawData);
+    return expandedData;
   }
 
   /**
