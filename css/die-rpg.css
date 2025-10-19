@@ -742,8 +742,28 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.die-rpg .dice-pool-section .dice-pool-display .pool-value {
+.die-rpg .dice-pool-section .dice-pool-display .pool-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.die-rpg .dice-pool-section .dice-pool-display .dice-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.die-rpg .dice-pool-section .dice-pool-display .dice-badge.base-pool {
+  background: rgba(46, 139, 87, 0.2);
+  border: 1px solid rgba(46, 139, 87, 0.5);
   color: #2e8b57;
+}
+.die-rpg .dice-pool-section .dice-pool-display .dice-badge.class-die {
+  background: rgba(255, 165, 0, 0.2);
+  border: 1px solid rgba(255, 165, 0, 0.5);
+  color: #ffa500;
 }
 .die-rpg .dice-pool-section .zero-pool-warning {
   margin-top: 10px;

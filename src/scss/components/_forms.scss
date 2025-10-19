@@ -519,8 +519,31 @@ h6 {
 			letter-spacing: 0.5px;
 		}
 
-		.pool-value {
-			color: #2e8b57;
+		.pool-badges {
+			display: flex;
+			align-items: center;
+			gap: $gap-sm;
+		}
+
+		.dice-badge {
+			display: inline-flex;
+			align-items: center;
+			padding: 4px 10px;
+			border-radius: 4px;
+			font-size: 0.9em;
+			font-weight: bold;
+
+			&.base-pool {
+				background: rgba(46, 139, 87, 0.2);
+				border: 1px solid rgba(46, 139, 87, 0.5);
+				color: #2e8b57;
+			}
+
+			&.class-die {
+				background: rgba(255, 165, 0, 0.2);
+				border: 1px solid rgba(255, 165, 0, 0.5);
+				color: #ffa500;
+			}
 		}
 	}
 

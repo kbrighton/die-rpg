@@ -177,6 +177,7 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
           const advInput = dialogElement.querySelector('input[name="advantages"]');
           const disadvInput = dialogElement.querySelector('input[name="disadvantages"]');
           const flashbackCheck = dialogElement.querySelector('#useFlashback');
+          const classDieCheck = dialogElement.querySelector('#addClassDie');
 
           let advantages = parseInt(advInput?.value || 0);
           const disadvantages = parseInt(disadvInput?.value || 0);
@@ -187,11 +188,32 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
           }
 
           const poolSize = initialStatValue + advantages - disadvantages;
-          const poolValueSpan = dialogElement.querySelector('#pool-value');
+          const poolBadgesContainer = dialogElement.querySelector('#pool-badges');
           const warningDiv = dialogElement.querySelector('#zero-pool-warning');
 
-          if (poolValueSpan) {
-            poolValueSpan.textContent = poolSize;
+          // Update badge display
+          if (poolBadgesContainer) {
+            const baseBadge = poolBadgesContainer.querySelector('#base-pool-badge');
+            if (baseBadge) {
+              baseBadge.textContent = `${poolSize}d6`;
+            }
+
+            // Handle class die badge
+            let classDieBadge = poolBadgesContainer.querySelector('#class-die-badge');
+            if (classDieCheck?.checked && classDieType) {
+              // Create or update class die badge
+              if (!classDieBadge) {
+                classDieBadge = document.createElement('span');
+                classDieBadge.id = 'class-die-badge';
+                classDieBadge.className = 'dice-badge class-die';
+                poolBadgesContainer.appendChild(classDieBadge);
+              }
+              classDieBadge.textContent = `+1${classDieType}`;
+              classDieBadge.style.display = '';
+            } else if (classDieBadge) {
+              // Hide class die badge if not checked
+              classDieBadge.style.display = 'none';
+            }
           }
 
           // Show/hide warning for zero pool
@@ -285,6 +307,14 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
         const flashbackCheck = dialogElement.querySelector('#useFlashback');
         if (flashbackCheck) {
           flashbackCheck.addEventListener('change', () => {
+            updatePoolDisplay();
+          });
+        }
+
+        // Listen to class die checkbox changes
+        const classDieCheck = dialogElement.querySelector('#addClassDie');
+        if (classDieCheck) {
+          classDieCheck.addEventListener('change', () => {
             updatePoolDisplay();
           });
         }
