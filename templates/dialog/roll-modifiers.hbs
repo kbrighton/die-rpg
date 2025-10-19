@@ -1,40 +1,91 @@
 <form>
-	<div class="form-group">
-		<label>{{localize "DIE_RPG.Dialog.Advantages"}}:</label>
-		<input type="number" name="advantages" id="advantages" value="0" min="0" />
-	</div>
-	<div class="form-group">
-		<label>{{localize "DIE_RPG.Dialog.Disadvantages"}}:</label>
-		<input
-			type="number"
-			name="disadvantages"
-			id="disadvantages"
-			value="0"
-			min="0"
-		/>
-	</div>
-	<div class="form-group">
-		<label>{{localize "DIE_RPG.Dialog.Difficulty"}}:</label>
-		<input
-			type="number"
-			name="difficulty"
-			id="difficulty"
-			value="0"
-			min="0"
-			max="2"
-		/>
-	</div>
-		{{#if classDieType}} {{!-- Only show if a class die exists --}}
-		 <div class="form-group">
-		    <label>
-		      {{#if isZeroPool}}
-		        {{localize "DIE_RPG.Dialog.SubstituteClassDie"}}?
-		      {{else}}
-		        {{localize "DIE_RPG.Dialog.AddClassDie"}}?
-		      {{/if}}
-		       ({{classDieType}})
-		    </label>
-		  <input type="checkbox" name="addClassDie" id="addClassDie"/>
-		 </div>
+	{{!-- Dice Pool Form Group (Advantages, Disadvantages, Pool) --}}
+	<div class="dialog-section form-group dice-pool-form-group">
+		{{!-- Add Class Die Section --}}
+		{{#if classDieType}}
+		<div class="class-die-section">
+			<h3 class="section-header">{{localize "DIE_RPG.Dialog.AddClassDie"}}?</h3>
+			<p class="section-description">{{localize "DIE_RPG.Dialog.ClassDieDescription"}}</p>
+			<label class="checkbox-label">
+				<input type="checkbox" name="addClassDie" id="addClassDie" value="true"/>
+				<span>
+					{{#if isZeroPool}}
+						{{localize "DIE_RPG.Dialog.SubstituteClassDie"}}
+					{{else}}
+						{{localize "DIE_RPG.Dialog.AddClassDie"}}
+					{{/if}}
+					({{classDieType}})
+				</span>
+			</label>
+		</div>
 		{{/if}}
+
+		{{!-- Advantages Section --}}
+		<div class="advantages-section">
+			<div class="section-inline">
+				<h3 class="section-header">{{localize "DIE_RPG.Dialog.Advantages"}}</h3>
+				{{> "systems/die-rpg/templates/partials/number-spinner.hbs"
+					name="advantages"
+					value=initialAdvantages
+					min=0
+					suffix="d6"
+				}}
+			</div>
+
+			{{!-- Flashback Checkbox --}}
+			<label class="checkbox-label flashback-option">
+				<input
+					type="checkbox"
+					name="useFlashback"
+					id="useFlashback"
+					{{#if flashbackUsed}}disabled{{/if}}
+				/>
+				<span>
+					{{#if flashbackUsed}}
+						{{localize "DIE_RPG.Dialog.FlashbackUsed"}}
+					{{else}}
+						{{localize "DIE_RPG.Dialog.UseFlashback"}}
+					{{/if}}
+				</span>
+			</label>
+		</div>
+
+		{{!-- Disadvantages Section --}}
+		<div class="disadvantages-section">
+			<div class="section-inline">
+				<h3 class="section-header">{{localize "DIE_RPG.Dialog.Disadvantages"}}</h3>
+				{{> "systems/die-rpg/templates/partials/number-spinner.hbs"
+					name="disadvantages"
+					value=initialDisadvantages
+					min=0
+					suffix="d6"
+				}}
+			</div>
+		</div>
+
+		{{!-- Dice Pool Display --}}
+		<div class="dice-pool-section">
+			<div class="dice-pool-display">
+				<span class="pool-label">{{localize "DIE_RPG.Dialog.DicePool"}}:</span>
+				<span class="pool-value" id="pool-value">0</span>
+			</div>
+			<div class="zero-pool-warning" id="zero-pool-warning" style="display: none;">
+				<p class="warning-text">{{localize "DIE_RPG.Dialog.ZeroPoolWarning"}}</p>
+			</div>
+		</div>
+	</div>
+
+	{{!-- Difficulty Form Group (Separate) --}}
+	<div class="dialog-section form-group difficulty-section">
+		<div class="section-inline">
+			<h3 class="section-header">Set Difficulty</h3>
+			{{> "systems/die-rpg/templates/partials/number-spinner.hbs"
+				name="difficulty"
+				value=0
+				min=0
+				max=2
+			}}
+		</div>
+		<p class="section-description">For attacks, Difficulty is equal to the target's Defense.</p>
+	</div>
 </form>

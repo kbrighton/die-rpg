@@ -21,6 +21,7 @@ export async function preloadHandlebarsTemplates() {
   return foundry.applications.handlebars.loadTemplates([
 	// Partial templates
 	'systems/die-rpg/templates/partials/dynamic-field.hbs',
+	'systems/die-rpg/templates/partials/number-spinner.hbs',
   ]);
 }
 

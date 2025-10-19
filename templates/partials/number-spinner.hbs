@@ -1,0 +1,50 @@
+{{!--
+  Number Spinner Partial - Inline Layout
+  All elements on one horizontal line: [Label] [- input +] suffix
+
+  @param {string} name - The input name attribute
+  @param {string} [label] - Optional label displayed before controls
+  @param {number} value - The current value (default: 0)
+  @param {number} [min=0] - Minimum allowed value
+  @param {number} [max] - Maximum allowed value (optional)
+  @param {string} [suffix] - Optional suffix displayed after controls (e.g., "d6")
+--}}
+<div class="number-spinner-inline">
+  {{#if label}}
+  <span class="spinner-label">{{label}}</span>
+  {{/if}}
+  <div class="spinner-controls">
+    <button
+      type="button"
+      class="number-spinner-btn number-spinner-minus"
+      data-action="decrement"
+      data-name="{{name}}"
+      {{#if min}}data-min="{{min}}"{{/if}}
+      {{#if max}}data-max="{{max}}"{{/if}}
+    >
+      -
+    </button>
+    <input
+      type="number"
+      class="number-spinner-input"
+      name="{{name}}"
+      value="{{#if value}}{{value}}{{else}}0{{/if}}"
+      {{#if min}}min="{{min}}"{{/if}}
+      {{#if max}}max="{{max}}"{{/if}}
+      data-dtype="Number"
+    />
+    <button
+      type="button"
+      class="number-spinner-btn number-spinner-plus"
+      data-action="increment"
+      data-name="{{name}}"
+      {{#if min}}data-min="{{min}}"{{/if}}
+      {{#if max}}data-max="{{max}}"{{/if}}
+    >
+      +
+    </button>
+  </div>
+  {{#if suffix}}
+  <span class="spinner-suffix">{{suffix}}</span>
+  {{/if}}
+</div>

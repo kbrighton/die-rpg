@@ -39,6 +39,28 @@
 					placeholder="Name"
 				/>
 			</div>
+
+			{{! Flashback Indicator }}
+			<div class="flashback-indicator">
+				<span class="flashback-status {{#if actor.system.flashbackUsed}}used{{else}}available{{/if}}">
+					<i class="fas fa-history"></i>
+					Flashback:
+					{{#if actor.system.flashbackUsed}}
+						<span class="status-text">Used</span>
+					{{else}}
+						<span class="status-text">Available</span>
+					{{/if}}
+				</span>
+				<button
+					type="button"
+					class="reset-flashback-btn"
+					data-action="resetFlashback"
+					data-tooltip="{{localize 'DIE_RPG.Actor.Character.ResetFlashback'}}"
+					{{#unless actor.system.flashbackUsed}}disabled{{/unless}}
+				>
+					<i class="fas fa-redo"></i>
+				</button>
+			</div>
 		</div>
 
 		{{#if paragonItem}}

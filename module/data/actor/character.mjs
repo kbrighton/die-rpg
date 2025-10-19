@@ -17,6 +17,13 @@ export default class DieRpgCharacter extends DieRpgActorBase {
 
     schema.level = requiredInteger({ initial: 1, max: 20 });
 
+    schema.flashbackUsed = new fields.BooleanField({
+      required: true,
+      initial: false,
+      label: 'DIE_RPG.Actor.Character.FIELDS.flashbackUsed.label',
+      hint: 'DIE_RPG.Actor.Character.FIELDS.flashbackUsed.hint'
+    });
+
     schema.paragon = new fields.SchemaField({
       uuid: new fields.StringField({ required: false, blank: true, initial: '' }),
       selectedLook: new fields.StringField({ required: true, blank: true }),

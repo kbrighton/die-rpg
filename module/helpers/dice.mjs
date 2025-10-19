@@ -25,8 +25,12 @@ export async function rollStat(dataset, actor) {
 
 
   // Get Class Die info from Actor
-  const classItem = actor?._getClassDieItem();
-  const classDieType = classItem?.system?.classDie || null; // Get die type (e.g., "d8") or null
+  const classItem = await actor?._getClassDieItem();
+  const classDieType = classItem?.system?.die || null; // Get die type (e.g., "d8") or null
+
+  // Debug logging
+  console.log('DIE RPG | Class Item:', classItem);
+  console.log('DIE RPG | Class Die Type:', classDieType);
 
   // Define initial mods before dialog, using values from dataset if provided
   const initialAdvantages = dataset.advantages || 0;
@@ -39,13 +43,19 @@ export async function rollStat(dataset, actor) {
     initialStatValue: statValue,
     classDieType: classDieType, // Pass the die type string
     initialAdvantages: initialAdvantages, // Pass initial values
-    initialDisadvantages: initialDisadvantages // Pass initial values
+    initialDisadvantages: initialDisadvantages, // Pass initial values
+    actor: actor // Pass actor for flashback tracking
   });
 
   // If dialog is cancelled, stop the roll
   if (!rollModifiers) return null;
 
-  const { advantages, disadvantages, difficulty, addClassDie } = rollModifiers;
+  const { advantages, disadvantages, difficulty, addClassDie, flashbackUsed } = rollModifiers;
+
+  // Update actor's flashback state if it was used
+  if (flashbackUsed && actor && !actor.system.flashbackUsed) {
+    await actor.update({ 'system.flashbackUsed': true });
+  }
  
   // Pass classDieType to _rollDicePool
   let roll = _rollDicePool(statValue, advantages, disadvantages, addClassDie, classDieType);
@@ -109,9 +119,10 @@ export async function rollStat(dataset, actor) {
  * @param {string|null} options.classDieType The type of class die available (e.g., "d8") or null.
  * @param {number} options.initialAdvantages Initial advantages before dialog input.
  * @param {number} options.initialDisadvantages Initial disadvantages before dialog input.
+ * @param {Actor} options.actor The actor performing the roll (for flashback tracking).
  * @returns {Promise<object|null>} A promise resolving to the modifier object or null if cancelled.
  */
-async function _showRollDialog({ statName, initialStatValue, classDieType, initialAdvantages = 0, initialDisadvantages = 0 }) {
+async function _showRollDialog({ statName, initialStatValue, classDieType, initialAdvantages = 0, initialDisadvantages = 0, actor }) {
   const template = "systems/die-rpg/templates/dialog/roll-modifiers.hbs";
 
   // Calculate preliminary pool size based on initial mods to determine dialog state
@@ -120,14 +131,23 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
 
   const templateData = {
     classDieType: classDieType,
-    isZeroPool: isZeroPool // Pass flag to template
+    isZeroPool: isZeroPool,
+    initialAdvantages: initialAdvantages || 0,
+    initialDisadvantages: initialDisadvantages || 0,
+    initialStatValue: initialStatValue,
+    flashbackUsed: actor?.system?.flashbackUsed || false
   };
+
+  // Debug logging
+  console.log('DIE RPG | Roll Dialog Template Data:', templateData);
+
   const title = `Roll ${statName} (Base: ${initialStatValue}d6)`;
 
   // Render the template content first
-  const htmlContent = await renderTemplate(template, templateData);
+  const htmlContent = await foundry.applications.handlebars.renderTemplate(template, templateData);
 
   const dicePool = await foundry.applications.api.DialogV2.wait({
+    classes: ['die-rpg'],
     window: { title },
     content: htmlContent,
     modal: true,
@@ -137,18 +157,159 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
         icon: "fas fa-dice-d6",
         label: "Roll",
         action: "roll",
-        callback: (event, button, dialog) => new FormDataExtended(button.form)
+        callback: (event, button, dialog) => new foundry.applications.ux.FormDataExtended(button.form)
       }
     ],
-    rejectClose: false
+    rejectClose: false,
+    render: (event, element) => {
+      // Use setTimeout to ensure DOM is fully populated
+      setTimeout(() => {
+        // Try multiple approaches to get the dialog element
+        const dialogElement = event.target?.element || document.querySelector('dialog[open]');
+
+        if (!dialogElement || typeof dialogElement.querySelectorAll !== 'function') {
+          console.error('DIE RPG | Could not access dialog element', dialogElement);
+          return;
+        }
+
+        // Initialize pool calculation
+        const updatePoolDisplay = () => {
+          const advInput = dialogElement.querySelector('input[name="advantages"]');
+          const disadvInput = dialogElement.querySelector('input[name="disadvantages"]');
+          const flashbackCheck = dialogElement.querySelector('#useFlashback');
+
+          let advantages = parseInt(advInput?.value || 0);
+          const disadvantages = parseInt(disadvInput?.value || 0);
+
+          // Add 1 to advantages if flashback is checked
+          if (flashbackCheck?.checked) {
+            advantages += 1;
+          }
+
+          const poolSize = initialStatValue + advantages - disadvantages;
+          const poolValueSpan = dialogElement.querySelector('#pool-value');
+          const warningDiv = dialogElement.querySelector('#zero-pool-warning');
+
+          if (poolValueSpan) {
+            poolValueSpan.textContent = poolSize;
+          }
+
+          // Show/hide warning for zero pool
+          if (warningDiv) {
+            if (poolSize <= 0) {
+              warningDiv.style.display = 'block';
+            } else {
+              warningDiv.style.display = 'none';
+            }
+          }
+        };
+
+        // Set up event listeners for number spinner buttons
+        const spinnerButtons = dialogElement.querySelectorAll('.number-spinner-btn');
+        spinnerButtons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const action = button.dataset.action;
+            const name = button.dataset.name;
+            const input = dialogElement.querySelector(`input[name="${name}"]`);
+
+            if (!input) return;
+
+            // Parse min/max, handling empty strings that return NaN
+            const minParsed = parseInt(input.min);
+            const min = isNaN(minParsed) ? 0 : minParsed;
+
+            const maxParsed = parseInt(input.max);
+            const max = isNaN(maxParsed) ? Infinity : maxParsed;
+
+            // More careful parsing - don't reset to 0 on every NaN
+            let currentValue;
+            const inputVal = input.value;
+
+            if (inputVal === '' || inputVal === null || inputVal === undefined) {
+              currentValue = min; // Use minimum value for empty inputs
+            } else {
+              currentValue = parseInt(inputVal);
+              // Only reset if parsing truly failed
+              if (isNaN(currentValue)) {
+                console.warn('DIE RPG | Invalid input value:', inputVal);
+                currentValue = min;
+              }
+            }
+
+            // Increment or decrement
+            if (action === 'increment') {
+              currentValue = Math.min(max, currentValue + 1);
+            } else if (action === 'decrement') {
+              currentValue = Math.max(min, currentValue - 1);
+            }
+
+            // Ensure final value is valid and update input
+            if (isNaN(currentValue)) currentValue = 0;
+            input.value = String(currentValue);
+
+            // Update pool display
+            updatePoolDisplay();
+          });
+        });
+
+        // Set up change listeners on number inputs for manual entry
+        const numberInputs = dialogElement.querySelectorAll('.number-spinner-input');
+        numberInputs.forEach(input => {
+          input.addEventListener('change', () => {
+            // Enforce min/max on manual input (handle NaN from empty strings)
+            const minParsed = parseInt(input.min);
+            const min = isNaN(minParsed) ? 0 : minParsed;
+
+            const maxParsed = parseInt(input.max);
+            const max = isNaN(maxParsed) ? Infinity : maxParsed;
+
+            let value = parseInt(input.value);
+            if (isNaN(value) || input.value === '' || input.value === null) {
+              value = 0;
+            }
+            value = Math.max(min, Math.min(max, value));
+            input.value = String(value);
+
+            // Update pool display
+            updatePoolDisplay();
+          });
+
+          // Initialize input value if empty
+          if (input.value === '' || input.value === null || input.value === undefined) {
+            input.value = '0';
+          }
+        });
+
+        // Set up flashback checkbox listener
+        const flashbackCheck = dialogElement.querySelector('#useFlashback');
+        if (flashbackCheck) {
+          flashbackCheck.addEventListener('change', () => {
+            updatePoolDisplay();
+          });
+        }
+
+        // Initial pool calculation
+        updatePoolDisplay();
+      }, 0);
+    }
   });
 
   if (!dicePool) return null; // Cancelled or closed
+
+  // Calculate final advantages (including flashback if used)
+  let finalAdvantages = parseInt(dicePool.object.advantages) || 0;
+  const flashbackUsed = dicePool.object.useFlashback === 'on';
+  if (flashbackUsed) {
+    finalAdvantages += 1;
+  }
+
   return {
-    advantages: parseInt(dicePool.object.advantages) || 0,
+    advantages: finalAdvantages,
     disadvantages: parseInt(dicePool.object.disadvantages) || 0,
     difficulty: parseInt(dicePool.object.difficulty) || 0,
-    addClassDie: dicePool.object.addClassDie === "true"
+    addClassDie: dicePool.object.addClassDie === "true",
+    flashbackUsed: flashbackUsed
   };
 }
 

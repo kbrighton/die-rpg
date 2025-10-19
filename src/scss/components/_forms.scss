@@ -63,6 +63,74 @@ h6 {
 			.header-top {
 				align-items: start;
 
+				.flashback-indicator {
+					display: flex;
+					align-items: center;
+					gap: $gap-sm;
+					margin-top: $margin-sm;
+					padding: $padding-sm;
+					background: rgba(0, 0, 0, 0.1);
+					border-radius: 4px;
+					font-size: 0.9em;
+
+					.flashback-status {
+						display: flex;
+						align-items: center;
+						gap: 4px;
+						flex: 1;
+
+						i {
+							font-size: 1em;
+						}
+
+						.status-text {
+							font-weight: bold;
+						}
+
+						&.available {
+							color: #2e8b57;
+
+							.status-text {
+								color: #2e8b57;
+							}
+						}
+
+						&.used {
+							color: #888;
+
+							.status-text {
+								color: #888;
+							}
+						}
+					}
+
+					.reset-flashback-btn {
+						padding: 0.25rem 0.5rem;
+						background: rgba(0, 0, 0, 0.2);
+						border: 1px solid rgba(255, 255, 255, 0.2);
+						border-radius: 3px;
+						cursor: pointer;
+						transition: all 0.2s ease;
+						color: rgba(255, 255, 255, 0.8);
+						font-size: 0.9em;
+
+						&:hover:not(:disabled) {
+							background: rgba(0, 0, 0, 0.3);
+							border-color: rgba(255, 255, 255, 0.4);
+							color: white;
+						}
+
+						&:disabled {
+							opacity: 0.3;
+							cursor: not-allowed;
+						}
+
+						i {
+							pointer-events: none;
+						}
+					}
+				}
+
 				.paragon-selection {
 					display: flex;
 					align-items: center;
@@ -224,6 +292,251 @@ h6 {
 					height: 100%;
 				}
 			}
+		}
+	}
+}
+
+// ========================================
+// ROLL DIALOG STYLES
+// ========================================
+
+// Number Spinner Widget - Inline Layout
+.number-spinner-inline {
+	display: flex;
+	align-items: center;
+	gap: $gap-md;
+
+	.spinner-label {
+		font-weight: bold;
+		font-size: 1em;
+		min-width: 120px;
+	}
+
+	.spinner-controls {
+		display: flex;
+		align-items: center;
+		gap: 0;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 4px;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	.number-spinner-btn {
+		flex: 0 0 32px;
+		width: 32px;
+		height: 32px;
+		border: none;
+		border-right: 1px solid rgba(0, 0, 0, 0.2);
+		background: rgba(255, 255, 255, 0.05);
+		cursor: pointer;
+		transition: all 0.15s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.1em;
+		font-weight: normal;
+		line-height: 1;
+		padding: 0;
+		color: rgba(255, 255, 255, 0.7);
+
+		&.number-spinner-plus {
+			border-right: none;
+			border-left: 1px solid rgba(0, 0, 0, 0.2);
+		}
+
+		&:hover:not(:disabled) {
+			background: rgba(255, 255, 255, 0.1);
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		&:active:not(:disabled) {
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		&:disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
+		}
+	}
+
+	.number-spinner-input {
+		flex: 0 0 48px;
+		width: 48px;
+		height: 32px;
+		text-align: center;
+		border: none;
+		background: transparent;
+		font-size: 1em;
+		font-weight: normal;
+		padding: 0 8px;
+		color: inherit;
+
+		&:focus {
+			outline: none;
+			background: rgba(255, 255, 255, 0.05);
+		}
+
+		// Remove spinner arrows on webkit browsers
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		// Remove spinner arrows on firefox
+		&[type=number] {
+			-moz-appearance: textfield;
+		}
+	}
+
+	.spinner-suffix {
+		font-size: 0.95em;
+		opacity: 0.8;
+		font-weight: normal;
+	}
+}
+
+// Roll Dialog Sections
+.dialog-section {
+	margin-bottom: $margin-md;
+
+	&.form-group {
+		padding: $padding-md;
+		background: rgba(0, 0, 0, 0.15);
+		border-radius: 6px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		display: flex;
+		flex-direction: column;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	// Inline layout for header + controls on same line
+	.section-inline {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: $gap-md;
+		flex-wrap: nowrap;
+
+		.number-spinner-inline {
+			flex: 0 1 auto;
+			flex-shrink: 0;
+		}
+	}
+
+	.section-header {
+		margin: 0;
+		font-size: 1.2em;
+		font-weight: bold;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		flex-shrink: 0;
+	}
+
+	.section-description {
+		margin: $margin-sm 0 0 $margin-lg;
+		font-size: 0.85em;
+		font-style: italic;
+		opacity: 0.7;
+		line-height: 1.4;
+	}
+
+	.checkbox-label {
+		display: flex;
+		align-items: center;
+		gap: $gap-sm;
+		cursor: pointer;
+		font-size: 0.9em;
+
+		input[type="checkbox"] {
+			margin: 0;
+			flex-shrink: 0;
+
+			&:disabled {
+				cursor: not-allowed;
+			}
+		}
+
+		span {
+			flex: 1;
+		}
+
+		&:has(input:disabled) {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+
+	// Internal sections within form groups
+	.class-die-section,
+	.advantages-section,
+	.disadvantages-section,
+	.dice-pool-section {
+		display: block;
+		width: 100%;
+		margin-bottom: $margin-lg;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Class die section specific styling
+	.class-die-section {
+		.section-header {
+			margin-bottom: $margin-sm;
+		}
+
+		.section-description {
+			margin-bottom: $margin-md;
+		}
+	}
+}
+
+.flashback-option {
+	margin-top: $margin-sm;
+	margin-left: $margin-lg;
+	font-size: 0.85em;
+	opacity: 0.9;
+}
+
+.dice-pool-section {
+	.dice-pool-display {
+		font-size: 1.4em;
+		font-weight: bold;
+		margin-bottom: $margin-sm;
+		display: flex;
+		align-items: center;
+		gap: $gap-sm;
+
+		.pool-label {
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.pool-value {
+			color: #2e8b57;
+		}
+	}
+
+	.zero-pool-warning {
+		margin-top: $margin-md;
+		margin-left: $margin-lg;
+		padding: $padding-sm;
+		background: rgba(255, 165, 0, 0.15);
+		border-radius: 4px;
+		border: 1px solid rgba(255, 165, 0, 0.3);
+
+		.warning-text {
+			margin: 0;
+			font-size: 0.85em;
+			font-style: italic;
+			color: rgba(255, 255, 255, 0.9);
 		}
 	}
 }

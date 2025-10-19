@@ -1,3 +1,5 @@
+import { getParagonItem } from '../helpers/advancements.mjs';
+
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -206,12 +208,11 @@ export class DieRpgActor extends Actor {
   }
 
   /**
-   * Find the first equipped item of type 'class' on the actor.
-   * @returns {DieRpgItem|null} The found class item or null.
+   * Get the paragon item for this actor.
+   * @returns {Promise<DieRpgItem|null>} The found paragon item or null.
    * @protected
    */
-  _getClassDieItem() {
-    // TODO: Add check for 'equipped' status if applicable
-    return this.items.find(item => item.type === 'class');
+  async _getClassDieItem() {
+    return await getParagonItem(this);
   }
 }

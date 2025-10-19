@@ -33,6 +33,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       statRoll: this._onStatRoll,
       toggleAdvancement: this._toggleAdvancement,
       viewParagon: this._viewParagon,
+      resetFlashback: this._resetFlashback,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -612,6 +613,20 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.paragon.advancements': Array.from(currentAdvancements)
     });
+  }
+
+  /**
+   * Handle resetting flashback usage
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _resetFlashback(event, target) {
+    event.preventDefault();
+    await this.actor.update({ 'system.flashbackUsed': false });
+    ui.notifications.info('Flashback has been reset.');
   }
 
   /**

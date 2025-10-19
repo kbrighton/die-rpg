@@ -48,6 +48,10 @@
 			"Character": {
 				"FIELDS": {
 					"level": { "label": "Level" },
+					"flashbackUsed": {
+						"label": "Flashback Used",
+						"hint": "Whether the character has used their once-per-session flashback"
+					},
 					"paragon": {
 						"classAbilityData": {
 							"label": "Class Ability Data",
@@ -63,7 +67,8 @@
 						"pronouns": { "label": "Pronouns" },
 						"notes": { "label": "Notes" }
 					}
-				}
+				},
+				"ResetFlashback": "Reset Flashback"
 			},
 			"NPC": {
 				"FIELDS": {}
@@ -403,7 +408,12 @@
 			"Disadvantages": "Disadvantages",
 			"Difficulty": "Difficulty",
 			"AddClassDie": "Add Class Die",
-			"SubstituteClassDie": "Substitute Class Die?"
+			"SubstituteClassDie": "Substitute Class Die?",
+			"UseFlashback": "Use a flashback to get 1 advantage? (once per session)",
+			"FlashbackUsed": "Flashback already used this session",
+			"ClassDieDescription": "Some class abilities allow players to add their class die to thepool as well",
+			"DicePool": "Dice Pool",
+			"ZeroPoolWarning": "The dice pool is 0, the system will roll two dice and pick the lowest"
 		},
 		"None": "None"
 	},
