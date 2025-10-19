@@ -60,8 +60,8 @@
             type="checkbox"
             data-multi-select="{{../path}}"
             value="{{choice}}"
-            {{#if (contains ../../value choice)}}checked{{/if}}
-            {{#unless ../../editable}}disabled{{/unless}}
+            {{#if (contains ../value choice)}}checked{{/if}}
+            {{#unless ../editable}}disabled{{/unless}}
           />
           <span>{{choice}}</span>
         </label>
@@ -73,9 +73,7 @@
 {{else if (eq field.type "html")}}
   <div class="form-group html-field">
     <label>{{field.label}}</label>
-    <div class="editor">
-      {{editor value target=path button=true editable=editable}}
-    </div>
+    {{editor value target=path button=true editable=editable}}
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
@@ -99,9 +97,9 @@
     {{#each field.fields as |subfield|}}
       {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
           field=subfield
-          value=(lookup ../../value subfield.key)
-          path=(concat ../../path "." subfield.key)
-          editable=../../editable}}
+          value=(lookup ../value subfield.key)
+          path=(concat ../path "." subfield.key)
+          editable=../editable}}
     {{/each}}
   </fieldset>
 
