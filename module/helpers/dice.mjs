@@ -188,14 +188,42 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
           }
 
           const poolSize = initialStatValue + advantages - disadvantages;
+          const isZeroPool = poolSize <= 0;
           const poolBadgesContainer = dialogElement.querySelector('#pool-badges');
           const warningDiv = dialogElement.querySelector('#zero-pool-warning');
+
+          // Update class die checkbox label text based on pool state
+          const classDieCheckboxLabel = dialogElement.querySelector('#addClassDie + span');
+          if (classDieCheckboxLabel && classDieType) {
+            if (isZeroPool) {
+              classDieCheckboxLabel.textContent = `Substitute Class Die (${classDieType})`;
+            } else {
+              classDieCheckboxLabel.textContent = `Add Class Die (${classDieType})`;
+            }
+          }
 
           // Update badge display
           if (poolBadgesContainer) {
             const baseBadge = poolBadgesContainer.querySelector('#base-pool-badge');
             if (baseBadge) {
-              baseBadge.textContent = `${poolSize}d6`;
+              if (isZeroPool) {
+                // Zero pool: show red badge with special formula
+                baseBadge.classList.remove('base-pool');
+                baseBadge.classList.add('zero-pool');
+
+                if (classDieCheck?.checked && classDieType) {
+                  // Substitution: 1d6 + class die
+                  baseBadge.textContent = '1d6';
+                } else {
+                  // Standard zero pool: 2d6kl1
+                  baseBadge.textContent = '2d6';
+                }
+              } else {
+                // Normal pool: show green badge with pool size
+                baseBadge.classList.remove('zero-pool');
+                baseBadge.classList.add('base-pool');
+                baseBadge.textContent = `${poolSize}d6`;
+              }
             }
 
             // Handle class die badge
