@@ -1,0 +1,110 @@
+[
+  {
+    "key": "fairGold",
+    "label": "Fair Gold",
+    "type": "number",
+    "min": 0,
+    "max": 999,
+    "initial": 0
+  },
+  {
+    "key": "sickAssRide",
+    "label": "Sick-Ass Ride",
+    "type": "group",
+    "fields": [
+      {
+        "key": "rideName",
+        "label": "Vehicle Name",
+        "type": "text",
+        "initial": ""
+      },
+      {
+        "key": "rideType",
+        "label": "Vehicle Type",
+        "type": "select",
+        "choices": ["Motorcycle", "Car", "Truck", "Other"],
+        "initial": "Motorcycle"
+      },
+      {
+        "key": "rideHealth",
+        "label": "Vehicle Health",
+        "type": "number",
+        "min": 0,
+        "max": 20,
+        "initial": 10
+      }
+    ]
+  },
+  {
+    "key": "gifts",
+    "label": "Gifts of the Fair",
+    "type": "itemList",
+    "itemType": "gift"
+  },
+  {
+    "key": "emotionalScale",
+    "label": "Emotional Scale",
+    "type": "number",
+    "min": 0,
+    "max": 6,
+    "initial": 3
+  },
+  {
+    "key": "emotionPalette",
+    "label": "Emotion Palette",
+    "type": "multiSelect",
+    "choices": ["Anger", "Joy", "Sorrow", "Fear", "Love", "Hate", "Hope", "Despair"],
+    "initial": []
+  },
+  {
+    "key": "theTell",
+    "label": "The Tell",
+    "type": "text",
+    "initial": ""
+  },
+  {
+    "key": "boundGod",
+    "label": "Bound God",
+    "type": "itemList",
+    "itemType": "god"
+  },
+  {
+    "key": "pactTerms",
+    "label": "Pact Terms",
+    "type": "html",
+    "initial": ""
+  },
+  {
+    "key": "masterSpecialty",
+    "label": "Master's Specialty",
+    "type": "select",
+    "choices": ["Combat Master", "Social Master", "Knowledge Master", "Survival Master"],
+    "initial": ""
+  },
+  {
+    "key": "fallenNature",
+    "label": "Fallen Nature",
+    "type": "multiSelect",
+    "choices": ["Touched by the Void", "Corrupted Soul", "Broken Oath", "Cursed Existence"],
+    "initial": []
+  },
+  {
+    "key": "foolsTrick",
+    "label": "Fool's Trick",
+    "type": "text",
+    "initial": ""
+  },
+  {
+    "key": "isDisgraced",
+    "label": "Disgraced",
+    "type": "boolean",
+    "initial": false
+  },
+  {
+    "key": "knownLanguages",
+    "label": "Known Languages",
+    "type": "multiSelect",
+    "choices": ["Common", "Elvish", "Dwarvish", "Draconic", "Infernal", "Celestial", "Ancient Tongue"],
+    "initial": []
+  }
+]

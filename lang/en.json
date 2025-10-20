@@ -37,6 +37,7 @@
 			"Tabs": {
 				"Paragon": "Paragon",
 				"Advancements": "Advancements",
+				"Loadout": "Loadout",
 				"Persona": "Persona",
 				"Notes": "Notes"
 			},
@@ -82,6 +83,7 @@
 				"Description": "Description",
 				"Specials": "Specials",
 				"Looks": "Looks",
+				"EqParagonOptions": "Equipment",
 				"Advancements": "Advancements",
 				"Details": "Details",
 				"abilities": "Abilities"
@@ -305,6 +307,10 @@
 					"backgroundImage": {
 						"label": "Background Image",
 						"hint": "Shape image for stat background"
+					},
+					"equipmentOptions": {
+						"label": "Starting Equipment Options",
+						"hint": "Equipment items characters can select when choosing this paragon"
 					}
 				},
 				"Details": {"label": "Details"},
@@ -483,18 +489,26 @@
 				"ParagonSelected": "Paragon \"{name}\" selected.",
 				"FlashbackReset": "Flashback has been reset.",
 				"ParagonCleared": "Paragon cleared.",
-				"OrphanedAdvancementsRemoved": "Removed {count} orphaned advancement(s)."
+				"OrphanedAdvancementsRemoved": "Removed {count} orphaned advancement(s).",
+				"EquipmentOptionAdded": "{name} added to equipment options",
+				"EquipmentOptionRemoved": "Equipment option removed",
+				"EquipmentAddedToInventory": "{name} added to inventory"
 			},
 			"Warning": {
 				"NoParagon": "No paragon item found.",
 				"CannotSelectAdvancement": "Cannot select this advancement. Check level and adjacency requirements.",
-				"NoItemType": "No item type specified for creation."
+				"NoItemType": "No item type specified for creation.",
+				"InvalidItem": "Invalid item",
+				"OnlyEquipment": "Only equipment items can be added to this list",
+				"EquipmentAlreadyInList": "This equipment is already in the list",
+				"SelectEquipment": "Please select equipment first"
 			},
 			"Error": {
 				"ParagonNotFound": "Could not find selected paragon item.",
 				"ParagonSelectionFailed": "Failed to select paragon.",
 				"InvalidClassAbilitiesJSON": "Invalid JSON in Class Abilities Fields: {error}",
-				"InvalidAdvancementFormsJSON": "Invalid JSON in Advancement Form Fields: {error}"
+				"InvalidAdvancementFormsJSON": "Invalid JSON in Advancement Form Fields: {error}",
+				"EquipmentNotFound": "Equipment not found"
 			}
 		},
 		"UI": {
@@ -506,7 +520,9 @@
 				"AdvancementPool": "Advancement Pool",
 				"AdvancementForms": "Advancement Forms",
 				"DerivedStats": "Derived Stats",
-				"Name": "Name"
+				"Name": "Name",
+				"EquipmentOptions": "Starting Equipment Options",
+				"StartingEquipment": "Starting Equipment"
 			},
 			"Labels": {
 				"Flashback": "Flashback:",
@@ -523,7 +539,9 @@
 				"PositionsOnMap": "Positions on Map:",
 				"TotalDefense": "Total Defense:",
 				"TotalGuard": "Total Guard:",
-				"Separator": " / "
+				"Separator": " / ",
+				"SelectEquipment": "-- Select equipment --",
+				"AddEquipment": "Add Equipment"
 			},
 			"Buttons": {
 				"OpenParagonSheet": "Open Paragon Sheet",
@@ -531,7 +549,8 @@
 				"Delete": "Delete",
 				"AddSpecial": "Add Special",
 				"DeleteScripture": "Delete Scripture",
-				"DeleteUpgrade": "Delete Upgrade"
+				"DeleteUpgrade": "Delete Upgrade",
+				"RemoveEquipment": "Remove Equipment Option"
 			},
 			"Tooltips": {
 				"OpenParagonSheet": "Open Paragon Sheet",
@@ -561,7 +580,8 @@
 				"NoLooks": "No looks defined. Add one below.",
 				"NoSpecialsDefined": "No specials defined. Add one below.",
 				"NoScriptures": "No scriptures defined. Add one below.",
-				"NoUpgrades": "No upgrades defined. Add one below."
+				"NoUpgrades": "No upgrades defined. Add one below.",
+				"NoEquipmentOptions": "No equipment options defined. Drag equipment items here from compendiums."
 			},
 			"Status": {
 				"Used": "Used",
@@ -579,7 +599,9 @@
 				"ThemeImagesLegend": "Theme Images (Optional)",
 				"ThemeImagesHint": "Custom header and background images for character sheet theming.",
 				"HeaderImageLabel": "Header Image Path",
-				"BackgroundImageLabel": "Background Image Path"
+				"BackgroundImageLabel": "Background Image Path",
+				"DragEquipmentHere": "Drag equipment items here from compendiums to add them as starting options.",
+				"SelectStartingEquipment": "Select and add equipment from your paragon's options. Items will appear in the Equipment tab."
 			},
 			"SpecialCostDisplay": {
 				"Single": "Special (6+)",

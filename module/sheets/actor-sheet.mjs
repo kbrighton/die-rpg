@@ -36,6 +36,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       resetFlashback: this._resetFlashback,
       createItemForList: this._onCreateItemForList,
       toggleItemDetails: this._onToggleItemDetails,
+      addEquipmentFromParagon: this._addEquipmentFromParagon,
     },
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
@@ -80,6 +81,11 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    loadout: {
+      template: 'systems/die-rpg/templates/actor/loadout.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
   };
 
   /** @override */
@@ -92,7 +98,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('paragon', 'advancements', 'persona');
+        options.parts.push('paragon', 'advancements', 'loadout', 'persona');
         break;
       case 'npc':
         // options.parts.push();
@@ -176,6 +182,15 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       // Fetch aggregated specials from all sources
       aggregatedSpecials: await getAggregatedSpecials(this.actor),
     };
+
+    // Resolve available equipment from paragon
+    context.availableEquipment = [];
+    if (context.paragonItem?.system.equipmentOptions?.length) {
+      const resolved = await Promise.all(
+        context.paragonItem.system.equipmentOptions.map(uuid => fromUuid(uuid))
+      );
+      context.availableEquipment = resolved.filter(eq => eq);
+    }
 
     // Enrich dynamic HTML fields from class abilities and advancement forms
     context.enrichedClassAbilityData = {};
@@ -295,6 +310,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'advancements';
           tab.label += 'Advancements';
           break;
+        case 'loadout':
+          tab.id = 'loadout';
+          tab.label += 'Loadout';
+          break;
         case 'persona':
           tab.id = 'persona';
           tab.label += 'Persona';
@@ -316,32 +335,19 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    * @param {object} context The context object to mutate
    */
   _prepareItems(context) {
-    // Initialize containers.
-    // You can just use `this.document.itemTypes` instead
-    // if you don't need to subdivide a given type like
-    // this sheet does with abilities
-    // const equipment = [];
+    // Initialize containers
+    const equipment = [];
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
-      // // Append to equipment.
-      // if (i.type === 'equipment') {
-      //   equipment.push(i);
-      // }
-      // // Append to features.
-      // else if (i.type === 'feature') {
-      //   features.push(i);
-      // }
-      // // Append to abilities.
-      // else if (i.type === 'ability') { // Changed from 'spell'
-      //   abilities.push(i); // Changed from level-based push
-      // }
+      // Append to equipment
+      if (i.type === 'equipment') {
+        equipment.push(i);
+      }
     }
 
     // Sort then assign
-    // context.equipment = equipment.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    // context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    // context.abilities = abilities.sort((a, b) => (a.sort || 0) - (b.sort || 0)); // Changed from spells
+    context.equipment = equipment.sort((a, b) => (a.sort || 0) - (b.sort || 0));
   }
 
   /**
@@ -707,6 +713,41 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
     // Toggle expanded class on row
     itemRow.classList.toggle('expanded', !isExpanded);
+  }
+
+  /**
+   * Add equipment from paragon options to actor's inventory
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _addEquipmentFromParagon(event, target) {
+    event.preventDefault();
+
+    const select = this.element.querySelector('#equipment-select');
+    const selectedUuid = select?.value;
+
+    if (!selectedUuid) {
+      ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.SelectEquipment"));
+      return;
+    }
+
+    // Fetch the equipment document
+    const equipment = await fromUuid(selectedUuid);
+    if (!equipment) {
+      ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.EquipmentNotFound"));
+      return;
+    }
+
+    // Create owned copy using standard item creation
+    await this.actor.createEmbeddedDocuments('Item', [equipment.toObject()]);
+
+    // Reset dropdown
+    select.value = "";
+
+    ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.EquipmentAddedToInventory", {name: equipment.name}));
   }
 
   /**

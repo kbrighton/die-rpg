@@ -99,6 +99,20 @@ export default class DieRpgParagon extends DieRpgItemBase {
     // Specials - Special abilities that can be activated with 6+ rolls
     schema.specials = specialsArrayField();
 
+    // Equipment Options - Starting equipment characters can select from
+    schema.equipmentOptions = new fields.ArrayField(
+      new fields.DocumentUUIDField({
+        type: "Item",
+        nullable: false
+      }),
+      {
+        required: true,
+        initial: [],
+        label: 'DIE_RPG.Item.Paragon.FIELDS.equipmentOptions.label',
+        hint: 'DIE_RPG.Item.Paragon.FIELDS.equipmentOptions.hint'
+      }
+    );
+
     // ========================================
     // ADVANCEMENT SYSTEM (EXISTING)
     // ========================================

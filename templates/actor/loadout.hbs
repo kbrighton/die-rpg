@@ -1,0 +1,199 @@
+{{! Loadout Tab }}
+<section class='tab loadout {{tab.cssClass}}' data-group='primary' data-tab='loadout'>
+
+	{{! Look Selection Section - MOVED FROM PARAGON }}
+	{{#if paragonItem}}
+		<div class="look-selection-section">
+			<h3>{{localize "DIE_RPG.UI.Headers.Look"}}</h3>
+			<div class="look-picker">
+				{{#if paragonItem.system.looks}}
+					<div class="form-group">
+						<label for="look-select">{{localize "DIE_RPG.UI.Labels.SelectFromParagonLooks"}}</label>
+						<select id="look-select" name="system.paragon.selectedLook" data-dtype="String">
+							<option value="">{{localize "DIE_RPG.UI.Sections.SelectLook"}}</option>
+							{{#each paragonItem.system.looks as |look|}}
+								<option
+									value="{{look.name}}"
+									{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}selected{{/if}}
+								>
+									{{look.name}}{{#if look.defenseBonus}} (+{{look.defenseBonus}} Defense){{/if}}
+								</option>
+							{{/each}}
+							<option
+								value="___CUSTOM___"
+								{{#if (eq @root.actor.system.paragon.selectedLook "___CUSTOM___")}}selected{{/if}}
+							>
+								{{localize "DIE_RPG.UI.Labels.CustomLook"}}
+							</option>
+						</select>
+					</div>
+					{{#if paragonItem.system.looks.length}}
+						<div class="look-details">
+							{{#each paragonItem.system.looks as |look|}}
+								{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}
+									{{#if look.description}}
+										<div class="look-description">
+											<strong>{{localize "DIE_RPG.UI.Labels.Description"}}</strong> {{look.description}}
+										</div>
+									{{/if}}
+									{{#if look.defenseBonus}}
+										<div class="look-defense">
+											<strong>{{localize "DIE_RPG.UI.Labels.DefenseBonus"}}</strong> +{{look.defenseBonus}}
+										</div>
+									{{/if}}
+								{{/if}}
+							{{/each}}
+						</div>
+					{{/if}}
+				{{/if}}
+
+				{{#if (isCustomLook actor.system.paragon.selectedLook)}}
+					<div class="form-group">
+						<label for="custom-look">{{localize "DIE_RPG.UI.Labels.EnterCustomLook"}}</label>
+						<input
+							type="text"
+							id="custom-look"
+							name="system.paragon.customLookText"
+							value="{{actor.system.paragon.customLookText}}"
+							placeholder="{{localize 'DIE_RPG.UI.Placeholders.CustomLookDescription'}}"
+							data-dtype="String"
+						/>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	{{/if}}
+
+	{{! Starting Equipment Selection Section - MOVED FROM PARAGON }}
+	{{#if availableEquipment.length}}
+		<div class="starting-equipment-section">
+			<h3>{{localize "DIE_RPG.UI.Headers.StartingEquipment"}}</h3>
+			<div class="equipment-selector">
+				<select id="equipment-select" name="equipment-select">
+					<option value="">{{localize "DIE_RPG.UI.Labels.SelectEquipment"}}</option>
+					{{#each availableEquipment as |eq|}}
+						<option value="{{eq.uuid}}">
+							{{eq.name}}{{#if eq.system.defenseBonus}} (Defense +{{eq.system.defenseBonus}}){{/if}}
+						</option>
+					{{/each}}
+				</select>
+				<button type="button" data-action="addEquipmentFromParagon">
+					<i class="fas fa-plus"></i>
+					{{localize "DIE_RPG.UI.Labels.AddEquipment"}}
+				</button>
+			</div>
+			<p class="hint">{{localize "DIE_RPG.UI.Hints.SelectStartingEquipment"}}</p>
+		</div>
+	{{/if}}
+
+	{{! Owned Equipment List - EXISTING }}
+	<div class="owned-equipment-section">
+		<h3>Equipment</h3>
+		<ol class='items-list'>
+			<li class='item flexrow items-header'>
+				<div class='item-name'>{{localize 'DIE_RPG.UI.Headers.Name'}}</div>
+				<div class='item-formula'>{{localize 'DIE_RPG.Item.Equipment.FIELDS.rollFormula.label'}}</div>
+				<div class='item-controls'>
+					{{#if @root.editable}}
+						<a
+							class='item-control item-create'
+							title='{{localize "DOCUMENT.Create" type='Item'}}'
+							data-action='createDoc'
+							data-document-class='Item'
+							data-type='equipment'
+						>
+							<i class='fas fa-plus'></i>
+							{{localize 'DOCUMENT.New' type='item'}}
+						</a>
+					{{/if}}
+				</div>
+			</li>
+			{{#each equipment as |item id|}}
+				<li
+					class='item flexrow'
+					data-item-id='{{item._id}}'
+					data-drag='true'
+					data-document-class='Item'
+				>
+					<div class='item-name'>
+						<div class='item-image'>
+							<a class='rollable' data-roll-type='item' data-action='roll'>
+								<img
+									src='{{item.img}}'
+									title='{{item.name}}'
+									width='24'
+									height='24'
+								/>
+							</a>
+						</div>
+						<div>{{item.name}}</div>
+					</div>
+					<div class='item-formula item-prop'>{{item.system.formula}}</div>
+					<div class='item-controls'>
+						<a
+							class='item-control item-edit'
+							title='{{localize "DOCUMENT.Update" type='Equipment'}}'
+							data-action='viewDoc'
+						>
+							<i class='fas fa-edit'></i>
+						</a>
+						{{#if @root.editable}}
+							<a
+								class='item-control item-delete'
+								title='{{localize "DOCUMENT.Delete" type='Equipment'}}'
+								data-action='deleteDoc'
+							>
+								<i class='fas fa-trash'></i>
+							</a>
+						{{/if}}
+					</div>
+				</li>
+			{{/each}}
+		</ol>
+	</div>
+
+	{{! Specials Display Section - MOVED FROM PARAGON }}
+	{{#if paragonItem}}
+		<div class="specials-section">
+			<h3>{{localize "DIE_RPG.UI.Headers.Specials"}}</h3>
+			{{#if aggregatedSpecials.length}}
+				<div class="specials-list">
+					{{#each aggregatedSpecials as |special|}}
+						<div class="special-card">
+							<div class="special-header">
+								<h4 class="special-name">{{special.name}}</h4>
+								<span class="special-cost" data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.SpecialCost' cost=special.cost}}">
+									{{#if (eq special.cost "special")}}
+										{{localize "DIE_RPG.UI.SpecialCostDisplay.Single"}}
+									{{else if (eq special.cost "double")}}
+										{{localize "DIE_RPG.UI.SpecialCostDisplay.Double"}}
+									{{else if (eq special.cost "triple")}}
+										{{localize "DIE_RPG.UI.SpecialCostDisplay.Triple"}}
+									{{else if (eq special.cost "quad")}}
+										{{localize "DIE_RPG.UI.SpecialCostDisplay.Quad"}}
+									{{else if (eq special.cost "twenty")}}
+										{{localize "DIE_RPG.UI.SpecialCostDisplay.Twenty"}}
+									{{else}}
+										{{special.cost}}
+									{{/if}}
+								</span>
+							</div>
+							<div class="special-description">
+								{{{special.description}}}
+							</div>
+							<div class="special-meta">
+								<span class="special-source">{{localize "DIE_RPG.UI.Labels.Source"}} {{special.sourceName}}</span>
+								{{#if special.mandatory}}
+									<span class="special-mandatory" data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.MandatorySpecial'}}">{{localize "DIE_RPG.Chat.AvailableSpecials.MandatoryBadge"}}</span>
+								{{/if}}
+							</div>
+						</div>
+					{{/each}}
+				</div>
+			{{else}}
+				<p class="no-specials">{{localize "DIE_RPG.UI.EmptyStates.NoSpecials"}}</p>
+			{{/if}}
+		</div>
+	{{/if}}
+
+</section>

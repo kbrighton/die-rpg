@@ -42,6 +42,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       deleteUpgrade: this._deleteUpgrade,
       addUpgradeSpecial: this._addUpgradeSpecial,
       deleteUpgradeSpecial: this._deleteUpgradeSpecial,
+      removeEquipmentOption: this._removeEquipmentOption,
     },
     form: {
       submitOnChange: true,
@@ -67,6 +68,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         { id: "arcaneweaponDetails" },
         { id: "advancements" },
         { id: "looks" },
+        { id: "eqParagonOptions" },
         { id: "abilities" },
         { id: "specials" },
       ],
@@ -155,6 +157,11 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    eqParagonOptions: {
+      template: 'systems/die-rpg/templates/item/paragon/equipment.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
     abilities: {
       template: 'systems/die-rpg/templates/item/paragon/abilities.hbs',
       classes: ["scrollable"],
@@ -177,7 +184,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     // Add the appropriate parts based on item type
     switch (this.document.type) {
       case 'paragon':
-        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'abilities', 'specials');
+        options.parts.push('description', 'paragonDetails', 'advancements', 'looks', 'eqParagonOptions', 'abilities', 'specials');
         break;
       case 'equipment':
         options.parts.push('description', 'equipmentDetails', 'specials');
@@ -237,6 +244,18 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
+      case 'eqParagonOptions':
+        context.tab = context.tabs[partId];
+        // Resolve equipment UUIDs for paragon items
+        if (this.item.type === 'paragon' && this.item.system.equipmentOptions?.length) {
+          const resolved = await Promise.all(
+            this.item.system.equipmentOptions.map(uuid => fromUuid(uuid))
+          );
+          context.resolvedEquipment = resolved.filter(eq => eq); // Remove nulls
+        } else {
+          context.resolvedEquipment = [];
+        }
+        break;
       case 'advancements':
       case 'looks':
       case 'abilities':
@@ -382,6 +401,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
         case 'looks':
           tab.id = 'looks';
           tab.label += 'Looks';
+          break;
+        case 'eqParagonOptions':
+          tab.id = 'eqParagonOptions';
+          tab.label += 'EqParagonOptions';
           break;
         case 'abilities':
           tab.id = 'abilities';
@@ -561,6 +584,23 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const looks = [...this.item.system.looks];
     looks.splice(index, 1);
     await this.item.update({ 'system.looks': looks });
+  }
+
+  /**
+   * Remove an equipment option from the paragon's equipment options array
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async _removeEquipmentOption(event, target) {
+    event.preventDefault();
+    const uuidToRemove = target.dataset.uuid;
+    const options = [...(this.item.system.equipmentOptions || [])];
+    const filtered = options.filter(uuid => uuid !== uuidToRemove);
+    await this.item.update({ 'system.equipmentOptions': filtered });
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.EquipmentOptionRemoved"));
   }
 
   /**
@@ -927,6 +967,40 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropItem(event, data) {
     if (!this.item.isOwner) return false;
+
+    // Handle equipment drops on paragon items
+    if (this.item.type === 'paragon') {
+      const item = await Item.implementation.fromDropData(data);
+
+      if (!item) {
+        ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.InvalidItem"));
+        return false;
+      }
+
+      // Only accept equipment items
+      if (item.type !== 'equipment') {
+        ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.OnlyEquipment"));
+        return false;
+      }
+
+      const options = this.item.system.equipmentOptions || [];
+
+      // Check for duplicates
+      if (options.includes(item.uuid)) {
+        ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.EquipmentAlreadyInList"));
+        return false;
+      }
+
+      // Add to equipment options
+      await this.item.update({
+        'system.equipmentOptions': [...options, item.uuid]
+      });
+
+      ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.EquipmentOptionAdded", {name: item.name}));
+      return true;
+    }
+
+    return false;
   }
 
   /* -------------------------------------------- */
