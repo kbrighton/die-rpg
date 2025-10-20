@@ -34,6 +34,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       toggleAdvancement: this._toggleAdvancement,
       viewParagon: this._viewParagon,
       resetFlashback: this._resetFlashback,
+      createItemForList: this._onCreateItemForList,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -627,6 +628,39 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     event.preventDefault();
     await this.actor.update({ 'system.flashbackUsed': false });
     ui.notifications.info('Flashback has been reset.');
+  }
+
+  /**
+   * Create a new item of specified type for an itemList field
+   * Opens the newly created item's sheet for immediate editing
+   *
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element with data attributes
+   * @protected
+   */
+  static async _onCreateItemForList(event, target) {
+    event.preventDefault();
+
+    const itemType = target.dataset.itemType;
+
+    if (!itemType) {
+      ui.notifications.warn('No item type specified for creation.');
+      return;
+    }
+
+    // Prepare the document creation data
+    const itemData = {
+      name: `New ${itemType.charAt(0).toUpperCase() + itemType.slice(1)}`,
+      type: itemType
+    };
+
+    // Create the embedded document
+    const created = await this.actor.createEmbeddedDocuments('Item', [itemData]);
+
+    // Open the newly created item's sheet for editing
+    if (created?.[0]) {
+      created[0].sheet.render(true);
+    }
   }
 
   /**

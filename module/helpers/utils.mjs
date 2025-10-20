@@ -259,6 +259,32 @@ export function registerHandlebarsHelpers() {
 	});
 
 	/**
+	 * Find a special ability by its key from an array of specials
+	 * Used by the 'special' field type in dynamic forms
+	 * @param {Array} specials - Array of special objects
+	 * @param {string} specialKey - The key to search for
+	 * @returns {Object|null} The special object if found, null otherwise
+	 */
+	Handlebars.registerHelper('findSpecialByKey', function(specials, specialKey) {
+		if (!specials || !Array.isArray(specials) || !specialKey) return null;
+		return specials.find(s => s.key === specialKey) || null;
+	});
+
+	/**
+	 * Filter items by type for itemList fields
+	 * Used by the 'itemList' field type in dynamic forms
+	 * @param {Collection|Array} items - Collection or array of item objects
+	 * @param {string} itemType - The item type to filter by
+	 * @returns {Array} Filtered array of items matching the type
+	 */
+	Handlebars.registerHelper('filterItemsByType', function(items, itemType) {
+		if (!items || !itemType) return [];
+		// Convert to array if it's a Collection
+		const itemsArray = Array.isArray(items) ? items : Array.from(items);
+		return itemsArray.filter(item => item.type === itemType);
+	});
+
+	/**
 	 * JSON stringify helper for displaying objects in textareas
 	 * @param {*} context - The value to stringify
 	 * @param {Object} options - Handlebars options object with hash parameters

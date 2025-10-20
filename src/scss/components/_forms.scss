@@ -569,3 +569,220 @@ h6 {
 		}
 	}
 }
+
+// ========================================
+// ITEM LIST FIELD STYLING
+// ========================================
+
+.itemlist-field {
+	.itemlist-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: $gap-md;
+		margin-bottom: $margin-sm;
+
+		label {
+			margin: 0;
+			flex: 1;
+		}
+
+		.create-item-btn {
+			flex-shrink: 0;
+			padding: 4px 12px;
+			background: $c-success-bg;
+			border: 1px solid $c-success-border;
+			border-radius: 4px;
+			color: $c-success-text;
+			font-size: 0.85em;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			white-space: nowrap;
+
+			i {
+				font-size: 0.9em;
+			}
+
+			&:hover {
+				background: $c-success;
+				border-color: $c-success;
+				color: $c-white;
+			}
+
+			&:active {
+				transform: translateY(1px);
+			}
+		}
+	}
+
+	.item-list {
+		display: flex;
+		flex-direction: column;
+		gap: $gap-sm;
+	}
+
+	.empty-state {
+		padding: $padding-md;
+		background: $overlay-darker;
+		border: 1px dashed $overlay-medium;
+		border-radius: 4px;
+		text-align: center;
+		opacity: 0.8;
+
+		i {
+			margin-right: 4px;
+			opacity: 0.6;
+		}
+	}
+
+	.item-checkbox {
+		display: flex;
+		align-items: center;
+		gap: $gap-sm;
+		padding: $padding-sm;
+		background: $overlay-darker;
+		border: 1px solid $overlay-dark;
+		border-radius: 4px;
+		transition: all 0.2s ease;
+
+		&:hover {
+			background: $overlay-dark;
+			border-color: $overlay-medium;
+		}
+
+		input[type="checkbox"] {
+			flex-shrink: 0;
+			margin: 0;
+			cursor: pointer;
+		}
+
+		.item-icon {
+			flex-shrink: 0;
+			width: 32px;
+			height: 32px;
+			border-radius: 4px;
+			border: 1px solid $overlay-medium;
+			object-fit: cover;
+		}
+
+		.item-name {
+			flex: 1;
+			font-weight: 500;
+		}
+
+		.item-type-badge {
+			flex-shrink: 0;
+			padding: 2px 8px;
+			background: $overlay-darkest;
+			border-radius: 3px;
+			font-size: 0.75em;
+			text-transform: uppercase;
+			opacity: 0.7;
+		}
+
+		&:has(input:checked) {
+			background: $c-success-bg;
+			border-color: $c-success-border;
+
+			.item-name {
+				color: $c-success-text;
+			}
+		}
+
+		&:has(input:disabled) {
+			opacity: 0.6;
+			cursor: not-allowed;
+
+			input[type="checkbox"] {
+				cursor: not-allowed;
+			}
+		}
+	}
+}
+
+// ========================================
+// SPECIAL FIELD STYLING
+// ========================================
+
+.special-field {
+	.special-reference {
+		padding: $padding-md;
+		background: $overlay-darker;
+		border: 1px solid $overlay-dark;
+		border-radius: 6px;
+
+		&.error {
+			background: $c-failure-bg;
+			border-color: $c-failure-border;
+
+			.hint.error {
+				color: $c-failure-text;
+				font-weight: bold;
+				margin-bottom: $margin-sm;
+
+				i {
+					margin-right: 4px;
+				}
+			}
+		}
+
+		.special-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: $gap-md;
+			margin-bottom: $margin-sm;
+			padding-bottom: $padding-sm;
+			border-bottom: 1px solid $overlay-medium;
+
+			.special-name {
+				margin: 0;
+				font-size: 1.1em;
+				font-weight: bold;
+			}
+
+			.special-tags {
+				display: flex;
+				gap: $gap-sm;
+				flex-shrink: 0;
+
+				.tag {
+					padding: 4px 8px;
+					border-radius: 3px;
+					font-size: 0.75em;
+					font-weight: bold;
+					text-transform: uppercase;
+					white-space: nowrap;
+
+					&.mandatory {
+						background: $c-warning-bg;
+						border: 1px solid $c-warning-border;
+						color: $c-warning-text;
+					}
+
+					&.cost {
+						background: $c-info-bg;
+						border: 1px solid $c-info-border;
+						color: $c-info-text;
+					}
+				}
+			}
+		}
+
+		.special-description {
+			font-size: 0.9em;
+			line-height: 1.5;
+
+			& > *:first-child {
+				margin-top: 0;
+			}
+
+			& > *:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

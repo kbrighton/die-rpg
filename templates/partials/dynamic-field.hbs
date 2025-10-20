@@ -92,14 +92,44 @@
 
 {{else if (eq field.type "itemList")}}
   <div class="form-group itemlist-field">
-    <label>{{field.label}}</label>
-    {{!-- TODO: Implement item list rendering --}}
-    {{!-- Show embedded items of type field.itemType, add/remove buttons --}}
-    <div class="item-list-placeholder">
-      <p class="hint">Item list for type: {{field.itemType}}</p>
-      <p class="hint">This will display items of type "{{field.itemType}}" that the character owns.</p>
-      <p class="hint"><em>(Item list rendering will be implemented in a future phase)</em></p>
+    <div class="itemlist-header">
+      <label>{{field.label}}</label>
+      {{#if editable}}
+        <button
+          type="button"
+          class="create-item-btn"
+          data-action="createItemForList"
+          data-item-type="{{field.itemType}}"
+          title="Create new {{field.itemType}}">
+          <i class="fas fa-plus"></i> Create {{field.itemType}}
+        </button>
+      {{/if}}
     </div>
+    {{#with (filterItemsByType actor.items field.itemType) as |filteredItems|}}
+      {{#if filteredItems.length}}
+        <div class="checkbox-group item-list">
+          {{#each filteredItems as |item|}}
+            <label class="checkbox-option item-checkbox">
+              <input
+                type="checkbox"
+                data-multi-select="{{../../path}}"
+                value="{{item.uuid}}"
+                {{#if (contains ../../value item.uuid)}}checked{{/if}}
+                {{#unless ../../editable}}disabled{{/unless}}
+              />
+              <img src="{{item.img}}" alt="{{item.name}}" class="item-icon" />
+              <span class="item-name">{{item.name}}</span>
+              <span class="item-type-badge">{{item.type}}</span>
+            </label>
+          {{/each}}
+        </div>
+      {{else}}
+        <p class="hint empty-state">
+          <i class="fas fa-info-circle"></i>
+          <em>No {{../field.itemType}} items found. Create or drag {{../field.itemType}} items to this character to see them here.</em>
+        </p>
+      {{/if}}
+    {{/with}}
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
@@ -113,18 +143,39 @@
           value=(lookup ../value subfield.key)
           enrichedValue=(lookup ../enrichedValue subfield.key)
           path=(concat ../path "." subfield.key)
-          editable=../editable}}
+          editable=../editable
+          actor=../actor
+          paragonItem=../paragonItem}}
     {{/each}}
   </fieldset>
 
 {{else if (eq field.type "special")}}
   <div class="form-group special-field">
     <label>{{field.label}}</label>
-    {{!-- TODO: Link to special ability from paragon specials array --}}
-    <div class="special-reference">
-      <p class="hint">References special: <strong>{{field.specialKey}}</strong></p>
-      <p class="hint"><em>(Special ability linking will be implemented in a future phase)</em></p>
-    </div>
+    {{#with (findSpecialByKey paragonItem.system.specials field.specialKey) as |special|}}
+      <div class="special-reference">
+        <div class="special-header">
+          <h4 class="special-name">{{special.name}}</h4>
+          <div class="special-tags">
+            {{#if special.mandatory}}
+              <span class="tag mandatory">Mandatory</span>
+            {{/if}}
+            <span class="tag cost">Cost: {{special.cost}}x 6+</span>
+          </div>
+        </div>
+        <div class="special-description">
+          {{{enrichedValue}}}
+        </div>
+      </div>
+    {{else}}
+      <div class="special-reference error">
+        <p class="hint error">
+          <i class="fas fa-exclamation-triangle"></i>
+          Special "{{field.specialKey}}" not found in paragon specials.
+        </p>
+        <p class="hint">Make sure the paragon has a special with key="{{field.specialKey}}"</p>
+      </div>
+    {{/with}}
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 

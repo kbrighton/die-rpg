@@ -1331,6 +1331,179 @@
   font-style: italic;
   color: rgba(255, 255, 255, 0.9);
 }
+.die-rpg .itemlist-field .itemlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.die-rpg .itemlist-field .itemlist-header label {
+  margin: 0;
+  flex: 1;
+}
+.die-rpg .itemlist-field .itemlist-header .create-item-btn {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  background: var(--die-rpg-c-success-bg);
+  border: 1px solid var(--die-rpg-c-success-border);
+  border-radius: 4px;
+  color: var(--die-rpg-c-success-text);
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.die-rpg .itemlist-field .itemlist-header .create-item-btn i {
+  font-size: 0.9em;
+}
+.die-rpg .itemlist-field .itemlist-header .create-item-btn:hover {
+  background: var(--die-rpg-c-success);
+  border-color: var(--die-rpg-c-success);
+  color: var(--die-rpg-c-white);
+}
+.die-rpg .itemlist-field .itemlist-header .create-item-btn:active {
+  transform: translateY(1px);
+}
+.die-rpg .itemlist-field .item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.die-rpg .itemlist-field .empty-state {
+  padding: 10px;
+  background: var(--die-rpg-overlay-darker);
+  border: 1px dashed var(--die-rpg-overlay-medium);
+  border-radius: 4px;
+  text-align: center;
+  opacity: 0.8;
+}
+.die-rpg .itemlist-field .empty-state i {
+  margin-right: 4px;
+  opacity: 0.6;
+}
+.die-rpg .itemlist-field .item-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  background: var(--die-rpg-overlay-darker);
+  border: 1px solid var(--die-rpg-overlay-dark);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.die-rpg .itemlist-field .item-checkbox:hover {
+  background: var(--die-rpg-overlay-dark);
+  border-color: var(--die-rpg-overlay-medium);
+}
+.die-rpg .itemlist-field .item-checkbox input[type=checkbox] {
+  flex-shrink: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.die-rpg .itemlist-field .item-checkbox .item-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--die-rpg-overlay-medium);
+  object-fit: cover;
+}
+.die-rpg .itemlist-field .item-checkbox .item-name {
+  flex: 1;
+  font-weight: 500;
+}
+.die-rpg .itemlist-field .item-checkbox .item-type-badge {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  background: var(--die-rpg-overlay-darkest);
+  border-radius: 3px;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.die-rpg .itemlist-field .item-checkbox:has(input:checked) {
+  background: var(--die-rpg-c-success-bg);
+  border-color: var(--die-rpg-c-success-border);
+}
+.die-rpg .itemlist-field .item-checkbox:has(input:checked) .item-name {
+  color: var(--die-rpg-c-success-text);
+}
+.die-rpg .itemlist-field .item-checkbox:has(input:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.die-rpg .itemlist-field .item-checkbox:has(input:disabled) input[type=checkbox] {
+  cursor: not-allowed;
+}
+.die-rpg .special-field .special-reference {
+  padding: 10px;
+  background: var(--die-rpg-overlay-darker);
+  border: 1px solid var(--die-rpg-overlay-dark);
+  border-radius: 6px;
+}
+.die-rpg .special-field .special-reference.error {
+  background: var(--die-rpg-c-failure-bg);
+  border-color: var(--die-rpg-c-failure-border);
+}
+.die-rpg .special-field .special-reference.error .hint.error {
+  color: var(--die-rpg-c-failure-text);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.die-rpg .special-field .special-reference.error .hint.error i {
+  margin-right: 4px;
+}
+.die-rpg .special-field .special-reference .special-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--die-rpg-overlay-medium);
+}
+.die-rpg .special-field .special-reference .special-header .special-name {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.die-rpg .special-field .special-reference .special-header .special-tags {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.die-rpg .special-field .special-reference .special-header .special-tags .tag {
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.die-rpg .special-field .special-reference .special-header .special-tags .tag.mandatory {
+  background: var(--die-rpg-c-warning-bg);
+  border: 1px solid var(--die-rpg-c-warning-border);
+  color: var(--die-rpg-c-warning-text);
+}
+.die-rpg .special-field .special-reference .special-header .special-tags .tag.cost {
+  background: var(--die-rpg-c-info-bg);
+  border: 1px solid var(--die-rpg-c-info-border);
+  color: var(--die-rpg-c-info-text);
+}
+.die-rpg .special-field .special-reference .special-description {
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+.die-rpg .special-field .special-reference .special-description > *:first-child {
+  margin-top: 0;
+}
+.die-rpg .special-field .special-reference .special-description > *:last-child {
+  margin-bottom: 0;
+}
 .die-rpg .resources {
   margin: 10px 0 0 0;
 }
@@ -1865,5 +2038,3 @@
   min-height: 200px;
   overflow-y: auto;
 }
-
-/*# sourceMappingURL=die-rpg.css.map */
