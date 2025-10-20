@@ -4,7 +4,7 @@
   margin: 2px 0;
   padding: 0;
   align-items: center;
-  background: rgba(0, 0, 0, 0.05);
+  background: $overlay-medium;
   border: $border-groove;
   font-weight: bold;
   > * {
@@ -87,8 +87,8 @@
 
   .effect-prop {
     text-align: center;
-    border-left: 1px solid #c9c7b8;
-    border-right: 1px solid #c9c7b8;
+    border-left: 1px solid $c-faint;
+    border-right: 1px solid $c-faint;
     font-size: 12px;
   }
 
@@ -98,7 +98,7 @@
     margin: 2px 0;
     padding: 0;
     align-items: center;
-    background: rgba(0, 0, 0, 0.05);
+    background: $overlay-medium;
     border: $border-groove;
     font-weight: bold;
     > * {
@@ -124,8 +124,8 @@
   .effect-duration,
   .effect-controls {
     text-align: center;
-    border-left: 1px solid #c9c7b8;
-    border-right: 1px solid #c9c7b8;
+    border-left: 1px solid $c-faint;
+    border-right: 1px solid $c-faint;
     font-size: 12px;
   }
 

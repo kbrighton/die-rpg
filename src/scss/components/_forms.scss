@@ -69,7 +69,7 @@ h6 {
 					gap: $gap-sm;
 					margin-top: $margin-sm;
 					padding: $padding-sm;
-					background: rgba(0, 0, 0, 0.1);
+					background: $overlay-dark;
 					border-radius: 4px;
 					font-size: 0.9em;
 
@@ -88,26 +88,26 @@ h6 {
 						}
 
 						&.available {
-							color: #2e8b57;
+							color: $c-success;
 
 							.status-text {
-								color: #2e8b57;
+								color: $c-success;
 							}
 						}
 
 						&.used {
-							color: #888;
+							color: $c-gray-light;
 
 							.status-text {
-								color: #888;
+								color: $c-gray-light;
 							}
 						}
 					}
 
 					.reset-flashback-btn {
 						padding: 0.25rem 0.5rem;
-						background: rgba(0, 0, 0, 0.2);
-						border: 1px solid rgba(255, 255, 255, 0.2);
+						background: $overlay-darkest;
+						border: 1px solid $overlay-darkest;
 						border-radius: 3px;
 						cursor: pointer;
 						transition: all 0.2s ease;
@@ -115,9 +115,9 @@ h6 {
 						font-size: 0.9em;
 
 						&:hover:not(:disabled) {
-							background: rgba(0, 0, 0, 0.3);
+							background: $overlay-darker;
 							border-color: rgba(255, 255, 255, 0.4);
-							color: white;
+							color: $c-white;
 						}
 
 						&:disabled {
@@ -148,8 +148,8 @@ h6 {
 
 					.paragon-sheet-icon-btn {
 						padding: 0.5rem 0.75rem;
-						background: rgba(0, 0, 0, 0.3);
-						border: 1px solid rgba(255, 255, 255, 0.3);
+						background: $overlay-darker;
+						border: 1px solid $overlay-darker;
 						border-radius: 4px;
 						color: rgba(255, 255, 255, 0.9);
 						cursor: pointer;
@@ -165,16 +165,16 @@ h6 {
 						}
 
 						&:hover:not(:disabled) {
-							background: rgba(255, 255, 255, 0.1);
-							border-color: rgba(255, 255, 255, 0.5);
-							color: white;
+							background: $overlay-dark;
+							border-color: $overlay-darker;
+							color: $c-white;
 						}
 
 						&:disabled {
 							opacity: 0.4;
 							cursor: not-allowed;
-							background: rgba(0, 0, 0, 0.2);
-							border-color: rgba(255, 255, 255, 0.15);
+							background: $overlay-darkest;
+							border-color: $overlay-darker;
 						}
 					}
 				}
@@ -279,12 +279,12 @@ h6 {
 		.tab {
 			grid-area: tab-content;
 			min-width: 0; /* Prevent overflow */
-			background-color: rgba(255, 255, 255, 0.04);
+			background-color: $section-bg;
 			margin: 0 $margin-md 0 0;
 			padding: $padding-md;
 
 			h3 {
-				border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+				border-bottom: 2px solid $overlay-darkest;
 			}
 
 			&.notes {
@@ -316,10 +316,10 @@ h6 {
 		display: flex;
 		align-items: center;
 		gap: 0;
-		border: 1px solid rgba(0, 0, 0, 0.2);
+		border: 1px solid $overlay-darkest;
 		border-radius: 4px;
 		overflow: hidden;
-		background: rgba(255, 255, 255, 0.05);
+		background: $overlay-medium;
 	}
 
 	.number-spinner-btn {
@@ -327,8 +327,8 @@ h6 {
 		width: 32px;
 		height: 32px;
 		border: none;
-		border-right: 1px solid rgba(0, 0, 0, 0.2);
-		background: rgba(255, 255, 255, 0.05);
+		border-right: 1px solid $overlay-darkest;
+		background: $overlay-medium;
 		cursor: pointer;
 		transition: all 0.15s ease;
 		display: flex;
@@ -342,16 +342,16 @@ h6 {
 
 		&.number-spinner-plus {
 			border-right: none;
-			border-left: 1px solid rgba(0, 0, 0, 0.2);
+			border-left: 1px solid $overlay-darkest;
 		}
 
 		&:hover:not(:disabled) {
-			background: rgba(255, 255, 255, 0.1);
+			background: $overlay-dark;
 			color: rgba(255, 255, 255, 0.9);
 		}
 
 		&:active:not(:disabled) {
-			background: rgba(0, 0, 0, 0.2);
+			background: $overlay-darkest;
 		}
 
 		&:disabled {
@@ -374,7 +374,7 @@ h6 {
 
 		&:focus {
 			outline: none;
-			background: rgba(255, 255, 255, 0.05);
+			background: $overlay-medium;
 		}
 
 		// Remove spinner arrows on webkit browsers
@@ -403,9 +403,9 @@ h6 {
 
 	&.form-group {
 		padding: $padding-md;
-		background: rgba(0, 0, 0, 0.15);
+		background: $overlay-darker;
 		border-radius: 6px;
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		border: 1px solid $overlay-dark;
 		display: flex;
 		flex-direction: column;
 	}
@@ -534,21 +534,21 @@ h6 {
 			font-weight: bold;
 
 			&.base-pool {
-				background: rgba(46, 139, 87, 0.2);
-				border: 1px solid rgba(46, 139, 87, 0.5);
-				color: #2e8b57;
+				background: $overlay-darkest;
+				border: 1px solid $overlay-darkest;
+				color: $c-dark;
 			}
 
 			&.class-die {
-				background: rgba(255, 165, 0, 0.2);
-				border: 1px solid rgba(255, 165, 0, 0.5);
-				color: #ffa500;
+				background: $c-info-bg-medium;
+				border: 1px solid $c-info-border;
+				color: $c-info;
 			}
 
 			&.zero-pool {
-				background: rgba(220, 53, 69, 0.2);
-				border: 1px solid rgba(220, 53, 69, 0.5);
-				color: #dc3545;
+				background: $c-failure-bg;
+				border: 1px solid $c-failure-border;
+				color: $c-failure;
 			}
 		}
 	}
@@ -557,9 +557,9 @@ h6 {
 		margin-top: $margin-md;
 		margin-left: $margin-lg;
 		padding: $padding-sm;
-		background: rgba(255, 165, 0, 0.15);
+		background: $c-warning-bg;
 		border-radius: 4px;
-		border: 1px solid rgba(255, 165, 0, 0.3);
+		border: 1px solid $c-warning-border-light;
 
 		.warning-text {
 			margin: 0;

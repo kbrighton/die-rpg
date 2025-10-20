@@ -6,7 +6,7 @@
   &:hover,
   &:focus {
     color: $c-black;
-    text-shadow: 0 0 10px red;
+    text-shadow: 0 0 10px $c-hover-glow;
     cursor: pointer;
   }
 }

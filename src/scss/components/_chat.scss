@@ -4,7 +4,7 @@
 
 .die-rpg-roll {
 	padding: $padding-md;
-	background: rgba(0, 0, 0, 0.05);
+	background: $overlay-darker;
 	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
@@ -44,21 +44,21 @@
 			border-radius: 4px;
 
 			&.base-pool {
-				background: rgba(255, 255, 255, 0.2);
-				border: 1px solid rgba(255, 255, 255, 0.5);
-				color: rgb(255, 255, 255); // Green for normal pool
+				background: $overlay-darkest;
+				border: 1px solid $overlay-darkest;
+				color: $c-dark;
 			}
 
 			&.class-die {
-				background: rgba(172, 229, 255, 0.2);
-				border: 1px solid rgba(172, 229, 255, 0.5);
-				color: rgb(172 229 255);
+				background: $c-info-bg-medium;
+				border: 1px solid $c-info-border;
+				color: $c-info;
 			}
 
 			&.zero-pool {
-				background: rgba(220, 53, 69, 0.2);
-				border: 1px solid rgba(220, 53, 69, 0.5);
-				color: #dc3545; // Red for zero pool
+				background: $c-failure-bg;
+				border: 1px solid $c-failure-border;
+				color: $c-failure;
 			}
 		}
 	}
@@ -76,7 +76,7 @@
 			flex-wrap: wrap;
 			gap: $gap-sm;
 			padding: $padding-sm;
-			background: rgba(0, 0, 0, 0.03);
+			background: $overlay-dark;
 			border-radius: 4px;
 			align-items: center;
 
@@ -88,8 +88,8 @@
 				min-height: 40px;
 				padding: $padding-sm;
 				border-radius: 6px;
-				background: rgba(200, 200, 200, 0.2);
-				border: 2px solid rgba(150, 150, 150, 0.3);
+				background: $c-die-bg;
+				border: 2px solid $c-die-border;
 				cursor: pointer;
 				transition: all 0.2s ease;
 				position: relative;
@@ -133,15 +133,15 @@
 
 				/* Success states */
 				&.success {
-					background: rgba(46, 139, 87, 0.15);
-					border: 2px solid rgba(46, 139, 87, 0.25);
-					color: #82b899;
+					background: $c-success-bg;
+					border: 2px solid $c-success-border-light;
+					color: $c-success-text;
 				}
 
 				&.special-die {
-					background: rgba(255, 215, 0, 0.131);
-					border-color: rgba(255, 215, 0, 0.3);
-					color: #d4af37; // Gold for special
+					background: $c-gold-bg-light;
+					border-color: $c-gold-border-light;
+					color: $c-gold;
 
 					i {
 						animation: pulse 2s ease-in-out infinite;
@@ -150,9 +150,9 @@
 
 				/* Critical fail state */
 				&.critfail-die {
-					background: rgba(220, 53, 69, 0.131);
-					border-color: rgba(220, 53, 69, 0.4);
-					color: #ffa3ac; // Red for critical fail
+					background: $c-failure-bg-light;
+					border-color: $c-failure-border-light;
+					color: $c-failure-text;
 				}
 
 				/* Discarded state */
@@ -169,7 +169,7 @@
 						left: 10%;
 						right: 10%;
 						height: 2px;
-						background: rgba(0, 0, 0, 0.6);
+						background: $overlay-darkest;
 						transform: rotate(-15deg);
 					}
 				}
@@ -190,7 +190,7 @@
 						align-items: center;
 						justify-content: center;
 						font-size: 1.5em;
-						color: rgba(220, 53, 69, 0.8);
+						color: $c-failure;
 						z-index: 1;
 						pointer-events: none;
 					}
@@ -205,7 +205,7 @@
 		flex-direction: column;
 		gap: $gap-sm;
 		padding: $padding-sm;
-		background: rgba(0, 0, 0, 0.03);
+		background: $overlay-dark;
 		border-radius: 4px;
 
 		.success-row,
@@ -249,21 +249,21 @@
 			}
 
 			&.success {
-				background: rgba(46, 139, 87, 0.15);
-				border: 2px solid rgba(46, 139, 87, 0.25);
-				color: #82b899; // Green for success result
+				background: $c-success-bg;
+				border: 2px solid $c-success-border-light;
+				color: $c-success-text;
 			}
 
 			&.failure {
-				background: rgba(220, 53, 69, 0.2);
-				border: 2px solid rgba(220, 53, 69, 0.5);
-				color: #dc3545; // Red for failure result
+				background: $c-failure-bg;
+				border: 2px solid $c-failure-border;
+				color: $c-failure;
 			}
 
 			&.critical-fail {
-				background: rgba(220, 53, 69, 0.131);
-				border: 2px solid rgba(220, 53, 69, 0.4);
-				color: #ffa3ac; // Dark red for critical fail result
+				background: $c-failure-bg-light;
+				border: 2px solid $c-failure-border-light;
+				color: $c-failure-text;
 				font-weight: bold;
 
 				i {
@@ -272,9 +272,9 @@
 			}
 
 			&.failing-forward {
-				background: rgba(255, 165, 0, 0.2);
-				border: 2px solid rgba(255, 165, 0, 0.5);
-				color: #ff8c00; // Orange for failing forward result
+				background: $c-warning-bg-medium;
+				border: 2px solid $c-warning-border;
+				color: $c-warning;
 			}
 		}
 	}
@@ -289,7 +289,7 @@
 			align-items: center;
 			gap: $gap-sm;
 			margin-bottom: $margin-md;
-			color: #d4af37; // Gold for specials header
+			color: $c-gold;
 
 			i {
 				font-size: 1.2em;
@@ -313,25 +313,25 @@
 
 			.special-item {
 				padding: $padding-md;
-				background: rgba(255, 215, 0, 0.1);
-				border: 1px solid rgba(255, 215, 0, 0.3);
+				background: $c-gold-bg-light;
+				border: 1px solid $c-gold-border-light;
 				border-radius: 4px;
 				cursor: pointer;
 				transition: all 0.2s ease;
 
 				&:hover {
-					background: rgba(255, 215, 0, 0.2);
-					border-color: rgba(255, 215, 0, 0.5);
+					background: $c-gold-bg;
+					border-color: $c-gold-border;
 					transform: translateX(4px);
 				}
 
 				&.mandatory {
-					background: rgba(255, 165, 0, 0.15);
-					border: 2px solid rgba(255, 165, 0, 0.5);
-					border-left: 4px solid #ff8c00;
+					background: $c-warning-bg;
+					border: 2px solid $c-warning-border;
+					border-left: 4px solid $c-warning;
 
 					.special-icon {
-						color: #ff8c00; // Orange for mandatory special icon
+						color: $c-warning;
 					}
 				}
 
@@ -343,7 +343,7 @@
 
 					.special-icon {
 						font-size: 1.1em;
-						color: #d4af37; // Gold for normal special icon
+						color: $c-gold;
 					}
 
 					.special-name {
@@ -361,8 +361,8 @@
 					.mandatory-badge {
 						font-size: 0.75em;
 						font-weight: bold;
-						color: #ff8c00; // Orange for mandatory badge text
-						background: rgba(255, 140, 0, 0.2);
+						color: $c-warning;
+						background: $c-warning-bg-medium;
 						padding: 2px 6px;
 						border-radius: 3px;
 						text-transform: uppercase;
@@ -385,16 +385,16 @@
 
 .theme-dark .die-rpg-roll {
 	/* Main container background */
-	background: rgba(255, 255, 255, 0.05);
+	background: $overlay-darker;
 
 	/* Dice display area */
 	.dice-display .dice-results {
-		background: rgba(255, 255, 255, 0.03);
+		background: $overlay-dark;
 
 		.roll.die {
 			/* Lighter default die background for visibility */
-			background: rgba(255, 255, 255, 0.15);
-			border-color: rgba(255, 255, 255, 0.2);
+			background: $c-die-bg;
+			border-color: $c-die-border;
 
 			/* Die value text - high contrast white */
 			.die-value {
@@ -403,31 +403,31 @@
 
 			/* Discarded die strikethrough - white instead of black */
 			&.discarded::after {
-				background: rgba(255, 255, 255, 0.3);
+				background: $overlay-darker;
 			}
 
 			/* State-specific color overrides for dark mode */
 			&.success {
-				background: rgba(46, 139, 87, 0.15);
-				border: 2px solid rgba(46, 139, 87, 0.25);
+				background: $c-success-bg;
+				border: 2px solid $c-success-border-light;
 				.die-value {
-					color: #82b899;
+					color: $c-success-text;
 				}
 			}
 
 			&.special-die {
-				background: rgba(255, 215, 0, 0.131);
-				border-color: rgba(255, 215, 0, 0.3);
+				background: $c-gold-bg-light;
+				border-color: $c-gold-border-light;
 				.die-value {
-					color: #d4af37;
+					color: $c-gold;
 				}
 			}
 
 			&.critfail-die {
-				background: rgba(220, 53, 69, 0.131);
-				border-color: rgba(220, 53, 69, 0.4);
+				background: $c-failure-bg-light;
+				border-color: $c-failure-border-light;
 				.die-value {
-					color: #ffa3ac;
+					color: $c-failure-text;
 				}
 			}
 		}
@@ -435,7 +435,7 @@
 
 	/* Success tracking area */
 	.success-tracking {
-		background: rgba(255, 255, 255, 0.03);
+		background: $overlay-dark;
 	}
 
 	/* Text color overrides for WCAG AA compliance */
@@ -476,10 +476,16 @@
 }
 
 /* Override Foundry's chat message container for our rolls */
+/* Light Mode - Override Foundry's parchment background */
+.chat-message:has(.die-rpg-roll) {
+	background: rgba(0, 0, 0, 0.25) !important;
+	border: 1px solid $c-groove;
+}
+
+/* Dark Mode - Strong dark background to match character sheet */
 .theme-dark .chat-message:has(.die-rpg-roll) {
-	/* Replace light parchment with dark background */
-	background: rgba(0, 0, 0, 0.5);
-	border-color: rgba(255, 255, 255, 0.15);
+	background: rgba(0, 0, 0, 0.6) !important;
+	border-color: rgba(255, 255, 255, 0.2);
 
 	/* Fix message header text contrast */
 	.message-header {

@@ -11,7 +11,7 @@
 
   .advancement-info {
     padding: 0.5rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: $overlay-dark;
     border-radius: 4px;
 
     p {
@@ -61,8 +61,8 @@
         transform: translateX(-50%);
         margin-bottom: 8px;
         padding: 0.5rem 0.75rem;
-        background: rgb(0, 0, 0);
-        color: white;
+        background: $c-tooltip-bg;
+        color: $c-tooltip-text;
         border-radius: 4px;
         white-space: nowrap;
         font-size: 1rem;
@@ -80,7 +80,7 @@
         transform: translateX(-50%);
         margin-bottom: 2px;
         border: 6px solid transparent;
-        border-top-color: rgb(0, 0, 0);
+        border-top-color: $c-tooltip-bg;
         z-index: 1000;
         pointer-events: none;
       }
@@ -88,7 +88,7 @@
   }
 
   .triangle {
-    stroke: #000;
+    stroke: $c-black;
     stroke-width: 4;
     fill: transparent;
     cursor: pointer;
@@ -96,48 +96,48 @@
 
     // Start node (row0-1) - special red fill
     &[data-node-id="row0-1"] {
-      fill: #c41e3a;
-      stroke: #000;
+      fill: $c-critical;
+      stroke: $c-black;
 
       &:hover {
-        fill: #a01828;
+        fill: $c-critical-hover;
       }
     }
 
     // Selected nodes
     &.selected:not([data-node-id="row0-1"]) {
-      fill: rgba(0, 255, 0, 0.3);
-      stroke: #00ff00;
+      fill: $c-selected-bg;
+      stroke: $c-selected-border;
       stroke-width: 5;
     }
 
     // Locked nodes
     &.locked {
-      fill: rgba(128, 128, 128, 0.2);
-      stroke: #666;
+      fill: $c-locked-bg;
+      stroke: $c-locked-border;
       cursor: not-allowed;
 
       &:hover {
-        fill: rgba(128, 128, 128, 0.2);
+        fill: $c-locked-bg;
       }
     }
 
     // Level-locked nodes
     &.level-locked {
-      fill: rgba(255, 165, 0, 0.15);
-      stroke: orange;
+      fill: $c-warning-bg;
+      stroke: $c-warning;
       stroke-width: 5;
       cursor: not-allowed;
 
       &:hover {
-        fill: rgba(255, 165, 0, 0.25);
+        fill: $c-warning-bg-medium;
       }
     }
 
     // Hover state for selectable nodes
     &:not(.locked):not(.level-locked):not([data-disabled="true"]):hover {
-      fill: rgba(255, 255, 255, 0.15);
-      stroke: #fff;
+      fill: $overlay-darker;
+      stroke: $c-white;
       stroke-width: 5;
     }
 
@@ -150,7 +150,7 @@
   .triangle-label {
     font-size: 42px;
     font-weight: bold;
-    fill: #fff;
+    fill: $c-white;
     user-select: none;
     font-family: sans-serif;
 
@@ -171,25 +171,25 @@
   .advancement-accordion {
     margin-top: 2rem;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: $overlay-dark;
     border-radius: 4px;
 
     h3 {
       margin-top: 0;
       margin-bottom: 1rem;
       font-size: 1.2rem;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 2px solid $overlay-darkest;
       padding-bottom: 0.5rem;
     }
 
     .advancement-detail {
       margin-bottom: 0.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid $overlay-dark;
       border-radius: 4px;
-      background: rgba(0, 0, 0, 0.2);
+      background: $overlay-darkest;
 
       &[open] {
-        border-color: rgba(255, 255, 255, 0.3);
+        border-color: $overlay-darker;
       }
     }
 
@@ -203,11 +203,11 @@
       font-weight: bold;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.05);
+        background: $overlay-medium;
       }
 
       .advancement-number {
-        color: #ffa500;
+        color: $c-warning;
         font-family: monospace;
         font-size: 1.1em;
       }
@@ -219,7 +219,7 @@
 
     .advancement-body {
       padding: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid $overlay-dark;
     }
 
     .advancement-description {
@@ -245,25 +245,25 @@
       .position-id {
         font-family: monospace;
         font-size: 0.9em;
-        color: #aaa;
+        color: $c-gray-light;
         min-width: 4rem;
       }
 
       .position-state {
         &.selected {
-          color: #00ff00;
+          color: $c-selected;
         }
 
         &.locked {
-          color: #888;
+          color: $c-gray-medium;
         }
 
         &.level-locked {
-          color: #ffa500;
+          color: $c-warning;
         }
 
         &.available {
-          color: #4a9eff;
+          color: $c-info-bright;
         }
       }
     }

@@ -1,4 +1,7 @@
 :root {
+  // ==========================================
+  // BASE COLORS (Light Mode)
+  // ==========================================
   --die-rpg-c-dark: #191813;
   --die-rpg-c-faint: #c9c7b8;
   --die-rpg-c-beige: #b5b3a4;
@@ -6,9 +9,102 @@
   --die-rpg-c-white: #ffffff;
   --die-rpg-c-black: #000000;
   --die-rpg-c-groove: #eeede0;
+
+  // ==========================================
+  // SUCCESS (Green) - Light Mode
+  // ==========================================
+  --die-rpg-c-success: #2e8b57;
+  --die-rpg-c-success-text: #1e5f3d;
+  --die-rpg-c-success-bg: rgba(46, 139, 87, 0.15);
+  --die-rpg-c-success-border-light: rgba(46, 139, 87, 0.25);
+  --die-rpg-c-success-border: rgba(46, 139, 87, 0.5);
+
+  // ==========================================
+  // FAILURE (Red) - Light Mode
+  // ==========================================
+  --die-rpg-c-failure: #dc3545;
+  --die-rpg-c-failure-text: #a02834;
+  --die-rpg-c-failure-bg: rgba(220, 53, 69, 0.2);
+  --die-rpg-c-failure-bg-light: rgba(220, 53, 69, 0.131);
+  --die-rpg-c-failure-border-light: rgba(220, 53, 69, 0.4);
+  --die-rpg-c-failure-border: rgba(220, 53, 69, 0.5);
+  --die-rpg-c-critical: #c41e3a;
+  --die-rpg-c-critical-hover: #a01828;
+
+  // ==========================================
+  // WARNING (Orange) - Light Mode
+  // ==========================================
+  --die-rpg-c-warning: #ff8c00;
+  --die-rpg-c-warning-text: #cc7000;
+  --die-rpg-c-warning-bg: rgba(255, 140, 0, 0.15);
+  --die-rpg-c-warning-bg-medium: rgba(255, 165, 0, 0.2);
+  --die-rpg-c-warning-border-light: rgba(255, 140, 0, 0.3);
+  --die-rpg-c-warning-border: rgba(255, 140, 0, 0.5);
+
+  // ==========================================
+  // SPECIAL / GOLD - Light Mode
+  // ==========================================
+  --die-rpg-c-gold: #b8860b;
+  --die-rpg-c-gold-text: #996f08;
+  --die-rpg-c-gold-bg: rgba(184, 134, 11, 0.15);
+  --die-rpg-c-gold-bg-light: rgba(184, 134, 11, 0.1);
+  --die-rpg-c-gold-border-light: rgba(184, 134, 11, 0.3);
+  --die-rpg-c-gold-border: rgba(184, 134, 11, 0.5);
+
+  // ==========================================
+  // INFO / CLASS DIE (Blue) - Light Mode
+  // ==========================================
+  --die-rpg-c-info: #0066cc;
+  --die-rpg-c-info-text: #004c99;
+  --die-rpg-c-info-bright: #0080ff;
+  --die-rpg-c-info-bg: rgba(0, 102, 204, 0.15);
+  --die-rpg-c-info-bg-medium: rgba(0, 102, 204, 0.2);
+  --die-rpg-c-info-border: rgba(0, 102, 204, 0.5);
+
+  // ==========================================
+  // GRAYS - Light Mode
+  // ==========================================
+  --die-rpg-c-gray-light: #888;
+  --die-rpg-c-gray-medium: #666;
+  --die-rpg-c-gray-dark: #444;
+  --die-rpg-c-die-bg: rgba(200, 200, 200, 0.2);
+  --die-rpg-c-die-border: rgba(150, 150, 150, 0.3);
+
+  // ==========================================
+  // ADVANCEMENT SPECIFIC - Light Mode
+  // ==========================================
+  --die-rpg-c-selected: #00cc00;
+  --die-rpg-c-selected-bg: rgba(0, 204, 0, 0.2);
+  --die-rpg-c-selected-border: rgba(0, 204, 0, 0.5);
+  --die-rpg-c-locked-bg: rgba(128, 128, 128, 0.2);
+  --die-rpg-c-locked-border: #666;
+
+  // ==========================================
+  // BACKGROUNDS & OVERLAYS - Light Mode
+  // ==========================================
+  --die-rpg-overlay-light: rgba(0, 0, 0, 0.03);
+  --die-rpg-overlay-medium: rgba(0, 0, 0, 0.05);
+  --die-rpg-overlay-dark: rgba(0, 0, 0, 0.1);
+  --die-rpg-overlay-darker: rgba(0, 0, 0, 0.15);
+  --die-rpg-overlay-darkest: rgba(0, 0, 0, 0.2);
+  --die-rpg-section-bg: rgba(0, 0, 0, 0.04);
+
+  // ==========================================
+  // TOOLTIPS - Light Mode
+  // ==========================================
+  --die-rpg-c-tooltip-bg: #000000;
+  --die-rpg-c-tooltip-text: #ffffff;
+
+  // ==========================================
+  // HOVER EFFECTS - Light Mode
+  // ==========================================
+  --die-rpg-c-hover-glow: red;
 }
 
 .theme-dark {
+  // ==========================================
+  // BASE COLORS (Dark Mode Override)
+  // ==========================================
   --die-rpg-c-dark: #c9c7b8;
   --die-rpg-c-faint: #191813;
   --die-rpg-c-beige: #444444;
@@ -16,14 +112,177 @@
   --die-rpg-c-white: #000000;
   --die-rpg-c-black: #ffffff;
   --die-rpg-c-groove: #7e7e7e;
+
+  // ==========================================
+  // SUCCESS (Green) - Dark Mode
+  // ==========================================
+  --die-rpg-c-success: #82b899;
+  --die-rpg-c-success-text: #82b899;
+  --die-rpg-c-success-bg: rgba(46, 139, 87, 0.15);
+  --die-rpg-c-success-border-light: rgba(46, 139, 87, 0.25);
+  --die-rpg-c-success-border: rgba(46, 139, 87, 0.5);
+
+  // ==========================================
+  // FAILURE (Red) - Dark Mode
+  // ==========================================
+  --die-rpg-c-failure: #ffa3ac;
+  --die-rpg-c-failure-text: #ffa3ac;
+  --die-rpg-c-failure-bg: rgba(220, 53, 69, 0.2);
+  --die-rpg-c-failure-bg-light: rgba(220, 53, 69, 0.131);
+  --die-rpg-c-failure-border-light: rgba(220, 53, 69, 0.4);
+  --die-rpg-c-failure-border: rgba(220, 53, 69, 0.5);
+  --die-rpg-c-critical: #ffa3ac;
+  --die-rpg-c-critical-hover: #ff8a96;
+
+  // ==========================================
+  // WARNING (Orange) - Dark Mode
+  // ==========================================
+  --die-rpg-c-warning: #ffa500;
+  --die-rpg-c-warning-text: #ff8c00;
+  --die-rpg-c-warning-bg: rgba(255, 165, 0, 0.15);
+  --die-rpg-c-warning-bg-medium: rgba(255, 165, 0, 0.2);
+  --die-rpg-c-warning-border-light: rgba(255, 165, 0, 0.3);
+  --die-rpg-c-warning-border: rgba(255, 165, 0, 0.5);
+
+  // ==========================================
+  // SPECIAL / GOLD - Dark Mode
+  // ==========================================
+  --die-rpg-c-gold: #d4af37;
+  --die-rpg-c-gold-text: #d4af37;
+  --die-rpg-c-gold-bg: rgba(255, 215, 0, 0.1);
+  --die-rpg-c-gold-bg-light: rgba(255, 215, 0, 0.1);
+  --die-rpg-c-gold-border-light: rgba(255, 215, 0, 0.3);
+  --die-rpg-c-gold-border: rgba(255, 215, 0, 0.5);
+
+  // ==========================================
+  // INFO / CLASS DIE (Blue) - Dark Mode
+  // ==========================================
+  --die-rpg-c-info: #ace5ff;
+  --die-rpg-c-info-text: #4a9eff;
+  --die-rpg-c-info-bright: #4a9eff;
+  --die-rpg-c-info-bg: rgba(172, 229, 255, 0.2);
+  --die-rpg-c-info-bg-medium: rgba(172, 229, 255, 0.2);
+  --die-rpg-c-info-border: rgba(172, 229, 255, 0.5);
+
+  // ==========================================
+  // GRAYS - Dark Mode
+  // ==========================================
+  --die-rpg-c-gray-light: #aaa;
+  --die-rpg-c-gray-medium: #888;
+  --die-rpg-c-gray-dark: #666;
+  --die-rpg-c-die-bg: rgba(255, 255, 255, 0.15);
+  --die-rpg-c-die-border: rgba(255, 255, 255, 0.2);
+
+  // ==========================================
+  // ADVANCEMENT SPECIFIC - Dark Mode
+  // ==========================================
+  --die-rpg-c-selected: #00ff00;
+  --die-rpg-c-selected-bg: rgba(0, 255, 0, 0.3);
+  --die-rpg-c-selected-border: #00ff00;
+  --die-rpg-c-locked-bg: rgba(128, 128, 128, 0.2);
+  --die-rpg-c-locked-border: #666;
+
+  // ==========================================
+  // BACKGROUNDS & OVERLAYS - Dark Mode
+  // ==========================================
+  --die-rpg-overlay-light: rgba(255, 255, 255, 0.03);
+  --die-rpg-overlay-medium: rgba(255, 255, 255, 0.05);
+  --die-rpg-overlay-dark: rgba(255, 255, 255, 0.1);
+  --die-rpg-overlay-darker: rgba(255, 255, 255, 0.05);
+  --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.2);
+  --die-rpg-section-bg: rgba(255, 255, 255, 0.04);
+
+  // ==========================================
+  // TOOLTIPS - Dark Mode
+  // ==========================================
+  --die-rpg-c-tooltip-bg: #2a2a2a;
+  --die-rpg-c-tooltip-text: #ffffff;
+
+  // ==========================================
+  // HOVER EFFECTS - Dark Mode
+  // ==========================================
+  --die-rpg-c-hover-glow: red;
 }
 
+// ==========================================
+// SCSS VARIABLE SHORTCUTS
+// ==========================================
+
+// Base colors
 $c-white: var(--die-rpg-c-white);
 $c-black: var(--die-rpg-c-black);
-
 $c-dark: var(--die-rpg-c-dark);
 $c-faint: var(--die-rpg-c-faint);
 $c-beige: var(--die-rpg-c-beige);
 $c-tan: var(--die-rpg-c-tan);
-
 $c-groove: var(--die-rpg-c-groove);
+
+// Success colors
+$c-success: var(--die-rpg-c-success);
+$c-success-text: var(--die-rpg-c-success-text);
+$c-success-bg: var(--die-rpg-c-success-bg);
+$c-success-border-light: var(--die-rpg-c-success-border-light);
+$c-success-border: var(--die-rpg-c-success-border);
+
+// Failure colors
+$c-failure: var(--die-rpg-c-failure);
+$c-failure-text: var(--die-rpg-c-failure-text);
+$c-failure-bg: var(--die-rpg-c-failure-bg);
+$c-failure-bg-light: var(--die-rpg-c-failure-bg-light);
+$c-failure-border-light: var(--die-rpg-c-failure-border-light);
+$c-failure-border: var(--die-rpg-c-failure-border);
+$c-critical: var(--die-rpg-c-critical);
+$c-critical-hover: var(--die-rpg-c-critical-hover);
+
+// Warning colors
+$c-warning: var(--die-rpg-c-warning);
+$c-warning-text: var(--die-rpg-c-warning-text);
+$c-warning-bg: var(--die-rpg-c-warning-bg);
+$c-warning-bg-medium: var(--die-rpg-c-warning-bg-medium);
+$c-warning-border-light: var(--die-rpg-c-warning-border-light);
+$c-warning-border: var(--die-rpg-c-warning-border);
+
+// Gold/Special colors
+$c-gold: var(--die-rpg-c-gold);
+$c-gold-text: var(--die-rpg-c-gold-text);
+$c-gold-bg: var(--die-rpg-c-gold-bg);
+$c-gold-bg-light: var(--die-rpg-c-gold-bg-light);
+$c-gold-border-light: var(--die-rpg-c-gold-border-light);
+$c-gold-border: var(--die-rpg-c-gold-border);
+
+// Info/Blue colors
+$c-info: var(--die-rpg-c-info);
+$c-info-text: var(--die-rpg-c-info-text);
+$c-info-bright: var(--die-rpg-c-info-bright);
+$c-info-bg: var(--die-rpg-c-info-bg);
+$c-info-bg-medium: var(--die-rpg-c-info-bg-medium);
+$c-info-border: var(--die-rpg-c-info-border);
+
+// Gray colors
+$c-gray-light: var(--die-rpg-c-gray-light);
+$c-gray-medium: var(--die-rpg-c-gray-medium);
+$c-gray-dark: var(--die-rpg-c-gray-dark);
+$c-die-bg: var(--die-rpg-c-die-bg);
+$c-die-border: var(--die-rpg-c-die-border);
+
+// Advancement colors
+$c-selected: var(--die-rpg-c-selected);
+$c-selected-bg: var(--die-rpg-c-selected-bg);
+$c-selected-border: var(--die-rpg-c-selected-border);
+$c-locked-bg: var(--die-rpg-c-locked-bg);
+$c-locked-border: var(--die-rpg-c-locked-border);
+
+// Overlays
+$overlay-light: var(--die-rpg-overlay-light);
+$overlay-medium: var(--die-rpg-overlay-medium);
+$overlay-dark: var(--die-rpg-overlay-dark);
+$overlay-darker: var(--die-rpg-overlay-darker);
+$overlay-darkest: var(--die-rpg-overlay-darkest);
+$section-bg: var(--die-rpg-section-bg);
+
+// Tooltips
+$c-tooltip-bg: var(--die-rpg-c-tooltip-bg);
+$c-tooltip-text: var(--die-rpg-c-tooltip-text);
+
+// Hover effects
+$c-hover-glow: var(--die-rpg-c-hover-glow);
