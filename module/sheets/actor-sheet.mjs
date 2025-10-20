@@ -35,6 +35,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       viewParagon: this._viewParagon,
       resetFlashback: this._resetFlashback,
       createItemForList: this._onCreateItemForList,
+      toggleItemDetails: this._onToggleItemDetails,
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -200,6 +201,21 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Offloading context prep to a helper function
     this._prepareItems(context);
 
+    // Enrich item descriptions for itemList fields
+    context.enrichedItemDescriptions = {};
+    for (const item of this.actor.items) {
+      if (item.system.description) {
+        context.enrichedItemDescriptions[item.id] = await ux.TextEditor.enrichHTML(
+          item.system.description,
+          {
+            relativeTo: item,
+            secrets: item.isOwner,
+            async: true
+          }
+        );
+      }
+    }
+
     return context;
   }
 
@@ -360,11 +376,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     }
 
     // Set the collected values on the EXPANDED object
-    // Only set non-empty arrays to prevent overwriting existing data
+    // Always set arrays, even if empty, to properly save unchecked states
     for (const [path, values] of Object.entries(multiSelectGroups)) {
-      if (values.length > 0) {
-        foundry.utils.setProperty(expandedData, path, values);
-      }
+      foundry.utils.setProperty(expandedData, path, values);
     }
 
     return expandedData;
@@ -661,6 +675,38 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     if (created?.[0]) {
       created[0].sheet.render(true);
     }
+  }
+
+  /**
+   * Toggle the visibility of item details in itemList fields
+   * Expands/collapses a row to show item description and metadata
+   *
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The clickable row element
+   * @protected
+   */
+  static async _onToggleItemDetails(event, target) {
+    event.preventDefault();
+    event.stopPropagation(); // Prevent any parent handlers
+
+    const itemUuid = target.dataset.itemUuid;
+    const itemRow = target.closest('.item-row');
+    const detailsSection = itemRow.querySelector('.item-details');
+    const expandIndicator = itemRow.querySelector('.expand-indicator');
+
+    if (!detailsSection) return;
+
+    // Toggle visibility
+    const isExpanded = detailsSection.style.display !== 'none';
+    detailsSection.style.display = isExpanded ? 'none' : 'block';
+
+    // Toggle chevron direction
+    if (expandIndicator) {
+      expandIndicator.classList.toggle('expanded', !isExpanded);
+    }
+
+    // Toggle expanded class on row
+    itemRow.classList.toggle('expanded', !isExpanded);
   }
 
   /**

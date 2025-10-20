@@ -638,115 +638,262 @@ h6 {
 		}
 	}
 
-	.item-checkbox {
-		display: flex;
-		align-items: center;
-		gap: $gap-sm;
-		padding: $padding-sm;
+	.item-row {
 		background: $overlay-darker;
 		border: 1px solid $overlay-dark;
 		border-radius: 4px;
+		margin-bottom: $gap-sm;
 		transition: all 0.2s ease;
 
-		&:hover {
-			background: $overlay-dark;
+		&.expanded {
 			border-color: $overlay-medium;
+			background: $overlay-dark;
 		}
 
-		input[type="checkbox"] {
-			flex-shrink: 0;
-			margin: 0;
-			cursor: pointer;
-		}
-
-		.item-icon {
-			flex-shrink: 0;
-			width: 32px;
-			height: 32px;
-			border-radius: 4px;
-			border: 1px solid $overlay-medium;
-			object-fit: cover;
-		}
-
-		.item-name {
-			flex: 1;
-			font-weight: 500;
-		}
-
-		.item-type-badge {
-			flex-shrink: 0;
-			padding: 2px 8px;
-			background: $overlay-darkest;
-			border-radius: 3px;
-			font-size: 0.75em;
-			text-transform: uppercase;
-			opacity: 0.7;
-		}
-
-		.item-actions {
-			display: flex;
-			gap: 4px;
-			margin-left: auto;
-			opacity: 0;
-			transition: opacity 0.2s ease;
-		}
-
-		// Show actions on hover
-		&:hover .item-actions {
-			opacity: 1;
-		}
-
-		.item-action-btn {
-			flex-shrink: 0;
-			width: 24px;
-			height: 24px;
-			padding: 0;
+		.item-row-header {
 			display: flex;
 			align-items: center;
-			justify-content: center;
-			background: $overlay-medium;
-			border: 1px solid $overlay-medium;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: all 0.15s ease;
-			color: rgba(255, 255, 255, 0.7);
+			gap: $gap-sm;
+			padding: $padding-sm;
 
-			i {
-				font-size: 0.75em;
-				pointer-events: none;
+			.item-checkbox-input {
+				flex-shrink: 0;
+				margin: 0;
+				cursor: pointer;
+				// Prevent label-like behavior
+				pointer-events: auto;
 			}
 
-			&.edit-btn {
+			.item-row-clickable {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				gap: $gap-sm;
+				cursor: pointer;
+				padding: 4px;
+				border-radius: 3px;
+				transition: background 0.15s ease;
+
 				&:hover {
-					background: $c-info-bg;
-					border-color: $c-info-border;
-					color: $c-info;
+					background: rgba(255, 255, 255, 0.05);
+				}
+
+				.item-icon {
+					flex-shrink: 0;
+					width: 32px;
+					height: 32px;
+					border-radius: 4px;
+					border: 1px solid $overlay-medium;
+					object-fit: cover;
+				}
+
+				.item-name {
+					flex: 1;
+					font-weight: 500;
+				}
+
+				.item-type-badge {
+					flex-shrink: 0;
+					padding: 2px 8px;
+					background: $overlay-darkest;
+					border-radius: 3px;
+					font-size: 0.75em;
+					text-transform: uppercase;
+					opacity: 0.7;
+				}
+
+				.expand-indicator {
+					flex-shrink: 0;
+					font-size: 0.75em;
+					transition: transform 0.2s ease;
+					opacity: 0.5;
+
+					&.expanded {
+						transform: rotate(180deg);
+					}
 				}
 			}
 
-			&.delete-btn {
-				&:hover {
-					background: $c-failure-bg;
-					border-color: $c-failure-border;
-					color: $c-failure;
+			.item-actions {
+				display: flex;
+				gap: 4px;
+				margin-left: auto;
+				opacity: 0;
+				transition: opacity 0.2s ease;
+			}
+
+			&:hover .item-actions {
+				opacity: 1;
+			}
+
+			.item-action-btn {
+				flex-shrink: 0;
+				width: 24px;
+				height: 24px;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: $overlay-medium;
+				border: 1px solid $overlay-medium;
+				border-radius: 3px;
+				cursor: pointer;
+				transition: all 0.15s ease;
+				color: rgba(255, 255, 255, 0.7);
+
+				i {
+					font-size: 0.75em;
+					pointer-events: none;
+				}
+
+				&.edit-btn {
+					&:hover {
+						background: $c-info-bg;
+						border-color: $c-info-border;
+						color: $c-info;
+					}
+				}
+
+				&.delete-btn {
+					&:hover {
+						background: $c-failure-bg;
+						border-color: $c-failure-border;
+						color: $c-failure;
+					}
 				}
 			}
 		}
 
-		&:has(input:checked) {
-			background: $c-success-bg;
-			border-color: $c-success-border;
+		.item-details {
+			border-top: 1px solid $overlay-medium;
+			padding: $padding-md;
+			background: rgba(0, 0, 0, 0.4);
+			color: rgba(255, 255, 255, 0.95);
 
-			.item-name {
-				color: $c-success-text;
+			.item-details-content {
+				font-size: 0.9em;
+
+				.item-description {
+					margin-bottom: $margin-md;
+
+					strong {
+						color: rgba(255, 255, 255, 1);
+					}
+
+					.description-content {
+						margin-top: 4px;
+						padding: $padding-sm;
+						background: rgba(0, 0, 0, 0.3);
+						border-radius: 3px;
+						border-left: 3px solid rgba(255, 255, 255, 0.2);
+						color: rgba(255, 255, 255, 0.9);
+
+						// Ensure enriched HTML renders properly
+						p:first-child {
+							margin-top: 0;
+						}
+						p:last-child {
+							margin-bottom: 0;
+						}
+					}
+				}
+
+				p {
+					margin: 4px 0;
+					color: rgba(255, 255, 255, 0.9);
+
+					strong {
+						color: rgba(255, 255, 255, 1);
+					}
+				}
+
+				// Specials list
+				.item-specials {
+					margin-top: $margin-md;
+					padding-top: $margin-sm;
+					border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+					> strong {
+						color: rgba(255, 255, 255, 1);
+					}
+
+					.specials-list {
+						list-style: none;
+						padding: 0;
+						margin: $margin-sm 0 0 0;
+					}
+
+					.special-item {
+						padding: $padding-sm;
+						margin-bottom: $gap-sm;
+						background: rgba(0, 0, 0, 0.3);
+						border-radius: 3px;
+						border-left: 3px solid $c-info-border;
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+
+						.special-name {
+							font-weight: bold;
+							color: $c-info;
+						}
+
+						.special-cost {
+							font-size: 0.85em;
+							color: rgba(255, 255, 255, 0.7);
+							margin-left: 4px;
+						}
+
+						.tag.mandatory {
+							display: inline-block;
+							margin-left: 8px;
+							padding: 2px 6px;
+							background: $c-warning-bg;
+							border: 1px solid $c-warning-border;
+							color: $c-warning-text;
+							font-size: 0.7em;
+							border-radius: 3px;
+							text-transform: uppercase;
+							font-weight: bold;
+						}
+
+						.special-desc {
+							margin-top: 4px;
+							font-size: 0.9em;
+							color: rgba(255, 255, 255, 0.85);
+
+							p {
+								color: rgba(255, 255, 255, 0.85);
+							}
+						}
+					}
+				}
 			}
 		}
 
-		&:has(input:disabled) {
+		// Checked state
+		&:has(.item-checkbox-input:checked) {
+			.item-row-header {
+				background: $c-success-bg;
+				border-color: $c-success-border;
+
+				.item-name {
+					color: $c-success-text;
+				}
+			}
+		}
+
+		// Disabled state
+		&:has(.item-checkbox-input:disabled) {
 			opacity: 0.6;
 			cursor: not-allowed;
 
-			input[type="checkbox"] {
+			.item-checkbox-input {
+				cursor: not-allowed;
+			}
+
+			.item-row-clickable {
 				cursor: not-allowed;
 			}
 		}

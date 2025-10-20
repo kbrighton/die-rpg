@@ -1385,26 +1385,43 @@
   margin-right: 4px;
   opacity: 0.6;
 }
-.die-rpg .itemlist-field .item-checkbox {
+.die-rpg .itemlist-field .item-row {
+  background: var(--die-rpg-overlay-darker);
+  border: 1px solid var(--die-rpg-overlay-dark);
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: all 0.2s ease;
+}
+.die-rpg .itemlist-field .item-row.expanded {
+  border-color: var(--die-rpg-overlay-medium);
+  background: var(--die-rpg-overlay-dark);
+}
+.die-rpg .itemlist-field .item-row .item-row-header {
   display: flex;
   align-items: center;
   gap: 5px;
   padding: 5px;
-  background: var(--die-rpg-overlay-darker);
-  border: 1px solid var(--die-rpg-overlay-dark);
-  border-radius: 4px;
-  transition: all 0.2s ease;
 }
-.die-rpg .itemlist-field .item-checkbox:hover {
-  background: var(--die-rpg-overlay-dark);
-  border-color: var(--die-rpg-overlay-medium);
-}
-.die-rpg .itemlist-field .item-checkbox input[type=checkbox] {
+.die-rpg .itemlist-field .item-row .item-row-header .item-checkbox-input {
   flex-shrink: 0;
   margin: 0;
   cursor: pointer;
+  pointer-events: auto;
 }
-.die-rpg .itemlist-field .item-checkbox .item-icon {
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable .item-icon {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
@@ -1412,11 +1429,11 @@
   border: 1px solid var(--die-rpg-overlay-medium);
   object-fit: cover;
 }
-.die-rpg .itemlist-field .item-checkbox .item-name {
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable .item-name {
   flex: 1;
   font-weight: 500;
 }
-.die-rpg .itemlist-field .item-checkbox .item-type-badge {
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable .item-type-badge {
   flex-shrink: 0;
   padding: 2px 8px;
   background: var(--die-rpg-overlay-darkest);
@@ -1425,17 +1442,26 @@
   text-transform: uppercase;
   opacity: 0.7;
 }
-.die-rpg .itemlist-field .item-checkbox .item-actions {
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable .expand-indicator {
+  flex-shrink: 0;
+  font-size: 0.75em;
+  transition: transform 0.2s ease;
+  opacity: 0.5;
+}
+.die-rpg .itemlist-field .item-row .item-row-header .item-row-clickable .expand-indicator.expanded {
+  transform: rotate(180deg);
+}
+.die-rpg .itemlist-field .item-row .item-row-header .item-actions {
   display: flex;
   gap: 4px;
   margin-left: auto;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.die-rpg .itemlist-field .item-checkbox:hover .item-actions {
+.die-rpg .itemlist-field .item-row .item-row-header:hover .item-actions {
   opacity: 1;
 }
-.die-rpg .itemlist-field .item-checkbox .item-action-btn {
+.die-rpg .itemlist-field .item-row .item-row-header .item-action-btn {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
@@ -1450,32 +1476,123 @@
   transition: all 0.15s ease;
   color: rgba(255, 255, 255, 0.7);
 }
-.die-rpg .itemlist-field .item-checkbox .item-action-btn i {
+.die-rpg .itemlist-field .item-row .item-row-header .item-action-btn i {
   font-size: 0.75em;
   pointer-events: none;
 }
-.die-rpg .itemlist-field .item-checkbox .item-action-btn.edit-btn:hover {
+.die-rpg .itemlist-field .item-row .item-row-header .item-action-btn.edit-btn:hover {
   background: var(--die-rpg-c-info-bg);
   border-color: var(--die-rpg-c-info-border);
   color: var(--die-rpg-c-info);
 }
-.die-rpg .itemlist-field .item-checkbox .item-action-btn.delete-btn:hover {
+.die-rpg .itemlist-field .item-row .item-row-header .item-action-btn.delete-btn:hover {
   background: var(--die-rpg-c-failure-bg);
   border-color: var(--die-rpg-c-failure-border);
   color: var(--die-rpg-c-failure);
 }
-.die-rpg .itemlist-field .item-checkbox:has(input:checked) {
+.die-rpg .itemlist-field .item-row .item-details {
+  border-top: 1px solid var(--die-rpg-overlay-medium);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.95);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content {
+  font-size: 0.9em;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-description {
+  margin-bottom: 10px;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-description strong {
+  color: rgb(255, 255, 255);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-description .description-content {
+  margin-top: 4px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-description .description-content p:first-child {
+  margin-top: 0;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-description .description-content p:last-child {
+  margin-bottom: 0;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content p {
+  margin: 4px 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content p strong {
+  color: rgb(255, 255, 255);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials {
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials > strong {
+  color: rgb(255, 255, 255);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .specials-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item {
+  padding: 5px;
+  margin-bottom: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  border-left: 3px solid var(--die-rpg-c-info-border);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item:last-child {
+  margin-bottom: 0;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item .special-name {
+  font-weight: bold;
+  color: var(--die-rpg-c-info);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item .special-cost {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 4px;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item .tag.mandatory {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: var(--die-rpg-c-warning-bg);
+  border: 1px solid var(--die-rpg-c-warning-border);
+  color: var(--die-rpg-c-warning-text);
+  font-size: 0.7em;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item .special-desc {
+  margin-top: 4px;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.85);
+}
+.die-rpg .itemlist-field .item-row .item-details .item-details-content .item-specials .special-item .special-desc p {
+  color: rgba(255, 255, 255, 0.85);
+}
+.die-rpg .itemlist-field .item-row:has(.item-checkbox-input:checked) .item-row-header {
   background: var(--die-rpg-c-success-bg);
   border-color: var(--die-rpg-c-success-border);
 }
-.die-rpg .itemlist-field .item-checkbox:has(input:checked) .item-name {
+.die-rpg .itemlist-field .item-row:has(.item-checkbox-input:checked) .item-row-header .item-name {
   color: var(--die-rpg-c-success-text);
 }
-.die-rpg .itemlist-field .item-checkbox:has(input:disabled) {
+.die-rpg .itemlist-field .item-row:has(.item-checkbox-input:disabled) {
   opacity: 0.6;
   cursor: not-allowed;
 }
-.die-rpg .itemlist-field .item-checkbox:has(input:disabled) input[type=checkbox] {
+.die-rpg .itemlist-field .item-row:has(.item-checkbox-input:disabled) .item-checkbox-input {
+  cursor: not-allowed;
+}
+.die-rpg .itemlist-field .item-row:has(.item-checkbox-input:disabled) .item-row-clickable {
   cursor: not-allowed;
 }
 .die-rpg .special-field .special-reference {

@@ -109,40 +109,104 @@
       {{#if filteredItems.length}}
         <div class="checkbox-group item-list">
           {{#each filteredItems as |item|}}
-            <label class="checkbox-option item-checkbox">
-              <input
-                type="checkbox"
-                data-multi-select="{{../../path}}"
-                value="{{item.uuid}}"
-                {{#if (contains ../../value item.uuid)}}checked{{/if}}
-                {{#unless ../../editable}}disabled{{/unless}}
-              />
-              <img src="{{item.img}}" alt="{{item.name}}" class="item-icon" />
-              <span class="item-name">{{item.name}}</span>
-              <span class="item-type-badge">{{item.type}}</span>
-
-              {{!-- Action buttons --}}
-              {{#if ../../editable}}
-                <div class="item-actions">
-                  <button
-                    type="button"
-                    class="item-action-btn edit-btn"
-                    data-action="viewDoc"
-                    data-document-uuid="{{item.uuid}}"
-                    title="Edit {{item.name}}">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button
-                    type="button"
-                    class="item-action-btn delete-btn"
-                    data-action="deleteDoc"
-                    data-document-uuid="{{item.uuid}}"
-                    title="Delete {{item.name}}">
-                    <i class="fas fa-trash"></i>
-                  </button>
+            <div class="item-row" data-item-uuid="{{item.uuid}}">
+              <div class="item-row-header">
+                <input
+                  type="checkbox"
+                  class="item-checkbox-input"
+                  data-multi-select="{{../../path}}"
+                  value="{{item.uuid}}"
+                  {{#if (contains ../../value item.uuid)}}checked{{/if}}
+                  {{#unless ../../editable}}disabled{{/unless}}
+                />
+                <div class="item-row-clickable" data-action="toggleItemDetails" data-item-uuid="{{item.uuid}}">
+                  <img src="{{item.img}}" alt="{{item.name}}" class="item-icon" />
+                  <span class="item-name">{{item.name}}</span>
+                  <span class="item-type-badge">{{item.type}}</span>
+                  <i class="fas fa-chevron-down expand-indicator"></i>
                 </div>
-              {{/if}}
-            </label>
+
+                {{!-- Action buttons --}}
+                {{#if ../../editable}}
+                  <div class="item-actions">
+                    <button
+                      type="button"
+                      class="item-action-btn edit-btn"
+                      data-action="viewDoc"
+                      data-document-uuid="{{item.uuid}}"
+                      title="Edit {{item.name}}">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="item-action-btn delete-btn"
+                      data-action="deleteDoc"
+                      data-document-uuid="{{item.uuid}}"
+                      title="Delete {{item.name}}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                {{/if}}
+              </div>
+
+              {{!-- Expandable details section --}}
+              <div class="item-details" data-uuid="{{item.uuid}}" style="display: none;">
+                <div class="item-details-content">
+                  {{!-- Description (enriched HTML) --}}
+                  {{#if item.system.description}}
+                    <div class="item-description">
+                      <strong>Description:</strong>
+                      <div class="description-content">
+                        {{{lookup @root.enrichedItemDescriptions item.id}}}
+                      </div>
+                    </div>
+                  {{/if}}
+
+                  {{!-- Type-specific fields --}}
+                  {{#if (eq item.type "stance")}}
+                    <p><strong>Stance Type:</strong> {{item.system.stanceType}}</p>
+                    {{#if item.system.emotionSubtype}}
+                      <p><strong>Emotion:</strong> {{item.system.emotionSubtype}}</p>
+                    {{/if}}
+                  {{else if (eq item.type "arcaneweapon")}}
+                    {{#if item.system.weaponType}}
+                      <p><strong>Weapon Type:</strong> {{item.system.weaponType}}</p>
+                    {{/if}}
+                    {{#if item.system.personality}}
+                      <p><strong>Personality:</strong> {{item.system.personality}}</p>
+                    {{/if}}
+                  {{else if (eq item.type "equipment")}}
+                    {{#if item.system.quantity}}
+                      <p><strong>Quantity:</strong> {{item.system.quantity}}</p>
+                    {{/if}}
+                    {{#if item.system.weight}}
+                      <p><strong>Weight:</strong> {{item.system.weight}}</p>
+                    {{/if}}
+                  {{/if}}
+
+                  {{!-- Specials (if item has them) --}}
+                  {{#if item.system.specials.length}}
+                    <div class="item-specials">
+                      <strong>Specials:</strong>
+                      <ul class="specials-list">
+                        {{#each item.system.specials as |special|}}
+                          <li class="special-item">
+                            <span class="special-name">{{special.name}}</span>
+                            <span class="special-cost">(Cost: {{special.cost}}x 6+)</span>
+                            {{#if special.mandatory}}
+                              <span class="tag mandatory">Mandatory</span>
+                            {{/if}}
+                            {{#if special.description}}
+                              <div class="special-desc">{{{special.description}}}</div>
+                            {{/if}}
+                          </li>
+                        {{/each}}
+                      </ul>
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
           {{/each}}
         </div>
       {{else}}
