@@ -407,8 +407,8 @@
 				"hint": "If enabled, rolls with 0 successes and at least one 1 will display as a Critical Fail with special styling."
 			},
 			"enableDiceInteraction": {
-				"name": "Enable Interactive Dice (Coming Soon)",
-				"hint": "Future feature: Allow clicking dice in chat messages to cross them out (representing difficulty reduction). This feature is not yet implemented."
+				"name": "Enable Interactive Dice",
+				"hint": "Allows clicking success dice in chat messages to change which dice appear crossed out by difficulty. This is visual only - the final success count is always based on difficulty."
 			}
 		},
 		"Dialog": {

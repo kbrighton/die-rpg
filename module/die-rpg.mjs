@@ -119,7 +119,7 @@ Hooks.once('init', function () {
     scope: 'world', // GM controls this setting per world
     config: true, // Show in settings menu
     type: Boolean,
-    default: false, // Disabled by default (coming soon feature)
+    default: true, // Enabled by default
     onChange: value => console.log(`DIE RPG | Dice Interaction setting changed to: ${value}`)
   });
 

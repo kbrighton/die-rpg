@@ -162,11 +162,9 @@ export class DiceInteraction {
     }
 
     // Recalculate final successes
-    const { diceResults, difficulty } = rollData;
-    const activeSuccesses = diceResults.filter((die, idx) =>
-      die.active && die.result >= 4 && !crossedOutIndices.includes(idx)
-    ).length;
-    const finalSuccesses = Math.max(0, activeSuccesses - difficulty);
+    // NOTE: Crossed-out dice are VISUAL only - final successes still based on difficulty
+    const { diceResults, difficulty, initialSuccesses } = rollData;
+    const finalSuccesses = Math.max(0, initialSuccesses - difficulty);
 
     // Update template data with crossed-out state
     const updatedTemplateData = {

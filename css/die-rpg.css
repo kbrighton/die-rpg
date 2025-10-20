@@ -522,6 +522,7 @@
 }
 .die-rpg-roll .roll-result .result-text {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 5px;
   padding: 10px;
@@ -627,6 +628,7 @@
 .die-rpg-roll .specials-section .specials-list .special-item .special-content .special-cost {
   font-size: 0.85em;
   padding: 2px 8px;
+  color: var(--die-rpg-c-black);
 }
 .die-rpg-roll .specials-section .specials-list .special-item .special-content .mandatory-badge {
   font-size: 0.75em;

@@ -428,6 +428,35 @@ function _rollDicePool(statValue, advantages = 0, disadvantages = 0, addClassDie
 }
 
 /**
+ * Calculates which success dice indices should be crossed out based on difficulty.
+ * Prioritizes lower-valued successes first, with ties broken by position (left to right).
+ * @param {Array<object>} diceResults - Array of dice results
+ * @param {number} difficulty - The difficulty value
+ * @param {number} successCount - Total number of successes
+ * @returns {Array<number>} - Array of indices to cross out
+ */
+function _calculateDifficultyCrossing(diceResults, difficulty, successCount) {
+  if (difficulty <= 0 || successCount <= 0) return [];
+
+  // Get success dice with their original indices
+  const successDice = diceResults
+    .map((die, index) => ({ die, index }))
+    .filter(({ die }) => die.active && die.result >= 4);
+
+  // Sort by value (ascending), then by index (ascending) for ties
+  successDice.sort((a, b) => {
+    if (a.die.result !== b.die.result) {
+      return a.die.result - b.die.result; // Lower values first
+    }
+    return a.index - b.index; // Earlier dice first for ties
+  });
+
+  // Take first N indices where N = min(difficulty, successCount)
+  const crossCount = Math.min(difficulty, successCount);
+  return successDice.slice(0, crossCount).map(({ index }) => index);
+}
+
+/**
  * Builds and sends the chat message for the roll result.
  * @param {Roll} roll The evaluated Roll object.
  * @param {string} label The label for the roll (e.g., stat name).
@@ -464,6 +493,19 @@ async function _buildChatRollMessage(roll, label, actor, results) {
     dieType: (isMixedPool && index >= basePoolDiceCount) ? (classDieType || 'd6') : 'd6'
   }));
 
+  // Calculate which success dice should be auto-crossed based on difficulty
+  const difficultyCrossedOutIndices = _calculateDifficultyCrossing(
+    enhancedDiceResults,
+    difficulty,
+    initialSuccesses
+  );
+
+  // Add crossedOut property to dice for initial render
+  const enhancedDiceResultsWithCrossing = enhancedDiceResults.map((die, index) => ({
+    ...die,
+    crossedOut: difficultyCrossedOutIndices.includes(index)
+  }));
+
   // Enhance availableSpecials with costValue for template
   const enhancedSpecials = availableSpecials ? availableSpecials.map(special => ({
     ...special,
@@ -489,7 +531,7 @@ async function _buildChatRollMessage(roll, label, actor, results) {
     isSubstituted,
     addClassDie,
     classDieType,
-    diceResults: enhancedDiceResults,
+    diceResults: enhancedDiceResultsWithCrossing,
     initialSuccesses,
     finalSuccesses,
     difficulty,
@@ -515,7 +557,7 @@ async function _buildChatRollMessage(roll, label, actor, results) {
     flags: {
       'die-rpg': {
         // Store roll data for potential re-rendering
-        diceResults: enhancedDiceResults,
+        diceResults: enhancedDiceResultsWithCrossing,
         difficulty: difficulty,
         initialSuccesses: initialSuccesses,
         specialDice: specialDice,
@@ -530,8 +572,8 @@ async function _buildChatRollMessage(roll, label, actor, results) {
         classDieType: classDieType,
         isMixedPool: isMixedPool,
         label: label,
-        // Track which dice have been crossed out (empty array initially)
-        crossedOutIndices: []
+        // Track which dice have been crossed out (initialized to difficulty-based auto-crossing)
+        crossedOutIndices: difficultyCrossedOutIndices
       }
     }
   });
