@@ -139,7 +139,6 @@ function setupScrollIndicator(element) {
     const newScrollable = findScrollableElement(element);
     if (newScrollable && newScrollable !== element._scrollableElement) {
       // Found a new scrollable element! Re-setup
-      console.log('Scroll indicators: Found scrollable element after initial load');
       element._scrollableElement = newScrollable;
       attachScrollListener(newScrollable);
       updateScrollState();

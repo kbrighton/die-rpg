@@ -99,8 +99,7 @@ Hooks.once('init', function () {
     scope: 'world', // GM controls this setting per world
     config: true, // Show in settings menu
     type: Boolean,
-    default: true, // Enabled by default
-    onChange: value => console.log(`DIE RPG | Failing Forward setting changed to: ${value}`)
+    default: true // Enabled by default
   });
 
   game.settings.register('die-rpg', 'enableCriticalFail', {
@@ -109,8 +108,7 @@ Hooks.once('init', function () {
     scope: 'world', // GM controls this setting per world
     config: true, // Show in settings menu
     type: Boolean,
-    default: true, // Enabled by default
-    onChange: value => console.log(`DIE RPG | Critical Fail setting changed to: ${value}`)
+    default: true // Enabled by default
   });
 
   game.settings.register('die-rpg', 'enableDiceInteraction', {
@@ -119,8 +117,7 @@ Hooks.once('init', function () {
     scope: 'world', // GM controls this setting per world
     config: true, // Show in settings menu
     type: Boolean,
-    default: true, // Enabled by default
-    onChange: value => console.log(`DIE RPG | Dice Interaction setting changed to: ${value}`)
+    default: true // Enabled by default
   });
 
   utils.registerHandlebarsHelpers();

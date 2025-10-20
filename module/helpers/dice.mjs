@@ -27,11 +27,6 @@ export async function rollStat(dataset, actor) {
   // Get Class Die info from Actor
   const classItem = await actor?._getClassDieItem();
   const classDieType = classItem?.system?.die || null; // Get die type (e.g., "d8") or null
-
-  // Debug logging
-  console.log('DIE RPG | Class Item:', classItem);
-  console.log('DIE RPG | Class Die Type:', classDieType);
-
   // Define initial mods before dialog, using values from dataset if provided
   const initialAdvantages = dataset.advantages || 0;
   const initialDisadvantages = dataset.disadvantages || 0;
@@ -67,11 +62,6 @@ export async function rollStat(dataset, actor) {
   let isMixedPool = false; // Flag for 1d6 + 1dX rolls
   let basePoolDiceCount = 0; // Track how many dice are from base pool (for die type detection)
 
-  // Debug: Log roll structure
-  console.log('DIE RPG | Roll formula:', roll.formula);
-  console.log('DIE RPG | Roll.dice:', roll.dice);
-  console.log('DIE RPG | Roll.terms:', roll.terms);
-
   // Check for mixed pool FIRST (before checking standard pool)
   // Mixed pool has multiple Die terms (e.g., "3d6 + 1d4")
   if (roll.terms.length > 1 && roll.terms[0] instanceof foundry.dice.terms.Die && roll.terms[2] instanceof foundry.dice.terms.Die) {
@@ -83,17 +73,12 @@ export async function rollStat(dataset, actor) {
     diceResults = [...results1, ...results2]; // Combine results from both terms
     // In mixed pool, both dice count for success (no keep lowest logic here)
     successCount = diceResults.filter(r => r.result >= 4).length;
-    console.log('DIE RPG | Mixed pool detected, basePoolDiceCount:', basePoolDiceCount);
-    console.log('DIE RPG | Results1 (base):', results1);
-    console.log('DIE RPG | Results2 (class):', results2);
-    console.log('DIE RPG | Combined diceResults:', diceResults);
   }
   else if (roll.dice.length > 0 && roll.dice[0] instanceof foundry.dice.terms.Die) {
     // Standard d6 pool or 2d6kl1
     diceResults = roll.dice[0].results;
     successCount = diceResults.filter(r => r.active && r.result >= 4).length; // Count only active dice
     basePoolDiceCount = diceResults.length; // All dice are from base pool
-    console.log('DIE RPG | Standard pool detected, diceResults:', diceResults);
   }
 
   // Apply difficulty reduction
@@ -152,9 +137,6 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
     initialStatValue: initialStatValue,
     flashbackUsed: actor?.system?.flashbackUsed || false
   };
-
-  // Debug logging
-  console.log('DIE RPG | Roll Dialog Template Data:', templateData);
 
   const title = `Roll ${statName} (Base: ${initialStatValue}d6)`;
 
