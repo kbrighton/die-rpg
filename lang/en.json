@@ -423,7 +423,188 @@
 			"DicePool": "Dice Pool",
 			"ZeroPoolWarning": "The dice pool is 0, the system will roll two dice and pick the lowest"
 		},
-		"None": "None"
+		"None": "None",
+		"Chat": {
+			"RollMessage": {
+				"Rolled": "Rolled",
+				"Pool": "Pool:",
+				"DiceRolled": "Dice Rolled:",
+				"InitialSuccesses": "Initial Successes (≥4):",
+				"Difficulty": "Difficulty:"
+			},
+			"FlashbackUsed": "Flashback Used!",
+			"DiceTooltips": {
+				"Special": "Special (6+)",
+				"Success": "Success (4-5)",
+				"Failure": "Failure"
+			},
+			"Results": {
+				"CriticalFail": "Critical Fail!",
+				"CriticalFailDetail": "(0 Successes & rolled a 1)",
+				"Failure": "Failure",
+				"FailureDetail": "(0 Final Successes)",
+				"Success": "Success!",
+				"FinalSuccess": "Final Success",
+				"FailForward": "Fail Forward!",
+				"FailForwardSuccesses": "successes vs Difficulty",
+				"FailForwardNote": "Action succeeds with cost or complication - GM narrates."
+			},
+			"AvailableSpecials": {
+				"Header": "Available Specials",
+				"Count": "({{specialDice}} dice rolled 6+)",
+				"CostLabel": "Cost:",
+				"MandatoryBadge": "Mandatory"
+			}
+		},
+		"Dialog": {
+			"Advantages": "Advantages",
+			"Disadvantages": "Disadvantages",
+			"Difficulty": "Difficulty",
+			"AddClassDie": "Add Class Die",
+			"SubstituteClassDie": "Substitute Class Die?",
+			"UseFlashback": "Use a flashback to get 1 advantage? (once per session)",
+			"FlashbackUsed": "Flashback already used this session",
+			"ClassDieDescription": "Some class abilities allow players to add their class die to thepool as well",
+			"DicePool": "Dice Pool",
+			"ZeroPoolWarning": "The dice pool is 0, the system will roll two dice and pick the lowest",
+			"Roll": {
+				"Title": "Roll {stat} (Base: {dice}d6)",
+				"ButtonRoll": "Roll",
+				"SubstituteClassDie": "Substitute Class Die ({die})",
+				"AddClassDie": "Add Class Die ({die})"
+			},
+			"SetDifficulty": {
+				"Header": "Set Difficulty",
+				"AttackHint": "For attacks, Difficulty is equal to the target's Defense."
+			}
+		},
+		"Notifications": {
+			"Success": {
+				"ParagonSelected": "Paragon \"{name}\" selected.",
+				"FlashbackReset": "Flashback has been reset.",
+				"ParagonCleared": "Paragon cleared.",
+				"OrphanedAdvancementsRemoved": "Removed {count} orphaned advancement(s)."
+			},
+			"Warning": {
+				"NoParagon": "No paragon item found.",
+				"CannotSelectAdvancement": "Cannot select this advancement. Check level and adjacency requirements.",
+				"NoItemType": "No item type specified for creation."
+			},
+			"Error": {
+				"ParagonNotFound": "Could not find selected paragon item.",
+				"ParagonSelectionFailed": "Failed to select paragon.",
+				"InvalidClassAbilitiesJSON": "Invalid JSON in Class Abilities Fields: {error}",
+				"InvalidAdvancementFormsJSON": "Invalid JSON in Advancement Form Fields: {error}"
+			}
+		},
+		"UI": {
+			"Headers": {
+				"Stats": "Stats",
+				"Look": "Look",
+				"Specials": "Specials",
+				"ClassAbilities": "Class Abilities",
+				"AdvancementPool": "Advancement Pool",
+				"AdvancementForms": "Advancement Forms",
+				"DerivedStats": "Derived Stats",
+				"Name": "Name"
+			},
+			"Labels": {
+				"Flashback": "Flashback:",
+				"ClassDice": "Class Dice:",
+				"SelectFromParagonLooks": "Select from Paragon Looks:",
+				"CustomLook": "Custom Look",
+				"Description": "Description:",
+				"DefenseBonus": "Defense Bonus:",
+				"EnterCustomLook": "Enter Custom Look:",
+				"Source": "Source:",
+				"Level": "Level:",
+				"AdvancementsSelected": "Advancements Selected:",
+				"AvailableSelections": "Available Selections:",
+				"PositionsOnMap": "Positions on Map:",
+				"TotalDefense": "Total Defense:",
+				"TotalGuard": "Total Guard:",
+				"Separator": " / "
+			},
+			"Buttons": {
+				"OpenParagonSheet": "Open Paragon Sheet",
+				"DeleteLook": "Delete Look",
+				"Delete": "Delete",
+				"AddSpecial": "Add Special",
+				"DeleteScripture": "Delete Scripture",
+				"DeleteUpgrade": "Delete Upgrade"
+			},
+			"Tooltips": {
+				"OpenParagonSheet": "Open Paragon Sheet",
+				"SpecialCost": "Cost: {cost}",
+				"MandatorySpecial": "Must be used when triggered",
+				"Locked": "Locked",
+				"IncreaseLevelToUnlock": "Increase level to unlock",
+				"DeleteSpecial": "Delete Special"
+			},
+			"Placeholders": {
+				"Name": "Name",
+				"LookName": "e.g., Leather Jacket",
+				"LookDescription": "Optional description",
+				"SpecialName": "Special name",
+				"GodTitle": "e.g., God of War, Goddess of the Moon",
+				"ScriptureName": "Scripture name",
+				"UpgradeName": "Upgrade name",
+				"CustomLookDescription": "Enter a custom look description",
+				"HeaderImagePath": "systems/die-rpg/assets/headers/paragon-name.webp",
+				"BackgroundImagePath": "systems/die-rpg/assets/backgrounds/paragon-name.webp"
+			},
+			"EmptyStates": {
+				"NoParagonSelected": "No Paragon Selected",
+				"PleaseSelectParagon": "Please select a paragon to see class dice and core ability",
+				"NoSpecials": "No specials available. Specials will appear here from your paragon, equipment, and other sources.",
+				"SelectParagonForClassInfo": "No paragon selected. Please select a paragon from the dropdown in the header to view class information.",
+				"NoLooks": "No looks defined. Add one below.",
+				"NoSpecialsDefined": "No specials defined. Add one below.",
+				"NoScriptures": "No scriptures defined. Add one below.",
+				"NoUpgrades": "No upgrades defined. Add one below."
+			},
+			"Status": {
+				"Used": "Used",
+				"Available": "Available",
+				"Selected": "Selected",
+				"Locked": "Locked",
+				"LevelRequired": "Level Required"
+			},
+			"Hints": {
+				"LooksDescription": "Appearance/clothing options that characters can choose from.",
+				"SpecialsDescription": "Special abilities that can be activated when rolling 6+ on dice.",
+				"ScripturesDescription": "Scriptures are the benefits granted by this god. Typically 3, but more can be added.",
+				"UpgradesDescription": "Upgrades can be picked multiple times. Only one upgrade marked Defensive unless an advancement says otherwise.",
+				"AdvancementFormsHint": "Track class-specific advancement details below:",
+				"ThemeImagesLegend": "Theme Images (Optional)",
+				"ThemeImagesHint": "Custom header and background images for character sheet theming.",
+				"HeaderImageLabel": "Header Image Path",
+				"BackgroundImageLabel": "Background Image Path"
+			},
+			"SpecialCostDisplay": {
+				"Single": "Special (6+)",
+				"Double": "Double (6,6+)",
+				"Triple": "Triple (6,6,6+)",
+				"Quad": "Quad (6,6,6,6)",
+				"Twenty": "Natural 20"
+			},
+			"DefaultItemNames": {
+				"Equipment": "New Equipment",
+				"Paragon": "New Paragon",
+				"Look": "New Look",
+				"Spell": "New Spell",
+				"God": "New God",
+				"Gift": "New Gift",
+				"Stance": "New Stance",
+				"Venting": "New Venting",
+				"Arcaneweapon": "New Arcane Weapon"
+			},
+			"Sections": {
+				"SelectLook": "-- Select a Look --",
+				"LookDefenseBonus": " (+{defenseBonus} Defense)",
+				"SpecialsForItem": "Specials for {name}"
+			}
+		}
 	},
 	"TYPES": {
 		"Actor": {

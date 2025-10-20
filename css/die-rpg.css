@@ -479,6 +479,11 @@
   border: 1px solid var(--die-rpg-c-failure-border);
   color: var(--die-rpg-c-failure);
 }
+.die-rpg-roll .pool-display .dice-badge.flashback {
+  background: var(--die-rpg-c-gold-bg);
+  border: 1px solid var(--die-rpg-c-gold-border);
+  color: var(--die-rpg-c-gold);
+}
 .die-rpg-roll .dice-display .dice-label {
   font-weight: bold;
   color: var(--die-rpg-c-dark);
@@ -514,7 +519,7 @@
   /* Success states */
   /* Critical fail state */
   /* Discarded state */
-  /* Crossed out state (future feature) */
+  /* Crossed out state */
 }
 .die-rpg-roll .dice-display .dice-results .roll.die i {
   font-size: 1.2em;
@@ -826,7 +831,7 @@
   border: 1px solid var(--die-rpg-c-groove);
 }
 
-/* Dark Mode - Strong dark background to match character sheet */
+/* Dark Mode - dark background */
 .theme-dark .chat-message:has(.die-rpg-roll) {
   background: rgba(0, 0, 0, 0.6) !important;
   border-color: rgba(255, 255, 255, 0.2);
@@ -2194,3 +2199,5 @@
   min-height: 200px;
   overflow-y: auto;
 }
+
+/*# sourceMappingURL=die-rpg.css.map */

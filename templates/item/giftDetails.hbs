@@ -10,14 +10,14 @@
 
   {{!-- Display Derived Totals --}}
   <div class="derived-totals">
-    <h3>Derived Stats</h3>
+    <h3>{{localize "DIE_RPG.UI.Headers.DerivedStats"}}</h3>
     <div class="totals-grid">
       <div class="total-item">
-        <label>Total Defense:</label>
+        <label>{{localize "DIE_RPG.UI.Labels.TotalDefense"}}</label>
         <span class="total-value">{{system.totalDefense}}</span>
       </div>
       <div class="total-item">
-        <label>Total Guard:</label>
+        <label>{{localize "DIE_RPG.UI.Labels.TotalGuard"}}</label>
         <span class="total-value">{{system.totalGuard}}</span>
       </div>
     </div>
@@ -26,7 +26,7 @@
   {{!-- Upgrades Section --}}
   <fieldset class="upgrades-section">
     <legend>{{localize 'DIE_RPG.Item.Gift.FIELDS.upgrades.label'}}</legend>
-    <p class="hint">Upgrades can be picked multiple times. Only one upgrade marked Defensive unless an advancement says otherwise.</p>
+    <p class="hint">{{localize "DIE_RPG.UI.Hints.UpgradesDescription"}}</p>
 
     <ol class="upgrades-list">
       {{#each system.upgrades as |upgrade index|}}
@@ -36,7 +36,7 @@
             <div class="upgrade-main-fields">
               <div class="form-group">
                 <label>{{localize 'DIE_RPG.Item.Gift.FIELDS.upgrade.name.label'}}</label>
-                <input type="text" name="system.upgrades.{{index}}.name" value="{{upgrade.name}}" placeholder="Upgrade name" />
+                <input type="text" name="system.upgrades.{{index}}.name" value="{{upgrade.name}}" placeholder="{{localize 'DIE_RPG.UI.Placeholders.UpgradeName'}}" />
               </div>
               <div class="form-group">
                 <label>{{localize 'DIE_RPG.Item.Gift.FIELDS.upgrade.defenseBonus.label'}}</label>
@@ -55,33 +55,33 @@
           {{!-- Nested Specials for this Upgrade --}}
           {{#if upgrade.specials}}
             <div class="upgrade-specials">
-              <h4>Specials for {{upgrade.name}}</h4>
+              <h4>{{localize "DIE_RPG.UI.Sections.SpecialsForItem" name=upgrade.name}}</h4>
               {{#each upgrade.specials as |special specialIndex|}}
                 <div class="special-item-compact" data-special-index="{{specialIndex}}">
-                  <input type="text" name="system.upgrades.{{index}}.specials.{{specialIndex}}.name" value="{{special.name}}" placeholder="Special name" />
+                  <input type="text" name="system.upgrades.{{index}}.specials.{{specialIndex}}.name" value="{{special.name}}" placeholder="{{localize 'DIE_RPG.UI.Placeholders.SpecialName'}}" />
                   <select name="system.upgrades.{{index}}.specials.{{specialIndex}}.cost">
                     {{selectOptions @root.config.specialCostTypes selected=special.cost localize=true blank=""}}
                   </select>
-                  <button type="button" class="delete-upgrade-special" data-action="deleteUpgradeSpecial" data-upgrade-index="{{index}}" data-special-index="{{specialIndex}}" title="Delete Special">
+                  <button type="button" class="delete-upgrade-special" data-action="deleteUpgradeSpecial" data-upgrade-index="{{index}}" data-special-index="{{specialIndex}}" title="{{localize 'DIE_RPG.UI.Tooltips.DeleteSpecial'}}">
                     <i class="fas fa-trash"></i>
                   </button>
                 </div>
               {{/each}}
               <button type="button" class="add-upgrade-special" data-action="addUpgradeSpecial" data-upgrade-index="{{index}}">
-                <i class="fas fa-plus"></i> Add Special
+                <i class="fas fa-plus"></i> {{localize "DIE_RPG.UI.Buttons.AddSpecial"}}
               </button>
             </div>
           {{/if}}
 
-          <button type="button" class="delete-upgrade" data-action="deleteUpgrade" data-index="{{index}}" title="Delete Upgrade">
-            <i class="fas fa-trash"></i> Delete Upgrade
+          <button type="button" class="delete-upgrade" data-action="deleteUpgrade" data-index="{{index}}" title="{{localize 'DIE_RPG.UI.Buttons.DeleteUpgrade'}}">
+            <i class="fas fa-trash"></i> {{localize "DIE_RPG.UI.Buttons.DeleteUpgrade"}}
           </button>
         </li>
       {{/each}}
     </ol>
 
     {{#if (eq system.upgrades.length 0)}}
-      <p class="no-items">No upgrades defined. Add one below.</p>
+      <p class="no-items">{{localize "DIE_RPG.UI.EmptyStates.NoUpgrades"}}</p>
     {{/if}}
 
     <button type="button" class="add-upgrade" data-action="addUpgrade">

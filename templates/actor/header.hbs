@@ -13,7 +13,7 @@
 							selected=actor.system.paragon.uuid
 							valueAttr="uuid"
 							labelAttr="name"
-							blank="(No Paragon Selected)"
+							blank=(localize "DIE_RPG.UI.EmptyStates.NoParagonSelected")
 							sort=false
 						}}
 					</select>
@@ -22,7 +22,7 @@
 					type="button"
 					class="paragon-sheet-icon-btn"
 					data-action="viewParagon"
-					data-tooltip="Open Paragon Sheet"
+					data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.OpenParagonSheet'}}"
 					{{#unless paragonItem}}disabled{{/unless}}
 				>
 					<i class="fas fa-book-open"></i>
@@ -36,7 +36,7 @@
 					name="name"
 					type="text"
 					value="{{actor.name}}"
-					placeholder="Name"
+					placeholder="{{localize 'DIE_RPG.UI.Placeholders.Name'}}"
 				/>
 			</div>
 
@@ -44,11 +44,11 @@
 			<div class="flashback-indicator">
 				<span class="flashback-status {{#if actor.system.flashbackUsed}}used{{else}}available{{/if}}">
 					<i class="fas fa-history"></i>
-					Flashback:
+					{{localize "DIE_RPG.UI.Labels.Flashback"}}
 					{{#if actor.system.flashbackUsed}}
-						<span class="status-text">Used</span>
+						<span class="status-text">{{localize "DIE_RPG.UI.Status.Used"}}</span>
 					{{else}}
-						<span class="status-text">Available</span>
+						<span class="status-text">{{localize "DIE_RPG.UI.Status.Available"}}</span>
 					{{/if}}
 				</span>
 				<button
@@ -66,7 +66,7 @@
 		{{#if paragonItem}}
 			<div class="right-col class-dice">
 				<div class="class-dice-description">
-					<h3 class="class-dice-title">Class Dice: {{uppercase paragonItem.system.die}}</h3>
+					<h3 class="class-dice-title">{{localize "DIE_RPG.UI.Labels.ClassDice"}} {{uppercase paragonItem.system.die}}</h3>
 					<p>
 						{{uppercase paragonItem.system.coreAbility.name}}
 					</p>
@@ -83,9 +83,9 @@
 		{{else}}
 			<div class="right-col class-dice">
 				<div class="class-dice-description">
-					<h3 class="class-dice-title">No Paragon Selected</h3>
+					<h3 class="class-dice-title">{{localize "DIE_RPG.UI.EmptyStates.NoParagonSelected"}}</h3>
 					<p>
-						Please select a paragon to see class dice and core ability
+						{{localize "DIE_RPG.UI.EmptyStates.PleaseSelectParagon"}}
 					</p>
 				</div>
 			</div>

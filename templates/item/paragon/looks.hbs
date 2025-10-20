@@ -1,7 +1,7 @@
 {{!-- Paragon Looks Tab --}}
 <section class="tab looks {{tab.cssClass}}"  data-group="primary" data-tab="looks" data-subtype="{{document.type}}">
   <h2>{{localize 'DIE_RPG.Item.Paragon.FIELDS.looks.label'}}</h2>
-  <p class="hint">Appearance/clothing options that characters can choose from.</p>
+  <p class="hint">{{localize "DIE_RPG.UI.Hints.LooksDescription"}}</p>
 
   <ol class="looks-list">
     {{#each system.looks as |look index|}}
@@ -10,18 +10,18 @@
           <div class="look-fields">
             <div class="form-group">
               <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.look.name.label'}}</label>
-              <input type="text" name="system.looks.{{index}}.name" value="{{look.name}}" placeholder="e.g., Leather Jacket" />
+              <input type="text" name="system.looks.{{index}}.name" value="{{look.name}}" placeholder="{{localize 'DIE_RPG.UI.Placeholders.LookName'}}" />
             </div>
             <div class="form-group">
               <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.look.description.label'}}</label>
-              <input type="text" name="system.looks.{{index}}.description" value="{{look.description}}" placeholder="Optional description" />
+              <input type="text" name="system.looks.{{index}}.description" value="{{look.description}}" placeholder="{{localize 'DIE_RPG.UI.Placeholders.LookDescription'}}" />
             </div>
             <div class="form-group">
               <label>{{localize 'DIE_RPG.Item.Paragon.FIELDS.look.defenseBonus.label'}}</label>
               <input type="number" name="system.looks.{{index}}.defenseBonus" value="{{look.defenseBonus}}" min="0" />
             </div>
           </div>
-          <button type="button" class="delete-look" data-action="deleteLook" data-index="{{index}}" title="Delete Look">
+          <button type="button" class="delete-look" data-action="deleteLook" data-index="{{index}}" title="{{localize 'DIE_RPG.UI.Buttons.DeleteLook'}}">
             <i class="fas fa-trash"></i>
           </button>
         </div>
@@ -30,7 +30,7 @@
   </ol>
 
   {{#if (eq system.looks.length 0)}}
-    <p class="no-items">No looks defined. Add one below.</p>
+    <p class="no-items">{{localize "DIE_RPG.UI.EmptyStates.NoLooks"}}</p>
   {{/if}}
 
   <button type="button" class="add-look" data-action="addLook">

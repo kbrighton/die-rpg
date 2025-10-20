@@ -60,6 +60,12 @@
 				border: 1px solid $c-failure-border;
 				color: $c-failure;
 			}
+
+		&.flashback {
+			background: $c-gold-bg;
+			border: 1px solid $c-gold-border;
+			color: $c-gold;
+		}
 		}
 	}
 
@@ -174,7 +180,7 @@
 					}
 				}
 
-				/* Crossed out state (future feature) */
+				/* Crossed out state */
 				&.crossed-out {
 					text-decoration: line-through;
 					text-decoration-thickness: 2px;
@@ -482,7 +488,7 @@
 	border: 1px solid $c-groove;
 }
 
-/* Dark Mode - Strong dark background to match character sheet */
+/* Dark Mode - dark background */
 .theme-dark .chat-message:has(.die-rpg-roll) {
 	background: rgba(0, 0, 0, 0.6) !important;
 	border-color: rgba(255, 255, 255, 0.2);

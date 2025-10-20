@@ -46,11 +46,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     form: {
       submitOnChange: true,
     },
-    // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
   };
 
-    /* -------------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static TABS = {
@@ -981,7 +980,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
               }
               rawData['system.classAbilities.fields'] = parsed;
             } catch (error) {
-              ui.notifications.error(`Invalid JSON in Class Abilities Fields: ${error.message}`);
+              ui.notifications.error(game.i18n.format("DIE_RPG.Notifications.Error.InvalidClassAbilitiesJSON", {error: error.message}));
               throw error;
             }
           }
@@ -1009,7 +1008,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
               }
               rawData['system.advancementForms.fields'] = parsed;
             } catch (error) {
-              ui.notifications.error(`Invalid JSON in Advancement Form Fields: ${error.message}`);
+              ui.notifications.error(game.i18n.format("DIE_RPG.Notifications.Error.InvalidAdvancementFormsJSON", {error: error.message}));
               throw error;
             }
           }

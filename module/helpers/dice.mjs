@@ -26,7 +26,8 @@ export async function rollStat(dataset, actor) {
 
   // Get Class Die info from Actor
   const classItem = await actor?._getClassDieItem();
-  const classDieType = classItem?.system?.die || null; // Get die type (e.g., "d8") or null
+  // Get die type (e.g., "d8") or null
+  const classDieType = classItem?.system?.die || null;
   // Define initial mods before dialog, using values from dataset if provided
   const initialAdvantages = dataset.advantages || 0;
   const initialDisadvantages = dataset.disadvantages || 0;
@@ -36,9 +37,9 @@ export async function rollStat(dataset, actor) {
   const rollModifiers = await _showRollDialog({
     statName: label,
     initialStatValue: statValue,
-    classDieType: classDieType, // Pass the die type string
-    initialAdvantages: initialAdvantages, // Pass initial values
-    initialDisadvantages: initialDisadvantages, // Pass initial values
+    classDieType: classDieType,
+    initialAdvantages: initialAdvantages,
+    initialDisadvantages: initialDisadvantages,
     actor: actor // Pass actor for flashback tracking
   });
 
@@ -50,6 +51,7 @@ export async function rollStat(dataset, actor) {
   // Update actor's flashback state if it was used
   if (flashbackUsed && actor && !actor.system.flashbackUsed) {
     await actor.update({ 'system.flashbackUsed': true });
+    actor.sheet?.render(false, {force: true});
   }
  
   // Pass classDieType to _rollDicePool
@@ -69,46 +71,47 @@ export async function rollStat(dataset, actor) {
     isMixedPool = true;
     const results1 = roll.terms[0].results;
     const results2 = roll.terms[2].results;
-    basePoolDiceCount = results1.length; // Only results1 are from base pool
-    diceResults = [...results1, ...results2]; // Combine results from both terms
+    basePoolDiceCount = results1.length;
+    diceResults = [...results1, ...results2];
     // In mixed pool, both dice count for success (no keep lowest logic here)
     successCount = diceResults.filter(r => r.result >= 4).length;
   }
   else if (roll.dice.length > 0 && roll.dice[0] instanceof foundry.dice.terms.Die) {
     // Standard d6 pool or 2d6kl1
     diceResults = roll.dice[0].results;
-    successCount = diceResults.filter(r => r.active && r.result >= 4).length; // Count only active dice
-    basePoolDiceCount = diceResults.length; // All dice are from base pool
+    successCount = diceResults.filter(r => r.active && r.result >= 4).length;
+    basePoolDiceCount = diceResults.length;
   }
 
   // Apply difficulty reduction
   const finalSuccesses = Math.max(0, successCount - difficulty);
 
   // Handle Specials on 6s
-  const specialDice = diceResults.filter(r => r.active && r.result >= 6).length; // Count active dice >= 6
+  const specialDice = diceResults.filter(r => r.active && r.result >= 6).length;
 
   // Handle Critical Fail (0 final successes and at least one 1 rolled)
   const hasCritFailDie = diceResults.some(r => r.active && r.result === 1);
   const isCriticalFail = (finalSuccesses === 0 && hasCritFailDie);
 
-  await _buildChatRollMessage(roll, label, actor, { // Pass results object
-    statValue, // Pass base stat value
-    advantages, // Pass advantages used
-    disadvantages, // Pass disadvantages used
+  await _buildChatRollMessage(roll, label, actor, {
+    statValue,
+    advantages,
+    disadvantages,
     difficulty,
     initialSuccesses: successCount,
     finalSuccesses,
     specialDice,
     isCriticalFail,
     diceResults,
-    classDieType, // Pass the type of class die used
-    isMixedPool, // Pass flag indicating if it was a mixed roll (1d6+1dX)
-    availableSpecials, // Pass the intelligently filtered list of specials
-    addClassDie, // Pass whether class die was added (needed for badge display)
-    basePoolDiceCount // Pass count of base pool dice (for die type detection)
+    classDieType,
+    isMixedPool,
+    availableSpecials,
+    addClassDie,
+    basePoolDiceCount,
+    flashbackUsed
   });
 
-  return roll; // Return the original Roll object for potential further use
+  return roll;
 }
 
 /**
@@ -138,7 +141,7 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
     flashbackUsed: actor?.system?.flashbackUsed || false
   };
 
-  const title = `Roll ${statName} (Base: ${initialStatValue}d6)`;
+  const title = game.i18n.format("DIE_RPG.Dialog.Roll.Title", {stat: statName, dice: initialStatValue});
 
   // Render the template content first
   const htmlContent = await foundry.applications.handlebars.renderTemplate(template, templateData);
@@ -152,7 +155,7 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
       {
         key: "roll",
         icon: "fas fa-dice-d6",
-        label: "Roll",
+        label: game.i18n.localize("DIE_RPG.Dialog.Roll.ButtonRoll"),
         action: "roll",
         callback: (event, button, dialog) => new foundry.applications.ux.FormDataExtended(button.form)
       }
@@ -193,9 +196,9 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
           const classDieCheckboxLabel = dialogElement.querySelector('#addClassDie + span');
           if (classDieCheckboxLabel && classDieType) {
             if (isZeroPool) {
-              classDieCheckboxLabel.textContent = `Substitute Class Die (${classDieType})`;
+              classDieCheckboxLabel.textContent = game.i18n.format("DIE_RPG.Dialog.Roll.SubstituteClassDie", {die: classDieType});
             } else {
-              classDieCheckboxLabel.textContent = `Add Class Die (${classDieType})`;
+              classDieCheckboxLabel.textContent = game.i18n.format("DIE_RPG.Dialog.Roll.AddClassDie", {die: classDieType});
             }
           }
 
@@ -274,7 +277,8 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
             const inputVal = input.value;
 
             if (inputVal === '' || inputVal === null || inputVal === undefined) {
-              currentValue = min; // Use minimum value for empty inputs
+               // Use minimum value for empty inputs
+              currentValue = min;
             } else {
               currentValue = parseInt(inputVal);
               // Only reset if parsing truly failed
@@ -350,11 +354,12 @@ async function _showRollDialog({ statName, initialStatValue, classDieType, initi
     }
   });
 
-  if (!dicePool) return null; // Cancelled or closed
+  // Cancelled or closed
+  if (!dicePool) return null;
 
   // Calculate final advantages (including flashback if used)
   let finalAdvantages = parseInt(dicePool.object.advantages) || 0;
-  const flashbackUsed = dicePool.object.useFlashback === 'on';
+  const flashbackUsed = dicePool.object.useFlashback === "true";
   if (flashbackUsed) {
     finalAdvantages += 1;
   }
@@ -386,11 +391,11 @@ function _rollDicePool(statValue, advantages = 0, disadvantages = 0, addClassDie
   if (poolSize <= 0) {
     // If pool is 0 or less, roll 2d6kl1 OR 1d6 + Class Die if substituted
     if (addClassDie && classDieType && /^d(4|6|8|10|12|20)$/.test(classDieType)) {
-      // TODO: Dialog needs modification to *only* offer substitution in this case.
-      // Assuming checkbox means substitution for now.
-      rollFormula = `1d6 + 1${classDieType}`; // Roll separately
+      // Roll separately
+      rollFormula = `1d6 + 1${classDieType}`;
     } else {
-      rollFormula = "2d6kl1"; // Default for <=0 pool
+      // Default for <=0 pool
+      rollFormula = "2d6kl1";
     }
   } else {
     rollFormula = `${poolSize}d6`;
@@ -428,9 +433,11 @@ function _calculateDifficultyCrossing(diceResults, difficulty, successCount) {
   // Sort by value (ascending), then by index (ascending) for ties
   successDice.sort((a, b) => {
     if (a.die.result !== b.die.result) {
-      return a.die.result - b.die.result; // Lower values first
+      // Lower values first
+      return a.die.result - b.die.result;
     }
-    return a.index - b.index; // Earlier dice first for ties
+    // Earlier dice first for ties
+    return a.index - b.index;
   });
 
   // Take first N indices where N = min(difficulty, successCount)
@@ -458,8 +465,8 @@ function _calculateDifficultyCrossing(diceResults, difficulty, successCount) {
  * @param {Array<object>} results.availableSpecials Placeholder for specials relevant to this roll.
  */
 async function _buildChatRollMessage(roll, label, actor, results) {
-  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool, availableSpecials, addClassDie, basePoolDiceCount } = results;
-  const calculatedPoolSize = advantages - disadvantages + statValue; // Calculate intended pool size for display
+  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool, availableSpecials, addClassDie, basePoolDiceCount, flashbackUsed } = results;
+  const calculatedPoolSize = advantages - disadvantages + statValue;
   const isZeroPool = calculatedPoolSize <= 0;
   // Substitution occurs if pool was <=0 AND addClassDie was true AND a valid classDieType exists
   const isSubstituted = isZeroPool && addClassDie && classDieType;
@@ -497,12 +504,15 @@ async function _buildChatRollMessage(roll, label, actor, results) {
   // Sort specials: Mandatory first, then by cost, then by name
   enhancedSpecials.sort((a, b) => {
     if (a.mandatory !== b.mandatory) {
-      return a.mandatory ? -1 : 1; // Mandatory first
+      // Mandatory first
+      return a.mandatory ? -1 : 1;
     }
     if (a.costValue !== b.costValue) {
-      return a.costValue - b.costValue; // Lower cost first
+      // Lower cost first
+      return a.costValue - b.costValue;
     }
-    return (a.name || '').localeCompare(b.name || ''); // Alphabetical by name
+    // Alphabetical by name
+    return (a.name || '').localeCompare(b.name || '');
   });
 
   // Prepare template data
@@ -522,12 +532,11 @@ async function _buildChatRollMessage(roll, label, actor, results) {
     showCriticalFail,
     showFailingForward,
     availableSpecials: enhancedSpecials,
-    isMixedPool
+    isMixedPool,
+    flashbackUsed
   };
 
-  // Render the template
   const template = 'systems/die-rpg/templates/chat/roll-result.hbs';
-  // Use namespaced renderTemplate for v13+ compatibility
   const renderFunc = foundry.applications?.handlebars?.renderTemplate || renderTemplate;
   const messageContent = await renderFunc(template, templateData);
 
@@ -554,11 +563,10 @@ async function _buildChatRollMessage(roll, label, actor, results) {
         classDieType: classDieType,
         isMixedPool: isMixedPool,
         label: label,
+        flashbackUsed: flashbackUsed,
         // Track which dice have been crossed out (initialized to difficulty-based auto-crossing)
         crossedOutIndices: difficultyCrossedOutIndices
       }
     }
   });
 }
-
-// _buildSpecialsHTML function removed - specials are now handled in the chat template

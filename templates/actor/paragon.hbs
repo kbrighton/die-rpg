@@ -9,13 +9,13 @@
 
 			{{! Look Selection Section }}
 			<div class="look-selection-section">
-				<h3>Look</h3>
+				<h3>{{localize "DIE_RPG.UI.Headers.Look"}}</h3>
 				<div class="look-picker">
 					{{#if paragonItem.system.looks}}
 						<div class="form-group">
-							<label for="look-select">Select from Paragon Looks:</label>
+							<label for="look-select">{{localize "DIE_RPG.UI.Labels.SelectFromParagonLooks"}}</label>
 							<select id="look-select" name="system.paragon.selectedLook" data-dtype="String">
-								<option value="">-- Select a Look --</option>
+								<option value="">{{localize "DIE_RPG.UI.Sections.SelectLook"}}</option>
 								{{#each paragonItem.system.looks as |look|}}
 									<option
 										value="{{look.name}}"
@@ -28,7 +28,7 @@
 									value="___CUSTOM___"
 									{{#if (eq @root.actor.system.paragon.selectedLook "___CUSTOM___")}}selected{{/if}}
 								>
-									Custom Look
+									{{localize "DIE_RPG.UI.Labels.CustomLook"}}
 								</option>
 							</select>
 						</div>
@@ -38,12 +38,12 @@
 									{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}
 										{{#if look.description}}
 											<div class="look-description">
-												<strong>Description:</strong> {{look.description}}
+												<strong>{{localize "DIE_RPG.UI.Labels.Description"}}</strong> {{look.description}}
 											</div>
 										{{/if}}
 										{{#if look.defenseBonus}}
 											<div class="look-defense">
-												<strong>Defense Bonus:</strong> +{{look.defenseBonus}}
+												<strong>{{localize "DIE_RPG.UI.Labels.DefenseBonus"}}</strong> +{{look.defenseBonus}}
 											</div>
 										{{/if}}
 									{{/if}}
@@ -54,13 +54,13 @@
 
 					{{#if (isCustomLook actor.system.paragon.selectedLook)}}
 						<div class="form-group">
-							<label for="custom-look">Enter Custom Look:</label>
+							<label for="custom-look">{{localize "DIE_RPG.UI.Labels.EnterCustomLook"}}</label>
 							<input
 								type="text"
 								id="custom-look"
 								name="system.paragon.customLookText"
 								value="{{actor.system.paragon.customLookText}}"
-								placeholder="Enter a custom look description"
+								placeholder="{{localize 'DIE_RPG.UI.Placeholders.CustomLookDescription'}}"
 								data-dtype="String"
 							/>
 						</div>
@@ -70,24 +70,24 @@
 
 			{{! Specials Display Section }}
 			<div class="specials-section">
-				<h3>Specials</h3>
+				<h3>{{localize "DIE_RPG.UI.Headers.Specials"}}</h3>
 				{{#if aggregatedSpecials.length}}
 					<div class="specials-list">
 						{{#each aggregatedSpecials as |special|}}
 							<div class="special-card">
 								<div class="special-header">
 									<h4 class="special-name">{{special.name}}</h4>
-									<span class="special-cost" data-tooltip="Cost: {{special.cost}}">
+									<span class="special-cost" data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.SpecialCost' cost=special.cost}}">
 										{{#if (eq special.cost "special")}}
-											Special (6+)
+											{{localize "DIE_RPG.UI.SpecialCostDisplay.Single"}}
 										{{else if (eq special.cost "double")}}
-											Double (6,6+)
+											{{localize "DIE_RPG.UI.SpecialCostDisplay.Double"}}
 										{{else if (eq special.cost "triple")}}
-											Triple (6,6,6+)
+											{{localize "DIE_RPG.UI.SpecialCostDisplay.Triple"}}
 										{{else if (eq special.cost "quad")}}
-											Quad (6,6,6,6)
+											{{localize "DIE_RPG.UI.SpecialCostDisplay.Quad"}}
 										{{else if (eq special.cost "twenty")}}
-											Natural 20
+											{{localize "DIE_RPG.UI.SpecialCostDisplay.Twenty"}}
 										{{else}}
 											{{special.cost}}
 										{{/if}}
@@ -97,23 +97,23 @@
 									{{{special.description}}}
 								</div>
 								<div class="special-meta">
-									<span class="special-source">Source: {{special.sourceName}}</span>
+									<span class="special-source">{{localize "DIE_RPG.UI.Labels.Source"}} {{special.sourceName}}</span>
 									{{#if special.mandatory}}
-										<span class="special-mandatory" data-tooltip="Must be used when triggered">Mandatory</span>
+										<span class="special-mandatory" data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.MandatorySpecial'}}">{{localize "DIE_RPG.Chat.AvailableSpecials.MandatoryBadge"}}</span>
 									{{/if}}
 								</div>
 							</div>
 						{{/each}}
 					</div>
 				{{else}}
-					<p class="no-specials">No specials available. Specials will appear here from your paragon, equipment, and other sources.</p>
+					<p class="no-specials">{{localize "DIE_RPG.UI.EmptyStates.NoSpecials"}}</p>
 				{{/if}}
 			</div>
 
 			{{! Class Abilities Section - Dynamic Fields from Paragon }}
 			{{#if paragonItem.system.classAbilities.fields.length}}
 				<div class="class-abilities-section">
-					<h3>Class Abilities</h3>
+					<h3>{{localize "DIE_RPG.UI.Headers.ClassAbilities"}}</h3>
 					<div class="class-abilities-form">
 						{{#each paragonItem.system.classAbilities.fields as |field|}}
 							{{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
@@ -131,7 +131,7 @@
 		</div>
 	{{else}}
 		<div class="no-paragon-message">
-			<p>No paragon selected. Please select a paragon from the dropdown in the header to view class information.</p>
+			<p>{{localize "DIE_RPG.UI.EmptyStates.SelectParagonForClassInfo"}}</p>
 		</div>
 	{{/if}}
 </section>

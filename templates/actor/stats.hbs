@@ -1,5 +1,5 @@
 <div class="header-fields right-col">
-	<h2 class="stats-title">Stats</h2>
+	<h2 class="stats-title">{{localize "DIE_RPG.UI.Headers.Stats"}}</h2>
 	<div class="stats flexrow">
 		{{#each system.stats as |stat key|}}
 			<div class="stat flexcol flex-group-center">
@@ -41,7 +41,7 @@
 					value="{{system.resources.health.value}}"
 					data-dtype="Number"
 				/>
-				<span> / </span>
+				<span>{{localize "DIE_RPG.UI.Labels.Separator"}}</span>
 				<span>{{system.resources.health.max}}</span>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 					value="{{system.resources.guard.value}}"
 					data-dtype="Number"
 				/>
-				<span> / </span>
+				<span>{{localize "DIE_RPG.UI.Labels.Separator"}}</span>
 				<span>{{system.resources.guard.max}}</span>
 			</div>
 		</div>
@@ -77,7 +77,7 @@
 					value="{{system.resources.willpower.value}}"
 					data-dtype="Number"
 				/>
-				<span> / </span>
+				<span>{{localize "DIE_RPG.UI.Labels.Separator"}}</span>
 				<span>{{system.resources.willpower.max}}</span>
 			</div>
 		</div>

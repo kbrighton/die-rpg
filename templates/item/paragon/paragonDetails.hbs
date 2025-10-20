@@ -93,27 +93,26 @@
 
 	{{! Optional: Theme Images }}
 	<fieldset class="form-section theme-images">
-		<legend>Theme Images (Optional)</legend>
-		<p class="hint">Custom header and background images for character sheet
-			theming.</p>
+		<legend>{{localize "DIE_RPG.UI.Hints.ThemeImagesLegend"}}</legend>
+		<p class="hint">{{localize "DIE_RPG.UI.Hints.ThemeImagesHint"}}</p>
 
 		<div class="form-group">
-			<label>Header Image Path</label>
+			<label>{{localize "DIE_RPG.UI.Hints.HeaderImageLabel"}}</label>
 			<input
 				type="text"
 				name="system.headerImage"
 				value="{{system.headerImage}}"
-				placeholder="systems/die-rpg/assets/headers/paragon-name.webp"
+				placeholder="{{localize 'DIE_RPG.UI.Placeholders.HeaderImagePath'}}"
 			/>
 		</div>
 
 		<div class="form-group">
-			<label>Background Image Path</label>
+			<label>{{localize "DIE_RPG.UI.Hints.BackgroundImageLabel"}}</label>
 			<input
 				type="text"
 				name="system.backgroundImage"
 				value="{{system.backgroundImage}}"
-				placeholder="systems/die-rpg/assets/backgrounds/paragon-name.webp"
+				placeholder="{{localize 'DIE_RPG.UI.Placeholders.BackgroundImagePath'}}"
 			/>
 		</div>
 	</fieldset>

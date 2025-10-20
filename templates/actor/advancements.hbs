@@ -8,7 +8,7 @@
   <div class="advancements-grid">
     <div class="advancement-info">
       <div class="form-group">
-        <label for="level">Level:</label>
+        <label for="level">{{localize "DIE_RPG.UI.Labels.Level"}}</label>
         <input
           type="number"
           name="system.level"
@@ -19,8 +19,8 @@
           data-dtype="Number"
         />
       </div>
-      <p>Advancements Selected: {{actor.system.paragon.advancements.size}}</p>
-      <p>Available Selections: {{subtract actor.system.level actor.system.paragon.advancements.size}}</p>
+      <p>{{localize "DIE_RPG.UI.Labels.AdvancementsSelected"}} {{actor.system.paragon.advancements.size}}</p>
+      <p>{{localize "DIE_RPG.UI.Labels.AvailableSelections"}} {{subtract actor.system.level actor.system.paragon.advancements.size}}</p>
     </div>
 
     <svg viewBox="{{svgViewBox}}" class="advancement-map" preserveAspectRatio="xMidYMid meet">
@@ -49,9 +49,9 @@
           data-action="toggleAdvancement"
           data-node-id="{{nodeId}}"
           {{~#if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
-            data-advancement-tooltip="Locked"
+            data-advancement-tooltip="{{localize 'DIE_RPG.UI.Tooltips.Locked'}}"
           {{~else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
-            data-advancement-tooltip="Increase level to unlock"
+            data-advancement-tooltip="{{localize 'DIE_RPG.UI.Tooltips.IncreaseLevelToUnlock'}}"
           {{~else}}
             data-advancement-tooltip="{{getAdvancementName @root.paragonItem nodeId}}"
           {{~/if}}
@@ -96,7 +96,7 @@
 
   {{! Advancement Details Accordion }}
   <div class="advancement-accordion">
-    <h3>Advancement Pool</h3>
+    <h3>{{localize "DIE_RPG.UI.Headers.AdvancementPool"}}</h3>
     {{#each (getAdvancementsWithPositions paragonItem actor) as |item|}}
       <details class="advancement-detail">
         <summary class="advancement-summary">
@@ -110,19 +110,19 @@
             </div>
           {{/if}}
           <div class="advancement-positions">
-            <strong>Positions on Map:</strong>
+            <strong>{{localize "DIE_RPG.UI.Labels.PositionsOnMap"}}</strong>
             <ul>
               {{#each item.positions as |pos|}}
                 <li class="position-{{pos.state}}">
                   <span class="position-id">{{formatNodeId pos.nodeId}}</span>:
                   {{#if pos.selected}}
-                    <span class="position-state selected"><i class="fa-solid fa-check"></i> Selected</span>
+                    <span class="position-state selected"><i class="fa-solid fa-check"></i> {{localize "DIE_RPG.UI.Status.Selected"}}</span>
                   {{else if (eq pos.state "locked")}}
-                    <span class="position-state locked"><i class="fa-solid fa-lock"></i> Locked</span>
+                    <span class="position-state locked"><i class="fa-solid fa-lock"></i> {{localize "DIE_RPG.UI.Status.Locked"}}</span>
                   {{else if (eq pos.state "level")}}
-                    <span class="position-state level-locked"><i class="fa-solid fa-triangle-exclamation"></i> Level Required</span>
+                    <span class="position-state level-locked"><i class="fa-solid fa-triangle-exclamation"></i> {{localize "DIE_RPG.UI.Status.LevelRequired"}}</span>
                   {{else}}
-                    <span class="position-state available"><i class="fa-solid fa-lock-open"></i> Available</span>
+                    <span class="position-state available"><i class="fa-solid fa-lock-open"></i> {{localize "DIE_RPG.UI.Status.Available"}}</span>
                   {{/if}}
                 </li>
               {{/each}}
@@ -136,8 +136,8 @@
   {{! Advancement Forms Section - Dynamic Fields from Paragon }}
   {{#if paragonItem.system.advancementForms.fields.length}}
     <div class="advancement-forms-section">
-      <h3>Advancement Forms</h3>
-      <p class="hint">Track class-specific advancement details below:</p>
+      <h3>{{localize "DIE_RPG.UI.Headers.AdvancementForms"}}</h3>
+      <p class="hint">{{localize "DIE_RPG.UI.Hints.AdvancementFormsHint"}}</p>
       <div class="advancement-forms">
         {{#each paragonItem.system.advancementForms.fields as |field|}}
           {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"

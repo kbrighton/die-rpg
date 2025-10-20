@@ -1,7 +1,7 @@
 {{!-- Specials Tab --}}
 <section class="tab specials {{tab.cssClass}}"  data-group="primary" data-tab="specials" data-subtype="{{document.type}}">
   <h2>{{localize 'DIE_RPG.Item.Paragon.FIELDS.specials.label'}}</h2>
-  <p class="hint">Special abilities that can be activated when rolling 6+ on dice.</p>
+  <p class="hint">{{localize "DIE_RPG.UI.Hints.SpecialsDescription"}}</p>
 
   <ol class="specials-list">
     {{#each system.specials as |special index|}}
@@ -10,7 +10,7 @@
           <div class="special-main-fields">
             <div class="form-group">
               <label>{{localize 'DIE_RPG.Shared.special.name.label'}}</label>
-              <input type="text" name="system.specials.{{index}}.name" value="{{special.name}}" placeholder="Special name" />
+              <input type="text" name="system.specials.{{index}}.name" value="{{special.name}}" placeholder="{{localize 'DIE_RPG.UI.Placeholders.SpecialName'}}" />
             </div>
           </div>
         </div>
@@ -46,15 +46,15 @@
           </div>
         </div>
 
-        <button type="button" class="delete-special" data-action="deleteSpecial" data-index="{{index}}" title="Delete Special">
-          <i class="fas fa-trash"></i> Delete
+        <button type="button" class="delete-special" data-action="deleteSpecial" data-index="{{index}}" title="{{localize 'DIE_RPG.UI.Tooltips.DeleteSpecial'}}">
+          <i class="fas fa-trash"></i> {{localize "DIE_RPG.UI.Buttons.Delete"}}
         </button>
       </li>
     {{/each}}
   </ol>
 
   {{#if (eq system.specials.length 0)}}
-    <p class="no-items">No specials defined. Add one below.</p>
+    <p class="no-items">{{localize "DIE_RPG.UI.EmptyStates.NoSpecialsDefined"}}</p>
   {{/if}}
 
   <button type="button" class="add-special" data-action="addSpecial">

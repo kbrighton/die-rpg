@@ -37,7 +37,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       createItemForList: this._onCreateItemForList,
       toggleItemDetails: this._onToggleItemDetails,
     },
-    // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
       submitOnChange: true,
@@ -562,7 +561,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     if (paragonItem) {
       paragonItem.sheet.render(true);
     } else {
-      ui.notifications.warn("No paragon item found.");
+      ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.NoParagon"));
     }
   }
 
@@ -611,7 +610,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       }
 
       if (orphanedNodes.size > 0) {
-        ui.notifications.info(`Removed ${orphanedNodes.size} orphaned advancement(s).`);
+        ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.OrphanedAdvancementsRemoved", {count: orphanedNodes.size}));
       }
     } else {
       // Validate before adding
@@ -619,7 +618,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       if (canSelectNode(this.actor, nodeId)) {
         currentAdvancements.add(nodeId);
       } else {
-        ui.notifications.warn("Cannot select this advancement. Check level and adjacency requirements.");
+        ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.CannotSelectAdvancement"));
         return;
       }
     }
@@ -641,7 +640,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   static async _resetFlashback(event, target) {
     event.preventDefault();
     await this.actor.update({ 'system.flashbackUsed': false });
-    ui.notifications.info('Flashback has been reset.');
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.FlashbackReset"));
   }
 
   /**
@@ -658,13 +657,14 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const itemType = target.dataset.itemType;
 
     if (!itemType) {
-      ui.notifications.warn('No item type specified for creation.');
+      ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.NoItemType"));
       return;
     }
 
     // Prepare the document creation data
+    const capitalizedType = itemType.charAt(0).toUpperCase() + itemType.slice(1);
     const itemData = {
-      name: `New ${itemType.charAt(0).toUpperCase() + itemType.slice(1)}`,
+      name: game.i18n.localize(`DIE_RPG.UI.DefaultItemNames.${capitalizedType}`),
       type: itemType
     };
 
@@ -733,7 +733,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         await existingParagon.delete();
       }
       await this.actor.update({ 'system.paragon.uuid': '' });
-      ui.notifications.info('Paragon cleared.');
+      ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.ParagonCleared"));
       return;
     }
 
@@ -750,7 +750,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     try {
       const paragonDoc = await fromUuid(selectedUuid);
       if (!paragonDoc) {
-        ui.notifications.error('Could not find selected paragon item.');
+        ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonNotFound"));
         return;
       }
 
@@ -758,10 +758,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         keepId: true
       });
 
-      ui.notifications.info(`Paragon "${paragonDoc.name}" selected.`);
+      ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.ParagonSelected", {name: paragonDoc.name}));
     } catch (error) {
       console.error('DIE RPG | Error selecting paragon:', error);
-      ui.notifications.error('Failed to select paragon.');
+      ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonSelectionFailed"));
     }
   }
 

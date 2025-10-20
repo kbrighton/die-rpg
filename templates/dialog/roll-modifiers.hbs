@@ -38,6 +38,7 @@
 					type="checkbox"
 					name="useFlashback"
 					id="useFlashback"
+					value="true"
 					{{#if flashbackUsed}}disabled{{/if}}
 				/>
 				<span>
@@ -80,7 +81,7 @@
 	{{!-- Difficulty Form Group (Separate) --}}
 	<div class="dialog-section form-group difficulty-section">
 		<div class="section-inline">
-			<h3 class="section-header">Set Difficulty</h3>
+			<h3 class="section-header">{{localize "DIE_RPG.Dialog.SetDifficulty.Header"}}</h3>
 			{{> "systems/die-rpg/templates/partials/number-spinner.hbs"
 				name="difficulty"
 				value=0
@@ -88,6 +89,6 @@
 				max=2
 			}}
 		</div>
-		<p class="section-description">For attacks, Difficulty is equal to the target's Defense.</p>
+		<p class="section-description">{{localize "DIE_RPG.Dialog.SetDifficulty.AttackHint"}}</p>
 	</div>
 </form>
