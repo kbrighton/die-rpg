@@ -1,0 +1,524 @@
+/* ====================================
+   Chat Message Styles for DIE RPG Rolls
+   ==================================== */
+
+.die-rpg-roll {
+	padding: $padding-md;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	gap: $gap-md;
+
+	/* Header */
+	.roll-header {
+		font-size: 1.1em;
+		color: $c-dark;
+		border-bottom: 1px solid $c-groove;
+		padding-bottom: $padding-sm;
+	}
+
+	/* Pool Display with Badges */
+	.pool-display {
+		display: flex;
+		align-items: center;
+		gap: $gap-sm;
+		flex-wrap: wrap;
+
+		.pool-label {
+			font-weight: bold;
+			color: $c-dark;
+		}
+
+		.pool-badges {
+			display: flex;
+			gap: $gap-sm;
+			flex-wrap: wrap;
+		}
+
+		/* Reuse badge styles from forms */
+		.dice-badge {
+			display: inline-flex;
+			align-items: center;
+			padding: 4px 10px;
+			border-radius: 4px;
+
+			&.base-pool {
+				background: rgba(255, 255, 255, 0.2);
+				border: 1px solid rgba(255, 255, 255, 0.5);
+				color: rgb(255, 255, 255); // Green for normal pool
+			}
+
+			&.class-die {
+				background: rgba(172, 229, 255, 0.2);
+				border: 1px solid rgba(172, 229, 255, 0.5);
+				color: rgb(172 229 255);
+			}
+
+			&.zero-pool {
+				background: rgba(220, 53, 69, 0.2);
+				border: 1px solid rgba(220, 53, 69, 0.5);
+				color: #dc3545; // Red for zero pool
+			}
+		}
+	}
+
+	/* Dice Results Display */
+	.dice-display {
+		.dice-label {
+			font-weight: bold;
+			color: $c-dark;
+			margin-bottom: $margin-sm;
+		}
+
+		.dice-results {
+			display: flex;
+			flex-wrap: wrap;
+			gap: $gap-sm;
+			padding: $padding-sm;
+			background: rgba(0, 0, 0, 0.03);
+			border-radius: 4px;
+			align-items: center;
+
+			.roll.die {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 40px;
+				min-height: 40px;
+				padding: $padding-sm;
+				border-radius: 6px;
+				background: rgba(200, 200, 200, 0.2);
+				border: 2px solid rgba(150, 150, 150, 0.3);
+				cursor: pointer;
+				transition: all 0.2s ease;
+				position: relative;
+				gap: 4px;
+
+				i {
+					font-size: 1.2em;
+				}
+
+				.die-icon {
+					width: 1.5em;
+					height: 1.5em;
+					object-fit: contain;
+					filter: opacity(0.4); /* Semi-transparent white with shadow */
+				}
+
+				.die-value {
+					font-weight: bold;
+					font-size: 1em;
+				}
+
+				/* Success state - green tint for icon */
+				&.success .die-icon {
+					filter: sepia(1) saturate(10) hue-rotate(60deg) brightness(0.75);
+				}
+
+				/* Special die - gold tint for icon */
+				&.special-die .die-icon {
+					filter: sepia(1) saturate(10) hue-rotate(340deg) brightness(0.85);
+				}
+
+				/* Critical fail - red tint for icon */
+				&.critfail-die .die-icon {
+					filter: sepia(1) saturate(100) hue-rotate(285deg) brightness(0.95);
+				}
+				/* Hover effect */
+				&:hover {
+					transform: scale(1.05);
+					box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+				}
+
+				/* Success states */
+				&.success {
+					background: rgba(46, 139, 87, 0.15);
+					border: 2px solid rgba(46, 139, 87, 0.25);
+					color: #82b899;
+				}
+
+				&.special-die {
+					background: rgba(255, 215, 0, 0.131);
+					border-color: rgba(255, 215, 0, 0.3);
+					color: #d4af37; // Gold for special
+
+					i {
+						animation: pulse 2s ease-in-out infinite;
+					}
+				}
+
+				/* Critical fail state */
+				&.critfail-die {
+					background: rgba(220, 53, 69, 0.131);
+					border-color: rgba(220, 53, 69, 0.4);
+					color: #ffa3ac; // Red for critical fail
+				}
+
+				/* Discarded state */
+				&.discarded {
+					opacity: 0.5;
+					filter: grayscale(50%);
+					cursor: not-allowed;
+					pointer-events: none;
+
+					&::after {
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 10%;
+						right: 10%;
+						height: 2px;
+						background: rgba(0, 0, 0, 0.6);
+						transform: rotate(-15deg);
+					}
+				}
+
+				/* Crossed out state (future feature) */
+				&.crossed-out {
+					text-decoration: line-through;
+					text-decoration-thickness: 2px;
+					opacity: 0.7;
+
+					&::before {
+						content: "\f715"; // Font Awesome slash icon
+						font-family: var(--font-awesome);
+						font-weight: 900;
+						position: absolute;
+						inset: 0;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						font-size: 1.5em;
+						color: rgba(220, 53, 69, 0.8);
+						z-index: 1;
+						pointer-events: none;
+					}
+				}
+			}
+		}
+	}
+
+	/* Success Tracking */
+	.success-tracking {
+		display: flex;
+		flex-direction: column;
+		gap: $gap-sm;
+		padding: $padding-sm;
+		background: rgba(0, 0, 0, 0.03);
+		border-radius: 4px;
+
+		.success-row,
+		.difficulty-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.label {
+				font-weight: normal;
+				color: $c-dark;
+			}
+
+			.value {
+				font-weight: bold;
+				font-size: 1.1em;
+				color: $c-dark;
+			}
+		}
+	}
+
+	/* Result Display */
+	.roll-result {
+		.result-text {
+			display: flex;
+			align-items: center;
+			gap: $gap-sm;
+			padding: $padding-md;
+			border-radius: 6px;
+			font-size: 1.1em;
+
+			i {
+				font-size: 1.3em;
+			}
+
+			.result-detail {
+				font-weight: normal;
+				font-size: 0.9em;
+				opacity: 0.9;
+			}
+
+			&.success {
+				background: rgba(46, 139, 87, 0.15);
+				border: 2px solid rgba(46, 139, 87, 0.25);
+				color: #82b899; // Green for success result
+			}
+
+			&.failure {
+				background: rgba(220, 53, 69, 0.2);
+				border: 2px solid rgba(220, 53, 69, 0.5);
+				color: #dc3545; // Red for failure result
+			}
+
+			&.critical-fail {
+				background: rgba(220, 53, 69, 0.131);
+				border: 2px solid rgba(220, 53, 69, 0.4);
+				color: #ffa3ac; // Dark red for critical fail result
+				font-weight: bold;
+
+				i {
+					animation: shake 0.5s ease-in-out infinite;
+				}
+			}
+
+			&.failing-forward {
+				background: rgba(255, 165, 0, 0.2);
+				border: 2px solid rgba(255, 165, 0, 0.5);
+				color: #ff8c00; // Orange for failing forward result
+			}
+		}
+	}
+
+	/* Specials Section */
+	.specials-section {
+		border-top: 2px solid $c-groove;
+		padding-top: $padding-md;
+
+		.specials-header {
+			display: flex;
+			align-items: center;
+			gap: $gap-sm;
+			margin-bottom: $margin-md;
+			color: #d4af37; // Gold for specials header
+
+			i {
+				font-size: 1.2em;
+			}
+
+			.specials-count {
+				font-weight: normal;
+				font-size: 0.9em;
+				color: $c-dark;
+				opacity: 0.8;
+			}
+		}
+
+		.specials-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: $gap-sm;
+
+			.special-item {
+				padding: $padding-md;
+				background: rgba(255, 215, 0, 0.1);
+				border: 1px solid rgba(255, 215, 0, 0.3);
+				border-radius: 4px;
+				cursor: pointer;
+				transition: all 0.2s ease;
+
+				&:hover {
+					background: rgba(255, 215, 0, 0.2);
+					border-color: rgba(255, 215, 0, 0.5);
+					transform: translateX(4px);
+				}
+
+				&.mandatory {
+					background: rgba(255, 165, 0, 0.15);
+					border: 2px solid rgba(255, 165, 0, 0.5);
+					border-left: 4px solid #ff8c00;
+
+					.special-icon {
+						color: #ff8c00; // Orange for mandatory special icon
+					}
+				}
+
+				.special-content {
+					display: flex;
+					align-items: center;
+					gap: $gap-sm;
+					flex-wrap: wrap;
+
+					.special-icon {
+						font-size: 1.1em;
+						color: #d4af37; // Gold for normal special icon
+					}
+
+					.special-name {
+						font-weight: bold;
+						flex: 1;
+						min-width: 120px;
+					}
+
+					.special-cost {
+						font-size: 0.85em;
+						padding: 2px 8px;
+					}
+
+					.mandatory-badge {
+						font-size: 0.75em;
+						font-weight: bold;
+						color: #ff8c00; // Orange for mandatory badge text
+						background: rgba(255, 140, 0, 0.2);
+						padding: 2px 6px;
+						border-radius: 3px;
+						text-transform: uppercase;
+					}
+				}
+
+				.special-source {
+					margin-top: $margin-sm;
+					font-size: 0.85em;
+					color: $c-dark;
+				}
+			}
+		}
+	}
+}
+
+/* ====================================
+   Dark Mode Overrides
+   ==================================== */
+
+.theme-dark .die-rpg-roll {
+	/* Main container background */
+	background: rgba(255, 255, 255, 0.05);
+
+	/* Dice display area */
+	.dice-display .dice-results {
+		background: rgba(255, 255, 255, 0.03);
+
+		.roll.die {
+			/* Lighter default die background for visibility */
+			background: rgba(255, 255, 255, 0.15);
+			border-color: rgba(255, 255, 255, 0.2);
+
+			/* Die value text - high contrast white */
+			.die-value {
+				color: rgba(255, 255, 255, 0.613);
+			}
+
+			/* Discarded die strikethrough - white instead of black */
+			&.discarded::after {
+				background: rgba(255, 255, 255, 0.3);
+			}
+
+			/* State-specific color overrides for dark mode */
+			&.success {
+				background: rgba(46, 139, 87, 0.15);
+				border: 2px solid rgba(46, 139, 87, 0.25);
+				.die-value {
+					color: #82b899;
+				}
+			}
+
+			&.special-die {
+				background: rgba(255, 215, 0, 0.131);
+				border-color: rgba(255, 215, 0, 0.3);
+				.die-value {
+					color: #d4af37;
+				}
+			}
+
+			&.critfail-die {
+				background: rgba(220, 53, 69, 0.131);
+				border-color: rgba(220, 53, 69, 0.4);
+				.die-value {
+					color: #ffa3ac;
+				}
+			}
+		}
+	}
+
+	/* Success tracking area */
+	.success-tracking {
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	/* Text color overrides for WCAG AA compliance */
+	.roll-header {
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.pool-label,
+	.dice-label {
+		color: rgba(255, 255, 255, 0.87);
+	}
+
+	.success-tracking {
+		.label {
+			color: rgba(255, 255, 255, 0.87);
+		}
+
+		.value {
+			color: rgba(255, 255, 255, 0.95);
+		}
+	}
+
+	.specials-section {
+		.specials-count {
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.special-item {
+			.special-name {
+				color: rgba(255, 255, 255, 0.95);
+			}
+
+			.special-source {
+				color: rgba(255, 255, 255, 0.7);
+			}
+		}
+	}
+}
+
+/* Override Foundry's chat message container for our rolls */
+.theme-dark .chat-message:has(.die-rpg-roll) {
+	/* Replace light parchment with dark background */
+	background: rgba(0, 0, 0, 0.5);
+	border-color: rgba(255, 255, 255, 0.15);
+
+	/* Fix message header text contrast */
+	.message-header {
+		.message-sender {
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.message-metadata {
+			color: rgba(255, 255, 255, 0.7);
+
+			a {
+				color: rgba(255, 255, 255, 0.7);
+
+				&:hover {
+					color: rgba(255, 255, 255, 0.9);
+				}
+			}
+		}
+	}
+}
+
+/* Animations */
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+
+@keyframes shake {
+	0%,
+	100% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(-5deg);
+	}
+	75% {
+		transform: rotate(5deg);
+	}
+}

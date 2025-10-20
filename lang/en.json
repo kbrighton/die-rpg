@@ -401,6 +401,14 @@
 			"enableFailingForward": {
 				"name": "Enable Failing Forward",
 				"hint": "If enabled, rolls with 0 final successes but >0 initial successes will succeed with a cost or complication (as per optional rule)."
+			},
+			"enableCriticalFail": {
+				"name": "Enable Critical Fail Display",
+				"hint": "If enabled, rolls with 0 successes and at least one 1 will display as a Critical Fail with special styling."
+			},
+			"enableDiceInteraction": {
+				"name": "Enable Interactive Dice (Coming Soon)",
+				"hint": "Future feature: Allow clicking dice in chat messages to cross them out (representing difficulty reduction). This feature is not yet implemented."
 			}
 		},
 		"Dialog": {

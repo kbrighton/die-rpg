@@ -1,0 +1,145 @@
+<div class="die-rpg-roll">
+  {{!-- Header --}}
+  <div class="roll-header">
+    <strong>Rolled {{label}}</strong>
+  </div>
+
+  {{!-- Pool Display with Badges --}}
+  <div class="pool-display">
+    <span class="pool-label">Pool:</span>
+    <div class="pool-badges">
+      {{#if isZeroPool}}
+        {{!-- Zero Pool Badge (Red) --}}
+        <span class="dice-badge zero-pool">
+          {{#if isSubstituted}}1d6{{else}}2d6{{/if}}
+        </span>
+      {{else}}
+        {{!-- Normal Pool Badge (Green) --}}
+        <span class="dice-badge base-pool">{{calculatedPoolSize}}d6</span>
+      {{/if}}
+
+      {{!-- Class Die Badge (Orange) --}}
+      {{#if addClassDie}}
+        <span class="dice-badge class-die">+1{{classDieType}}</span>
+      {{/if}}
+    </div>
+  </div>
+
+  {{!-- Dice Results Display --}}
+  <div class="dice-display">
+    <div class="dice-label">Dice Rolled:</div>
+    <div class="dice-results">
+      {{#each diceResults}}
+        <span
+          class="roll die {{dieType}}
+            {{#if (gte result 6)}}special-die success{{else}}{{#if (gte result 4)}}success{{/if}}{{/if}}
+            {{#if (eq result 1)}}critfail-die{{/if}}
+            {{#unless active}}discarded{{/unless}}
+            {{#if crossedOut}}crossed-out{{/if}}"
+          data-die-index="{{@index}}"
+          data-die-value="{{result}}"
+          data-die-type="{{dieType}}"
+          data-is-active="{{active}}"
+          data-crossed-out="{{crossedOut}}"
+          title="{{#if (gte result 6)}}Special (6+){{else}}{{#if (gte result 4)}}Success (4-5){{else}}Failure{{/if}}{{/if}}">
+          <img src="{{getDieIconPath dieType}}" class="die-icon" alt="{{dieType}}">
+          <span class="die-value">{{result}}</span>
+        </span>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Success Tracking --}}
+  <div class="success-tracking">
+    <div class="success-row">
+      <span class="label">Initial Successes (≥4):</span>
+      <span class="value">{{initialSuccesses}}</span>
+    </div>
+    <div class="difficulty-row">
+      <span class="label">Difficulty:</span>
+      <span class="value">{{difficulty}}</span>
+    </div>
+  </div>
+
+  {{!-- Result Display --}}
+  <div class="roll-result">
+    {{#if isCriticalFail}}
+      {{#if showCriticalFail}}
+        <div class="result-text critical-fail">
+          <i class="fas fa-skull-crossbones"></i>
+          <strong>Critical Fail!</strong>
+          <span class="result-detail">(0 Successes & rolled a 1)</span>
+        </div>
+      {{else}}
+        <div class="result-text failure">
+          <strong>Failure</strong>
+          <span class="result-detail">(0 Final Successes)</span>
+        </div>
+      {{/if}}
+    {{else}}
+      {{#if (gt finalSuccesses 0)}}
+        <div class="result-text success">
+          <i class="fas fa-check-circle"></i>
+          <strong>Success!</strong>
+          <span class="result-detail">({{finalSuccesses}} Final Success{{#unless (eq finalSuccesses 1)}}es{{/unless}})</span>
+        </div>
+      {{else}}
+        {{!-- Check for Failing Forward --}}
+        {{#if (and showFailingForward (gt initialSuccesses 0) (gte difficulty initialSuccesses))}}
+          <div class="result-text failing-forward">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Fail Forward!</strong>
+            <span class="result-detail">({{initialSuccesses}} successes vs Difficulty {{difficulty}}. Action succeeds with cost or complication - GM narrates.)</span>
+          </div>
+        {{else}}
+          <div class="result-text failure">
+            <strong>Failure</strong>
+            <span class="result-detail">(0 Final Successes)</span>
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  </div>
+
+  {{!-- Specials Display --}}
+  {{#if (and availableSpecials (gt specialDice 0))}}
+    <div class="specials-section">
+      <div class="specials-header">
+        <i class="fas fa-star"></i>
+        <strong>Available Specials</strong>
+        <span class="specials-count">({{specialDice}} dice rolled 6+)</span>
+      </div>
+      <ul class="specials-list">
+        {{#each availableSpecials}}
+          {{#if (gte ../specialDice costValue)}}
+            <li class="special-item {{#if mandatory}}mandatory{{/if}}"
+                title="{{description}}"
+                data-special-source="{{_source.itemId}}"
+                data-special-name="{{name}}">
+              <div class="special-content">
+                <span class="special-icon">
+                  {{#if mandatory}}
+                    <i class="fas fa-exclamation-circle"></i>
+                  {{else}}
+                    <i class="fas fa-star"></i>
+                  {{/if}}
+                </span>
+                <span class="special-name">{{name}}</span>
+                <span class="special-cost dice-badge">Cost: {{costValue}}</span>
+                {{#if mandatory}}
+                  <span class="mandatory-badge">Mandatory</span>
+                {{/if}}
+              </div>
+              <div class="special-source">
+                <em>{{_source.itemName}}</em>
+              </div>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+
+  {{!-- Future Feature Stub: Interactive Dice Crossing Out --}}
+  {{!-- Will be enabled via enableDiceInteraction setting --}}
+</div>

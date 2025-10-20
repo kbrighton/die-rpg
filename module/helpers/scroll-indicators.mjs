@@ -246,7 +246,5 @@ export function initializeScrollIndicators() {
       childList: true,
       subtree: true,
     });
-
-    console.log('Scroll indicators initialized');
   }
 }

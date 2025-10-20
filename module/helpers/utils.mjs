@@ -176,6 +176,22 @@ export function registerHandlebarsHelpers() {
 		return selectedLook === '___CUSTOM___';
 	});
 
+	// ========================================
+	// DICE ICON HELPERS
+	// ========================================
+
+	/**
+	 * Gets the path to the die icon SVG for a given die type.
+	 * @param {string} dieType - The die type (e.g., "d6", "d4", "d8", "d10", "d12", "d20")
+	 * @returns {string} The path to the SVG icon
+	 */
+	Handlebars.registerHelper('getDieIconPath', function(dieType) {
+		// dieType is like "d6", "d4", "d8", etc.
+		// Clean it and extract the number
+		const cleanType = (dieType || 'd6').toLowerCase().replace(/[^0-9]/g, '');
+		return `systems/die-rpg/assets/icons/dice/d${cleanType}.svg`;
+	});
+
 	// Math helpers for positioning
 	Handlebars.registerHelper('subtract', function(a, b) {
 		return a - b;

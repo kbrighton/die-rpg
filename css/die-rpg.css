@@ -318,6 +318,445 @@
   text-align: center;
 }
 
+/* Chat message styles (global, not scoped to sheets) */
+/* ====================================
+   Chat Message Styles for DIE RPG Rolls
+   ==================================== */
+.die-rpg-roll {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Header */
+  /* Pool Display with Badges */
+  /* Dice Results Display */
+  /* Success Tracking */
+  /* Result Display */
+  /* Specials Section */
+}
+.die-rpg-roll .roll-header {
+  font-size: 1.1em;
+  color: var(--die-rpg-c-dark);
+  border-bottom: 1px solid var(--die-rpg-c-groove);
+  padding-bottom: 5px;
+}
+.die-rpg-roll .pool-display {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  /* Reuse badge styles from forms */
+}
+.die-rpg-roll .pool-display .pool-label {
+  font-weight: bold;
+  color: var(--die-rpg-c-dark);
+}
+.die-rpg-roll .pool-display .pool-badges {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.die-rpg-roll .pool-display .dice-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.die-rpg-roll .pool-display .dice-badge.base-pool {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255);
+}
+.die-rpg-roll .pool-display .dice-badge.class-die {
+  background: rgba(172, 229, 255, 0.2);
+  border: 1px solid rgba(172, 229, 255, 0.5);
+  color: rgb(172, 229, 255);
+}
+.die-rpg-roll .pool-display .dice-badge.zero-pool {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  color: #dc3545;
+}
+.die-rpg-roll .dice-display .dice-label {
+  font-weight: bold;
+  color: var(--die-rpg-c-dark);
+  margin-bottom: 5px;
+}
+.die-rpg-roll .dice-display .dice-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  align-items: center;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 5px;
+  border-radius: 6px;
+  background: rgba(200, 200, 200, 0.2);
+  border: 2px solid rgba(150, 150, 150, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  gap: 4px;
+  /* Success state - green tint for icon */
+  /* Special die - gold tint for icon */
+  /* Critical fail - red tint for icon */
+  /* Hover effect */
+  /* Success states */
+  /* Critical fail state */
+  /* Discarded state */
+  /* Crossed out state (future feature) */
+}
+.die-rpg-roll .dice-display .dice-results .roll.die i {
+  font-size: 1.2em;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die .die-icon {
+  width: 1.5em;
+  height: 1.5em;
+  object-fit: contain;
+  filter: opacity(0.4); /* Semi-transparent white with shadow */
+}
+.die-rpg-roll .dice-display .dice-results .roll.die .die-value {
+  font-weight: bold;
+  font-size: 1em;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.success .die-icon {
+  filter: sepia(1) saturate(10) hue-rotate(60deg) brightness(0.75);
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.special-die .die-icon {
+  filter: sepia(1) saturate(10) hue-rotate(340deg) brightness(0.85);
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.critfail-die .die-icon {
+  filter: sepia(1) saturate(100) hue-rotate(285deg) brightness(0.95);
+}
+.die-rpg-roll .dice-display .dice-results .roll.die:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.success {
+  background: rgba(46, 139, 87, 0.15);
+  border: 2px solid rgba(46, 139, 87, 0.25);
+  color: #82b899;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.special-die {
+  background: rgba(255, 215, 0, 0.131);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #d4af37;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.special-die i {
+  animation: pulse 2s ease-in-out infinite;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.critfail-die {
+  background: rgba(220, 53, 69, 0.131);
+  border-color: rgba(220, 53, 69, 0.4);
+  color: #ffa3ac;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.discarded {
+  opacity: 0.5;
+  filter: grayscale(50%);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.discarded::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.6);
+  transform: rotate(-15deg);
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.crossed-out {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  opacity: 0.7;
+}
+.die-rpg-roll .dice-display .dice-results .roll.die.crossed-out::before {
+  content: "\f715";
+  font-family: var(--font-awesome);
+  font-weight: 900;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: rgba(220, 53, 69, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+.die-rpg-roll .success-tracking {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+.die-rpg-roll .success-tracking .success-row,
+.die-rpg-roll .success-tracking .difficulty-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.die-rpg-roll .success-tracking .success-row .label,
+.die-rpg-roll .success-tracking .difficulty-row .label {
+  font-weight: normal;
+  color: var(--die-rpg-c-dark);
+}
+.die-rpg-roll .success-tracking .success-row .value,
+.die-rpg-roll .success-tracking .difficulty-row .value {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: var(--die-rpg-c-dark);
+}
+.die-rpg-roll .roll-result .result-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1.1em;
+}
+.die-rpg-roll .roll-result .result-text i {
+  font-size: 1.3em;
+}
+.die-rpg-roll .roll-result .result-text .result-detail {
+  font-weight: normal;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+.die-rpg-roll .roll-result .result-text.success {
+  background: rgba(46, 139, 87, 0.15);
+  border: 2px solid rgba(46, 139, 87, 0.25);
+  color: #82b899;
+}
+.die-rpg-roll .roll-result .result-text.failure {
+  background: rgba(220, 53, 69, 0.2);
+  border: 2px solid rgba(220, 53, 69, 0.5);
+  color: #dc3545;
+}
+.die-rpg-roll .roll-result .result-text.critical-fail {
+  background: rgba(220, 53, 69, 0.131);
+  border: 2px solid rgba(220, 53, 69, 0.4);
+  color: #ffa3ac;
+  font-weight: bold;
+}
+.die-rpg-roll .roll-result .result-text.critical-fail i {
+  animation: shake 0.5s ease-in-out infinite;
+}
+.die-rpg-roll .roll-result .result-text.failing-forward {
+  background: rgba(255, 165, 0, 0.2);
+  border: 2px solid rgba(255, 165, 0, 0.5);
+  color: #ff8c00;
+}
+.die-rpg-roll .specials-section {
+  border-top: 2px solid var(--die-rpg-c-groove);
+  padding-top: 10px;
+}
+.die-rpg-roll .specials-section .specials-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  color: #d4af37;
+}
+.die-rpg-roll .specials-section .specials-header i {
+  font-size: 1.2em;
+}
+.die-rpg-roll .specials-section .specials-header .specials-count {
+  font-weight: normal;
+  font-size: 0.9em;
+  color: var(--die-rpg-c-dark);
+  opacity: 0.8;
+}
+.die-rpg-roll .specials-section .specials-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.die-rpg-roll .specials-section .specials-list .special-item {
+  padding: 10px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.die-rpg-roll .specials-section .specials-list .special-item:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateX(4px);
+}
+.die-rpg-roll .specials-section .specials-list .special-item.mandatory {
+  background: rgba(255, 165, 0, 0.15);
+  border: 2px solid rgba(255, 165, 0, 0.5);
+  border-left: 4px solid #ff8c00;
+}
+.die-rpg-roll .specials-section .specials-list .special-item.mandatory .special-icon {
+  color: #ff8c00;
+}
+.die-rpg-roll .specials-section .specials-list .special-item .special-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.die-rpg-roll .specials-section .specials-list .special-item .special-content .special-icon {
+  font-size: 1.1em;
+  color: #d4af37;
+}
+.die-rpg-roll .specials-section .specials-list .special-item .special-content .special-name {
+  font-weight: bold;
+  flex: 1;
+  min-width: 120px;
+}
+.die-rpg-roll .specials-section .specials-list .special-item .special-content .special-cost {
+  font-size: 0.85em;
+  padding: 2px 8px;
+}
+.die-rpg-roll .specials-section .specials-list .special-item .special-content .mandatory-badge {
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #ff8c00;
+  background: rgba(255, 140, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.die-rpg-roll .specials-section .specials-list .special-item .special-source {
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: var(--die-rpg-c-dark);
+}
+
+/* ====================================
+   Dark Mode Overrides
+   ==================================== */
+.theme-dark .die-rpg-roll {
+  /* Main container background */
+  background: rgba(255, 255, 255, 0.05);
+  /* Dice display area */
+  /* Success tracking area */
+  /* Text color overrides for WCAG AA compliance */
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results {
+  background: rgba(255, 255, 255, 0.03);
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die {
+  /* Lighter default die background for visibility */
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  /* Die value text - high contrast white */
+  /* Discarded die strikethrough - white instead of black */
+  /* State-specific color overrides for dark mode */
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die .die-value {
+  color: rgba(255, 255, 255, 0.613);
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.discarded::after {
+  background: rgba(255, 255, 255, 0.3);
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.success {
+  background: rgba(46, 139, 87, 0.15);
+  border: 2px solid rgba(46, 139, 87, 0.25);
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.success .die-value {
+  color: #82b899;
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.special-die {
+  background: rgba(255, 215, 0, 0.131);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.special-die .die-value {
+  color: #d4af37;
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.critfail-die {
+  background: rgba(220, 53, 69, 0.131);
+  border-color: rgba(220, 53, 69, 0.4);
+}
+.theme-dark .die-rpg-roll .dice-display .dice-results .roll.die.critfail-die .die-value {
+  color: #ffa3ac;
+}
+.theme-dark .die-rpg-roll .success-tracking {
+  background: rgba(255, 255, 255, 0.03);
+}
+.theme-dark .die-rpg-roll .roll-header {
+  color: rgba(255, 255, 255, 0.9);
+}
+.theme-dark .die-rpg-roll .pool-label,
+.theme-dark .die-rpg-roll .dice-label {
+  color: rgba(255, 255, 255, 0.87);
+}
+.theme-dark .die-rpg-roll .success-tracking .label {
+  color: rgba(255, 255, 255, 0.87);
+}
+.theme-dark .die-rpg-roll .success-tracking .value {
+  color: rgba(255, 255, 255, 0.95);
+}
+.theme-dark .die-rpg-roll .specials-section .specials-count {
+  color: rgba(255, 255, 255, 0.7);
+}
+.theme-dark .die-rpg-roll .specials-section .special-item .special-name {
+  color: rgba(255, 255, 255, 0.95);
+}
+.theme-dark .die-rpg-roll .specials-section .special-item .special-source {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Override Foundry's chat message container for our rolls */
+.theme-dark .chat-message:has(.die-rpg-roll) {
+  /* Replace light parchment with dark background */
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+  /* Fix message header text contrast */
+}
+.theme-dark .chat-message:has(.die-rpg-roll) .message-header .message-sender {
+  color: rgba(255, 255, 255, 0.9);
+}
+.theme-dark .chat-message:has(.die-rpg-roll) .message-header .message-metadata {
+  color: rgba(255, 255, 255, 0.7);
+}
+.theme-dark .chat-message:has(.die-rpg-roll) .message-header .message-metadata a {
+  color: rgba(255, 255, 255, 0.7);
+}
+.theme-dark .chat-message:has(.die-rpg-roll) .message-header .message-metadata a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
 /* Styles limited to die-rpg sheets */
 .die-rpg h1,
 .die-rpg h2,
@@ -1318,3 +1757,5 @@
   min-height: 200px;
   overflow-y: auto;
 }
+
+/*# sourceMappingURL=die-rpg.css.map */

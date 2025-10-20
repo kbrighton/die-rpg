@@ -7,6 +7,7 @@ import { DieRpgItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { DIE_RPG } from './helpers/config.mjs';
 import { initializeScrollIndicators } from './helpers/scroll-indicators.mjs';
+import { DiceInteraction } from './helpers/dice-interaction.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 import * as utils from "./helpers/utils.mjs";
@@ -31,6 +32,9 @@ globalThis.die_rpg = {
   },
   utils: {
     rollItemMacro,
+  },
+  dice: {
+    DiceInteraction,
   },
   models,
 };
@@ -99,9 +103,64 @@ Hooks.once('init', function () {
     onChange: value => console.log(`DIE RPG | Failing Forward setting changed to: ${value}`)
   });
 
+  game.settings.register('die-rpg', 'enableCriticalFail', {
+    name: 'DIE_RPG.Settings.enableCriticalFail.name',
+    hint: 'DIE_RPG.Settings.enableCriticalFail.hint',
+    scope: 'world', // GM controls this setting per world
+    config: true, // Show in settings menu
+    type: Boolean,
+    default: true, // Enabled by default
+    onChange: value => console.log(`DIE RPG | Critical Fail setting changed to: ${value}`)
+  });
+
+  game.settings.register('die-rpg', 'enableDiceInteraction', {
+    name: 'DIE_RPG.Settings.enableDiceInteraction.name',
+    hint: 'DIE_RPG.Settings.enableDiceInteraction.hint',
+    scope: 'world', // GM controls this setting per world
+    config: true, // Show in settings menu
+    type: Boolean,
+    default: false, // Disabled by default (coming soon feature)
+    onChange: value => console.log(`DIE RPG | Dice Interaction setting changed to: ${value}`)
+  });
+
   utils.registerHandlebarsHelpers();
   // Preload Handlebars parts.
   utils.preloadHandlebarsTemplates();
+
+  /* -------------------------------------------- */
+  /*  Chat Message Hooks                          */
+  /* -------------------------------------------- */
+
+  // Register chat message hooks conditionally based on Foundry version
+  // This prevents deprecation warnings in v13+ for the old hook
+  if (game.release.generation >= 13) {
+    // V13+: Use new renderChatMessageHTML hook
+    Hooks.on('renderChatMessageHTML', (chatMessage, html, data) => {
+      DiceInteraction.onRenderChatMessage(chatMessage, html, data);
+
+      // Attach click listeners to dice elements
+      for (const dieElement of html.querySelectorAll('.roll.die')) {
+        dieElement.addEventListener('click', DiceInteraction._handleDieClick);
+      }
+    });
+  } else {
+    // V12: Use deprecated renderChatMessage hook
+    Hooks.on('renderChatMessage', (chatMessage, html, data) => {
+      // Apply styles for individual messages
+      DiceInteraction.onRenderChatMessage(chatMessage, html[0], data);
+
+      // Attach click listeners to dice elements
+      for (const dieElement of html[0].querySelectorAll('.roll.die')) {
+        dieElement.addEventListener('click', DiceInteraction._handleDieClick);
+      }
+    });
+  }
+
+  // renderChatLog hook works in both versions
+  Hooks.on('renderChatLog', (chatLog, html, data) => {
+    const htmlElement = game.release.generation >= 13 ? html : html[0];
+    DiceInteraction.onRenderChatLog(chatLog, htmlElement, data);
+  });
 });
 
 /* -------------------------------------------- */

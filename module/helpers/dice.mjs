@@ -65,22 +65,35 @@ export async function rollStat(dataset, actor) {
   let successCount = 0;
   let diceResults = [];
   let isMixedPool = false; // Flag for 1d6 + 1dX rolls
+  let basePoolDiceCount = 0; // Track how many dice are from base pool (for die type detection)
 
-  // Use correct namespace: foundry.dice.terms.Die
-  if (roll.dice.length > 0 && roll.dice[0] instanceof foundry.dice.terms.Die) {
-    // Standard d6 pool or 2d6kl1
-    diceResults = roll.dice[0].results;
-    successCount = diceResults.filter(r => r.active && r.result >= 4).length; // Count only active dice
-  }
-  else if (roll.terms.length > 1 && roll.terms[0] instanceof foundry.dice.terms.Die && roll.terms[2] instanceof foundry.dice.terms.Die) {
-    // Handle mixed pool like 1d6 + 1d8
+  // Debug: Log roll structure
+  console.log('DIE RPG | Roll formula:', roll.formula);
+  console.log('DIE RPG | Roll.dice:', roll.dice);
+  console.log('DIE RPG | Roll.terms:', roll.terms);
+
+  // Check for mixed pool FIRST (before checking standard pool)
+  // Mixed pool has multiple Die terms (e.g., "3d6 + 1d4")
+  if (roll.terms.length > 1 && roll.terms[0] instanceof foundry.dice.terms.Die && roll.terms[2] instanceof foundry.dice.terms.Die) {
+    // Handle mixed pool like 3d6 + 1d4
     isMixedPool = true;
     const results1 = roll.terms[0].results;
     const results2 = roll.terms[2].results;
+    basePoolDiceCount = results1.length; // Only results1 are from base pool
     diceResults = [...results1, ...results2]; // Combine results from both terms
     // In mixed pool, both dice count for success (no keep lowest logic here)
     successCount = diceResults.filter(r => r.result >= 4).length;
-    // TODO: Need logic to determine which die is "kept" if substitution rule applies for <=0 pool
+    console.log('DIE RPG | Mixed pool detected, basePoolDiceCount:', basePoolDiceCount);
+    console.log('DIE RPG | Results1 (base):', results1);
+    console.log('DIE RPG | Results2 (class):', results2);
+    console.log('DIE RPG | Combined diceResults:', diceResults);
+  }
+  else if (roll.dice.length > 0 && roll.dice[0] instanceof foundry.dice.terms.Die) {
+    // Standard d6 pool or 2d6kl1
+    diceResults = roll.dice[0].results;
+    successCount = diceResults.filter(r => r.active && r.result >= 4).length; // Count only active dice
+    basePoolDiceCount = diceResults.length; // All dice are from base pool
+    console.log('DIE RPG | Standard pool detected, diceResults:', diceResults);
   }
 
   // Apply difficulty reduction
@@ -93,7 +106,7 @@ export async function rollStat(dataset, actor) {
   const hasCritFailDie = diceResults.some(r => r.active && r.result === 1);
   const isCriticalFail = (finalSuccesses === 0 && hasCritFailDie);
 
-  _buildChatRollMessage(roll, label, actor, { // Pass results object
+  await _buildChatRollMessage(roll, label, actor, { // Pass results object
     statValue, // Pass base stat value
     advantages, // Pass advantages used
     disadvantages, // Pass disadvantages used
@@ -105,7 +118,9 @@ export async function rollStat(dataset, actor) {
     diceResults,
     classDieType, // Pass the type of class die used
     isMixedPool, // Pass flag indicating if it was a mixed roll (1d6+1dX)
-    availableSpecials // Pass the intelligently filtered list of specials
+    availableSpecials, // Pass the intelligently filtered list of specials
+    addClassDie, // Pass whether class die was added (needed for badge display)
+    basePoolDiceCount // Pass count of base pool dice (for die type detection)
   });
 
   return roll; // Return the original Roll object for potential further use
@@ -431,129 +446,95 @@ function _rollDicePool(statValue, advantages = 0, disadvantages = 0, addClassDie
  * @param {boolean} results.isMixedPool Whether the roll was a mixed pool (1d6 + 1dX).
  * @param {Array<object>} results.availableSpecials Placeholder for specials relevant to this roll.
  */
-function _buildChatRollMessage(roll, label, actor, results) {
-  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool, availableSpecials } = results;
+async function _buildChatRollMessage(roll, label, actor, results) {
+  const { statValue, advantages, disadvantages, difficulty, initialSuccesses, finalSuccesses, specialDice, isCriticalFail, diceResults, classDieType, isMixedPool, availableSpecials, addClassDie, basePoolDiceCount } = results;
   const calculatedPoolSize = advantages - disadvantages + statValue; // Calculate intended pool size for display
   const isZeroPool = calculatedPoolSize <= 0;
   // Substitution occurs if pool was <=0 AND addClassDie was true AND a valid classDieType exists
-  const isSubstituted = isZeroPool && results.addClassDie && classDieType;
+  const isSubstituted = isZeroPool && addClassDie && classDieType;
 
-  // Build Dice HTML with styling
-  const diceHTML = diceResults.map((r, index) => {
-    let classes = [];
-    let dieLabel = '';
-    // Mark discarded die for kl1 rolls (which are only non-substituted zero pool rolls)
-    if (isZeroPool && !isSubstituted && !r.active) {
-        classes.push('discarded');
-    }
-    // Label dice in mixed pools
-    if (isMixedPool) {
-        dieLabel = (index === 0) ? '(d6)' : `(${classDieType || 'Class'})`;
-    }
+  // Get settings for optional features
+  const showCriticalFail = game.settings.get('die-rpg', 'enableCriticalFail');
+  const showFailingForward = game.settings.get('die-rpg', 'enableFailingForward');
 
-    if (r.result >= 6) classes.push('special-die');
-    else if (r.result >= 4) classes.push('success');
-    if (r.result === 1) classes.push('critfail-die');
-    return `<span class="${classes.join(' ')}">${r.result} ${dieLabel}</span>`;
-  }).join(', ');
+  // Enhance dice results with die type information
+  // In mixed pools, dice at index >= basePoolDiceCount are class dice
+  const enhancedDiceResults = diceResults.map((r, index) => ({
+    ...r,
+    dieType: (isMixedPool && index >= basePoolDiceCount) ? (classDieType || 'd6') : 'd6'
+  }));
 
-  // Build Result Text
-  let resultText = "";
-  if (isCriticalFail) {
-    resultText = `<span style="color: red; font-weight: bold;">Critical Fail!</span> (0 Successes & a 1)`;
-  } else if (finalSuccesses > 0) {
-    resultText = `<span style="color: green; font-weight: bold;">Success!</span> (${finalSuccesses} Final Successes)`;
-  } else {
-    // Check for Failing Forward (initial successes > 0 but final <= 0 due to difficulty)
-    // Only apply if the setting is enabled
-    const useFailingForward = game.settings.get('die-rpg', 'enableFailingForward');
-    if (useFailingForward && initialSuccesses > 0 && difficulty >= initialSuccesses) {
-       // More explicit Fail Forward message
-       resultText = `<span style="color: orange; font-weight: bold;">Fail Forward!</span> (${initialSuccesses} successes vs Difficulty ${difficulty}. Action succeeds with cost or complication - GM narrates.)`;
-    } else {
-       // Standard failure (or Failing Forward disabled)
-       resultText = `<span style="color: red; font-weight: bold;">Failure.</span> (0 Final Successes)`;
-    }
-  }
-
-  // Build Message Content
-  // Build Message Content
-  let poolDescription = `${statValue} (Stat) + ${advantages} (Adv) - ${disadvantages} (Disadv)`;
-  if (results.addClassDie && classDieType && !isSubstituted) poolDescription += ` + 1${classDieType}`;
-  poolDescription += ` = ${calculatedPoolSize <= 0 ? '0' : calculatedPoolSize}d6`;
-  if (isSubstituted) poolDescription += ` (Substituted Class Die: 1d6 + 1${classDieType})`;
-  else if (isZeroPool) poolDescription += ` (Roll 2d6kl1)`;
-
-
-  let messageContent = `
-    <div class="die-rpg-roll"> {{!-- Add class for potential styling --}}
-      <div><strong>Rolled ${label}</strong></div>
-      <div>Pool: ${poolDescription}</div>
-      <div>Dice: ${diceHTML}</div>
-      <div>Initial Successes (>=4): ${initialSuccesses}</div>
-      <div>Difficulty: ${difficulty}</div>
-      <div><strong>Final Result: ${resultText}</strong></div>
-      ${specialDice > 0 ? `<div>Specials Available (6s rolled): ${specialDice}</div>` : ''}
-      ${_buildSpecialsHTML(actor, availableSpecials, specialDice)} {{!-- Add Specials buttons/links --}}
-    </div>
-  `;
-
-  ChatMessage.create({
-    speaker: ChatMessage.getSpeaker({ actor: actor }),
-    content: messageContent,
-    rollMode: game.settings.get('core', 'rollMode'),
-  });
-}
-
-/**
- * Generates HTML for clickable special activation buttons.
- * @param {Actor} actor The actor who rolled.
- * @param {Array<object>} availableSpecials List of potential specials.
- * @param {number} specialDiceCount Number of 6s rolled.
- * @returns {string} HTML string for special buttons.
- * @private
- */
-function _buildSpecialsHTML(actor, availableSpecials, specialDiceCount) {
-  if (!availableSpecials || availableSpecials.length === 0 || specialDiceCount === 0) {
-    return '';
-  }
-
-  // Filter specials that can be afforded with the rolled 6s
-  const affordableSpecials = availableSpecials.filter(s => specialDiceCount >= CONFIG.DIE_RPG.getSpecialCostValue(s.cost));
-
-  if (affordableSpecials.length === 0) {
-    return '';
-  }
+  // Enhance availableSpecials with costValue for template
+  const enhancedSpecials = availableSpecials ? availableSpecials.map(special => ({
+    ...special,
+    costValue: CONFIG.DIE_RPG.getSpecialCostValue(special.cost)
+  })) : [];
 
   // Sort specials: Mandatory first, then by cost, then by name
-  affordableSpecials.sort((a, b) => {
+  enhancedSpecials.sort((a, b) => {
     if (a.mandatory !== b.mandatory) {
       return a.mandatory ? -1 : 1; // Mandatory first
     }
-    const costA = CONFIG.DIE_RPG.getSpecialCostValue(a.cost);
-    const costB = CONFIG.DIE_RPG.getSpecialCostValue(b.cost);
-    if (costA !== costB) {
-      return costA - costB; // Lower cost first
+    if (a.costValue !== b.costValue) {
+      return a.costValue - b.costValue; // Lower cost first
     }
     return (a.name || '').localeCompare(b.name || ''); // Alphabetical by name
   });
 
-  let html = '<div class="specials-list"><strong>Available Specials:</strong><ul>';
+  // Prepare template data
+  const templateData = {
+    label,
+    calculatedPoolSize,
+    isZeroPool,
+    isSubstituted,
+    addClassDie,
+    classDieType,
+    diceResults: enhancedDiceResults,
+    initialSuccesses,
+    finalSuccesses,
+    difficulty,
+    specialDice,
+    isCriticalFail,
+    showCriticalFail,
+    showFailingForward,
+    availableSpecials: enhancedSpecials,
+    isMixedPool
+  };
 
-  affordableSpecials.forEach(special => {
-    const cost = CONFIG.DIE_RPG.getSpecialCostValue(special.cost);
-    const name = special.name || 'Unnamed Special';
-    const description = special.description || '';
-    const mandatoryText = special.mandatory ? ' <strong style="color:orange;">(Mandatory)</strong>' : '';
+  // Render the template
+  const template = 'systems/die-rpg/templates/chat/roll-result.hbs';
+  // Use namespaced renderTemplate for v13+ compatibility
+  const renderFunc = foundry.applications?.handlebars?.renderTemplate || renderTemplate;
+  const messageContent = await renderFunc(template, templateData);
 
-    // Just list the special for now, interaction deferred
-    html += `
-      <li title="${description}">
-         <i class="fas fa-star"></i> ${name} (Cost: ${cost})${mandatoryText}
-      </li>
-    `;
+  // Create the chat message with flags for interactive dice feature
+  ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    content: messageContent,
+    rollMode: game.settings.get('core', 'rollMode'),
+    flags: {
+      'die-rpg': {
+        // Store roll data for potential re-rendering
+        diceResults: enhancedDiceResults,
+        difficulty: difficulty,
+        initialSuccesses: initialSuccesses,
+        specialDice: specialDice,
+        isCriticalFail: isCriticalFail,
+        showCriticalFail: showCriticalFail,
+        showFailingForward: showFailingForward,
+        availableSpecials: enhancedSpecials,
+        calculatedPoolSize: calculatedPoolSize,
+        isZeroPool: isZeroPool,
+        isSubstituted: isSubstituted,
+        addClassDie: addClassDie,
+        classDieType: classDieType,
+        isMixedPool: isMixedPool,
+        label: label,
+        // Track which dice have been crossed out (empty array initially)
+        crossedOutIndices: []
+      }
+    }
   });
-
-  html += '</ul></div>';
-  return html;
 }
+
+// _buildSpecialsHTML function removed - specials are now handled in the chat template
