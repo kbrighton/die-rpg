@@ -728,6 +728,19 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
    */
   _getEmbeddedDocument(target) {
+    // Check if the target has a document UUID directly (used by itemList fields)
+    if (target.dataset.documentUuid) {
+      const uuid = target.dataset.documentUuid;
+      // Extract the document from the UUID
+      // UUID format: Actor.{actorId}.Item.{itemId}
+      const parts = uuid.split('.');
+      if (parts.length >= 4 && parts[0] === 'Actor' && parts[2] === 'Item') {
+        const itemId = parts[3];
+        return this.actor.items.get(itemId);
+      }
+    }
+
+    // Fallback to original implementation for gear list
     const docRow = target.closest('li[data-document-class]');
     if (docRow.dataset.documentClass === 'Item') {
       return this.actor.items.get(docRow.dataset.itemId);

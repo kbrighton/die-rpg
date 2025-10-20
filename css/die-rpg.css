@@ -1425,6 +1425,45 @@
   text-transform: uppercase;
   opacity: 0.7;
 }
+.die-rpg .itemlist-field .item-checkbox .item-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.die-rpg .itemlist-field .item-checkbox:hover .item-actions {
+  opacity: 1;
+}
+.die-rpg .itemlist-field .item-checkbox .item-action-btn {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--die-rpg-overlay-medium);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: rgba(255, 255, 255, 0.7);
+}
+.die-rpg .itemlist-field .item-checkbox .item-action-btn i {
+  font-size: 0.75em;
+  pointer-events: none;
+}
+.die-rpg .itemlist-field .item-checkbox .item-action-btn.edit-btn:hover {
+  background: var(--die-rpg-c-info-bg);
+  border-color: var(--die-rpg-c-info-border);
+  color: var(--die-rpg-c-info);
+}
+.die-rpg .itemlist-field .item-checkbox .item-action-btn.delete-btn:hover {
+  background: var(--die-rpg-c-failure-bg);
+  border-color: var(--die-rpg-c-failure-border);
+  color: var(--die-rpg-c-failure);
+}
 .die-rpg .itemlist-field .item-checkbox:has(input:checked) {
   background: var(--die-rpg-c-success-bg);
   border-color: var(--die-rpg-c-success-border);

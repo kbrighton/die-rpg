@@ -120,6 +120,28 @@
               <img src="{{item.img}}" alt="{{item.name}}" class="item-icon" />
               <span class="item-name">{{item.name}}</span>
               <span class="item-type-badge">{{item.type}}</span>
+
+              {{!-- Action buttons --}}
+              {{#if ../../editable}}
+                <div class="item-actions">
+                  <button
+                    type="button"
+                    class="item-action-btn edit-btn"
+                    data-action="viewDoc"
+                    data-document-uuid="{{item.uuid}}"
+                    title="Edit {{item.name}}">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="item-action-btn delete-btn"
+                    data-action="deleteDoc"
+                    data-document-uuid="{{item.uuid}}"
+                    title="Delete {{item.name}}">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              {{/if}}
             </label>
           {{/each}}
         </div>

@@ -683,6 +683,56 @@ h6 {
 			opacity: 0.7;
 		}
 
+		.item-actions {
+			display: flex;
+			gap: 4px;
+			margin-left: auto;
+			opacity: 0;
+			transition: opacity 0.2s ease;
+		}
+
+		// Show actions on hover
+		&:hover .item-actions {
+			opacity: 1;
+		}
+
+		.item-action-btn {
+			flex-shrink: 0;
+			width: 24px;
+			height: 24px;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: $overlay-medium;
+			border: 1px solid $overlay-medium;
+			border-radius: 3px;
+			cursor: pointer;
+			transition: all 0.15s ease;
+			color: rgba(255, 255, 255, 0.7);
+
+			i {
+				font-size: 0.75em;
+				pointer-events: none;
+			}
+
+			&.edit-btn {
+				&:hover {
+					background: $c-info-bg;
+					border-color: $c-info-border;
+					color: $c-info;
+				}
+			}
+
+			&.delete-btn {
+				&:hover {
+					background: $c-failure-bg;
+					border-color: $c-failure-border;
+					color: $c-failure;
+				}
+			}
+		}
+
 		&:has(input:checked) {
 			background: $c-success-bg;
 			border-color: $c-success-border;
