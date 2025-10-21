@@ -2107,6 +2107,11 @@
   font-weight: 900 !important;
   color: var(--die-rpg-c-black) !important;
 }
+.die-rpg .tab.loadout .look-selection-section .look-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .die-rpg .tab.paragon .paragon-tab-content {
   padding: 10px;
   display: flex;
@@ -2117,11 +2122,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-}
-.die-rpg .tab.paragon .look-selection-section .look-picker {
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 .die-rpg .tab.paragon .specials-section .specials-list {

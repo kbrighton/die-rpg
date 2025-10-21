@@ -254,6 +254,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       case 'advancements':
         context.tab = context.tabs[partId];
         break;
+      case 'loadout':
+        context.tab = context.tabs[partId];
+        break;
       case 'notes':
         context.tab = context.tabs[partId];
         // Enrich biography info for display

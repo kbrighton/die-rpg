@@ -5,6 +5,19 @@
 }
 
 // Actor Sheet - Paragon Tab Styling
+.tab.loadout {
+
+  // Look Selection Section - flex column layout
+  .look-selection-section {
+    .look-picker {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-md;
+    }
+  }
+
+}
+
 .tab.paragon {
   .paragon-tab-content {
     padding: $padding-md;
@@ -19,15 +32,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: $gap-md;
-    }
-  }
-
-  // Look Selection Section - flex column layout
-  .look-selection-section {
-    .look-picker {
-      display: flex;
-      flex-direction: column;
       gap: $gap-md;
     }
   }
