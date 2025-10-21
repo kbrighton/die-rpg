@@ -506,6 +506,8 @@
 			"Error": {
 				"ParagonNotFound": "Could not find selected paragon item.",
 				"ParagonSelectionFailed": "Failed to select paragon.",
+				"ParagonClearFailed": "Failed to clear paragon selection.",
+				"ParagonRollbackFailed": "Critical error: Failed to restore previous paragon. Please reload the actor sheet.",
 				"InvalidClassAbilitiesJSON": "Invalid JSON in Class Abilities Fields: {error}",
 				"InvalidAdvancementFormsJSON": "Invalid JSON in Advancement Form Fields: {error}",
 				"EquipmentNotFound": "Equipment not found"
