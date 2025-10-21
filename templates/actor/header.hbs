@@ -76,7 +76,7 @@
 				</div>
 				<img
 					class="class-dice-img"
-					src="systems/die-rpg/assets/icons/{{paragonItem.system.die}}-exploded.svg"
+					src="{{#if paragonItem.system.classDiceImage}}{{paragonItem.system.classDiceImage}}{{else}}systems/die-rpg/assets/DIE/dice/{{paragonItem.system.die}}-exploded.svg{{/if}}"
 					width="100"
 				/>
 			</div>

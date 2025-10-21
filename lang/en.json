@@ -300,13 +300,13 @@
 							"label": "Form Fields"
 						}
 					},
-					"headerImage": {
-						"label": "Header Image",
-						"hint": "Exploded image for character sheet header"
+					"classDiceImage": {
+						"label": "Class Dice Image",
+						"hint": "Optional image to replace the class dice icon in character sheet header. Recommended: 50x50px square, transparent background, PNG or SVG."
 					},
-					"backgroundImage": {
-						"label": "Background Image",
-						"hint": "Shape image for stat background"
+					"portraitImage": {
+						"label": "Default Portrait Image",
+						"hint": "Optional default portrait for character sidebar. Only shown if player hasn't set a custom portrait. Recommended: 300x300px or larger, portrait orientation, JPG or PNG."
 					},
 					"equipmentOptions": {
 						"label": "Starting Equipment Options",
@@ -569,8 +569,8 @@
 				"ScriptureName": "Scripture name",
 				"UpgradeName": "Upgrade name",
 				"CustomLookDescription": "Enter a custom look description",
-				"HeaderImagePath": "systems/die-rpg/assets/headers/paragon-name.webp",
-				"BackgroundImagePath": "systems/die-rpg/assets/backgrounds/paragon-name.webp"
+				"ClassDiceImagePath": "systems/die-rpg/assets/dice/custom-die.png",
+				"PortraitImagePath": "systems/die-rpg/assets/portraits/paragon-portrait.webp"
 			},
 			"EmptyStates": {
 				"NoParagonSelected": "No Paragon Selected",
@@ -596,10 +596,10 @@
 				"ScripturesDescription": "Scriptures are the benefits granted by this god. Typically 3, but more can be added.",
 				"UpgradesDescription": "Upgrades can be picked multiple times. Only one upgrade marked Defensive unless an advancement says otherwise.",
 				"AdvancementFormsHint": "Track class-specific advancement details below:",
-				"ThemeImagesLegend": "Theme Images (Optional)",
-				"ThemeImagesHint": "Custom header and background images for character sheet theming.",
-				"HeaderImageLabel": "Header Image Path",
-				"BackgroundImageLabel": "Background Image Path",
+				"ThemeImagesLegend": "Character Sheet Theme Images (Optional)",
+				"ThemeImagesHint": "Customize how this paragon appears on character sheets with optional images.",
+				"ClassDiceImageLabel": "Class Dice Image",
+				"PortraitImageLabel": "Default Portrait",
 				"DragEquipmentHere": "Drag equipment items here from compendiums to add them as starting options.",
 				"SelectStartingEquipment": "Select and add equipment from your paragon's options. Items will appear in the Equipment tab."
 			},

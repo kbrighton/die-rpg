@@ -26,6 +26,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     },
     actions: {
       onEditImage: this._onEditImage,
+      browseImage: this._browseImage,
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
@@ -475,6 +476,31 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       redirectToRoot: img ? [img] : [],
       callback: (path) => {
         this.document.update({ [attr]: path });
+      },
+      top: this.position.top + 40,
+      left: this.position.left + 10,
+    });
+    return fp.browse();
+  }
+
+  /**
+   * Handle opening a FilePicker to browse for an image for a specific field.
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise}
+   * @protected
+   */
+  static async _browseImage(event, target) {
+    event.preventDefault();
+    const fieldPath = target.dataset.target;
+    const current = foundry.utils.getProperty(this.document, fieldPath);
+    const fp = new FilePicker({
+      current,
+      type: 'image',
+      callback: (path) => {
+        this.document.update({ [fieldPath]: path });
       },
       top: this.position.top + 40,
       left: this.position.left + 10,

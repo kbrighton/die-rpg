@@ -1,7 +1,7 @@
 <div class="sidebar flexcol">
 	<img
 		class="profile-img"
-		src="{{actor.img}}"
+		src="{{#if (and paragonItem.system.portraitImage (eq actor.img 'icons/svg/mystery-man.svg'))}}{{paragonItem.system.portraitImage}}{{else}}{{actor.img}}{{/if}}"
 		data-edit="img"
 		data-action="onEditImage"
 		title="{{actor.name}}"

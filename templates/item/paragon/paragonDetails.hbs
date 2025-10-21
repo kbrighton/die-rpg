@@ -97,23 +97,47 @@
 		<p class="hint">{{localize "DIE_RPG.UI.Hints.ThemeImagesHint"}}</p>
 
 		<div class="form-group">
-			<label>{{localize "DIE_RPG.UI.Hints.HeaderImageLabel"}}</label>
-			<input
-				type="text"
-				name="system.headerImage"
-				value="{{system.headerImage}}"
-				placeholder="{{localize 'DIE_RPG.UI.Placeholders.HeaderImagePath'}}"
-			/>
+			<label>{{localize "DIE_RPG.UI.Hints.ClassDiceImageLabel"}}</label>
+			<div class="form-fields">
+				<input
+					type="text"
+					name="system.classDiceImage"
+					value="{{system.classDiceImage}}"
+					placeholder="{{localize 'DIE_RPG.UI.Placeholders.ClassDiceImagePath'}}"
+				/>
+				<button
+					type="button"
+					class="file-picker-button"
+					data-action="browseImage"
+					data-target="system.classDiceImage"
+					data-tooltip="Browse for image file"
+				>
+					<i class="fas fa-file-image"></i>
+				</button>
+			</div>
+			<p class="hint">{{localize "DIE_RPG.Item.Paragon.FIELDS.classDiceImage.hint"}}</p>
 		</div>
 
 		<div class="form-group">
-			<label>{{localize "DIE_RPG.UI.Hints.BackgroundImageLabel"}}</label>
-			<input
-				type="text"
-				name="system.backgroundImage"
-				value="{{system.backgroundImage}}"
-				placeholder="{{localize 'DIE_RPG.UI.Placeholders.BackgroundImagePath'}}"
-			/>
+			<label>{{localize "DIE_RPG.UI.Hints.PortraitImageLabel"}}</label>
+			<div class="form-fields">
+				<input
+					type="text"
+					name="system.portraitImage"
+					value="{{system.portraitImage}}"
+					placeholder="{{localize 'DIE_RPG.UI.Placeholders.PortraitImagePath'}}"
+				/>
+				<button
+					type="button"
+					class="file-picker-button"
+					data-action="browseImage"
+					data-target="system.portraitImage"
+					data-tooltip="Browse for image file"
+				>
+					<i class="fas fa-file-image"></i>
+				</button>
+			</div>
+			<p class="hint">{{localize "DIE_RPG.Item.Paragon.FIELDS.portraitImage.hint"}}</p>
 		</div>
 	</fieldset>
 </section>

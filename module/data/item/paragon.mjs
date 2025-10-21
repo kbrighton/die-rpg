@@ -282,18 +282,18 @@ export default class DieRpgParagon extends DieRpgItemBase {
     });
 
     // Optional: Images for theming
-    schema.headerImage = new fields.FilePathField({
+    schema.classDiceImage = new fields.FilePathField({
       required: false,
       categories: ['IMAGE'],
-      label: 'DIE_RPG.Item.Paragon.FIELDS.headerImage.label',
-      hint: 'DIE_RPG.Item.Paragon.FIELDS.headerImage.hint'
+      label: 'DIE_RPG.Item.Paragon.FIELDS.classDiceImage.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.classDiceImage.hint'
     });
 
-    schema.backgroundImage = new fields.FilePathField({
+    schema.portraitImage = new fields.FilePathField({
       required: false,
       categories: ['IMAGE'],
-      label: 'DIE_RPG.Item.Paragon.FIELDS.backgroundImage.label',
-      hint: 'DIE_RPG.Item.Paragon.FIELDS.backgroundImage.hint'
+      label: 'DIE_RPG.Item.Paragon.FIELDS.portraitImage.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.portraitImage.hint'
     });
 
     return schema;

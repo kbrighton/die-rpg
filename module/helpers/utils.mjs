@@ -189,7 +189,7 @@ export function registerHandlebarsHelpers() {
 		// dieType is like "d6", "d4", "d8", etc.
 		// Clean it and extract the number
 		const cleanType = (dieType || 'd6').toLowerCase().replace(/[^0-9]/g, '');
-		return `systems/die-rpg/assets/icons/dice/d${cleanType}.svg`;
+		return `systems/die-rpg/assets/DIE/dice/d${cleanType}.svg`;
 	});
 
 	// Math helpers for positioning
@@ -213,6 +213,17 @@ export function registerHandlebarsHelpers() {
 	 */
 	Handlebars.registerHelper('eq', function(a, b) {
 		return a === b;
+	});
+
+	/**
+	 * Logical AND helper - returns true if all arguments are truthy
+	 * @param {...*} args - Values to check (last argument is options object from Handlebars)
+	 * @returns {boolean} True if all arguments are truthy
+	 */
+	Handlebars.registerHelper('and', function(...args) {
+		// Remove the Handlebars options object (always the last argument)
+		args.pop();
+		return args.every(arg => !!arg);
 	});
 
 	/**

@@ -27,7 +27,11 @@
             "htmlFields": ["description"]
         },
         "paragon": {
-            "htmlFields": ["description", "coreNature", "coreAbility.description", "advancements.*.description", "specials.*.description"]
+            "htmlFields": ["description", "coreNature", "coreAbility.description", "advancements.*.description", "specials.*.description"],
+            "filePathFields": {
+              "classDiceImage": ["IMAGE"],
+              "portraitImage": ["IMAGE"]
+            }
         },
         "look": {
             "htmlFields": ["description"]
