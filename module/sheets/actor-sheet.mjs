@@ -802,6 +802,29 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         keepId: true
       });
 
+      // Update actor images from paragon defaults (only if actor images are still default)
+      const updates = {};
+      const DEFAULT_IMG = 'icons/svg/mystery-man.svg';
+
+      // Portrait image - update actor.img if it's still default and paragon has a portraitImage
+      if (paragonDoc.system.portraitImage && this.actor.img === DEFAULT_IMG) {
+        updates.img = paragonDoc.system.portraitImage;
+      }
+
+      // Token image - two cases:
+      // 1. If paragon has explicit tokenImage, use it (if token is still default)
+      // 2. Otherwise, let Foundry auto-sync actor.img to token (default behavior)
+      if (paragonDoc.system.tokenImage) {
+        const currentTokenSrc = this.actor.prototypeToken.texture.src;
+        if (!currentTokenSrc || currentTokenSrc === DEFAULT_IMG) {
+          updates['prototypeToken.texture.src'] = paragonDoc.system.tokenImage;
+        }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        await this.actor.update(updates);
+      }
+
       ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.ParagonSelected", {name: paragonDoc.name}));
     } catch (error) {
       console.error('DIE RPG | Error selecting paragon:', error);

@@ -296,6 +296,13 @@ export default class DieRpgParagon extends DieRpgItemBase {
       hint: 'DIE_RPG.Item.Paragon.FIELDS.portraitImage.hint'
     });
 
+    schema.tokenImage = new fields.FilePathField({
+      required: false,
+      categories: ['IMAGE'],
+      label: 'DIE_RPG.Item.Paragon.FIELDS.tokenImage.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.tokenImage.hint'
+    });
+
     return schema;
   }
 }

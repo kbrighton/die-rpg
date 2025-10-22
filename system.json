@@ -30,7 +30,8 @@
             "htmlFields": ["description", "coreNature", "coreAbility.description", "advancements.*.description", "specials.*.description"],
             "filePathFields": {
               "classDiceImage": ["IMAGE"],
-              "portraitImage": ["IMAGE"]
+              "portraitImage": ["IMAGE"],
+              "tokenImage": ["IMAGE"]
             }
         },
         "look": {

@@ -308,6 +308,10 @@
 						"label": "Default Portrait Image",
 						"hint": "Optional default portrait for character sidebar. Only shown if player hasn't set a custom portrait. Recommended: 300x300px or larger, portrait orientation, JPG or PNG."
 					},
+					"tokenImage": {
+						"label": "Default Token Image",
+						"hint": "Optional default token image. Only shown if player hasn't set a custom token. If not set, uses the portrait image. Recommended: 256x256px or larger, square, transparent background, PNG."
+					},
 					"equipmentOptions": {
 						"label": "Starting Equipment Options",
 						"hint": "Equipment items characters can select when choosing this paragon"
@@ -570,7 +574,8 @@
 				"UpgradeName": "Upgrade name",
 				"CustomLookDescription": "Enter a custom look description",
 				"ClassDiceImagePath": "systems/die-rpg/assets/dice/custom-die.png",
-				"PortraitImagePath": "systems/die-rpg/assets/portraits/paragon-portrait.webp"
+				"PortraitImagePath": "systems/die-rpg/assets/portraits/paragon-portrait.webp",
+				"TokenImagePath": "systems/die-rpg/assets/tokens/paragon-token.webp"
 			},
 			"EmptyStates": {
 				"NoParagonSelected": "No Paragon Selected",
@@ -597,9 +602,10 @@
 				"UpgradesDescription": "Upgrades can be picked multiple times. Only one upgrade marked Defensive unless an advancement says otherwise.",
 				"AdvancementFormsHint": "Track class-specific advancement details below:",
 				"ThemeImagesLegend": "Character Sheet Theme Images (Optional)",
-				"ThemeImagesHint": "Customize how this paragon appears on character sheets with optional images.",
+				"ThemeImagesHint": "Customize how this paragon appears on character sheets with optional default images.",
 				"ClassDiceImageLabel": "Class Dice Image",
 				"PortraitImageLabel": "Default Portrait",
+				"TokenImageLabel": "Default Token",
 				"DragEquipmentHere": "Drag equipment items here from compendiums to add them as starting options.",
 				"SelectStartingEquipment": "Select and add equipment from your paragon's options. Items will appear in the Equipment tab."
 			},

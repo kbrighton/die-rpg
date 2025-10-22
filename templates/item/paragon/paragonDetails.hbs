@@ -139,5 +139,27 @@
 			</div>
 			<p class="hint">{{localize "DIE_RPG.Item.Paragon.FIELDS.portraitImage.hint"}}</p>
 		</div>
+
+		<div class="form-group">
+			<label>{{localize "DIE_RPG.UI.Hints.TokenImageLabel"}}</label>
+			<div class="form-fields">
+				<input
+					type="text"
+					name="system.tokenImage"
+					value="{{system.tokenImage}}"
+					placeholder="{{localize 'DIE_RPG.UI.Placeholders.TokenImagePath'}}"
+				/>
+				<button
+					type="button"
+					class="file-picker-button"
+					data-action="browseImage"
+					data-target="system.tokenImage"
+					data-tooltip="Browse for image file"
+				>
+					<i class="fas fa-file-image"></i>
+				</button>
+			</div>
+			<p class="hint">{{localize "DIE_RPG.Item.Paragon.FIELDS.tokenImage.hint"}}</p>
+		</div>
 	</fieldset>
 </section>
