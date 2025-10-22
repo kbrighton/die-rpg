@@ -511,6 +511,9 @@
 				"InvalidClassAbilitiesJSON": "Invalid JSON in Class Abilities Fields: {error}",
 				"InvalidAdvancementFormsJSON": "Invalid JSON in Advancement Form Fields: {error}",
 				"EquipmentNotFound": "Equipment not found"
+			},
+			"Info": {
+				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again."
 			}
 		},
 		"UI": {
