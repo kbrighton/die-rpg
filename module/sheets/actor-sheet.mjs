@@ -764,40 +764,51 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     event.stopPropagation();
 
     const selectedUuid = event.target.value;
+    const currentUuid = this.actor.system.paragon.uuid;
 
     // If selecting the same paragon that's already selected, do nothing
-    if (selectedUuid === this.actor.system.paragon.uuid) {
+    if (selectedUuid === currentUuid) {
       return;
     }
 
     // If no paragon selected (blank option), clear the UUID and delete the paragon
     if (!selectedUuid) {
-      const existingParagon = this.actor.items.find(i => i.type === 'paragon');
-      if (existingParagon) {
-        await existingParagon.delete();
+      try {
+        const existingParagon = this.actor.items.find(i => i.type === 'paragon');
+        if (existingParagon) {
+          await existingParagon.delete();
+        }
+        await this.actor.update({ 'system.paragon.uuid': '' });
+        ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.ParagonCleared"));
+      } catch (error) {
+        console.error('DIE RPG | Error clearing paragon:', error);
+        ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonClearFailed"));
+        // Restore previous state
+        await this.actor.update({ 'system.paragon.uuid': currentUuid });
       }
-      await this.actor.update({ 'system.paragon.uuid': '' });
-      ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.ParagonCleared"));
       return;
     }
 
-    // Update the UUID reference first, so the UI updates immediately
-    await this.actor.update({ 'system.paragon.uuid': selectedUuid });
-
-    // Delete existing owned paragon item if it exists
+    // Store reference to existing paragon before making changes
     const existingParagon = this.actor.items.find(i => i.type === 'paragon');
-    if (existingParagon) {
-      await existingParagon.delete();
-    }
 
-    // Create embedded copy of selected paragon
     try {
+      // Fetch and validate new paragon FIRST (fail fast before making any changes)
       const paragonDoc = await fromUuid(selectedUuid);
       if (!paragonDoc) {
         ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonNotFound"));
         return;
       }
 
+      // Update the UUID reference
+      await this.actor.update({ 'system.paragon.uuid': selectedUuid });
+
+      // Delete existing owned paragon item if it exists
+      if (existingParagon) {
+        await existingParagon.delete();
+      }
+
+      // Create embedded copy of selected paragon
       await this.actor.createEmbeddedDocuments('Item', [paragonDoc.toObject()], {
         keepId: true
       });
@@ -829,6 +840,21 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     } catch (error) {
       console.error('DIE RPG | Error selecting paragon:', error);
       ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonSelectionFailed"));
+
+      // Rollback: Restore previous UUID
+      try {
+        await this.actor.update({ 'system.paragon.uuid': currentUuid });
+
+        // If we deleted the old paragon but failed to create the new one, try to restore it
+        if (existingParagon && !this.actor.items.find(i => i.type === 'paragon')) {
+          await this.actor.createEmbeddedDocuments('Item', [existingParagon.toObject()], {
+            keepId: true
+          });
+        }
+      } catch (rollbackError) {
+        console.error('DIE RPG | Critical: Failed to rollback paragon selection:', rollbackError);
+        ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonRollbackFailed"));
+      }
     }
   }
 
