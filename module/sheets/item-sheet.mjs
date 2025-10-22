@@ -1080,8 +1080,20 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
               }
               rawData['system.classAbilities.fields'] = parsed;
             } catch (error) {
-              ui.notifications.error(game.i18n.format("DIE_RPG.Notifications.Error.InvalidClassAbilitiesJSON", {error: error.message}));
-              throw error;
+              // Show detailed error message with context
+              const errorMsg = game.i18n.format(
+                "DIE_RPG.Notifications.Error.InvalidClassAbilitiesJSON",
+                { error: error.message }
+              );
+              const saveMsg = game.i18n.localize("DIE_RPG.Notifications.Info.PartialSaveOtherFieldsSaved");
+
+              ui.notifications.error(`${errorMsg} ${saveMsg}`, { permanent: true });
+
+              // Remove invalid field from update - keeps previous valid value
+              // This allows other fields to save successfully (partial save)
+              delete rawData['system.classAbilities.fields'];
+
+              // Don't throw - continue processing other fields
             }
           }
         }
@@ -1108,8 +1120,20 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
               }
               rawData['system.advancementForms.fields'] = parsed;
             } catch (error) {
-              ui.notifications.error(game.i18n.format("DIE_RPG.Notifications.Error.InvalidAdvancementFormsJSON", {error: error.message}));
-              throw error;
+              // Show detailed error message with context
+              const errorMsg = game.i18n.format(
+                "DIE_RPG.Notifications.Error.InvalidAdvancementFormsJSON",
+                { error: error.message }
+              );
+              const saveMsg = game.i18n.localize("DIE_RPG.Notifications.Info.PartialSaveOtherFieldsSaved");
+
+              ui.notifications.error(`${errorMsg} ${saveMsg}`, { permanent: true });
+
+              // Remove invalid field from update - keeps previous valid value
+              // This allows other fields to save successfully (partial save)
+              delete rawData['system.advancementForms.fields'];
+
+              // Don't throw - continue processing other fields
             }
           }
         }
