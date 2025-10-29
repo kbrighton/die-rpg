@@ -1,0 +1,117 @@
+{{! NPC Abilities Tab }}
+<section
+	class='tab npc-abilities {{tab.cssClass}}'
+	data-group='primary'
+	data-tab='npc-abilities'
+>
+	<div class="npc-abilities-container">
+
+		{{! Add Ability Button }}
+		<div class="abilities-header">
+			<h3>{{localize 'DIE_RPG.Actor.NPC.AbilitiesTitle'}}</h3>
+			{{#if editable}}
+				<button
+					type="button"
+					class="add-ability-btn"
+					data-action="addAbility"
+					data-tooltip="{{localize 'DIE_RPG.Actor.NPC.AddAbility'}}"
+				>
+					<i class="fas fa-plus"></i>
+					{{localize 'DIE_RPG.Actor.NPC.AddAbility'}}
+				</button>
+			{{/if}}
+		</div>
+
+		{{! Abilities List }}
+		<div class="abilities-list">
+			{{#if actor.system.abilities}}
+				{{#each actor.system.abilities as |ability index|}}
+					<div class="ability-block" data-ability-index="{{index}}">
+						<div class="ability-header">
+							<div class="ability-name-input">
+								<label>{{localize 'DIE_RPG.Actor.NPC.AbilityName'}}</label>
+								<input
+									type="text"
+									name="system.abilities.{{index}}.name"
+									value="{{ability.name}}"
+									placeholder="{{localize 'DIE_RPG.UI.Placeholders.AbilityName'}}"
+									{{#unless ../editable}}disabled{{/unless}}
+								/>
+							</div>
+							{{#if ../editable}}
+								<button
+									type="button"
+									class="delete-ability-btn"
+									data-action="deleteAbility"
+									data-ability-index="{{index}}"
+									data-tooltip="{{localize 'DIE_RPG.Actor.NPC.DeleteAbility'}}"
+								>
+									<i class="fas fa-trash"></i>
+								</button>
+							{{/if}}
+						</div>
+
+						<div class="ability-description">
+							<label>{{localize 'DIE_RPG.Actor.NPC.AbilityDescription'}}</label>
+							<div class="editor scroll-indicators">
+								{{#if ../editable}}
+									<prose-mirror
+										name="system.abilities.{{index}}.description"
+										data-document-u-u-i-d="{{../actor.uuid}}"
+										value="{{ability.description}}"
+										collaborate="true"
+										toggled="true"
+										compact="true">
+										{{{ability.description}}}
+									</prose-mirror>
+								{{else}}
+									{{{ability.description}}}
+								{{/if}}
+							</div>
+						</div>
+
+						<div class="ability-special-flags">
+							<label class="checkbox-label">
+								<input
+									type="checkbox"
+									name="system.abilities.{{index}}.hasSpecial"
+									{{#if ability.hasSpecial}}checked{{/if}}
+									{{#unless ../editable}}disabled{{/unless}}
+								/>
+								<span>{{localize 'DIE_RPG.Actor.NPC.HasSpecial'}}</span>
+							</label>
+
+							<label class="checkbox-label">
+								<input
+									type="checkbox"
+									name="system.abilities.{{index}}.hasDoubleSpecial"
+									{{#if ability.hasDoubleSpecial}}checked{{/if}}
+									{{#unless ../editable}}disabled{{/unless}}
+								/>
+								<span>{{localize 'DIE_RPG.Actor.NPC.HasDoubleSpecial'}}</span>
+							</label>
+
+							<label class="checkbox-label">
+								<input
+									type="checkbox"
+									name="system.abilities.{{index}}.hasTripleSpecial"
+									{{#if ability.hasTripleSpecial}}checked{{/if}}
+									{{#unless ../editable}}disabled{{/unless}}
+								/>
+								<span>{{localize 'DIE_RPG.Actor.NPC.HasTripleSpecial'}}</span>
+							</label>
+						</div>
+					</div>
+				{{/each}}
+			{{else}}
+				<div class="empty-state">
+					<p>{{localize 'DIE_RPG.UI.EmptyStates.NoAbilities'}}</p>
+					{{#if editable}}
+						<p class="hint-text">{{localize 'DIE_RPG.UI.EmptyStates.ClickAddAbility'}}</p>
+					{{/if}}
+				</div>
+			{{/if}}
+		</div>
+
+	</div>
+</section>

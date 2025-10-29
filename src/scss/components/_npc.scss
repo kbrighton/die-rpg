@@ -1,0 +1,221 @@
+// NPC Actor Sheet Styling
+
+// NPC elements in shared header
+.sheet-header {
+  // NPC type display in left column
+  .npc-type-display {
+    font-size: 0.9rem;
+    color: $c-faint;
+    font-style: italic;
+    margin-top: $gap-sm;
+
+    .npc-type {
+      font-weight: bold;
+    }
+
+    .npc-subtype {
+      color: $c-faint;
+    }
+  }
+}
+
+// NPC Sidebar Content
+.sidebar {
+  .npc-sidebar-content {
+    padding: $padding-md;
+
+    .npc-type-info {
+      h4 {
+        margin: 0 0 $gap-sm 0;
+        font-size: 1rem;
+        border-bottom: 1px solid $c-faint;
+        padding-bottom: $gap-sm;
+      }
+
+      .npc-subtype {
+        margin: $gap-sm 0;
+        font-size: 0.95rem;
+      }
+
+      .npc-subtype-detail {
+        color: $c-faint;
+        margin: $gap-sm 0;
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+    }
+
+    .hint-text {
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// NPC Details Tab
+.tab.npc-details {
+  padding: $padding-md;
+
+  .npc-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+  }
+
+  .form-group {
+    &.info-note {
+      background: $c-warning-bg;
+      padding: $padding-md;
+      border-left: 3px solid $c-warning-border;
+
+      .note-text {
+        margin: 0;
+        font-style: italic;
+        color: $c-warning;
+
+        i {
+          margin-right: $gap-sm;
+        }
+      }
+    }
+
+    &.stacked {
+      flex: 1;
+
+      .editor {
+        min-height: 150px;
+      }
+    }
+  }
+}
+
+// NPC Abilities Tab
+.tab.npc-abilities {
+  padding: $padding-md;
+
+  .npc-abilities-container {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+  }
+
+  .abilities-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: $padding-sm;
+    border-bottom: 1px solid $c-faint;
+
+    h3 {
+      margin: 0;
+    }
+
+    .add-ability-btn {
+      display: flex;
+      align-items: center;
+      gap: $gap-sm;
+      padding: $padding-sm $padding-md;
+      background: $c-success-bg;
+      border: 1px solid $c-success-border;
+      color: $c-success;
+      cursor: pointer;
+
+      &:hover {
+        background: $c-success-bg;
+        border-color: $c-success;
+      }
+
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .abilities-list {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+  }
+
+  .ability-block {
+    padding: $padding-md;
+    background: $section-bg;
+    border: 1px solid $c-faint;
+    border-radius: 4px;
+
+    .ability-header {
+      display: flex;
+      gap: $gap-md;
+      align-items: flex-start;
+      margin-bottom: $gap-md;
+
+      .ability-name-input {
+        flex: 1;
+      }
+
+      .delete-ability-btn {
+        padding: $padding-sm;
+        background: $c-failure-bg;
+        border: 1px solid $c-failure-border;
+        color: $c-failure;
+        cursor: pointer;
+        align-self: flex-end;
+
+        &:hover {
+          background: $c-failure-bg;
+          border-color: $c-failure;
+        }
+
+        i {
+          pointer-events: none;
+        }
+      }
+    }
+
+    .ability-description {
+      margin-bottom: $gap-md;
+
+      .editor {
+        min-height: 120px;
+      }
+    }
+
+    .ability-special-flags {
+      display: flex;
+      gap: $gap-lg;
+      flex-wrap: wrap;
+      padding-top: $gap-sm;
+      border-top: 1px solid $c-faint;
+
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: $gap-sm;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+          cursor: pointer;
+        }
+
+        span {
+          user-select: none;
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: $padding-lg * 2;
+    color: $c-faint;
+    font-style: italic;
+
+    p {
+      margin: $gap-sm 0;
+    }
+
+    .hint-text {
+      font-size: 0.9rem;
+    }
+  }
+}

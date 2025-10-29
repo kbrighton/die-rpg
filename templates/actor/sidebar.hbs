@@ -1,4 +1,5 @@
 <div class="sidebar flexcol">
+	{{! Portrait image for both Characters and NPCs }}
 	<img
 		class="profile-img"
 		src="{{actor.img}}"
@@ -9,11 +10,37 @@
 		width="100"
 	/>
 
-	<div class="class-description scrollable scroll-indicators-self">
-		{{#if paragonItem}}
-			{{{paragonItem.system.coreNature}}}
-		{{else}}
-			<p>Select a paragon to view its description.</p>
-		{{/if}}
-	</div>
+	{{! Character sidebar content }}
+	{{#if (eq actor.type "character")}}
+		<div class="class-description scrollable scroll-indicators-self">
+			{{#if paragonItem}}
+				{{{paragonItem.system.coreNature}}}
+			{{else}}
+				<p>Select a paragon to view its description.</p>
+			{{/if}}
+		</div>
+	{{/if}}
+
+	{{! NPC sidebar content }}
+	{{#if (eq actor.type "npc")}}
+		<div class="npc-sidebar-content scrollable scroll-indicators-self">
+			{{#if actor.system.attributes.npcType}}
+				<div class="npc-type-info">
+					<h4>{{localize (concat "DIE_RPG.Actor.NPC.Type." (capitalize actor.system.attributes.npcType))}}</h4>
+					{{#if actor.system.attributes.creatureType}}
+						<p class="npc-subtype">{{capitalize actor.system.attributes.creatureType}}</p>
+					{{else if actor.system.attributes.paragonSubtype}}
+						<p class="npc-subtype">{{capitalize actor.system.attributes.paragonSubtype}}</p>
+						<p class="npc-subtype-detail">{{capitalize actor.system.attributes.paragonPowerLevel}}</p>
+					{{else if actor.system.attributes.echoLevel}}
+						<p class="npc-subtype">{{localize (concat "DIE_RPG.Actor.NPC.EchoLevel." (capitalize actor.system.attributes.echoLevel))}}</p>
+					{{else if actor.system.attributes.fallenSubtype}}
+						<p class="npc-subtype">{{capitalize actor.system.attributes.fallenSubtype}}</p>
+					{{/if}}
+				</div>
+			{{else}}
+				<p class="hint-text">{{localize "DIE_RPG.UI.Placeholders.SelectNPCType"}}</p>
+			{{/if}}
+		</div>
+	{{/if}}
 </div>

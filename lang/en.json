@@ -39,7 +39,9 @@
 				"Advancements": "Advancements",
 				"Loadout": "Loadout",
 				"Persona": "Persona",
-				"Notes": "Notes"
+				"Notes": "Notes",
+				"NPCDetails": "Details",
+				"NPCAbilities": "Abilities"
 			},
 			"base": {
 				"FIELDS": {
@@ -72,7 +74,75 @@
 				"ResetFlashback": "Reset Flashback"
 			},
 			"NPC": {
-				"FIELDS": {}
+				"FIELDS": {
+					"attributes": {
+						"npcType": {
+							"label": "NPC Type",
+							"hint": "The category of NPC (Paragon, Echo, Fallen, The Fair, or Creature)"
+						},
+						"paragonSubtype": {
+							"label": "Paragon Class",
+							"hint": "Which paragon class this NPC represents"
+						},
+						"paragonPowerLevel": {
+							"label": "Power Level",
+							"hint": "The strength tier of this paragon NPC"
+						},
+						"echoLevel": {
+							"label": "Echo Level",
+							"hint": "How complete is this echo's connection to the Persona"
+						},
+						"creatureType": {
+							"label": "Creature Type",
+							"hint": "The specific type of creature"
+						},
+						"fallenSubtype": {
+							"label": "Fallen Type",
+							"hint": "The strength tier of this Fallen entity"
+						}
+					},
+					"description": {
+						"label": "Description",
+						"hint": "Stat block flavor text and narrative description"
+					},
+					"defenceNotes": {
+						"label": "Defence Notes",
+						"hint": "Special conditions for defence (e.g., 'Defence 2 vs normal weapons, Defence 1 vs magic')"
+					}
+				},
+				"Type": {
+					"Paragon": "Native Paragon",
+					"Echo": "Echo",
+					"Fallen": "The Fallen",
+					"Fair": "The Fair",
+					"Creature": "Creature"
+				},
+				"PowerLevel": {
+					"Basic": "Basic",
+					"Elite": "Elite",
+					"Hero": "Hero"
+				},
+				"EchoLevel": {
+					"Appearance": "Appearance Only",
+					"Feelings": "Appearance + Feelings",
+					"Complete": "Complete Echo"
+				},
+				"FallenSubtype": {
+					"Basic": "Basic",
+					"Elite": "Elite",
+					"Assassin": "Assassin",
+					"Epic": "Epic"
+				},
+				"AbilitiesTitle": "NPC Abilities",
+				"AddAbility": "Add Ability",
+				"NewAbility": "New Ability",
+				"DeleteAbility": "Delete Ability",
+				"AbilityName": "Ability Name",
+				"AbilityDescription": "Description",
+				"HasSpecial": "Special (6+)",
+				"HasDoubleSpecial": "Double-Special (2×6+)",
+				"HasTripleSpecial": "Triple-Special (3×6+)",
+				"FairNote": "The Fair do not use traditional stats. Use coin flips for all rolls instead of dice pools. They always appear in pairs and have Defence 3."
 			}
 		},
 		"Item": {
@@ -337,6 +407,15 @@
 			"Neo": "Neo",
 			"Master": "Master"
 		},
+		"Paragon": {
+			"Dictator": "Dictator",
+			"Fool": "Fool",
+			"EmotionKnight": "Emotion Knight",
+			"Godbinder": "Godbinder",
+			"Neo": "Neo",
+			"Master": "Master",
+			"Fallen": "Fallen"
+		},
 		"AbilityType": {
 			"general": "General",
 			"scripture": "Scripture (Godbinder)",
@@ -496,7 +575,9 @@
 				"OrphanedAdvancementsRemoved": "Removed {count} orphaned advancement(s).",
 				"EquipmentOptionAdded": "{name} added to equipment options",
 				"EquipmentOptionRemoved": "Equipment option removed",
-				"EquipmentAddedToInventory": "{name} added to inventory"
+				"EquipmentAddedToInventory": "{name} added to inventory",
+				"AbilityAdded": "Ability added successfully.",
+				"AbilityDeleted": "Ability deleted successfully."
 			},
 			"Warning": {
 				"NoParagon": "No paragon item found.",
@@ -571,6 +652,7 @@
 			},
 			"Placeholders": {
 				"Name": "Name",
+				"NPCName": "NPC Name",
 				"LookName": "e.g., Leather Jacket",
 				"LookDescription": "Optional description",
 				"SpecialName": "Special name",
@@ -580,7 +662,14 @@
 				"CustomLookDescription": "Enter a custom look description",
 				"ClassDiceImagePath": "systems/die-rpg/assets/dice/custom-die.png",
 				"PortraitImagePath": "systems/die-rpg/assets/portraits/paragon-portrait.webp",
-				"TokenImagePath": "systems/die-rpg/assets/tokens/paragon-token.webp"
+				"TokenImagePath": "systems/die-rpg/assets/tokens/paragon-token.webp",
+				"SelectNPCType": "-- Select NPC Type --",
+				"SelectParagonClass": "-- Select Paragon Class --",
+				"SelectPowerLevel": "-- Select Power Level --",
+				"SelectEchoLevel": "-- Select Echo Level --",
+				"SelectCreatureType": "-- Select Creature Type --",
+				"SelectFallenSubtype": "-- Select Fallen Type --",
+				"AbilityName": "e.g., Flaming Breath, Criminal Cunning"
 			},
 			"EmptyStates": {
 				"NoParagonSelected": "No Paragon Selected",
@@ -591,7 +680,9 @@
 				"NoSpecialsDefined": "No specials defined. Add one below.",
 				"NoScriptures": "No scriptures defined. Add one below.",
 				"NoUpgrades": "No upgrades defined. Add one below.",
-				"NoEquipmentOptions": "No equipment options defined. Drag equipment items here from compendiums."
+				"NoEquipmentOptions": "No equipment options defined. Drag equipment items here from compendiums.",
+				"NoAbilities": "No abilities defined for this NPC.",
+				"ClickAddAbility": "Click 'Add Ability' to create a new ability for this NPC."
 			},
 			"Status": {
 				"Used": "Used",

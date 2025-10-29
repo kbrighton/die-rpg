@@ -2200,5 +2200,174 @@
   min-height: 200px;
   overflow-y: auto;
 }
+.die-rpg .sheet-header .npc-type-display {
+  font-size: 0.9rem;
+  color: var(--die-rpg-c-faint);
+  font-style: italic;
+  margin-top: 5px;
+}
+.die-rpg .sheet-header .npc-type-display .npc-type {
+  font-weight: bold;
+}
+.die-rpg .sheet-header .npc-type-display .npc-subtype {
+  color: var(--die-rpg-c-faint);
+}
+.die-rpg .sidebar .npc-sidebar-content {
+  padding: 10px;
+}
+.die-rpg .sidebar .npc-sidebar-content .npc-type-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--die-rpg-c-faint);
+  padding-bottom: 5px;
+}
+.die-rpg .sidebar .npc-sidebar-content .npc-type-info .npc-subtype {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+.die-rpg .sidebar .npc-sidebar-content .npc-type-info .npc-subtype-detail {
+  color: var(--die-rpg-c-faint);
+  margin: 5px 0;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+.die-rpg .sidebar .npc-sidebar-content .hint-text {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.die-rpg .tab.npc-details {
+  padding: 10px;
+}
+.die-rpg .tab.npc-details .npc-details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.die-rpg .tab.npc-details .form-group.info-note {
+  background: var(--die-rpg-c-warning-bg);
+  padding: 10px;
+  border-left: 3px solid var(--die-rpg-c-warning-border);
+}
+.die-rpg .tab.npc-details .form-group.info-note .note-text {
+  margin: 0;
+  font-style: italic;
+  color: var(--die-rpg-c-warning);
+}
+.die-rpg .tab.npc-details .form-group.info-note .note-text i {
+  margin-right: 5px;
+}
+.die-rpg .tab.npc-details .form-group.stacked {
+  flex: 1;
+}
+.die-rpg .tab.npc-details .form-group.stacked .editor {
+  min-height: 150px;
+}
+.die-rpg .tab.npc-abilities {
+  padding: 10px;
+}
+.die-rpg .tab.npc-abilities .npc-abilities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.die-rpg .tab.npc-abilities .abilities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--die-rpg-c-faint);
+}
+.die-rpg .tab.npc-abilities .abilities-header h3 {
+  margin: 0;
+}
+.die-rpg .tab.npc-abilities .abilities-header .add-ability-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: var(--die-rpg-c-success-bg);
+  border: 1px solid var(--die-rpg-c-success-border);
+  color: var(--die-rpg-c-success);
+  cursor: pointer;
+}
+.die-rpg .tab.npc-abilities .abilities-header .add-ability-btn:hover {
+  background: var(--die-rpg-c-success-bg);
+  border-color: var(--die-rpg-c-success);
+}
+.die-rpg .tab.npc-abilities .abilities-header .add-ability-btn i {
+  font-size: 0.9rem;
+}
+.die-rpg .tab.npc-abilities .abilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.die-rpg .tab.npc-abilities .ability-block {
+  padding: 10px;
+  background: var(--die-rpg-section-bg);
+  border: 1px solid var(--die-rpg-c-faint);
+  border-radius: 4px;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-header {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-header .ability-name-input {
+  flex: 1;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-header .delete-ability-btn {
+  padding: 5px;
+  background: var(--die-rpg-c-failure-bg);
+  border: 1px solid var(--die-rpg-c-failure-border);
+  color: var(--die-rpg-c-failure);
+  cursor: pointer;
+  align-self: flex-end;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-header .delete-ability-btn:hover {
+  background: var(--die-rpg-c-failure-bg);
+  border-color: var(--die-rpg-c-failure);
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-header .delete-ability-btn i {
+  pointer-events: none;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-description {
+  margin-bottom: 10px;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-description .editor {
+  min-height: 120px;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-special-flags {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 5px;
+  border-top: 1px solid var(--die-rpg-c-faint);
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-special-flags .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-special-flags .checkbox-label input[type=checkbox] {
+  cursor: pointer;
+}
+.die-rpg .tab.npc-abilities .ability-block .ability-special-flags .checkbox-label span {
+  user-select: none;
+}
+.die-rpg .tab.npc-abilities .empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--die-rpg-c-faint);
+  font-style: italic;
+}
+.die-rpg .tab.npc-abilities .empty-state p {
+  margin: 5px 0;
+}
+.die-rpg .tab.npc-abilities .empty-state .hint-text {
+  font-size: 0.9rem;
+}
 
 /*# sourceMappingURL=die-rpg.css.map */

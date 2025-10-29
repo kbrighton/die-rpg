@@ -37,6 +37,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       createItemForList: this._onCreateItemForList,
       toggleItemDetails: this._onToggleItemDetails,
       addEquipmentFromParagon: this._addEquipmentFromParagon,
+      addAbility: this._addAbility,
+      deleteAbility: this._deleteAbility,
     },
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
@@ -60,7 +62,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
-    // Tab sheets
+    // Tab sheets - Character
     paragon: {
       template: 'systems/die-rpg/templates/actor/paragon.hbs',
       classes: ["scrollable"],
@@ -86,22 +88,36 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    // Tab sheets - NPC
+    'npc-details': {
+      template: 'systems/die-rpg/templates/actor/npc-details.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
+    'npc-abilities': {
+      template: 'systems/die-rpg/templates/actor/npc-abilities.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
   };
 
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    // Not all parts always render
-    options.parts = ['header', 'sidebar', 'stats', 'tabs'];
     // Don't show the other tabs if only limited view
-    if (this.document.limited) return;
+    if (this.document.limited) {
+      options.parts = ['header', 'sidebar', 'stats', 'tabs'];
+      return;
+    }
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
+        options.parts = ['header', 'sidebar', 'stats', 'tabs'];
         options.parts.push('paragon', 'advancements', 'loadout', 'persona');
         break;
       case 'npc':
-        // options.parts.push();
+        options.parts = ['header', 'sidebar', 'stats', 'tabs'];
+        options.parts.push('npc-details', 'npc-abilities', 'loadout');
         break;
     }
     options.parts.push('notes');
@@ -273,6 +289,30 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
           }
         );
         break;
+      case 'npc-details':
+        context.tab = context.tabs[partId];
+        // Enrich NPC description
+        context.enrichedDescription = await ux.TextEditor.enrichHTML(
+          this.actor.system.description || '',
+          {
+            secrets: this.document.isOwner,
+            rollData: this.actor.getRollData(),
+            relativeTo: this.actor,
+          }
+        );
+        // Enrich NPC defence notes
+        context.enrichedDefenceNotes = await ux.TextEditor.enrichHTML(
+          this.actor.system.defenceNotes || '',
+          {
+            secrets: this.document.isOwner,
+            rollData: this.actor.getRollData(),
+            relativeTo: this.actor,
+          }
+        );
+        break;
+      case 'npc-abilities':
+        context.tab = context.tabs[partId];
+        break;
     }
     return context;
   }
@@ -286,8 +326,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   _getTabs(parts) {
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
-    // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'paragon';
+    // Default tab for first time it's rendered this session (set based on actor type)
+    if (!this.tabGroups[tabGroup]) {
+      this.tabGroups[tabGroup] = this.document.type === 'npc' ? 'npc-details' : 'paragon';
+    }
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
@@ -324,6 +366,14 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         case 'notes':
           tab.id = 'notes';
           tab.label += 'Notes';
+          break;
+        case 'npc-details':
+          tab.id = 'npc-details';
+          tab.label += 'NPCDetails';
+          break;
+        case 'npc-abilities':
+          tab.id = 'npc-abilities';
+          tab.label += 'NPCAbilities';
           break;
       }
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
@@ -751,6 +801,60 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     select.value = "";
 
     ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.EquipmentAddedToInventory", {name: equipment.name}));
+  }
+
+  /**
+   * Add a new ability to an NPC's abilities array
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _addAbility(event, target) {
+    event.preventDefault();
+
+    const abilities = this.actor.system.abilities || [];
+    const newAbility = {
+      name: game.i18n.localize("DIE_RPG.Actor.NPC.NewAbility"),
+      description: '',
+      hasSpecial: false,
+      hasDoubleSpecial: false,
+      hasTripleSpecial: false,
+    };
+
+    await this.actor.update({
+      'system.abilities': [...abilities, newAbility]
+    });
+
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.AbilityAdded"));
+  }
+
+  /**
+   * Delete an ability from an NPC's abilities array
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _deleteAbility(event, target) {
+    event.preventDefault();
+
+    const abilityIndex = parseInt(target.dataset.abilityIndex);
+    if (isNaN(abilityIndex)) {
+      console.warn('DIE RPG | Invalid ability index for deletion');
+      return;
+    }
+
+    const abilities = [...this.actor.system.abilities];
+    abilities.splice(abilityIndex, 1);
+
+    await this.actor.update({
+      'system.abilities': abilities
+    });
+
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.AbilityDeleted"));
   }
 
   /**

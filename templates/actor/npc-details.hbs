@@ -1,0 +1,192 @@
+{{! NPC Details Tab }}
+<section
+	class='tab npc-details {{tab.cssClass}}'
+	data-group='primary'
+	data-tab='npc-details'
+>
+	<div class="npc-details-grid">
+
+		{{! NPC Type Selection }}
+		<div class="form-group">
+			<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.attributes.npcType.label'}}</label>
+			<select name="system.attributes.npcType">
+				<option value="">{{localize 'DIE_RPG.UI.Placeholders.SelectNPCType'}}</option>
+				<option value="paragon" {{#if (eq actor.system.attributes.npcType 'paragon')}}selected{{/if}}>
+					{{localize 'DIE_RPG.Actor.NPC.Type.Paragon'}}
+				</option>
+				<option value="echo" {{#if (eq actor.system.attributes.npcType 'echo')}}selected{{/if}}>
+					{{localize 'DIE_RPG.Actor.NPC.Type.Echo'}}
+				</option>
+				<option value="fallen" {{#if (eq actor.system.attributes.npcType 'fallen')}}selected{{/if}}>
+					{{localize 'DIE_RPG.Actor.NPC.Type.Fallen'}}
+				</option>
+				<option value="fair" {{#if (eq actor.system.attributes.npcType 'fair')}}selected{{/if}}>
+					{{localize 'DIE_RPG.Actor.NPC.Type.Fair'}}
+				</option>
+				<option value="creature" {{#if (eq actor.system.attributes.npcType 'creature')}}selected{{/if}}>
+					{{localize 'DIE_RPG.Actor.NPC.Type.Creature'}}
+				</option>
+			</select>
+		</div>
+
+		{{! Conditional Subtype Fields }}
+
+		{{! Paragon Subtypes }}
+		{{#if (eq actor.system.attributes.npcType 'paragon')}}
+			<div class="form-group">
+				<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.attributes.paragonSubtype.label'}}</label>
+				<select name="system.attributes.paragonSubtype">
+					<option value="">{{localize 'DIE_RPG.UI.Placeholders.SelectParagonClass'}}</option>
+					<option value="dictator" {{#if (eq actor.system.attributes.paragonSubtype 'dictator')}}selected{{/if}}>{{localize 'DIE_RPG.Paragon.Dictator'}}</option>
+					<option value="neo" {{#if (eq actor.system.attributes.paragonSubtype 'neo')}}selected{{/if}}>{{localize 'DIE_RPG.Paragon.Neo'}}</option>
+					<option value="emotion-knight" {{#if (eq actor.system.attributes.paragonSubtype 'emotion-knight')}}selected{{/if}}>{{localize 'DIE_RPG.Paragon.EmotionKnight'}}</option>
+					<option value="godbinder" {{#if (eq actor.system.attributes.paragonSubtype 'godbinder')}}selected{{/if}}>{{localize 'DIE_RPG.Paragon.Godbinder'}}</option>
+					<option value="fool" {{#if (eq actor.system.attributes.paragonSubtype 'fool')}}selected{{/if}}>{{localize 'DIE_RPG.Paragon.Fool'}}</option>
+					<option value="master" {{#if (eq actor.system.attributes.paragonSubtype 'master')}}selected{{/if}}>{{localize 'DIE_RPG.Paragon.Master'}}</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.attributes.paragonPowerLevel.label'}}</label>
+				<select name="system.attributes.paragonPowerLevel">
+					<option value="">{{localize 'DIE_RPG.UI.Placeholders.SelectPowerLevel'}}</option>
+					<option value="basic" {{#if (eq actor.system.attributes.paragonPowerLevel 'basic')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.PowerLevel.Basic'}}</option>
+					<option value="elite" {{#if (eq actor.system.attributes.paragonPowerLevel 'elite')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.PowerLevel.Elite'}}</option>
+					<option value="hero" {{#if (eq actor.system.attributes.paragonPowerLevel 'hero')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.PowerLevel.Hero'}}</option>
+				</select>
+			</div>
+		{{/if}}
+
+		{{! Echo Subtypes }}
+		{{#if (eq actor.system.attributes.npcType 'echo')}}
+			<div class="form-group">
+				<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.attributes.echoLevel.label'}}</label>
+				<select name="system.attributes.echoLevel">
+					<option value="">{{localize 'DIE_RPG.UI.Placeholders.SelectEchoLevel'}}</option>
+					<option value="appearance" {{#if (eq actor.system.attributes.echoLevel 'appearance')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.EchoLevel.Appearance'}}</option>
+					<option value="feelings" {{#if (eq actor.system.attributes.echoLevel 'feelings')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.EchoLevel.Feelings'}}</option>
+					<option value="complete" {{#if (eq actor.system.attributes.echoLevel 'complete')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.EchoLevel.Complete'}}</option>
+				</select>
+			</div>
+		{{/if}}
+
+		{{! Fallen Subtypes }}
+		{{#if (eq actor.system.attributes.npcType 'fallen')}}
+			<div class="form-group">
+				<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.attributes.fallenSubtype.label'}}</label>
+				<select name="system.attributes.fallenSubtype">
+					<option value="">{{localize 'DIE_RPG.UI.Placeholders.SelectFallenSubtype'}}</option>
+					<option value="basic" {{#if (eq actor.system.attributes.fallenSubtype 'basic')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.FallenSubtype.Basic'}}</option>
+					<option value="elite" {{#if (eq actor.system.attributes.fallenSubtype 'elite')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.FallenSubtype.Elite'}}</option>
+					<option value="assassin" {{#if (eq actor.system.attributes.fallenSubtype 'assassin')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.FallenSubtype.Assassin'}}</option>
+					<option value="epic" {{#if (eq actor.system.attributes.fallenSubtype 'epic')}}selected{{/if}}>{{localize 'DIE_RPG.Actor.NPC.FallenSubtype.Epic'}}</option>
+				</select>
+			</div>
+		{{/if}}
+
+		{{! The Fair Note }}
+		{{#if (eq actor.system.attributes.npcType 'fair')}}
+			<div class="form-group info-note">
+				<p class="note-text">
+					<i class="fas fa-info-circle"></i>
+					{{localize 'DIE_RPG.Actor.NPC.FairNote'}}
+				</p>
+			</div>
+		{{/if}}
+
+		{{! Creature Types }}
+		{{#if (eq actor.system.attributes.npcType 'creature')}}
+			<div class="form-group">
+				<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.attributes.creatureType.label'}}</label>
+				<select name="system.attributes.creatureType">
+					<option value="">{{localize 'DIE_RPG.UI.Placeholders.SelectCreatureType'}}</option>
+					<option value="automatons" {{#if (eq actor.system.attributes.creatureType 'automatons')}}selected{{/if}}>Automatons</option>
+					<option value="bandits" {{#if (eq actor.system.attributes.creatureType 'bandits')}}selected{{/if}}>Bandits</option>
+					<option value="basilisks" {{#if (eq actor.system.attributes.creatureType 'basilisks')}}selected{{/if}}>Basilisks</option>
+					<option value="bears" {{#if (eq actor.system.attributes.creatureType 'bears')}}selected{{/if}}>Bears</option>
+					<option value="centaurs" {{#if (eq actor.system.attributes.creatureType 'centaurs')}}selected{{/if}}>Centaurs</option>
+					<option value="chimeras" {{#if (eq actor.system.attributes.creatureType 'chimeras')}}selected{{/if}}>Chimeras</option>
+					<option value="cockatrices" {{#if (eq actor.system.attributes.creatureType 'cockatrices')}}selected{{/if}}>Cockatrices</option>
+					<option value="demon-lesser" {{#if (eq actor.system.attributes.creatureType 'demon-lesser')}}selected{{/if}}>Demon (Lesser)</option>
+					<option value="demon-greater" {{#if (eq actor.system.attributes.creatureType 'demon-greater')}}selected{{/if}}>Demon (Greater)</option>
+					<option value="doppelgängers" {{#if (eq actor.system.attributes.creatureType 'doppelgängers')}}selected{{/if}}>Doppelgängers</option>
+					<option value="dragons" {{#if (eq actor.system.attributes.creatureType 'dragons')}}selected{{/if}}>Dragons</option>
+					<option value="dwarves" {{#if (eq actor.system.attributes.creatureType 'dwarves')}}selected{{/if}}>Dwarves</option>
+					<option value="elementals-air-fire" {{#if (eq actor.system.attributes.creatureType 'elementals-air-fire')}}selected{{/if}}>Elementals (Air/Fire)</option>
+					<option value="elementals-earth-water" {{#if (eq actor.system.attributes.creatureType 'elementals-earth-water')}}selected{{/if}}>Elementals (Earth/Water)</option>
+					<option value="elves" {{#if (eq actor.system.attributes.creatureType 'elves')}}selected{{/if}}>Elves</option>
+					<option value="gargoyles" {{#if (eq actor.system.attributes.creatureType 'gargoyles')}}selected{{/if}}>Gargoyles</option>
+					<option value="ghouls" {{#if (eq actor.system.attributes.creatureType 'ghouls')}}selected{{/if}}>Ghouls</option>
+					<option value="giant-worms" {{#if (eq actor.system.attributes.creatureType 'giant-worms')}}selected{{/if}}>Giant Worms</option>
+					<option value="giants" {{#if (eq actor.system.attributes.creatureType 'giants')}}selected{{/if}}>Giants</option>
+					<option value="goblins" {{#if (eq actor.system.attributes.creatureType 'goblins')}}selected{{/if}}>Goblins (& Hobgoblins)</option>
+					<option value="gorgons" {{#if (eq actor.system.attributes.creatureType 'gorgons')}}selected{{/if}}>Gorgons</option>
+					<option value="griffins" {{#if (eq actor.system.attributes.creatureType 'griffins')}}selected{{/if}}>Griffins</option>
+					<option value="guards" {{#if (eq actor.system.attributes.creatureType 'guards')}}selected{{/if}}>Guards (& Soldiers)</option>
+					<option value="halflings" {{#if (eq actor.system.attributes.creatureType 'halflings')}}selected{{/if}}>Halflings (& Gnomes)</option>
+					<option value="hounds" {{#if (eq actor.system.attributes.creatureType 'hounds')}}selected{{/if}}>Hounds</option>
+					<option value="hydras" {{#if (eq actor.system.attributes.creatureType 'hydras')}}selected{{/if}}>Hydras</option>
+					<option value="liches" {{#if (eq actor.system.attributes.creatureType 'liches')}}selected{{/if}}>Liches</option>
+					<option value="minotaurs" {{#if (eq actor.system.attributes.creatureType 'minotaurs')}}selected{{/if}}>Minotaurs</option>
+					<option value="ogres" {{#if (eq actor.system.attributes.creatureType 'ogres')}}selected{{/if}}>Ogres</option>
+					<option value="orcs" {{#if (eq actor.system.attributes.creatureType 'orcs')}}selected{{/if}}>Orcs</option>
+					<option value="rats" {{#if (eq actor.system.attributes.creatureType 'rats')}}selected{{/if}}>Rats</option>
+					<option value="sirens" {{#if (eq actor.system.attributes.creatureType 'sirens')}}selected{{/if}}>Sirens</option>
+					<option value="skeletons" {{#if (eq actor.system.attributes.creatureType 'skeletons')}}selected{{/if}}>Skeletons</option>
+					<option value="snakes" {{#if (eq actor.system.attributes.creatureType 'snakes')}}selected{{/if}}>Snakes</option>
+					<option value="spiders" {{#if (eq actor.system.attributes.creatureType 'spiders')}}selected{{/if}}>Spiders</option>
+					<option value="tree-spirits" {{#if (eq actor.system.attributes.creatureType 'tree-spirits')}}selected{{/if}}>Tree Spirits (Treants & Dryads)</option>
+					<option value="trolls" {{#if (eq actor.system.attributes.creatureType 'trolls')}}selected{{/if}}>Trolls</option>
+					<option value="unicorns" {{#if (eq actor.system.attributes.creatureType 'unicorns')}}selected{{/if}}>Unicorns</option>
+					<option value="vampires" {{#if (eq actor.system.attributes.creatureType 'vampires')}}selected{{/if}}>Vampires</option>
+					<option value="werewolves" {{#if (eq actor.system.attributes.creatureType 'werewolves')}}selected{{/if}}>Werewolves</option>
+					<option value="wizards" {{#if (eq actor.system.attributes.creatureType 'wizards')}}selected{{/if}}>Wizards</option>
+					<option value="wraiths" {{#if (eq actor.system.attributes.creatureType 'wraiths')}}selected{{/if}}>Wraiths</option>
+					<option value="wyverns" {{#if (eq actor.system.attributes.creatureType 'wyverns')}}selected{{/if}}>Wyverns</option>
+					<option value="zombies" {{#if (eq actor.system.attributes.creatureType 'zombies')}}selected{{/if}}>Zombies</option>
+				</select>
+			</div>
+		{{/if}}
+
+		{{! Description Field }}
+		<div class="form-group stacked description-field">
+			<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.description.label'}}</label>
+			<div class="editor scroll-indicators">
+				{{#if editable}}
+					<prose-mirror
+						name="system.description"
+						data-document-u-u-i-d="{{actor.uuid}}"
+						value="{{actor.system.description}}"
+						collaborate="true"
+						toggled="true"
+						compact="true">
+						{{{enrichedDescription}}}
+					</prose-mirror>
+				{{else}}
+					{{{enrichedDescription}}}
+				{{/if}}
+			</div>
+		</div>
+
+		{{! Defence Notes Field }}
+		<div class="form-group stacked defence-notes-field">
+			<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.defenceNotes.label'}}</label>
+			<div class="editor scroll-indicators">
+				{{#if editable}}
+					<prose-mirror
+						name="system.defenceNotes"
+						data-document-u-u-i-d="{{actor.uuid}}"
+						value="{{actor.system.defenceNotes}}"
+						collaborate="true"
+						toggled="true"
+						compact="true">
+						{{{enrichedDefenceNotes}}}
+					</prose-mirror>
+				{{else}}
+					{{{enrichedDefenceNotes}}}
+				{{/if}}
+			</div>
+		</div>
+
+	</div>
+</section>
