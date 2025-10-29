@@ -25,25 +25,5 @@
 			</div>
 		</div>
 
-		{{! Defence Notes Field }}
-		<div class="form-group stacked defence-notes-field">
-			<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.defenceNotes.label'}}</label>
-			<div class="editor scroll-indicators">
-				{{#if editable}}
-					<prose-mirror
-						name="system.defenceNotes"
-						data-document-u-u-i-d="{{actor.uuid}}"
-						value="{{actor.system.defenceNotes}}"
-						collaborate="true"
-						toggled="true"
-						compact="true">
-						{{{enrichedDefenceNotes}}}
-					</prose-mirror>
-				{{else}}
-					{{{enrichedDefenceNotes}}}
-				{{/if}}
-			</div>
-		</div>
-
 	</div>
 </section>

@@ -36,8 +36,7 @@ export default class DieRpgNPC extends DieRpgActorBase {
     });
 
     // Additional NPC-specific fields
-    schema.description = new fields.HTMLField({ required: false, blank: true }); // Stat block flavor text
-    schema.defenceNotes = new fields.HTMLField({ required: false, blank: true }); // For conditional defence (e.g., "Defence 2 vs normal, 1 vs magic")
+    schema.description = new fields.HTMLField({ required: false, blank: true }); // General NPC description and flavor text
 
     return schema;
   }

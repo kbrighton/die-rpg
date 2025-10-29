@@ -103,11 +103,7 @@
 					},
 					"description": {
 						"label": "Description",
-						"hint": "Stat block flavor text and narrative description"
-					},
-					"defenceNotes": {
-						"label": "Defence Notes",
-						"hint": "Special conditions for defence (e.g., 'Defence 2 vs normal weapons, Defence 1 vs magic')"
+						"hint": "General NPC description and flavor text"
 					}
 				},
 				"Type": {
