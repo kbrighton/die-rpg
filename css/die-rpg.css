@@ -2202,7 +2202,6 @@
 }
 .die-rpg .sheet-header .npc-type-display {
   font-size: 0.9rem;
-  color: var(--die-rpg-c-faint);
   font-style: italic;
   margin-top: 5px;
 }
@@ -2212,28 +2211,33 @@
 .die-rpg .sheet-header .npc-type-display .npc-subtype {
   color: var(--die-rpg-c-faint);
 }
-.die-rpg .sidebar .npc-sidebar-content {
+.die-rpg .sidebar .npc-sidebar-forms {
   padding: 10px;
 }
-.die-rpg .sidebar .npc-sidebar-content .npc-type-info h4 {
-  margin: 0 0 5px 0;
-  font-size: 1rem;
-  border-bottom: 1px solid var(--die-rpg-c-faint);
-  padding-bottom: 5px;
+.die-rpg .sidebar .npc-sidebar-forms .form-group {
+  margin-bottom: 10px;
 }
-.die-rpg .sidebar .npc-sidebar-content .npc-type-info .npc-subtype {
-  margin: 5px 0;
-  font-size: 0.95rem;
-}
-.die-rpg .sidebar .npc-sidebar-content .npc-type-info .npc-subtype-detail {
-  color: var(--die-rpg-c-faint);
-  margin: 5px 0;
-  font-size: 0.85rem;
-  font-style: italic;
-}
-.die-rpg .sidebar .npc-sidebar-content .hint-text {
-  font-style: italic;
+.die-rpg .sidebar .npc-sidebar-forms .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
   font-size: 0.9rem;
+}
+.die-rpg .sidebar .npc-sidebar-forms .form-group select {
+  width: 100%;
+}
+.die-rpg .sidebar .npc-sidebar-forms .form-group.info-note {
+  background: var(--die-rpg-c-warning-bg);
+  padding: 10px;
+  border-left: 3px solid var(--die-rpg-c-warning-border);
+}
+.die-rpg .sidebar .npc-sidebar-forms .form-group.info-note .note-text {
+  margin: 0;
+  font-style: italic;
+  color: var(--die-rpg-c-warning);
+}
+.die-rpg .sidebar .npc-sidebar-forms .form-group.info-note .note-text i {
+  margin-right: 5px;
 }
 .die-rpg .tab.npc-details {
   padding: 10px;
@@ -2242,19 +2246,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-.die-rpg .tab.npc-details .form-group.info-note {
-  background: var(--die-rpg-c-warning-bg);
-  padding: 10px;
-  border-left: 3px solid var(--die-rpg-c-warning-border);
-}
-.die-rpg .tab.npc-details .form-group.info-note .note-text {
-  margin: 0;
-  font-style: italic;
-  color: var(--die-rpg-c-warning);
-}
-.die-rpg .tab.npc-details .form-group.info-note .note-text i {
-  margin-right: 5px;
 }
 .die-rpg .tab.npc-details .form-group.stacked {
   flex: 1;
