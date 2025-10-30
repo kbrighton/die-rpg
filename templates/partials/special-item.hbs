@@ -1,0 +1,82 @@
+{{!--
+  Partial template for a single special item editor
+
+  Parameters:
+  - special: The special object data
+  - index: The index in the specials array
+  - basePath: The base name path (e.g., "system.specials" or "system.abilities.0.specials")
+  - documentUuid: The document UUID for prose-mirror
+  - editable: Whether the form is editable
+  - deleteAction: The action name for the delete button (default: "deleteSpecial")
+  - deleteDataAttrs: Additional data attributes for delete button (e.g., "data-ability-index='0'")
+--}}
+<li class="special-item {{#if special.mandatory}}mandatory{{/if}}" data-special-index="{{index}}">
+  <div class="special-header">
+    <div class="special-main-fields">
+      <div class="form-group">
+        <label>{{localize 'DIE_RPG.Shared.special.name.label'}}</label>
+        <input
+          type="text"
+          name="{{basePath}}.{{index}}.name"
+          value="{{special.name}}"
+          placeholder="{{localize 'DIE_RPG.UI.Placeholders.SpecialName'}}"
+          {{#unless editable}}disabled{{/unless}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="special-options">
+    <div class="form-group">
+      <label>{{localize 'DIE_RPG.Shared.special.cost.label'}}</label>
+      <select name="{{basePath}}.{{index}}.cost" {{#unless editable}}disabled{{/unless}}>
+        {{selectOptions @root.config.specialCostTypes selected=special.cost localize=true blank=""}}
+      </select>
+      <span class="hint">{{localize 'DIE_RPG.Shared.special.cost.hint'}}</span>
+    </div>
+    <div class="form-group checkbox">
+      <label>
+        <input
+          type="checkbox"
+          name="{{basePath}}.{{index}}.mandatory"
+          {{checked special.mandatory}}
+          {{#unless editable}}disabled{{/unless}}
+        />
+        {{localize 'DIE_RPG.Shared.special.mandatory.label'}}
+      </label>
+      <span class="hint">{{localize 'DIE_RPG.Shared.special.mandatory.hint'}}</span>
+    </div>
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize 'DIE_RPG.Shared.special.description.label'}}</label>
+    <div class="editor scroll-indicators">
+      {{#if editable}}
+        <prose-mirror
+          name="{{basePath}}.{{index}}.description"
+          data-document-uuid="{{documentUuid}}"
+          value="{{special.description}}"
+          collaborate="true"
+          toggled="true"
+          compact="true">
+          {{{special.description}}}
+        </prose-mirror>
+      {{else}}
+        {{{special.description}}}
+      {{/if}}
+    </div>
+  </div>
+
+  {{#if editable}}
+    <button
+      type="button"
+      class="delete-special-btn"
+      data-action="{{#if deleteAction}}{{deleteAction}}{{else}}deleteSpecial{{/if}}"
+      data-special-index="{{index}}"
+      {{{deleteDataAttrs}}}
+      title="{{localize 'DIE_RPG.UI.Tooltips.DeleteSpecial'}}"
+    >
+      <i class="fas fa-trash"></i> {{localize "DIE_RPG.UI.Buttons.Delete"}}
+    </button>
+  {{/if}}
+</li>

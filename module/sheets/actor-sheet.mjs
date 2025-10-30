@@ -39,6 +39,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       addEquipmentFromParagon: this._addEquipmentFromParagon,
       addAbility: this._addAbility,
       deleteAbility: this._deleteAbility,
+      addSpecial: this._addSpecial,
+      deleteSpecial: this._deleteSpecial,
     },
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
@@ -404,7 +406,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Process form data to handle multi-select checkboxes
+   * Process form data to handle multi-select checkboxes and nested array updates
    * @param {SubmitEvent} event             The form submission event
    * @param {HTMLFormElement} form          The form element
    * @param {FormDataExtended} formData     Processed form data
@@ -437,6 +439,45 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Always set arrays, even if empty, to properly save unchecked states
     for (const [path, values] of Object.entries(multiSelectGroups)) {
       foundry.utils.setProperty(expandedData, path, values);
+    }
+
+    // For NPC actors, deep merge nested abilities array updates to preserve all fields
+    // This prevents losing ability.name when editing ability.specials[0].name
+    // AND prevents losing sibling specials when editing one special
+    if (this.document.type === 'npc' && expandedData.system?.abilities) {
+      const currentAbilities = foundry.utils.deepClone(this.document.system.abilities || []);
+      const updatedAbilities = expandedData.system.abilities;
+
+      // Handle malformed empty-key specials (defensive fallback for template context issues)
+      // If expandObject created {"": {specials: {...}}}, move it to ability 0
+      if (updatedAbilities[""] && updatedAbilities[""].specials && currentAbilities.length > 0) {
+        updatedAbilities[0] = updatedAbilities[0] || {};
+        updatedAbilities[0].specials = updatedAbilities[""].specials;
+        delete updatedAbilities[""];
+      }
+
+      expandedData.system.abilities = currentAbilities.map((ability, index) => {
+        if (!updatedAbilities[index]) return ability;
+
+        // Create a copy of the update without specials (to prevent mergeObject from corrupting the array)
+        const updateWithoutSpecials = foundry.utils.deepClone(updatedAbilities[index]);
+        delete updateWithoutSpecials.specials;
+
+        // Merge ability-level fields (excluding specials)
+        const merged = foundry.utils.mergeObject(ability, updateWithoutSpecials, {inplace: false});
+
+        // Deep merge specials array if it exists in the update
+        if (updatedAbilities[index].specials && ability.specials) {
+          merged.specials = ability.specials.map((special, specIdx) => {
+            if (updatedAbilities[index].specials[specIdx]) {
+              return foundry.utils.mergeObject(special, updatedAbilities[index].specials[specIdx], {inplace: false});
+            }
+            return special;
+          });
+        }
+
+        return merged;
+      });
     }
 
     return expandedData;
@@ -818,9 +859,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const newAbility = {
       name: game.i18n.localize("DIE_RPG.Actor.NPC.NewAbility"),
       description: '',
-      hasSpecial: false,
-      hasDoubleSpecial: false,
-      hasTripleSpecial: false,
+      specials: [],
     };
 
     await this.actor.update({
@@ -855,6 +894,86 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     });
 
     ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.AbilityDeleted"));
+  }
+
+  /**
+   * Add a special to an NPC ability
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _addSpecial(event, target) {
+    event.preventDefault();
+
+    const abilityIndex = parseInt(target.dataset.abilityIndex);
+    if (isNaN(abilityIndex)) {
+      console.warn('DIE RPG | Invalid ability index for adding special');
+      return;
+    }
+
+    const abilities = foundry.utils.deepClone(this.actor.system.abilities);
+    const ability = abilities[abilityIndex];
+
+    if (!ability) {
+      console.warn('DIE RPG | Ability not found at index', abilityIndex);
+      return;
+    }
+
+    const newSpecial = {
+      name: game.i18n.localize("DIE_RPG.Actor.NPC.NewSpecial"),
+      description: '',
+      cost: 'special',
+      mandatory: false,
+    };
+
+    if (!ability.specials) {
+      ability.specials = [];
+    }
+    ability.specials.push(newSpecial);
+
+    await this.actor.update({
+      'system.abilities': abilities
+    });
+
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.SpecialAdded"));
+  }
+
+  /**
+   * Delete a special from an NPC ability
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _deleteSpecial(event, target) {
+    event.preventDefault();
+
+    const abilityIndex = parseInt(target.dataset.abilityIndex);
+    const specialIndex = parseInt(target.dataset.specialIndex);
+
+    if (isNaN(abilityIndex) || isNaN(specialIndex)) {
+      console.warn('DIE RPG | Invalid indices for special deletion');
+      return;
+    }
+
+    const abilities = foundry.utils.deepClone(this.actor.system.abilities);
+    const ability = abilities[abilityIndex];
+
+    if (!ability || !ability.specials || !ability.specials[specialIndex]) {
+      console.warn('DIE RPG | Special not found at indices', abilityIndex, specialIndex);
+      return;
+    }
+
+    ability.specials.splice(specialIndex, 1);
+
+    await this.actor.update({
+      'system.abilities': abilities
+    });
+
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.SpecialDeleted"));
   }
 
   /**

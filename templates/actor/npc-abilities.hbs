@@ -70,36 +70,42 @@
 							</div>
 						</div>
 
-						<div class="ability-special-flags">
-							<label class="checkbox-label">
-								<input
-									type="checkbox"
-									name="system.abilities.{{index}}.hasSpecial"
-									{{#if ability.hasSpecial}}checked{{/if}}
-									{{#unless ../editable}}disabled{{/unless}}
-								/>
-								<span>{{localize 'DIE_RPG.Actor.NPC.HasSpecial'}}</span>
-							</label>
+						{{! Ability Specials }}
+						<div class="ability-specials">
+							<div class="specials-header">
+								<label>{{localize 'DIE_RPG.Actor.NPC.FIELDS.ability.specials.label'}}</label>
+								{{#if ../editable}}
+									<button
+										type="button"
+										class="add-special-btn"
+										data-action="addSpecial"
+										data-ability-index="{{index}}"
+										data-tooltip="{{localize 'DIE_RPG.Actor.NPC.AddSpecial'}}"
+									>
+										<i class="fas fa-plus"></i>
+									</button>
+								{{/if}}
+							</div>
 
-							<label class="checkbox-label">
-								<input
-									type="checkbox"
-									name="system.abilities.{{index}}.hasDoubleSpecial"
-									{{#if ability.hasDoubleSpecial}}checked{{/if}}
-									{{#unless ../editable}}disabled{{/unless}}
-								/>
-								<span>{{localize 'DIE_RPG.Actor.NPC.HasDoubleSpecial'}}</span>
-							</label>
+							{{#if ability.specials}}
+								<ol class="specials-list">
+									{{#each ability.specials as |special specialIndex|}}
+										{{> "systems/die-rpg/templates/partials/special-item.hbs"
+											special=special
+											index=specialIndex
+											basePath=(concat "system.abilities." @../index ".specials")
+											documentUuid=../../actor.uuid
+											editable=../../editable
+											deleteAction="deleteSpecial"
+											deleteDataAttrs=(concat "data-ability-index='" @../index "'")
+										}}
+									{{/each}}
+								</ol>
+							{{/if}}
 
-							<label class="checkbox-label">
-								<input
-									type="checkbox"
-									name="system.abilities.{{index}}.hasTripleSpecial"
-									{{#if ability.hasTripleSpecial}}checked{{/if}}
-									{{#unless ../editable}}disabled{{/unless}}
-								/>
-								<span>{{localize 'DIE_RPG.Actor.NPC.HasTripleSpecial'}}</span>
-							</label>
+							{{#if (eq ability.specials.length 0)}}
+								<p class="no-specials-hint">{{localize 'DIE_RPG.UI.EmptyStates.NoSpecialsDefined'}}</p>
+							{{/if}}
 						</div>
 					</div>
 				{{/each}}

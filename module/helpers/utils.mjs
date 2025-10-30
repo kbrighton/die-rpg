@@ -22,6 +22,7 @@ export async function preloadHandlebarsTemplates() {
 	// Partial templates
 	'systems/die-rpg/templates/partials/dynamic-field.hbs',
 	'systems/die-rpg/templates/partials/number-spinner.hbs',
+	'systems/die-rpg/templates/partials/special-item.hbs',
   ]);
 }
 

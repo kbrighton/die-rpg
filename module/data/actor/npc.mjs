@@ -1,4 +1,5 @@
 import DieRpgActorBase from './base.mjs';
+import { specialsArrayField } from '../helpers.mjs';
 
 export default class DieRpgNPC extends DieRpgActorBase {
   static LOCALIZATION_PREFIXES = [
@@ -11,16 +12,17 @@ export default class DieRpgNPC extends DieRpgActorBase {
     // const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
-    // Structured abilities array with name, description, and Special flags
+    // Structured abilities array with name, description, and nested specials
     schema.abilities = new fields.ArrayField(
       new fields.SchemaField({
         name: new fields.StringField({ required: true, blank: false }),
         description: new fields.HTMLField({ required: true, blank: true }),
-        hasSpecial: new fields.BooleanField({ initial: false }),
-        hasDoubleSpecial: new fields.BooleanField({ initial: false }),
-        hasTripleSpecial: new fields.BooleanField({ initial: false }),
+        specials: specialsArrayField({ label: 'DIE_RPG.Actor.NPC.FIELDS.ability.specials.label' }),
       })
     );
+
+    // Top-level specials that are always available (not tied to a specific ability)
+    schema.specials = specialsArrayField({ label: 'DIE_RPG.Actor.NPC.FIELDS.specials.label' });
 
     // NPC type and subtype attributes
     schema.attributes = new fields.SchemaField({

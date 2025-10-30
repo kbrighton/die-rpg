@@ -104,6 +104,16 @@
 					"description": {
 						"label": "Description",
 						"hint": "General NPC description and flavor text"
+					},
+					"specials": {
+						"label": "NPC Specials",
+						"hint": "Always-available special abilities for this NPC"
+					},
+					"ability": {
+						"specials": {
+							"label": "Ability Specials",
+							"hint": "Special effects that trigger when rolling 6s"
+						}
 					}
 				},
 				"Type": {
@@ -135,9 +145,9 @@
 				"DeleteAbility": "Delete Ability",
 				"AbilityName": "Ability Name",
 				"AbilityDescription": "Description",
-				"HasSpecial": "Special (6+)",
-				"HasDoubleSpecial": "Double-Special (2×6+)",
-				"HasTripleSpecial": "Triple-Special (3×6+)",
+				"AddSpecial": "Add Special",
+				"NewSpecial": "New Special",
+				"DeleteSpecial": "Delete Special",
 				"FairNote": "The Fair do not use traditional stats. Use coin flips for all rolls instead of dice pools. They always appear in pairs and have Defence 3."
 			}
 		},
@@ -573,7 +583,9 @@
 				"EquipmentOptionRemoved": "Equipment option removed",
 				"EquipmentAddedToInventory": "{name} added to inventory",
 				"AbilityAdded": "Ability added successfully.",
-				"AbilityDeleted": "Ability deleted successfully."
+				"AbilityDeleted": "Ability deleted successfully.",
+				"SpecialAdded": "Special added successfully.",
+				"SpecialDeleted": "Special deleted successfully."
 			},
 			"Warning": {
 				"NoParagon": "No paragon item found.",

@@ -80,6 +80,7 @@ export class DieRpgActor extends Actor {
   /**
    * Get all available specials from owned items and actor features.
    * Intelligently filters based on item type and state (equipped, active, etc.).
+   * For NPCs, aggregates from both top-level specials and ability-specific specials.
    *
    * @param {object} [options={}] Filtering options.
    * @param {boolean} [options.equipped=true] Include equipped equipment.
@@ -98,6 +99,44 @@ export class DieRpgActor extends Actor {
 
     const specials = [];
 
+    // === NPC HANDLING ===
+    if (this.type === 'npc') {
+      // Add top-level NPC specials (always available)
+      if (this.system.specials && this.system.specials.length > 0) {
+        this.system.specials.forEach(special => {
+          specials.push({
+            ...special,
+            _source: {
+              itemName: 'NPC Special',
+              itemType: 'npc',
+              itemImg: this.img
+            }
+          });
+        });
+      }
+
+      // Add ability-specific specials
+      if (this.system.abilities && this.system.abilities.length > 0) {
+        this.system.abilities.forEach(ability => {
+          if (ability.specials && ability.specials.length > 0) {
+            ability.specials.forEach(special => {
+              specials.push({
+                ...special,
+                _source: {
+                  itemName: ability.name,
+                  itemType: 'npc-ability',
+                  itemImg: this.img
+                }
+              });
+            });
+          }
+        });
+      }
+
+      return specials;
+    }
+
+    // === PC/CHARACTER HANDLING ===
     // Helper to add specials with source info
     const addSpecials = (item, specialsList) => {
       if (!specialsList || specialsList.length === 0) return;
