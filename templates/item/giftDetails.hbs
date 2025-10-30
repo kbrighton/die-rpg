@@ -53,25 +53,34 @@
           </div>
 
           {{!-- Nested Specials for this Upgrade --}}
-          {{#if upgrade.specials}}
-            <div class="upgrade-specials">
-              <h4>{{localize "DIE_RPG.UI.Sections.SpecialsForItem" name=upgrade.name}}</h4>
-              {{#each upgrade.specials as |special specialIndex|}}
-                <div class="special-item-compact" data-special-index="{{specialIndex}}">
-                  <input type="text" name="system.upgrades.{{index}}.specials.{{specialIndex}}.name" value="{{special.name}}" placeholder="{{localize 'DIE_RPG.UI.Placeholders.SpecialName'}}" />
-                  <select name="system.upgrades.{{index}}.specials.{{specialIndex}}.cost">
-                    {{selectOptions @root.config.specialCostTypes selected=special.cost localize=true blank=""}}
-                  </select>
-                  <button type="button" class="delete-upgrade-special" data-action="deleteUpgradeSpecial" data-upgrade-index="{{index}}" data-special-index="{{specialIndex}}" title="{{localize 'DIE_RPG.UI.Tooltips.DeleteSpecial'}}">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              {{/each}}
+          <div class="upgrade-specials">
+            <h4>{{localize "DIE_RPG.UI.Sections.SpecialsForItem" name=upgrade.name}}</h4>
+            {{#if upgrade.specials}}
+              <div class="specials-list">
+                {{#each upgrade.specials as |special specialIndex|}}
+                  {{> "systems/die-rpg/templates/partials/special-item.hbs"
+                    special=special
+                    index=specialIndex
+                    basePath=(concat "system.upgrades." @../index ".specials")
+                    documentUuid=../../item.uuid
+                    editable=../../editable
+                    deleteAction="deleteUpgradeSpecial"
+                    deleteDataAttrs=(concat "data-upgrade-index='" @../index "'")
+                  }}
+                {{/each}}
+              </div>
+            {{/if}}
+
+            {{#if (eq upgrade.specials.length 0)}}
+              <p class="no-items">{{localize "DIE_RPG.UI.EmptyStates.NoSpecialsDefined"}}</p>
+            {{/if}}
+
+            {{#if editable}}
               <button type="button" class="add-upgrade-special" data-action="addUpgradeSpecial" data-upgrade-index="{{index}}">
                 <i class="fas fa-plus"></i> {{localize "DIE_RPG.UI.Buttons.AddSpecial"}}
               </button>
-            </div>
-          {{/if}}
+            {{/if}}
+          </div>
 
           <button type="button" class="delete-upgrade" data-action="deleteUpgrade" data-index="{{index}}" title="{{localize 'DIE_RPG.UI.Buttons.DeleteUpgrade'}}">
             <i class="fas fa-trash"></i> {{localize "DIE_RPG.UI.Buttons.DeleteUpgrade"}}

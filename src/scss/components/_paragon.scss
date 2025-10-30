@@ -36,25 +36,5 @@
     }
   }
 
-  // Specials Section - flex column layout
-  .specials-section {
-    .specials-list {
-      display: flex;
-      flex-direction: column;
-      gap: $gap-md;
-    }
-
-    .special-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: $gap-sm;
-    }
-
-    .special-meta {
-      display: flex;
-      gap: $gap-md;
-      flex-wrap: wrap;
-    }
-  }
+  // Specials Section - moved to components/_specials.scss
 }

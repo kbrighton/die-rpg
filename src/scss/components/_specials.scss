@@ -1,0 +1,352 @@
+/* ====================================
+   SPECIALS COMPONENT
+   ==================================== */
+
+// ========================================
+// BASE EDITOR STYLES (Item/Actor Forms)
+// ========================================
+
+.specials-list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+  padding: 0;
+  margin: $margin-sm 0 0 0;
+  list-style: none;
+}
+
+.special-item {
+  padding: $padding-md;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border-left: 3px solid $c-info-border;
+
+  // Add divider between items (done by gap in .specials-list)
+  // Highlight mandatory specials
+  &.mandatory {
+    border-left-color: $c-warning-border;
+    background: rgba(234, 179, 8, 0.1);
+  }
+
+  // NAME ROW (input + delete button)
+  .special-name-row {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+    margin-bottom: $margin-sm;
+
+    input[type="text"] {
+      flex: 1;
+      font-weight: bold;
+      font-size: 1.05em;
+    }
+
+    .delete-special-btn {
+      flex-shrink: 0;
+      padding: $padding-sm;
+      background: $c-failure-bg;
+      border: 1px solid $c-failure-border;
+      color: $c-failure-text;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: $c-failure;
+        color: white;
+      }
+
+      i {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  // OPTIONS ROW (special type + mandatory checkbox)
+  .special-options-row {
+    display: flex;
+    align-items: center;
+    gap: $gap-lg;
+    margin-bottom: $margin-sm;
+    flex-wrap: wrap;
+
+    .form-field-inline {
+      display: flex;
+      align-items: center;
+      gap: $gap-sm;
+      flex: 1;
+      min-width: 200px;
+
+      label {
+        margin: 0;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      select {
+        flex: 1;
+        min-width: 150px;
+      }
+    }
+
+    .form-group.checkbox {
+      margin: 0;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: $gap-sm;
+        margin: 0;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // DESCRIPTION FIELD
+  .special-description {
+    label {
+      display: block;
+      margin-bottom: $margin-sm;
+      font-weight: 600;
+    }
+
+    .editor {
+      font-size: 0.9em;
+
+      p {
+        margin: $margin-sm 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// CHARACTER SHEET DISPLAY (Read-only)
+// ========================================
+
+.special-field {
+  .special-reference {
+    padding: $padding-md;
+    background: $overlay-darker;
+    border: 1px solid $overlay-dark;
+    border-radius: 6px;
+
+    &.error {
+      background: $c-failure-bg;
+      border-color: $c-failure-border;
+
+      .hint.error {
+        color: $c-failure-text;
+        font-weight: bold;
+        margin-bottom: $margin-sm;
+
+        i {
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .special-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: $gap-md;
+      margin-bottom: $margin-sm;
+      padding-bottom: $padding-sm;
+      border-bottom: 1px solid $overlay-medium;
+
+      .special-name {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      .special-tags {
+        display: flex;
+        gap: $gap-sm;
+        flex-shrink: 0;
+
+        .tag {
+          padding: 4px 8px;
+          border-radius: 3px;
+          font-size: 0.75em;
+          font-weight: bold;
+          text-transform: uppercase;
+          white-space: nowrap;
+
+          &.mandatory {
+            background: $c-warning-bg;
+            border: 1px solid $c-warning-border;
+            color: $c-warning-text;
+          }
+
+          &.cost {
+            background: $c-info-bg;
+            border: 1px solid $c-info-border;
+            color: $c-info-text;
+          }
+        }
+      }
+    }
+
+    .special-description {
+      font-size: 0.9em;
+      line-height: 1.5;
+
+      & > *:first-child {
+        margin-top: 0;
+      }
+
+      & > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ========================================
+// PARAGON TAB OVERRIDES
+// ========================================
+
+.tab.paragon {
+  .specials-section {
+    .specials-list {
+      gap: $gap-md;
+    }
+
+    .special-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: $gap-sm;
+    }
+
+    .special-meta {
+      display: flex;
+      gap: $gap-md;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// ========================================
+// NPC ABILITIES CONTEXT
+// ========================================
+
+.npc-abilities-container {
+  .ability-specials {
+    margin-top: $margin-md;
+
+    .specials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $margin-sm;
+
+      label {
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// ========================================
+// GIFT/GOD NESTED SPECIALS
+// ========================================
+
+.upgrade-specials,
+.scripture-specials {
+  margin-top: $margin-md;
+  padding-top: $padding-md;
+  border-top: 1px solid $overlay-medium;
+
+  h4 {
+    margin: 0 0 $margin-sm 0;
+    font-size: 0.95em;
+    font-weight: bold;
+    color: $c-info;
+  }
+
+  .no-items {
+    font-size: 0.9em;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+    margin: $margin-sm 0;
+  }
+
+  .add-upgrade-special,
+  .add-scripture-special {
+    margin-top: $margin-sm;
+    width: 100%;
+  }
+}
+
+// ========================================
+// ITEM ROW CONTEXT (existing item lists)
+// ========================================
+
+.item-row {
+  .item-expanded-content {
+    .specials-list {
+      list-style: none;
+      padding: 0;
+      margin: $margin-sm 0 0 0;
+    }
+
+    .special-item {
+      padding: $padding-sm;
+      margin-bottom: $gap-sm;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 3px;
+      border-left: 3px solid $c-info-border;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .special-name {
+        font-weight: bold;
+        color: $c-info;
+      }
+
+      .special-cost {
+        font-size: 0.85em;
+        color: rgba(255, 255, 255, 0.7);
+        margin-left: 4px;
+      }
+
+      .tag.mandatory {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 2px 6px;
+        background: $c-warning-bg;
+        border: 1px solid $c-warning-border;
+        color: $c-warning-text;
+        font-size: 0.7em;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .special-desc {
+        margin-top: 4px;
+        font-size: 0.9em;
+        color: rgba(255, 255, 255, 0.85);
+
+        p {
+          color: rgba(255, 255, 255, 0.85);
+        }
+      }
+    }
+  }
+}

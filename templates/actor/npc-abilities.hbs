@@ -88,7 +88,7 @@
 							</div>
 
 							{{#if ability.specials}}
-								<ol class="specials-list">
+								<div class="specials-list">
 									{{#each ability.specials as |special specialIndex|}}
 										{{> "systems/die-rpg/templates/partials/special-item.hbs"
 											special=special
@@ -100,7 +100,7 @@
 											deleteDataAttrs=(concat "data-ability-index='" @../index "'")
 										}}
 									{{/each}}
-								</ol>
+								</div>
 							{{/if}}
 
 							{{#if (eq ability.specials.length 0)}}

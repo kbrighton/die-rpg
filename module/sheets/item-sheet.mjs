@@ -710,11 +710,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const scriptureIndex = parseInt(target.dataset.scriptureIndex);
     const scriptures = [...this.item.system.scriptures];
     const newSpecial = {
-      name: '',
+      name: game.i18n.localize("DIE_RPG.Actor.NPC.NewSpecial"),
       description: '',
       cost: 'special',
       mandatory: false,
-      key: ''
     };
     scriptures[scriptureIndex].specials = [...(scriptures[scriptureIndex].specials || []), newSpecial];
     await this.item.update({ 'system.scriptures': scriptures });
@@ -781,11 +780,10 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const upgradeIndex = parseInt(target.dataset.upgradeIndex);
     const upgrades = [...this.item.system.upgrades];
     const newSpecial = {
-      name: '',
+      name: game.i18n.localize("DIE_RPG.Actor.NPC.NewSpecial"),
       description: '',
       cost: 'special',
       mandatory: false,
-      key: ''
     };
     upgrades[upgradeIndex].specials = [...(upgrades[upgradeIndex].specials || []), newSpecial];
     await this.item.update({ 'system.upgrades': upgrades });

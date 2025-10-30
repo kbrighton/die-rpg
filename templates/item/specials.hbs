@@ -3,7 +3,7 @@
   <h2>{{localize 'DIE_RPG.Item.Paragon.FIELDS.specials.label'}}</h2>
   <p class="hint">{{localize "DIE_RPG.UI.Hints.SpecialsDescription"}}</p>
 
-  <ol class="specials-list">
+  <div class="specials-list">
     {{#each system.specials as |special index|}}
       {{> "systems/die-rpg/templates/partials/special-item.hbs"
         special=special
@@ -14,7 +14,7 @@
         deleteAction="deleteSpecial"
       }}
     {{/each}}
-  </ol>
+  </div>
 
   {{#if (eq system.specials.length 0)}}
     <p class="no-items">{{localize "DIE_RPG.UI.EmptyStates.NoSpecialsDefined"}}</p>
