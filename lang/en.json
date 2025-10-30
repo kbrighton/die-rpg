@@ -45,7 +45,8 @@
 			},
 			"base": {
 				"FIELDS": {
-					"health": { "label": "Health" }
+					"health": { "label": "Health" },
+				"notes": { "label": "Notes" }
 				}
 			},
 			"Character": {

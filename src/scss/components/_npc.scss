@@ -65,14 +65,22 @@
     display: flex;
     flex-direction: column;
     gap: $gap-md;
+    height: 100%;
   }
 
   .form-group {
     &.stacked {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: $gap-sm;
+      }
 
       .editor {
-        min-height: 150px;
+        flex: 1;
+        min-height: 200px;
       }
     }
   }

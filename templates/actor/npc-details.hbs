@@ -25,5 +25,25 @@
 			</div>
 		</div>
 
+		{{! Notes Field }}
+		<div class="form-group stacked notes-field">
+			<label>{{localize 'DIE_RPG.Actor.base.FIELDS.notes.label'}}</label>
+			<div class="editor scroll-indicators">
+				{{#if editable}}
+					<prose-mirror
+						name="system.notes"
+						data-document-u-u-i-d="{{actor.uuid}}"
+						value="{{actor.system.notes}}"
+						collaborate="true"
+						toggled="true"
+						compact="true">
+						{{{enrichedNotes}}}
+					</prose-mirror>
+				{{else}}
+					{{{enrichedNotes}}}
+				{{/if}}
+			</div>
+		</div>
+
 	</div>
 </section>

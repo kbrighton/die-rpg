@@ -115,14 +115,13 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     switch (this.document.type) {
       case 'character':
         options.parts = ['header', 'sidebar', 'stats', 'tabs'];
-        options.parts.push('paragon', 'advancements', 'loadout', 'persona');
+        options.parts.push('paragon', 'advancements', 'loadout', 'persona', 'notes');
         break;
       case 'npc':
         options.parts = ['header', 'sidebar', 'stats', 'tabs'];
         options.parts.push('npc-details', 'npc-abilities', 'loadout');
         break;
     }
-    options.parts.push('notes');
   }
 
   /* -------------------------------------------- */
@@ -296,6 +295,15 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         // Enrich NPC description
         context.enrichedDescription = await ux.TextEditor.enrichHTML(
           this.actor.system.description || '',
+          {
+            secrets: this.document.isOwner,
+            rollData: this.actor.getRollData(),
+            relativeTo: this.actor,
+          }
+        );
+        // Enrich NPC notes
+        context.enrichedNotes = await ux.TextEditor.enrichHTML(
+          this.actor.system.notes || '',
           {
             secrets: this.document.isOwner,
             rollData: this.actor.getRollData(),
