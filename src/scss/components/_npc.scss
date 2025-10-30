@@ -19,8 +19,31 @@
   }
 }
 
-// NPC Sidebar Forms
+// NPC Sidebar
 .sidebar {
+  // NPC name field at top of sidebar
+  .npc-name-field {
+    width: 100%;
+    margin-bottom: $gap-md;
+    padding: 0 $padding-md; // Match horizontal padding of .npc-sidebar-forms
+
+    .document-name {
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: $padding-sm;
+      border: 1px solid $c-faint;
+      border-radius: 4px;
+
+      &:focus {
+        outline: none;
+        border-color: $c-black;
+      }
+    }
+  }
+
+  // NPC sidebar forms
   .npc-sidebar-forms {
     padding: $padding-md;
 
@@ -79,8 +102,7 @@
       }
 
       .editor {
-        flex: 1;
-        min-height: 200px;
+        min-height: 210px;
       }
     }
   }

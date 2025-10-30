@@ -50,13 +50,23 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static PARTS = {
-    header: {
-      template: 'systems/die-rpg/templates/actor/header.hbs',
+    // Type-specific headers
+    'character-header': {
+      template: 'systems/die-rpg/templates/actor/character-header.hbs',
     },
-    sidebar: {
-      template: 'systems/die-rpg/templates/actor/sidebar.hbs',
+    'npc-header': {
+      template: 'systems/die-rpg/templates/actor/npc-header.hbs',
+    },
+    // Type-specific sidebars
+    'character-sidebar': {
+      template: 'systems/die-rpg/templates/actor/character-sidebar.hbs',
       scrollable: [""],
     },
+    'npc-sidebar': {
+      template: 'systems/die-rpg/templates/actor/npc-sidebar.hbs',
+      scrollable: [""],
+    },
+    // Shared parts
     stats: {
       template: 'systems/die-rpg/templates/actor/stats.hbs',
     },
@@ -108,17 +118,18 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     super._configureRenderOptions(options);
     // Don't show the other tabs if only limited view
     if (this.document.limited) {
-      options.parts = ['header', 'sidebar', 'stats', 'tabs'];
+      options.parts = ['character-header', 'character-sidebar', 'stats', 'tabs'];
       return;
     }
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts = ['header', 'sidebar', 'stats', 'tabs'];
+        options.parts = ['character-header', 'character-sidebar', 'stats', 'tabs'];
         options.parts.push('paragon', 'advancements', 'loadout', 'persona', 'notes');
         break;
       case 'npc':
-        options.parts = ['header', 'sidebar', 'stats', 'tabs'];
+        // NPCs have no header - name is in sidebar
+        options.parts = ['npc-sidebar', 'stats', 'tabs'];
         options.parts.push('npc-details', 'npc-abilities', 'loadout');
         break;
     }
@@ -353,8 +364,12 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       };
       switch (partId) {
         case 'header':
+        case 'character-header':
+        case 'npc-header':
         case 'tabs':
         case 'sidebar':
+        case 'character-sidebar':
+        case 'npc-sidebar':
         case 'stats':
           return tabs;
         case 'paragon':

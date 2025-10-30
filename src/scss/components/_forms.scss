@@ -297,6 +297,17 @@ h6 {
 	}
 }
 
+// NPC-specific layout (no header)
+&.actor[data-actor-type="npc"] {
+	.window-content {
+		grid-template-rows: auto auto 1fr;
+		grid-template-areas:
+			"sidebar header-fields"
+			"sidebar sheet-tabs"
+			"sidebar tab-content";
+	}
+}
+
 // ========================================
 // ROLL DIALOG STYLES
 // ========================================

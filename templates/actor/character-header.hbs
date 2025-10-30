@@ -1,0 +1,95 @@
+<header class="sheet-header">
+	<div class="header-top flexrow">
+
+		<div class="left-col flexcol">
+			{{! Paragon Selection Dropdown }}
+			<div class="paragon-selection">
+				<h2>
+					<select
+						id="paragon-select"
+						>
+						{{selectOptions
+							paragons
+							selected=actor.system.paragon.uuid
+							valueAttr="uuid"
+							labelAttr="name"
+							blank=(localize "DIE_RPG.UI.EmptyStates.NoParagonSelected")
+							sort=false
+						}}
+					</select>
+				</h2>
+				<button
+					type="button"
+					class="paragon-sheet-icon-btn"
+					data-action="viewParagon"
+					data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.OpenParagonSheet'}}"
+					{{#unless paragonItem}}disabled{{/unless}}
+				>
+					<i class="fas fa-book-open"></i>
+				</button>
+			</div>
+
+			{{! Name field }}
+			<div>
+				<input
+					class="document-name"
+					name="name"
+					type="text"
+					value="{{actor.name}}"
+					placeholder="{{localize 'DIE_RPG.UI.Placeholders.Name'}}"
+				/>
+			</div>
+
+			{{! Character flashback indicator }}
+			<div class="flashback-indicator">
+				<span class="flashback-status {{#if actor.system.flashbackUsed}}used{{else}}available{{/if}}">
+					<i class="fas fa-history"></i>
+					{{localize "DIE_RPG.UI.Labels.Flashback"}}
+					{{#if actor.system.flashbackUsed}}
+						<span class="status-text">{{localize "DIE_RPG.UI.Status.Used"}}</span>
+					{{else}}
+						<span class="status-text">{{localize "DIE_RPG.UI.Status.Available"}}</span>
+					{{/if}}
+				</span>
+				<button
+					type="button"
+					class="reset-flashback-btn"
+					data-action="resetFlashback"
+					data-tooltip="{{localize 'DIE_RPG.Actor.Character.ResetFlashback'}}"
+					{{#unless actor.system.flashbackUsed}}disabled{{/unless}}
+				>
+					<i class="fas fa-redo"></i>
+				</button>
+			</div>
+		</div>
+
+		{{! Right column - Class dice }}
+		{{#if paragonItem}}
+			<div class="right-col class-dice">
+				<div class="class-dice-description">
+					<h3 class="class-dice-title">{{localize "DIE_RPG.UI.Labels.ClassDice"}} {{uppercase paragonItem.system.die}}</h3>
+					<p>
+						{{uppercase paragonItem.system.coreAbility.name}}
+					</p>
+					<p>
+						{{{paragonItem.system.coreAbility.description}}}
+					</p>
+				</div>
+				<img
+					class="class-dice-img"
+					src="{{#if paragonItem.system.classDiceImage}}{{paragonItem.system.classDiceImage}}{{else}}systems/die-rpg/assets/DIE/dice/{{paragonItem.system.die}}-exploded.svg{{/if}}"
+					width="100"
+				/>
+			</div>
+		{{else}}
+			<div class="right-col class-dice">
+				<div class="class-dice-description">
+					<h3 class="class-dice-title">{{localize "DIE_RPG.UI.EmptyStates.NoParagonSelected"}}</h3>
+					<p>
+						{{localize "DIE_RPG.UI.EmptyStates.PleaseSelectParagon"}}
+					</p>
+				</div>
+			</div>
+		{{/if}}
+	</div>
+</header>

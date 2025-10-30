@@ -1,0 +1,21 @@
+<div class="sidebar flexcol">
+	{{! Portrait image }}
+	<img
+		class="profile-img"
+		src="{{actor.img}}"
+		data-edit="img"
+		data-action="onEditImage"
+		title="{{actor.name}}"
+		height="100"
+		width="100"
+	/>
+
+	{{! Character sidebar content - paragon description }}
+	<div class="class-description scrollable scroll-indicators-self">
+		{{#if paragonItem}}
+			{{{paragonItem.system.coreNature}}}
+		{{else}}
+			<p>Select a paragon to view its description.</p>
+		{{/if}}
+	</div>
+</div>
