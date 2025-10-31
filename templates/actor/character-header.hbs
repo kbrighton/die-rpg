@@ -61,6 +61,38 @@
 					<i class="fas fa-redo"></i>
 				</button>
 			</div>
+
+			{{! Fallen mode indicator }}
+			<div class="fallen-mode-indicator">
+				{{#if editable}}
+					<button
+						type="button"
+						class="fallen-mode-toggle {{#if actor.system.fallenMode}}active{{/if}}"
+						data-action="toggleFallenMode"
+						data-tooltip="{{#if actor.system.fallenMode}}{{localize 'DIE_RPG.FallenMode.TooltipReturnToLiving'}}{{else}}{{localize 'DIE_RPG.FallenMode.TooltipEnterFallen'}}{{/if}}"
+					>
+						<i class="fas {{#if actor.system.fallenMode}}fa-skull{{else}}fa-heart{{/if}}"></i>
+						<span class="label">
+							{{#if actor.system.fallenMode}}
+								{{localize "DIE_RPG.FallenMode.LabelFallen"}}
+							{{else}}
+								{{localize "DIE_RPG.FallenMode.LabelLiving"}}
+							{{/if}}
+						</span>
+					</button>
+				{{else}}
+					<div class="fallen-mode-display {{#if actor.system.fallenMode}}active{{/if}}">
+						<i class="fas {{#if actor.system.fallenMode}}fa-skull{{else}}fa-heart{{/if}}"></i>
+						<span class="label">
+							{{#if actor.system.fallenMode}}
+								{{localize "DIE_RPG.FallenMode.LabelFallen"}}
+							{{else}}
+								{{localize "DIE_RPG.FallenMode.LabelLiving"}}
+							{{/if}}
+						</span>
+					</div>
+				{{/if}}
+			</div>
 		</div>
 
 		{{! Right column - Class dice }}

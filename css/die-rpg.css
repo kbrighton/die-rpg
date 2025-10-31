@@ -985,6 +985,84 @@
 .die-rpg.actor .window-content .sheet-header .header-top .flashback-indicator .reset-flashback-btn i {
   pointer-events: none;
 }
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--die-rpg-overlay-dark);
+  border: 1px solid var(--die-rpg-overlay-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle i {
+  font-size: 1em;
+  color: var(--die-rpg-c-success);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle .label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle:hover {
+  background: var(--die-rpg-overlay-darker);
+  border-color: var(--die-rpg-overlay-medium);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle:hover i {
+  color: var(--die-rpg-c-white);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle:hover .label {
+  color: var(--die-rpg-c-white);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle.active {
+  background: var(--die-rpg-c-failure-bg);
+  border-color: var(--die-rpg-c-failure-border);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle.active i {
+  color: var(--die-rpg-c-failure);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle.active .label {
+  color: var(--die-rpg-c-failure);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle.active:hover {
+  background: rgba(139, 0, 0, 0.3);
+  border-color: var(--die-rpg-c-failure);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle.active:hover i,
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-toggle.active:hover .label {
+  filter: brightness(1.2);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-display {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--die-rpg-overlay-darker);
+  border-radius: 4px;
+  opacity: 0.8;
+  font-size: 0.9em;
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-display i {
+  font-size: 1em;
+  color: var(--die-rpg-c-success);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-display .label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-display.active {
+  background: var(--die-rpg-c-failure-bg);
+}
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-display.active i,
+.die-rpg.actor .window-content .sheet-header .header-top .fallen-mode-indicator .fallen-mode-display.active .label {
+  color: var(--die-rpg-c-failure);
+}
 .die-rpg.actor .window-content .sheet-header .header-top .paragon-selection {
   display: flex;
   align-items: center;
@@ -2285,6 +2363,271 @@
   align-items: center;
   gap: 10px;
 }
+.die-rpg .tab.paragon .fallen-mode-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.die-rpg .tab.paragon .fallen-state-info {
+  padding: 20px;
+  background: var(--die-rpg-overlay-dark);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-radius: 4px;
+}
+.die-rpg .tab.paragon .fallen-state-info .section-title {
+  margin: 0 0 5px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--die-rpg-c-failure);
+}
+.die-rpg .tab.paragon .fallen-state-info .fallen-description {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg .tab.paragon .fallen-rules {
+  padding: 20px;
+  background: var(--die-rpg-overlay-darker);
+  border-left: 3px solid var(--die-rpg-overlay-medium);
+  border-radius: 2px;
+}
+.die-rpg .tab.paragon .fallen-rules h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+.die-rpg .tab.paragon .fallen-rules .rules-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg .tab.paragon .fallen-rules .rules-list li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+.die-rpg .tab.paragon .fallen-rules .rules-list li:last-child {
+  margin-bottom: 0;
+}
+.die-rpg .tab.paragon .fallen-claws {
+  padding: 20px;
+  background: var(--die-rpg-overlay-dark);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-radius: 4px;
+}
+.die-rpg .tab.paragon .fallen-claws h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+.die-rpg .tab.paragon .fallen-claws .claws-description {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+.die-rpg .tab.paragon .fallen-claws .poison-special {
+  padding: 10px;
+  background: var(--die-rpg-overlay-darker);
+  border-left: 3px solid var(--die-rpg-c-failure-border);
+  border-radius: 2px;
+}
+.die-rpg .tab.paragon .fallen-claws .poison-special strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--die-rpg-c-failure);
+  font-size: 0.95rem;
+}
+.die-rpg .tab.paragon .fallen-claws .poison-special p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-header .add-ability-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  background: var(--die-rpg-c-success-bg);
+  color: var(--die-rpg-c-success-text);
+  border: 1px solid var(--die-rpg-c-success-border);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-header .add-ability-btn i {
+  font-size: 0.625rem;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-header .add-ability-btn:hover {
+  background: var(--die-rpg-c-success);
+  border-color: var(--die-rpg-c-success);
+  color: var(--die-rpg-c-white);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .abilities-list .hint-text {
+  margin: 0;
+  padding: 10px;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  background: var(--die-rpg-overlay-darker);
+  border-radius: 3px;
+  text-align: center;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block {
+  padding: 10px;
+  background: var(--die-rpg-overlay-dark);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-radius: 4px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header input[type=text] {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  background: var(--die-rpg-overlay-darker);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.95);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header input[type=text]:focus {
+  outline: none;
+  border-color: var(--die-rpg-overlay-light);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header input[type=text]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header .delete-ability-btn {
+  padding: 0.25rem 0.5rem;
+  background: var(--die-rpg-c-failure-bg);
+  color: var(--die-rpg-c-failure);
+  border: 1px solid var(--die-rpg-c-failure-border);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header .delete-ability-btn i {
+  font-size: 0.75rem;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-header .delete-ability-btn:hover {
+  background: var(--die-rpg-c-failure);
+  border-color: var(--die-rpg-c-failure);
+  color: var(--die-rpg-c-white);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-description,
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-customization {
+  margin-bottom: 10px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-description label,
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-customization label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-description prose-mirror,
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-customization prose-mirror {
+  min-height: 100px;
+  background: var(--die-rpg-overlay-darker);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-radius: 3px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid var(--die-rpg-overlay-medium);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .specials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .specials-header label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .specials-header .add-special-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  background: var(--die-rpg-c-success-bg);
+  color: var(--die-rpg-c-success-text);
+  border: 1px solid var(--die-rpg-c-success-border);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .specials-header .add-special-btn i {
+  font-size: 0.625rem;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .specials-header .add-special-btn:hover {
+  background: var(--die-rpg-c-success);
+  border-color: var(--die-rpg-c-success);
+  color: var(--die-rpg-c-white);
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .specials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.die-rpg .tab.paragon .monstrous-abilities-container .monstrous-ability-block .ability-specials .hint-text {
+  margin: 0;
+  padding: 5px;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  background: var(--die-rpg-overlay-darkest);
+  border-radius: 3px;
+}
+.die-rpg .tab.paragon .second-death-warning {
+  padding: 20px;
+  background: var(--die-rpg-overlay-dark);
+  border: 1px solid var(--die-rpg-overlay-medium);
+  border-left: 3px solid var(--die-rpg-c-failure-border);
+  border-radius: 4px;
+}
+.die-rpg .tab.paragon .second-death-warning h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--die-rpg-c-failure);
+}
+.die-rpg .tab.paragon .second-death-warning .warning-text {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.9);
+}
 .die-rpg .tab.persona {
   padding: 10px;
 }
@@ -2528,5 +2871,3 @@
 .die-rpg .tab.npc-abilities .empty-state .hint-text {
   font-size: 0.9rem;
 }
-
-/*# sourceMappingURL=die-rpg.css.map */

@@ -131,6 +131,101 @@ h6 {
 					}
 				}
 
+				.fallen-mode-indicator {
+					display: flex;
+					align-items: center;
+					margin-top: $margin-sm;
+
+					.fallen-mode-toggle {
+						display: flex;
+						align-items: center;
+						gap: 0.25rem;
+						padding: 0.5rem 0.75rem;
+						background: $overlay-dark;
+						border: 1px solid $overlay-dark;
+						border-radius: 4px;
+						cursor: pointer;
+						transition: all 0.2s ease;
+						font-size: 0.9em;
+
+						i {
+							font-size: 1em;
+							color: $c-success;
+						}
+
+						.label {
+							font-weight: 600;
+							color: rgba(255, 255, 255, 0.9);
+						}
+
+						&:hover {
+							background: $overlay-darker;
+							border-color: $overlay-medium;
+
+							i {
+								color: $c-white;
+							}
+
+							.label {
+								color: $c-white;
+							}
+						}
+
+						&.active {
+							background: $c-failure-bg;
+							border-color: $c-failure-border;
+
+							i {
+								color: $c-failure;
+							}
+
+							.label {
+								color: $c-failure;
+							}
+
+							&:hover {
+								background: rgba(139, 0, 0, 0.3);
+								border-color: $c-failure;
+
+								i,
+								.label {
+									filter: brightness(1.2);
+								}
+							}
+						}
+					}
+
+					.fallen-mode-display {
+						display: flex;
+						align-items: center;
+						gap: 0.25rem;
+						padding: 0.5rem 0.75rem;
+						background: $overlay-darker;
+						border-radius: 4px;
+						opacity: 0.8;
+						font-size: 0.9em;
+
+						i {
+							font-size: 1em;
+							color: $c-success;
+						}
+
+						.label {
+							font-weight: 600;
+							color: rgba(255, 255, 255, 0.9);
+						}
+
+						&.active {
+							background: $c-failure-bg;
+
+							i,
+							.label {
+								color: $c-failure;
+							}
+						}
+					}
+				}
+
 				.paragon-selection {
 					display: flex;
 					align-items: center;

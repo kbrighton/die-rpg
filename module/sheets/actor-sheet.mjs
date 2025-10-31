@@ -34,11 +34,14 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       toggleAdvancement: this._toggleAdvancement,
       viewParagon: this._viewParagon,
       resetFlashback: this._resetFlashback,
+      toggleFallenMode: this._toggleFallenMode,
       createItemForList: this._onCreateItemForList,
       toggleItemDetails: this._onToggleItemDetails,
       addEquipmentFromParagon: this._addEquipmentFromParagon,
       addAbility: this._addAbility,
       deleteAbility: this._deleteAbility,
+      addMonstrousAbility: this._addMonstrousAbility,
+      deleteMonstrousAbility: this._deleteMonstrousAbility,
       addSpecial: this._addSpecial,
       deleteSpecial: this._deleteSpecial,
     },
@@ -503,6 +506,43 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       });
     }
 
+    // For character actors, deep merge nested monstrousAbilities array updates
+    // Same logic as NPC abilities above
+    if (this.document.type === 'character' && expandedData.system?.monstrousAbilities) {
+      const currentAbilities = foundry.utils.deepClone(this.document.system.monstrousAbilities || []);
+      const updatedAbilities = expandedData.system.monstrousAbilities;
+
+      // Handle malformed empty-key specials (defensive fallback for template context issues)
+      if (updatedAbilities[""] && updatedAbilities[""].specials && currentAbilities.length > 0) {
+        updatedAbilities[0] = updatedAbilities[0] || {};
+        updatedAbilities[0].specials = updatedAbilities[""].specials;
+        delete updatedAbilities[""];
+      }
+
+      expandedData.system.monstrousAbilities = currentAbilities.map((ability, index) => {
+        if (!updatedAbilities[index]) return ability;
+
+        // Create a copy of the update without specials
+        const updateWithoutSpecials = foundry.utils.deepClone(updatedAbilities[index]);
+        delete updateWithoutSpecials.specials;
+
+        // Merge ability-level fields (excluding specials)
+        const merged = foundry.utils.mergeObject(ability, updateWithoutSpecials, {inplace: false});
+
+        // Deep merge specials array if it exists in the update
+        if (updatedAbilities[index].specials && ability.specials) {
+          merged.specials = ability.specials.map((special, specIdx) => {
+            if (updatedAbilities[index].specials[specIdx]) {
+              return foundry.utils.mergeObject(special, updatedAbilities[index].specials[specIdx], {inplace: false});
+            }
+            return special;
+          });
+        }
+
+        return merged;
+      });
+    }
+
     return expandedData;
   }
 
@@ -764,6 +804,78 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     event.preventDefault();
     await this.actor.update({ 'system.flashbackUsed': false });
     ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.FlashbackReset"));
+  }
+
+  /**
+   * Handle toggling fallen mode on/off
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _toggleFallenMode(event, target) {
+    event.preventDefault();
+    const newState = !this.actor.system.fallenMode;
+    await this.actor.update({ 'system.fallenMode': newState });
+
+    const messageKey = newState
+      ? "DIE_RPG.Notifications.Success.FallenModeEnabled"
+      : "DIE_RPG.Notifications.Success.FallenModeDisabled";
+    ui.notifications.info(game.i18n.localize(messageKey));
+  }
+
+  /**
+   * Add a new monstrous ability to a character's monstrousAbilities array
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _addMonstrousAbility(event, target) {
+    event.preventDefault();
+
+    const abilities = this.actor.system.monstrousAbilities || [];
+    const newAbility = {
+      name: game.i18n.localize("DIE_RPG.FallenMode.MonstrousAbilities.NewAbility"),
+      description: '',
+      customization: '',
+      specials: [],
+    };
+
+    await this.actor.update({
+      'system.monstrousAbilities': [...abilities, newAbility]
+    });
+
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.MonstrousAbilityAdded"));
+  }
+
+  /**
+   * Delete a monstrous ability from a character's monstrousAbilities array
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The button element
+   * @protected
+   */
+  static async _deleteMonstrousAbility(event, target) {
+    event.preventDefault();
+
+    const abilityIndex = parseInt(target.dataset.abilityIndex);
+    if (isNaN(abilityIndex)) {
+      console.warn('DIE RPG | Invalid monstrous ability index for deletion');
+      return;
+    }
+
+    const abilities = [...this.actor.system.monstrousAbilities];
+    abilities.splice(abilityIndex, 1);
+
+    await this.actor.update({
+      'system.monstrousAbilities': abilities
+    });
+
+    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.MonstrousAbilityDeleted"));
   }
 
   /**

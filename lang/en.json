@@ -56,6 +56,26 @@
 						"label": "Flashback Used",
 						"hint": "Whether the character has used their once-per-session flashback"
 					},
+					"fallenMode": {
+						"label": "Fallen Mode",
+						"hint": "Whether this character has died and become a Fallen"
+					},
+					"monstrousAbilities": {
+						"label": "Monstrous Abilities",
+						"hint": "Abilities gained upon becoming Fallen"
+					},
+					"monstrousAbility": {
+						"name": { "label": "Ability Name" },
+						"description": {
+							"label": "Description",
+							"hint": "What this monstrous ability does"
+						},
+						"customization": {
+							"label": "Customization",
+							"hint": "Describe what this looks/sounds like for your character"
+						},
+						"specials": { "label": "Specials" }
+					},
 					"paragon": {
 						"classAbilityData": {
 							"label": "Class Ability Data",
@@ -406,6 +426,72 @@
 			"Passive": "Passive Effects",
 			"Inactive": "Inactive Effects"
 		},
+		"FallenMode": {
+			"LabelLiving": "Living",
+			"LabelFallen": "Fallen",
+			"TooltipEnterFallen": "Click to enter Fallen mode",
+			"TooltipReturnToLiving": "Click to return to Living mode",
+			"Title": "You Are Fallen",
+			"Description": "You are an undead monster. If you kill one of the other player characters, you become alive again.",
+			"UnlifeRules": {
+				"Title": "Unlife After Death",
+				"LostAbilities": "You lose access to any special abilities granted by your class, but keep your stats and equipment.",
+				"Resurrection": "If you provide the killing Wound to another Persona-controlled character, you immediately come to life and regain all your class abilities.",
+				"VoteDoesNotCount": "Your vote to go home no longer counts, because you're dead."
+			},
+			"FallenClaws": {
+				"Title": "Fallen Claws",
+				"Description": "While your old weaponry might look the same, it's changed. Many Fallen abandon the pretence, lose their weapons, and attack with claws sprouting from their body.",
+				"PoisonLabel": "Special: Poison",
+				"PoisonEffect": "All attacks you make gain Special: if this attack causes a Wound the target is poisoned. (Lose 1 Health per round until a character succeeds a Constitution test.)"
+			},
+			"SecondDeath": {
+				"Title": "Second Death?",
+				"Description": "You're dead. At least the worst has happened, right? If you die again, you will rise again at the end of the encounter. You have a nagging feeling there are only so many times this can happen before you lose something fundamental. (You're right.)"
+			},
+			"MonstrousAbilities": {
+				"Title": "Monstrous Abilities",
+				"AddButton": "Add Ability",
+				"AddTooltip": "Add a new monstrous ability",
+				"DeleteTooltip": "Delete this monstrous ability",
+				"NewAbility": "New Monstrous Ability",
+				"NamePlaceholder": "Ability Name",
+				"DescriptionLabel": "Description",
+				"CustomizationLabel": "Customization (what does this look/sound like?)",
+				"SpecialsLabel": "Specials",
+				"AddSpecialButton": "Add Special",
+				"AddSpecialTooltip": "Add a special to this ability",
+				"NoSpecials": "No specials defined for this ability",
+				"NoAbilities": "No monstrous abilities. Click 'Add Ability' to create one."
+			}
+		},
+		"MonstrousAbilities": {
+			"Flight": {
+				"name": "Flight",
+				"description": "<p>You are able to soar through the sky at a sprinting pace.</p>",
+				"customizationPrompt": "<p><em>Decide what this looks like:</em></p><ul><li>Wings</li><li>Thrusters</li><li>Enormous blood-coated springs</li><li>Something else</li></ul>"
+			},
+			"Intangibility": {
+				"name": "Intangibility",
+				"description": "<p>You are able to move spectrally through objects that bar your path. (This gives you no specific bonus to resist damage.)</p>",
+				"customizationPrompt": "<p><em>Decide what this looks like:</em></p><ul><li>Classic spectral</li><li>A burst of digital noise</li><li>Transformation into burrowing worms</li><li>Something else</li></ul>"
+			},
+			"UncannyScenes": {
+				"name": "Uncanny Senses",
+				"description": "<p>You can perceive things far beyond normal human capabilities.</p>",
+				"customizationPrompt": "<p><em>Decide which type of thing you can sense:</em></p><ul><li>Strong emotions</li><li>Heartbeats and breathing</li><li>Narrative</li><li>Something else</li></ul>"
+			},
+			"SizeChanging": {
+				"name": "Size Changing",
+				"description": "<p>You can swell to four times your height or shrink to a tenth of your size.</p>",
+				"customizationPrompt": "<p><em>Decide what this looks and/or sounds like:</em></p><ul><li>Cracking gristle and bone</li><li>Folding and unfolding fractal limbs</li><li>An incongruous slide-whistle</li><li>Something else</li></ul>"
+			},
+			"ShapeChanging": {
+				"name": "Shape Changing",
+				"description": "<p>You can change your form to appear to be something else... until you attack.</p>",
+				"customizationPrompt": "<p><em>Decide what your tell is, no matter your form:</em></p><ul><li>Your voice remains an awful undead crackle</li><li>You smell like the rotting flesh you are</li><li>All animals view you with fear and suspicion</li><li>Something else</li></ul>"
+			}
+		},
 		"Class": {
 			"Dictator": "Dictator",
 			"Fool": "Fool",
@@ -583,8 +669,12 @@
 				"EquipmentOptionAdded": "{name} added to equipment options",
 				"EquipmentOptionRemoved": "Equipment option removed",
 				"EquipmentAddedToInventory": "{name} added to inventory",
+				"FallenModeEnabled": "Character has fallen. They are now undead.",
+				"FallenModeDisabled": "Character returned to life.",
 				"AbilityAdded": "Ability added successfully.",
 				"AbilityDeleted": "Ability deleted successfully.",
+				"MonstrousAbilityAdded": "Monstrous ability added successfully.",
+				"MonstrousAbilityDeleted": "Monstrous ability deleted successfully.",
 				"SpecialAdded": "Special added successfully.",
 				"SpecialDeleted": "Special deleted successfully."
 			},
