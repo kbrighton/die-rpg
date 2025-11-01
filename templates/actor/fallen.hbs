@@ -1,0 +1,165 @@
+{{! Fallen Tab }}
+<section
+  class='tab fallen {{tab.cssClass}}'
+  data-group='primary'
+  data-tab='fallen'
+>
+	<div class="fallen-mode-section">
+
+		{{! Fallen State Info }}
+		<div class="fallen-state-info">
+			<h3 class="section-title">{{localize "DIE_RPG.FallenMode.Title"}}</h3>
+			<div class="fallen-description">
+				<p>{{{localize "DIE_RPG.FallenMode.Description"}}}</p>
+			</div>
+		</div>
+
+		{{! Unlife Rules }}
+		<div class="fallen-rules">
+			<h4>{{localize "DIE_RPG.FallenMode.UnlifeRules.Title"}}</h4>
+			<ul class="rules-list">
+				<li>{{{localize "DIE_RPG.FallenMode.UnlifeRules.LostAbilities"}}}</li>
+				<li>{{{localize "DIE_RPG.FallenMode.UnlifeRules.Resurrection"}}}</li>
+				<li>{{{localize "DIE_RPG.FallenMode.UnlifeRules.VoteDoesNotCount"}}}</li>
+			</ul>
+		</div>
+
+		{{! Fallen Claws }}
+		<div class="fallen-claws">
+			<h4>{{localize "DIE_RPG.FallenMode.FallenClaws.Title"}}</h4>
+			<p class="claws-description">{{{localize "DIE_RPG.FallenMode.FallenClaws.Description"}}}</p>
+			<div class="poison-special">
+				<strong>{{localize "DIE_RPG.FallenMode.FallenClaws.PoisonLabel"}}</strong>
+				<p>{{{localize "DIE_RPG.FallenMode.FallenClaws.PoisonEffect"}}}</p>
+			</div>
+		</div>
+
+		{{! Monstrous Abilities }}
+		<div class="monstrous-abilities-container">
+			<div class="abilities-header">
+				<h4>{{localize "DIE_RPG.FallenMode.MonstrousAbilities.Title"}}</h4>
+				{{#if editable}}
+					<button
+						type="button"
+						class="add-ability-btn"
+						data-action="addMonstrousAbility"
+						data-tooltip="{{localize 'DIE_RPG.FallenMode.MonstrousAbilities.AddTooltip'}}"
+					>
+						<i class="fas fa-plus"></i>
+						{{localize "DIE_RPG.FallenMode.MonstrousAbilities.AddButton"}}
+					</button>
+				{{/if}}
+			</div>
+
+			<div class="abilities-list">
+				{{#if actor.system.monstrousAbilities.length}}
+					{{#each actor.system.monstrousAbilities as |ability index|}}
+						<div class="ability-block monstrous-ability-block" data-ability-index="{{index}}">
+
+							{{! Ability Header: Name + Delete }}
+							<div class="ability-header">
+								<input
+									type="text"
+									name="system.monstrousAbilities.{{index}}.name"
+									value="{{ability.name}}"
+									placeholder="{{localize 'DIE_RPG.FallenMode.MonstrousAbilities.NamePlaceholder'}}"
+									{{#unless ../editable}}disabled{{/unless}}
+								/>
+								{{#if ../editable}}
+									<button
+										type="button"
+										class="delete-ability-btn"
+										data-action="deleteMonstrousAbility"
+										data-ability-index="{{index}}"
+										data-tooltip="{{localize 'DIE_RPG.FallenMode.MonstrousAbilities.DeleteTooltip'}}"
+									>
+										<i class="fas fa-trash"></i>
+									</button>
+								{{/if}}
+							</div>
+
+							{{! Ability Description }}
+							<div class="ability-description">
+								<label>{{localize "DIE_RPG.FallenMode.MonstrousAbilities.DescriptionLabel"}}</label>
+								<prose-mirror
+									name="system.monstrousAbilities.{{index}}.description"
+									data-document-u-u-i-d="{{../actor.uuid}}"
+									value="{{ability.description}}"
+									collaborate="true"
+									toggled="true"
+									compact="true"
+									{{#unless ../editable}}editable="false"{{/unless}}
+								>
+									{{{ability.description}}}
+								</prose-mirror>
+			</div>
+
+							{{! Customization Field }}
+							<div class="ability-customization">
+								<label>{{localize "DIE_RPG.FallenMode.MonstrousAbilities.CustomizationLabel"}}</label>
+								<prose-mirror
+									name="system.monstrousAbilities.{{index}}.customization"
+									data-document-u-u-i-d="{{../actor.uuid}}"
+									value="{{ability.customization}}"
+									collaborate="true"
+									toggled="true"
+									compact="true"
+									{{#unless ../editable}}editable="false"{{/unless}}
+								>
+									{{{ability.customization}}}
+								</prose-mirror>
+							</div>
+
+							{{! Specials Subsection }}
+							<div class="ability-specials">
+								<div class="specials-header">
+									<label>{{localize "DIE_RPG.FallenMode.MonstrousAbilities.SpecialsLabel"}}</label>
+									{{#if ../editable}}
+										<button
+											type="button"
+											class="add-special-btn"
+											data-action="addSpecial"
+											data-ability-index="{{index}}"
+											data-tooltip="{{localize 'DIE_RPG.FallenMode.MonstrousAbilities.AddSpecialTooltip'}}"
+										>
+											<i class="fas fa-plus"></i>
+											{{localize "DIE_RPG.FallenMode.MonstrousAbilities.AddSpecialButton"}}
+										</button>
+									{{/if}}
+								</div>
+
+								{{#if ability.specials.length}}
+									<div class="specials-list">
+										{{#each ability.specials as |special specialIndex|}}
+											{{> "systems/die-rpg/templates/partials/special-item.hbs"
+												special=special
+												index=specialIndex
+												basePath=(concat "system.monstrousAbilities." ../index ".specials")
+												documentUuid=../../actor.uuid
+												editable=../../editable
+												deleteAction="deleteSpecial"
+												deleteDataAttrs=(concat "data-ability-index='" ../index "' data-special-index='" specialIndex "'")
+											}}
+										{{/each}}
+									</div>
+								{{else}}
+									<p class="hint-text">{{localize "DIE_RPG.FallenMode.MonstrousAbilities.NoSpecials"}}</p>
+								{{/if}}
+							</div>
+
+						</div>
+					{{/each}}
+				{{else}}
+					<p class="hint-text">{{localize "DIE_RPG.FallenMode.MonstrousAbilities.NoAbilities"}}</p>
+				{{/if}}
+			</div>
+		</div>
+
+		{{! Second Death Warning }}
+		<div class="second-death-warning">
+			<h4>{{localize "DIE_RPG.FallenMode.SecondDeath.Title"}}</h4>
+			<p class="warning-text">{{{localize "DIE_RPG.FallenMode.SecondDeath.Description"}}}</p>
+		</div>
+
+	</div>
+</section>

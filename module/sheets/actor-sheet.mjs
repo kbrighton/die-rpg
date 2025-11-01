@@ -83,6 +83,11 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
+    fallen: {
+      template: 'systems/die-rpg/templates/actor/fallen.hbs',
+      classes: ["scrollable"],
+      scrollable: [""],
+    },
     advancements: {
       template: 'systems/die-rpg/templates/actor/advancements.hbs',
       classes: ["scrollable"],
@@ -128,7 +133,26 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     switch (this.document.type) {
       case 'character':
         options.parts = ['character-header', 'character-sidebar', 'stats', 'tabs'];
-        options.parts.push('paragon', 'advancements', 'loadout', 'persona', 'notes');
+
+        // Conditionally show Paragon and/or Fallen tabs based on fallenMode and game mode
+        const gameMode = game.settings.get('die-rpg', 'fallenGameMode');
+        const isFallen = this.document.system.fallenMode;
+
+        if (isFallen) {
+          if (gameMode === 'campaign') {
+            // Campaign mode: Show both Paragon and Fallen tabs
+            options.parts.push('paragon', 'fallen');
+          } else {
+            // Rituals mode: Only show Fallen tab (lose all paragon powers)
+            options.parts.push('fallen');
+          }
+        } else {
+          // Living character: Only show Paragon tab
+          options.parts.push('paragon');
+        }
+
+        // Always show other tabs
+        options.parts.push('advancements', 'loadout', 'persona', 'notes');
         break;
       case 'npc':
         // NPCs have no header - name is in sidebar
@@ -270,6 +294,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       case 'paragon':
         context.tab = context.tabs[partId];
         break;
+      case 'fallen':
+        context.tab = context.tabs[partId];
+        break;
       case 'persona':
         context.tab = context.tabs[partId];
         // Enrich persona notes for display
@@ -378,6 +405,10 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         case 'paragon':
           tab.id = 'paragon';
           tab.label += 'Paragon';
+          break;
+        case 'fallen':
+          tab.id = 'fallen';
+          tab.label += 'Fallen';
           break;
         case 'advancements':
           tab.id = 'advancements';

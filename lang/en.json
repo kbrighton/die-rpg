@@ -36,6 +36,7 @@
 		"Actor": {
 			"Tabs": {
 				"Paragon": "Paragon",
+				"Fallen": "Fallen",
 				"Advancements": "Advancements",
 				"Loadout": "Loadout",
 				"Persona": "Persona",
@@ -591,6 +592,14 @@
 			"enableDiceInteraction": {
 				"name": "Enable Interactive Dice",
 				"hint": "Allows clicking success dice in chat messages to change which dice appear crossed out by difficulty. This is visual only - the final success count is always based on difficulty."
+			},
+			"fallenGameMode": {
+				"name": "Fallen Game Mode",
+				"hint": "Choose how Fallen characters work. Rituals mode: Fallen lose all paragon powers immediately (best for one-shots). Campaign mode: Fallen keep all paragon powers until second death (best for longer campaigns).",
+				"choices": {
+					"rituals": "Rituals (lose all powers)",
+					"campaign": "Campaign (keep powers until 2nd death)"
+				}
 			}
 		},
 		"Dialog": {
