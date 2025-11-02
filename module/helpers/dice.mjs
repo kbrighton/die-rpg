@@ -51,7 +51,8 @@ export async function rollStat(dataset, actor) {
   // Update actor's flashback state if it was used
   if (flashbackUsed && actor && !actor.system.flashbackUsed) {
     await actor.update({ 'system.flashbackUsed': true });
-    actor.sheet?.render(false, {force: true, window: {controls: true}});
+    // Header buttons will update via _onRender -> _updateHeaderButtons
+    actor.sheet?.render(false, {force: true});
   }
  
   // Pass classDieType to _rollDicePool
