@@ -611,7 +611,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     this._flashbackBtn = document.createElement("button");
     this._flashbackBtn.type = "button";
     this._flashbackBtn.className = "header-control icon";
-    this._flashbackBtn.innerHTML = '<i class="fa-solid fa-history"></i>';
+    this._flashbackBtn.innerHTML = '<i class="fa-solid fa-clock"></i>';
     this._flashbackBtn.addEventListener("click", (event) => {
       this.constructor._resetFlashback.call(this, event, this._flashbackBtn);
     });
@@ -665,6 +665,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
     // Update Flashback button
     const flashbackUsed = this.actor.system.flashbackUsed;
+    this._flashbackBtn.innerHTML = `<i class="fa-solid ${flashbackUsed ? 'fa-clock-rotate-left' : 'fa-clock'}"></i>`;
     this._flashbackBtn.title = game.i18n.localize(
       flashbackUsed
         ? "DIE_RPG.Actor.Character.ResetFlashback"
