@@ -172,32 +172,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getHeaderControls() {
     const controls = super._getHeaderControls();
-
-    // Only add controls for character sheets
-    if (this.document.type !== 'character') return controls;
-
-    // Fallen Mode Toggle - always visible if editable
-    if (this.isEditable) {
-      controls.unshift({
-        icon: this.actor.system.fallenMode ? "fa-solid fa-skull" : "fa-solid fa-heart",
-        label: this.actor.system.fallenMode
-          ? "DIE_RPG.FallenMode.TooltipReturnToLiving"
-          : "DIE_RPG.FallenMode.TooltipEnterFallen",
-        action: "toggleFallenMode"
-      });
-    }
-
-    // Flashback Reset - always enabled, label changes based on state
-    if (this.isEditable) {
-      controls.unshift({
-        icon: "fa-solid fa-history",
-        label: this.actor.system.flashbackUsed
-          ? "DIE_RPG.Actor.Character.ResetFlashback"     // "Reset Flashback"
-          : "DIE_RPG.Actor.Character.FlashbackAvailable", // "Flashback Available"
-        action: "resetFlashback"
-      });
-    }
-
+    // Custom header buttons are now injected via _onFirstRender instead of dropdown
     return controls;
   }
 
@@ -617,6 +592,48 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
+   * Actions performed after the first render of the Application.
+   * @param {ApplicationRenderContext} context      Prepared context data
+   * @param {RenderOptions} options                 Provided render options
+   * @protected
+   * @override
+   */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    // Only add custom header buttons for character sheets
+    if (this.document.type !== 'character' || !this.isEditable) return;
+
+    const header = this.element.querySelector(".window-header");
+    const closeBtn = header.querySelector("[data-action=close]");
+
+    // Create Flashback button
+    this._flashbackBtn = document.createElement("button");
+    this._flashbackBtn.type = "button";
+    this._flashbackBtn.className = "header-control icon";
+    this._flashbackBtn.innerHTML = '<i class="fa-solid fa-history"></i>';
+    this._flashbackBtn.addEventListener("click", (event) => {
+      this.constructor._resetFlashback.call(this, event, this._flashbackBtn);
+    });
+
+    // Create Fallen Mode button
+    this._fallenBtn = document.createElement("button");
+    this._fallenBtn.type = "button";
+    this._fallenBtn.className = "header-control icon";
+    this._fallenBtn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+    this._fallenBtn.addEventListener("click", (event) => {
+      this.constructor._toggleFallenMode.call(this, event, this._fallenBtn);
+    });
+
+    // Insert buttons before close button
+    closeBtn.parentElement.insertBefore(this._flashbackBtn, closeBtn);
+    closeBtn.parentElement.insertBefore(this._fallenBtn, closeBtn);
+
+    // Initialize button states
+    this._updateHeaderButtons();
+  }
+
+  /**
    * Actions performed after any render of the Application.
    * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
@@ -633,6 +650,35 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     if (paragonSelect) {
       paragonSelect.addEventListener("change", this._selectParagon.bind(this));
     }
+
+    // Update header button states after render
+    this._updateHeaderButtons();
+  }
+
+  /**
+   * Update custom header button states (icon and tooltip)
+   * @protected
+   */
+  _updateHeaderButtons() {
+    // Only update if buttons exist (character sheets only)
+    if (!this._flashbackBtn || !this._fallenBtn) return;
+
+    // Update Flashback button
+    const flashbackUsed = this.actor.system.flashbackUsed;
+    this._flashbackBtn.title = game.i18n.localize(
+      flashbackUsed
+        ? "DIE_RPG.Actor.Character.ResetFlashback"
+        : "DIE_RPG.Actor.Character.FlashbackAvailable"
+    );
+
+    // Update Fallen Mode button
+    const fallenMode = this.actor.system.fallenMode;
+    this._fallenBtn.innerHTML = `<i class="fa-solid ${fallenMode ? 'fa-skull' : 'fa-heart'}"></i>`;
+    this._fallenBtn.title = game.i18n.localize(
+      fallenMode
+        ? "DIE_RPG.FallenMode.TooltipReturnToLiving"
+        : "DIE_RPG.FallenMode.TooltipEnterFallen"
+    );
   }
 
   /**************
@@ -882,8 +928,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     // Reset flashback
     await this.actor.update({ 'system.flashbackUsed': false });
     ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.FlashbackReset"));
-    // Re-render with header controls update
-    this.render(false, { window: { controls: true } });
+    // Update header button states
+    this._updateHeaderButtons();
   }
 
   /**
@@ -904,8 +950,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       : "DIE_RPG.Notifications.Success.FallenModeDisabled";
     ui.notifications.info(game.i18n.localize(messageKey));
 
-    // Re-render with header controls update
-    this.render(false, { window: { controls: true } });
+    // Re-render sheet (tabs change based on fallen mode)
+    // Header buttons will update via _onRender -> _updateHeaderButtons
+    this.render(false);
   }
 
   /**
