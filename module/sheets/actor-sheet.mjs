@@ -165,6 +165,45 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   /* -------------------------------------------- */
 
   /**
+   * Get header controls for the application window
+   * @returns {ApplicationHeaderControlsEntry[]} Array of control entries
+   * @protected
+   * @override
+   */
+  _getHeaderControls() {
+    const controls = super._getHeaderControls();
+
+    // Only add controls for character sheets
+    if (this.document.type !== 'character') return controls;
+
+    // Fallen Mode Toggle - always visible if editable
+    if (this.isEditable) {
+      controls.unshift({
+        icon: this.actor.system.fallenMode ? "fa-solid fa-skull" : "fa-solid fa-heart",
+        label: this.actor.system.fallenMode
+          ? "DIE_RPG.FallenMode.TooltipReturnToLiving"
+          : "DIE_RPG.FallenMode.TooltipEnterFallen",
+        action: "toggleFallenMode"
+      });
+    }
+
+    // Flashback Reset - always enabled, label changes based on state
+    if (this.isEditable) {
+      controls.unshift({
+        icon: "fa-solid fa-history",
+        label: this.actor.system.flashbackUsed
+          ? "DIE_RPG.Actor.Character.ResetFlashback"     // "Reset Flashback"
+          : "DIE_RPG.Actor.Character.FlashbackAvailable", // "Flashback Available"
+        action: "resetFlashback"
+      });
+    }
+
+    return controls;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
    * Enrich HTML content for dynamic fields
    * @param {Array} fieldDefinitions - Array of field definitions from paragon
    * @param {Object} fieldData - Object containing field values
@@ -833,8 +872,18 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    */
   static async _resetFlashback(event, target) {
     event.preventDefault();
+
+    // If flashback is already available, show info message
+    if (!this.actor.system.flashbackUsed) {
+      ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Info.FlashbackAlreadyAvailable"));
+      return;
+    }
+
+    // Reset flashback
     await this.actor.update({ 'system.flashbackUsed': false });
     ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.FlashbackReset"));
+    // Re-render with header controls update
+    this.render(false, { window: { controls: true } });
   }
 
   /**
@@ -854,6 +903,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       ? "DIE_RPG.Notifications.Success.FallenModeEnabled"
       : "DIE_RPG.Notifications.Success.FallenModeDisabled";
     ui.notifications.info(game.i18n.localize(messageKey));
+
+    // Re-render with header controls update
+    this.render(false, { window: { controls: true } });
   }
 
   /**

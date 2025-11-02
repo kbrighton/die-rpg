@@ -93,7 +93,8 @@
 						"notes": { "label": "Notes" }
 					}
 				},
-				"ResetFlashback": "Reset Flashback"
+				"ResetFlashback": "Reset Flashback",
+				"FlashbackAvailable": "Flashback Available"
 			},
 			"NPC": {
 				"FIELDS": {
@@ -686,6 +687,9 @@
 				"MonstrousAbilityDeleted": "Monstrous ability deleted successfully.",
 				"SpecialAdded": "Special added successfully.",
 				"SpecialDeleted": "Special deleted successfully."
+			},
+			"Info": {
+				"FlashbackAlreadyAvailable": "Flashback is already available."
 			},
 			"Warning": {
 				"NoParagon": "No paragon item found.",

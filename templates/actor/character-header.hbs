@@ -39,60 +39,6 @@
 					placeholder="{{localize 'DIE_RPG.UI.Placeholders.Name'}}"
 				/>
 			</div>
-
-			{{! Character flashback indicator }}
-			<div class="flashback-indicator">
-				<span class="flashback-status {{#if actor.system.flashbackUsed}}used{{else}}available{{/if}}">
-					<i class="fas fa-history"></i>
-					{{localize "DIE_RPG.UI.Labels.Flashback"}}
-					{{#if actor.system.flashbackUsed}}
-						<span class="status-text">{{localize "DIE_RPG.UI.Status.Used"}}</span>
-					{{else}}
-						<span class="status-text">{{localize "DIE_RPG.UI.Status.Available"}}</span>
-					{{/if}}
-				</span>
-				<button
-					type="button"
-					class="reset-flashback-btn"
-					data-action="resetFlashback"
-					data-tooltip="{{localize 'DIE_RPG.Actor.Character.ResetFlashback'}}"
-					{{#unless actor.system.flashbackUsed}}disabled{{/unless}}
-				>
-					<i class="fas fa-redo"></i>
-				</button>
-			</div>
-
-			{{! Fallen mode indicator }}
-			<div class="fallen-mode-indicator">
-				{{#if editable}}
-					<button
-						type="button"
-						class="fallen-mode-toggle {{#if actor.system.fallenMode}}active{{/if}}"
-						data-action="toggleFallenMode"
-						data-tooltip="{{#if actor.system.fallenMode}}{{localize 'DIE_RPG.FallenMode.TooltipReturnToLiving'}}{{else}}{{localize 'DIE_RPG.FallenMode.TooltipEnterFallen'}}{{/if}}"
-					>
-						<i class="fas {{#if actor.system.fallenMode}}fa-skull{{else}}fa-heart{{/if}}"></i>
-						<span class="label">
-							{{#if actor.system.fallenMode}}
-								{{localize "DIE_RPG.FallenMode.LabelFallen"}}
-							{{else}}
-								{{localize "DIE_RPG.FallenMode.LabelLiving"}}
-							{{/if}}
-						</span>
-					</button>
-				{{else}}
-					<div class="fallen-mode-display {{#if actor.system.fallenMode}}active{{/if}}">
-						<i class="fas {{#if actor.system.fallenMode}}fa-skull{{else}}fa-heart{{/if}}"></i>
-						<span class="label">
-							{{#if actor.system.fallenMode}}
-								{{localize "DIE_RPG.FallenMode.LabelFallen"}}
-							{{else}}
-								{{localize "DIE_RPG.FallenMode.LabelLiving"}}
-							{{/if}}
-						</span>
-					</div>
-				{{/if}}
-			</div>
 		</div>
 
 		{{! Right column - Class dice }}
