@@ -120,6 +120,19 @@ Hooks.once('init', function () {
     default: true // Enabled by default
   });
 
+  game.settings.register('die-rpg', 'fallenGameMode', {
+    name: 'DIE_RPG.Settings.fallenGameMode.name',
+    hint: 'DIE_RPG.Settings.fallenGameMode.hint',
+    scope: 'world', // GM controls this setting per world
+    config: true, // Show in settings menu
+    type: String,
+    choices: {
+      'rituals': 'DIE_RPG.Settings.fallenGameMode.choices.rituals',
+      'campaign': 'DIE_RPG.Settings.fallenGameMode.choices.campaign'
+    },
+    default: 'rituals'
+  });
+
   utils.registerHandlebarsHelpers();
   // Preload Handlebars parts.
   utils.preloadHandlebarsTemplates();

@@ -39,28 +39,6 @@
 					placeholder="{{localize 'DIE_RPG.UI.Placeholders.Name'}}"
 				/>
 			</div>
-
-			{{! Character flashback indicator }}
-			<div class="flashback-indicator">
-				<span class="flashback-status {{#if actor.system.flashbackUsed}}used{{else}}available{{/if}}">
-					<i class="fas fa-history"></i>
-					{{localize "DIE_RPG.UI.Labels.Flashback"}}
-					{{#if actor.system.flashbackUsed}}
-						<span class="status-text">{{localize "DIE_RPG.UI.Status.Used"}}</span>
-					{{else}}
-						<span class="status-text">{{localize "DIE_RPG.UI.Status.Available"}}</span>
-					{{/if}}
-				</span>
-				<button
-					type="button"
-					class="reset-flashback-btn"
-					data-action="resetFlashback"
-					data-tooltip="{{localize 'DIE_RPG.Actor.Character.ResetFlashback'}}"
-					{{#unless actor.system.flashbackUsed}}disabled{{/unless}}
-				>
-					<i class="fas fa-redo"></i>
-				</button>
-			</div>
 		</div>
 
 		{{! Right column - Class dice }}
