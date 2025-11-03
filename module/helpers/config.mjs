@@ -31,22 +31,22 @@ DIE_RPG.resources = {
 };
 
 DIE_RPG.npcTypes = {
-	basic: "DIE_RPG.NPCSheet.Type.Basic.label",
-	fallen: "DIE_RPG.NPCSheet.Type.Fallen.label",
-	paragon: "DIE_RPG.NPCSheet.Type.Paragon.label",
+	basic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Basic.label",
+	fallen: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.label",
+	paragon: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.label",
 };
 
 DIE_RPG.npcFallenSubtypes = {
-	basic: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Basic",
-	elite: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Elite",
-	assassin: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Assassin",
-	epic: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Epic",
+	basic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Basic",
+	elite: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Elite",
+	assassin: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Assassin",
+	epic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Epic",
 };
 
 DIE_RPG.npcParagonPowerLevel = {
-	basic: "DIE_RPG.NPCSheet.Type.Paragon.PowerLevel.Basic",
-	elite: "DIE_RPG.NPCSheet.Type.Paragon.PowerLevel.Elite",
-	hero: "DIE_RPG.NPCSheet.Type.Paragon.PowerLevel.Hero",
+	basic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Basic",
+	elite: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Elite",
+	hero: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Hero",
 };
 
 DIE_RPG.classDice = {
