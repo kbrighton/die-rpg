@@ -39,7 +39,7 @@ DIE_RPG.npcTypes = {
 DIE_RPG.npcFallenSubtypes = {
 	basic: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Basic",
 	elite: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Elite",
-	assassin: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Essassin",
+	assassin: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Assassin",
 	epic: "DIE_RPG.NPCSheet.Type.Fallen.Subtype.Epic",
 };
 
