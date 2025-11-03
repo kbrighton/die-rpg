@@ -172,6 +172,30 @@
 				"NewSpecial": "New Special",
 				"DeleteSpecial": "Delete Special",
 				"FairNote": "The Fair do not use traditional stats. Use coin flips for all rolls instead of dice pools. They always appear in pairs and have Defence 3."
+			},
+			"NPCSheet": {
+				"Type": {
+					"Basic": {
+						"label": "Basic Creature"
+					},
+					"Fallen": {
+						"label": "The Fallen",
+						"Subtype": {
+							"Basic": "Basic Fallen",
+							"Elite": "Elite Fallen",
+							"Assassin": "Fallen Assassin",
+							"Epic": "Epic Fallen"
+						}
+					},
+					"Paragon": {
+						"label": "Native Paragon",
+						"PowerLevel": {
+							"Basic": "Basic",
+							"Elite": "Elite",
+							"Hero": "Hero"
+						}
+					}
+				}
 			}
 		},
 		"Item": {
@@ -602,18 +626,6 @@
 					"campaign": "Campaign (keep powers until 2nd death)"
 				}
 			}
-		},
-		"Dialog": {
-			"Advantages": "Advantages",
-			"Disadvantages": "Disadvantages",
-			"Difficulty": "Difficulty",
-			"AddClassDie": "Add Class Die",
-			"SubstituteClassDie": "Substitute Class Die?",
-			"UseFlashback": "Use a flashback to get 1 advantage? (once per session)",
-			"FlashbackUsed": "Flashback already used this session",
-			"ClassDieDescription": "Some class abilities allow players to add their class die to thepool as well",
-			"DicePool": "Dice Pool",
-			"ZeroPoolWarning": "The dice pool is 0, the system will roll two dice and pick the lowest"
 		},
 		"None": "None",
 		"Chat": {
