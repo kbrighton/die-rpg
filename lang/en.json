@@ -350,10 +350,24 @@
 						"label": "Weapon Type",
 						"hint": "Type of weapon (e.g., Sword, Bow, Staff, Spear)"
 					},
+					"weaponTypes": {
+						"sword": "Sword",
+						"bow": "Bow",
+						"staff": "Staff",
+						"spear": "Spear"
+					},
+					"weaponTypePlaceholder": "e.g., Sword, Bow, Staff, Spear",
 					"personality": {
 						"label": "Personality",
 						"hint": "The weapon's personality (e.g., Aggressive, Cautious, Playful, Wise)"
-					}
+					},
+					"personalities": {
+						"aggressive": "Aggressive",
+						"cautious": "Cautious",
+						"playful": "Playful",
+						"wise": "Wise"
+					},
+					"personalityPlaceholder": "e.g., Aggressive, Cautious, Playful, Wise"
 				}
 			},
 			"Equipment": {
