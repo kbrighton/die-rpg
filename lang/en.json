@@ -800,7 +800,9 @@
 				"DerivedStats": "Derived Stats",
 				"Name": "Name",
 				"EquipmentOptions": "Starting Equipment Options",
-				"StartingEquipment": "Starting Equipment"
+				"StartingEquipment": "Starting Equipment",
+				"Equipment": "Equipment",
+				"Sidebar": "Sidebar"
 			},
 			"Labels": {
 				"Flashback": "Flashback:",
@@ -836,10 +838,12 @@
 				"MandatorySpecial": "Must be used when triggered",
 				"Locked": "Locked",
 				"IncreaseLevelToUnlock": "Increase level to unlock",
-				"DeleteSpecial": "Delete Special"
+				"DeleteSpecial": "Delete Special",
+				"BrowseForImage": "Browse for image file"
 			},
 			"Placeholders": {
 				"Name": "Name",
+				"ItemName": "Name",
 				"NPCName": "NPC Name",
 				"LookName": "e.g., Leather Jacket",
 				"LookDescription": "Optional description",
@@ -870,7 +874,8 @@
 				"NoUpgrades": "No upgrades defined. Add one below.",
 				"NoEquipmentOptions": "No equipment options defined. Drag equipment items here from compendiums.",
 				"NoAbilities": "No abilities defined for this NPC.",
-				"ClickAddAbility": "Click 'Add Ability' to create a new ability for this NPC."
+				"ClickAddAbility": "Click 'Add Ability' to create a new ability for this NPC.",
+				"SelectParagonViewDescription": "Select a paragon to view its description."
 			},
 			"Status": {
 				"Used": "Used",
@@ -910,6 +915,10 @@
 				"Stance": "New Stance",
 				"Venting": "New Venting",
 				"Arcaneweapon": "New Arcane Weapon"
+			},
+			"ItemDetails": {
+				"equipment": "equipment",
+				"god": "god"
 			},
 			"DynamicField": {
 				"SelectDefault": "-- Select --",
