@@ -81,6 +81,29 @@ The system implements a d6 dice pool mechanic where:
 
 See `.claude/specials-implementation-plan.md` for full details (Phases 1-3 done, Phases 4-5 optional).
 
+### Localization System (Complete)
+
+- **✅ Comprehensive i18n implementation** - All user-facing strings localized
+- **✅ Hierarchical organization** - Strings organized as `DIE_RPG.Section.Subsection.key`
+- **✅ Config-driven dropdowns** - NPC creature types, stance types use `DIE_RPG` config with `{{selectOptions}}` helper
+- **✅ Template localization** - All templates use `{{localize}}` and `{{{localize}}}` helpers
+- **✅ JavaScript localization** - All `ui.notifications` use `game.i18n.localize()` and `game.i18n.format()`
+- **✅ Documentation strings** - Even GM-facing technical documentation is localizable
+
+#### Localization Work Completed (2025)
+- Fixed duplicate Dialog section and typo ("Essassin" → "Assassin")
+- Added 10 missing NPCSheet.Type strings with proper hierarchical organization
+- Localized ~95 template strings across 12 template files
+- Localized JavaScript notification strings in dice-interaction.mjs
+- Localized paragon form field type documentation (27 strings)
+- Converted hard-coded dropdown options to config-driven `{{selectOptions}}`
+
+#### Key Localization Files
+- `lang/en.json` - Primary localization file (~860+ lines)
+- `module/helpers/config.mjs` - Configuration registry for dropdowns (creatureTypes, stanceTypes)
+- `templates/partials/dynamic-field.hbs` - Fully localized dynamic field renderer
+- All template files use proper localization helpers
+
 ## Development Setup
 
 1. Ensure Node.js is installed
@@ -159,6 +182,7 @@ The template-driven architecture is **fully functional**. GMs edit JSON field de
 ## Quick Reference
 
 ### Recent Commits (past 3 weeks)
+- Comprehensive localization review and improvements (4 phases)
 - Advancement system implementation and refinement
 - Paragon item type and data model
 - Specials system and aggregation
