@@ -49,6 +49,53 @@ DIE_RPG.npcParagonPowerLevel = {
 	hero: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Hero",
 };
 
+DIE_RPG.creatureTypes = {
+	automatons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.automatons",
+	bandits: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.bandits",
+	basilisks: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.basilisks",
+	bears: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.bears",
+	centaurs: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.centaurs",
+	chimeras: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.chimeras",
+	cockatrices: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.cockatrices",
+	"demon-lesser": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.demon-lesser",
+	"demon-greater": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.demon-greater",
+	"doppelgängers": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.doppelgängers",
+	dragons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.dragons",
+	dwarves: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.dwarves",
+	"elementals-air-fire": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.elementals-air-fire",
+	"elementals-earth-water": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.elementals-earth-water",
+	elves: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.elves",
+	gargoyles: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.gargoyles",
+	ghouls: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.ghouls",
+	"giant-worms": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.giant-worms",
+	giants: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.giants",
+	goblins: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.goblins",
+	gorgons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.gorgons",
+	griffins: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.griffins",
+	guards: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.guards",
+	halflings: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.halflings",
+	hounds: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.hounds",
+	hydras: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.hydras",
+	liches: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.liches",
+	minotaurs: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.minotaurs",
+	ogres: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.ogres",
+	orcs: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.orcs",
+	rats: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.rats",
+	sirens: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.sirens",
+	skeletons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.skeletons",
+	snakes: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.snakes",
+	spiders: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.spiders",
+	"tree-spirits": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.tree-spirits",
+	trolls: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.trolls",
+	unicorns: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.unicorns",
+	vampires: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.vampires",
+	werewolves: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.werewolves",
+	wizards: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.wizards",
+	wraiths: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.wraiths",
+	wyverns: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.wyverns",
+	zombies: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.zombies"
+};
+
 DIE_RPG.classDice = {
 	4: "d4",
 	6: "d6",
@@ -95,6 +142,12 @@ DIE_RPG.abilityTypes = {
 	attack: "DIE_RPG.AbilityType.attack",
 	passive: "DIE_RPG.AbilityType.passive",
 	other: "DIE_RPG.AbilityType.other",
+};
+
+DIE_RPG.stanceTypes = {
+	COMBAT: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.combat",
+	SOCIAL: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.social",
+	EMOTION: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.emotion"
 };
 
 DIE_RPG.costTypes = {

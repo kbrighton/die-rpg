@@ -1,12 +1,12 @@
 <div class="sidebar flexcol">
-	<h3>Sidebar</h3>
+	<h3>{{localize "DIE_RPG.UI.Headers.Sidebar"}}</h3>
 	{{#if (eq item.type "equipment")}}
 		<p>
-			equipment
+			{{localize "DIE_RPG.UI.ItemDetails.equipment"}}
 		</p>
 	{{else if (eq item.type "god")}}
 		<p>
-			god
+			{{localize "DIE_RPG.UI.ItemDetails.god"}}
 		</p>
 	{{/if}}
 </div>

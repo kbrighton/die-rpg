@@ -195,6 +195,52 @@
 							"Hero": "Hero"
 						}
 					}
+				},
+				"CreatureTypes": {
+					"automatons": "Automatons",
+					"bandits": "Bandits",
+					"basilisks": "Basilisks",
+					"bears": "Bears",
+					"centaurs": "Centaurs",
+					"chimeras": "Chimeras",
+					"cockatrices": "Cockatrices",
+					"demon-lesser": "Demon (Lesser)",
+					"demon-greater": "Demon (Greater)",
+					"doppelgängers": "Doppelgängers",
+					"dragons": "Dragons",
+					"dwarves": "Dwarves",
+					"elementals-air-fire": "Elementals (Air/Fire)",
+					"elementals-earth-water": "Elementals (Earth/Water)",
+					"elves": "Elves",
+					"gargoyles": "Gargoyles",
+					"ghouls": "Ghouls",
+					"giant-worms": "Giant Worms",
+					"giants": "Giants",
+					"goblins": "Goblins (& Hobgoblins)",
+					"gorgons": "Gorgons",
+					"griffins": "Griffins",
+					"guards": "Guards (& Soldiers)",
+					"halflings": "Halflings (& Gnomes)",
+					"hounds": "Hounds",
+					"hydras": "Hydras",
+					"liches": "Liches",
+					"minotaurs": "Minotaurs",
+					"ogres": "Ogres",
+					"orcs": "Orcs",
+					"rats": "Rats",
+					"sirens": "Sirens",
+					"skeletons": "Skeletons",
+					"snakes": "Snakes",
+					"spiders": "Spiders",
+					"tree-spirits": "Tree Spirits (Treants & Dryads)",
+					"trolls": "Trolls",
+					"unicorns": "Unicorns",
+					"vampires": "Vampires",
+					"werewolves": "Werewolves",
+					"wizards": "Wizards",
+					"wraiths": "Wraiths",
+					"wyverns": "Wyverns",
+					"zombies": "Zombies"
 				}
 			}
 		},
@@ -274,10 +320,16 @@
 						"label": "Stance Type",
 						"hint": "Combat, Social, or Emotion stance"
 					},
+					"stanceTypes": {
+						"combat": "Combat",
+						"social": "Social",
+						"emotion": "Emotion"
+					},
 					"emotionSubtype": {
 						"label": "Emotion Type",
 						"hint": "The specific emotion for this stance (EMOTION stances only)"
 					},
+					"emotionPlaceholder": "Select or type emotion...",
 					"specials": {
 						"label": "Specials",
 						"hint": "Special abilities that trigger when rolling 6+ on dice"
@@ -298,10 +350,24 @@
 						"label": "Weapon Type",
 						"hint": "Type of weapon (e.g., Sword, Bow, Staff, Spear)"
 					},
+					"weaponTypes": {
+						"sword": "Sword",
+						"bow": "Bow",
+						"staff": "Staff",
+						"spear": "Spear"
+					},
+					"weaponTypePlaceholder": "e.g., Sword, Bow, Staff, Spear",
 					"personality": {
 						"label": "Personality",
 						"hint": "The weapon's personality (e.g., Aggressive, Cautious, Playful, Wise)"
-					}
+					},
+					"personalities": {
+						"aggressive": "Aggressive",
+						"cautious": "Cautious",
+						"playful": "Playful",
+						"wise": "Wise"
+					},
+					"personalityPlaceholder": "e.g., Aggressive, Cautious, Playful, Wise"
 				}
 			},
 			"Equipment": {
@@ -442,7 +508,41 @@
 				},
 				"Details": {"label": "Details"},
 				"AddLook": "Add Look",
-				"AddSpecial": "Add Special"
+				"AddSpecial": "Add Special",
+				"Documentation": {
+					"ClassAbilities": {
+						"Legend": "Class Abilities Form Fields",
+						"Description": "These fields appear on the character's <strong>Class tab</strong>. Define the form structure as a JSON array.",
+						"SeeReference": "See Field Type Reference below for all available types and required properties."
+					},
+					"AdvancementForms": {
+						"Legend": "Advancement Form Fields",
+						"Description": "These fields appear on the character's <strong>Advancements tab</strong> below the advancement map.",
+						"SameAsClassAbilities": "Uses the same field types as Class Abilities. See reference above for examples."
+					},
+					"FieldReference": {
+						"Summary": "Field Type Reference & Examples",
+						"AvailableTypes": "Available types:",
+						"AvailableTypesList": "text, number, boolean, select, multiSelect, html, itemList, group, special",
+						"RequiredProperties": "Required properties:",
+						"RequiredPropertiesList": "key, type, label",
+						"OptionalProperties": "Optional properties:",
+						"OptionalPropertiesList": "initial, choices, min, max, itemType, specialKey, fields, hint",
+						"TextFieldHeading": "Text Field",
+						"NumberFieldHeading": "Number Field",
+						"BooleanFieldHeading": "Boolean (Checkbox)",
+						"SelectFieldHeading": "Select (Dropdown)",
+						"MultiSelectFieldHeading": "Multi-Select (Checkboxes)",
+						"HTMLFieldHeading": "HTML Editor",
+						"GroupFieldHeading": "Group (Nested Fields)",
+						"ItemListFieldHeading": "Item List (Future)",
+						"SpecialFieldHeading": "Special Reference (Future)"
+					},
+					"ValidationTip": {
+						"TipLabel": "Tip:",
+						"TipText": "Use a JSON validator (like jsonlint.com) if you encounter errors. The form will show validation errors on save if the JSON is malformed."
+					}
+				}
 			}
 		},
 		"Effect": {
@@ -702,7 +802,8 @@
 			},
 			"Info": {
 				"FlashbackAlreadyAvailable": "Flashback is already available.",
-				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again."
+				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again.",
+				"DiceInteractionComingSoon": "Dice interaction is not yet enabled. Coming soon!"
 			},
 			"Warning": {
 				"NoParagon": "No paragon item found.",
@@ -711,7 +812,9 @@
 				"InvalidItem": "Invalid item",
 				"OnlyEquipment": "Only equipment items can be added to this list",
 				"EquipmentAlreadyInList": "This equipment is already in the list",
-				"SelectEquipment": "Please select equipment first"
+				"SelectEquipment": "Please select equipment first",
+				"NoPermissionToModifyRoll": "You do not have permission to modify this roll.",
+				"CanOnlyCrossOutSuccessDice": "You can only cross out success dice (4+)."
 			},
 			"Error": {
 				"ParagonNotFound": "Could not find selected paragon item.",
@@ -734,7 +837,9 @@
 				"DerivedStats": "Derived Stats",
 				"Name": "Name",
 				"EquipmentOptions": "Starting Equipment Options",
-				"StartingEquipment": "Starting Equipment"
+				"StartingEquipment": "Starting Equipment",
+				"Equipment": "Equipment",
+				"Sidebar": "Sidebar"
 			},
 			"Labels": {
 				"Flashback": "Flashback:",
@@ -770,10 +875,12 @@
 				"MandatorySpecial": "Must be used when triggered",
 				"Locked": "Locked",
 				"IncreaseLevelToUnlock": "Increase level to unlock",
-				"DeleteSpecial": "Delete Special"
+				"DeleteSpecial": "Delete Special",
+				"BrowseForImage": "Browse for image file"
 			},
 			"Placeholders": {
 				"Name": "Name",
+				"ItemName": "Name",
 				"NPCName": "NPC Name",
 				"LookName": "e.g., Leather Jacket",
 				"LookDescription": "Optional description",
@@ -804,7 +911,8 @@
 				"NoUpgrades": "No upgrades defined. Add one below.",
 				"NoEquipmentOptions": "No equipment options defined. Drag equipment items here from compendiums.",
 				"NoAbilities": "No abilities defined for this NPC.",
-				"ClickAddAbility": "Click 'Add Ability' to create a new ability for this NPC."
+				"ClickAddAbility": "Click 'Add Ability' to create a new ability for this NPC.",
+				"SelectParagonViewDescription": "Select a paragon to view its description."
 			},
 			"Status": {
 				"Used": "Used",
@@ -844,6 +952,33 @@
 				"Stance": "New Stance",
 				"Venting": "New Venting",
 				"Arcaneweapon": "New Arcane Weapon"
+			},
+			"ItemDetails": {
+				"equipment": "equipment",
+				"god": "god"
+			},
+			"DynamicField": {
+				"SelectDefault": "-- Select --",
+				"CreateNew": "Create new {type}",
+				"CreateButton": "Create {type}",
+				"EditItem": "Edit {name}",
+				"DeleteItem": "Delete {name}",
+				"DescriptionLabel": "Description:",
+				"StanceTypeLabel": "Stance Type:",
+				"EmotionLabel": "Emotion:",
+				"WeaponTypeLabel": "Weapon Type:",
+				"PersonalityLabel": "Personality:",
+				"QuantityLabel": "Quantity:",
+				"WeightLabel": "Weight:",
+				"SpecialsLabel": "Specials:",
+				"SpecialCost": "(Cost: {cost}x 6+)",
+				"MandatoryTag": "Mandatory",
+				"CostTag": "Cost: {cost}x 6+",
+				"NoItemsFound": "No {type} items found. Create or drag {type} items to this character to see them here.",
+				"SpecialNotFound": "Special \"{key}\" not found in paragon specials.",
+				"SpecialNotFoundHint": "Make sure the paragon has a special with key=\"{key}\"",
+				"UnknownFieldType": "Unknown field type: {type}",
+				"UnknownFieldTypeHint": "Please check the paragon item's form definition."
 			},
 			"Sections": {
 				"SelectLook": "-- Select a Look --",

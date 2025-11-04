@@ -109,7 +109,7 @@ export class DiceInteraction {
     // Check if dice interaction is enabled
     const interactionEnabled = game.settings.get('die-rpg', 'enableDiceInteraction');
     if (!interactionEnabled) {
-      ui.notifications.info('Dice interaction is not yet enabled. Coming soon!');
+      ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Info.DiceInteractionComingSoon"));
       return;
     }
 
@@ -128,7 +128,7 @@ export class DiceInteraction {
 
     // Check permissions
     if (!message.isOwner && !game.user.isGM) {
-      ui.notifications.warn('You do not have permission to modify this roll.');
+      ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.NoPermissionToModifyRoll"));
       return;
     }
 
@@ -138,7 +138,7 @@ export class DiceInteraction {
 
     // Only allow crossing out success dice (≥4)
     if (dieValue < 4) {
-      ui.notifications.warn('You can only cross out success dice (4+).');
+      ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.CanOnlyCrossOutSuccessDice"));
       return;
     }
 
