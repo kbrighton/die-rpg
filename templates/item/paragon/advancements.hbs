@@ -7,10 +7,8 @@
 >
 	{{! Advancement Form Fields }}
 	<fieldset class="form-section advancement-form-fields">
-		<legend>Advancement Form Fields</legend>
-		<p class="hint">These fields appear on the character's
-			<strong>Advancements tab</strong>
-			below the advancement map.</p>
+		<legend>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementForms.Legend"}}</legend>
+		<p class="hint">{{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementForms.Description"}}}</p>
 
 		<div class="form-group stacked">
 			{{!-- <label>Advancement Form Fields (JSON)</label> --}}
@@ -21,59 +19,58 @@
 				placeholder='[{"key": "exampleAdvancement", "type": "text", "label": "Example Advancement Field", "initial": ""}]'
 			>{{json system.advancementForms.fields space=2}}</textarea>
 			<p class="hint">
-				Uses the same field types as Class Abilities. See reference above for
-				examples.
+				{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementForms.SameAsClassAbilities"}}
 			</p>
 		</div>
 
 		{{! Field Type Reference }}
 		<details class="field-type-reference">
-			<summary>Field Type Reference &amp; Examples</summary>
+			<summary>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.Summary"}}</summary>
 			<div class="reference-content">
 				<p>
-					<strong>Available types:</strong>
-					text, number, boolean, select, multiSelect, html, itemList, group, special<br
+					<strong>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.AvailableTypes"}}</strong>
+					{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.AvailableTypesList"}}<br
 					/>
-					<strong>Required properties:</strong>
-					key, type, label<br />
-					<strong>Optional properties:</strong>
-					initial, choices, min, max, itemType, specialKey, fields, hint
+					<strong>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.RequiredProperties"}}</strong>
+					{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.RequiredPropertiesList"}}<br />
+					<strong>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.OptionalProperties"}}</strong>
+					{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.OptionalPropertiesList"}}
 				</p>
-				<h4>Text Field</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.TextFieldHeading"}}</h4>
 				<pre><code>{ "key": "myTextField", "type": "text", "label": "My Text Field",
 						"initial": "", "hint": "Optional help text" }</code></pre>
 
-				<h4>Number Field</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.NumberFieldHeading"}}</h4>
 				<pre><code>{ "key": "myNumber", "type": "number", "label": "My Number",
 						"initial": 0, "min": 0, "max": 10 }</code></pre>
 
-				<h4>Boolean (Checkbox)</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.BooleanFieldHeading"}}</h4>
 				<pre><code>{ "key": "myCheckbox", "type": "boolean", "label": "Enable
 						Feature", "initial": false }</code></pre>
 
-				<h4>Select (Dropdown)</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.SelectFieldHeading"}}</h4>
 				<pre><code>{ "key": "mySelect", "type": "select", "label": "Choose Option",
 						"choices": ["Option 1", "Option 2", "Option 3"], "initial": "" }</code></pre>
 
-				<h4>Multi-Select (Checkboxes)</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.MultiSelectFieldHeading"}}</h4>
 				<pre><code>{ "key": "myMultiSelect", "type": "multiSelect", "label": "Choose
 						Multiple", "choices": ["Choice A", "Choice B", "Choice C"], "initial": []
 						}</code></pre>
 
-				<h4>HTML Editor</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.HTMLFieldHeading"}}</h4>
 				<pre><code>{ "key": "myRichText", "type": "html", "label": "Description",
 						"initial": "" }</code></pre>
 
-				<h4>Group (Nested Fields)</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.GroupFieldHeading"}}</h4>
 				<pre><code>{ "key": "myGroup", "type": "group", "label": "Grouped Fields",
 						"fields": [ {"key": "subField1", "type": "text", "label": "Sub Field 1"},
 						{"key": "subField2", "type": "number", "label": "Sub Field 2"} ] }</code></pre>
 
-				<h4>Item List (Future)</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.ItemListFieldHeading"}}</h4>
 				<pre><code>{ "key": "myItems", "type": "itemList", "label": "My Items",
 						"itemType": "spell" }</code></pre>
 
-				<h4>Special Reference (Future)</h4>
+				<h4>{{localize "DIE_RPG.Item.Paragon.Documentation.FieldReference.SpecialFieldHeading"}}</h4>
 				<pre><code>{ "key": "mySpecial", "type": "special", "label": "Special
 						Ability", "specialKey": "neotech" }</code></pre>
 			</div>
@@ -84,9 +81,8 @@
 	<div class="json-validation-hint">
 		<p>
 			<i class="fas fa-info-circle"></i>
-			<strong>Tip:</strong>
-			Use a JSON validator (like jsonlint.com) if you encounter errors. The form
-			will show validation errors on save if the JSON is malformed.
+			<strong>{{localize "DIE_RPG.Item.Paragon.Documentation.ValidationTip.TipLabel"}}</strong>
+			{{localize "DIE_RPG.Item.Paragon.Documentation.ValidationTip.TipText"}}
 		</p>
 	</div>
 </section>

@@ -508,7 +508,41 @@
 				},
 				"Details": {"label": "Details"},
 				"AddLook": "Add Look",
-				"AddSpecial": "Add Special"
+				"AddSpecial": "Add Special",
+				"Documentation": {
+					"ClassAbilities": {
+						"Legend": "Class Abilities Form Fields",
+						"Description": "These fields appear on the character's <strong>Class tab</strong>. Define the form structure as a JSON array.",
+						"SeeReference": "See Field Type Reference below for all available types and required properties."
+					},
+					"AdvancementForms": {
+						"Legend": "Advancement Form Fields",
+						"Description": "These fields appear on the character's <strong>Advancements tab</strong> below the advancement map.",
+						"SameAsClassAbilities": "Uses the same field types as Class Abilities. See reference above for examples."
+					},
+					"FieldReference": {
+						"Summary": "Field Type Reference & Examples",
+						"AvailableTypes": "Available types:",
+						"AvailableTypesList": "text, number, boolean, select, multiSelect, html, itemList, group, special",
+						"RequiredProperties": "Required properties:",
+						"RequiredPropertiesList": "key, type, label",
+						"OptionalProperties": "Optional properties:",
+						"OptionalPropertiesList": "initial, choices, min, max, itemType, specialKey, fields, hint",
+						"TextFieldHeading": "Text Field",
+						"NumberFieldHeading": "Number Field",
+						"BooleanFieldHeading": "Boolean (Checkbox)",
+						"SelectFieldHeading": "Select (Dropdown)",
+						"MultiSelectFieldHeading": "Multi-Select (Checkboxes)",
+						"HTMLFieldHeading": "HTML Editor",
+						"GroupFieldHeading": "Group (Nested Fields)",
+						"ItemListFieldHeading": "Item List (Future)",
+						"SpecialFieldHeading": "Special Reference (Future)"
+					},
+					"ValidationTip": {
+						"TipLabel": "Tip:",
+						"TipText": "Use a JSON validator (like jsonlint.com) if you encounter errors. The form will show validation errors on save if the JSON is malformed."
+					}
+				}
 			}
 		},
 		"Effect": {
