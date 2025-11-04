@@ -768,7 +768,8 @@
 			},
 			"Info": {
 				"FlashbackAlreadyAvailable": "Flashback is already available.",
-				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again."
+				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again.",
+				"DiceInteractionComingSoon": "Dice interaction is not yet enabled. Coming soon!"
 			},
 			"Warning": {
 				"NoParagon": "No paragon item found.",
@@ -777,7 +778,9 @@
 				"InvalidItem": "Invalid item",
 				"OnlyEquipment": "Only equipment items can be added to this list",
 				"EquipmentAlreadyInList": "This equipment is already in the list",
-				"SelectEquipment": "Please select equipment first"
+				"SelectEquipment": "Please select equipment first",
+				"NoPermissionToModifyRoll": "You do not have permission to modify this roll.",
+				"CanOnlyCrossOutSuccessDice": "You can only cross out success dice (4+)."
 			},
 			"Error": {
 				"ParagonNotFound": "Could not find selected paragon item.",
