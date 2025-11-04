@@ -320,10 +320,16 @@
 						"label": "Stance Type",
 						"hint": "Combat, Social, or Emotion stance"
 					},
+					"stanceTypes": {
+						"combat": "Combat",
+						"social": "Social",
+						"emotion": "Emotion"
+					},
 					"emotionSubtype": {
 						"label": "Emotion Type",
 						"hint": "The specific emotion for this stance (EMOTION stances only)"
 					},
+					"emotionPlaceholder": "Select or type emotion...",
 					"specials": {
 						"label": "Specials",
 						"hint": "Special abilities that trigger when rolling 6+ on dice"

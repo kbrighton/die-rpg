@@ -11,9 +11,11 @@
   <div class='form-group'>
     <label>{{localize 'DIE_RPG.Item.Stance.FIELDS.stanceType.label'}}</label>
     <select name='system.stanceType'>
-      <option value='COMBAT' {{#if (eq system.stanceType 'COMBAT')}}selected{{/if}}>Combat</option>
-      <option value='SOCIAL' {{#if (eq system.stanceType 'SOCIAL')}}selected{{/if}}>Social</option>
-      <option value='EMOTION' {{#if (eq system.stanceType 'EMOTION')}}selected{{/if}}>Emotion</option>
+      {{selectOptions
+        config.stanceTypes
+        selected=system.stanceType
+        localize=true
+      }}
     </select>
     <p class="hint">{{localize 'DIE_RPG.Item.Stance.FIELDS.stanceType.hint'}}</p>
   </div>
@@ -26,7 +28,7 @@
         name='system.emotionSubtype'
         value='{{system.emotionSubtype}}'
         list='emotionSubtypeList'
-        placeholder='Select or type emotion...'
+        placeholder='{{localize "DIE_RPG.Item.Stance.FIELDS.emotionPlaceholder"}}'
       />
       <datalist id='emotionSubtypeList'>
         <option value='ECSTASY/JOY/SERENITY'></option>

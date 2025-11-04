@@ -144,6 +144,12 @@ DIE_RPG.abilityTypes = {
 	other: "DIE_RPG.AbilityType.other",
 };
 
+DIE_RPG.stanceTypes = {
+	COMBAT: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.combat",
+	SOCIAL: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.social",
+	EMOTION: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.emotion"
+};
+
 DIE_RPG.costTypes = {
 	none: "DIE_RPG.CostType.none",
 	action: "DIE_RPG.CostType.action",
