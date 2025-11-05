@@ -1,13 +1,36 @@
+// Spacing Variables
+$padding-xs: 2px;
 $padding-sm: 5px;
 $padding-md: 10px;
 $padding-lg: 20px;
 
 $border-groove: 2px groove $c-groove;
 
+$gap-xs: 2px;
 $gap-sm: 5px;
 $gap-md: 10px;
 $gap-lg: 20px;
 
+$margin-xs: 2px;
 $margin-sm: 5px;
 $margin-md: 10px;
 $margin-lg: 20px;
+
+// Opacity Scale
+$opacity-100: 1.0;
+$opacity-95: 0.95;
+$opacity-90: 0.9;
+$opacity-85: 0.85;
+$opacity-80: 0.8;
+$opacity-70: 0.7;
+$opacity-60: 0.6;
+$opacity-50: 0.5;
+$opacity-40: 0.4;
+$opacity-30: 0.3;
+
+// Text Color Utilities (use rgba for theme-aware opacity)
+$text-primary: rgba(255, 255, 255, $opacity-95);
+$text-secondary: rgba(255, 255, 255, $opacity-90);
+$text-muted: rgba(255, 255, 255, $opacity-70);
+$text-disabled: rgba(255, 255, 255, $opacity-60);
+$text-hint: rgba(255, 255, 255, $opacity-50);

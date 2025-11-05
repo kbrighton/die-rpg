@@ -4,7 +4,7 @@
 .sheet-header {
   // NPC type display in left column
   .npc-type-display {
-    font-size: 0.9rem;
+    font-size: var(--font-size-14);
     // color: $c-faint;
     font-style: italic;
     margin-top: $gap-sm;
@@ -30,7 +30,7 @@
     .document-name {
       width: 100%;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: var(--font-size-18);
       font-weight: bold;
       padding: $padding-sm;
       border: 1px solid $c-faint;
@@ -54,7 +54,7 @@
         display: block;
         margin-bottom: $gap-sm;
         font-weight: bold;
-        font-size: 0.9rem;
+        font-size: var(--font-size-14);
       }
 
       select {
@@ -145,7 +145,7 @@
       }
 
       i {
-        font-size: 0.9rem;
+        font-size: var(--font-size-14);
       }
     }
   }
@@ -234,7 +234,7 @@
     }
 
     .hint-text {
-      font-size: 0.9rem;
+      font-size: var(--font-size-14);
     }
   }
 }
