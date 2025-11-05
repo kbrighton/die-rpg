@@ -50,10 +50,8 @@
 
   // Fallen State Info
   .fallen-state-info {
+    @include card;
     padding: $padding-lg;
-    background: $overlay-dark;
-    border: 1px solid $overlay-medium;
-    border-radius: 4px;
 
     .section-title {
       margin: 0 0 $margin-sm 0;
@@ -71,10 +69,8 @@
 
   // Unlife Rules
   .fallen-rules {
+    @include card-highlight($overlay-medium);
     padding: $padding-lg;
-    background: $overlay-darker;
-    border-left: 3px solid $overlay-medium;
-    border-radius: 2px;
 
     h4 {
       margin: 0 0 $margin-sm 0;
@@ -101,10 +97,8 @@
 
   // Fallen Claws
   .fallen-claws {
+    @include card;
     padding: $padding-lg;
-    background: $overlay-dark;
-    border: 1px solid $overlay-medium;
-    border-radius: 4px;
 
     h4 {
       margin: 0 0 $margin-sm 0;
@@ -120,10 +114,7 @@
     }
 
     .poison-special {
-      padding: $padding-md;
-      background: $overlay-darker;
-      border-left: 3px solid $c-failure-border;
-      border-radius: 2px;
+      @include card-highlight($c-failure-border);
 
       strong {
         display: block;
@@ -157,27 +148,8 @@
       }
 
       .add-ability-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-        background: $c-success-bg;
-        color: $c-success-text;
-        border: 1px solid $c-success-border;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-
-        i {
-          font-size: 0.625rem;
-        }
-
-        &:hover {
-          background: $c-success;
-          border-color: $c-success;
-          color: $c-white;
-        }
+        @include btn-success;
+        @include btn-small;
       }
     }
 
@@ -199,10 +171,7 @@
     }
 
     .monstrous-ability-block {
-      padding: $padding-md;
-      background: $overlay-dark;
-      border: 1px solid $overlay-medium;
-      border-radius: 4px;
+      @include card;
 
       .ability-header {
         display: flex;
@@ -232,23 +201,8 @@
         }
 
         .delete-ability-btn {
-          padding: 0.25rem 0.5rem;
-          background: $c-failure-bg;
-          color: $c-failure;
-          border: 1px solid $c-failure-border;
-          border-radius: 3px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-
-          i {
-            font-size: 0.75rem;
-          }
-
-          &:hover {
-            background: $c-failure;
-            border-color: $c-failure;
-            color: $c-white;
-          }
+          @include btn-danger;
+          @include btn-small;
         }
       }
 
@@ -290,27 +244,8 @@
           }
 
           .add-special-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.75rem;
-            background: $c-success-bg;
-            color: $c-success-text;
-            border: 1px solid $c-success-border;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-
-            i {
-              font-size: 0.625rem;
-            }
-
-            &:hover {
-              background: $c-success;
-              border-color: $c-success;
-              color: $c-white;
-            }
+            @include btn-success;
+            @include btn-small;
           }
         }
 
@@ -335,11 +270,8 @@
 
   // Second Death Warning
   .second-death-warning {
+    @include card-highlight($c-failure-border);
     padding: $padding-lg;
-    background: $overlay-dark;
-    border: 1px solid $overlay-medium;
-    border-left: 3px solid $c-failure-border;
-    border-radius: 4px;
 
     h4 {
       margin: 0 0 $margin-sm 0;

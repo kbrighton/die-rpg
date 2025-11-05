@@ -62,9 +62,8 @@
       }
 
       &.info-note {
+        @include card-highlight($c-warning-border);
         background: $c-warning-bg;
-        padding: $padding-md;
-        border-left: 3px solid $c-warning-border;
 
         .note-text {
           margin: 0;
@@ -130,23 +129,7 @@
     }
 
     .add-ability-btn {
-      display: flex;
-      align-items: center;
-      gap: $gap-sm;
-      padding: $padding-sm $padding-md;
-      background: $c-success-bg;
-      border: 1px solid $c-success-border;
-      color: $c-success;
-      cursor: pointer;
-
-      &:hover {
-        background: $c-success-bg;
-        border-color: $c-success;
-      }
-
-      i {
-        font-size: var(--font-size-14);
-      }
+      @include btn-success;
     }
   }
 
@@ -157,10 +140,8 @@
   }
 
   .ability-block {
-    padding: $padding-md;
+    @include card;
     background: $section-bg;
-    border: 1px solid $c-faint;
-    border-radius: 4px;
 
     .ability-header {
       display: flex;
@@ -173,21 +154,9 @@
       }
 
       .delete-ability-btn {
-        padding: $padding-sm;
-        background: $c-failure-bg;
-        border: 1px solid $c-failure-border;
-        color: $c-failure;
-        cursor: pointer;
+        @include btn-danger;
+        @include btn-icon;
         align-self: flex-end;
-
-        &:hover {
-          background: $c-failure-bg;
-          border-color: $c-failure;
-        }
-
-        i {
-          pointer-events: none;
-        }
       }
     }
 
@@ -207,18 +176,7 @@
       border-top: 1px solid $c-faint;
 
       .checkbox-label {
-        display: flex;
-        align-items: center;
-        gap: $gap-sm;
-        cursor: pointer;
-
-        input[type="checkbox"] {
-          cursor: pointer;
-        }
-
-        span {
-          user-select: none;
-        }
+        @include form-checkbox;
       }
     }
   }

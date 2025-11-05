@@ -1,3 +1,7 @@
+// ==========================================
+// UTILITY MIXINS
+// ==========================================
+
 @mixin element-invisible {
   position: absolute;
 
@@ -13,4 +17,268 @@
 
 @mixin hide {
   display: none;
+}
+
+// ==========================================
+// BUTTON MIXINS
+// ==========================================
+
+// Base button structure (used by all button variants)
+@mixin btn-base {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+  padding: $padding-sm $padding-md;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-14);
+  font-weight: normal;
+  border: 1px solid transparent;
+
+  i {
+    pointer-events: none;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Success button (green) - for add/create actions
+@mixin btn-success {
+  @include btn-base;
+  background: $c-success-bg;
+  border-color: $c-success-border;
+  color: $c-success-text;
+
+  &:hover:not(:disabled) {
+    background: $c-success;
+    border-color: $c-success;
+    color: $c-white;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+// Danger button (red) - for delete/remove actions
+@mixin btn-danger {
+  @include btn-base;
+  background: $c-failure-bg;
+  border-color: $c-failure-border;
+  color: $c-failure;
+
+  &:hover:not(:disabled) {
+    background: $c-failure;
+    border-color: $c-failure;
+    color: $c-white;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+// Info button (blue) - for edit/info actions
+@mixin btn-info {
+  @include btn-base;
+  background: $c-info-bg;
+  border-color: $c-info-border;
+  color: $c-info-text;
+
+  &:hover:not(:disabled) {
+    background: $c-info;
+    border-color: $c-info;
+    color: $c-white;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+// Neutral button (gray) - for secondary actions
+@mixin btn-neutral {
+  @include btn-base;
+  background: $overlay-darker;
+  border-color: $overlay-darker;
+  color: $text-secondary;
+
+  &:hover:not(:disabled) {
+    background: $overlay-dark;
+    border-color: $overlay-medium;
+    color: $c-white;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+// Small button variant (for compact layouts)
+@mixin btn-small {
+  padding: $padding-xs $padding-sm;
+  font-size: var(--font-size-12);
+  gap: 4px;
+
+  i {
+    font-size: var(--font-size-10);
+  }
+}
+
+// Icon-only button (square, centered icon)
+@mixin btn-icon {
+  padding: $padding-sm;
+  min-width: 24px;
+  min-height: 24px;
+  justify-content: center;
+  gap: 0;
+
+  i {
+    font-size: var(--font-size-12);
+  }
+}
+
+// ==========================================
+// FORM FIELD MIXINS
+// ==========================================
+
+// Base form field styling
+@mixin form-field-base {
+  label {
+    display: block;
+    margin-bottom: $margin-sm;
+    font-weight: 600;
+    font-size: var(--font-size-14);
+    color: $text-primary;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100%;
+    padding: $padding-sm;
+    background: $overlay-darker;
+    border: 1px solid $overlay-medium;
+    border-radius: 3px;
+    font-size: var(--font-size-14);
+    color: $text-primary;
+
+    &:focus {
+      outline: none;
+      border-color: $overlay-light;
+      background: $overlay-dark;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background: $overlay-darkest;
+    }
+
+    &::placeholder {
+      color: $text-muted;
+    }
+  }
+
+  // Number input specific
+  input[type="number"] {
+    text-align: left;
+  }
+
+  // Textarea specific
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+}
+
+// Inline form field (label and input side-by-side)
+@mixin form-field-inline {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+
+  label {
+    margin: 0;
+    white-space: nowrap;
+    min-width: fit-content;
+  }
+
+  input,
+  select {
+    flex: 1;
+  }
+}
+
+// Checkbox/Radio styling
+@mixin form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  label,
+  span {
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  &:has(input:disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    label,
+    span {
+      cursor: not-allowed;
+    }
+  }
+}
+
+// ==========================================
+// CARD/PANEL MIXINS
+// ==========================================
+
+// Card/panel with background and border
+@mixin card {
+  padding: $padding-md;
+  background: $overlay-darker;
+  border: 1px solid $overlay-dark;
+  border-radius: 4px;
+}
+
+// Highlighted card (with colored border)
+@mixin card-highlight($color) {
+  @include card;
+  border-left: 3px solid $color;
+}
+
+// Section header styling
+@mixin section-header {
+  margin: 0 0 $margin-md 0;
+  padding-bottom: $padding-sm;
+  border-bottom: 1px solid $overlay-medium;
+  font-size: var(--font-size-18);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $text-primary;
 }
