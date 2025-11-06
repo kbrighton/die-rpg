@@ -150,7 +150,7 @@
 					color: $c-gold;
 
 					i {
-						animation: pulse 2s ease-in-out infinite;
+						@include animate-pulse;
 					}
 				}
 
@@ -273,7 +273,7 @@
 				font-weight: bold;
 
 				i {
-					animation: shake 0.5s ease-in-out infinite;
+					@include animate-shake;
 				}
 			}
 
@@ -513,26 +513,4 @@
 	}
 }
 
-/* Animations */
-@keyframes pulse {
-	0%,
-	100% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0.7;
-	}
-}
-
-@keyframes shake {
-	0%,
-	100% {
-		transform: rotate(0deg);
-	}
-	25% {
-		transform: rotate(-5deg);
-	}
-	75% {
-		transform: rotate(5deg);
-	}
-}
+/* Animations now centralized in utils/_mixins.scss */
