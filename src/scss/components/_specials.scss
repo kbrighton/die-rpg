@@ -44,7 +44,10 @@
     .delete-special-btn {
       @include btn-danger;
       @include btn-icon;
-      flex-shrink: 0;
+
+      & {
+        flex-shrink: 0;
+      }
     }
   }
 

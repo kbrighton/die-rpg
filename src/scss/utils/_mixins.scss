@@ -23,8 +23,8 @@
 // BUTTON MIXINS
 // ==========================================
 
-// Base button structure (used by all button variants)
-@mixin btn-base {
+// Base button styles (declarations only - no nested rules)
+@mixin btn-base-styles {
   display: flex;
   align-items: center;
   gap: $gap-sm;
@@ -35,7 +35,10 @@
   font-size: var(--font-size-14);
   font-weight: normal;
   border: 1px solid transparent;
+}
 
+// Base button behaviors (nested rules only)
+@mixin btn-base-states {
   i {
     pointer-events: none;
   }
@@ -48,10 +51,12 @@
 
 // Success button (green) - for add/create actions
 @mixin btn-success {
-  @include btn-base;
+  @include btn-base-styles;
   background: $c-success-bg;
   border-color: $c-success-border;
   color: $c-success-text;
+
+  @include btn-base-states;
 
   &:hover:not(:disabled) {
     background: $c-success;
@@ -66,10 +71,12 @@
 
 // Danger button (red) - for delete/remove actions
 @mixin btn-danger {
-  @include btn-base;
+  @include btn-base-styles;
   background: $c-failure-bg;
   border-color: $c-failure-border;
   color: $c-failure;
+
+  @include btn-base-states;
 
   &:hover:not(:disabled) {
     background: $c-failure;
@@ -84,10 +91,12 @@
 
 // Info button (blue) - for edit/info actions
 @mixin btn-info {
-  @include btn-base;
+  @include btn-base-styles;
   background: $c-info-bg;
   border-color: $c-info-border;
   color: $c-info-text;
+
+  @include btn-base-states;
 
   &:hover:not(:disabled) {
     background: $c-info;
@@ -102,10 +111,12 @@
 
 // Neutral button (gray) - for secondary actions
 @mixin btn-neutral {
-  @include btn-base;
+  @include btn-base-styles;
   background: $overlay-darker;
   border-color: $overlay-darker;
   color: $text-secondary;
+
+  @include btn-base-states;
 
   &:hover:not(:disabled) {
     background: $overlay-dark;
@@ -119,10 +130,13 @@
 }
 
 // Small button variant (for compact layouts)
+// Uses & {} wrapper to avoid Sass deprecation warnings when chained with other mixins
 @mixin btn-small {
-  padding: $padding-xs $padding-sm;
-  font-size: var(--font-size-12);
-  gap: 4px;
+  & {
+    padding: $padding-xs $padding-sm;
+    font-size: var(--font-size-12);
+    gap: 4px;
+  }
 
   i {
     font-size: var(--font-size-10);
@@ -130,12 +144,15 @@
 }
 
 // Icon-only button (square, centered icon)
+// Uses & {} wrapper to avoid Sass deprecation warnings when chained with other mixins
 @mixin btn-icon {
-  padding: $padding-sm;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
-  gap: 0;
+  & {
+    padding: $padding-sm;
+    min-width: 24px;
+    min-height: 24px;
+    justify-content: center;
+    gap: 0;
+  }
 
   i {
     font-size: var(--font-size-12);

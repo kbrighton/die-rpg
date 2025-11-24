@@ -156,7 +156,10 @@
       .delete-ability-btn {
         @include btn-danger;
         @include btn-icon;
-        align-self: flex-end;
+
+        & {
+          align-self: flex-end;
+        }
       }
     }
 

@@ -696,8 +696,11 @@ h6 {
 
 		.create-item-btn {
 			@include btn-success;
-			flex-shrink: 0;
-			white-space: nowrap;
+
+			& {
+				flex-shrink: 0;
+				white-space: nowrap;
+			}
 		}
 	}
 
