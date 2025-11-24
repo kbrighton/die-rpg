@@ -148,7 +148,7 @@
   }
 
   .triangle-label {
-    font-size: 42px;
+    font-size: var(--font-size-40);
     font-weight: bold;
     fill: $c-white;
     user-select: none;
@@ -177,7 +177,7 @@
     h3 {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 1.2rem;
+      font-size: var(--font-size-20);
       border-bottom: 2px solid $overlay-darkest;
       padding-bottom: 0.5rem;
     }
@@ -209,7 +209,7 @@
       .advancement-number {
         color: $c-warning;
         font-family: monospace;
-        font-size: 1.1em;
+        font-size: var(--font-size-18);
       }
 
       .advancement-name {
@@ -225,7 +225,7 @@
     .advancement-description {
       margin-bottom: 1rem;
       line-height: 1.5;
-      color: rgba(255, 255, 255, 0.9);
+      color: $text-secondary;
     }
 
     .advancement-positions {
@@ -244,7 +244,7 @@
 
       .position-id {
         font-family: monospace;
-        font-size: 0.9em;
+        font-size: var(--font-size-14);
         color: $c-gray-light;
         min-width: 4rem;
       }

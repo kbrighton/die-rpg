@@ -50,10 +50,8 @@
 
   // Fallen State Info
   .fallen-state-info {
+    @include card;
     padding: $padding-lg;
-    background: $overlay-dark;
-    border: 1px solid $overlay-medium;
-    border-radius: 4px;
 
     .section-title {
       margin: 0 0 $margin-sm 0;
@@ -65,28 +63,26 @@
     .fallen-description {
       font-size: 0.9375rem;
       line-height: 1.5;
-      color: rgba(255, 255, 255, 0.9);
+      color: $text-secondary;
     }
   }
 
   // Unlife Rules
   .fallen-rules {
+    @include card-highlight($overlay-medium);
     padding: $padding-lg;
-    background: $overlay-darker;
-    border-left: 3px solid $overlay-medium;
-    border-radius: 2px;
 
     h4 {
       margin: 0 0 $margin-sm 0;
       font-size: 1rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.95);
+      color: $text-primary;
     }
 
     .rules-list {
       margin: 0;
       padding-left: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
+      color: $text-secondary;
 
       li {
         margin-bottom: $margin-sm;
@@ -101,29 +97,24 @@
 
   // Fallen Claws
   .fallen-claws {
+    @include card;
     padding: $padding-lg;
-    background: $overlay-dark;
-    border: 1px solid $overlay-medium;
-    border-radius: 4px;
 
     h4 {
       margin: 0 0 $margin-sm 0;
       font-size: 1rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.95);
+      color: $text-primary;
     }
 
     .claws-description {
       margin-bottom: $margin-md;
       line-height: 1.5;
-      color: rgba(255, 255, 255, 0.9);
+      color: $text-secondary;
     }
 
     .poison-special {
-      padding: $padding-md;
-      background: $overlay-darker;
-      border-left: 3px solid $c-failure-border;
-      border-radius: 2px;
+      @include card-highlight($c-failure-border);
 
       strong {
         display: block;
@@ -136,7 +127,7 @@
         margin: 0;
         font-size: 0.875rem;
         line-height: 1.4;
-        color: rgba(255, 255, 255, 0.85);
+        color: $text-secondary;
       }
     }
   }
@@ -153,31 +144,12 @@
         margin: 0;
         font-size: 1rem;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.95);
+        color: $text-primary;
       }
 
       .add-ability-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-        background: $c-success-bg;
-        color: $c-success-text;
-        border: 1px solid $c-success-border;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-
-        i {
-          font-size: 0.625rem;
-        }
-
-        &:hover {
-          background: $c-success;
-          border-color: $c-success;
-          color: $c-white;
-        }
+        @include btn-success;
+        @include btn-small;
       }
     }
 
@@ -191,7 +163,7 @@
         padding: $padding-md;
         font-size: 0.875rem;
         font-style: italic;
-        color: rgba(255, 255, 255, 0.6);
+        color: $text-disabled;
         background: $overlay-darker;
         border-radius: 3px;
         text-align: center;
@@ -199,10 +171,7 @@
     }
 
     .monstrous-ability-block {
-      padding: $padding-md;
-      background: $overlay-dark;
-      border: 1px solid $overlay-medium;
-      border-radius: 4px;
+      @include card;
 
       .ability-header {
         display: flex;
@@ -218,7 +187,7 @@
           background: $overlay-darker;
           border: 1px solid $overlay-medium;
           border-radius: 3px;
-          color: rgba(255, 255, 255, 0.95);
+          color: $text-primary;
 
           &:focus {
             outline: none;
@@ -232,23 +201,8 @@
         }
 
         .delete-ability-btn {
-          padding: 0.25rem 0.5rem;
-          background: $c-failure-bg;
-          color: $c-failure;
-          border: 1px solid $c-failure-border;
-          border-radius: 3px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-
-          i {
-            font-size: 0.75rem;
-          }
-
-          &:hover {
-            background: $c-failure;
-            border-color: $c-failure;
-            color: $c-white;
-          }
+          @include btn-danger;
+          @include btn-small;
         }
       }
 
@@ -261,7 +215,7 @@
           margin-bottom: $margin-sm;
           font-size: 0.875rem;
           font-weight: 600;
-          color: rgba(255, 255, 255, 0.85);
+          color: $text-secondary;
         }
 
         prose-mirror {
@@ -286,31 +240,12 @@
           label {
             font-size: 0.875rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.85);
+            color: $text-secondary;
           }
 
           .add-special-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.75rem;
-            background: $c-success-bg;
-            color: $c-success-text;
-            border: 1px solid $c-success-border;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-
-            i {
-              font-size: 0.625rem;
-            }
-
-            &:hover {
-              background: $c-success;
-              border-color: $c-success;
-              color: $c-white;
-            }
+            @include btn-success;
+            @include btn-small;
           }
         }
 
@@ -325,7 +260,7 @@
           padding: $padding-sm;
           font-size: 0.875rem;
           font-style: italic;
-          color: rgba(255, 255, 255, 0.6);
+          color: $text-disabled;
           background: $overlay-darkest;
           border-radius: 3px;
         }
@@ -335,11 +270,8 @@
 
   // Second Death Warning
   .second-death-warning {
+    @include card-highlight($c-failure-border);
     padding: $padding-lg;
-    background: $overlay-dark;
-    border: 1px solid $overlay-medium;
-    border-left: 3px solid $c-failure-border;
-    border-radius: 4px;
 
     h4 {
       margin: 0 0 $margin-sm 0;
@@ -352,7 +284,7 @@
       margin: 0;
       line-height: 1.5;
       font-size: 0.9375rem;
-      color: rgba(255, 255, 255, 0.9);
+      color: $text-secondary;
     }
   }
 }

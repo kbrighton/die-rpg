@@ -71,7 +71,7 @@ h6 {
 					padding: $padding-sm;
 					background: $overlay-dark;
 					border-radius: 4px;
-					font-size: 0.9em;
+					font-size: var(--font-size-14);
 
 					.flashback-status {
 						display: flex;
@@ -80,7 +80,7 @@ h6 {
 						flex: 1;
 
 						i {
-							font-size: 1em;
+							font-size: var(--font-size-16);
 						}
 
 						.status-text {
@@ -111,12 +111,12 @@ h6 {
 						border-radius: 3px;
 						cursor: pointer;
 						transition: all 0.2s ease;
-						color: rgba(255, 255, 255, 0.8);
-						font-size: 0.9em;
+						color: rgba(255, 255, 255, $opacity-80);
+						font-size: var(--font-size-14);
 
 						&:hover:not(:disabled) {
 							background: $overlay-darker;
-							border-color: rgba(255, 255, 255, 0.4);
+							border-color: rgba(255, 255, 255, $opacity-40);
 							color: $c-white;
 						}
 
@@ -146,16 +146,16 @@ h6 {
 						border-radius: 4px;
 						cursor: pointer;
 						transition: all 0.2s ease;
-						font-size: 0.9em;
+						font-size: var(--font-size-14);
 
 						i {
-							font-size: 1em;
+							font-size: var(--font-size-16);
 							color: $c-success;
 						}
 
 						.label {
 							font-weight: 600;
-							color: rgba(255, 255, 255, 0.9);
+							color: $text-secondary;
 						}
 
 						&:hover {
@@ -184,7 +184,7 @@ h6 {
 							}
 
 							&:hover {
-								background: rgba(139, 0, 0, 0.3);
+								background: rgba(139, 0, 0, $opacity-30);
 								border-color: $c-failure;
 
 								i,
@@ -203,16 +203,16 @@ h6 {
 						background: $overlay-darker;
 						border-radius: 4px;
 						opacity: 0.8;
-						font-size: 0.9em;
+						font-size: var(--font-size-14);
 
 						i {
-							font-size: 1em;
+							font-size: var(--font-size-16);
 							color: $c-success;
 						}
 
 						.label {
 							font-weight: 600;
-							color: rgba(255, 255, 255, 0.9);
+							color: $text-secondary;
 						}
 
 						&.active {
@@ -246,7 +246,7 @@ h6 {
 						background: $overlay-darker;
 						border: 1px solid $overlay-darker;
 						border-radius: 4px;
-						color: rgba(255, 255, 255, 0.9);
+						color: $text-secondary;
 						cursor: pointer;
 						transition: all 0.2s ease;
 						display: flex;
@@ -415,7 +415,7 @@ h6 {
 
 	.spinner-label {
 		font-weight: bold;
-		font-size: 1em;
+		font-size: var(--font-size-16);
 		min-width: 120px;
 	}
 
@@ -441,11 +441,11 @@ h6 {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 1.1em;
+		font-size: var(--font-size-18);
 		font-weight: normal;
 		line-height: 1;
 		padding: 0;
-		color: rgba(255, 255, 255, 0.7);
+		color: $text-muted;
 
 		&.number-spinner-plus {
 			border-right: none;
@@ -454,7 +454,7 @@ h6 {
 
 		&:hover:not(:disabled) {
 			background: $overlay-dark;
-			color: rgba(255, 255, 255, 0.9);
+			color: $text-secondary;
 		}
 
 		&:active:not(:disabled) {
@@ -474,7 +474,7 @@ h6 {
 		text-align: center;
 		border: none;
 		background: transparent;
-		font-size: 1em;
+		font-size: var(--font-size-16);
 		font-weight: normal;
 		padding: 0 8px;
 		color: inherit;
@@ -498,7 +498,7 @@ h6 {
 	}
 
 	.spinner-suffix {
-		font-size: 0.95em;
+		font-size: var(--font-size-15);
 		opacity: 0.8;
 		font-weight: normal;
 	}
@@ -537,7 +537,7 @@ h6 {
 
 	.section-header {
 		margin: 0;
-		font-size: 1.2em;
+		font-size: var(--font-size-20);
 		font-weight: bold;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
@@ -546,7 +546,7 @@ h6 {
 
 	.section-description {
 		margin: $margin-sm 0 0 $margin-lg;
-		font-size: 0.85em;
+		font-size: var(--font-size-14);
 		font-style: italic;
 		opacity: 0.7;
 		line-height: 1.4;
@@ -557,7 +557,7 @@ h6 {
 		align-items: center;
 		gap: $gap-sm;
 		cursor: pointer;
-		font-size: 0.9em;
+		font-size: var(--font-size-14);
 
 		input[type="checkbox"] {
 			margin: 0;
@@ -607,13 +607,13 @@ h6 {
 .flashback-option {
 	margin-top: $margin-sm;
 	margin-left: $margin-lg;
-	font-size: 0.85em;
+	font-size: var(--font-size-14);
 	opacity: 0.9;
 }
 
 .dice-pool-section {
 	.dice-pool-display {
-		font-size: 1.4em;
+		font-size: var(--font-size-24);
 		font-weight: bold;
 		margin-bottom: $margin-sm;
 		display: flex;
@@ -637,7 +637,7 @@ h6 {
 			align-items: center;
 			padding: 4px 10px;
 			border-radius: 4px;
-			font-size: 0.9em;
+			font-size: var(--font-size-14);
 			font-weight: bold;
 
 			&.base-pool {
@@ -670,9 +670,9 @@ h6 {
 
 		.warning-text {
 			margin: 0;
-			font-size: 0.85em;
+			font-size: var(--font-size-14);
 			font-style: italic;
-			color: rgba(255, 255, 255, 0.9);
+			color: $text-secondary;
 		}
 	}
 }
@@ -695,32 +695,11 @@ h6 {
 		}
 
 		.create-item-btn {
-			flex-shrink: 0;
-			padding: 4px 12px;
-			background: $c-success-bg;
-			border: 1px solid $c-success-border;
-			border-radius: 4px;
-			color: $c-success-text;
-			font-size: 0.85em;
-			cursor: pointer;
-			transition: all 0.2s ease;
-			display: flex;
-			align-items: center;
-			gap: 4px;
-			white-space: nowrap;
+			@include btn-success;
 
-			i {
-				font-size: 0.9em;
-			}
-
-			&:hover {
-				background: $c-success;
-				border-color: $c-success;
-				color: $c-white;
-			}
-
-			&:active {
-				transform: translateY(1px);
+			& {
+				flex-shrink: 0;
+				white-space: nowrap;
 			}
 		}
 	}
@@ -782,7 +761,7 @@ h6 {
 				transition: background 0.15s ease;
 
 				&:hover {
-					background: rgba(255, 255, 255, 0.05);
+					background: rgba(255, 255, 255, $opacity-5);
 				}
 
 				.item-icon {
@@ -804,14 +783,14 @@ h6 {
 					padding: 2px 8px;
 					background: $overlay-darkest;
 					border-radius: 3px;
-					font-size: 0.75em;
+					font-size: var(--font-size-12);
 					text-transform: uppercase;
 					opacity: 0.7;
 				}
 
 				.expand-indicator {
 					flex-shrink: 0;
-					font-size: 0.75em;
+					font-size: var(--font-size-12);
 					transition: transform 0.2s ease;
 					opacity: 0.5;
 
@@ -846,10 +825,10 @@ h6 {
 				border-radius: 3px;
 				cursor: pointer;
 				transition: all 0.15s ease;
-				color: rgba(255, 255, 255, 0.7);
+				color: $text-muted;
 
 				i {
-					font-size: 0.75em;
+					font-size: var(--font-size-12);
 					pointer-events: none;
 				}
 
@@ -875,16 +854,16 @@ h6 {
 			border-top: 1px solid $overlay-medium;
 			padding: $padding-md;
 			background: rgba(0, 0, 0, 0.4);
-			color: rgba(255, 255, 255, 0.95);
+			color: $text-primary;
 
 			.item-details-content {
-				font-size: 0.9em;
+				font-size: var(--font-size-14);
 
 				.item-description {
 					margin-bottom: $margin-md;
 
 					strong {
-						color: rgba(255, 255, 255, 1);
+						color: rgba(255, 255, 255, $opacity-100);
 					}
 
 					.description-content {
@@ -892,8 +871,8 @@ h6 {
 						padding: $padding-sm;
 						background: rgba(0, 0, 0, 0.3);
 						border-radius: 3px;
-						border-left: 3px solid rgba(255, 255, 255, 0.2);
-						color: rgba(255, 255, 255, 0.9);
+						border-left: 3px solid rgba(255, 255, 255, $opacity-20);
+						color: $text-secondary;
 
 						// Ensure enriched HTML renders properly
 						p:first-child {
@@ -907,10 +886,10 @@ h6 {
 
 				p {
 					margin: 4px 0;
-					color: rgba(255, 255, 255, 0.9);
+					color: $text-secondary;
 
 					strong {
-						color: rgba(255, 255, 255, 1);
+						color: rgba(255, 255, 255, $opacity-100);
 					}
 				}
 
@@ -918,10 +897,10 @@ h6 {
 				.item-specials {
 					margin-top: $margin-md;
 					padding-top: $margin-sm;
-					border-top: 1px solid rgba(255, 255, 255, 0.15);
+					border-top: 1px solid rgba(255, 255, 255, $opacity-15);
 
 					> strong {
-						color: rgba(255, 255, 255, 1);
+						color: rgba(255, 255, 255, $opacity-100);
 					}
 
 					// Special styles moved to components/_specials.scss
