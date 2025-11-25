@@ -82,7 +82,85 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
+  "packs": [
+    {
+      "name": "equipment",
+      "label": "Equipment",
+      "path": "packs/equipment",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "paragons",
+      "label": "Paragons",
+      "path": "packs/paragons",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "gods",
+      "label": "Gods",
+      "path": "packs/gods",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "gifts",
+      "label": "Gifts of the Fair",
+      "path": "packs/gifts",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "stances",
+      "label": "Stances",
+      "path": "packs/stances",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "venting",
+      "label": "Venting Abilities",
+      "path": "packs/venting",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "spells",
+      "label": "Spells",
+      "path": "packs/spells",
+      "type": "Item",
+      "system": "die-rpg",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
   "packFolders": [],
   "socket": false,
   "url": "#{URL}#",

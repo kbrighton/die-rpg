@@ -1,0 +1,35 @@
+{
+  "name": "Magical death touch",
+  "type": "equipment",
+  "img": "systems/die-rpg/assets/icons/glowing-hands.svg",
+  "system": {
+    "description": "<p>May use <strong>Dex</strong> instead of <strong>Str</strong> for its dice pool. This weapon is concealed and cannot be taken from you.</p>",
+    "quantity": 1,
+    "weight": 0,
+    "defenseBonus": 0,
+    "rollModType": "none",
+    "rollModValue": null,
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0,
+    "UGCccSsgt9XaEKG6": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106398531,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "QCtMEUc9X73Tihgz",
+  "sort": 200000,
+  "_key": "!items!QCtMEUc9X73Tihgz"
+}

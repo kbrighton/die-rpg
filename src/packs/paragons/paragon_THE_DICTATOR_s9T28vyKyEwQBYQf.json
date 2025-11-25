@@ -1,0 +1,101 @@
+{
+  "name": "THE DICTATOR",
+  "type": "paragon",
+  "img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20DICTATOR.webp",
+  "system": {
+    "description": "",
+    "coreNature": "<p><em>You read a sad story. You cry. Do you think that's sinister, as if someone has artificially taken over your emotions? Of course not. That's just what art is.</em></p><p><em>Anyone who's ever met a Dictator would disagree.</em></p><p><em>By performing, they alter other people's emotional states. Dictators play people like a musician plays a harp. They can pluck the strings. They can snap them.</em></p><p><em>They're like bards, if everyone was fucking petrified of bards.</em></p><p><strong>PLAY A DICTATOR IF YOU WANT TO...</strong></p><ul><li>Be an artist whose performances warp others' emotions, and even create magical effects.</li><li>Use your imagination and creativity to work out exactly what your awful gift can do.</li><li>Be hated and feared for very good reasons.</li></ul>",
+    "die": "d4",
+    "importantStat": "cha",
+    "coreAbility": {
+      "name": "A LITTLE EMOTIONAL NUDGE",
+      "description": "<p>When you have your D4 and could get an edge from subtle emotional manipulation, roll it as part of your dice pool and increase any other dice's result by its value.</p>"
+    },
+    "looks": [
+      {
+        "name": "Austere, severe angular outfits",
+        "description": "",
+        "defenseBonus": 0
+      },
+      {
+        "name": "Flamboyant, straight out of a stage show",
+        "description": "",
+        "defenseBonus": 0
+      },
+      {
+        "name": "Spectacular eveningwear",
+        "description": "",
+        "defenseBonus": 0
+      }
+    ],
+    "specials": [],
+    "equipmentOptions": [
+      "Item.SqHfLrxK59nNUY74",
+      "Item.hSzH0ouuW6g3bZLr",
+      "Item.i3oas4Z6o6U11igS",
+      "Compendium.die-rpg.equipment.Item.nHyFkvPGX2XB9bV2",
+      "Compendium.die-rpg.equipment.Item.ErHJTD6zA8blul7j",
+      "Compendium.die-rpg.equipment.Item.QCtMEUc9X73Tihgz"
+    ],
+    "advancementAssignments": {
+      "row0-1": 1,
+      "row1-1": 1,
+      "row1-2": 1,
+      "row1-3": 1,
+      "row1-4": 1,
+      "row1-5": 1,
+      "row2-1": 1,
+      "row2-2": 1,
+      "row3-1": 1,
+      "row3-2": 1,
+      "row3-3": 1,
+      "row4-1": 1,
+      "row4-2": 1,
+      "row4-3": 1,
+      "row4-4": 1,
+      "row4-5": 1,
+      "row5-1": 1,
+      "row5-2": 1,
+      "row5-3": 1,
+      "row5-4": 1
+    },
+    "advancements": [
+      {
+        "id": 1,
+        "name": "Sample Advancement",
+        "description": "<p>This is a placeholder advancement.</p>",
+        "icon": ""
+      }
+    ],
+    "classAbilities": {
+      "fields": []
+    },
+    "advancementForms": {
+      "fields": []
+    },
+    "classDiceImage": "systems/die-rpg/assets/DIE/dice/d4-exploded.svg",
+    "portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20DICTATOR.webp",
+    "tokenImage": "systems/die-rpg/assets/DIE/tokens/paragons/THE%20DICTATOR.webp"
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0,
+    "UGCccSsgt9XaEKG6": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106416668,
+    "modifiedTime": 1764106440801,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "s9T28vyKyEwQBYQf",
+  "sort": 0,
+  "_key": "!items!s9T28vyKyEwQBYQf"
+}

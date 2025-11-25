@@ -16,6 +16,19 @@
     }
   }
 
+  .starting-equipment-section {
+    .equipment-selector {
+      display: flex;
+      flex-direction: row;
+      gap: $gap-md;
+      align-items: center;
+
+      button {
+        @include btn-success;
+      }
+    }
+  }
+
 }
 
 .tab.paragon {

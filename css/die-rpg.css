@@ -782,7 +782,7 @@
 }
 .die-rpg .left-col {
   flex: 0 0 1;
-  margin-right: 10px;
+  gap: 5px;
 }
 .die-rpg .right-col {
   flex: 2;
@@ -813,6 +813,7 @@
 }
 .die-rpg.actor .window-content .sheet-header .header-top {
   align-items: start;
+  gap: 10px;
 }
 .die-rpg.actor .window-content .sheet-header .header-top .flashback-indicator {
   display: flex;
@@ -959,36 +960,7 @@
   padding: 0;
 }
 .die-rpg.actor .window-content .sheet-header .header-top .paragon-selection select {
-  height: 2.5rem;
   text-transform: uppercase;
-}
-.die-rpg.actor .window-content .sheet-header .header-top .paragon-selection .paragon-sheet-icon-btn {
-  padding: 0.5rem 0.75rem;
-  background: var(--die-rpg-overlay-darker);
-  border: 1px solid var(--die-rpg-overlay-darker);
-  border-radius: 4px;
-  color: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.5rem;
-  height: 2.5rem;
-}
-.die-rpg.actor .window-content .sheet-header .header-top .paragon-selection .paragon-sheet-icon-btn i {
-  font-size: 1rem;
-}
-.die-rpg.actor .window-content .sheet-header .header-top .paragon-selection .paragon-sheet-icon-btn:hover:not(:disabled) {
-  background: var(--die-rpg-overlay-dark);
-  border-color: var(--die-rpg-overlay-darker);
-  color: var(--die-rpg-c-white);
-}
-.die-rpg.actor .window-content .sheet-header .header-top .paragon-selection .paragon-sheet-icon-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  background: var(--die-rpg-overlay-darkest);
-  border-color: var(--die-rpg-overlay-darker);
 }
 .die-rpg.actor .window-content .sheet-header .header-top .name-label {
   font-size: var(--font-size-18);
@@ -2270,6 +2242,42 @@
   flex-direction: column;
   gap: 10px;
 }
+.die-rpg .tab.loadout .starting-equipment-section .equipment-selector {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-14);
+  font-weight: normal;
+  border: 1px solid transparent;
+  background: var(--die-rpg-c-success-bg);
+  border-color: var(--die-rpg-c-success-border);
+  color: var(--die-rpg-c-success-text);
+}
+.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button i {
+  pointer-events: none;
+}
+.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button:hover:not(:disabled) {
+  background: var(--die-rpg-c-success);
+  border-color: var(--die-rpg-c-success);
+  color: var(--die-rpg-c-white);
+}
+.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button:active:not(:disabled) {
+  transform: translateY(1px);
+}
 .die-rpg .tab.paragon .paragon-tab-content {
   padding: 10px;
   display: flex;
@@ -2915,3 +2923,5 @@
 .die-rpg .tab.npc-abilities .empty-state .hint-text {
   font-size: var(--font-size-14);
 }
+
+/*# sourceMappingURL=die-rpg.css.map */

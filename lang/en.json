@@ -858,7 +858,7 @@
 				"TotalGuard": "Total Guard:",
 				"Separator": " / ",
 				"SelectEquipment": "-- Select equipment --",
-				"AddEquipment": "Add Equipment"
+				"AddEquipment": "Add"
 			},
 			"Buttons": {
 				"OpenParagonSheet": "Open Paragon Sheet",
@@ -933,7 +933,7 @@
 				"PortraitImageLabel": "Default Portrait",
 				"TokenImageLabel": "Default Token",
 				"DragEquipmentHere": "Drag equipment items here from compendiums to add them as starting options.",
-				"SelectStartingEquipment": "Select and add equipment from your paragon's options. Items will appear in the Equipment tab."
+				"SelectStartingEquipment": "Select and add equipment from your paragon's options."
 			},
 			"SpecialCostDisplay": {
 				"Single": "Special (6+)",
