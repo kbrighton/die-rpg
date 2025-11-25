@@ -8,11 +8,10 @@
 	{{! Look Selection Section - MOVED FROM PARAGON }}
 	{{#if paragonItem}}
 		<div class="look-selection-section">
-			<h3>{{localize "DIE_RPG.UI.Headers.Look"}}</h3>
 			<div class="look-picker">
 				{{#if paragonItem.system.looks}}
-					<div class="form-group">
-						<label for="look-select">{{localize "DIE_RPG.UI.Labels.SelectFromParagonLooks"}}</label>
+					<div class="form-group inline">
+						<label for="look-select">{{localize "DIE_RPG.UI.Headers.Look"}}</label>
 						<select id="look-select" name="system.paragon.selectedLook" data-dtype="String">
 							<option value="">{{localize "DIE_RPG.UI.Sections.SelectLook"}}</option>
 							{{#each paragonItem.system.looks as |look|}}
@@ -68,10 +67,16 @@
 		</div>
 	{{/if}}
 
-	{{! Starting Equipment Selection Section - MOVED FROM PARAGON }}
-	{{#if availableEquipment.length}}
+	{{! Starting Equipment Selection Section }}
+	
+
+	{{! Owned Equipment List - EXISTING }}
+	<div class="owned-equipment-section">
+		<h3>{{localize "DIE_RPG.UI.Headers.Equipment"}}</h3>
+		{{#if availableEquipment.length}}
 		<div class="starting-equipment-section">
-			<h3>{{localize "DIE_RPG.UI.Headers.StartingEquipment"}}</h3>
+			<h5>{{localize "DIE_RPG.UI.Headers.StartingEquipment"}}</h5>
+			<p class="hint">{{localize "DIE_RPG.UI.Hints.SelectStartingEquipment"}}</p>
 			<div class="equipment-selector">
 				<select id="equipment-select" name="equipment-select">
 					<option value="">{{localize "DIE_RPG.UI.Labels.SelectEquipment"}}</option>
@@ -86,17 +91,13 @@
 					{{localize "DIE_RPG.UI.Labels.AddEquipment"}}
 				</button>
 			</div>
-			<p class="hint">{{localize "DIE_RPG.UI.Hints.SelectStartingEquipment"}}</p>
 		</div>
 	{{/if}}
-
-	{{! Owned Equipment List - EXISTING }}
-	<div class="owned-equipment-section">
-		<h3>{{localize "DIE_RPG.UI.Headers.Equipment"}}</h3>
+	<h5>{{localize "DIE_RPG.UI.Headers.EquipmentList"}}</h5>
 		<ol class='items-list'>
 			<li class='item flexrow items-header'>
 				<div class='item-name'>{{localize 'DIE_RPG.UI.Headers.Name'}}</div>
-				<div class='item-formula'>{{localize 'DIE_RPG.Item.Equipment.FIELDS.rollFormula.label'}}</div>
+				<div class='item-formula'>{{localize 'DIE_RPG.Item.Equipment.FIELDS.description.label'}}</div>
 				<div class='item-controls'>
 					{{#if @root.editable}}
 						<a
@@ -120,16 +121,12 @@
 					data-document-class='Item'
 				>
 					<div class='item-name'>
-						<div class='item-image'>
-							<a class='rollable' data-roll-type='item' data-action='roll'>
-								<img
-									src='{{item.img}}'
-									title='{{item.name}}'
-									width='24'
-									height='24'
-								/>
-							</a>
-						</div>
+						<img
+							src='{{item.img}}'
+							title='{{item.name}}'
+							width='24'
+							height='24'
+						/>
 						<div>{{item.name}}</div>
 					</div>
 					<div class='item-formula item-prop'>{{item.system.formula}}</div>

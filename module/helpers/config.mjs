@@ -229,6 +229,7 @@ DIE_RPG.fieldTypes = {
 	select: 'Dropdown',
 	multiSelect: 'Multi-Select',
 	html: 'Rich Text Editor',
+	info: 'Info/Display (Read-Only)',
 	itemList: 'Item List',
 	group: 'Grouped Fields',
 	special: 'Special Reference'

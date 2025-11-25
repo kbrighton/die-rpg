@@ -90,6 +90,15 @@
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
+{{else if (eq field.type "info")}}
+  <div class="form-group info-field">
+    <label>{{field.label}}</label>
+    <div class="info-content">
+      {{{enrichedValue}}}
+    </div>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
 {{else if (eq field.type "itemList")}}
   <div class="form-group itemlist-field">
     <div class="itemlist-header">

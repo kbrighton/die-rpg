@@ -9,7 +9,6 @@
 			{{! Class Abilities Section - Dynamic Fields from Paragon }}
 			{{#if paragonItem.system.classAbilities.fields.length}}
 				<div class="class-abilities-section">
-					<h3>{{localize "DIE_RPG.UI.Headers.ClassAbilities"}}</h3>
 					<div class="class-abilities-form">
 						{{#each paragonItem.system.classAbilities.fields as |field|}}
 							{{> "systems/die-rpg/templates/partials/dynamic-field.hbs"

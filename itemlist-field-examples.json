@@ -1,0 +1,170 @@
+{
+  "itemListExamples": [
+    {
+      "description": "Example 1: Dictator's Performance Props - Equipment items for performances",
+      "field": {
+        "key": "performanceProps",
+        "type": "itemList",
+        "label": "Performance Props & Instruments",
+        "itemType": "equipment",
+        "initial": [],
+        "hint": "Select the equipment you use in your performances (musical instruments, props, costumes, etc.)"
+      }
+    },
+    {
+      "description": "Example 2: Dictator's Signature Spells - Spells learned through advancement",
+      "field": {
+        "key": "signatureSpells",
+        "type": "itemList",
+        "label": "Signature Spells",
+        "itemType": "spell",
+        "initial": [],
+        "hint": "Spells you've learned through the Signature Piece advancement or other means"
+      }
+    },
+    {
+      "description": "Example 3: Neo's Gifts of the Fair - Gift items from The Fair",
+      "field": {
+        "key": "giftsOfTheFair",
+        "type": "itemList",
+        "label": "Gifts of the Fair",
+        "itemType": "gift",
+        "initial": [],
+        "hint": "The gifts you've received from The Fair (starting gifts and those gained through advancement)"
+      }
+    },
+    {
+      "description": "Example 4: Godbinder's Pantheon - Gods the character worships",
+      "field": {
+        "key": "pantheon",
+        "type": "itemList",
+        "label": "Your Pantheon",
+        "itemType": "god",
+        "initial": [],
+        "hint": "The gods you worship and can draw power from"
+      }
+    },
+    {
+      "description": "Example 5: Emotion Knight's Known Stances - Combat/social/emotion stances",
+      "field": {
+        "key": "knownStances",
+        "type": "itemList",
+        "label": "Known Stances",
+        "itemType": "stance",
+        "initial": [],
+        "hint": "The stances you've learned (starting stances plus those gained through advancement)"
+      }
+    },
+    {
+      "description": "Example 6: Emotion Knight's Venting Techniques - Venting abilities",
+      "field": {
+        "key": "ventingTechniques",
+        "type": "itemList",
+        "label": "Venting Techniques",
+        "itemType": "venting",
+        "initial": [],
+        "hint": "The venting techniques you've mastered for releasing emotional energy"
+      }
+    },
+    {
+      "description": "Example 7: Character's Available Looks - Appearance options from paragon",
+      "field": {
+        "key": "availableLooks",
+        "type": "itemList",
+        "label": "Available Looks",
+        "itemType": "look",
+        "initial": [],
+        "hint": "Appearance and clothing options provided by your paragon class"
+      }
+    },
+    {
+      "description": "Example 8: Master's Apprentices (using equipment for NPCs) - Example of creative use",
+      "field": {
+        "key": "apprentices",
+        "type": "itemList",
+        "label": "Your Apprentices",
+        "itemType": "equipment",
+        "initial": [],
+        "hint": "Track your apprentices as special equipment items (or create a custom item type for this)"
+      }
+    }
+  ],
+
+  "realWorldExample": {
+    "description": "REAL EXAMPLE: Neo's class abilities with Gifts itemList",
+    "classAbilities": {
+      "fields": [
+        {
+          "key": "fairGold",
+          "type": "number",
+          "label": "Fair Gold",
+          "initial": 0,
+          "min": 0,
+          "hint": "The amount of Fair Gold you currently possess"
+        },
+        {
+          "key": "gifts",
+          "type": "itemList",
+          "label": "Gifts of the Fair",
+          "itemType": "gift",
+          "initial": [],
+          "hint": "Your gifts from The Fair. You start with 2 gifts and can gain more through advancement."
+        },
+        {
+          "key": "sickAssRide",
+          "type": "group",
+          "label": "Sick-Ass Ride",
+          "fields": [
+            {
+              "key": "vehicleName",
+              "type": "text",
+              "label": "Vehicle Name",
+              "initial": ""
+            },
+            {
+              "key": "vehicleDescription",
+              "type": "html",
+              "label": "Vehicle Description",
+              "initial": ""
+            },
+            {
+              "key": "specialFeature",
+              "type": "text",
+              "label": "Special Feature",
+              "initial": "",
+              "hint": "What makes this ride special? (e.g., 'Can transform', 'Never runs out of fuel', 'Sentient')"
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "notes": {
+    "availableItemTypes": [
+      "equipment - Weapons, armor, gear",
+      "spell - Spells and magical abilities",
+      "gift - Gifts of the Fair (for Neo)",
+      "god - Gods (for Godbinder)",
+      "stance - Combat/social/emotion stances (for Emotion Knight)",
+      "venting - Venting abilities (for Emotion Knight)",
+      "arcaneweapon - The Arcane Weapon (for Emotion Knight)",
+      "look - Appearance/clothing options",
+      "paragon - Paragon classes (probably not useful in abilities)"
+    ],
+    "behavior": [
+      "itemList fields display all items of the specified type from the character's inventory",
+      "Players can check/uncheck items to select which ones are associated with this field",
+      "Includes create/edit/delete buttons for managing items directly from the character sheet",
+      "Expandable item details show description, specials, and type-specific properties",
+      "Initial value is always an empty array []",
+      "Selected items are stored as an array of UUIDs in character data"
+    ],
+    "whenToUse": [
+      "When a class ability grants or tracks specific items",
+      "When advancement choices involve selecting from owned items",
+      "When you want players to manage a subset of their inventory (e.g., 'attuned items', 'prepared spells')",
+      "When a paragon has a fixed number of specific item types (Neo's 2 starting gifts, Godbinder's gods)"
+    ]
+  }
+}

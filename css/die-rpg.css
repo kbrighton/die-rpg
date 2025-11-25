@@ -2237,10 +2237,43 @@
   font-weight: 900 !important;
   color: var(--die-rpg-c-black) !important;
 }
+.die-rpg fieldset {
+  margin-bottom: 20px;
+}
+.die-rpg fieldset legend {
+  font-family: "Beiruti", "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: var(--font-size-24);
+}
+.die-rpg .form-group {
+  margin-bottom: 20px;
+}
+.die-rpg .form-group label {
+  font-family: "Beiruti", "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: var(--font-size-18);
+}
+.die-rpg .form-group.inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.die-rpg .form-group.inline label {
+  font-family: "Beiruti", "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: var(--font-size-24);
+}
+.die-rpg .hint {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+}
 .die-rpg .tab.loadout .look-selection-section .look-picker {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 .die-rpg .tab.loadout .starting-equipment-section .equipment-selector {
   display: flex;

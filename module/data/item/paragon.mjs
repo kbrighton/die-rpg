@@ -186,7 +186,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
           type: new fields.StringField({
             required: true,
             blank: false,
-            choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'itemList', 'group', 'special'],
+            choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'info', 'itemList', 'group', 'special'],
             initial: 'text',
             label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.type.label'
           }),
@@ -260,7 +260,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
           type: new fields.StringField({
             required: true,
             blank: false,
-            choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'itemList', 'group', 'special'],
+            choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'info', 'itemList', 'group', 'special'],
             initial: 'text'
           }),
           label: new fields.StringField({ required: true, blank: false }),

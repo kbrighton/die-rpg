@@ -189,8 +189,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const enriched = {};
 
     for (const field of fieldDefinitions) {
-      if (field.type === 'html') {
-        const rawValue = fieldData?.[field.key] || '';
+      if (field.type === 'html' || field.type === 'info') {
+        // Use saved value, or fall back to field.initial
+        const rawValue = fieldData?.[field.key] || field.initial || '';
         enriched[field.key] = await ux.TextEditor.enrichHTML(
           rawValue,
           {
@@ -204,8 +205,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         const groupData = fieldData?.[field.key] || {};
         enriched[field.key] = {};
         for (const subfield of field.fields) {
-          if (subfield.type === 'html') {
-            const rawValue = groupData[subfield.key] || '';
+          if (subfield.type === 'html' || subfield.type === 'info') {
+            // Use saved value, or fall back to subfield.initial
+            const rawValue = groupData[subfield.key] || subfield.initial || '';
             enriched[field.key][subfield.key] = await ux.TextEditor.enrichHTML(
               rawValue,
               {

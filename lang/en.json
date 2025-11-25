@@ -372,7 +372,7 @@
 			},
 			"Equipment": {
 				"FIELDS": {
-					"rollFormula": { "label": "Roll Formula" },
+					"description": { "label": "Description" },
 					"numDice": { "label": "Number of Dice" },
 					"dieSize": { "label": "Die Size" },
 					"rollMod": { "label": "Roll Modifier" },
@@ -829,22 +829,21 @@
 		"UI": {
 			"Headers": {
 				"Stats": "Stats",
-				"Look": "Look",
+				"Look": "Look:",
 				"Specials": "Specials",
-				"ClassAbilities": "Class Abilities",
 				"AdvancementPool": "Advancement Pool",
 				"AdvancementForms": "Advancement Forms",
 				"DerivedStats": "Derived Stats",
 				"Name": "Name",
 				"EquipmentOptions": "Starting Equipment Options",
 				"StartingEquipment": "Starting Equipment",
+				"EquipmentList": "Equipment List",
 				"Equipment": "Equipment",
 				"Sidebar": "Sidebar"
 			},
 			"Labels": {
 				"Flashback": "Flashback:",
 				"ClassDice": "Class Dice:",
-				"SelectFromParagonLooks": "Select from Paragon Looks:",
 				"CustomLook": "Custom Look",
 				"Description": "Description:",
 				"DefenseBonus": "Defense Bonus:",
