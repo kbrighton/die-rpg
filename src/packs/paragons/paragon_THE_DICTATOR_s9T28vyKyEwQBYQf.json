@@ -68,10 +68,150 @@
       }
     ],
     "classAbilities": {
-      "fields": []
+      "fields": [
+        {
+          "key": "emotionPalette",
+          "type": "select",
+          "label": "Emotion Palette",
+          "choices": [
+            "Ecstasy, Joy, Serenity",
+            "Admiration, Trust, Acceptance",
+            "Terror, Fear, Apprehension",
+            "Amazement, Surprise, Distraction",
+            "Grief, Sadness, Pensiveness",
+            "Loathing, Disgust, Boredom",
+            "Rage, Anger, Annoyance",
+            "Vigilance, Anticipation, Interest"
+          ],
+          "initial": "\"\""
+        },
+        {
+          "key": "theTell",
+          "type": "select",
+          "label": "The Tell",
+          "choices": [
+            "Strange facial scars appear (visibly obvious)",
+            "Demonic, loud voice (impossible to whisper)",
+            "Strange smells emerge from your mouth (scent lingers)",
+            "Something else (describe below)"
+          ],
+          "initial": "\"\""
+        },
+        {
+          "key": "theTellCustom",
+          "type": "text",
+          "label": "The Tell - Custom Description",
+          "initial": "\"\""
+        },
+        {
+          "key": "thePerformance",
+          "type": "html",
+          "label": "The Performance",
+          "initial": "\"<p><strong>The Performance:</strong> When you perform in front of an audience, you can use The Voice to affect them emotionally. The emotion must be from your chosen spoke on the emotion wheel.</p><p><strong>Mechanics:</strong> Roll CHA + Class Die. On success, the audience feels the emotion you invoke for the duration of your performance and for a short time after.</p>\""
+        },
+        {
+          "key": "liveAtWitchTrialsChoice",
+          "type": "select",
+          "label": "Live at The Witch Trials (Level 4 Automatic)",
+          "choices": [
+            "You have a powerful patron",
+            "You've joined a licensed organisation",
+            "The Hunters have chosen to ignore you",
+            "Something else"
+          ],
+          "initial": "\"\""
+        },
+        {
+          "key": "liveAtWitchTrialsDetails",
+          "type": "html",
+          "label": "Live at The Witch Trials - Details",
+          "initial": "\"\""
+        }
+      ]
     },
     "advancementForms": {
-      "fields": []
+      "fields": [
+        {
+          "key": "artistProgress",
+          "type": "group",
+          "label": "An Artist's Progress",
+          "fields": [
+            "{\"key\":\"newSpoke\",\"type\":\"select\",\"label\":\"New Emotion Wheel Spoke\",\"choices\":[\"Ecstasy, Joy, Serenity\",\"Admiration, Trust, Acceptance\",\"Terror, Fear, Apprehension\",\"Amazement, Surprise, Distraction\",\"Grief, Sadness, Pensiveness\",\"Loathing, Disgust, Boredom\",\"Rage, Anger, Annoyance\",\"Vigilance, Anticipation, Interest\"],\"initial\":\"\",\"hint\":\"Choose another spoke from the emotion wheel\"}",
+            "{\"key\":\"benefitChoice\",\"type\":\"select\",\"label\":\"Benefit Choice\",\"choices\":[\"Know Your Audience\",\"You, Choir\",\"We, Choir (Pick Once)\",\"Tell, Don't Show\",\"Signature Piece\"],\"initial\":\"\",\"hint\":\"Choose one benefit from this advancement\"}",
+            "{\"key\":\"knowYourAudienceGroup\",\"type\":\"text\",\"label\":\"Know Your Audience - Target Group\",\"initial\":\"\",\"hint\":\"If you chose Know Your Audience: specify the group (e.g., 'Nobles', 'Children', 'Warriors')\"}",
+            "{\"key\":\"knowYourAudienceEmotion\",\"type\":\"select\",\"label\":\"Know Your Audience - Emotion\",\"choices\":[\"Ecstasy\",\"Joy\",\"Serenity\",\"Admiration\",\"Trust\",\"Acceptance\",\"Terror\",\"Fear\",\"Apprehension\",\"Amazement\",\"Surprise\",\"Distraction\",\"Grief\",\"Sadness\",\"Pensiveness\",\"Loathing\",\"Disgust\",\"Boredom\",\"Rage\",\"Anger\",\"Annoyance\",\"Vigilance\",\"Anticipation\",\"Interest\"],\"initial\":\"\",\"hint\":\"If you chose Know Your Audience: which emotion can you reliably provoke in this group?\"}",
+            "{\"key\":\"tellDontShowCircumstances\",\"type\":\"text\",\"label\":\"Tell, Don't Show - Circumstances\",\"initial\":\"\",\"hint\":\"If you chose Tell, Don't Show: under what circumstances does your Tell no longer manifest?\"}",
+            "{\"key\":\"signaturePieceSpellName\",\"type\":\"text\",\"label\":\"Signature Piece - Spell Name\",\"initial\":\"\",\"hint\":\"If you chose Signature Piece: name your signature spell\"}",
+            "{\"key\":\"signaturePieceRisk\",\"type\":\"number\",\"label\":\"Signature Piece - Risk\",\"initial\":0,\"min\":0,\"max\":15,\"hint\":\"If you chose Signature Piece: the Risk value (0-15) of your signature spell\"}"
+          ]
+        },
+        {
+          "key": "itsNotWhatYouKnow",
+          "type": "group",
+          "label": "It's Not What You Know",
+          "fields": [
+            "{\"key\":\"choice\",\"type\":\"select\",\"label\":\"Benefit Choice\",\"choices\":[\"A Working Artist (Pick Once)\",\"Henchperson (Pick Once)\",\"Improve Henchperson\",\"Agent\"],\"initial\":\"\",\"hint\":\"Choose one benefit from this advancement\"}",
+            "{\"key\":\"henchpersonBinding\",\"type\":\"select\",\"label\":\"Henchperson - How Are They Bound?\",\"choices\":[\"A critical fail emotion\",\"A promise\",\"A need that you fulfill\",\"They resent their condition\",\"Their friends resent their condition\"],\"initial\":\"\",\"hint\":\"If you chose Henchperson: how are they bound to you?\"}"
+          ]
+        },
+        {
+          "key": "oneStepAhead",
+          "type": "html",
+          "label": "One Step Ahead",
+          "initial": "\"<p><strong>One Step Ahead:</strong> You may ask the GM for a hint about an NPC's emotional state or motivations. The GM must answer truthfully.</p><p>This represents your keen understanding of social dynamics and emotional manipulation.</p>\""
+        },
+        {
+          "key": "theGig",
+          "type": "html",
+          "label": "The Gig",
+          "initial": "\"<p><strong>The Gig:</strong> You have a regular performance venue or gig that provides you with income and social connections.</p><p>Work with your GM to define the venue, audience, and what you perform.</p>\""
+        },
+        {
+          "key": "fanbase",
+          "type": "html",
+          "label": "Fanbase",
+          "initial": "\"<p><strong>Fanbase:</strong> You have a dedicated following of fans who adore your performances.</p><p>Once per session, you can call upon your fans for assistance, information, or cover. The GM determines what help they can reasonably provide.</p>\""
+        },
+        {
+          "key": "theGang",
+          "type": "html",
+          "label": "The Gang",
+          "initial": "\"<p><strong>The Gang:</strong> You have a crew of loyal followers who help you with your schemes.</p><p>The gang can perform simple tasks, provide backup, or cause distractions. Work with your GM to define the gang's capabilities and limitations.</p>\""
+        },
+        {
+          "key": "emotionalCapital",
+          "type": "html",
+          "label": "Emotional Capital",
+          "initial": "\"<p><strong>Emotional Capital:</strong> You've built up significant social influence and emotional connections.</p><p>Once per session, you can leverage your emotional capital to gain a significant favor, piece of information, or advantage in a social situation.</p>\""
+        },
+        {
+          "key": "carvingOutTheirHeart",
+          "type": "html",
+          "label": "Carving Out Their Heart",
+          "initial": "\"<p><strong>Carving Out Their Heart:</strong> You can use The Voice to permanently alter someone's emotional state or personality.</p><p>This is a powerful and dangerous ability. Work with your GM to determine the exact effects and consequences.</p>\""
+        },
+        {
+          "key": "portraitOfArtist",
+          "type": "group",
+          "label": "Portrait of the Artist as a Monster",
+          "fields": [
+            "{\"key\":\"description\",\"type\":\"html\",\"label\":\"Monster Form Description\",\"initial\":\"\",\"hint\":\"Describe your monstrous form when you fully embrace your power\"}",
+            "{\"key\":\"traits\",\"type\":\"multiSelect\",\"label\":\"Monster Traits (Pick 4)\",\"choices\":[\"Invulnerable to one common form of harm\",\"Attacks cause 2 Wounds (Special)\",\"Invulnerable to emotional control\",\"Can attack at range\",\"Health is 2x CON\",\"Can use The Voice silently with a glance\",\"Can fly\",\"Can pass through objects\",\"Can disguise its monstrous nature\"],\"initial\":[],\"hint\":\"Select exactly 4 traits for your monster form\"}"
+          ]
+        },
+        {
+          "key": "powerBehindThrone",
+          "type": "html",
+          "label": "The Power Behind the Throne",
+          "initial": "\"\""
+        },
+        {
+          "key": "greatDictator",
+          "type": "html",
+          "label": "The Great Dictator",
+          "initial": "\"<p><strong>The Great Dictator:</strong> You have achieved the pinnacle of your power as a Dictator.</p><p>You can now affect entire crowds or populations with your performances. The scope and scale of your emotional manipulation is limited only by your ambition and the GM's discretion.</p><p>However, your Tell becomes more pronounced, and the supernatural nature of your power is increasingly difficult to hide.</p>\""
+        }
+      ]
     },
     "classDiceImage": "systems/die-rpg/assets/DIE/dice/d4-exploded.svg",
     "portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20DICTATOR.webp",
@@ -92,7 +232,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106416668,
-    "modifiedTime": 1764106440801,
+    "modifiedTime": 1764108326179,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "s9T28vyKyEwQBYQf",

@@ -8,7 +8,9 @@ npm-debug.log
 
 # Foundry
 *.lock
+jsconfig.json
 foundry
+packs/*
 
 # VS Code
 .vscode/*
@@ -32,6 +34,13 @@ foundry
 
 #OS
 .DS_Store
+
+# Foundry code base symlinks
+foundry-config.yaml
+foundry
+
+# Environment variables
+.env
 
 # working files
 raw
