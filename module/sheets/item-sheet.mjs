@@ -44,6 +44,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       addUpgradeSpecial: this._addUpgradeSpecial,
       deleteUpgradeSpecial: this._deleteUpgradeSpecial,
       removeEquipmentOption: this._removeEquipmentOption,
+      toggleItemDetails: this._onToggleItemDetails,
     },
     form: {
       submitOnChange: true,
@@ -253,8 +254,24 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
             this.item.system.equipmentOptions.map(uuid => fromUuid(uuid))
           );
           context.resolvedEquipment = resolved.filter(eq => eq); // Remove nulls
+
+          // Enrich item descriptions for display in item-list partial
+          context.enrichedItemDescriptions = {};
+          for (const equipment of context.resolvedEquipment) {
+            if (equipment.system.description) {
+              context.enrichedItemDescriptions[equipment.id] = await ux.TextEditor.enrichHTML(
+                equipment.system.description,
+                {
+                  relativeTo: equipment,
+                  secrets: this.document.isOwner,
+                  async: true
+                }
+              );
+            }
+          }
         } else {
           context.resolvedEquipment = [];
+          context.enrichedItemDescriptions = {};
         }
         break;
       case 'advancements':
@@ -627,6 +644,38 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const filtered = options.filter(uuid => uuid !== uuidToRemove);
     await this.item.update({ 'system.equipmentOptions': filtered });
     ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.EquipmentOptionRemoved"));
+  }
+
+  /**
+   * Toggle the visibility of item details in itemList fields
+   * Expands/collapses a row to show item description and metadata
+   *
+   * @this DieRpgItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The clickable row element
+   * @protected
+   */
+  static async _onToggleItemDetails(event, target) {
+    event.preventDefault();
+    event.stopPropagation(); // Prevent any parent handlers
+
+    const itemRow = target.closest('.item-row');
+    const detailsSection = itemRow.querySelector('.item-details');
+    const expandIndicator = itemRow.querySelector('.expand-indicator');
+
+    if (!detailsSection) return;
+
+    // Toggle visibility
+    const isExpanded = detailsSection.style.display !== 'none';
+    detailsSection.style.display = isExpanded ? 'none' : 'block';
+
+    // Toggle chevron direction
+    if (expandIndicator) {
+      expandIndicator.classList.toggle('expanded', !isExpanded);
+    }
+
+    // Toggle expanded class on row
+    itemRow.classList.toggle('expanded', !isExpanded);
   }
 
   /**

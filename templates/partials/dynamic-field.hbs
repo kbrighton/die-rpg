@@ -100,133 +100,17 @@
   </div>
 
 {{else if (eq field.type "itemList")}}
-  <div class="form-group itemlist-field">
-    <div class="itemlist-header">
-      <label>{{field.label}}</label>
-      {{#if editable}}
-        <button
-          type="button"
-          class="create-item-btn"
-          data-action="createItemForList"
-          data-item-type="{{field.itemType}}"
-          title="{{localize 'DIE_RPG.UI.DynamicField.CreateNew' type=field.itemType}}">
-          <i class="fas fa-plus"></i> {{localize "DIE_RPG.UI.DynamicField.CreateButton" type=field.itemType}}
-        </button>
-      {{/if}}
-    </div>
-    {{#with (filterItemsByType actor.items field.itemType) as |filteredItems|}}
-      {{#if filteredItems.length}}
-        <div class="checkbox-group item-list">
-          {{#each filteredItems as |item|}}
-            <div class="item-row" data-item-uuid="{{item.uuid}}">
-              <div class="item-row-header">
-                <input
-                  type="checkbox"
-                  class="item-checkbox-input"
-                  data-multi-select="{{../../path}}"
-                  value="{{item.uuid}}"
-                  {{#if (contains ../../value item.uuid)}}checked{{/if}}
-                  {{#unless ../../editable}}disabled{{/unless}}
-                />
-                <div class="item-row-clickable" data-action="toggleItemDetails" data-item-uuid="{{item.uuid}}">
-                  <img src="{{item.img}}" alt="{{item.name}}" class="item-icon" />
-                  <span class="item-name">{{item.name}}</span>
-                  <span class="item-type-badge">{{item.type}}</span>
-                  <i class="fas fa-chevron-down expand-indicator"></i>
-                </div>
-
-                {{!-- Action buttons --}}
-                {{#if ../../editable}}
-                  <div class="item-actions">
-                    <button
-                      type="button"
-                      class="item-action-btn edit-btn"
-                      data-action="viewDoc"
-                      data-document-uuid="{{item.uuid}}"
-                      title="{{localize 'DIE_RPG.UI.DynamicField.EditItem' name=item.name}}">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="item-action-btn delete-btn"
-                      data-action="deleteDoc"
-                      data-document-uuid="{{item.uuid}}"
-                      title="{{localize 'DIE_RPG.UI.DynamicField.DeleteItem' name=item.name}}">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </div>
-                {{/if}}
-              </div>
-
-              {{!-- Expandable details section --}}
-              <div class="item-details" data-uuid="{{item.uuid}}" style="display: none;">
-                <div class="item-details-content">
-                  {{!-- Description (enriched HTML) --}}
-                  {{#if item.system.description}}
-                    <div class="item-description">
-                      <strong>{{localize "DIE_RPG.UI.DynamicField.DescriptionLabel"}}</strong>
-                      <div class="description-content">
-                        {{{lookup @root.enrichedItemDescriptions item.id}}}
-                      </div>
-                    </div>
-                  {{/if}}
-
-                  {{!-- Type-specific fields --}}
-                  {{#if (eq item.type "stance")}}
-                    <p><strong>{{localize "DIE_RPG.UI.DynamicField.StanceTypeLabel"}}</strong> {{item.system.stanceType}}</p>
-                    {{#if item.system.emotionSubtype}}
-                      <p><strong>{{localize "DIE_RPG.UI.DynamicField.EmotionLabel"}}</strong> {{item.system.emotionSubtype}}</p>
-                    {{/if}}
-                  {{else if (eq item.type "arcaneweapon")}}
-                    {{#if item.system.weaponType}}
-                      <p><strong>{{localize "DIE_RPG.UI.DynamicField.WeaponTypeLabel"}}</strong> {{item.system.weaponType}}</p>
-                    {{/if}}
-                    {{#if item.system.personality}}
-                      <p><strong>{{localize "DIE_RPG.UI.DynamicField.PersonalityLabel"}}</strong> {{item.system.personality}}</p>
-                    {{/if}}
-                  {{else if (eq item.type "equipment")}}
-                    {{#if item.system.quantity}}
-                      <p><strong>{{localize "DIE_RPG.UI.DynamicField.QuantityLabel"}}</strong> {{item.system.quantity}}</p>
-                    {{/if}}
-                    {{#if item.system.weight}}
-                      <p><strong>{{localize "DIE_RPG.UI.DynamicField.WeightLabel"}}</strong> {{item.system.weight}}</p>
-                    {{/if}}
-                  {{/if}}
-
-                  {{!-- Specials (if item has them) --}}
-                  {{#if item.system.specials.length}}
-                    <div class="item-specials">
-                      <strong>{{localize "DIE_RPG.UI.DynamicField.SpecialsLabel"}}</strong>
-                      <ul class="specials-list">
-                        {{#each item.system.specials as |special|}}
-                          <li class="special-item">
-                            <span class="special-name">{{special.name}}</span>
-                            <span class="special-cost">{{localize "DIE_RPG.UI.DynamicField.SpecialCost" cost=special.cost}}</span>
-                            {{#if special.mandatory}}
-                              <span class="tag mandatory">{{localize "DIE_RPG.UI.DynamicField.MandatoryTag"}}</span>
-                            {{/if}}
-                            {{#if special.description}}
-                              <div class="special-desc">{{{special.description}}}</div>
-                            {{/if}}
-                          </li>
-                        {{/each}}
-                      </ul>
-                    </div>
-                  {{/if}}
-                </div>
-              </div>
-            </div>
-          {{/each}}
-        </div>
-      {{else}}
-        <p class="hint empty-state">
-          <i class="fas fa-info-circle"></i>
-          <em>{{localize "DIE_RPG.UI.DynamicField.NoItemsFound" type=../field.itemType}}</em>
-        </p>
-      {{/if}}
-    {{/with}}
-    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
-  </div>
+  {{#with (filterItemsByType actor.items field.itemType) as |filteredItems|}}
+    {{> "systems/die-rpg/templates/partials/item-list.hbs"
+        items=filteredItems
+        label=../field.label
+        itemType=../field.itemType
+        showCheckboxes=true
+        checkboxPath=../path
+        selectedUUIDs=../value
+        editable=../editable}}
+  {{/with}}
+  {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
 
 {{else if (eq field.type "group")}}
   <fieldset class="field-group">

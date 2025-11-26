@@ -650,7 +650,7 @@ h6 {
 // ITEM LIST FIELD STYLING
 // ========================================
 
-.itemlist-field {
+.item-list-component {
 	.itemlist-header {
 		display: flex;
 		align-items: center;
@@ -904,8 +904,3 @@ h6 {
 		}
 	}
 }
-
-// ========================================
-// SPECIAL FIELD STYLING
-// ========================================
-// Moved to components/_specials.scss

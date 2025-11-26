@@ -3,32 +3,13 @@
   <h2>{{localize 'DIE_RPG.UI.Headers.EquipmentOptions'}}</h2>
   <p class="hint">{{localize "DIE_RPG.UI.Hints.DragEquipmentHere"}}</p>
 
-  {{#if resolvedEquipment.length}}
-    <ol class="equipment-options-list">
-      {{#each resolvedEquipment as |eq index|}}
-        <li class="equipment-option" data-uuid="{{eq.uuid}}">
-          <div class="equipment-header">
-            <img src="{{eq.img}}" alt="{{eq.name}}" title="{{eq.name}}" width="36" height="36" />
-            <div class="equipment-details">
-              <h4 class="equipment-name">{{eq.name}}</h4>
-              {{#if eq.system.description}}
-                <p class="equipment-description">{{{eq.system.description}}}</p>
-              {{/if}}
-              <div class="equipment-stats">
-                <span class="defense-bonus">{{localize "DIE_RPG.Item.Equipment.FIELDS.defenseBonus.label"}}: {{eq.system.defenseBonus}}</span>
-              </div>
-            </div>
-            <button type="button" class="delete-equipment-option" data-action="removeEquipmentOption" data-uuid="{{eq.uuid}}" title="{{localize 'DIE_RPG.UI.Buttons.RemoveEquipment'}}">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </li>
-      {{/each}}
-    </ol>
-  {{else}}
-    <div class="drop-zone">
-      <i class="fas fa-box-open fa-3x"></i>
-      <p class="empty-state">{{localize "DIE_RPG.UI.EmptyStates.NoEquipmentOptions"}}</p>
-    </div>
-  {{/if}}
+  {{> "systems/die-rpg/templates/partials/item-list.hbs"
+      items=resolvedEquipment
+      label=""
+      itemType="equipment"
+      showCheckboxes=false
+      showCreateButton=false
+      showEditButton=false
+      deleteAction="removeEquipmentOption"
+      editable=true}}
 </section>

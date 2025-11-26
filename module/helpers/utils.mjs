@@ -21,6 +21,7 @@ export async function preloadHandlebarsTemplates() {
   return foundry.applications.handlebars.loadTemplates([
 	// Partial templates
 	'systems/die-rpg/templates/partials/dynamic-field.hbs',
+	'systems/die-rpg/templates/partials/item-list.hbs',
 	'systems/die-rpg/templates/partials/number-spinner.hbs',
 	'systems/die-rpg/templates/partials/special-item.hbs',
   ]);
@@ -37,6 +38,16 @@ export function registerHandlebarsHelpers() {
 
     Handlebars.registerHelper("uppercase", function (str) {
         return str?.toUpperCase() || str;
+    });
+
+    /**
+     * Returns the value if defined, otherwise returns the default value.
+     * @param {*} value - The value to check
+     * @param {*} defaultValue - The default value to return if value is undefined
+     * @returns {*} The value or default value
+     */
+    Handlebars.registerHelper("default", function (value, defaultValue) {
+        return value !== undefined ? value : defaultValue;
     });
 
     /**
