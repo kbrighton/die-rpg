@@ -905,3 +905,52 @@ h6 {
 		}
 	}
 }
+
+// ========================================
+// MULTISELECT FIELD STYLING
+// ========================================
+
+.multiselect-field {
+	.checkbox-group {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: $gap-sm;
+
+		.checkbox-option {
+			display: flex;
+			align-items: center;
+			gap: $gap-sm;
+			cursor: pointer;
+			user-select: none;
+			font-weight: normal;
+			text-transform: none;
+
+			input[type="checkbox"] {
+				margin: 0;
+				cursor: pointer;
+				flex-shrink: 0;
+
+				&:disabled {
+					cursor: not-allowed;
+				}
+			}
+
+			span {
+				margin: 0;
+				cursor: pointer;
+				flex: 1;
+				font-weight: normal;
+				text-transform: none;
+			}
+
+			&:has(input:disabled) {
+				opacity: 0.6;
+				cursor: not-allowed;
+
+				span {
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+}
