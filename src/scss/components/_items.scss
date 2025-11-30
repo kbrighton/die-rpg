@@ -5,9 +5,10 @@
 	}
 	.window-content {
 		display: grid;
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 1fr 3fr;
 		grid-template-rows: auto auto 1fr;
-		gap: $gap-md;
+		column-gap: $gap-md;
+		row-gap: 0;
 		height: 100%;
 		// margin: $margin-md 0;
 		// padding-top: 0;

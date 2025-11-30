@@ -118,7 +118,7 @@
   --die-rpg-overlay-medium: rgba(255, 255, 255, 0.05);
   --die-rpg-overlay-dark: rgba(255, 255, 255, 0.1);
   --die-rpg-overlay-darker: rgba(255, 255, 255, 0.05);
-  --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.2);
+  --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.046);
   --die-rpg-section-bg: rgba(255, 255, 255, 0.04);
   --die-rpg-c-tooltip-bg: #2a2a2a;
   --die-rpg-c-tooltip-text: #ffffff;
@@ -802,7 +802,8 @@
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto auto 1fr;
   grid-template-areas: "header header" "sidebar header-fields" "sidebar sheet-tabs" "sidebar tab-content";
-  gap: 10px;
+  column-gap: 10px;
+  row-gap: 0;
   margin: 10px 0;
   padding: 0;
 }
@@ -1025,13 +1026,13 @@
 .die-rpg.actor .window-content .header-fields {
   grid-area: header-fields;
   min-width: 0; /* Prevent overflow */
-  margin: 0 10px 0 0;
+  margin: 10px 10px 0 0;
 }
 .die-rpg.actor .window-content .header-fields .stats-title {
   background-color: var(--die-rpg-c-black);
   border-radius: 4px;
   color: var(--die-rpg-c-white);
-  padding: 4px 4px 0px 4px;
+  padding: 6px 6px 2px 6px;
   line-height: 0.7em;
   margin: 0;
   text-transform: uppercase;
@@ -1509,6 +1510,55 @@
 .die-rpg .item-list-component .item-row:has(.item-checkbox-input:disabled) .item-row-clickable {
   cursor: not-allowed;
 }
+body.game .die-rpg.actor .window-content .sheet-tabs {
+  margin-top: 20px;
+}
+body.game .die-rpg .window-content .sheet-tabs {
+  display: flex;
+  gap: 5px;
+  margin: 0 10px 0 0;
+  border: none;
+  overflow-x: auto;
+  min-width: 0;
+  line-height: 1.5;
+}
+body.game .die-rpg .window-content .sheet-tabs a[data-tab] {
+  position: relative;
+  bottom: -2px;
+  padding: 5px 10px;
+  font-family: "Beiruti", "Roboto", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+body.game .die-rpg .window-content .sheet-tabs a[data-tab] i {
+  margin-right: 4px;
+}
+body.game .die-rpg .window-content .sheet-tabs a[data-tab]:hover:not(.active) {
+  background: var(--die-rpg-overlay-dark);
+  color: rgba(255, 255, 255, 0.9);
+}
+body.game .die-rpg .window-content .sheet-tabs a[data-tab].active {
+  background: var(--die-rpg-overlay-dark);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  border-bottom-color: var(--die-rpg-overlay-dark);
+}
+body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-content .tab {
+  background-color: var(--die-rpg-overlay-dark);
+  margin: 0 10px 0 0;
+  padding: 10px;
+  min-width: 0;
+}
 .die-rpg .specials-list {
   display: flex;
   flex-direction: column;
@@ -1821,9 +1871,10 @@
 }
 .die-rpg.item .window-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-rows: auto auto 1fr;
-  gap: 10px;
+  column-gap: 10px;
+  row-gap: 0;
   height: 100%;
   grid-template-areas: "name sheet-tabs" "image tab-content" "sidebar tab-content";
 }

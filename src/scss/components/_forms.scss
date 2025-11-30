@@ -51,7 +51,8 @@ h6 {
 			"sidebar header-fields"
 			"sidebar sheet-tabs"
 			"sidebar tab-content";
-		gap: $gap-md;
+		column-gap: $gap-md;
+		row-gap: 0;
 		margin: $margin-md 0;
 		padding: 0;
 
@@ -321,13 +322,13 @@ h6 {
 		.header-fields {
 			grid-area: header-fields;
 			min-width: 0; /* Prevent overflow */
-			margin: 0 $margin-md 0 0;
+			margin: $margin-md $margin-md 0 0;
 
 			.stats-title {
 				background-color: $c-black;
 				border-radius: 4px;
 				color: $c-white;
-				padding: 4px 4px 0px 4px;
+				padding: 6px 6px 2px 6px;
 				line-height: 0.7em;
 				margin: 0;
 				text-transform: uppercase;

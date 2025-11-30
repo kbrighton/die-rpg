@@ -19,6 +19,7 @@
 /* Styles limited to die-rpg sheets */
 .die-rpg {
   @import 'components/forms';
+  @import 'components/tabs';
   @import 'components/specials';
   @import 'components/resource';
   @import 'components/items';

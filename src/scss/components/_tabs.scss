@@ -1,0 +1,67 @@
+// ========================================
+// MODERN TAB NAVIGATION STYLING
+// ========================================
+// Uses existing design tokens - no new colors or typography
+// Creates visual connection between active tab and content area
+// Note: This file is imported inside .die-rpg scope in die-rpg.scss
+// Using & to reference parent selector (.die-rpg) for proper specificity
+body.game &.actor .window-content .sheet-tabs {
+	margin-top: $margin-lg;
+}
+
+body.game & .window-content .sheet-tabs {
+	display: flex;
+	gap: $gap-sm;
+	margin: 0 $margin-md 0 0;
+	border: none;
+	overflow-x: auto;
+	min-width: 0;
+	line-height: 1.5;
+
+	// Individual tab items - Foundry uses a[data-tab], NOT a.item
+	a[data-tab] {
+		position: relative;
+		bottom: -2px; // Overlap the baseline to create connection effect
+		padding: $padding-sm $padding-md;
+		font-family: $font-heading;
+		font-size: var(--font-size-14);
+		font-weight: 300;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: $text-muted;
+		background: transparent;
+		border: none;
+		border-bottom: 2px solid transparent;
+		border-radius: 4px 4px 0 0; // Rounded top corners only
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+
+		// Icon spacing
+		i {
+			margin-right: 4px;
+		}
+
+		// Hover state
+		&:hover:not(.active) {
+			background: $overlay-dark;
+			color: $text-secondary;
+		}
+
+		// Active state - visually connects to content area
+		&.active {
+			background: $overlay-dark; // Same as tab content background
+			color: $text-primary;
+			font-weight: 600;
+			border-bottom-color: $overlay-dark; // Hides the baseline underneath
+		}
+	}
+}
+
+body.game &.actor .window-content .tab, 
+body.game &.item .window-content .tab {
+	background-color: $overlay-dark;
+	margin: 0 $margin-md 0 0;
+	padding: $padding-md;
+	min-width: 0;
+}
