@@ -954,3 +954,22 @@ h6 {
 		}
 	}
 }
+
+// ========================================
+// FIELD DESCRIPTION STYLING
+// ========================================
+
+.field-description {
+	font-size: var(--font-size-14);
+	font-style: italic;
+	color: $text-secondary;
+	margin-bottom: $margin-sm;
+
+	p {
+		margin: 0;
+	}
+
+	p + p {
+		margin-top: $margin-sm;
+	}
+}

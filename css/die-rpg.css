@@ -1546,6 +1546,18 @@
 .die-rpg .multiselect-field .checkbox-group .checkbox-option:has(input:disabled) span {
   cursor: not-allowed;
 }
+.die-rpg .field-description {
+  font-size: var(--font-size-14);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 5px;
+}
+.die-rpg .field-description p {
+  margin: 0;
+}
+.die-rpg .field-description p + p {
+  margin-top: 5px;
+}
 body.game .die-rpg.actor .window-content .sheet-tabs {
   margin-top: 20px;
 }

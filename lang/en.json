@@ -527,7 +527,7 @@
 						"RequiredProperties": "Required properties:",
 						"RequiredPropertiesList": "key, type, label",
 						"OptionalProperties": "Optional properties:",
-						"OptionalPropertiesList": "initial, choices, min, max, itemType, specialKey, fields, hint",
+						"OptionalPropertiesList": "initial, choices, min, max, itemType, specialKey, fields, hint, description (HTML)",
 						"TextFieldHeading": "Text Field",
 						"NumberFieldHeading": "Number Field",
 						"BooleanFieldHeading": "Boolean (Checkbox)",

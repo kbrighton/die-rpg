@@ -196,6 +196,19 @@ export default class DieRpgParagon extends DieRpgItemBase {
             label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.label.label',
             hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.label.hint'
           }),
+          description: new fields.StringField({
+            required: false,
+            blank: true,
+            initial: '',
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.description.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.description.hint'
+          }),
+          hint: new fields.StringField({
+            required: false,
+            blank: true,
+            initial: '',
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.hint.label'
+          }),
           initial: new fields.JSONField({
             required: false,
             nullable: true,
@@ -264,6 +277,8 @@ export default class DieRpgParagon extends DieRpgItemBase {
             initial: 'text'
           }),
           label: new fields.StringField({ required: true, blank: false }),
+          description: new fields.StringField({ required: false, blank: true, initial: '' }),
+          hint: new fields.StringField({ required: false, blank: true, initial: '' }),
           initial: new fields.JSONField({ required: false, nullable: true }),
           choices: new fields.ArrayField(new fields.StringField(), { required: false }),
           min: new fields.NumberField({ required: false, nullable: true }),

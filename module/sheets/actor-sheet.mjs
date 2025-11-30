@@ -187,35 +187,36 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _enrichDynamicFields(fieldDefinitions, fieldData) {
     const enriched = {};
+    const enrichOptions = {
+      secrets: this.document.isOwner,
+      rollData: this.actor.getRollData(),
+      relativeTo: this.actor,
+    };
 
     for (const field of fieldDefinitions) {
+      // Enrich field description if present (store in separate property to avoid mutating source)
+      if (field.description) {
+        field.enrichedDescription = await ux.TextEditor.enrichHTML(field.description, enrichOptions);
+      }
+
       if (field.type === 'html' || field.type === 'info') {
         // Use saved value, or fall back to field.initial
         const rawValue = fieldData?.[field.key] || field.initial || '';
-        enriched[field.key] = await ux.TextEditor.enrichHTML(
-          rawValue,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.actor.getRollData(),
-            relativeTo: this.actor,
-          }
-        );
+        enriched[field.key] = await ux.TextEditor.enrichHTML(rawValue, enrichOptions);
       } else if (field.type === 'group' && field.fields) {
         // Recursively enrich nested group fields
         const groupData = fieldData?.[field.key] || {};
         enriched[field.key] = {};
         for (const subfield of field.fields) {
+          // Enrich subfield description if present (store in separate property)
+          if (subfield.description) {
+            subfield.enrichedDescription = await ux.TextEditor.enrichHTML(subfield.description, enrichOptions);
+          }
+
           if (subfield.type === 'html' || subfield.type === 'info') {
             // Use saved value, or fall back to subfield.initial
             const rawValue = groupData[subfield.key] || subfield.initial || '';
-            enriched[field.key][subfield.key] = await ux.TextEditor.enrichHTML(
-              rawValue,
-              {
-                secrets: this.document.isOwner,
-                rollData: this.actor.getRollData(),
-                relativeTo: this.actor,
-              }
-            );
+            enriched[field.key][subfield.key] = await ux.TextEditor.enrichHTML(rawValue, enrichOptions);
           }
         }
       }
