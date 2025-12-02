@@ -65,169 +65,6 @@ h6 {
 				align-items: start;
 				gap: $gap-md;
 
-				.flashback-indicator {
-					display: flex;
-					align-items: center;
-					gap: $gap-sm;
-					margin-top: $margin-sm;
-					padding: $padding-sm;
-					background: $overlay-dark;
-					border-radius: 4px;
-					font-size: var(--font-size-14);
-
-					.flashback-status {
-						display: flex;
-						align-items: center;
-						gap: 4px;
-						flex: 1;
-
-						i {
-							font-size: var(--font-size-16);
-						}
-
-						.status-text {
-							font-weight: bold;
-						}
-
-						&.available {
-							color: $c-success;
-
-							.status-text {
-								color: $c-success;
-							}
-						}
-
-						&.used {
-							color: $c-gray-light;
-
-							.status-text {
-								color: $c-gray-light;
-							}
-						}
-					}
-
-					.reset-flashback-btn {
-						padding: 0.25rem 0.5rem;
-						background: $overlay-darkest;
-						border: 1px solid $overlay-darkest;
-						border-radius: 3px;
-						cursor: pointer;
-						transition: all 0.2s ease;
-						color: rgba(255, 255, 255, $opacity-80);
-						font-size: var(--font-size-14);
-
-						&:hover:not(:disabled) {
-							background: $overlay-darker;
-							border-color: rgba(255, 255, 255, $opacity-40);
-							color: $c-white;
-						}
-
-						&:disabled {
-							opacity: 0.3;
-							cursor: not-allowed;
-						}
-
-						i {
-							pointer-events: none;
-						}
-					}
-				}
-
-				.fallen-mode-indicator {
-					display: flex;
-					align-items: center;
-					margin-top: $margin-sm;
-
-					.fallen-mode-toggle {
-						display: flex;
-						align-items: center;
-						gap: 0.25rem;
-						padding: 0.5rem 0.75rem;
-						background: $overlay-dark;
-						border: 1px solid $overlay-dark;
-						border-radius: 4px;
-						cursor: pointer;
-						transition: all 0.2s ease;
-						font-size: var(--font-size-14);
-
-						i {
-							font-size: var(--font-size-16);
-							color: $c-success;
-						}
-
-						.label {
-							font-weight: 600;
-							color: $text-secondary;
-						}
-
-						&:hover {
-							background: $overlay-darker;
-							border-color: $overlay-medium;
-
-							i {
-								color: $c-white;
-							}
-
-							.label {
-								color: $c-white;
-							}
-						}
-
-						&.active {
-							background: $c-failure-bg;
-							border-color: $c-failure-border;
-
-							i {
-								color: $c-failure;
-							}
-
-							.label {
-								color: $c-failure;
-							}
-
-							&:hover {
-								background: rgba(139, 0, 0, $opacity-30);
-								border-color: $c-failure;
-
-								i,
-								.label {
-									filter: brightness(1.2);
-								}
-							}
-						}
-					}
-
-					.fallen-mode-display {
-						display: flex;
-						align-items: center;
-						gap: 0.25rem;
-						padding: 0.5rem 0.75rem;
-						background: $overlay-darker;
-						border-radius: 4px;
-						opacity: 0.8;
-						font-size: var(--font-size-14);
-
-						i {
-							font-size: var(--font-size-16);
-							color: $c-success;
-						}
-
-						.label {
-							font-weight: 600;
-							color: $text-secondary;
-						}
-
-						&.active {
-							background: $c-failure-bg;
-
-							i,
-							.label {
-								color: $c-failure;
-							}
-						}
-					}
-				}
-
 				.paragon-selection {
 					display: flex;
 					align-items: center;
@@ -242,15 +79,6 @@ h6 {
 					select {
 						text-transform: uppercase;
 					}
-				}
-
-				.name-label {
-					font-size: var(--font-size-18);
-					margin: 0;
-					padding: 0;
-					font-family: $font-heading;
-					text-transform: uppercase;
-					font-weight: 500;
 				}
 
 				.left-col {
@@ -279,7 +107,6 @@ h6 {
 					}
 
 					p {
-						color: $c-tan;
 						margin: 0;
 					}
 				}
@@ -298,21 +125,20 @@ h6 {
 
 		.sidebar {
 			grid-area: sidebar;
-			min-width: 0; /* Prevent overflow */
-			height: 100%; /* Fill grid cell */
+			min-width: 0;
+			height: 100%;
 
 			.profile-img {
 				flex: 0 0 300px;
 				height: 300px;
-				// margin-right: 10px;
 				width: 100%;
 				object-fit: cover;
 				object-position: center right;
 			}
 
 			.class-description {
-				flex: 1; /* Take remaining space */
-				min-height: 0; /* Prevent flex overflow */
+				flex: 1;
+				min-height: 0;
 				margin: 0 0 $margin-md $margin-md;
 				font-style: italic;
 				scrollbar-gutter: stable;
@@ -321,37 +147,37 @@ h6 {
 
 		.header-fields {
 			grid-area: header-fields;
-			min-width: 0; /* Prevent overflow */
+			min-width: 0;
 			margin: $margin-md $margin-md 0 0;
 
 			.stats-title {
 				background-color: $c-black;
-				border-radius: 4px;
 				color: $c-white;
+				border-radius: 4px;
 				padding: 6px 6px 2px 6px;
 				line-height: 0.7em;
 				margin: 0;
 				text-transform: uppercase;
 			}
+
+			.resource-content {
+				border-radius: 4px;
+				border: 1px solid $c-gold-border-light;
+			}
 		}
 
 		.sheet-tabs {
 			grid-area: sheet-tabs;
-			min-width: 0; /* Prevent overflow */
-			overflow-x: auto; /* Handle tabs overflow */
+			min-width: 0;
+			overflow-x: auto;
 			margin: 0 $margin-md 0 0;
 		}
 
 		.tab {
 			grid-area: tab-content;
-			min-width: 0; /* Prevent overflow */
-			background-color: $section-bg;
+			min-width: 0;
 			margin: 0 $margin-md 0 0;
 			padding: $padding-md;
-
-			h3 {
-				border-bottom: 2px solid $overlay-darkest;
-			}
 
 			&.notes {
 				.editor {
@@ -415,7 +241,7 @@ h6 {
 		font-weight: normal;
 		line-height: 1;
 		padding: 0;
-		color: $text-muted;
+		// color: $text-muted;
 
 		&.number-spinner-plus {
 			border-right: none;
@@ -642,7 +468,7 @@ h6 {
 			margin: 0;
 			font-size: var(--font-size-14);
 			font-style: italic;
-			color: $text-secondary;
+			// color: $text-secondary;
 		}
 	}
 }
@@ -703,7 +529,7 @@ h6 {
 
 		&.expanded {
 			border-color: $overlay-medium;
-			background: $overlay-dark;
+			// background: $overlay-dark;
 		}
 
 		.item-row-header {
@@ -824,7 +650,6 @@ h6 {
 			border-top: 1px solid $overlay-medium;
 			padding: $padding-md;
 			background: rgba(0, 0, 0, 0.4);
-			color: $text-primary;
 
 			.item-details-content {
 				font-size: var(--font-size-14);
@@ -832,18 +657,13 @@ h6 {
 				.item-description {
 					margin-bottom: $margin-md;
 
-					strong {
-						color: rgba(255, 255, 255, $opacity-100);
-					}
-
 					.description-content {
 						margin-top: 4px;
 						padding: $padding-sm;
 						background: rgba(0, 0, 0, 0.3);
 						border-radius: 3px;
 						border-left: 3px solid rgba(255, 255, 255, $opacity-20);
-						color: $text-secondary;
-
+						
 						// Ensure enriched HTML renders properly
 						p:first-child {
 							margin-top: 0;
@@ -856,11 +676,6 @@ h6 {
 
 				p {
 					margin: 4px 0;
-					color: $text-secondary;
-
-					strong {
-						color: rgba(255, 255, 255, $opacity-100);
-					}
 				}
 
 				// Specials list
@@ -869,11 +684,7 @@ h6 {
 					padding-top: $margin-sm;
 					border-top: 1px solid rgba(255, 255, 255, $opacity-15);
 
-					> strong {
-						color: rgba(255, 255, 255, $opacity-100);
-					}
-
-					// Special styles moved to components/_specials.scss
+					// Special styles in components/_specials.scss
 				}
 			}
 		}
