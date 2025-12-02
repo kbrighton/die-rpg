@@ -4,7 +4,6 @@
   // ==========================================
   --die-rpg-c-dark: #191813;
   --die-rpg-c-faint: #c9c7b8;
-  --die-rpg-c-beige: #b5b3a4;
   --die-rpg-c-tan: #444444;
   --die-rpg-c-white: #ffffff;
   --die-rpg-c-black: #000000;
@@ -45,7 +44,6 @@
   // SPECIAL / GOLD - Light Mode
   // ==========================================
   --die-rpg-c-gold: #b8860b;
-  --die-rpg-c-gold-text: #996f08;
   --die-rpg-c-gold-bg: rgba(184, 134, 11, 0.15);
   --die-rpg-c-gold-bg-light: rgba(184, 134, 11, 0.1);
   --die-rpg-c-gold-border-light: rgba(184, 134, 11, 0.3);
@@ -66,7 +64,6 @@
   // ==========================================
   --die-rpg-c-gray-light: #888;
   --die-rpg-c-gray-medium: #666;
-  --die-rpg-c-gray-dark: #444;
   --die-rpg-c-die-bg: rgba(200, 200, 200, 0.2);
   --die-rpg-c-die-border: rgba(150, 150, 150, 0.3);
 
@@ -107,7 +104,6 @@
   // ==========================================
   --die-rpg-c-dark: #c9c7b8;
   --die-rpg-c-faint: #191813;
-  --die-rpg-c-beige: #444444;
   --die-rpg-c-tan: #b5b3a4;
   --die-rpg-c-white: #000000;
   --die-rpg-c-black: #ffffff;
@@ -148,7 +144,6 @@
   // SPECIAL / GOLD - Dark Mode
   // ==========================================
   --die-rpg-c-gold: #d4af37;
-  --die-rpg-c-gold-text: #d4af37;
   --die-rpg-c-gold-bg: rgba(255, 215, 0, 0.1);
   --die-rpg-c-gold-bg-light: rgba(255, 215, 0, 0.1);
   --die-rpg-c-gold-border-light: rgba(255, 215, 0, 0.3);
@@ -169,7 +164,6 @@
   // ==========================================
   --die-rpg-c-gray-light: #aaa;
   --die-rpg-c-gray-medium: #888;
-  --die-rpg-c-gray-dark: #666;
   --die-rpg-c-die-bg: rgba(255, 255, 255, 0.15);
   --die-rpg-c-die-border: rgba(255, 255, 255, 0.2);
 
@@ -213,7 +207,6 @@ $c-white: var(--die-rpg-c-white);
 $c-black: var(--die-rpg-c-black);
 $c-dark: var(--die-rpg-c-dark);
 $c-faint: var(--die-rpg-c-faint);
-$c-beige: var(--die-rpg-c-beige);
 $c-tan: var(--die-rpg-c-tan);
 $c-groove: var(--die-rpg-c-groove);
 
@@ -244,7 +237,6 @@ $c-warning-border: var(--die-rpg-c-warning-border);
 
 // Gold/Special colors
 $c-gold: var(--die-rpg-c-gold);
-$c-gold-text: var(--die-rpg-c-gold-text);
 $c-gold-bg: var(--die-rpg-c-gold-bg);
 $c-gold-bg-light: var(--die-rpg-c-gold-bg-light);
 $c-gold-border-light: var(--die-rpg-c-gold-border-light);
@@ -261,7 +253,6 @@ $c-info-border: var(--die-rpg-c-info-border);
 // Gray colors
 $c-gray-light: var(--die-rpg-c-gray-light);
 $c-gray-medium: var(--die-rpg-c-gray-medium);
-$c-gray-dark: var(--die-rpg-c-gray-dark);
 $c-die-bg: var(--die-rpg-c-die-bg);
 $c-die-border: var(--die-rpg-c-die-border);
 

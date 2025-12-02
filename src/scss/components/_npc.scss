@@ -1,24 +1,5 @@
 // NPC Actor Sheet Styling
 
-// NPC elements in shared header
-.sheet-header {
-  // NPC type display in left column
-  .npc-type-display {
-    font-size: var(--font-size-14);
-    // color: $c-faint;
-    font-style: italic;
-    margin-top: $gap-sm;
-
-    .npc-type {
-      font-weight: bold;
-    }
-
-    .npc-subtype {
-      color: $c-faint;
-    }
-  }
-}
-
 // NPC Sidebar
 .sidebar {
   // NPC name field at top of sidebar
@@ -168,18 +149,6 @@
 
       .editor {
         min-height: 120px;
-      }
-    }
-
-    .ability-special-flags {
-      display: flex;
-      gap: $gap-lg;
-      flex-wrap: wrap;
-      padding-top: $gap-sm;
-      border-top: 1px solid $c-faint;
-
-      .checkbox-label {
-        @include form-checkbox;
       }
     }
   }

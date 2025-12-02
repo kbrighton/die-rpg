@@ -78,18 +78,6 @@ fieldset {
     gap: $gap-lg;
   }
 
-  // Paragon Info Section - flex layout for header
-  .paragon-info-section {
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: $gap-md;
-    }
-  }
-
-  // Specials Section - moved to components/_specials.scss
-
   // ========================================
   // FALLEN MODE CONTENT
   // ========================================

@@ -85,13 +85,6 @@
     }
   }
 
-  .effect-prop {
-    text-align: center;
-    border-left: 1px solid $c-faint;
-    border-right: 1px solid $c-faint;
-    font-size: var(--font-size-12);
-  }
-
   // Section Header
   .effects-header {
     height: 28px;
@@ -111,12 +104,6 @@
       // font-size: 16px;
     }
   }
-}
-
-// Example style for DieRpg (can be removed if not needed).
-.effect-formula {
-  flex: 0 0 200px;
-  padding: 0 8px;
 }
 
 .effects .item {
