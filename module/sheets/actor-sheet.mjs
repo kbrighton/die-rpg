@@ -1,4 +1,3 @@
-import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
 import { rollStat } from "../helpers/dice.mjs";
 import { getParagonItem } from "../helpers/advancements.mjs";
 import { getParagons } from "../helpers/paragons.mjs";
@@ -779,19 +778,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Determines effect parent to pass to helper
-   *
-   * @this DieRpgActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static async _toggleEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.update({ disabled: !effect.disabled });
-  }
-
-  /**
    * Handle clickable rolls.
    *
    * @this DieRpgActorSheet
@@ -1389,82 +1375,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
    * Drag and Drop
    *
    ***************/
-
-  /**
-   * Handle the dropping of ActiveEffect data onto an Actor Sheet
-   * @param {DragEvent} event                  The concluding DragEvent which contains drop data
-   * @param {object} data                      The data transfer extracted from the event
-   * @returns {Promise<ActiveEffect|boolean>}  The created ActiveEffect object or false if it couldn't be created.
-   * @protected
-   */
-  async _onDropActiveEffect(event, data) {
-    const aeCls = getDocumentClass('ActiveEffect');
-    const effect = await aeCls.fromDropData(data);
-    if (!this.actor.isOwner || !effect) return false;
-    if (effect.target === this.actor)
-      return this._onSortActiveEffect(event, effect);
-    return aeCls.create(effect, { parent: this.actor });
-  }
-
-  /**
-   * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings
-   *
-   * @param {DragEvent} event
-   * @param {ActiveEffect} effect
-   */
-  async _onSortActiveEffect(event, effect) {
-    /** @type {HTMLElement} */
-    const dropTarget = event.target.closest('[data-effect-id]');
-    if (!dropTarget) return;
-    const target = this._getEmbeddedDocument(dropTarget);
-
-    // Don't sort on yourself
-    if (effect.uuid === target.uuid) return;
-
-    // Identify sibling items based on adjacent HTML elements
-    const siblings = [];
-    for (const el of dropTarget.parentElement.children) {
-      const siblingId = el.dataset.effectId;
-      const parentId = el.dataset.parentId;
-      if (
-        siblingId &&
-        parentId &&
-        (siblingId !== effect.id || parentId !== effect.parent.id)
-      )
-        siblings.push(this._getEmbeddedDocument(el));
-    }
-
-    // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(effect, {
-      target,
-      siblings,
-    });
-
-    // Split the updates up by parent document
-    const directUpdates = [];
-
-    const grandchildUpdateData = sortUpdates.reduce((items, u) => {
-      const parentId = u.target.parent.id;
-      const update = { _id: u.target.id, ...u.update };
-      if (parentId === this.actor.id) {
-        directUpdates.push(update);
-        return items;
-      }
-      if (items[parentId]) items[parentId].push(update);
-      else items[parentId] = [update];
-      return items;
-    }, {});
-
-    // Effects-on-items updates
-    for (const [itemId, updates] of Object.entries(grandchildUpdateData)) {
-      await this.actor.items
-        .get(itemId)
-        .updateEmbeddedDocuments('ActiveEffect', updates);
-    }
-
-    // Update on the main actor
-    return this.actor.updateEmbeddedDocuments('ActiveEffect', directUpdates);
-  }
 
   /**
    * Handle dropping of an Actor data onto another Actor sheet
