@@ -337,7 +337,8 @@ def generate_report(
 def main():
     """Main entry point."""
     # Determine project root (where this script is located)
-    project_root = Path(__file__).parent
+    # Script is in tools/ directory, go up one level to project root
+    project_root = Path(__file__).parent.parent
 
     scss_dir = project_root / 'src' / 'scss'
     templates_dir = project_root / 'templates'

@@ -4,7 +4,6 @@
   // ==========================================
   --die-rpg-c-dark: #191813;
   --die-rpg-c-faint: #c9c7b8;
-  --die-rpg-c-tan: #444444;
   --die-rpg-c-white: #ffffff;
   --die-rpg-c-black: #000000;
   --die-rpg-c-groove: #eeede0;
@@ -96,6 +95,15 @@
   // HOVER EFFECTS - Light Mode
   // ==========================================
   --die-rpg-c-hover-glow: red;
+
+  // ==========================================
+  // TEXT COLORS - Light Mode (dark text on light bg)
+  // ==========================================
+  --die-rpg-c-text-primary: rgba(0, 0, 0, 0.95);
+  --die-rpg-c-text-secondary: rgba(0, 0, 0, 0.90);
+  --die-rpg-c-text-muted: rgba(0, 0, 0, 0.70);
+  --die-rpg-c-text-disabled: rgba(0, 0, 0, 0.60);
+  --die-rpg-c-text-hint: rgba(0, 0, 0, 0.50);
 }
 
 .theme-dark {
@@ -104,7 +112,6 @@
   // ==========================================
   --die-rpg-c-dark: #c9c7b8;
   --die-rpg-c-faint: #191813;
-  --die-rpg-c-tan: #b5b3a4;
   --die-rpg-c-white: #000000;
   --die-rpg-c-black: #ffffff;
   --die-rpg-c-groove: #7e7e7e;
@@ -196,6 +203,15 @@
   // HOVER EFFECTS - Dark Mode
   // ==========================================
   --die-rpg-c-hover-glow: red;
+
+  // ==========================================
+  // TEXT COLORS - Dark Mode (light text on dark bg)
+  // ==========================================
+  --die-rpg-c-text-primary: rgba(255, 255, 255, 0.95);
+  --die-rpg-c-text-secondary: rgba(255, 255, 255, 0.90);
+  --die-rpg-c-text-muted: rgba(255, 255, 255, 0.70);
+  --die-rpg-c-text-disabled: rgba(255, 255, 255, 0.60);
+  --die-rpg-c-text-hint: rgba(255, 255, 255, 0.50);
 }
 
 // ==========================================
@@ -207,7 +223,6 @@ $c-white: var(--die-rpg-c-white);
 $c-black: var(--die-rpg-c-black);
 $c-dark: var(--die-rpg-c-dark);
 $c-faint: var(--die-rpg-c-faint);
-$c-tan: var(--die-rpg-c-tan);
 $c-groove: var(--die-rpg-c-groove);
 
 // Success colors

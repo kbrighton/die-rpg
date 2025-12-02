@@ -110,6 +110,7 @@ h6 {
 				.class-dice-img {
 					flex: 0 0 50px;
 					height: 50px;
+					filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
 
 					svg {
 						width: 100%;

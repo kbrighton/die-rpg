@@ -3,19 +3,28 @@
    ==================================== */
 
 .die-rpg-roll {
-	padding: $padding-md;
-	background: $overlay-darker;
-	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
 	gap: $gap-md;
+	color: $text-secondary;
 
 	/* Header */
 	.roll-header {
 		font-size: var(--font-size-18);
-		color: $c-dark;
 		border-bottom: 1px solid $c-groove;
 		padding-bottom: $padding-sm;
+	}
+
+	.specials-section {
+		.specials-count {
+			color: $text-muted;
+		}
+
+		.special-item {
+			.special-source {
+				color: $text-muted;
+			}
+		}
 	}
 
 	/* Pool Display with Badges */
@@ -27,7 +36,6 @@
 
 		.pool-label {
 			font-weight: bold;
-			color: $c-dark;
 		}
 
 		.pool-badges {
@@ -61,11 +69,11 @@
 				color: $c-failure;
 			}
 
-		&.flashback {
-			background: $c-gold-bg;
-			border: 1px solid $c-gold-border;
-			color: $c-gold;
-		}
+			&.flashback {
+				background: $c-gold-bg;
+				border: 1px solid $c-gold-border;
+				color: $c-gold;
+			}
 		}
 	}
 
@@ -73,7 +81,6 @@
 	.dice-display {
 		.dice-label {
 			font-weight: bold;
-			color: $c-dark;
 			margin-bottom: $margin-sm;
 		}
 
@@ -82,7 +89,7 @@
 			flex-wrap: wrap;
 			gap: $gap-sm;
 			padding: $padding-sm;
-			background: $overlay-dark;
+			// background: $overlay-dark;
 			border-radius: 4px;
 			align-items: center;
 
@@ -210,8 +217,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: $gap-sm;
-		padding: $padding-sm;
-		background: $overlay-dark;
+		padding: $padding-md;
+		background: $overlay-darker;
 		border-radius: 4px;
 
 		.success-row,
@@ -219,17 +226,6 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-
-			.label {
-				font-weight: normal;
-				color: $c-dark;
-			}
-
-			.value {
-				font-weight: bold;
-				font-size: var(--font-size-18);
-				color: $c-dark;
-			}
 		}
 	}
 
@@ -304,7 +300,6 @@
 			.specials-count {
 				font-weight: normal;
 				font-size: var(--font-size-14);
-				color: $c-dark;
 				opacity: 0.8;
 			}
 		}
@@ -322,14 +317,6 @@
 				background: $c-gold-bg-light;
 				border: 1px solid $c-gold-border-light;
 				border-radius: 4px;
-				cursor: pointer;
-				transition: all 0.2s ease;
-
-				&:hover {
-					background: $c-gold-bg;
-					border-color: $c-gold-border;
-					transform: translateX(4px);
-				}
 
 				&.mandatory {
 					background: $c-warning-bg;
@@ -348,7 +335,7 @@
 					flex-wrap: wrap;
 
 					.special-icon {
-						font-size: var(--font-size-18);
+						font-size: var(--font-size-16);
 						color: $c-gold;
 					}
 
@@ -361,7 +348,6 @@
 					.special-cost {
 						font-size: var(--font-size-14);
 						padding: 2px 8px;
-						color: $c-black;
 					}
 
 					.mandatory-badge {
@@ -370,7 +356,7 @@
 						color: $c-warning;
 						background: $c-warning-bg-medium;
 						padding: 2px 6px;
-						border-radius: 3px;
+						border-radius: 4px;
 						text-transform: uppercase;
 					}
 				}
@@ -378,7 +364,6 @@
 				.special-source {
 					margin-top: $margin-sm;
 					font-size: var(--font-size-14);
-					color: $c-dark;
 				}
 			}
 		}
@@ -389,102 +374,9 @@
    Dark Mode Overrides
    ==================================== */
 
-.theme-dark .die-rpg-roll {
-	/* Main container background */
-	background: $overlay-darker;
-
-	/* Dice display area */
-	.dice-display .dice-results {
-		background: $overlay-dark;
-
-		.roll.die {
-			/* Lighter default die background for visibility */
-			background: $c-die-bg;
-			border-color: $c-die-border;
-
-			/* Die value text - high contrast white */
-			.die-value {
-				color: rgba(255, 255, 255, 0.613);
-			}
-
-			/* Discarded die strikethrough - white instead of black */
-			&.discarded::after {
-				background: $overlay-darker;
-			}
-
-			/* State-specific color overrides for dark mode */
-			&.success {
-				background: $c-success-bg;
-				border: 2px solid $c-success-border-light;
-				.die-value {
-					color: $c-success-text;
-				}
-			}
-
-			&.special-die {
-				background: $c-gold-bg-light;
-				border-color: $c-gold-border-light;
-				.die-value {
-					color: $c-gold;
-				}
-			}
-
-			&.critfail-die {
-				background: $c-failure-bg-light;
-				border-color: $c-failure-border-light;
-				.die-value {
-					color: $c-failure-text;
-				}
-			}
-		}
-	}
-
-	/* Success tracking area */
-	.success-tracking {
-		background: $overlay-dark;
-	}
-
-	/* Text color overrides for WCAG AA compliance */
-	.roll-header {
-		color: $text-secondary;
-	}
-
-	.pool-label,
-	.dice-label {
-		color: rgba(255, 255, 255, 0.87);
-	}
-
-	.success-tracking {
-		.label {
-			color: rgba(255, 255, 255, 0.87);
-		}
-
-		.value {
-			color: $text-primary;
-		}
-	}
-
-	.specials-section {
-		.specials-count {
-			color: $text-muted;
-		}
-
-		.special-item {
-			.special-name {
-				color: $text-primary;
-			}
-
-			.special-source {
-				color: $text-muted;
-			}
-		}
-	}
-}
-
 /* Override Foundry's chat message container for our rolls */
 /* Light Mode - Override Foundry's parchment background */
 .chat-message:has(.die-rpg-roll) {
-	background: rgba(0, 0, 0, 0.25) !important;
 	border: 1px solid $c-groove;
 }
 
@@ -496,21 +388,11 @@
 	/* Fix message header text contrast */
 	.message-header {
 		.message-sender {
-			color: $text-secondary;
+			color: $text-muted;
 		}
 
 		.message-metadata {
 			color: $text-muted;
-
-			a {
-				color: $text-muted;
-
-				&:hover {
-					color: $text-secondary;
-				}
-			}
 		}
 	}
 }
-
-/* Animations now centralized in utils/_mixins.scss */

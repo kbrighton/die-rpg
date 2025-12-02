@@ -1,25 +1,4 @@
 // ==========================================
-// UTILITY MIXINS
-// ==========================================
-
-@mixin element-invisible {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-@mixin hide {
-  display: none;
-}
-
-// ==========================================
 // BUTTON MIXINS
 // ==========================================
 
@@ -109,26 +88,6 @@
   }
 }
 
-// Neutral button (gray) - for secondary actions
-@mixin btn-neutral {
-  @include btn-base-styles;
-  background: $overlay-darker;
-  border-color: $overlay-darker;
-  color: $text-secondary;
-
-  @include btn-base-states;
-
-  &:hover:not(:disabled) {
-    background: $overlay-dark;
-    border-color: $overlay-medium;
-    color: $c-white;
-  }
-
-  &:active:not(:disabled) {
-    transform: translateY(1px);
-  }
-}
-
 // Small button variant (for compact layouts)
 // Uses & {} wrapper to avoid Sass deprecation warnings when chained with other mixins
 @mixin btn-small {
@@ -163,59 +122,6 @@
 // FORM FIELD MIXINS
 // ==========================================
 
-// Base form field styling
-@mixin form-field-base {
-  label {
-    display: block;
-    margin-bottom: $margin-sm;
-    font-weight: 600;
-    font-size: var(--font-size-14);
-    color: $text-primary;
-  }
-
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="password"],
-  select,
-  textarea {
-    width: 100%;
-    padding: $padding-sm;
-    background: $overlay-darker;
-    border: 1px solid $overlay-medium;
-    border-radius: 3px;
-    font-size: var(--font-size-14);
-    color: $text-primary;
-
-    &:focus {
-      outline: none;
-      border-color: $overlay-light;
-      background: $overlay-dark;
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      background: $overlay-darkest;
-    }
-
-    &::placeholder {
-      color: $text-muted;
-    }
-  }
-
-  // Number input specific
-  input[type="number"] {
-    text-align: left;
-  }
-
-  // Textarea specific
-  textarea {
-    min-height: 100px;
-    resize: vertical;
-  }
-}
-
 // Inline form field (label and input side-by-side)
 @mixin form-field-inline {
   display: flex;
@@ -231,43 +137,6 @@
   input,
   select {
     flex: 1;
-  }
-}
-
-// Checkbox/Radio styling
-@mixin form-checkbox {
-  display: flex;
-  align-items: center;
-  gap: $gap-sm;
-  cursor: pointer;
-  user-select: none;
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin: 0;
-    cursor: pointer;
-    flex-shrink: 0;
-
-    &:disabled {
-      cursor: not-allowed;
-    }
-  }
-
-  label,
-  span {
-    margin: 0;
-    cursor: pointer;
-    flex: 1;
-  }
-
-  &:has(input:disabled) {
-    opacity: 0.6;
-    cursor: not-allowed;
-
-    label,
-    span {
-      cursor: not-allowed;
-    }
   }
 }
 
@@ -289,51 +158,8 @@
   border-left: 3px solid $color;
 }
 
-// Section header styling
-@mixin section-header {
-  margin: 0 0 $margin-md 0;
-  padding-bottom: $padding-sm;
-  border-bottom: 1px solid $overlay-medium;
-  font-size: var(--font-size-18);
-  font-weight: bold;
-  text-transform: uppercase;
-  color: $text-primary;
-}
-
 // ==========================================
-// ANIMATION & TRANSITION MIXINS
-// ==========================================
-
-// Standard transition (most common - 0.2s)
-@mixin transition-standard {
-  transition: all 0.2s ease;
-}
-
-// Fast transition (for quick interactions - 0.15s)
-@mixin transition-fast {
-  transition: all 0.15s ease;
-}
-
-// Slow transition (for dramatic effects - 0.3s)
-@mixin transition-slow {
-  transition: all 0.3s ease;
-}
-
-// Specific property transitions
-@mixin transition-opacity($duration: 0.2s) {
-  transition: opacity $duration ease;
-}
-
-@mixin transition-transform($duration: 0.2s) {
-  transition: transform $duration ease;
-}
-
-@mixin transition-colors($duration: 0.2s) {
-  transition: background-color $duration ease, border-color $duration ease, color $duration ease;
-}
-
-// ==========================================
-// ANIMATION KEYFRAMES
+// ANIMATION MIXINS
 // ==========================================
 
 // Pulse animation (for highlighting important elements)
@@ -365,124 +191,4 @@
 
 @mixin animate-shake {
   animation: shake 0.5s ease-in-out infinite;
-}
-
-// Fade in animation
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@mixin animate-fade-in($duration: 0.3s) {
-  animation: fadeIn $duration ease;
-}
-
-// Slide in from top
-@keyframes slideInTop {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@mixin animate-slide-in-top($duration: 0.3s) {
-  animation: slideInTop $duration ease;
-}
-
-// Hover lift effect (common for cards/buttons)
-@mixin hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-}
-
-// Hover glow effect
-@mixin hover-glow($color: $c-info) {
-  transition: box-shadow 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 0 10px rgba($color, 0.5);
-  }
-}
-
-// ==========================================
-// RESPONSIVE BREAKPOINT MIXINS
-// ==========================================
-// Note: Foundry VTT is primarily desktop-focused,
-// but these mixins provide mobile/tablet support for future use
-
-// Breakpoint variables (aligned with common Foundry practices)
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1024px;
-$breakpoint-wide: 1440px;
-
-// Mobile-first approach (min-width)
-@mixin respond-above($breakpoint) {
-  @media (min-width: $breakpoint) {
-    @content;
-  }
-}
-
-// Desktop-first approach (max-width)
-@mixin respond-below($breakpoint) {
-  @media (max-width: $breakpoint - 1px) {
-    @content;
-  }
-}
-
-// Specific breakpoint helpers
-@mixin mobile-only {
-  @media (max-width: $breakpoint-tablet - 1px) {
-    @content;
-  }
-}
-
-@mixin tablet-only {
-  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop - 1px) {
-    @content;
-  }
-}
-
-@mixin tablet-and-up {
-  @media (min-width: $breakpoint-tablet) {
-    @content;
-  }
-}
-
-@mixin desktop-and-up {
-  @media (min-width: $breakpoint-desktop) {
-    @content;
-  }
-}
-
-@mixin wide-screen {
-  @media (min-width: $breakpoint-wide) {
-    @content;
-  }
-}
-
-// Touch device detection
-@mixin touch-device {
-  @media (hover: none) and (pointer: coarse) {
-    @content;
-  }
-}
-
-// Print styles
-@mixin print {
-  @media print {
-    @content;
-  }
 }
