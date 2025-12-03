@@ -40,7 +40,7 @@ fieldset {
 .hint {
 	font-size: 0.875rem;
 	font-style: italic;
-	color: $text-disabled;
+	color: $c-text-disabled;
 }
 
 // Actor Sheet - Paragon Tab Styling
@@ -208,7 +208,7 @@ fieldset {
 					padding: $padding-md;
 					font-size: 0.875rem;
 					font-style: italic;
-					color: $text-disabled;
+					color: $c-text-disabled;
 					background: $overlay-darker;
 					border-radius: 3px;
 					text-align: center;
@@ -297,7 +297,7 @@ fieldset {
 						padding: $padding-sm;
 						font-size: 0.875rem;
 						font-style: italic;
-						color: $text-disabled;
+						color: $c-text-disabled;
 						background: $overlay-darkest;
 						border-radius: 3px;
 					}

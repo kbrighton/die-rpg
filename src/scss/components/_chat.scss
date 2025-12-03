@@ -6,6 +6,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: $gap-md;
+	color: $c-black;
 
 	/* Header */
 	.roll-header {
@@ -16,12 +17,12 @@
 
 	.specials-section {
 		.specials-count {
-			color: $text-muted;
+			color: $c-text-muted;
 		}
 
 		.special-item {
 			.special-source {
-				color: $text-muted;
+				color: $c-text-muted;
 			}
 		}
 	}
@@ -53,7 +54,6 @@
 			&.base-pool {
 				background: $overlay-darkest;
 				border: 1px solid $overlay-darkest;
-				color: $c-dark;
 			}
 
 			&.class-die {
@@ -88,7 +88,7 @@
 			flex-wrap: wrap;
 			gap: $gap-sm;
 			padding: $padding-sm;
-			// background: $overlay-dark;
+			background: $overlay-dark;
 			border-radius: 4px;
 			align-items: center;
 
@@ -387,11 +387,11 @@
 	/* Fix message header text contrast */
 	.message-header {
 		.message-sender {
-			color: $text-muted;
+			color: $c-text-muted;
 		}
 
 		.message-metadata {
-			color: $text-muted;
+			color: $c-text-muted;
 		}
 	}
 }

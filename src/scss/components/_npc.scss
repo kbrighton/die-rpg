@@ -1,170 +1,104 @@
 // NPC Actor Sheet Styling
-
 // NPC Sidebar
 .sidebar {
-  // NPC name field at top of sidebar
-  .npc-name-field {
-    width: 100%;
-    margin-bottom: $gap-md;
-    padding: 0 $padding-md; // Match horizontal padding of .npc-sidebar-forms
+	// NPC name field at top of sidebar
+	.npc-name-field {
+		width: 100%;
+		margin-bottom: $margin-md;
+		padding: 0 $padding-md;
 
-    .document-name {
-      width: 100%;
-      text-align: center;
-      font-size: var(--font-size-18);
-      font-weight: bold;
-      padding: $padding-sm;
-      border: 1px solid $c-faint;
-      border-radius: 4px;
+		.document-name {
+			text-align: center;
+			font-size: var(--font-size-18);
+		}
+	}
 
-      &:focus {
-        outline: none;
-        border-color: $c-black;
-      }
-    }
-  }
+	// NPC sidebar forms
+	.npc-sidebar-forms {
+		padding: $padding-md;
 
-  // NPC sidebar forms
-  .npc-sidebar-forms {
-    padding: $padding-md;
+		.form-group {
+			&.info-note {
+				@include card-highlight($c-warning-border);
+				background: $c-warning-bg;
 
-    .form-group {
-      margin-bottom: $gap-md;
+				.note-text {
+					margin: 0;
+					font-style: italic;
+					color: $c-warning;
 
-      label {
-        display: block;
-        margin-bottom: $gap-sm;
-        font-weight: bold;
-        font-size: var(--font-size-14);
-      }
-
-      select {
-        width: 100%;
-      }
-
-      &.info-note {
-        @include card-highlight($c-warning-border);
-        background: $c-warning-bg;
-
-        .note-text {
-          margin: 0;
-          font-style: italic;
-          color: $c-warning;
-
-          i {
-            margin-right: $gap-sm;
-          }
-        }
-      }
-    }
-  }
+					i {
+						margin-right: $gap-sm;
+					}
+				}
+			}
+		}
+	}
 }
 
 // NPC Details Tab
 .tab.npc-details {
-  padding: $padding-md;
-
-  .npc-details-grid {
-    display: flex;
-    flex-direction: column;
-    gap: $gap-md;
-    height: 100%;
-  }
-
-  .form-group {
-    &.stacked {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-
-      label {
-        margin-bottom: $gap-sm;
-      }
-
-      .editor {
-        min-height: 210px;
-      }
-    }
-  }
+	.editor {
+		min-height: 210px;
+	}
 }
 
 // NPC Abilities Tab
 .tab.npc-abilities {
-  padding: $padding-md;
+	.npc-abilities-container {
+		display: flex;
+		flex-direction: column;
+		gap: $gap-md;
+	}
 
-  .npc-abilities-container {
-    display: flex;
-    flex-direction: column;
-    gap: $gap-md;
-  }
+	.abilities-header {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: $padding-sm;
+		border-bottom: $border-groove;
 
-  .abilities-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: $padding-sm;
-    border-bottom: 1px solid $c-faint;
+		h3 {
+			margin: 0;
+		}
 
-    h3 {
-      margin: 0;
-    }
+		.add-ability-btn {
+			@include btn-success;
+		}
+	}
 
-    .add-ability-btn {
-      @include btn-success;
-    }
-  }
+	.abilities-list {
+		display: flex;
+		flex-direction: column;
+		gap: $gap-md;
+	}
 
-  .abilities-list {
-    display: flex;
-    flex-direction: column;
-    gap: $gap-md;
-  }
+	.ability-block {
+		@include card;
 
-  .ability-block {
-    @include card;
-    background: $overlay-darker;
+		.ability-header {
+			display: flex;
+			gap: $gap-md;
+			align-items: flex-start;
+			margin-bottom: $gap-md;
 
-    .ability-header {
-      display: flex;
-      gap: $gap-md;
-      align-items: flex-start;
-      margin-bottom: $gap-md;
+			.ability-name-input {
+				flex: 1;
+			}
 
-      .ability-name-input {
-        flex: 1;
-      }
+			.delete-ability-btn {
+				@include btn-danger;
+				@include btn-icon;
 
-      .delete-ability-btn {
-        @include btn-danger;
-        @include btn-icon;
+				& {
+					align-self: flex-end;
+				}
+			}
+		}
+	}
 
-        & {
-          align-self: flex-end;
-        }
-      }
-    }
-
-    .ability-description {
-      margin-bottom: $gap-md;
-
-      .editor {
-        min-height: 120px;
-      }
-    }
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: $padding-lg * 2;
-    color: $c-faint;
-    font-style: italic;
-
-    p {
-      margin: $gap-sm 0;
-    }
-
-    .hint-text {
-      font-size: var(--font-size-14);
-    }
-  }
+	.empty-state {
+		text-align: center;
+		padding: $padding-lg * 2;
+		font-style: italic;
+	}
 }

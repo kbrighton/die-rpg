@@ -221,12 +221,6 @@
       border-top: 1px solid $overlay-dark;
     }
 
-    .advancement-description {
-      margin-bottom: 1rem;
-      line-height: 1.5;
-      color: $text-secondary;
-    }
-
     .advancement-positions {
       ul {
         list-style: none;
@@ -241,18 +235,13 @@
         gap: 0.5rem;
       }
 
-      .position-id {
-        color: $text-secondary;
-        min-width: 2rem;
-      }
-
       .position-state {
         &.selected {
           color: $c-selected;
         }
 
         &.locked {
-          color: $text-disabled;
+          color: $c-text-disabled;
         }
 
         &.level-locked {

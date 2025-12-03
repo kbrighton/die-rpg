@@ -2,8 +2,6 @@
   // ==========================================
   // BASE COLORS (Light Mode)
   // ==========================================
-  --die-rpg-c-dark: #191813;
-  --die-rpg-c-faint: #c9c7b8;
   --die-rpg-c-white: #ffffff;
   --die-rpg-c-black: #000000;
   --die-rpg-c-groove: #eeede0;
@@ -61,8 +59,6 @@
   // ==========================================
   // GRAYS - Light Mode
   // ==========================================
-  --die-rpg-c-gray-light: #888;
-  --die-rpg-c-gray-medium: #666;
   --die-rpg-c-die-bg: rgba(200, 200, 200, 0.2);
   --die-rpg-c-die-border: rgba(150, 150, 150, 0.3);
 
@@ -78,7 +74,6 @@
   // ==========================================
   // BACKGROUNDS & OVERLAYS - Light Mode
   // ==========================================
-  --die-rpg-overlay-light: rgba(255, 255, 255, 0.03);
   --die-rpg-overlay-medium: rgba(255, 255, 255, 0.05);
   --die-rpg-overlay-dark: rgba(255, 255, 255, 0.185);
   --die-rpg-overlay-darker: rgba(255, 255, 255, 0.483);
@@ -98,22 +93,19 @@
   // ==========================================
   // TEXT COLORS - Light Mode (dark text on light bg)
   // ==========================================
-  --die-rpg-c-text-primary: rgba(0, 0, 0, 0.95);
-  --die-rpg-c-text-secondary: rgba(0, 0, 0, 0.85);
   --die-rpg-c-text-muted: rgba(0, 0, 0, 0.70);
   --die-rpg-c-text-disabled: rgba(0, 0, 0, 0.60);
-  --die-rpg-c-text-hint: rgba(0, 0, 0, 0.50);
+
+  --die-rpg-c-svg: invert(100%);
 }
 
 .theme-dark {
   // ==========================================
   // BASE COLORS (Dark Mode Override)
   // ==========================================
-  --die-rpg-c-dark: #c9c7b8;
-  --die-rpg-c-faint: #191813;
   --die-rpg-c-white: #000000;
   --die-rpg-c-black: #ffffff;
-  --die-rpg-c-groove: #7e7e7e;
+  --die-rpg-c-groove: #848484;
 
   // ==========================================
   // SUCCESS (Green) - Dark Mode
@@ -168,8 +160,6 @@
   // ==========================================
   // GRAYS - Dark Mode
   // ==========================================
-  --die-rpg-c-gray-light: #aaa;
-  --die-rpg-c-gray-medium: #888;
   --die-rpg-c-die-bg: rgba(255, 255, 255, 0.15);
   --die-rpg-c-die-border: rgba(255, 255, 255, 0.2);
 
@@ -185,11 +175,10 @@
   // ==========================================
   // BACKGROUNDS & OVERLAYS - Dark Mode
   // ==========================================
-  --die-rpg-overlay-light: rgba(255, 255, 255, 0.03);
   --die-rpg-overlay-medium: rgba(255, 255, 255, 0.05);
   --die-rpg-overlay-dark: rgba(255, 255, 255, 0.1);
-  --die-rpg-overlay-darker: rgba(255, 255, 255, 0.05);
-  --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.046);
+  --die-rpg-overlay-darker: rgba(255, 255, 255, 0.1);
+  --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.2);
 
   // ==========================================
   // TOOLTIPS - Dark Mode
@@ -205,30 +194,23 @@
   // ==========================================
   // TEXT COLORS - Dark Mode (light text on dark bg)
   // ==========================================
-  --die-rpg-c-text-primary: rgba(255, 255, 255, 0.95);
-  --die-rpg-c-text-secondary: rgba(255, 255, 255, 0.90);
   --die-rpg-c-text-muted: rgba(255, 255, 255, 0.70);
   --die-rpg-c-text-disabled: rgba(255, 255, 255, 0.60);
-  --die-rpg-c-text-hint: rgba(255, 255, 255, 0.50);
+  
+  --die-rpg-c-svg: invert(0%);
 }
 
 // ==========================================
 // SCSS VARIABLE SHORTCUTS
 // ==========================================
 
-// Text Color Utilities
-$text-primary: var(--die-rpg-c-text-primary);
-$text-secondary: var(--die-rpg-c-text-secondary);
-$text-muted: var(--die-rpg-c-text-muted);
-$text-disabled: var(--die-rpg-c-text-disabled);
-$text-hint: var(--die-rpg-c-text-hint);
-
 // Base colors
 $c-white: var(--die-rpg-c-white);
 $c-black: var(--die-rpg-c-black);
-$c-dark: var(--die-rpg-c-dark);
-$c-faint: var(--die-rpg-c-faint);
 $c-groove: var(--die-rpg-c-groove);
+$c-text-muted: var(--die-rpg-c-text-muted);
+$c-text-disabled: var(--die-rpg-c-text-disabled);
+$c-svg: var(--die-rpg-c-svg);
 
 // Success colors
 $c-success: var(--die-rpg-c-success);
@@ -271,8 +253,6 @@ $c-info-bg-medium: var(--die-rpg-c-info-bg-medium);
 $c-info-border: var(--die-rpg-c-info-border);
 
 // Gray colors
-$c-gray-light: var(--die-rpg-c-gray-light);
-$c-gray-medium: var(--die-rpg-c-gray-medium);
 $c-die-bg: var(--die-rpg-c-die-bg);
 $c-die-border: var(--die-rpg-c-die-border);
 
@@ -284,7 +264,6 @@ $c-locked-bg: var(--die-rpg-c-locked-bg);
 $c-locked-border: var(--die-rpg-c-locked-border);
 
 // Overlays
-$overlay-light: var(--die-rpg-overlay-light);
 $overlay-medium: var(--die-rpg-overlay-medium);
 $overlay-dark: var(--die-rpg-overlay-dark);
 $overlay-darker: var(--die-rpg-overlay-darker);

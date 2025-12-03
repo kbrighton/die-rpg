@@ -21,7 +21,7 @@
       height: 150px;
       object-fit: cover;
       cursor: pointer;
-      border: 2px solid $c-faint;
+      border: $border-groove;
 
       &:hover {
         border-color: $c-black;
