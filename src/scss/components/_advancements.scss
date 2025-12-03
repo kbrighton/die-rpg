@@ -186,7 +186,17 @@
 			gap: $gap-sm;
 		}
 
+		.position-id {
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+
 		.position-state {
+			// Text truncation for single-line display
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
 			&.selected {
 				color: $c-selected;
 			}

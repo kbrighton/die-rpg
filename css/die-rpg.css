@@ -1793,6 +1793,15 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
   align-items: center;
   gap: 5px;
 }
+.die-rpg .tab.advancements .advancement-positions .position-id {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.die-rpg .tab.advancements .advancement-positions .position-state {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .die-rpg .tab.advancements .advancement-positions .position-state.selected {
   color: var(--die-rpg-c-selected);
 }
