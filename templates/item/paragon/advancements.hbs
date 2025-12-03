@@ -5,6 +5,58 @@
 	data-tab="advancements"
 	data-subtype="{{document.type}}"
 >
+	{{! Advancement Pool }}
+	<fieldset class="form-section advancement-pool">
+		<legend>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementPool.Legend"}}</legend>
+		<p class="hint">{{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementPool.Description"}}}</p>
+
+		<div class="form-group stacked">
+			<textarea
+				name="system.advancements"
+				rows="12"
+				class="json-editor"
+				placeholder='[{"id": 1, "name": "Sample Advancement"}]'
+			>{{json system.advancements space=2}}</textarea>
+			<p class="hint">{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementPool.FormatHint"}}</p>
+		</div>
+
+		<details class="advancement-pool-reference">
+			<summary>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementPool.ExampleSummary"}}</summary>
+			<pre><code>[
+  { "id": 1, "name": "An Artist's Progress" },
+  { "id": 2, "name": "It's Not What You Know" },
+  { "id": 3, "name": "One Step Ahead" }
+]</code></pre>
+		</details>
+	</fieldset>
+
+	{{! Position Assignments }}
+	<fieldset class="form-section advancement-assignments">
+		<legend>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementAssignments.Legend"}}</legend>
+		<p class="hint">{{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementAssignments.Description"}}}</p>
+
+		<div class="form-group stacked">
+			<textarea
+				name="system.advancementAssignments"
+				rows="10"
+				class="json-editor"
+				placeholder='{"row1-1": 1, "row1-2": 2, ...}'
+			>{{json system.advancementAssignments space=2}}</textarea>
+		</div>
+
+		<details class="position-reference">
+			<summary>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementAssignments.PositionReference"}}</summary>
+			<div class="reference-content">
+				<p>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementAssignments.PositionReferenceDesc"}}</p>
+				<pre>Row 1: row1-1, row1-2, row1-3, row1-4, row1-5
+Row 2: row2-1, row2-2
+Row 3: row3-1, row3-2, row3-3
+Row 4: row4-1, row4-2, row4-3, row4-4, row4-5
+Row 5: row5-1, row5-2, row5-3, row5-4</pre>
+			</div>
+		</details>
+	</fieldset>
+
 	{{! Advancement Form Fields }}
 	<fieldset class="form-section advancement-form-fields">
 		<legend>{{localize "DIE_RPG.Item.Paragon.Documentation.AdvancementForms.Legend"}}</legend>

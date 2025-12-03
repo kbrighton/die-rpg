@@ -118,13 +118,13 @@ export default class DieRpgParagon extends DieRpgItemBase {
     // ========================================
 
     // --- Advancement Map Assignment ---
-    // Maps each of the 20 node positions to an advancement ID
-    // Example: { "row0-1": 1, "row1-1": 2, "row1-2": 1, "row1-3": 3, ... }
+    // Maps each of the 19 node positions to an advancement ID (row0-1 is START, not assigned)
+    // Example: { "row1-1": 2, "row1-2": 1, "row1-3": 3, ... }
     // Advancement #1 can appear in multiple positions
     schema.advancementAssignments = new fields.ObjectField({
       required: true,
       initial: {
-        "row0-1": 1, "row1-1": 1, "row1-2": 1, "row1-3": 1, "row1-4": 1, "row1-5": 1,
+        "row1-1": 1, "row1-2": 1, "row1-3": 1, "row1-4": 1, "row1-5": 1,
         "row2-1": 1, "row2-2": 1, "row3-1": 1, "row3-2": 1, "row3-3": 1,
         "row4-1": 1, "row4-2": 1, "row4-3": 1, "row4-4": 1, "row4-5": 1,
         "row5-1": 1, "row5-2": 1, "row5-3": 1, "row5-4": 1
@@ -135,6 +135,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
     // --- Advancement Pool ---
     // The actual advancements available for this paragon
     // Can be 5-20 unique advancements depending on the paragon
+    // Each advancement only needs an id and name
     const advancementSchema = new fields.SchemaField({
       id: new fields.NumberField({
         required: true,
@@ -146,24 +147,13 @@ export default class DieRpgParagon extends DieRpgItemBase {
         required: true,
         blank: false,
         label: 'DIE_RPG.Item.Paragon.FIELDS.advancement.name.label'
-      }),
-      description: new fields.HTMLField({
-        required: false,
-        blank: true,
-        label: 'DIE_RPG.Item.Paragon.FIELDS.advancement.description.label'
-      }),
-      icon: new fields.StringField({
-        required: false,
-        blank: true,
-        initial: '',
-        label: 'DIE_RPG.Item.Paragon.FIELDS.advancement.icon.label'
       })
     });
 
     schema.advancements = new fields.ArrayField(advancementSchema, {
       required: true,
       initial: [
-        { id: 1, name: "Sample Advancement", description: "<p>This is a placeholder advancement.</p>", icon: "" }
+        { id: 1, name: "Sample Advancement" }
       ],
       label: 'DIE_RPG.Item.Paragon.FIELDS.advancements.label'
     });

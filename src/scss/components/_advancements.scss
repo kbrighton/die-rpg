@@ -1,238 +1,207 @@
 .tab.advancements {
-  // padding: $padding-md; 
+	// padding: $padding-md;
 
-  // Grid container for info sidebar and map
-  .advancements-grid {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    gap: $gap-md;
-  }
+	// Grid container for info sidebar and map
+	.advancements-grid {
+		display: grid;
+		grid-template-columns: 40% 60%;
+		gap: $gap-md;
+	}
 
-  .advancement-info {
-    padding: $padding-md;
-    background: $overlay-dark;
-    border-radius: 4px;
+	.advancement-info {
+		padding: $padding-md;
+		background: $overlay-dark;
+		border-radius: 4px;
 
-    .form-group {
-      display: flex;
-      align-items: center;
-      gap: $gap-md;
+		.form-group {
+			display: flex;
+			align-items: center;
+			gap: $gap-md;
 
-      label {
-        font-weight: bold;
-      }
+			label {
+				font-weight: bold;
+			}
 
-      input[type="number"] {
-        width: 40px;
-        text-align: center;
-      }
-    }
-  }
+			input[type="number"] {
+				width: 40px;
+				text-align: center;
+			}
+		}
+	}
 
-  // SVG advancement map
-  .advancement-map {
-    width: 100%;
-    max-width: 100%;
-    padding-right: $padding-sm;
-    height: auto;
-    display: block;
-  }
+	// SVG advancement map
+	.advancement-map {
+		width: 100%;
+		max-width: 100%;
+		padding-right: $padding-sm;
+		height: auto;
+		display: block;
+	}
 
-  .advancement-node {
-    // Group container
-    position: relative;
+	.advancement-node {
+		// Group container
+		position: relative;
 
-    // Tooltips
-    .triangle[data-advancement-tooltip]:hover {
-      // Create stacking context for tooltip
-      position: relative;
+		// Tooltips
+		.triangle[data-advancement-tooltip]:hover {
+			// Create stacking context for tooltip
+			position: relative;
 
-      &::after {
-        content: attr(data-advancement-tooltip);
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 8px;
-        padding: 0.5rem 0.75rem;
-        background: $c-tooltip-bg;
-        color: $c-tooltip-text;
-        border-radius: 4px;
-        white-space: nowrap;
-        font-size: 1rem;
-        font-family: sans-serif;
-        z-index: 1000;
-        pointer-events: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      }
+			&::after {
+				content: attr(data-advancement-tooltip);
+				position: absolute;
+				bottom: 100%;
+				left: 50%;
+				transform: translateX(-50%);
+				margin-bottom: 8px;
+				padding: 0.5rem 0.75rem;
+				background: $c-tooltip-bg;
+				color: $c-tooltip-text;
+				border-radius: 4px;
+				white-space: nowrap;
+				font-size: 1rem;
+				font-family: sans-serif;
+				z-index: 1000;
+				pointer-events: none;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+			}
 
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 2px;
-        border: 6px solid transparent;
-        border-top-color: $c-tooltip-bg;
-        z-index: 1000;
-        pointer-events: none;
-      }
-    }
-  }
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: 100%;
+				left: 50%;
+				transform: translateX(-50%);
+				margin-bottom: 2px;
+				border: 6px solid transparent;
+				border-top-color: $c-tooltip-bg;
+				z-index: 1000;
+				pointer-events: none;
+			}
+		}
+	}
 
-  .triangle {
-    stroke: $c-black;
-    stroke-width: 4;
-    fill: transparent;
-    cursor: pointer;
-    transition: fill 0.2s ease, stroke 0.2s ease;
+	.triangle {
+		stroke: $c-black;
+		stroke-width: 4;
+		fill: transparent;
+		cursor: pointer;
+		transition: fill 0.2s ease, stroke 0.2s ease;
 
-    // Start node (row0-1) - special red fill
-    &[data-node-id="row0-1"] {
-      fill: $c-critical;
-      stroke: $c-black;
+		// Start node (row0-1) - background color, no interaction
+		&.start-node {
+			fill: $c-white;
+			stroke: $c-white;
+			cursor: default;
 
-      &:hover {
-        fill: $c-critical-hover;
-      }
-    }
+			&:hover {
+				fill: $c-white;
+				stroke: $c-white;
+			}
+		}
 
-    // Selected nodes
-    &.selected:not([data-node-id="row0-1"]) {
-      fill: $c-selected-bg;
-      stroke: $c-selected-border;
-      stroke-width: 5;
-    }
+		// Selected nodes (exclude start node)
+		&.selected:not(.start-node) {
+			fill: $c-selected-bg;
+			stroke: $c-selected-border;
+			stroke-width: 5;
+		}
 
-    // Locked nodes
-    &.locked {
-      fill: $c-locked-bg;
-      stroke: $c-locked-border;
-      cursor: not-allowed;
+		// Locked nodes
+		&.locked {
+			fill: $c-locked-bg;
+			stroke: $c-locked-border;
+			cursor: not-allowed;
 
-      &:hover {
-        fill: $c-locked-bg;
-      }
-    }
+			&:hover {
+				fill: $c-locked-bg;
+			}
+		}
 
-    // Level-locked nodes
-    &.level-locked {
-      fill: $c-warning-bg;
-      stroke: $c-warning;
-      stroke-width: 5;
-      cursor: not-allowed;
+		// Level-locked nodes
+		&.level-locked {
+			fill: $c-warning-bg;
+			stroke: $c-warning;
+			stroke-width: 5;
+			cursor: not-allowed;
 
-      &:hover {
-        fill: $c-warning-bg-medium;
-      }
-    }
+			&:hover {
+				fill: $c-warning-bg-medium;
+			}
+		}
 
-    // Hover state for selectable nodes
-    &:not(.locked):not(.level-locked):not([data-disabled="true"]):hover {
-      fill: $overlay-darker;
-      stroke: $c-white;
-      stroke-width: 5;
-    }
+		// Available/unlocked nodes
+		&.available {
+			fill: $c-info-bg;
+			stroke: $c-info-bright;
+			stroke-width: 4;
+		}
 
-    // Disabled nodes
-    &[data-disabled="true"] {
-      cursor: not-allowed;
-    }
-  }
+		// Hover state for selectable nodes (exclude start node)
+		&:not(.locked):not(.level-locked):not([data-disabled="true"]):not(
+				.start-node
+			):hover {
+			fill: $overlay-darker;
+			stroke: $c-white;
+			stroke-width: 5;
+		}
 
-  .triangle-label {
-    font-size: var(--font-size-40);
-    font-weight: bold;
-    fill: $c-black;
-    user-select: none;
-    font-family: sans-serif;
+		// Disabled nodes
+		&[data-disabled="true"] {
+			cursor: not-allowed;
+		}
+	}
 
-    // Dimmed text for locked nodes
-    .locked ~ & {
-      opacity: 0.6;
-    }
+	.triangle-label {
+		font-size: var(--font-size-40);
+		font-weight: bold;
+		fill: $c-black;
+		user-select: none;
+		font-family: sans-serif;
 
-    .level-locked ~ & {
-      opacity: 0.8;
-    }
-  }
+		// Dimmed text for locked nodes
+		.locked ~ & {
+			opacity: 0.6;
+		}
 
-  // ========================================
-  // ADVANCEMENT ACCORDION COMPONENT
-  // ========================================
-  .advancement-accordion {
-    margin-top: $margin-md;
-    padding: $padding-md;
+		.level-locked ~ & {
+			opacity: 0.8;
+		}
+	}
 
-    h3 {
-      border-bottom: 2px solid $overlay-darkest;
-    }
+	// ========================================
+	// ADVANCEMENT ACCORDION COMPONENT
+	// ========================================
+	.advancement-positions {
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0.5rem 0 0 0;
+		}
 
-    .advancement-detail {
-      margin-bottom: 0.5rem;
-      border: 1px solid $overlay-dark;
-      border-radius: 4px;
-      background: $overlay-dark;
+		li {
+			padding: $padding-xs 0;
+			display: flex;
+			align-items: center;
+			gap: $gap-sm;
+		}
 
-      &[open] {
-        border-color: $overlay-dark;
-      }
-    }
+		.position-state {
+			&.selected {
+				color: $c-selected;
+			}
 
-    .advancement-summary {
-      padding: $padding-md;
-      cursor: pointer;
-      align-items: center;
-      font-weight: bold;
+			&.locked {
+				color: $c-text-disabled;
+			}
 
-      &:hover {
-        background: $overlay-medium;
-      }
+			&.level-locked {
+				color: $c-warning;
+			}
 
-      .advancement-number {
-        color: $c-warning;
-        font-family: monospace;
-        font-size: var(--font-size-18);
-      }
-    }
-
-    .advancement-body {
-      padding: $padding-md;
-      border-top: 1px solid $overlay-dark;
-    }
-
-    .advancement-positions {
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0.5rem 0 0 0;
-      }
-
-      li {
-        padding: $padding-xs 0;
-        display: flex;
-        align-items: center;
-        gap: $gap-sm;
-      }
-
-      .position-state {
-        &.selected {
-          color: $c-selected;
-        }
-
-        &.locked {
-          color: $c-text-disabled;
-        }
-
-        &.level-locked {
-          color: $c-warning;
-        }
-
-        &.available {
-          color: $c-info-bright;
-        }
-      }
-    }
-  }
+			&.available {
+				color: $c-info-bright;
+			}
+		}
+	}
 }

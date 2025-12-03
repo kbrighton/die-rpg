@@ -1725,14 +1725,16 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
   cursor: pointer;
   transition: fill 0.2s ease, stroke 0.2s ease;
 }
-.die-rpg .tab.advancements .triangle[data-node-id=row0-1] {
-  fill: var(--die-rpg-c-critical);
-  stroke: var(--die-rpg-c-black);
+.die-rpg .tab.advancements .triangle.start-node {
+  fill: var(--die-rpg-c-white);
+  stroke: var(--die-rpg-c-white);
+  cursor: default;
 }
-.die-rpg .tab.advancements .triangle[data-node-id=row0-1]:hover {
-  fill: var(--die-rpg-c-critical-hover);
+.die-rpg .tab.advancements .triangle.start-node:hover {
+  fill: var(--die-rpg-c-white);
+  stroke: var(--die-rpg-c-white);
 }
-.die-rpg .tab.advancements .triangle.selected:not([data-node-id=row0-1]) {
+.die-rpg .tab.advancements .triangle.selected:not(.start-node) {
   fill: var(--die-rpg-c-selected-bg);
   stroke: var(--die-rpg-c-selected-border);
   stroke-width: 5;
@@ -1754,7 +1756,12 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 .die-rpg .tab.advancements .triangle.level-locked:hover {
   fill: var(--die-rpg-c-warning-bg-medium);
 }
-.die-rpg .tab.advancements .triangle:not(.locked):not(.level-locked):not([data-disabled=true]):hover {
+.die-rpg .tab.advancements .triangle.available {
+  fill: var(--die-rpg-c-info-bg);
+  stroke: var(--die-rpg-c-info-bright);
+  stroke-width: 4;
+}
+.die-rpg .tab.advancements .triangle:not(.locked):not(.level-locked):not([data-disabled=true]):not(.start-node):hover {
   fill: var(--die-rpg-overlay-darker);
   stroke: var(--die-rpg-c-white);
   stroke-width: 5;
@@ -1775,61 +1782,27 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 .level-locked ~ .die-rpg .tab.advancements .triangle-label {
   opacity: 0.8;
 }
-.die-rpg .tab.advancements .advancement-accordion {
-  margin-top: 10px;
-  padding: 10px;
-}
-.die-rpg .tab.advancements .advancement-accordion h3 {
-  border-bottom: 2px solid var(--die-rpg-overlay-darkest);
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-detail {
-  margin-bottom: 0.5rem;
-  border: 1px solid var(--die-rpg-overlay-dark);
-  border-radius: 4px;
-  background: var(--die-rpg-overlay-dark);
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-detail[open] {
-  border-color: var(--die-rpg-overlay-dark);
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-summary {
-  padding: 10px;
-  cursor: pointer;
-  align-items: center;
-  font-weight: bold;
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-summary:hover {
-  background: var(--die-rpg-overlay-medium);
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-summary .advancement-number {
-  color: var(--die-rpg-c-warning);
-  font-family: monospace;
-  font-size: var(--font-size-18);
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-body {
-  padding: 10px;
-  border-top: 1px solid var(--die-rpg-overlay-dark);
-}
-.die-rpg .tab.advancements .advancement-accordion .advancement-positions ul {
+.die-rpg .tab.advancements .advancement-positions ul {
   list-style: none;
   padding: 0;
   margin: 0.5rem 0 0 0;
 }
-.die-rpg .tab.advancements .advancement-accordion .advancement-positions li {
+.die-rpg .tab.advancements .advancement-positions li {
   padding: 2px 0;
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.selected {
+.die-rpg .tab.advancements .advancement-positions .position-state.selected {
   color: var(--die-rpg-c-selected);
 }
-.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.locked {
+.die-rpg .tab.advancements .advancement-positions .position-state.locked {
   color: var(--die-rpg-c-text-disabled);
 }
-.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.level-locked {
+.die-rpg .tab.advancements .advancement-positions .position-state.level-locked {
   color: var(--die-rpg-c-warning);
 }
-.die-rpg .tab.advancements .advancement-accordion .advancement-positions .position-state.available {
+.die-rpg .tab.advancements .advancement-positions .position-state.available {
   color: var(--die-rpg-c-info-bright);
 }
 .die-rpg .important-stat {

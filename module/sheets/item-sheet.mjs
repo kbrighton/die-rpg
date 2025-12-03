@@ -1042,6 +1042,77 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
           }
         }
       }
+
+      // Parse advancements (advancement pool) JSON textarea
+      if ('system.advancements' in rawData) {
+        const value = rawData['system.advancements'];
+
+        if (typeof value === 'string') {
+          if (value.trim() === '') {
+            rawData['system.advancements'] = [];
+          } else {
+            try {
+              const parsed = JSON.parse(value);
+              if (!Array.isArray(parsed)) {
+                throw new Error('Expected an array');
+              }
+              // Validate each advancement has required fields
+              for (let i = 0; i < parsed.length; i++) {
+                const adv = parsed[i];
+                if (typeof adv.id !== 'number' || !adv.name) {
+                  throw new Error(`Advancement at index ${i} is missing required properties (id as number, name)`);
+                }
+              }
+              rawData['system.advancements'] = parsed;
+            } catch (error) {
+              const errorMsg = game.i18n.format(
+                "DIE_RPG.Notifications.Error.InvalidAdvancementsJSON",
+                { error: error.message }
+              );
+              const saveMsg = game.i18n.localize("DIE_RPG.Notifications.Info.PartialSaveOtherFieldsSaved");
+
+              ui.notifications.error(`${errorMsg} ${saveMsg}`, { permanent: true });
+
+              delete rawData['system.advancements'];
+            }
+          }
+        }
+      }
+
+      // Parse advancementAssignments (position mapping) JSON textarea
+      if ('system.advancementAssignments' in rawData) {
+        const value = rawData['system.advancementAssignments'];
+
+        if (typeof value === 'string') {
+          if (value.trim() === '') {
+            // Reset to default assignments (row0-1 is START, not assigned)
+            rawData['system.advancementAssignments'] = {
+              "row1-1": 1, "row1-2": 1, "row1-3": 1, "row1-4": 1, "row1-5": 1,
+              "row2-1": 1, "row2-2": 1, "row3-1": 1, "row3-2": 1, "row3-3": 1,
+              "row4-1": 1, "row4-2": 1, "row4-3": 1, "row4-4": 1, "row4-5": 1,
+              "row5-1": 1, "row5-2": 1, "row5-3": 1, "row5-4": 1
+            };
+          } else {
+            try {
+              const parsed = JSON.parse(value);
+              if (typeof parsed !== 'object' || Array.isArray(parsed)) {
+                throw new Error('Expected an object');
+              }
+              rawData['system.advancementAssignments'] = parsed;
+            } catch (error) {
+              const errorMsg = game.i18n.format(
+                "DIE_RPG.Notifications.Error.InvalidAdvancementAssignmentsJSON",
+                { error: error.message }
+              );
+              const saveMsg = game.i18n.localize("DIE_RPG.Notifications.Info.PartialSaveOtherFieldsSaved");
+
+              ui.notifications.error(`${errorMsg} ${saveMsg}`, { permanent: true });
+
+              delete rawData['system.advancementAssignments'];
+            }
+          }
+        }
+      }
     }
 
     return foundry.utils.expandObject(formData.object);

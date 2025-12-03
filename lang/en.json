@@ -433,9 +433,7 @@
 					"advancements": { "label": "Advancements" },
 					"advancement": {
 						"id": { "label": "Advancement ID" },
-						"name": { "label": "Advancement Name" },
-						"description": { "label": "Advancement Description" },
-						"icon": { "label": "Advancement Icon" }
+						"name": { "label": "Advancement Name" }
 					},
 					"classAbilities": {
 						"label": "Class Abilities Form Definition",
@@ -519,6 +517,18 @@
 						"Legend": "Advancement Form Fields",
 						"Description": "These fields appear on the character's <strong>Advancements tab</strong> below the advancement map.",
 						"SameAsClassAbilities": "Uses the same field types as Class Abilities. See reference above for examples."
+					},
+					"AdvancementPool": {
+						"Legend": "Advancement Pool",
+						"Description": "Define the unique advancements available for this paragon. Each advancement needs a unique <strong>id</strong> (number) and <strong>name</strong>.",
+						"FormatHint": "Format: [{\"id\": 1, \"name\": \"...\"}, ...]",
+						"ExampleSummary": "Example JSON"
+					},
+					"AdvancementAssignments": {
+						"Legend": "Position Assignments",
+						"Description": "Map each position on the advancement map to an advancement ID from the pool above. The same advancement can appear in multiple positions.",
+						"PositionReference": "Position Reference (19 nodes)",
+						"PositionReferenceDesc": "The advancement map has 19 assignable positions (row0-1 is the START node and not assigned). Use these position IDs as keys, with advancement IDs (from the pool above) as values."
 					},
 					"FieldReference": {
 						"Summary": "Field Type Reference & Examples",
@@ -823,6 +833,8 @@
 				"ParagonRollbackFailed": "Critical error: Failed to restore previous paragon. Please reload the actor sheet.",
 				"InvalidClassAbilitiesJSON": "Invalid JSON in Class Abilities Fields: {error}",
 				"InvalidAdvancementFormsJSON": "Invalid JSON in Advancement Form Fields: {error}",
+				"InvalidAdvancementsJSON": "Invalid JSON in Advancement Pool: {error}",
+				"InvalidAdvancementAssignmentsJSON": "Invalid JSON in Position Assignments: {error}",
 				"EquipmentNotFound": "Equipment not found"
 			}
 		},
@@ -831,7 +843,6 @@
 				"Stats": "Stats",
 				"Look": "Look:",
 				"Specials": "Specials",
-				"AdvancementPool": "Advancement Pool",
 				"AdvancementForms": "Advancement Forms",
 				"DerivedStats": "Derived Stats",
 				"Name": "Name",
@@ -850,8 +861,6 @@
 				"EnterCustomLook": "Enter Custom Look:",
 				"Source": "Source:",
 				"Level": "Level:",
-				"AdvancementsSelected": "Advancements Selected:",
-				"AvailableSelections": "Available Selections:",
 				"PositionsOnMap": "Positions on Map:",
 				"TotalDefense": "Total Defense:",
 				"TotalGuard": "Total Guard:",
@@ -918,7 +927,8 @@
 				"Available": "Available",
 				"Selected": "Selected",
 				"Locked": "Locked",
-				"LevelRequired": "Level Required"
+				"LevelRequired": "Level Required",
+				"Start": "START"
 			},
 			"Hints": {
 				"LooksDescription": "Appearance/clothing options that characters can choose from.",
