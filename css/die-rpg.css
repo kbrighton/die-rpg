@@ -629,6 +629,21 @@
      SPECIALS COMPONENT
      ==================================== */
 }
+.die-rpg input[type=text],
+.die-rpg input[type=number],
+.die-rpg input[type=password],
+.die-rpg input[type=date],
+.die-rpg input[type=time],
+.die-rpg input[type=datetime-local],
+.die-rpg input[type=search],
+.die-rpg input[type=file],
+.die-rpg select {
+  background: var(--die-rpg-overlay-darker);
+  border: 2px groove var(--die-rpg-c-groove);
+}
+.die-rpg input[type=checkbox]::before, .die-rpg input[type=radio]::before {
+  color: var(--die-rpg-overlay-darkest);
+}
 .die-rpg h1,
 .die-rpg h2,
 .die-rpg h3,
@@ -758,7 +773,8 @@
 }
 .die-rpg.actor .window-content .header-fields .resource-content {
   border-radius: 4px;
-  border: 1px solid var(--die-rpg-c-gold-border-light);
+  border: 1px solid var(--die-rpg-overlay-darkest);
+  background-color: var(--die-rpg-overlay-medium);
 }
 .die-rpg.actor .window-content .sheet-tabs {
   grid-area: sheet-tabs;
@@ -1177,16 +1193,7 @@
 }
 .die-rpg .item-list-component .item-row .item-details .item-details-content .item-description .description-content {
   margin-top: 4px;
-  padding: 5px;
-  background: var(--die-rpg-overlay-dark);
-  border-radius: 3px;
-  border-left: 3px solid var(--die-rpg-overlay-darkest);
-}
-.die-rpg .item-list-component .item-row .item-details .item-details-content .item-description .description-content p:first-child {
-  margin-top: 0;
-}
-.die-rpg .item-list-component .item-row .item-details .item-details-content .item-description .description-content p:last-child {
-  margin-bottom: 0;
+  padding-left: 5px;
 }
 .die-rpg .item-list-component .item-row .item-details .item-details-content p {
   margin: 4px 0;
@@ -1194,7 +1201,7 @@
 .die-rpg .item-list-component .item-row .item-details .item-details-content .item-specials {
   margin-top: 10px;
   padding-top: 5px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 2px groove var(--die-rpg-c-groove);
 }
 .die-rpg .item-list-component .item-row:has(.item-checkbox-input:checked) .item-row-header {
   background: var(--die-rpg-c-success-bg);

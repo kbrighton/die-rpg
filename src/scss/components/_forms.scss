@@ -1,3 +1,20 @@
+input[type=text], 
+input[type=number], 
+input[type=password], 
+input[type=date], 
+input[type=time], 
+input[type=datetime-local], 
+input[type=search], 
+input[type=file], 
+select {
+    background: $overlay-darker;
+    border: $border-groove;
+}
+
+input[type="checkbox"]::before, input[type="radio"]::before {
+    color: $overlay-darkest;
+}
+
 h1,
 h2,
 h3,
@@ -154,7 +171,8 @@ h6 {
 
 			.resource-content {
 				border-radius: 4px;
-				border: 1px solid $c-gold-border-light;
+				border: 1px solid $overlay-darkest;
+				background-color: $overlay-medium;
 			}
 		}
 
@@ -649,18 +667,7 @@ h6 {
 
 					.description-content {
 						margin-top: 4px;
-						padding: $padding-sm;
-						background: $overlay-dark;
-						border-radius: 3px;
-						border-left: 3px solid $overlay-darkest;
-						
-						// Ensure enriched HTML renders properly
-						p:first-child {
-							margin-top: 0;
-						}
-						p:last-child {
-							margin-bottom: 0;
-						}
+						padding-left: $padding-sm;
 					}
 				}
 
@@ -672,9 +679,7 @@ h6 {
 				.item-specials {
 					margin-top: $margin-md;
 					padding-top: $margin-sm;
-					border-top: 1px solid rgba(255, 255, 255, 0.15);
-
-					// Special styles in components/_specials.scss
+					border-top: $border-groove;
 				}
 			}
 		}
