@@ -1861,14 +1861,14 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
   font-weight: 500;
   font-size: var(--font-size-24);
 }
-.die-rpg .form-group {
-  margin-bottom: 20px;
-}
 .die-rpg .form-group label {
   font-family: "Beiruti", "Roboto", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: var(--font-size-18);
+}
+.die-rpg .form-group.custom-look {
+  margin-top: 10px;
 }
 .die-rpg .form-group.inline {
   display: flex;
@@ -1886,17 +1886,20 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
   font-style: italic;
   color: var(--die-rpg-c-text-disabled);
 }
-.die-rpg .tab.loadout .look-selection-section .look-picker {
+.die-rpg .tab.equipment .look-selection-section .look-picker {
   display: flex;
   flex-direction: column;
 }
-.die-rpg .tab.loadout .starting-equipment-section .equipment-selector {
+.die-rpg .tab.equipment .starting-equipment-section {
+  margin-bottom: 20px;
+}
+.die-rpg .tab.equipment .starting-equipment-section .equipment-selector {
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
 }
-.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button {
+.die-rpg .tab.equipment .starting-equipment-section .equipment-selector button {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -1911,26 +1914,25 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
   border-color: var(--die-rpg-c-success-border);
   color: var(--die-rpg-c-success-text);
 }
-.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button i {
+.die-rpg .tab.equipment .starting-equipment-section .equipment-selector button i {
   pointer-events: none;
 }
-.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button:disabled {
+.die-rpg .tab.equipment .starting-equipment-section .equipment-selector button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button:hover:not(:disabled) {
+.die-rpg .tab.equipment .starting-equipment-section .equipment-selector button:hover:not(:disabled) {
   background: var(--die-rpg-c-success);
   border-color: var(--die-rpg-c-success);
   color: var(--die-rpg-c-white);
 }
-.die-rpg .tab.loadout .starting-equipment-section .equipment-selector button:active:not(:disabled) {
+.die-rpg .tab.equipment .starting-equipment-section .equipment-selector button:active:not(:disabled) {
   transform: translateY(1px);
 }
 .die-rpg .tab.paragon .paragon-tab-content {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 .die-rpg .tab.fallen .fallen-mode-section {
   display: flex;

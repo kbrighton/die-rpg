@@ -9,7 +9,7 @@
 
 {{#if (eq field.type "text")}}
   <div class="form-group">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     <input type="text" name="{{path}}" value="{{value}}" data-dtype="String" {{#unless editable}}disabled{{/unless}} />
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
@@ -17,7 +17,7 @@
 
 {{else if (eq field.type "number")}}
   <div class="form-group">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     <input
       type="number"
@@ -43,7 +43,7 @@
 
 {{else if (eq field.type "select")}}
   <div class="form-group">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     <select name="{{path}}" data-dtype="String" {{#unless editable}}disabled{{/unless}}>
       <option value="">{{localize "DIE_RPG.UI.DynamicField.SelectDefault"}}</option>
@@ -56,7 +56,7 @@
 
 {{else if (eq field.type "multiSelect")}}
   <div class="form-group multiselect-field">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     <div class="checkbox-group">
       {{#each field.choices as |choice|}}
@@ -77,7 +77,7 @@
 
 {{else if (eq field.type "html")}}
   <div class="form-group html-field">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     {{#if editable}}
       <prose-mirror
@@ -98,7 +98,7 @@
 
 {{else if (eq field.type "info")}}
   <div class="form-group info-field">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     <div class="info-content">
       {{{enrichedValue}}}
@@ -139,7 +139,7 @@
 
 {{else if (eq field.type "special")}}
   <div class="form-group special-field">
-    <label>{{field.label}}</label>
+    <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     {{#with (findSpecialByKey paragonItem.system.specials field.specialKey) as |special|}}
       <div class="special-reference">

@@ -14,13 +14,15 @@ fieldset {
 }
 
 .form-group {
-	margin-bottom: $margin-lg;
-
 	label {
 		font-family: $font-heading;
 		text-transform: uppercase;
 		font-weight: 500;
 		font-size: var(--font-size-18);
+	}
+
+	&.custom-look {
+		margin-top: $margin-md;
 	}
 
 	&.inline {
@@ -43,8 +45,8 @@ fieldset {
 	color: $c-text-disabled;
 }
 
-// Actor Sheet - Paragon Tab Styling
-.tab.loadout {
+// Actor Sheet - Equipment Tab Styling
+.tab.equipment {
 	// Look Selection Section - flex column layout
 	.look-selection-section {
 		.look-picker {
@@ -54,6 +56,8 @@ fieldset {
 	}
 
 	.starting-equipment-section {
+		margin-bottom: $margin-lg;
+		
 		.equipment-selector {
 			display: flex;
 			flex-direction: row;
@@ -72,7 +76,6 @@ fieldset {
 		padding: $padding-md;
 		display: flex;
 		flex-direction: column;
-		gap: $gap-lg;
 	}
 }
 

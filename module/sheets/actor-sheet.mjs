@@ -102,8 +102,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       classes: ["scrollable"],
       scrollable: [""],
     },
-    loadout: {
-      template: 'systems/die-rpg/templates/actor/loadout.hbs',
+    equipment: {
+      template: 'systems/die-rpg/templates/actor/equipment.hbs',
       classes: ["scrollable"],
       scrollable: [""],
     },
@@ -151,12 +151,12 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
         }
 
         // Always show other tabs
-        options.parts.push('advancements', 'loadout', 'persona', 'notes');
+        options.parts.push('advancements', 'equipment', 'persona', 'notes');
         break;
       case 'npc':
         // NPCs have no header - name is in sidebar
         options.parts = ['npc-sidebar', 'stats', 'tabs'];
-        options.parts.push('npc-details', 'npc-abilities', 'loadout');
+        options.parts.push('npc-details', 'npc-abilities', 'equipment');
         break;
     }
   }
@@ -328,7 +328,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       case 'advancements':
         context.tab = context.tabs[partId];
         break;
-      case 'loadout':
+      case 'equipment':
         context.tab = context.tabs[partId];
         break;
       case 'notes':
@@ -430,9 +430,9 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'advancements';
           tab.label += 'Advancements';
           break;
-        case 'loadout':
-          tab.id = 'loadout';
-          tab.label += 'Loadout';
+        case 'equipment':
+          tab.id = 'equipment';
+          tab.label += 'Equipment';
           break;
         case 'persona':
           tab.id = 'persona';

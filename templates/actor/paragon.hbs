@@ -6,11 +6,72 @@
 >
 	{{#if paragonItem}}
 		<div class="paragon-tab-content">
+			{{! Look Selection Section }}
+			<div class="look-selection-section">
+				<div class="look-picker">
+					{{#if paragonItem.system.looks}}
+						<div class="form-group inline">
+							<label for="look-select">{{localize "DIE_RPG.UI.Headers.Look"}}</label>
+							<select id="look-select" name="system.paragon.selectedLook" data-dtype="String">
+								<option value="">{{localize "DIE_RPG.UI.Sections.SelectLook"}}</option>
+								{{#each paragonItem.system.looks as |look|}}
+									<option
+										value="{{look.name}}"
+										{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}selected{{/if}}
+									>
+										{{look.name}}{{#if look.defenseBonus}} (+{{look.defenseBonus}} Defense){{/if}}
+									</option>
+								{{/each}}
+								<option
+									value="___CUSTOM___"
+									{{#if (eq @root.actor.system.paragon.selectedLook "___CUSTOM___")}}selected{{/if}}
+								>
+									{{localize "DIE_RPG.UI.Labels.CustomLook"}}
+								</option>
+							</select>
+						</div>
+						{{#if paragonItem.system.looks.length}}
+							<div class="look-details">
+								{{#each paragonItem.system.looks as |look|}}
+									{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}
+										{{#if look.description}}
+											<div class="look-description">
+												<strong>{{localize "DIE_RPG.UI.Labels.Description"}}</strong> {{look.description}}
+											</div>
+										{{/if}}
+										{{#if look.defenseBonus}}
+											<div class="look-defense">
+												<strong>{{localize "DIE_RPG.UI.Labels.DefenseBonus"}}</strong> +{{look.defenseBonus}}
+											</div>
+										{{/if}}
+									{{/if}}
+								{{/each}}
+							</div>
+						{{/if}}
+					{{/if}}
+
+					{{#if (isCustomLook actor.system.paragon.selectedLook)}}
+						<div class="form-group custom-look">
+							<label for="custom-look">{{localize "DIE_RPG.UI.Labels.EnterCustomLook"}}</label>
+							<input
+								type="text"
+								id="custom-look"
+								name="system.paragon.customLookText"
+								value="{{actor.system.paragon.customLookText}}"
+								placeholder="{{localize 'DIE_RPG.UI.Placeholders.CustomLookDescription'}}"
+								data-dtype="String"
+							/>
+						</div>
+					{{/if}}
+				</div>
+			</div>
+
 			{{! Class Abilities Section - Dynamic Fields from Paragon }}
 			{{#if paragonItem.system.classAbilities.fields.length}}
 				<div class="class-abilities-section">
 					<div class="class-abilities-form">
 						{{#each paragonItem.system.classAbilities.fields as |field|}}
+							<hr>
 							{{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
 								field=field
 								value=(lookup @root.actor.system.paragon.classAbilityData field.key)

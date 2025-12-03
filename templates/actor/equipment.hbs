@@ -1,81 +1,14 @@
-{{! Loadout Tab }}
-<section 
-	class='tab loadout {{tab.cssClass}}' 
-	data-group='primary' 
-	data-tab='loadout'
+{{! Equipment Tab }}
+<section
+	class='tab equipment {{tab.cssClass}}'
+	data-group='primary'
+	data-tab='equipment'
 >
-
-	{{! Look Selection Section - MOVED FROM PARAGON }}
-	{{#if paragonItem}}
-		<div class="look-selection-section">
-			<div class="look-picker">
-				{{#if paragonItem.system.looks}}
-					<div class="form-group inline">
-						<label for="look-select">{{localize "DIE_RPG.UI.Headers.Look"}}</label>
-						<select id="look-select" name="system.paragon.selectedLook" data-dtype="String">
-							<option value="">{{localize "DIE_RPG.UI.Sections.SelectLook"}}</option>
-							{{#each paragonItem.system.looks as |look|}}
-								<option
-									value="{{look.name}}"
-									{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}selected{{/if}}
-								>
-									{{look.name}}{{#if look.defenseBonus}} (+{{look.defenseBonus}} Defense){{/if}}
-								</option>
-							{{/each}}
-							<option
-								value="___CUSTOM___"
-								{{#if (eq @root.actor.system.paragon.selectedLook "___CUSTOM___")}}selected{{/if}}
-							>
-								{{localize "DIE_RPG.UI.Labels.CustomLook"}}
-							</option>
-						</select>
-					</div>
-					{{#if paragonItem.system.looks.length}}
-						<div class="look-details">
-							{{#each paragonItem.system.looks as |look|}}
-								{{#if (eq look.name @root.actor.system.paragon.selectedLook)}}
-									{{#if look.description}}
-										<div class="look-description">
-											<strong>{{localize "DIE_RPG.UI.Labels.Description"}}</strong> {{look.description}}
-										</div>
-									{{/if}}
-									{{#if look.defenseBonus}}
-										<div class="look-defense">
-											<strong>{{localize "DIE_RPG.UI.Labels.DefenseBonus"}}</strong> +{{look.defenseBonus}}
-										</div>
-									{{/if}}
-								{{/if}}
-							{{/each}}
-						</div>
-					{{/if}}
-				{{/if}}
-
-				{{#if (isCustomLook actor.system.paragon.selectedLook)}}
-					<div class="form-group">
-						<label for="custom-look">{{localize "DIE_RPG.UI.Labels.EnterCustomLook"}}</label>
-						<input
-							type="text"
-							id="custom-look"
-							name="system.paragon.customLookText"
-							value="{{actor.system.paragon.customLookText}}"
-							placeholder="{{localize 'DIE_RPG.UI.Placeholders.CustomLookDescription'}}"
-							data-dtype="String"
-						/>
-					</div>
-				{{/if}}
-			</div>
-		</div>
-	{{/if}}
-
-	{{! Starting Equipment Selection Section }}
-	
-
 	{{! Owned Equipment List - EXISTING }}
 	<div class="owned-equipment-section">
-		<h3>{{localize "DIE_RPG.UI.Headers.Equipment"}}</h3>
 		{{#if availableEquipment.length}}
 		<div class="starting-equipment-section">
-			<h5>{{localize "DIE_RPG.UI.Headers.StartingEquipment"}}</h5>
+			<h6>{{localize "DIE_RPG.UI.Headers.StartingEquipment"}}</h6>
 			<p class="hint">{{localize "DIE_RPG.UI.Hints.SelectStartingEquipment"}}</p>
 			<div class="equipment-selector">
 				<select id="equipment-select" name="equipment-select">
@@ -104,13 +37,13 @@
 	{{! Specials Display Section - MOVED FROM PARAGON }}
 	{{#if paragonItem}}
 		<div class="specials-section">
-			<h3>{{localize "DIE_RPG.UI.Headers.Specials"}}</h3>
+			<h5>{{localize "DIE_RPG.UI.Headers.Specials"}}</h5>
 			{{#if aggregatedSpecials.length}}
 				<div class="specials-list">
 					{{#each aggregatedSpecials as |special|}}
 						<div class="special-card">
 							<div class="special-header">
-								<h4 class="special-name">{{special.name}}</h4>
+								<h6 class="special-name">{{special.name}}</h6>
 								<span class="special-cost" data-tooltip="{{localize 'DIE_RPG.UI.Tooltips.SpecialCost' cost=special.cost}}">
 									{{#if (eq special.cost "special")}}
 										{{localize "DIE_RPG.UI.SpecialCostDisplay.Single"}}
