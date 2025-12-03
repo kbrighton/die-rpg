@@ -43,6 +43,8 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       deleteMonstrousAbility: this._deleteMonstrousAbility,
       addSpecial: this._addSpecial,
       deleteSpecial: this._deleteSpecial,
+      increment: this._onIncrement,
+      decrement: this._onDecrement,
     },
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
@@ -1229,6 +1231,48 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     });
 
     ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.SpecialDeleted"));
+  }
+
+  /**
+   * Handle increment button click for number spinner
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _onIncrement(event, target) {
+    event.preventDefault();
+    const name = target.dataset.name;
+    const input = this.element.querySelector(`input[name="${name}"]`);
+    if (!input) return;
+
+    const max = target.dataset.max ? parseInt(target.dataset.max) : Infinity;
+    let value = parseInt(input.value) || 0;
+    value = Math.min(max, value + 1);
+    input.value = value;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  /**
+   * Handle decrement button click for number spinner
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _onDecrement(event, target) {
+    event.preventDefault();
+    const name = target.dataset.name;
+    const input = this.element.querySelector(`input[name="${name}"]`);
+    if (!input) return;
+
+    const min = target.dataset.min ? parseInt(target.dataset.min) : 0;
+    let value = parseInt(input.value) || 0;
+    value = Math.max(min, value - 1);
+    input.value = value;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   /**

@@ -18,23 +18,20 @@
       <div class="advancement-positions">
         <ul>
           {{#each config.PARAGON_ADVANCEMENT_MAP.nodes as |node nodeId|}}
-            <li>
-              <span class="position-id">{{formatNodeId nodeId}}</span>:
-              {{#if (eq nodeId "row0-1")}}
-                {{! START position - special case }}
-                <span class="position-state selected">{{localize "DIE_RPG.UI.Status.Start"}}</span>
-              {{else}}
-                {{#if (isNodeSelected @root.actor nodeId)}}
-                  <span class="position-state selected"><i class="fa-solid fa-check"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
-                {{else if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
-                  <span class="position-state locked"><i class="fa-solid fa-lock"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
-                {{else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
-                  <span class="position-state level-locked"><i class="fa-solid fa-triangle-exclamation"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
-                {{else}}
-                  <span class="position-state available"><i class="fa-solid fa-lock-open"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
-                {{/if}}
-              {{/if}}
-            </li>
+            {{#if (ne nodeId "row0-1")}}
+              <li>
+                <span class="position-id">{{formatNodeId nodeId}}</span>:
+                  {{#if (isNodeSelected @root.actor nodeId)}}
+                    <span class="position-state selected"><i class="fa-solid fa-check"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
+                  {{else if (eq (getNodeDisabledReason @root.actor nodeId) "locked")}}
+                    <span class="position-state locked"><i class="fa-solid fa-lock"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
+                  {{else if (eq (getNodeDisabledReason @root.actor nodeId) "level")}}
+                    <span class="position-state level-locked"><i class="fa-solid fa-triangle-exclamation"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
+                  {{else}}
+                    <span class="position-state available"><i class="fa-solid fa-lock-open"></i> {{getAdvancementName @root.paragonItem nodeId}}</span>
+                  {{/if}}
+              </li>
+            {{/if}}
           {{/each}}
         </ul>
       </div>
@@ -135,8 +132,8 @@
   {{! Advancement Forms Section - Dynamic Fields from Paragon }}
   {{#if paragonItem.system.advancementForms.fields.length}}
     <div class="advancement-forms-section">
-      <h3>{{localize "DIE_RPG.UI.Headers.AdvancementForms"}}</h3>
-      <p class="hint">{{localize "DIE_RPG.UI.Hints.AdvancementFormsHint"}}</p>
+      {{!-- <h3>{{localize "DIE_RPG.UI.Headers.AdvancementForms"}}</h3> --}}
+      {{!-- <p class="hint">{{localize "DIE_RPG.UI.Hints.AdvancementFormsHint"}}</p> --}}
       <div class="advancement-forms">
         {{#each paragonItem.system.advancementForms.fields as |field|}}
           {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"

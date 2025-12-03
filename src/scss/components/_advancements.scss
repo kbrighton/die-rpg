@@ -1,5 +1,8 @@
 .tab.advancements {
-	// padding: $padding-md;
+
+  .advancement-forms-section {
+    margin-top: $margin-lg;
+  }
 
 	// Grid container for info sidebar and map
 	.advancements-grid {
@@ -25,6 +28,14 @@
 			input[type="number"] {
 				width: 40px;
 				text-align: center;
+			}
+		}
+
+		.number-spinner-inline {
+			margin-bottom: $margin-sm;
+
+			.spinner-label {
+				min-width: auto;
 			}
 		}
 	}
