@@ -78,12 +78,11 @@
   // ==========================================
   // BACKGROUNDS & OVERLAYS - Light Mode
   // ==========================================
-  --die-rpg-overlay-light: rgba(0, 0, 0, 0.03);
-  --die-rpg-overlay-medium: rgba(0, 0, 0, 0.05);
-  --die-rpg-overlay-dark: rgba(0, 0, 0, 0.1);
-  --die-rpg-overlay-darker: rgba(0, 0, 0, 0.15);
-  --die-rpg-overlay-darkest: rgba(0, 0, 0, 0.2);
-  --die-rpg-section-bg: rgba(0, 0, 0, 0.04);
+  --die-rpg-overlay-light: rgba(255, 255, 255, 0.03);
+  --die-rpg-overlay-medium: rgba(255, 255, 255, 0.05);
+  --die-rpg-overlay-dark: rgba(255, 255, 255, 0.185);
+  --die-rpg-overlay-darker: rgba(255, 255, 255, 0.483);
+  --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.927);
 
   // ==========================================
   // TOOLTIPS - Light Mode
@@ -100,7 +99,7 @@
   // TEXT COLORS - Light Mode (dark text on light bg)
   // ==========================================
   --die-rpg-c-text-primary: rgba(0, 0, 0, 0.95);
-  --die-rpg-c-text-secondary: rgba(0, 0, 0, 0.90);
+  --die-rpg-c-text-secondary: rgba(0, 0, 0, 0.85);
   --die-rpg-c-text-muted: rgba(0, 0, 0, 0.70);
   --die-rpg-c-text-disabled: rgba(0, 0, 0, 0.60);
   --die-rpg-c-text-hint: rgba(0, 0, 0, 0.50);
@@ -191,7 +190,6 @@
   --die-rpg-overlay-dark: rgba(255, 255, 255, 0.1);
   --die-rpg-overlay-darker: rgba(255, 255, 255, 0.05);
   --die-rpg-overlay-darkest: rgba(255, 255, 255, 0.046);
-  --die-rpg-section-bg: rgba(255, 255, 255, 0.04);
 
   // ==========================================
   // TOOLTIPS - Dark Mode
@@ -217,6 +215,13 @@
 // ==========================================
 // SCSS VARIABLE SHORTCUTS
 // ==========================================
+
+// Text Color Utilities
+$text-primary: var(--die-rpg-c-text-primary);
+$text-secondary: var(--die-rpg-c-text-secondary);
+$text-muted: var(--die-rpg-c-text-muted);
+$text-disabled: var(--die-rpg-c-text-disabled);
+$text-hint: var(--die-rpg-c-text-hint);
 
 // Base colors
 $c-white: var(--die-rpg-c-white);
@@ -284,7 +289,6 @@ $overlay-medium: var(--die-rpg-overlay-medium);
 $overlay-dark: var(--die-rpg-overlay-dark);
 $overlay-darker: var(--die-rpg-overlay-darker);
 $overlay-darkest: var(--die-rpg-overlay-darkest);
-$section-bg: var(--die-rpg-section-bg);
 
 // Tooltips
 $c-tooltip-bg: var(--die-rpg-c-tooltip-bg);

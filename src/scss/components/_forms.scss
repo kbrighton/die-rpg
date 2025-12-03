@@ -554,7 +554,7 @@ h6 {
 				transition: background 0.15s ease;
 
 				&:hover {
-					background: rgba(255, 255, 255, $opacity-5);
+					background: rgba(255, 255, 255, 0.05);
 				}
 
 				.item-icon {
@@ -646,7 +646,7 @@ h6 {
 		.item-details {
 			border-top: 1px solid $overlay-medium;
 			padding: $padding-md;
-			background: rgba(0, 0, 0, 0.4);
+			background: $overlay-darker;
 
 			.item-details-content {
 				font-size: var(--font-size-14);
@@ -657,9 +657,9 @@ h6 {
 					.description-content {
 						margin-top: 4px;
 						padding: $padding-sm;
-						background: rgba(0, 0, 0, 0.3);
+						background: $overlay-dark;
 						border-radius: 3px;
-						border-left: 3px solid rgba(255, 255, 255, $opacity-20);
+						border-left: 3px solid $overlay-darkest;
 						
 						// Ensure enriched HTML renders properly
 						p:first-child {
@@ -679,7 +679,7 @@ h6 {
 				.item-specials {
 					margin-top: $margin-md;
 					padding-top: $margin-sm;
-					border-top: 1px solid rgba(255, 255, 255, $opacity-15);
+					border-top: 1px solid rgba(255, 255, 255, 0.15);
 
 					// Special styles in components/_specials.scss
 				}
@@ -770,7 +770,6 @@ h6 {
 .field-description {
 	font-size: var(--font-size-14);
 	font-style: italic;
-	color: $text-secondary;
 	margin-bottom: $margin-sm;
 
 	p {

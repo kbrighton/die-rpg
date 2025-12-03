@@ -45,15 +45,13 @@ body.game & .window-content .sheet-tabs {
 		// Hover state
 		&:hover:not(.active) {
 			background: $overlay-dark;
-			color: $text-secondary;
+			color: $c-hover-glow;
 		}
 
 		// Active state - visually connects to content area
 		&.active {
 			background: $overlay-dark; // Same as tab content background
-			color: $text-primary;
 			font-weight: 600;
-			// border-bottom-color: $overlay-dark; // Hides the baseline underneath
 		}
 	}
 }

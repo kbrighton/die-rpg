@@ -15,26 +15,3 @@ $margin-xs: 2px;
 $margin-sm: 5px;
 $margin-md: 10px;
 $margin-lg: 20px;
-
-// Opacity Scale
-$opacity-100: 1.0;
-$opacity-95: 0.95;
-$opacity-90: 0.9;
-$opacity-85: 0.85;
-$opacity-80: 0.8;
-$opacity-70: 0.7;
-$opacity-60: 0.6;
-$opacity-50: 0.5;
-$opacity-40: 0.4;
-$opacity-30: 0.3;
-$opacity-20: 0.2;
-$opacity-15: 0.15;
-$opacity-10: 0.1;
-$opacity-5: 0.05;
-
-// Text Color Utilities (theme-aware via CSS custom properties)
-$text-primary: var(--die-rpg-c-text-primary);
-$text-secondary: var(--die-rpg-c-text-secondary);
-$text-muted: var(--die-rpg-c-text-muted);
-$text-disabled: var(--die-rpg-c-text-disabled);
-$text-hint: var(--die-rpg-c-text-hint);

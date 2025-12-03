@@ -1,330 +1,308 @@
 // Actor Sheet - Important Stat Styling
 .important-stat {
-  font-weight: 900 !important;
-  color: $c-black !important;
+	font-weight: 900 !important;
 }
 
 fieldset {
-  margin-bottom: $margin-lg;
-  legend {
-    font-family: $font-heading;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: var(--font-size-24);
-  }
+	margin-bottom: $margin-lg;
+	legend {
+		font-family: $font-heading;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: var(--font-size-24);
+	}
 }
 
 .form-group {
-  margin-bottom: $margin-lg;
+	margin-bottom: $margin-lg;
 
-  label {
-    font-family: $font-heading;
-	  text-transform: uppercase;
-    font-weight: 500;
-    font-size: var(--font-size-18);
-  }
+	label {
+		font-family: $font-heading;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: var(--font-size-18);
+	}
 
-  &.inline {
-    display: flex;
-    align-items: center;
-    gap: $gap-md;
+	&.inline {
+		display: flex;
+		align-items: center;
+		gap: $gap-md;
 
-    label {
-      font-family: $font-heading;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: var(--font-size-24);
-    }
-  }
+		label {
+			font-family: $font-heading;
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: var(--font-size-24);
+		}
+	}
 }
 
 .hint {
-  font-size: 0.875rem;
-  font-style: italic;
-  color: $text-disabled;
+	font-size: 0.875rem;
+	font-style: italic;
+	color: $text-disabled;
 }
 
 // Actor Sheet - Paragon Tab Styling
 .tab.loadout {
+	// Look Selection Section - flex column layout
+	.look-selection-section {
+		.look-picker {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 
-  // Look Selection Section - flex column layout
-  .look-selection-section {
-    .look-picker {
-      display: flex;
-      flex-direction: column;
-    }
-  }
+	.starting-equipment-section {
+		.equipment-selector {
+			display: flex;
+			flex-direction: row;
+			gap: $gap-md;
+			align-items: center;
 
-  .starting-equipment-section {
-    .equipment-selector {
-      display: flex;
-      flex-direction: row;
-      gap: $gap-md;
-      align-items: center;
-
-      button {
-        @include btn-success;
-      }
-    }
-  }
-
+			button {
+				@include btn-success;
+			}
+		}
+	}
 }
 
 .tab.paragon {
-  .paragon-tab-content {
-    padding: $padding-md;
-    display: flex;
-    flex-direction: column;
-    gap: $gap-lg;
-  }
+	.paragon-tab-content {
+		padding: $padding-md;
+		display: flex;
+		flex-direction: column;
+		gap: $gap-lg;
+	}
+}
 
-  // ========================================
-  // FALLEN MODE CONTENT
-  // ========================================
+.tab.fallen {
+	.fallen-mode-section {
+		display: flex;
+		flex-direction: column;
+		gap: $gap-lg;
 
-  .fallen-mode-section {
-    display: flex;
-    flex-direction: column;
-    gap: $gap-lg;
-  }
+		// Fallen State Info
+		.fallen-state-info {
+			@include card;
+			padding: $padding-lg;
 
-  // Fallen State Info
-  .fallen-state-info {
-    @include card;
-    padding: $padding-lg;
+			.section-title {
+				margin: 0 0 $margin-sm 0;
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: $c-failure;
+			}
 
-    .section-title {
-      margin: 0 0 $margin-sm 0;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: $c-failure;
-    }
+			.fallen-description {
+				font-size: 0.9375rem;
+				line-height: 1.5;
+			}
+		}
 
-    .fallen-description {
-      font-size: 0.9375rem;
-      line-height: 1.5;
-      color: $text-secondary;
-    }
-  }
+		// Unlife Rules
+		.fallen-rules {
+			@include card-highlight($overlay-medium);
+			padding: $padding-lg;
 
-  // Unlife Rules
-  .fallen-rules {
-    @include card-highlight($overlay-medium);
-    padding: $padding-lg;
+			h4 {
+				margin: 0 0 $margin-sm 0;
+				font-size: 1rem;
+				font-weight: 600;
+			}
 
-    h4 {
-      margin: 0 0 $margin-sm 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: $text-primary;
-    }
+			.rules-list {
+				margin: 0;
+				padding-left: 1.5rem;
 
-    .rules-list {
-      margin: 0;
-      padding-left: 1.5rem;
-      color: $text-secondary;
+				li {
+					margin-bottom: $margin-sm;
+					line-height: 1.5;
 
-      li {
-        margin-bottom: $margin-sm;
-        line-height: 1.5;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
 
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
+		// Fallen Claws
+		.fallen-claws {
+			@include card;
+			padding: $padding-lg;
 
-  // Fallen Claws
-  .fallen-claws {
-    @include card;
-    padding: $padding-lg;
+			h4 {
+				margin: 0 0 $margin-sm 0;
+				font-size: 1rem;
+				font-weight: 600;
+			}
 
-    h4 {
-      margin: 0 0 $margin-sm 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: $text-primary;
-    }
+			.claws-description {
+				margin-bottom: $margin-md;
+				line-height: 1.5;
+			}
 
-    .claws-description {
-      margin-bottom: $margin-md;
-      line-height: 1.5;
-      color: $text-secondary;
-    }
+			.poison-special {
+				@include card-highlight($c-failure-border);
 
-    .poison-special {
-      @include card-highlight($c-failure-border);
+				strong {
+					display: block;
+					margin-bottom: $margin-sm;
+					color: $c-failure;
+					font-size: 0.95rem;
+				}
 
-      strong {
-        display: block;
-        margin-bottom: $margin-sm;
-        color: $c-failure;
-        font-size: 0.95rem;
-      }
+				p {
+					margin: 0;
+					font-size: 0.875rem;
+					line-height: 1.4;
+				}
+			}
+		}
 
-      p {
-        margin: 0;
-        font-size: 0.875rem;
-        line-height: 1.4;
-        color: $text-secondary;
-      }
-    }
-  }
+		// Second Death Warning
+		.second-death-warning {
+			@include card-highlight($c-failure-border);
+			padding: $padding-lg;
 
-  // Monstrous Abilities (reuses NPC abilities styling pattern)
-  .monstrous-abilities-container {
-    .abilities-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: $margin-md;
+			h4 {
+				margin: 0 0 $margin-sm 0;
+				font-size: 1rem;
+				font-weight: 600;
+				color: $c-failure;
+			}
 
-      h4 {
-        margin: 0;
-        font-size: 1rem;
-        font-weight: 600;
-        color: $text-primary;
-      }
+			.warning-text {
+				margin: 0;
+				line-height: 1.5;
+				font-size: 0.9375rem;
+			}
+		}
+		// Monstrous Abilities
+		.monstrous-abilities-container {
+			.abilities-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: $margin-md;
 
-      .add-ability-btn {
-        @include btn-success;
-        @include btn-small;
-      }
-    }
+				h4 {
+					margin: 0;
+					font-size: 1rem;
+					font-weight: 600;
+				}
 
-    .abilities-list {
-      display: flex;
-      flex-direction: column;
-      gap: $gap-md;
+				.add-ability-btn {
+					@include btn-success;
+					@include btn-small;
+				}
+			}
 
-      .hint-text {
-        margin: 0;
-        padding: $padding-md;
-        font-size: 0.875rem;
-        font-style: italic;
-        color: $text-disabled;
-        background: $overlay-darker;
-        border-radius: 3px;
-        text-align: center;
-      }
-    }
+			.abilities-list {
+				display: flex;
+				flex-direction: column;
+				gap: $gap-md;
 
-    .monstrous-ability-block {
-      @include card;
+				.hint-text {
+					margin: 0;
+					padding: $padding-md;
+					font-size: 0.875rem;
+					font-style: italic;
+					color: $text-disabled;
+					background: $overlay-darker;
+					border-radius: 3px;
+					text-align: center;
+				}
+			}
 
-      .ability-header {
-        display: flex;
-        gap: $gap-sm;
-        align-items: center;
-        margin-bottom: $margin-md;
+			.monstrous-ability-block {
+				@include card;
 
-        input[type="text"] {
-          flex: 1;
-          font-size: 1rem;
-          font-weight: 600;
-          padding: 0.25rem 0.5rem;
-          background: $overlay-darker;
-          border: 1px solid $overlay-medium;
-          border-radius: 3px;
-          color: $text-primary;
+				.ability-header {
+					display: flex;
+					gap: $gap-sm;
+					align-items: center;
+					margin-bottom: $margin-md;
 
-          &:focus {
-            outline: none;
-            border-color: $overlay-light;
-          }
+					input[type="text"] {
+						flex: 1;
+						font-size: 1rem;
+						font-weight: 600;
+						padding: 0.25rem 0.5rem;
+						background: $overlay-darker;
+						border: 1px solid $overlay-medium;
+						border-radius: 3px;
 
-          &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-          }
-        }
+						&:disabled {
+							opacity: 0.6;
+							cursor: not-allowed;
+						}
+					}
 
-        .delete-ability-btn {
-          @include btn-danger;
-          @include btn-small;
-        }
-      }
+					.delete-ability-btn {
+						@include btn-danger;
+						@include btn-small;
+					}
+				}
 
-      .ability-description,
-      .ability-customization {
-        margin-bottom: $margin-md;
+				.ability-description,
+				.ability-customization {
+					margin-bottom: $margin-md;
 
-        label {
-          display: block;
-          margin-bottom: $margin-sm;
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: $text-secondary;
-        }
+					label {
+						display: block;
+						margin-bottom: $margin-sm;
+						font-size: 0.875rem;
+						font-weight: 600;
+					}
 
-        prose-mirror {
-          min-height: 100px;
-          background: $overlay-darker;
-          border: 1px solid $overlay-medium;
-          border-radius: 3px;
-        }
-      }
+					prose-mirror {
+						min-height: 100px;
+						background: $overlay-darker;
+						border: 1px solid $overlay-medium;
+						border-radius: 3px;
+					}
+				}
 
-      .ability-specials {
-        margin-top: $margin-lg;
-        padding-top: $margin-md;
-        border-top: 1px solid $overlay-medium;
+				.ability-specials {
+					margin-top: $margin-lg;
+					padding-top: $margin-md;
+					border-top: 1px solid $overlay-medium;
 
-        .specials-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: $margin-sm;
+					.specials-header {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-bottom: $margin-sm;
 
-          label {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: $text-secondary;
-          }
+						label {
+							font-size: 0.875rem;
+							font-weight: 600;
+						}
 
-          .add-special-btn {
-            @include btn-success;
-            @include btn-small;
-          }
-        }
+						.add-special-btn {
+							@include btn-success;
+							@include btn-small;
+						}
+					}
 
-        .specials-list {
-          display: flex;
-          flex-direction: column;
-          gap: $gap-sm;
-        }
+					.specials-list {
+						display: flex;
+						flex-direction: column;
+						gap: $gap-sm;
+					}
 
-        .hint-text {
-          margin: 0;
-          padding: $padding-sm;
-          font-size: 0.875rem;
-          font-style: italic;
-          color: $text-disabled;
-          background: $overlay-darkest;
-          border-radius: 3px;
-        }
-      }
-    }
-  }
-
-  // Second Death Warning
-  .second-death-warning {
-    @include card-highlight($c-failure-border);
-    padding: $padding-lg;
-
-    h4 {
-      margin: 0 0 $margin-sm 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: $c-failure;
-    }
-
-    .warning-text {
-      margin: 0;
-      line-height: 1.5;
-      font-size: 0.9375rem;
-      color: $text-secondary;
-    }
-  }
+					.hint-text {
+						margin: 0;
+						padding: $padding-sm;
+						font-size: 0.875rem;
+						font-style: italic;
+						color: $text-disabled;
+						background: $overlay-darkest;
+						border-radius: 3px;
+					}
+				}
+			}
+		}
+	}
 }

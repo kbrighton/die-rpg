@@ -122,7 +122,7 @@
 
   .ability-block {
     @include card;
-    background: $section-bg;
+    background: $overlay-darker;
 
     .ability-header {
       display: flex;

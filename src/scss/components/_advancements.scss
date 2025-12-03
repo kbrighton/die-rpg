@@ -166,7 +166,6 @@
 
   // ========================================
   // ADVANCEMENT ACCORDION COMPONENT
-  // (Isolated section - can be moved easily)
   // ========================================
   .advancement-accordion {
     margin-top: 2rem;
@@ -243,10 +242,8 @@
       }
 
       .position-id {
-        font-family: monospace;
-        font-size: var(--font-size-14);
-        color: $c-gray-light;
-        min-width: 4rem;
+        color: $text-secondary;
+        min-width: 2rem;
       }
 
       .position-state {
@@ -255,7 +252,7 @@
         }
 
         &.locked {
-          color: $c-gray-medium;
+          color: $text-disabled;
         }
 
         &.level-locked {
@@ -268,7 +265,4 @@
       }
     }
   }
-  // ========================================
-  // END ADVANCEMENT ACCORDION COMPONENT
-  // ========================================
 }
