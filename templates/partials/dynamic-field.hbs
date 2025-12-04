@@ -19,15 +19,13 @@
   <div class="form-group">
     <h4>{{field.label}}</h4>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
-    <input
-      type="number"
-      name="{{path}}"
-      value="{{value}}"
-      data-dtype="Number"
-      {{#if field.min}}min="{{field.min}}"{{/if}}
-      {{#if field.max}}max="{{field.max}}"{{/if}}
-      {{#unless editable}}disabled{{/unless}}
-    />
+    {{> "systems/die-rpg/templates/partials/number-spinner.hbs"
+      name=path
+      label="Number of times taken:"
+      value=value
+      min=field.min
+      max=field.max
+    }}
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 

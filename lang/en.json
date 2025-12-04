@@ -533,7 +533,7 @@
 					"FieldReference": {
 						"Summary": "Field Type Reference & Examples",
 						"AvailableTypes": "Available types:",
-						"AvailableTypesList": "text, number, boolean, select, multiSelect, html, itemList, group, special",
+						"AvailableTypesList": "text, number, boolean, select, multiSelect, html, info, itemList, group, special",
 						"RequiredProperties": "Required properties:",
 						"RequiredPropertiesList": "key, type, label",
 						"OptionalProperties": "Optional properties:",
@@ -544,6 +544,7 @@
 						"SelectFieldHeading": "Select (Dropdown)",
 						"MultiSelectFieldHeading": "Multi-Select (Checkboxes)",
 						"HTMLFieldHeading": "HTML Editor",
+						"InfoFieldHeading": "Info (Read-only Display)",
 						"GroupFieldHeading": "Group (Nested Fields)",
 						"ItemListFieldHeading": "Item List (Future)",
 						"SpecialFieldHeading": "Special Reference (Future)"

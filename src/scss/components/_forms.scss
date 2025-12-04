@@ -1,18 +1,19 @@
-input[type=text], 
-input[type=number], 
-input[type=password], 
-input[type=date], 
-input[type=time], 
-input[type=datetime-local], 
-input[type=search], 
-input[type=file], 
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="search"],
+input[type="file"],
 select {
-    background: $overlay-darker;
-    border: $border-groove;
+	background: $overlay-darker;
+	border: $border-groove;
 }
 
-input[type="checkbox"]::before, input[type="radio"]::before {
-    color: $overlay-darkest;
+input[type="checkbox"]::before,
+input[type="radio"]::before {
+	color: $overlay-darkest;
 }
 
 h1,
@@ -298,7 +299,7 @@ h6 {
 		}
 
 		// Remove spinner arrows on firefox
-		&[type=number] {
+		&[type="number"] {
 			-moz-appearance: textfield;
 		}
 	}
@@ -764,10 +765,29 @@ h6 {
 // ========================================
 // FIELD DESCRIPTION STYLING
 // ========================================
+.field-group {
+	.form-group {
+		h4 {
+			margin: $margin-lg 0 $margin-sm 0;
+		}
+
+		&.checkbox-field label {
+			display: flex;
+			align-items: center;
+			gap: $gap-sm;
+			margin: 20px 0 5px 0;
+
+			font-weight: 300;
+			font-family: "Beiruti", "Roboto", sans-serif;
+			text-transform: uppercase;
+			font-size: var(--font-h4-size);
+		}
+	}
+}
 
 .field-description {
 	font-size: var(--font-size-14);
-	font-style: italic;
+	// font-style: italic;
 	margin-bottom: $margin-sm;
 
 	p {

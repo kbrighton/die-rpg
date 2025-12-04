@@ -641,7 +641,8 @@
   background: var(--die-rpg-overlay-darker);
   border: 2px groove var(--die-rpg-c-groove);
 }
-.die-rpg input[type=checkbox]::before, .die-rpg input[type=radio]::before {
+.die-rpg input[type=checkbox]::before,
+.die-rpg input[type=radio]::before {
   color: var(--die-rpg-overlay-darkest);
 }
 .die-rpg h1,
@@ -1256,9 +1257,21 @@
 .die-rpg .multiselect-field .checkbox-group .checkbox-option:has(input:disabled) span {
   cursor: not-allowed;
 }
+.die-rpg .field-group .form-group h4 {
+  margin: 20px 0 5px 0;
+}
+.die-rpg .field-group .form-group.checkbox-field label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 20px 0 5px 0;
+  font-weight: 300;
+  font-family: "Beiruti", "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-size: var(--font-h4-size);
+}
 .die-rpg .field-description {
   font-size: var(--font-size-14);
-  font-style: italic;
   margin-bottom: 5px;
 }
 .die-rpg .field-description p {
