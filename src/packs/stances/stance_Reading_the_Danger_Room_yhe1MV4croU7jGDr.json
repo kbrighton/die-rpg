@@ -1,0 +1,32 @@
+{
+  "name": "Reading the Danger Room",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>When in this stance, at any time, you can ask the GM \"What should I be most frightened of here?\" and they must answer honestly.</p>",
+    "active": false,
+    "stanceType": "EMOTION",
+    "emotionSubtype": "Terror/Fear/Apprehension",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "yhe1MV4croU7jGDr",
+  "sort": 0,
+  "_key": "!items!yhe1MV4croU7jGDr"
+}

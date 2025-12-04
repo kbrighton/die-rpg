@@ -1,0 +1,32 @@
+{
+  "name": "I'll Die When I'm Dead",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>You can act normally when you've taken enough damage you should be unconscious. You continue to fight until you die.</p>",
+    "active": false,
+    "stanceType": "COMBAT",
+    "emotionSubtype": "",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "s9zwehNSsEcLtWFT",
+  "sort": 0,
+  "_key": "!items!s9zwehNSsEcLtWFT"
+}

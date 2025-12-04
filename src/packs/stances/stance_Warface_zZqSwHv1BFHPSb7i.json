@@ -1,0 +1,39 @@
+{
+  "name": "Warface",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>Anyone foolish enough to meet your gaze regrets it.</p>",
+    "active": false,
+    "stanceType": "EMOTION",
+    "emotionSubtype": "Rage/Anger/Annoyance",
+    "specials": [
+      {
+        "name": "Enemy loses 1 Guard",
+        "description": "They metaphorically shit themselves",
+        "cost": "special",
+        "mandatory": false
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "zZqSwHv1BFHPSb7i",
+  "sort": 0,
+  "_key": "!items!zZqSwHv1BFHPSb7i"
+}

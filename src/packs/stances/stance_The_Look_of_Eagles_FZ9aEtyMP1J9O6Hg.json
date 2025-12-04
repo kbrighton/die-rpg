@@ -1,0 +1,32 @@
+{
+  "name": "The Look Of Eagles",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>If someone is looking for a leader, they look to you. Everyone will assume you're in charge due to your natural authority.</p>",
+    "active": false,
+    "stanceType": "SOCIAL",
+    "emotionSubtype": "",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "FZ9aEtyMP1J9O6Hg",
+  "sort": 0,
+  "_key": "!items!FZ9aEtyMP1J9O6Hg"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "You Watch The Watchmen",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>You know at any time you've been spotted or are about to be ambushed.</p>",
+    "active": false,
+    "stanceType": "EMOTION",
+    "emotionSubtype": "Vigilance/Anticipation/Interest",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "Aik8zEny2DIzKhLC",
+  "sort": 0,
+  "_key": "!items!Aik8zEny2DIzKhLC"
+}

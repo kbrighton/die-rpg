@@ -1,0 +1,39 @@
+{
+  "name": "Show-Off",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>Your fighting style is undeniably more beautiful than anyone else's.</p>",
+    "active": false,
+    "stanceType": "COMBAT",
+    "emotionSubtype": "",
+    "specials": [
+      {
+        "name": "Startle opponent (next attack gains Advantage)",
+        "description": "Choose an opponent to be startled by your grace",
+        "cost": "special",
+        "mandatory": false
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "uXcPXro9pLv2cStT",
+  "sort": 0,
+  "_key": "!items!uXcPXro9pLv2cStT"
+}

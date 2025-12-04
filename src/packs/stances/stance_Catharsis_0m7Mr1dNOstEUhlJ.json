@@ -1,0 +1,32 @@
+{
+  "name": "Catharsis",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>When <strong>Emotion Draining</strong>, you also heal a <strong>Wound</strong> from your target for each level of emotion drained.</p>",
+    "active": false,
+    "stanceType": "EMOTION",
+    "emotionSubtype": "Grief/Sadness/Pensiveness",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "0m7Mr1dNOstEUhlJ",
+  "sort": 0,
+  "_key": "!items!0m7Mr1dNOstEUhlJ"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Life and Soul of the Party",
+  "type": "stance",
+  "img": "systems/die-rpg/assets/icons/high-punch.svg",
+  "system": {
+    "description": "<p>Your infectious enthusiasm makes others want to spend time with you.</p>",
+    "active": false,
+    "stanceType": "EMOTION",
+    "emotionSubtype": "Ecstasy/Joy/Serenity",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "Nqc7tJkaeVIIsvjD",
+  "sort": 0,
+  "_key": "!items!Nqc7tJkaeVIIsvjD"
+}
