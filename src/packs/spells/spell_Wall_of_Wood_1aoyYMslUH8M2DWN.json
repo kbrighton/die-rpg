@@ -1,0 +1,29 @@
+{
+  "name": "Wall of Wood",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Create a wooden wall which has a Health equivalent to twice as many successes rolled in its creation. It must be destroyed before it can be passed. If not, it crumbles in an hour.</p><p><strong>Rules:</strong> Create Wall, Duration (slightly more), Area</p><p><strong>Risk:</strong> 15</p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "1aoyYMslUH8M2DWN",
+  "sort": 0,
+  "_key": "!items!1aoyYMslUH8M2DWN"
+}

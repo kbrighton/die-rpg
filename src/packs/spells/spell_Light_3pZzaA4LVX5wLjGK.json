@@ -1,0 +1,29 @@
+{
+  "name": "Light",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Caster can create a magical fire which burns for the length of one encounter.</p><p><strong>Rules:</strong> Damage Duration (fire), Duration</p><p><strong>Risk:</strong> 10</p><p><em>Designer's note: Light is an example of the 'Damage' being used at its lower level. You could use a bunch of other rules for this too—Illusion would work.</em></p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "3pZzaA4LVX5wLjGK",
+  "sort": 0,
+  "_key": "!items!3pZzaA4LVX5wLjGK"
+}

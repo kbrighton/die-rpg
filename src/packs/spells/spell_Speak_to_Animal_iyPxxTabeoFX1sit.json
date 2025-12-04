@@ -1,0 +1,29 @@
+{
+  "name": "Speak to Animal",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Communicate with any animal for the length of an encounter.</p><p><strong>Rules:</strong> Understand (animal), Duration</p><p><strong>Risk:</strong> 10</p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "iyPxxTabeoFX1sit",
+  "sort": 0,
+  "_key": "!items!iyPxxTabeoFX1sit"
+}

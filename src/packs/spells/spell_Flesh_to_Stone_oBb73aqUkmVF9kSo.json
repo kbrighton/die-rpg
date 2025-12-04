@@ -1,0 +1,36 @@
+{
+  "name": "Flesh to Stone",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>A single nearby target is attacked and begins to turn into stone. If they are killed by this attack, they become a stone statue. If they are transformed back, they return to life.</p><p><strong>Rules:</strong> Damage Curse (turn to stone), Ranged</p><p><strong>Risk:</strong> 16</p>",
+    "specials": [
+      {
+        "name": "Target suffers a disadvantage on next action",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "oBb73aqUkmVF9kSo",
+  "sort": 0,
+  "_key": "!items!oBb73aqUkmVF9kSo"
+}

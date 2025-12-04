@@ -1,0 +1,29 @@
+{
+  "name": "Summon Sinister Doll",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Craft a creepy doll (stats as Living Servant) that can follow your direct orders but lacks the means to act under its own initiative. You can be in telepathic contact with it at will, over any distance.</p><p><strong>Rules:</strong> Create Creature, Telepathy (slightly more)</p><p><strong>Risk:</strong> 5</p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "4Cm9iZVzjKXhOzgr",
+  "sort": 0,
+  "_key": "!items!4Cm9iZVzjKXhOzgr"
+}

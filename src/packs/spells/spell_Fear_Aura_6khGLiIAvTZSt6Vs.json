@@ -1,0 +1,29 @@
+{
+  "name": "Fear Aura",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Any foes near the caster (except the caster) will receive a disadvantage on any attacks made.</p><p><strong>Rules:</strong> Area, Hinder (Attacks), Duration, Selectivity</p><p><strong>Risk:</strong> 20</p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "6khGLiIAvTZSt6Vs",
+  "sort": 0,
+  "_key": "!items!6khGLiIAvTZSt6Vs"
+}

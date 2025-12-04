@@ -1,0 +1,36 @@
+{
+  "name": "Healing Touch",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Target heals 1 Health.</p><p><strong>Rules:</strong> Heal</p><p><strong>Risk:</strong> 5</p>",
+    "specials": [
+      {
+        "name": "Heals 1 additional Health",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "sKT4MGH3CVlfnFcP",
+  "sort": 0,
+  "_key": "!items!sKT4MGH3CVlfnFcP"
+}

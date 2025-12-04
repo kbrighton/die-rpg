@@ -1,0 +1,29 @@
+{
+  "name": "Battle Blessing",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Everyone near the caster when they cast the spell gets an advantage on attacks for the duration of one combat.</p><p><strong>Rules:</strong> Area, Enhance (attack), Duration</p><p><strong>Risk:</strong> 15</p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "uxG4fg9cmprrviPy",
+  "sort": 0,
+  "_key": "!items!uxG4fg9cmprrviPy"
+}

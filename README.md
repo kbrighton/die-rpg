@@ -21,3 +21,9 @@ Dice 20 faces 20 icon by Delapouite under CC BY 3.0
 Fencer icon by Delapouite under CC BY 3.0\
 Saber and pistol icon by Delapouite under CC BY 3.0\
 Glowing hands icon by Lorc under CC BY 3.0\
+Scroll unfurled icon by Lorc under CC BY 3.0\
+Hand of god icon by Delapouite under CC BY 3.0\ 
+Gift trap icon by Lorc under CC BY 3.0\
+High punch icon by Delapouite under CC BY 3.0\ 
+Shouting icon by Lorc under CC BY 3.0\
+Battle gear icon by Lorc under CC BY 3.0\ 

@@ -1,0 +1,36 @@
+{
+  "name": "Cone of Cold",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Fill the area in front of the caster with a blast of hypercold, risking freezing any individual inside it.</p><p><strong>Rules:</strong> Area (slightly more), Damage Curse (freeze)</p><p><strong>Risk:</strong> 11</p>",
+    "specials": [
+      {
+        "name": "As their limbs freeze, target suffers a disadvantage on next action",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "caKps35EU8WGZ0ZU",
+  "sort": 0,
+  "_key": "!items!caKps35EU8WGZ0ZU"
+}

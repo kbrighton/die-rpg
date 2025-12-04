@@ -1,0 +1,54 @@
+{
+  "name": "Prismatic Spray",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Fill the area in front of the caster with a dangerous spray of colours and attack all targets in the area with multi-coloured beams. The attack has two advantages.</p><p><strong>Rules:</strong> Enhance (attack, slightly more), Range, Area (slightly more), Damage-Duration, Damage Curse (Disorientation), Damage Barrage (Swarm of Colours), Damage Chain</p><p><strong>Risk:</strong> 37</p>",
+    "specials": [
+      {
+        "name": "This hit causes 2 hits",
+        "cost": "double-special",
+        "mandatory": false,
+        "description": ""
+      },
+      {
+        "name": "This attack can hit another target outside of the original group",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      },
+      {
+        "name": "Sets opponent on fire, doing 1 hit per round until removed",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      },
+      {
+        "name": "Target suffers a disadvantage on next action",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "w32Mbmd6hQrsBt2U",
+  "sort": 0,
+  "_key": "!items!w32Mbmd6hQrsBt2U"
+}

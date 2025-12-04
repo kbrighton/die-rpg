@@ -1,0 +1,36 @@
+{
+  "name": "Vicious Mockery",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Caster shouts magically-charged words at the target's subconscious with such vitriol as to cause physical harm.</p><p><strong>Rules:</strong> Range, Damage Curse (really cutting insults)</p><p><strong>Risk:</strong> 10</p>",
+    "specials": [
+      {
+        "name": "Target suffers a disadvantage on next action due to crushing existential questions about how they are just useless, and no one will ever love them",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "8doYY7IjWB8zKIG4",
+  "sort": 0,
+  "_key": "!items!8doYY7IjWB8zKIG4"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Ignite Weapon",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Any one weapon can be set on fire until the end of the combat, and its attack will deliver the special effect.</p><p><strong>Rules:</strong> Damage Duration (fire), Duration</p><p><strong>Risk:</strong> 10</p>",
+    "specials": [
+      {
+        "name": "Ignite opponent, doing 1 hit per round until extinguished",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "8wyri20zUAibloy6",
+  "sort": 0,
+  "_key": "!items!8wyri20zUAibloy6"
+}

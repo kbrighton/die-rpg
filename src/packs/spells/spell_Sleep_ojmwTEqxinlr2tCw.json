@@ -1,0 +1,48 @@
+{
+  "name": "Sleep",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Several individuals nearby to the caster may be put to sleep. The attack does no damage.</p><p><strong>Rules:</strong> Ranged, Duration, Sleep, Area (slightly more)</p><p><strong>Risk:</strong> 21</p>",
+    "specials": [
+      {
+        "name": "If the character has 4 Willpower or less, they fall asleep",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      },
+      {
+        "name": "If the character has 6 Willpower or less, they fall asleep",
+        "cost": "double-special",
+        "mandatory": false,
+        "description": ""
+      },
+      {
+        "name": "The character falls asleep",
+        "cost": "20-special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "ojmwTEqxinlr2tCw",
+  "sort": 0,
+  "_key": "!items!ojmwTEqxinlr2tCw"
+}

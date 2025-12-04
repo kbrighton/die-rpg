@@ -1,0 +1,29 @@
+{
+  "name": "Charm",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>The caster gains an advantage on any attempts to persuade a target for the length of an encounter.</p><p><strong>Rules:</strong> Enhance (Charisma), Duration</p><p><strong>Risk:</strong> 10</p>",
+    "specials": []
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "vzHjTqxyE0ZciLsH",
+  "sort": 0,
+  "_key": "!items!vzHjTqxyE0ZciLsH"
+}

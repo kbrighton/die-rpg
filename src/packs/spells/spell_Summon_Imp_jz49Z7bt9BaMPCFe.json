@@ -1,0 +1,36 @@
+{
+  "name": "Summon Imp",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Create a violent, aggressive creature you can control at short range. It lasts for about the length of a combat. It can only attack and harm.</p><h4>Imp Stats</h4><table><tr><th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th></tr><tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Guard</th><th>Health</th><th colspan=\"2\">Willpower</th><th colspan=\"2\">Defence</th></tr><tr><td>2</td><td>2</td><td colspan=\"2\">4</td><td colspan=\"2\">0</td></tr></table><p><strong>Rules:</strong> Damage Duration (fire), Duration, Ranged, Create Creature</p><p><strong>Risk:</strong> 20</p>",
+    "specials": [
+      {
+        "name": "Ignite opponent, doing 1 hit per round until extinguished",
+        "cost": "special",
+        "mandatory": false,
+        "description": "The Imp's attacks have this special."
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "jz49Z7bt9BaMPCFe",
+  "sort": 0,
+  "_key": "!items!jz49Z7bt9BaMPCFe"
+}

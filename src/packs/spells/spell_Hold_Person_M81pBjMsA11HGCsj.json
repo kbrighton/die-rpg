@@ -1,0 +1,42 @@
+{
+  "name": "Hold Person",
+  "type": "spell",
+  "img": "systems/die-rpg/assets/icons/scroll-unfurled.svg",
+  "system": {
+    "description": "<p>Attack, but does no damage. Requires a Constitution test to break free.</p><p><strong>Rules:</strong> Damage (paralyse), Ranged</p><p><strong>Risk:</strong> 10</p>",
+    "specials": [
+      {
+        "name": "If Willpower is 4 or below, immobilise target",
+        "cost": "special",
+        "mandatory": false,
+        "description": "Requires a Constitution test to break free."
+      },
+      {
+        "name": "If Willpower is 6 or below, immobilise target",
+        "cost": "double-special",
+        "mandatory": false,
+        "description": "Requires a Constitution test to break free."
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "M81pBjMsA11HGCsj",
+  "sort": 0,
+  "_key": "!items!M81pBjMsA11HGCsj"
+}
