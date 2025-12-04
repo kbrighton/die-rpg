@@ -1,0 +1,73 @@
+{
+  "name": "Cybernetic Enhancement",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>A powered exoskeleton grows over and through your body, rendering you an armoured fighting machine capable of feats of supernatural strength and resilience.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Hardcase (Defensive)",
+        "description": "<p>Gain +1 <strong>Defence</strong>.</p>",
+        "defenseBonus": 1,
+        "specials": []
+      },
+      {
+        "name": "Energy Gun",
+        "description": "<p>You have a built-in gun. Pick one Gun upgrade. You cannot add further upgrades.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Energy Weapon",
+        "description": "<p>You have a built in energy weapon. Pick one Energy Weapon upgrade. You cannot add further upgrades.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Sensory Array",
+        "description": "<p>Your senses expand into a generalised radar in the locale, and you can see through obstacles.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Reactor",
+        "description": "<p>You have a reactor in your exoskeleton. When activated, it gains three charges used in the place of <strong>Fair Gold</strong> for the sole purpose of overcharging your other gifts.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Sealed",
+        "description": "<p>You can survive in hard vacuum and other outlandish environments. You no longer need to eat. If you do ingest poison somehow, it doesn't affect you.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Jetpack",
+        "description": "<p>You can fly at the speed of the fastest airborne creature in the world. Each time you take this, your speed doubles.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "QqXyLzleLCiHnuEC",
+  "sort": 0,
+  "_key": "!items!QqXyLzleLCiHnuEC"
+}

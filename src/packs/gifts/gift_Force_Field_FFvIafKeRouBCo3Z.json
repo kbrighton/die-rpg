@@ -1,0 +1,62 @@
+{
+  "name": "Force Field",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>You're able to create and reshape an energy field around you. This force field has <strong>Health</strong> equal to your <strong>Int</strong>.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Active Defense Protocol (Defensive)",
+        "description": "<p>Your <strong>Guard</strong> is now equal to your <strong>Int</strong> plus your Reflexes.</p>",
+        "defenseBonus": 1,
+        "specials": []
+      },
+      {
+        "name": "Autonomous Field",
+        "description": "<p>You can create a force field in your vicinity which will remain after you leave the area. It can take damage equal to your <strong>Int</strong> before collapsing. Attacking and damaging this force field has <strong>Difficulty</strong> 1.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Kinetic Redirection",
+        "description": "<p>All attacks on anything protected by your force field gain: <strong>Mandatory Special:</strong> Restore 1 <strong>Health</strong> to the active forcefield.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Restore 1 Health to forcefield",
+            "description": "",
+            "cost": "special",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "name": "Buddy-Help Protocol",
+        "description": "<p>The rest of the party are protected with a supplementary micro-force field. They gain +1 <strong>Guard</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "FFvIafKeRouBCo3Z",
+  "sort": 0,
+  "_key": "!items!FFvIafKeRouBCo3Z"
+}

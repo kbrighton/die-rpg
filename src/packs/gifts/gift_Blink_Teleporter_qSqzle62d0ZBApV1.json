@@ -1,0 +1,74 @@
+{
+  "name": "Blink Teleporter",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>You can chain together short-distance teleports, about as far as you could jump with a run up.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Combat Shift Protocol (Defensive)",
+        "description": "<p>Gain +1 <strong>Defence</strong>.</p>",
+        "defenseBonus": 1,
+        "specials": []
+      },
+      {
+        "name": "Optic Triangulation",
+        "description": "<p>You can teleport anywhere you can see.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Duo Port",
+        "description": "<p>You can teleport one other person with you.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Telefrag",
+        "description": "<p>You can use your teleportation offensively by teleporting something inside your target. Your melee attacks gain: <strong>Special:</strong> Target suffers one <strong>Wound</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Target suffers 1 Wound",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Shift-TK",
+        "description": "<p>You can teleport small nearby objects.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Retrieve Protocol",
+        "description": "<p>Once a day, you can attune to any object you can lift. It can then be teleported to you, from any distance.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "qSqzle62d0ZBApV1",
+  "sort": 0,
+  "_key": "!items!qSqzle62d0ZBApV1"
+}

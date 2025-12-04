@@ -1,0 +1,102 @@
+{
+  "name": "Energy Weapon",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>You have a searing energy weapon. If you wish, you may use <strong>Dex</strong> for its dice pool instead of <strong>Str</strong>. Works as a normal blade without being activated.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Phantom",
+        "description": "<p>Your close combat attacks gain: <strong>Special:</strong> This individual hit—not the whole attack—bypasses <strong>Guard</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Bypass Guard (single hit)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Searing",
+        "description": "<p>Your close combat attacks gain: <strong>Special:</strong> Ignite opponent, doing 1 Hit per round until extinguished.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Ignite (1 Hit/round until extinguished)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Neurosleep",
+        "description": "<p>Your close combat attacks gain: <strong>Special:</strong> Target is hit by a sedative. If they are hit by a sedative a number of times equal to their <strong>Con</strong>, they fall unconscious.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Sedative (unconscious at Con hits)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Returning",
+        "description": "<p>When thrown, the weapon returns to the Neo.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Cleave",
+        "description": "<p>Your close combat attacks gain: <strong>Double-Special:</strong> Apply this whole attack to another target within range.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Attack another target in range",
+            "description": "",
+            "cost": "double",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Fatality!",
+        "description": "<p>Your close combat attacks gain: <strong>Special:</strong> If this attack kills an opponent, describe a particularly horrific death sequence. All opponents capable of being horrified in the area suffer 1 <strong>Disadvantage</strong> when fighting you for the rest of the encounter.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Horrific death (enemies get Disadvantage)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "HgnsyZDUoyT5VsYJ",
+  "sort": 0,
+  "_key": "!items!HgnsyZDUoyT5VsYJ"
+}

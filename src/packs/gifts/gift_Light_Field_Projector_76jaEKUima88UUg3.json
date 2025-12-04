@@ -1,0 +1,67 @@
+{
+  "name": "Light Field Projector",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>You can generate an utterly convincing visual illusion or make yourself practically invisible.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Reactive Combat Invisibility (Defensive)",
+        "description": "<p>Gain +1 <strong>Defence</strong>.</p>",
+        "defenseBonus": 1,
+        "specials": []
+      },
+      {
+        "name": "Invisibility Field",
+        "description": "<p>You may make one other human-sized creature invisible.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Enhanced Invisibility",
+        "description": "<p>In addition to sight, your sound, smell, psychic aura and trace magical energy are also concealed.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Distance Projection",
+        "description": "<p>Your illusion continues when you leave an area.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Active Update",
+        "description": "<p>You can project an illusion onto yourself in real-time as a disguise.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Immersion Enhancement",
+        "description": "<p>Your illusion can create sounds, smells and physical feedback akin to a 4D cinema experience.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "76jaEKUima88UUg3",
+  "sort": 0,
+  "_key": "!items!76jaEKUima88UUg3"
+}

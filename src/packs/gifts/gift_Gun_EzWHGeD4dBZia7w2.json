@@ -1,0 +1,100 @@
+{
+  "name": "Gun",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>The Fair have gifted you with an arcane firearm. Works as a normal ranged weapon without being activated.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Explosive",
+        "description": "<p>Your ranged attacks gain: <strong>Special:</strong> apply an extra individual hit to another target in the vicinity.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Extra hit to nearby target",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Homing",
+        "description": "<p>Your ranged attacks gain: <strong>Special:</strong> this individual hit—not the whole attack—bypasses <strong>Guard</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Bypass Guard (single hit)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "AI-Assisted Targeting",
+        "description": "<p>The gun's attacks ignore all <strong>Disadvantages</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Phasers to Stun",
+        "description": "<p>The gun's non-lethal attacks ignore all <strong>Disadvantages</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Trick Shooting",
+        "description": "<p>The Gun can fire precisely enough to act as a form of telekinesis: you can knock on windows, ring doorbells, open doors and perform other feats of accuracy.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Tracking",
+        "description": "<p>Its attacks gain <strong>Special:</strong> the target can be reliably traced for 24 hours.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Track target for 24 hours",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Sniper",
+        "description": "<p>You can shoot as far as you can see.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Sentry Gun",
+        "description": "<p>The gun can be left behind to guard a stationary position, and obey a simple set of orders. When it's next activated, it instantly appears in the Neo's hands.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "EzWHGeD4dBZia7w2",
+  "sort": 0,
+  "_key": "!items!EzWHGeD4dBZia7w2"
+}

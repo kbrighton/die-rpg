@@ -1,0 +1,61 @@
+{
+  "name": "Full AI Enhancement",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>You augment your AI to access the full potential of the gift. When you're hacking, include your D10 in the roll.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Information Database",
+        "description": "<p>Choose its specialist subject. The smaller the area, the more complete the knowledge.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Hacking Protocol Interface",
+        "description": "<p>If you manually interface with a system, you're immune to any physical feedback on a failure.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Subpersonality",
+        "description": "<p>The AI simulates a single known person, living or dead, who can be interrogated and questioned.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "BioHacking Extension",
+        "description": "<p>Choose one group of creatures; you can hack them like Fallen.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Fallen Leash",
+        "description": "<p>You can control a hacked Fallen indefinitely, as if you'd rolled a <strong>Special</strong> every round. You can control one Fallen at one time for each time you've taken this upgrade.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "H1sFZuJfBXcPkYDR",
+  "sort": 0,
+  "_key": "!items!H1sFZuJfBXcPkYDR"
+}

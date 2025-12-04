@@ -1,0 +1,75 @@
+{
+  "name": "Pet",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>You have an awesome cybernetic pet. When summoned, it's also autonomous and capable of following instructions. Its <strong>Defence</strong> is the same as yours. Any <strong>Wound</strong> inflicted on your pet is transferred to you. When <strong>Wounded</strong>, it dematerialises and reappears beside you.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Distracting",
+        "description": "<p>If your pet assists you in an attack, you gain <strong>Special:</strong> Remove 2 <strong>Guard</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Remove 2 Guard",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Tracker",
+        "description": "<p>If given a sample of a target, the pet can lead you to it.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Alert",
+        "description": "<p>The pet alerts you to any ambush before it happens – you always start with full <strong>Guard</strong>.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Gold Hunter",
+        "description": "<p>Your pet can be sent to scavenge fair gold, and will return with the gold after the next encounter (longer if the GM wishes). Roll your <strong>Int</strong> pool and find 1 <strong>Fair Gold</strong> on a success, with: <strong>Special:</strong> Gain an extra gold.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Gain extra Fair Gold",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Protective",
+        "description": "<p>If an attack would kill the Neo and the pet is present, the pet can sacrifice itself to negate the attack. The Pet deactivates, disappearing in a shower of light, and must be reactivated to bring it back.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "tyz2IcGqc9H29bGq",
+  "sort": 0,
+  "_key": "!items!tyz2IcGqc9H29bGq"
+}

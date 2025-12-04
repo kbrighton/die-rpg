@@ -1,0 +1,81 @@
+{
+  "name": "Wetwork",
+  "type": "gift",
+  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "system": {
+    "description": "<p>Your body and blood have been upgraded. You heal quicker, tire slower, can perform feats of physical strength and endurance, and have active control of your body's systems.</p>",
+    "activated": false,
+    "upgrades": [
+      {
+        "name": "Reflex Boost",
+        "description": "<p>You always act first in any initiative order.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Speed Boost",
+        "description": "<p>All your actions gain: <strong>Special:</strong> Take an extra move. You can't be attacked during this move.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Extra move (immune to attack)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Instant Reflexes (Defensive)",
+        "description": "<p>Gain +1 <strong>Defence</strong>.</p>",
+        "defenseBonus": 1,
+        "specials": []
+      },
+      {
+        "name": "Horsepower",
+        "description": "<p>You can move twice as fast or far as normal.</p>",
+        "defenseBonus": 0,
+        "specials": []
+      },
+      {
+        "name": "Regeneration (Defensive)",
+        "description": "<p>Heal 1 <strong>Health</strong> per round. Fully heal between combats.</p>",
+        "defenseBonus": 1,
+        "specials": []
+      },
+      {
+        "name": "Resurrection Protocol",
+        "description": "<p>If you die, roll a <strong>Con</strong> pool at the end of the combat with: <strong>Special:</strong> Return to life.</p>",
+        "defenseBonus": 0,
+        "specials": [
+          {
+            "name": "Return to life",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "GPWLr2SS4U4X5iN9",
+  "sort": 0,
+  "_key": "!items!GPWLr2SS4U4X5iN9"
+}
