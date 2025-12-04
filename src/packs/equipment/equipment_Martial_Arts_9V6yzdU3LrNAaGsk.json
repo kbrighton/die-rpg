@@ -1,0 +1,41 @@
+{
+  "name": "Martial Arts",
+  "type": "equipment",
+  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "system": {
+    "description": "<p>Training in unarmed combat techniques. Allows the use of Dexterity instead of Strength for melee attacks.</p>",
+    "quantity": 1,
+    "weight": 0,
+    "defenseBonus": 0,
+    "rollModType": "none",
+    "rollModValue": null,
+    "specials": [
+      {
+        "name": "Use DEX instead of STR for melee",
+        "cost": "special",
+        "mandatory": false,
+        "description": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "9V6yzdU3LrNAaGsk",
+  "sort": 0,
+  "_key": "!items!9V6yzdU3LrNAaGsk"
+}
