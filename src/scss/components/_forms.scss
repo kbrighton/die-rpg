@@ -766,7 +766,10 @@ h6 {
 // FIELD DESCRIPTION STYLING
 // ========================================
 .field-group {
-	.form-group {
+	
+}
+
+.form-group {
 		h4 {
 			margin: $margin-lg 0 $margin-sm 0;
 		}
@@ -783,7 +786,6 @@ h6 {
 			font-size: var(--font-h4-size);
 		}
 	}
-}
 
 .field-description {
 	font-size: var(--font-size-14);

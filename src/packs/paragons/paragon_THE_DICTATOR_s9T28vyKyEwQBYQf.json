@@ -38,32 +38,81 @@
       "Compendium.die-rpg.equipment.Item.QCtMEUc9X73Tihgz"
     ],
     "advancementAssignments": {
-      "row0-1": 1,
-      "row1-1": 1,
-      "row1-2": 1,
+      "row0-1": 0,
+      "row1-1": 4,
+      "row1-2": 3,
       "row1-3": 1,
-      "row1-4": 1,
-      "row1-5": 1,
+      "row1-4": 2,
+      "row1-5": 5,
       "row2-1": 1,
-      "row2-2": 1,
-      "row3-1": 1,
+      "row2-2": 2,
+      "row3-1": 6,
       "row3-2": 1,
       "row3-3": 1,
-      "row4-1": 1,
-      "row4-2": 1,
-      "row4-3": 1,
-      "row4-4": 1,
-      "row4-5": 1,
-      "row5-1": 1,
+      "row4-1": 8,
+      "row4-2": 2,
+      "row4-3": 7,
+      "row4-4": 2,
+      "row4-5": 9,
+      "row5-1": 11,
       "row5-2": 1,
       "row5-3": 1,
-      "row5-4": 1
+      "row5-4": 10
     },
     "advancements": [
       {
         "id": 1,
-        "name": "Sample Advancement",
-        "description": "<p>This is a placeholder advancement.</p>",
+        "name": "An Artist's Progress",
+        "icon": ""
+      },
+      {
+        "id": 2,
+        "name": "It's Not What You Know",
+        "icon": ""
+      },
+      {
+        "id": 3,
+        "name": "One Step Ahead",
+        "icon": ""
+      },
+      {
+        "id": 4,
+        "name": "The Gig",
+        "icon": ""
+      },
+      {
+        "id": 5,
+        "name": "Fanbase",
+        "icon": ""
+      },
+      {
+        "id": 6,
+        "name": "The Gang",
+        "icon": ""
+      },
+      {
+        "id": 7,
+        "name": "Emotional Capital",
+        "icon": ""
+      },
+      {
+        "id": 8,
+        "name": "Carving Out Their Heart",
+        "icon": ""
+      },
+      {
+        "id": 9,
+        "name": "Portrait of the Artist as a Monster",
+        "icon": ""
+      },
+      {
+        "id": 10,
+        "name": "The Power Behind the Throne",
+        "icon": ""
+      },
+      {
+        "id": 11,
+        "name": "The Great Dictator",
         "icon": ""
       }
     ],
@@ -115,7 +164,7 @@
           "label": "The Performance",
           "description": "",
           "hint": "",
-          "initial": "\"<p>To use The Voice, pick the emotion(s) and roll a <b>Cha</b> dice pool plus your D4. Lose 1 success for each target past the first. The D4 shows the effect’s <b>Intensity</b>, and each successes lets you add or subtract 1 from it. The final <b>Intensity</b> affects the <b>Audience</b> according to your goal – Control or Attack.</p> <p><b>Control:</b> Manipulate them with the emotion and steal their agency. +1 Disadvantage per <b>Intensity</b> on actions opposing the compulsion, +1 Advantage on actions that support it. Complete control if <b>Intensity</b> exceeds <b>Willpower</b>.</p> <p><b>Attack:</b> Make them feel so hard it hurts. They take +1 Disadvantage per <b>Intensity</b> on attacks, and are killed or incapacitated if <b>Intensity</b> exceeds <b>Willpower</b>.</p> <p>Pass your D4 to a player whose character you’re influencing. To affect anyone else with your powers, you must reclaim your D4. This is instant and ends that compulsion.</p> <h5>INTENSITY OF EFFECT</h5> <ol> <li>Enough to influence them.</li> <li>They feel it intensely.</li> <li>They feel it as intensely as most people will ever feel it.</li> <li>More intense than love for a soulmate.</li> <li>All-consuming obsession.</li> <li>Supernaturally intense. Likely lethal.</li> </ol> <p>If <b>Intensity</b> &lt; <b>Willpower</b>, targets may resist with a <b>Wis</b> roll at a Difficulty of 1/2 <b>Intensity</b>.</p> <p>On a <b>Crit Fail</b>, you’ve broken them; the influence is permanent.</p></p>\""
+          "initial": "\"<p>To use The Voice, pick the emotion(s) and roll a <b>Cha</b> dice pool plus your D4. Lose 1 success for each target past the first. The D4 shows the effect’s <b>Intensity</b>, and each successes lets you add or subtract 1 from it. The final <b>Intensity</b> affects the <b>Audience</b> according to your goal – Control or Attack.</p> <p><b>Control:</b> Manipulate them with the emotion and steal their agency. +1 Disadvantage per <b>Intensity</b> on actions opposing the compulsion, +1 Advantage on actions that support it. Complete control if <b>Intensity</b> exceeds <b>Willpower</b>.</p> <p><b>Attack:</b> Make them feel so hard it hurts. They take +1 Disadvantage per <b>Intensity</b> on attacks, and are killed or incapacitated if <b>Intensity</b> exceeds <b>Willpower</b>.</p> <p>Pass your D4 to a player whose character you’re influencing. To affect anyone else with your powers, you must reclaim your D4. This is instant and ends that compulsion.</p> <h5>INTENSITY OF EFFECT</h5> <ol> <li>Enough to influence them.</li> <li>They feel it intensely.</li> <li>They feel it as intensely as most people will ever feel it.</li> <li>More intense than love for a soulmate.</li> <li>All-consuming obsession.</li> <li>Supernaturally intense. Likely lethal.</li> </ol> <p>If <b>Intensity</b> < <b>Willpower</b>, targets may resist with a <b>Wis</b> roll at a Difficulty of 1/2 <b>Intensity</b>.</p> <p>On a <b>Crit Fail</b>, you’ve broken them; the influence is permanent.</p></p>\""
         }
       ]
     },
@@ -125,86 +174,113 @@
           "key": "artistProgress",
           "type": "group",
           "label": "An Artist's Progress",
+          "description": "Get a new Emotion Wheel spoke and pick one:",
+          "hint": "",
           "fields": [
-            "{\"key\":\"newSpoke\",\"type\":\"select\",\"label\":\"New Emotion Wheel Spoke\",\"choices\":[\"Ecstasy, Joy, Serenity\",\"Admiration, Trust, Acceptance\",\"Terror, Fear, Apprehension\",\"Amazement, Surprise, Distraction\",\"Grief, Sadness, Pensiveness\",\"Loathing, Disgust, Boredom\",\"Rage, Anger, Annoyance\",\"Vigilance, Anticipation, Interest\"],\"initial\":\"\",\"hint\":\"Choose another spoke from the emotion wheel\"}",
-            "{\"key\":\"benefitChoice\",\"type\":\"select\",\"label\":\"Benefit Choice\",\"choices\":[\"Know Your Audience\",\"You, Choir\",\"We, Choir (Pick Once)\",\"Tell, Don't Show\",\"Signature Piece\"],\"initial\":\"\",\"hint\":\"Choose one benefit from this advancement\"}",
-            "{\"key\":\"knowYourAudienceGroup\",\"type\":\"text\",\"label\":\"Know Your Audience - Target Group\",\"initial\":\"\",\"hint\":\"If you chose Know Your Audience: specify the group (e.g., 'Nobles', 'Children', 'Warriors')\"}",
-            "{\"key\":\"knowYourAudienceEmotion\",\"type\":\"select\",\"label\":\"Know Your Audience - Emotion\",\"choices\":[\"Ecstasy\",\"Joy\",\"Serenity\",\"Admiration\",\"Trust\",\"Acceptance\",\"Terror\",\"Fear\",\"Apprehension\",\"Amazement\",\"Surprise\",\"Distraction\",\"Grief\",\"Sadness\",\"Pensiveness\",\"Loathing\",\"Disgust\",\"Boredom\",\"Rage\",\"Anger\",\"Annoyance\",\"Vigilance\",\"Anticipation\",\"Interest\"],\"initial\":\"\",\"hint\":\"If you chose Know Your Audience: which emotion can you reliably provoke in this group?\"}",
-            "{\"key\":\"tellDontShowCircumstances\",\"type\":\"text\",\"label\":\"Tell, Don't Show - Circumstances\",\"initial\":\"\",\"hint\":\"If you chose Tell, Don't Show: under what circumstances does your Tell no longer manifest?\"}",
-            "{\"key\":\"signaturePieceSpellName\",\"type\":\"text\",\"label\":\"Signature Piece - Spell Name\",\"initial\":\"\",\"hint\":\"If you chose Signature Piece: name your signature spell\"}",
-            "{\"key\":\"signaturePieceRisk\",\"type\":\"number\",\"label\":\"Signature Piece - Risk\",\"initial\":0,\"min\":0,\"max\":15,\"hint\":\"If you chose Signature Piece: the Risk value (0-15) of your signature spell\"}"
+            "{\"key\":\"knowYourAudienceGroup\",\"type\":\"html\",\"label\":\"Know Your Audience\",\"initial\":\"\",\"hint\":\"\",\"description\":\"Pick a group and an emotion. When you use that emotion to affect the group, set your dice to 4 before rolling. The group should be no more than 25% of the people you could meet; if it's particularly small, the GM may also grant +1 <b>Advantage</b> when targeting them.\"}",
+            "{\"key\":\"youChoir\",\"type\":\"number\",\"label\":\"You, Choir\",\"initial\":\"\",\"hint\":\"\",\"description\":\"Lose 1 less success when targeting a crowd for every time you take this option.\"}",
+            "{\"key\":\"weChoir\",\"type\":\"boolean\",\"label\":\"We, Choir (Pick Once)\",\"initial\":\"\",\"hint\":\"\",\"description\":\"When using The Voice on willing people, suffer no penalties for group size.\"}",
+            "{\"key\":\"tellDontShow\",\"type\":\"html\",\"label\":\"Tell, Don't Show\",\"initial\":\"\",\"hint\":\"\",\"description\":\"Under certain circumstances, your Voice's Tell no longer manifests. What are those circumstances?\"}",
+            "{\"key\":\"signaturePiece\",\"type\":\"html\",\"label\":\"Signature Piece\",\"initial\":\"\",\"hint\":\"\",\"description\":\"Choose a spell from the Master's Grimoire (p. 370) with no more than 15 risk; whenever you have your D4, you may cast the spell by rolling a <b>Cha</b> pool boosted as per <b>A Little Emotional Nudge</b>.\"}"
           ]
         },
         {
           "key": "itsNotWhatYouKnow",
           "type": "group",
           "label": "It's Not What You Know",
+          "description": "",
+          "hint": "",
           "fields": [
-            "{\"key\":\"choice\",\"type\":\"select\",\"label\":\"Benefit Choice\",\"choices\":[\"A Working Artist (Pick Once)\",\"Henchperson (Pick Once)\",\"Improve Henchperson\",\"Agent\"],\"initial\":\"\",\"hint\":\"Choose one benefit from this advancement\"}",
-            "{\"key\":\"henchpersonBinding\",\"type\":\"select\",\"label\":\"Henchperson - How Are They Bound?\",\"choices\":[\"A critical fail emotion\",\"A promise\",\"A need that you fulfill\",\"They resent their condition\",\"Their friends resent their condition\"],\"initial\":\"\",\"hint\":\"If you chose Henchperson: how are they bound to you?\"}"
+            "{\"key\":\"aWorkingArtist\",\"type\":\"boolean\",\"label\":\"A Working Artist\",\"initial\":\"\",\"hint\":\"\",\"description\":\"Once per adventure, declare who owes you a favour and say what you did to earn it.\"}",
+            "{\"key\":\"henchperson\",\"type\":\"boolean\",\"label\":\"Henchperson\",\"initial\":\"\",\"hint\":\"\",\"description\":\"You have a loyal, highly skilled henchperson, designed via the Secondary Characters Rule (p. 280) with one fewer character point. If the henchperson is killed or lost, you can replace them between missions.\"}",
+            "{\"key\":\"henchpersonBound\",\"type\":\"select\",\"label\":\"Henchperson - They are bound to you by:\",\"choices\":[\"A critical fail emotion\",\"A promise\",\"A need that you fulfill\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+            "{\"key\":\"henchpersonPickOne\",\"type\":\"select\",\"label\":\"Henchperson - Pick One:\",\"choices\":[\"They resent their condition\",\"Their friends resent their condition\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+            "{\"key\":\"improveHenchperson\",\"type\":\"info\",\"label\":\"Improve Henchperson\",\"initial\":\"\",\"hint\":\"\",\"description\":\"If you have a Henchperson, pick one:<ul><li>If they have less character points than the group, add one.</li><li>Choose a new ability or skillset for the Henchperson from the Secondary Character Rules.</li></ul>\"}",
+            "{\"key\":\"Agent\",\"type\":\"boolean\",\"label\":\"Agent\",\"initial\":\"\",\"hint\":\"\",\"description\":\"You have a specialist or informant ready to help. 1/session, you can get information about a situation from them.\"}"
           ]
         },
         {
           "key": "oneStepAhead",
-          "type": "html",
+          "type": "info",
           "label": "One Step Ahead",
-          "initial": "\"<p><strong>One Step Ahead:</strong> You may ask the GM for a hint about an NPC's emotional state or motivations. The GM must answer truthfully.</p><p>This represents your keen understanding of social dynamics and emotional manipulation.</p>\""
+          "description": "1/session, you may declare that a pre-existing plan is going to come into effect and define it in a flashback scene. Pick a single moving part to detail: an unexpected ally, a prepared escape route, a hidden piece of important equipment. Then roll your D4. On a 1, the GM adds an extra cost to the plan. On a 4, it works too well and the GM adds a complication.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "theGig",
-          "type": "html",
+          "type": "info",
           "label": "The Gig",
-          "initial": "\"<p><strong>The Gig:</strong> You have a regular performance venue or gig that provides you with income and social connections.</p><p>Work with your GM to define the venue, audience, and what you perform.</p>\""
+          "description": "If you have a captive audience and time to prepare and perform a dramatic ritual, set your D4 to 4 on your performance roll.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "fanbase",
-          "type": "html",
+          "type": "info",
           "label": "Fanbase",
-          "initial": "\"<p><strong>Fanbase:</strong> You have a dedicated following of fans who adore your performances.</p><p>Once per session, you can call upon your fans for assistance, information, or cover. The GM determines what help they can reasonably provide.</p>\""
+          "description": "Usually, your victims resent your influence once it's removed. Now, your victims instead feel euphoric and grateful for the experience until they next sleep. After that, they start to long for you to use the voice on them again.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "theGang",
-          "type": "html",
+          "type": "info",
           "label": "The Gang",
-          "initial": "\"<p><strong>The Gang:</strong> You have a crew of loyal followers who help you with your schemes.</p><p>The gang can perform simple tasks, provide backup, or cause distractions. Work with your GM to define the gang's capabilities and limitations.</p>\""
+          "description": "You have a small group of acolytes. None of them will have any stat above 2, but they're useful and hang on your every word even when you're not using The Voice.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "emotionalCapital",
-          "type": "html",
+          "type": "text",
           "label": "Emotional Capital",
-          "initial": "\"<p><strong>Emotional Capital:</strong> You've built up significant social influence and emotional connections.</p><p>Once per session, you can leverage your emotional capital to gain a significant favor, piece of information, or advantage in a social situation.</p>\""
+          "description": "The Dictator has enough influence in a major settlement that they can leverage almost complete control. Any time you want the city to do something, describe which contact you use to achieve it, and the GM will tell you what you'll have to owe them. If you agree, the city acts as you choose.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "carvingOutTheirHeart",
-          "type": "html",
+          "type": "info",
           "label": "Carving Out Their Heart",
-          "initial": "\"<p><strong>Carving Out Their Heart:</strong> You can use The Voice to permanently alter someone's emotional state or personality.</p><p>This is a powerful and dangerous ability. Work with your GM to determine the exact effects and consequences.</p>\""
+          "description": "When you use The Voice, declare this ability before rolling to make the influence permanent, unremovable even by you. This ability does not work on any of the Personas, and will void the protection gained from <b>Live at The Witch Trials</b>. if word gets out.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "portraitOfArtist",
           "type": "group",
           "label": "Portrait of the Artist as a Monster",
+          "description": "You can grow the claws to back up the personality. When you take this advance, define the monster lurking inside you (see p. 38). You can redefine your monster any time your self image of your \"monster\" changes.",
+          "hint": "",
           "fields": [
-            "{\"key\":\"description\",\"type\":\"html\",\"label\":\"Monster Form Description\",\"initial\":\"\",\"hint\":\"Describe your monstrous form when you fully embrace your power\"}",
-            "{\"key\":\"traits\",\"type\":\"multiSelect\",\"label\":\"Monster Traits (Pick 4)\",\"choices\":[\"Invulnerable to one common form of harm\",\"Attacks cause 2 Wounds (Special)\",\"Invulnerable to emotional control\",\"Can attack at range\",\"Health is 2x CON\",\"Can use The Voice silently with a glance\",\"Can fly\",\"Can pass through objects\",\"Can disguise its monstrous nature\"],\"initial\":[],\"hint\":\"Select exactly 4 traits for your monster form\"}"
+            "{\"key\":\"defineTheMonster\",\"type\":\"html\",\"label\":\"Define the monster lurking inside you:\",\"initial\":\"\",\"hint\":\"(see p. 38).\"}",
+            "{\"key\":\"monsterTraits\",\"type\":\"multiSelect\",\"label\":\"Pick four traits your monster has:\",\"choices\":[\"It's invulnerable to one common form of harm\",\"Its attacks have Special: this hit causes 2 Wounds\",\"It's invulnerable to emotional control\",\"It can attack at range\",\"Its Health is 2x Con\",\"It can use The Voice on anyone who makes eye contact, silently and with a glance\",\"It can fly\",\"It can pass through objects\",\"It can disguise its monstrous nature\"],\"initial\":[],\"hint\":\"\"}",
+            "{\"key\":\"monsterTransform\",\"type\":\"info\",\"label\":\"\",\"description\":\"When you transform, re-arrange your stats as you wish, set <b>Defence</b> to 1, and say what awful thing the monster wants to do. You remain in this form until you do that thing, are knocked unconscious, or take a full action and pass a <b>Difficulty</b> 2 <b>Wis</b> roll to talk yourself down. While in this monstrous form you may add D4 to any dice pool, as per <b>A Little Emotional Nudge</b>.\",\"hint\":\"\"}"
           ]
         },
         {
           "key": "powerBehindThrone",
           "type": "html",
           "label": "The Power Behind the Throne",
+          "description": "You have complete control of a major part of one of the Great Powers. Describe how you've compromised it.",
+          "hint": "",
           "initial": "\"\""
         },
         {
           "key": "greatDictator",
-          "type": "html",
+          "type": "info",
           "label": "The Great Dictator",
-          "initial": "\"<p><strong>The Great Dictator:</strong> You have achieved the pinnacle of your power as a Dictator.</p><p>You can now affect entire crowds or populations with your performances. The scope and scale of your emotional manipulation is limited only by your ambition and the GM's discretion.</p><p>However, your Tell becomes more pronounced, and the supernatural nature of your power is increasingly difficult to hide.</p>\""
+          "description": "You can target any number of beings with <b>Willpower 4 or less</b> with your performance, so long as they can clearly perceive it. If those in power learn you have this ability, lose the protection gained from <b>Live at The Witch Trials</b>.",
+          "hint": "",
+          "initial": "\"\""
         },
         {
           "key": "liveAtWitchTrialsChoice",
           "type": "select",
           "label": "Live at The Witch Trials (Level 4 Automatic)",
+          "description": "Your name has attracted a bounty and hunters. What have you done which most frightens people? Pick why you're still alive:",
+          "hint": "",
           "initial": "\"\"",
           "choices": [
             "You have a powerful patron",
@@ -217,6 +293,8 @@
           "key": "liveAtWitchTrialsDetails",
           "type": "html",
           "label": "Live at The Witch Trials - Details",
+          "description": "",
+          "hint": "",
           "initial": "\"\""
         }
       ]
@@ -240,7 +318,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106416668,
-    "modifiedTime": 1764478447011,
+    "modifiedTime": 1764809503324,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "s9T28vyKyEwQBYQf",

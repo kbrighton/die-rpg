@@ -136,6 +136,7 @@
       {{!-- <p class="hint">{{localize "DIE_RPG.UI.Hints.AdvancementFormsHint"}}</p> --}}
       <div class="advancement-forms">
         {{#each paragonItem.system.advancementForms.fields as |field|}}
+        <hr>
           {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
             field=field
             value=(lookup @root.actor.system.paragon.advancementData field.key)

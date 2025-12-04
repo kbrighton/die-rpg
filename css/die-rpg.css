@@ -1257,10 +1257,10 @@
 .die-rpg .multiselect-field .checkbox-group .checkbox-option:has(input:disabled) span {
   cursor: not-allowed;
 }
-.die-rpg .field-group .form-group h4 {
+.die-rpg .form-group h4 {
   margin: 20px 0 5px 0;
 }
-.die-rpg .field-group .form-group.checkbox-field label {
+.die-rpg .form-group.checkbox-field label {
   display: flex;
   align-items: center;
   gap: 5px;
