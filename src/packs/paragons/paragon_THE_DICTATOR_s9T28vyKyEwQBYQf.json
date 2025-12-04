@@ -3,7 +3,7 @@
   "type": "paragon",
   "img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20DICTATOR.webp",
   "system": {
-    "description": "",
+    "description": "<p><strong>CLASS DICE: D4</strong></p><h2>A Little Emotional Nudge</h2><p>When you have your D4 and could get an edge from subtle emotional manipulation, roll it as part of your dice pool and increase any other dice's result by its value.</p><hr /><p><em>You read a sad story. You cry. Do you think that's sinister, as if someone has artificially taken over your emotions? Of course not. That's just what art is.</em></p><p><em>Anyone who's ever met a Dictator would disagree.</em></p><p><em>By performing, they alter other people's emotional states. Dictators play people like a musician plays a harp. They can pluck the strings. They can snap them.</em></p><p><em>They're like bards, if everyone was fucking petrified of bards.</em></p><h2>Play a Dictator if you want to...</h2><ul><li>Be an artist whose performances warp others' emotions, and even create magical effects.</li><li>Use your imagination and creativity to work out exactly what your awful gift can do.</li><li>Be hated and feared for very good reasons.</li></ul>",
     "coreNature": "<p><em>You read a sad story. You cry. Do you think that's sinister, as if someone has artificially taken over your emotions? Of course not. That's just what art is.</em></p><p><em>Anyone who's ever met a Dictator would disagree.</em></p><p><em>By performing, they alter other people's emotional states. Dictators play people like a musician plays a harp. They can pluck the strings. They can snap them.</em></p><p><em>They're like bards, if everyone was fucking petrified of bards.</em></p><p><strong>PLAY A DICTATOR IF YOU WANT TO...</strong></p><ul><li>Be an artist whose performances warp others' emotions, and even create magical effects.</li><li>Use your imagination and creativity to work out exactly what your awful gift can do.</li><li>Be hated and feared for very good reasons.</li></ul>",
     "die": "d4",
     "importantStat": "cha",
@@ -318,7 +318,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106416668,
-    "modifiedTime": 1764809503324,
+    "modifiedTime": 1764819540057,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "s9T28vyKyEwQBYQf",
