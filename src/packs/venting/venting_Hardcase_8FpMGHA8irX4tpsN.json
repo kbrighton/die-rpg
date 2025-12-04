@@ -1,0 +1,29 @@
+{
+  "name": "Hardcase",
+  "type": "venting",
+  "img": "systems/die-rpg/assets/icons/shouting.svg",
+  "system": {
+    "description": "<p>Vent to make anyone human-sized think that if you fought, you would win.</p>",
+    "active": false
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "8FpMGHA8irX4tpsN",
+  "sort": 0,
+  "_key": "!items!8FpMGHA8irX4tpsN"
+}

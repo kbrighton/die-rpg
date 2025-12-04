@@ -1,0 +1,29 @@
+{
+  "name": "Duel",
+  "type": "venting",
+  "img": "systems/die-rpg/assets/icons/shouting.svg",
+  "system": {
+    "description": "<p>Target a single individual. They cannot attack anyone else until you say so, or until you're no longer a combatant.</p>",
+    "active": false
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "Oo1Ee781BVzBBtR1",
+  "sort": 0,
+  "_key": "!items!Oo1Ee781BVzBBtR1"
+}
