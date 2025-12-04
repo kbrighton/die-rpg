@@ -1,0 +1,82 @@
+{
+  "name": "The Fate God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>The embodiment of destiny. Perhaps solemn. Perhaps far more mischievous.</p>",
+    "title": "God of Destiny",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Prophecy",
+        "description": "<p>You get sharp visions of future events. Roll a <strong>Wis</strong> dice pool and count the successes. You can spend each success to add either an <strong>Advantage</strong> or <strong>Disadvantage</strong> to any roll for the rest of the encounter. You can spend no more than your level in the god on any one roll.</p>",
+        "specials": [
+          {
+            "name": "Add an extra success",
+            "description": "Per level in this god",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Tragic Fate",
+        "description": "<p>Ranged attack, single target, medium range. Give a vivid psychic vision of an awful fate. In addition to damage, target suffers a <strong>Disadvantage</strong> on all actions for the encounter from existential horror. Once per target per encounter.</p>",
+        "specials": [
+          {
+            "name": "You know what the vision was",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Avatar of Destiny",
+        "description": "<p>Commit yourself to the web of fate. For the encounter, your every action is what must happen. If your <strong>Wis</strong> is higher than your <strong>Dex</strong>, your maximum <strong>Guard</strong> equals your <strong>Wis</strong> and you set it to full. All your attacks gain:</p>",
+        "specials": [
+          {
+            "name": "This hit causes two hits",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Recover two Guard",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Suffer calamity, fall to zero Health",
+            "description": "",
+            "cost": "double",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "uKHV4yb5JeByyzQO",
+  "sort": 0,
+  "_key": "!items!uKHV4yb5JeByyzQO"
+}

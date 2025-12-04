@@ -1,0 +1,76 @@
+{
+  "name": "The Fire God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>A god of immolation, passion, destruction and perhaps invention.</p>",
+    "title": "God of Flame",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Fire Blast",
+        "description": "<p>Ranged attack, single target, medium range.</p>",
+        "specials": [
+          {
+            "name": "Ignite foe (1 Hit/round til extinguished)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Hit extra close target (up to god level)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Living Inferno",
+        "description": "<p>Transform target into a living inferno for the length of an encounter. Target is immune to flame damage and their attacks gain:</p>",
+        "specials": [
+          {
+            "name": "Ignite foe (1 Hit/round til extinguished)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Phoenix",
+        "description": "<p>Requires a dead body to cast. From it bursts an enormous flying bird, wreathed in a fire which only harms your enemies. Once it starts to fight, it lasts til the end of the encounter. The phoenix can carry the party. The phoenix has <strong>Str</strong> 3, <strong>Dex</strong> 3 and <strong>Health</strong> 3.</p>",
+        "specials": [
+          {
+            "name": "Ignite foe (1 Hit/round til extinguished)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "a6VO6eFYc2OS4ULn",
+  "sort": 0,
+  "_key": "!items!a6VO6eFYc2OS4ULn"
+}

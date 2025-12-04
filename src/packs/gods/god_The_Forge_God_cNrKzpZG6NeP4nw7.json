@@ -1,0 +1,70 @@
+{
+  "name": "The Forge God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>God of craft, technology and all those who work by their hands and their mind.</p>",
+    "title": "God of Craft",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: My Robot Friend",
+        "description": "<p>Summon a human-sized construct friend who can follow orders for an encounter. Casting again dispels previous. <strong>Robot Friend:</strong> All Stats 2, Guard 2, Health 2, Willpower 4, Defence 0. Cannot fight. Per level, pick upgrade: +1 Str/Con (max 4), Defence 1 (max 4), can fight, or invulnerable to a hazard.</p>",
+        "specials": [
+          {
+            "name": "Pick extra robot upgrade",
+            "description": "Per level in this god",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Divine Hammer",
+        "description": "<p>Summon a magical hammer for length of encounter. Ranged attack, single target, medium range. Uses <strong>Str</strong>. You can target your robot friend to heal instead of harm – each hit heals one Health.</p>",
+        "specials": [
+          {
+            "name": "Knock over target",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: My Robot Fiend",
+        "description": "<p>Expands <strong>My Robot Friend</strong> with new upgrade options: It can fly. Once per encounter, blast attacks everyone in a room at once. It's giant-sized (Health = 2x Con). It is an expert in a topic.</p>",
+        "specials": [
+          {
+            "name": "Ignite foe (1 Hit/round til extinguished)",
+            "description": "Robot blast attack",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "cNrKzpZG6NeP4nw7",
+  "sort": 0,
+  "_key": "!items!cNrKzpZG6NeP4nw7"
+}

@@ -1,0 +1,70 @@
+{
+  "name": "The Sea God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>A god of the ocean, in its stillness and its rage.</p>",
+    "title": "God of the Ocean",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: The Drowning",
+        "description": "<p>Ranged attack, single target, medium range. Fill the target's lungs with water. This spell can hit as many targets as you have levels in this god.</p>",
+        "specials": [
+          {
+            "name": "Bypass Guard, 2 Disadvantages next turn",
+            "description": "If target needs to breathe air",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Scale Armour",
+        "description": "<p>Summon the fish-scale armour of the knight of the sea. Remains until dawn; dismissing early gains 1 God Debt. Roll <strong>Wis</strong> pool; for every success, pick: If Defence is 0, increase to 1. Survive/walk on water. Attacks gain Special: electrocute (1 Disadvantage). Or pitch a minor water ability to GM.</p>",
+        "specials": [
+          {
+            "name": "Electrocute (1 Disadvantage next action)",
+            "description": "Attack special",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: The Great Flood",
+        "description": "<p>Waves crash in and water rapidly rises. On success, you walk on/through water freely; everyone else suffers 1 <strong>Disadvantage</strong>. Each turn choose: attack everyone with murderous fish, or attack single target with murderous fish.</p>",
+        "specials": [
+          {
+            "name": "Raise water (everyone gets 2nd Disadvantage)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "HERwOTQqAqw28E4I",
+  "sort": 0,
+  "_key": "!items!HERwOTQqAqw28E4I"
+}

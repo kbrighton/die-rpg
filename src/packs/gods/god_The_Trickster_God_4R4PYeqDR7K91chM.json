@@ -1,0 +1,94 @@
+{
+  "name": "The Trickster God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>For the smartest person in the room, the smartest god in the pantheon. Trouble.</p>",
+    "title": "God of Cunning",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: The Last Place You Look",
+        "description": "<p>Roll a <strong>Wis</strong> pool and gain +1 temporary <strong>Guard</strong> for each success, up to your levels in this god. If you recast the spell, lose all temporary Guard.</p>",
+        "specials": [
+          {
+            "name": "Gain extra temporary Guard",
+            "description": "Per level in this god",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Distraction",
+        "description": "<p>A catastrophic illusion startles everyone in a close area. Everyone except you suffers a <strong>Disadvantage</strong>.</p>",
+        "specials": [
+          {
+            "name": "Specific individual leaves safely unobserved",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Backstab",
+        "description": "<p>Must be cast whilst holding a symbolic, prepared dagger. If a target is unaware of your presence or has an unguarded back, your next attack gains:</p>",
+        "specials": [
+          {
+            "name": "This hit bypasses Guard",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "All hits in attack bypass Guard",
+            "description": "",
+            "cost": "double",
+            "mandatory": false
+          },
+          {
+            "name": "Enemies now unaware of your presence",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Learn one secret of the target",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Someone close betrays target within a week",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "4R4PYeqDR7K91chM",
+  "sort": 0,
+  "_key": "!items!4R4PYeqDR7K91chM"
+}

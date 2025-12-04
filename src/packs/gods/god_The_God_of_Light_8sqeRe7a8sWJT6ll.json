@@ -1,0 +1,88 @@
+{
+  "name": "The God of Light",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>The classic god of healing and protection, though \"caring\" need not mean \"kind\".</p>",
+    "title": "God of Healing and Protection",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Healing Light",
+        "description": "<p>Heal a target within a short distance. 1 <strong>Health</strong> healed per success, up to your level in this god.</p>",
+        "specials": [
+          {
+            "name": "1 extra Health healed",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Disadvantage to attackers for encounter",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Advantage vs creatures of darkness",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Bless",
+        "description": "<p>For each success you roll, bless a nearby target. For this encounter, all attempts to attack the target(s) suffer a <strong>Disadvantage</strong>, and their attacks gain:</p>",
+        "specials": [
+          {
+            "name": "Double Wounds vs creatures of darkness",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Divine Light",
+        "description": "<p>Ranged attack, single target, far range.</p>",
+        "specials": [
+          {
+            "name": "Blind opponent (2+ Disadvantages)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "If Wounds, deal two instead",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "8sqeRe7a8sWJT6ll",
+  "sort": 0,
+  "_key": "!items!8sqeRe7a8sWJT6ll"
+}

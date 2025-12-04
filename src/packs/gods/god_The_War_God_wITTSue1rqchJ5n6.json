@@ -1,0 +1,106 @@
+{
+  "name": "The War God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>There are no atheists in trenches.</p>",
+    "title": "God of Battle",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Enchanted Weapon",
+        "description": "<p>Choose one weapon you are holding. It gains an <strong>Advantage</strong> on attacks until the end of the encounter.</p>",
+        "specials": [
+          {
+            "name": "Ridiculously powerful-looking blast",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Angelic choirs sing as you strike",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "You look absolutely amazing",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: The Right Stuff",
+        "description": "<p>Once per encounter, gain combat wisdom by rolling a <strong>Wis</strong> pool and counting successes. Spend each to add specials to any allied target's roll after they roll:</p>",
+        "specials": [
+          {
+            "name": "Add extra success (per god level)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Add extra success to ally roll",
+            "description": "Spend 1 success",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Ally recovers 1 Guard",
+            "description": "Spend 1 success",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Ally recovers 1 Health",
+            "description": "Spend 1 success",
+            "cost": "double",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Godly Frenzy",
+        "description": "<p>Let slip the gods of war. Gain temporary extra <strong>Health</strong> equal to your level in this god. All your attacks gain:</p>",
+        "specials": [
+          {
+            "name": "If Wounds, deal two instead",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Attack hits friendly target",
+            "description": "",
+            "cost": "triple",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "wITTSue1rqchJ5n6",
+  "sort": 0,
+  "_key": "!items!wITTSue1rqchJ5n6"
+}

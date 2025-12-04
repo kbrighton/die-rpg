@@ -1,0 +1,76 @@
+{
+  "name": "The Eldritch God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>A god beyond our imaginations, wrapping their cold tentacles around existence. Its believers tend to end up dead. Be careful.</p>",
+    "title": "God of the Abyss",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Sacrificial Knife",
+        "description": "<p>Summon an unholy blade of eldritch design. To use, inflict a <strong>Wound</strong> on yourself and gain a number of <strong>Advantages</strong> equal to your level in the god on your attack.</p>",
+        "specials": [
+          {
+            "name": "If kills living target, remove 1 debt",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Frenzy of the Abyss-Touched",
+        "description": "<p>Begin chanting an awful liturgy. Everyone that joins in gets: Advantage on all attacks, temporary Health equal to their Con, lose all Guard.</p>",
+        "specials": [
+          {
+            "name": "Remove 1 debt, give participant 1 debt",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Summon Abomination",
+        "description": "<p>With a fresh corpse killed with the Sacrificial Knife, summon an abomination until dawn. For every success, describe an aspect and its capabilities. It has <strong>Str</strong> 4, <strong>Con</strong> 4 and <strong>Health</strong> 4.</p>",
+        "specials": [
+          {
+            "name": "Target falls catatonic",
+            "description": "",
+            "cost": "double",
+            "mandatory": false
+          },
+          {
+            "name": "Abomination breaks free of control",
+            "description": "",
+            "cost": "triple",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "KKGe4JKjI09h62nm",
+  "sort": 0,
+  "_key": "!items!KKGe4JKjI09h62nm"
+}

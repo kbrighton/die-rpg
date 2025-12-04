@@ -1,0 +1,63 @@
+{
+  "name": "The God of Excess",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>A god of inebriation, delight, sensuality and pure, impure hedonism.</p>",
+    "title": "God of Hedonism",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Party Hard",
+        "description": "<p>Target feels a supernatural high. For every level in this god, you can affect an extra target. Choose one effect for all targets: attacks on them gain Disadvantage (numbed pain), their close combat attacks get Advantage (adrenaline), or they can see the unseen.</p>",
+        "specials": [
+          {
+            "name": "I don't feel so good (lose bonus, Disadvantage)",
+            "description": "",
+            "cost": "double",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Blackout Drunk",
+        "description": "<p>Make all mortal human-sized or smaller individuals within close range of a point fall asleep. Roll your <strong>Wis</strong> pool and compare successes to each target's highest Stat. If you match or exceed the target's score, they fall asleep. When roused, they suffer a <strong>Disadvantage</strong> on all actions from the headache.</p>",
+        "specials": []
+      },
+      {
+        "name": "Level 3: Higher State of Consciousness",
+        "description": "<p>Alter your mental bounds of perception. On a success: you're intangible, invulnerable to physical attacks, can fly, and can attack psychically using <strong>Wis</strong>.</p>",
+        "specials": [
+          {
+            "name": "Ask GM a question (faux-profound answer)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "RQ2ctFwWKS1GRH7F",
+  "sort": 0,
+  "_key": "!items!RQ2ctFwWKS1GRH7F"
+}

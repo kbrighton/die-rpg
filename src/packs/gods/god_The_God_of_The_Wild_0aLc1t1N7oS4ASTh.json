@@ -1,0 +1,56 @@
+{
+  "name": "The God of The Wild",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>A god of animals, plantlife and all things druidic.</p>",
+    "title": "God of Nature",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Furious Briars",
+        "description": "<p>Create an area of aggressive plant life which attacks all enemies within close range of you every round for the rest of the encounter, dealing 1 damage per success up to your level in this god. You can move freely through the area.</p>",
+        "specials": [
+          {
+            "name": "Immobilize target (Str test to break free)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Summon Beast",
+        "description": "<p>Summon a beast that lives in the habitat you're presently in. It obeys you for an encounter. The beast's stats all begin at two. For every success you roll, increase a stat by one, up to your level in this god.</p>",
+        "specials": []
+      },
+      {
+        "name": "Level 3: Animal Form",
+        "description": "<p>Transform into a hulking beast of your choice. You gain temporary <strong>Health</strong> equal to the successes rolled. If your <strong>Wis</strong> is lower than your <strong>Str</strong>, your <strong>Str</strong> is temporarily increased to match. You can revert at will.</p>",
+        "specials": []
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "0aLc1t1N7oS4ASTh",
+  "sort": 0,
+  "_key": "!items!0aLc1t1N7oS4ASTh"
+}

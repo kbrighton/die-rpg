@@ -1,0 +1,69 @@
+{
+  "name": "The Underworld God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>Some death gods are loving. Some are hateful. They each have a place for us all.</p>",
+    "title": "God of Death",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: The Skeletons",
+        "description": "<p>For every success, summon one stop-motion skeleton or similar bone-construct per level in this god. All their stats are 2, and they have <strong>Health</strong> 2, <strong>Guard</strong> 0 and <strong>Defence</strong> 0. They follow your orders, but are otherwise non-sentient. Casting the Scripture again will destroy all skeletons from a previous casting.</p>",
+        "specials": []
+      },
+      {
+        "name": "Level 2: The Reaper",
+        "description": "<p>Summon a weapon of bone and death. Decide its look. Choose whether it attacks in melee (with either <strong>Str</strong> or <strong>Dex</strong>) or ranged (with <strong>Dex</strong>, <strong>Int</strong> or <strong>Wis</strong>). Gain <strong>Advantage</strong> on all attacks with this weapon and on any attempts to intimidate living beings.</p>",
+        "specials": [
+          {
+            "name": "If Wounds, heal 1 Health to any target",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "If Wounds, deal two instead",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 3: The Bell Tolls",
+        "description": "<p>Requires a bell or similar object. When rung, roll a <strong>Wis</strong> dice pool and use it to attack everyone within earshot except the Godbinder.</p>",
+        "specials": [
+          {
+            "name": "Stun target for 1 round (existential horror)",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "Q5MZd7BPuaQWbIpX",
+  "sort": 0,
+  "_key": "!items!Q5MZd7BPuaQWbIpX"
+}

@@ -1,0 +1,88 @@
+{
+  "name": "The Storm God",
+  "type": "god",
+  "img": "systems/die-rpg/assets/icons/hand-of-god.svg",
+  "system": {
+    "description": "<p>The elements unleashed, raging, and somewhat paternalistic.</p>",
+    "title": "God of Thunder",
+    "level": 1,
+    "trust": 0,
+    "debt": 0,
+    "scriptures": [
+      {
+        "name": "Level 1: Lightning Blast",
+        "description": "<p>Ranged attack, single target, long range. Can attack one target for each of your levels in this god.</p>",
+        "specials": [
+          {
+            "name": "Target suffers Disadvantage on next action",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "name": "Level 2: Stormdancer",
+        "description": "<p>If you're beneath a cloudy sky, you and the party are transformed into lightning bolts and propelled in the sky. You return to the earth at a place of your choosing, anywhere beneath the same sky.</p>",
+        "specials": [
+          {
+            "name": "GM answers question about land below",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Someone's hair stands vertical all day",
+            "description": "",
+            "cost": "special",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "name": "Level 3: Summon Lightning",
+        "description": "<p>When in an area with a storm, you can attack with a huge lightning strike.</p>",
+        "specials": [
+          {
+            "name": "If Wounds, deal two instead",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "Additional nearby target is hit",
+            "description": "",
+            "cost": "special",
+            "mandatory": false
+          },
+          {
+            "name": "If Wounds, deal two Wounds instead",
+            "description": "",
+            "cost": "double",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1764106396710,
+    "modifiedTime": 1764106398546,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "o4Spjz5dp2peEP1s",
+  "sort": 0,
+  "_key": "!items!o4Spjz5dp2peEP1s"
+}
