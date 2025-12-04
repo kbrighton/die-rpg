@@ -106,16 +106,14 @@
 
 {{else if (eq field.type "itemList")}}
   {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
-  {{#with (filterItemsByType actor.items field.itemType) as |filteredItems|}}
-    {{> "systems/die-rpg/templates/partials/item-list.hbs"
-        items=filteredItems
-        label=../field.label
-        itemType=../field.itemType
-        showCheckboxes=true
-        checkboxPath=../path
-        selectedUUIDs=../value
-        editable=../editable}}
-  {{/with}}
+  {{> "systems/die-rpg/templates/partials/item-list.hbs"
+      items=(filterItemsByType actor.items field.itemType)
+      label=field.label
+      itemType=field.itemType
+      showCheckboxes=true
+      checkboxPath=path
+      selectedUUIDs=value
+      editable=editable}}
   {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
 
 {{else if (eq field.type "group")}}

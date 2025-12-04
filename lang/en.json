@@ -546,8 +546,8 @@
 						"HTMLFieldHeading": "HTML Editor",
 						"InfoFieldHeading": "Info (Read-only Display)",
 						"GroupFieldHeading": "Group (Nested Fields)",
-						"ItemListFieldHeading": "Item List (Future)",
-						"SpecialFieldHeading": "Special Reference (Future)"
+						"ItemListFieldHeading": "Item List",
+						"SpecialFieldHeading": "Special Reference"
 					},
 					"ValidationTip": {
 						"TipLabel": "Tip:",
