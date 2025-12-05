@@ -21,7 +21,7 @@
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
     {{> "systems/die-rpg/templates/partials/number-spinner.hbs"
       name=path
-      label="Number of times taken:"
+      label=field.numberLabel
       value=value
       min=field.min
       max=field.max

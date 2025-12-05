@@ -156,7 +156,7 @@
           "label": "The Tell - Custom Description",
           "description": "",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "thePerformance",
@@ -205,7 +205,7 @@
           "label": "One Step Ahead",
           "description": "1/session, you may declare that a pre-existing plan is going to come into effect and define it in a flashback scene. Pick a single moving part to detail: an unexpected ally, a prepared escape route, a hidden piece of important equipment. Then roll your D4. On a 1, the GM adds an extra cost to the plan. On a 4, it works too well and the GM adds a complication.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "theGig",
@@ -213,7 +213,7 @@
           "label": "The Gig",
           "description": "If you have a captive audience and time to prepare and perform a dramatic ritual, set your D4 to 4 on your performance roll.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "fanbase",
@@ -221,7 +221,7 @@
           "label": "Fanbase",
           "description": "Usually, your victims resent your influence once it's removed. Now, your victims instead feel euphoric and grateful for the experience until they next sleep. After that, they start to long for you to use the voice on them again.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "theGang",
@@ -229,7 +229,7 @@
           "label": "The Gang",
           "description": "You have a small group of acolytes. None of them will have any stat above 2, but they're useful and hang on your every word even when you're not using The Voice.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "emotionalCapital",
@@ -237,7 +237,7 @@
           "label": "Emotional Capital",
           "description": "The Dictator has enough influence in a major settlement that they can leverage almost complete control. Any time you want the city to do something, describe which contact you use to achieve it, and the GM will tell you what you'll have to owe them. If you agree, the city acts as you choose.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "carvingOutTheirHeart",
@@ -245,7 +245,7 @@
           "label": "Carving Out Their Heart",
           "description": "When you use The Voice, declare this ability before rolling to make the influence permanent, unremovable even by you. This ability does not work on any of the Personas, and will void the protection gained from <b>Live at The Witch Trials</b>. if word gets out.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "portraitOfArtist",
@@ -265,7 +265,7 @@
           "label": "The Power Behind the Throne",
           "description": "You have complete control of a major part of one of the Great Powers. Describe how you've compromised it.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "greatDictator",
@@ -273,7 +273,7 @@
           "label": "The Great Dictator",
           "description": "You can target any number of beings with <b>Willpower 4 or less</b> with your performance, so long as they can clearly perceive it. If those in power learn you have this ability, lose the protection gained from <b>Live at The Witch Trials</b>.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "liveAtWitchTrialsChoice",
@@ -281,7 +281,7 @@
           "label": "Live at The Witch Trials (Level 4 Automatic)",
           "description": "Your name has attracted a bounty and hunters. What have you done which most frightens people? Pick why you're still alive:",
           "hint": "",
-          "initial": "\"\"",
+          "initial": "",
           "choices": [
             "You have a powerful patron",
             "You've joined a licensed organisation",
@@ -295,7 +295,7 @@
           "label": "Live at The Witch Trials - Details",
           "description": "",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         }
       ]
     },

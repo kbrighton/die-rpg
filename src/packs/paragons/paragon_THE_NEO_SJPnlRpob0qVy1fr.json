@@ -115,8 +115,8 @@
           "key": "fairGold",
           "type": "number",
           "label": "Fair Gold",
-          "description": "<p><strong>Fair Gold</strong> is the techno-magical fuel which powers your gifts. It takes the form of small coins, most commonly found in the corpses of Fallen. Your AI will tell you if any Fair Gold is nearby.</p><p>A single piece of Fair Gold will activate one of your gifts (and its upgrades) until the following Dawn.</p>",
-          "hint": "Track how many Fair Gold you possess. They disappear at dawn.",
+          "description": "<p>Keep track of how many <strong>Fair Gold</strong> you possess. They'll disappear at dawn.</p><p><strong>Fair Gold</strong> is the techno-magical fuel which powers your gifts. It takes the form of small coins, most commonly found in the corpses of Fallen, but you will find other sources. Your AI will tell you if any <strong>Fair Gold</strong> is nearby.</p><p>A single piece of <strong>Fair Gold</strong> will activate one of your gifts (and its upgrades) until the following Dawn, including any of its upgrades. Each Neo has a slot on their body where they can insert the coin – normally the neck, but you may vary.</p>",
+          "hint": "",
           "initial": "0"
         },
         {
@@ -139,7 +139,7 @@
           "key": "selectedGifts",
           "type": "itemList",
           "label": "Gifts of the Fair",
-          "description": "<p>Select one technomagical gift when creating your Neo, and one of its upgrades. You can only take a single upgrade marked <strong>Defensive</strong> unless an advancement says otherwise.</p>",
+          "description": "<p>The Neo has access to otherworldly cyberpunk technology—robotic limbs, loyal automatons, smart weapons, and more—known as gifts. When creating your Neo, select one technomagical gift from the Gifts sheet, and one of its upgrades.</p><p>Gifts all have narrative effects in addition to mechanical ones; they allow you to perform suitable associated tasks. A jetpack lets you fly. A teleporter lets you teleport.</p><p>You can only take a single upgrade marked <strong>Defensive</strong> unless an advancement says otherwise. If not stated otherwise, Upgrades can be picked multiple times.</p>",
           "hint": "",
           "initial": "[]",
           "itemType": "gift"
@@ -154,7 +154,7 @@
           "label": "New Gift",
           "description": "You acquire another gift of the Fair. How did you get it? Choose one: gain a new Gift, or Upgrade an existing Gift.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "upgrade",
@@ -162,7 +162,7 @@
           "label": "Upgrade",
           "description": "You're getting better at harnessing your gifts. Pick an extra upgrade on one of them.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "goldSource",
@@ -170,18 +170,18 @@
           "label": "Gold Source",
           "description": "At the start of each day, you receive one <strong>Fair Gold</strong> via a reasonably safe method. What is it?",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "sickAssRide",
           "type": "group",
           "label": "Sick-Ass Ride",
-          "description": "You can create, summon or otherwise generate a vehicle that can transport the rest of the party, and a couple of friends. When in this form, you travel as fast as a horse.",
+          "description": "<p>You can create, summon or otherwise generate a vehicle that can transport the rest of the party, and a couple of friends. When in this form, you travel as fast as a horse.</p><p>When you pick this ability, you can choose one of the following upgrades. Any time you choose an upgrade from now on, you can upgrade your <strong>SICK-ASS RIDE</strong> instead.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"rideAppearance\",\"type\":\"select\",\"label\":\"What does it look like?\",\"choices\":[\"1950s sci-fi, all chrome\",\"2010s heavy-duty serious tech\",\"2070s bleeding-edge cyberpunk\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
             "{\"key\":\"rideOrigin\",\"type\":\"select\",\"label\":\"Where does it come from?\",\"choices\":[\"You summon it\",\"It emerges from your body\",\"You transform into it\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"rideUpgrades\",\"type\":\"multiSelect\",\"label\":\"Ride Upgrades\",\"choices\":[\"It can travel underwater\",\"It can travel in a vacuum\",\"It can carry another party's worth of people\",\"The engine is silent\",\"It can reach orbit\",\"It can fly (double speed each time taken)\"],\"initial\":[],\"hint\":\"Pick one when you take this advancement. Any time you choose an upgrade, you can upgrade your ride instead.\",\"description\":\"\"}"
+            "{\"key\":\"rideUpgrades\",\"type\":\"multiSelect\",\"label\":\"Ride Upgrades\",\"choices\":[\"It can travel underwater\",\"It can travel in a vacuum\",\"It can carry another party's worth of people\",\"The engine is silent\",\"It can reach orbit\",\"It can fly at the speed of the fastest airborne creature in the world. Every time you take this, double its speed.\"],\"initial\":[],\"hint\":\"\",\"description\":\"\"}"
           ]
         },
         {
@@ -199,10 +199,10 @@
           "key": "theBigScore",
           "type": "group",
           "label": "The Big Score",
-          "description": "You have become aware of how to rip off an entity for <strong>Fair Gold</strong>. You gain 2 gold every morning as long as you keep up the con or racket. Once a session, the GM can tweak the plot to show the difficulties of maintaining the enterprise.",
+          "description": "<p>You have become aware of how to rip off an entity for <strong>Fair Gold</strong>. You gain 2 gold every morning as long as you keep up the con or racket. Once a session, the GM can tweak the plot to show the difficulties of maintaining the enterprise.</p><p>If your Big Score is discovered, you lose the gold income until you can re-establish the scheme - or start a new one.</p>",
           "hint": "",
           "fields": [
-            "{\"key\":\"theCon\",\"type\":\"select\",\"label\":\"What's the con?\",\"choices\":[\"Skimming Fair Gold from the local Neo Guild\",\"Convinced a cult their god wants Fair Gold offerings\",\"Found the back door to a Reality Mine\",\"Running a fake protection scheme (Mayfly Dragon)\",\"Running a Pyramid scheme (eternal-life-guaranteed)\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
+            "{\"key\":\"theCon\",\"type\":\"select\",\"label\":\"What's the con?\",\"choices\":[\"You've skimming Fair Gold from the local Neo Guild\",\"You've convinced a cult that their god wants them to offer up Fair Gold\",\"You've found the back door to a Reality Mine\",\"You're running a fake protection scheme, where people think they're paying off a Mayfly Dragon\",\"You're running a Pyramid scheme where people think they're buying their very own eternal-life-guaranteed pyramid\",\"Something Else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         },
         {
@@ -211,17 +211,17 @@
           "label": "Hackromancer",
           "description": "The Neo gains the ability to create a beacon that gathers Fallen. When the beacon is activated with a piece of <strong>Fair Gold</strong>, it is as if the heavens opened and a biblical flood of Fallen fell upon the land. You do not control these Fallen.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "deusExMachina",
           "type": "group",
           "label": "Deus Ex Machina",
-          "description": "You have gained access to a god-machine, capable of miraculous feats. It can do one impossible thing, but not before it's fuelled by an impossibly rare material. When activated, it will achieve what it does, and then consuming its fuel and shut down.",
+          "description": "<p>You have gained access to a god-machine, capable of miraculous feats. It can do one impossible thing, but not before it's fuelled by an impossibly rare material. When activated, it will achieve what it does, and then consuming its fuel and shut down.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"machineForm\",\"type\":\"select\",\"label\":\"What form is it?\",\"choices\":[\"A deserted, confused spaceship\",\"A Mecha suit missing a limb\",\"A naive pet AI-God\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"machinePower\",\"type\":\"select\",\"label\":\"What powers it?\",\"choices\":[\"Fair Gold purified by a difficult, obscure method\",\"A bottled aspect of a god\",\"The possibility of one of your dreams ever being real\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
+            "{\"key\":\"machinePower\",\"type\":\"select\",\"label\":\"What powers it?\",\"choices\":[\"Fair Gold purified and distilled by a difficult, obscure method\",\"A bottled aspect of a god\",\"The possibility of one of your dreams ever being real\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         },
         {
@@ -230,17 +230,17 @@
           "label": "Chosen of the Fair",
           "description": "You gain a special relationship with the Fair, and are able to come to an understanding with them—at least, as much as anyone can understand the Fair. Reselect your gifts and upgrades in a burst of apotheosis. You gain the ability to summon the Fair once a session with a strange ritual.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "interestingDecision",
           "type": "group",
           "label": "An Interesting Decision (Level 10)",
-          "description": "You are confronted by two of the Fair. They explain that you're a creature of both worlds, perfectly balanced between the two. They offer you a gift with uncertain consequences.",
+          "description": "<p>You are confronted by two of the Fair. They explain that you're a creature of both worlds, perfectly balanced between the two. As such, the Fair will give you an interesting decision – to accept a gift or not. One Fair says that if they take the gift, if they leave Die and return to reality, there will be no consequences. The other says that if they take the gift, if they leave Die and return to reality, they will suffer a consequence as a result of this decision. You may then choose to accept the gift or not.</p><p>It is an interesting decision.</p><p>If you accept, gain access to a single gift with an upgrade of your choice. If not, you get nothing. Whatever your choice, you gain the ability to have a second <strong>Defensive</strong> upgrade.</p><p>If you return to Earth, roll a D10. If it's <strong>even</strong>, the first Fair was correct and you suffer no consequences. On an <strong>odd</strong> number, the second Fair was correct, and you suffer a consequence from having accepted this gift.</p>",
           "hint": "",
           "fields": [
-            "{\"key\":\"acceptedGift\",\"type\":\"boolean\",\"label\":\"Accepted the gift?\",\"initial\":false,\"hint\":\"If accepted, gain a gift with an upgrade. Either way, gain ability to have a second Defensive upgrade.\",\"description\":\"\"}",
-            "{\"key\":\"level10Gift\",\"type\":\"text\",\"label\":\"Gift & Upgrade chosen\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
+            "{\"key\":\"acceptedGift\",\"type\":\"boolean\",\"label\":\"Accepted the gift?\",\"initial\":false,\"hint\":\"\",\"description\":\"\"}",
+            "{\"key\":\"level10Gift\",\"type\":\"text\",\"label\":\"Gift & Upgrade chosen (if accepted)\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         }
       ]

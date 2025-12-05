@@ -136,7 +136,7 @@
           "label": "Your Trade",
           "description": "<p>Choose your trade. This determines additional equipment and abilities.</p>",
           "hint": "",
-          "initial": "\"\"",
+          "initial": "",
           "choices": [
             "Swashbuckler - Extra equipment option",
             "Trickster Wizard - Cast minor spells (Cha pool)",
@@ -193,18 +193,18 @@
           "key": "clownSchool",
           "type": "multiSelect",
           "label": "A Trip to Clown School",
-          "description": "Pick tricks you've learned to use (and abuse) your luck:",
+          "description": "<p>Along the way, a Fool picks up a few specialised tricks in how to use (and abuse) their luck.</p>",
           "hint": "",
           "initial": "[]",
           "choices": [
-            "LOVE FOOL - Auto-succeed for love (1/session)",
-            "FOOLS RUSH IN - Lose all Guard for first action",
-            "FOOL'S PREP - Declare needed item, add cross to get it",
-            "OH, IGNORE THAT FOOL - Add cross to be underestimated",
-            "FOOL'S GOLD - Add cross to know what someone wants",
-            "NEVER TELL ME THE ODDS - Never lose games of chance",
-            "FOOL'S CHARM - Add cross for instant trust",
-            "LUCKY RABBIT'S FOOT - Foolhardy act adds circle"
+            "LOVE FOOL - Once per session, you get the minimum number of successes needed to achieve a task, so long as you do it for love. Your actions should involve a protestation of adoration, especially as you don't have to be in love until this very moment. Once you've fallen in love, roleplay this until the narrative leads you to get over it.",
+            "FOOLS RUSH IN - If you start a combat with Guard, you can lose it all to take a single action before anyone else.",
+            "FOOL'S PREP - Once per session, declare an item you need. If you add a cross to your dice, you get it immediately.",
+            "OH, IGNORE THAT FOOL - Add a cross to your dice to make someone drastically underestimate or ignore the Fool in a situation when they really shouldn't.",
+            "FOOL'S GOLD - Add a cross to your dice to know what dumb, surprising thing someone you're talking to really wants.",
+            "NEVER TELL ME THE ODDS - In any normal game of chance, you never lose. If your opponents are cheating (magical or otherwise), add a cross to your dice to win anyway.",
+            "FOOL'S CHARM - Add a cross to your dice to make someone trust in you for just a moment, or to have everyone laugh off a social faux pas you just made.",
+            "LUCKY RABBIT'S FOOT - There's something foolhardy you can do to increase your luck. Once per encounter, choose one of the following actions and add a circle to your dice: Take a drink at a dramatic moment. Joke at someone who seems more powerful than you. Break into a rousing song. Say a catchphrase at the exact right moment. Collaborate with GM to create your own."
           ]
         },
         {
@@ -224,7 +224,7 @@
           "label": "Clean Slate",
           "description": "Between scenarios you may delete all circles and crosses from the dice, and add a single circle. When you do so, describe what your Fool does to blow off steam.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "jackOfAllTrades",
@@ -232,7 +232,7 @@
           "label": "Jack of All Trades",
           "description": "Select a second Trade and gain all bonuses/equipment from it:",
           "hint": "",
-          "initial": "\"\"",
+          "initial": "",
           "choices": [
             "Swashbuckler",
             "Trickster Wizard",
@@ -246,34 +246,34 @@
           "key": "stupidPlan",
           "type": "info",
           "label": "It's A Stupid Plan... But It Just Might Work",
-          "description": "1/session, add a cross to automatically pass a roll with minimum successes. The plan must be highly unlikely and foolish. If it doesn't make the table think \"That'll never work,\" it isn't foolish enough.",
+          "description": "<p>1/session, add a cross to the Fool's dice to automatically pass a single roll with the minimum number of successes required. The roll has to follow your plan to the letter, and the plan has to be highly unlikely and maybe even foolish. If it doesn't make the table think \"That'll never work,\" it isn't foolish enough.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "pushingIt",
           "type": "info",
           "label": "Pushing It",
-          "description": "Like Stupid Plan, describe a foolish plan and add a cross, then roll. If you don't roll a cross, the plan succeeds. If you roll a cross, the plan goes desperately wrong - GM describes how (could include serious loss or death of friendly characters).",
+          "description": "<p>As in <strong>It's A Stupid Plan... But It Just Might Work</strong>, you must describe and then follow a foolish and unlikely plan and then add a cross to your D6. Unlike that advance, then you roll it.</p><p>If you don't roll a cross, the plan succeeds with the minimum number of successes required.</p><p>If you roll a cross, the plan goes desperately wrong. The GM will describe how. It could include serious loss of resources or the incapacitation (or even death) of friendly characters.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "theGig",
           "type": "info",
           "label": "The Gig",
-          "description": "If you have a captive audience and time to prepare and perform a dramatic ritual, set your D6 to 6 on your performance roll.",
+          "description": "<p><em>Note: This advancement appears in the Fool's advancement map but has no description in the source material. It may share a name with the Dictator's \"The Gig\" but has different effects for the Fool.</em></p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "kingForADay",
           "type": "group",
           "label": "King for a Day",
-          "description": "Take over a whole Great Power (Empire, kingdom, guild) for the current adventure.",
+          "description": "<p>You can take over a whole Great Power in the world: an Empire, a kingdom, a guild or similar. Describe how you managed to take power momentarily, and describe what endeavour they will undertake. This dominion lasts for the current adventure.</p><p>Your first use is free. To use this again, you must first add a cross to your dice that can never be erased.</p>",
           "hint": "",
           "fields": [
-            "{\"key\":\"kingdomTaken\",\"type\":\"html\",\"label\":\"How did you take power?\",\"initial\":\"\",\"hint\":\"First use is free. Additional uses require adding a permanent cross.\",\"description\":\"\"}",
+            "{\"key\":\"kingdomTaken\",\"type\":\"html\",\"label\":\"How did you take power?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
             "{\"key\":\"permanentCrosses\",\"type\":\"number\",\"label\":\"Permanent Crosses (can never be erased)\",\"initial\":0,\"hint\":\"\",\"description\":\"\"}"
           ]
         },
@@ -281,34 +281,34 @@
           "key": "clownshow",
           "type": "info",
           "label": "Clownshow",
-          "description": "1/session, say \"This is turning into a total clownshow\". For the rest of the encounter, any time anyone fails a roll, an unfortunate event happens to them (or those near them). Friends, enemies, everyone. The Fool is not immune.",
+          "description": "<p>1/session, you can say \"This is turning into a total clownshow\". For the rest of the encounter, any time anyone fails a roll, it has the same effects as if you had rolled a cross: an unfortunate event happens to them (or those near them). Friends, enemies, everyone. It should be stressed: the Fool is not immune to this.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "holyFool",
           "type": "info",
           "label": "Holy Fool",
-          "description": "Whenever you act with kindness and altruism, you can add your D6 to the pool. If you ever take Don't Give A Fuck, lose this ability.",
+          "description": "<p>Whenever you act with kindness and altruism, you can add your D6 to the pool.</p><p>If you ever take <strong>Don't Give A Fuck</strong>, lose this ability.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "dontGiveAFuck",
           "type": "info",
           "label": "Don't Give a Fuck",
-          "description": "You're never directly affected negatively by any unfortunate fallout of your abilities (Flukes, If All Else Fails, Pushing It). Any bad luck will only ever hurt people around you. If you ever take Holy Fool, lose this ability.",
+          "description": "<p>You're never directly affected negatively by any unfortunate fallout of your abilities, (e.g. <strong>Flukes</strong>, <strong>If All Else Fails</strong>, <strong>Pushing It</strong>). Any bad luck will only ever hurt people around you.</p><p>If you ever take <strong>Holy Fool</strong>, lose this ability.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "luckyBreak",
           "type": "group",
           "label": "Lucky Break (Level 6)",
-          "description": "The GM offers something you want/need with a consequence if you agree.",
+          "description": "<p>The Fool gets a lucky break! The GM offers you something you really want or need. <em>The location of an enemy, a secret route to a difficult destination, Nirvana's fourth album from a dimension where Cobain lived...</em></p><p>They then describe the likely consequence if you agree. <em>Your enemy will know where you are, a friendly stronghold will come under threat, you'll anger the vengeful god of Grunge...</em></p><p>If you take the risk, roll the Fool dice:</p><ul><li>If you roll a <strong>circle</strong>, you get it for free.</li><li>If you roll a <strong>cross</strong>, you don't get it, and get the consequence.</li><li>If you roll <strong>anything else</strong>, you get both what you want <em>and</em> the consequence.</li></ul>",
           "hint": "",
           "fields": [
-            "{\"key\":\"luckyBreakDescription\",\"type\":\"html\",\"label\":\"What happened?\",\"initial\":\"\",\"hint\":\"Circle = free. Cross = consequence only. Other = both.\",\"description\":\"\"}"
+            "{\"key\":\"luckyBreakDescription\",\"type\":\"html\",\"label\":\"What happened?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         }
       ]

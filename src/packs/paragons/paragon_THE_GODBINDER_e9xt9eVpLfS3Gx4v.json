@@ -129,7 +129,7 @@
           "label": "God Debt",
           "description": "",
           "hint": "",
-          "initial": "\"<p><strong>God Debt</strong> determines whether you owe a god, or a god owes you. For each god, you can accrue up to 5 <strong>God Debt</strong>. You may also be in credit to a god up to -5 <strong>God Debt</strong>.</p><p><strong>God Debt</strong> can be called at any time it's positive, with the god requesting a task of you:</p><ul><li><strong>If accepted and completed:</strong> The God Debt is removed.</li><li><strong>If accepted and failed:</strong> The God Debt stays the same.</li><li><strong>If refused:</strong> Suffer 1 <strong>Wound</strong> for every point of God Debt the God chooses to remove.</li></ul><p>You can remove God Debt by acting according to the god's desires.</p>\""
+          "initial": "\"<p><strong>God Debt</strong> determines whether you owe a god, or a god owes you. For each god, you can accrue up to 5 <strong>God Debt</strong>. You may also be in credit to a god up to -5 <strong>God Debt</strong>.</p><p><strong>God Debt</strong> can be called at any time it's positive, with the god requesting a task of you:</p><ul><li><strong>If accepted and completed:</strong> The <strong>God Debt</strong> is removed and the God is satisfied the task is completed.</li><li><strong>If accepted and failed:</strong> The <strong>God Debt</strong> stays the same as the God is not yet satisfied.</li><li><strong>If refused:</strong> The Godbinder suffers 1 <strong>Wound</strong> for every point of <strong>God Debt</strong> the God chooses to remove.</li></ul><p>You can remove <strong>God Debt</strong> by acting in a manner according to the god's desires. A Godbinder may be proactive and suggest particular acts to the gods.</p>\""
         },
         {
           "key": "miracles",
@@ -137,7 +137,7 @@
           "label": "Miracles",
           "description": "",
           "hint": "",
-          "initial": "\"<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the Miracle.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on God Debt</li><li>Performing a specific task immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise for the future</li></ul>\""
+          "initial": "\"<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the <strong>Miracle</strong>.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on <strong>God Debt</strong></li><li>Performing a specific task for them immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise you will fulfil in the future</li></ul>\""
         },
         {
           "key": "selectedGods",
@@ -158,7 +158,7 @@
           "label": "New Level in God",
           "description": "Add a level in an existing or new god. Describe how you bettered or founded your relationship with this god.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "mysteriousWays",
@@ -178,15 +178,15 @@
           "label": "Higher Scripture",
           "description": "You gain access to higher level scriptures for your gods. Each god has scriptures at levels 1, 2, and 3.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "goingRogue",
           "type": "info",
           "label": "Going Rogue",
-          "description": "When a god calls in debt and you don't pay, you may break contact rather than suffer punishment. Instead: Double your debt (calling it in will likely kill you), lose access to that god's scriptures, and the god sends 'bailiffs' - the GM can spend your debt to cause unfortunate events.",
+          "description": "<p>When a god calls in debt and you don't pay, you may break contact with them rather than suffer the punishment. Instead:</p><ul><li>Double your debt to that god; if you ever make contact with that god again, the god will call in the increased debt for one <strong>Wound</strong> per debt remaining, as per usual. This will likely kill you.</li><li>You lose access to all the scriptures for that god, and are unable to use <strong>Good Works</strong> or <strong>Godly Commandments</strong> to reduce the <strong>God Debt</strong>. Any <strong>God Debt</strong> reduction will solely come from the narrative.</li><li>The god will do the godly equivalent of sending bailiffs. A GM may spend the player's debt to have unfortunate events related to the god's area of power occur - one debt per event. This will target you and likely anyone or anything you hold dear.</li></ul><p>If the debt is paid off, the relationship returns to normal, and you regain all your powers.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "heretic",
@@ -205,7 +205,7 @@
           "label": "God Banking",
           "description": "Between sessions you can broker a deal between two of your gods, and move debt from one to the other. Describe how this deal works.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "wickedOrDivine",
@@ -234,21 +234,21 @@
           "key": "headOfReligion",
           "type": "group",
           "label": "Head of Religion",
-          "description": "You're the head (official or otherwise) of a god's worship. The religion is a faction in the Great Game.",
+          "description": "<p>You're the head (official or otherwise) of a god's worship. If there's a suitable cult in the fiction, use it. If not, there's a new cult; collaborate with the GM to define it. Any Believers from <strong>Wicked or Divine</strong> will convert to your faith. You may move any or all of their levels in gods to the god whose religion you are now in charge of. Any unpaid debt to each god is kept and paid off as per <strong>Going Rogue</strong>.</p><p>The religion is a faction in the Great Game. If you make it act in a way that's against the tenets of its religion, roll a <strong>Wis</strong> dice pool, with <strong>Difficulty</strong> equal to your total levels in other gods. If you took <strong>Heretic</strong>, increase this <strong>Difficulty</strong> by 2.</p><p>If you take <strong>A New Covenant</strong>, immediately forfeit all this power.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"religionGod\",\"type\":\"text\",\"label\":\"Which god's religion?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"religionDescription\",\"type\":\"html\",\"label\":\"Describe the religion/cult\",\"initial\":\"\",\"hint\":\"If you took A New Covenant, immediately forfeit all this power.\",\"description\":\"\"}"
+            "{\"key\":\"religionDescription\",\"type\":\"html\",\"label\":\"Describe the religion/cult\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         },
         {
           "key": "heresyNoted",
           "type": "group",
           "label": "Your Heresy is Noted (Level 12)",
-          "description": "A god you have no levels in gets jealous. Your other gods glare. You may re-arrange all your god levels.",
+          "description": "<p>At level 12, your heresy is noted. A god who you have no levels in gets jealous. <em>How can you not care about me at all? Why don't you slip into <strong>my</strong> DMs!</em> Your other gods glare. <em>Don't you dare pay <strong>them</strong> attention.</em></p><p>You may re-arrange all the levels you have in your gods. To work out how each god feels about your decision, go down this list. Entries further down the list overrule those higher up.</p><ol><li>If a god's level is higher than when they started, they're <strong>happy</strong>.</li><li>If a god's level is lower than when they started, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is the highest, they're <strong>happy</strong>.</li><li>If a god's level was highest and now they're not, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is zero, they're <strong>furious</strong>. Gain two <strong>God Debt</strong>.</li></ol>",
           "hint": "",
           "fields": [
-            "{\"key\":\"heresyRearrangement\",\"type\":\"html\",\"label\":\"How did you rearrange your levels?\",\"initial\":\"\",\"hint\":\"Track which gods are happy/unhappy based on level changes.\",\"description\":\"\"}"
+            "{\"key\":\"heresyRearrangement\",\"type\":\"html\",\"label\":\"How did you rearrange your levels?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         }
       ]

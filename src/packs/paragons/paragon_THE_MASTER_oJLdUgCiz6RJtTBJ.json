@@ -202,7 +202,7 @@
           "label": "Hardcore Cheating Style",
           "description": "<p>Your style determines what kind of cheats you can perform.</p>",
           "hint": "",
-          "initial": "\"\"",
+          "initial": "",
           "choices": [
             "Gamist - Mess with rules in this book (e.g., players don't die at 0 health)",
             "Simulationist - Mess with physical laws (e.g., shift gravity, summon storms)",
@@ -234,9 +234,9 @@
           "key": "newRule",
           "type": "info",
           "label": "New Rule",
-          "description": "Pick a new Rule from the Rules list. Your understanding of reality's fundamental forces grows ever-deeper.",
+          "description": "<p>Your understanding of the fundamental forces that underpin reality grows ever-deeper. Pick a new rule.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "slowAndSteady",
@@ -244,7 +244,7 @@
           "label": "Slow and Steady",
           "description": "Between adventures, you may perform a <strong>Hardcore Cheat</strong> without being caught. This cannot be at the Outrageous level.",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "readingTheRules",
@@ -252,16 +252,16 @@
           "label": "Reading the Rules",
           "description": "<p>When entering an environment under another Master's power, you're aware of it.</p><ul><li><strong>Int pool:</strong> Ask GM one question per success about the realm</li><li><strong>Wis pool:</strong> Ask GM one question per success about the Master</li></ul><p><strong>Fail:</strong> Alert the Master. <strong>Critical fail:</strong> Hit a trap - Master attacks you with a spell.</p>",
           "hint": "",
-          "initial": "\"\""
+          "initial": ""
         },
         {
           "key": "furtherMastery",
           "type": "group",
           "label": "Further Mastery",
-          "description": "Pick one ability, or gain a New Rule:",
+          "description": "<p>Pick one of these abilities, or gain a <strong>New Rule</strong>.</p><ul><li><strong>A Great Rule.</strong> Choose one of your Rules. You can now use it as \"slightly more than the rule\" as if it were the normal definition of the rule – you can push it a little without gaining Risk.</li><li><strong>Extra Mastery (Pick Once).</strong> You have two stacks of <strong>Mastery</strong>, and so can lose <strong>Mastery</strong> once and still retain your <strong>Mastery</strong> abilities and ability to cast spells with Risk. Both stacks refresh at the start of each session.</li><li><strong>Multimaster.</strong> You shake off the petty fetters of GNS theory. The first time you take this, pick a second Master type – you may now perform Minor cheats in that domain. If you take this again, raise the tier of cheats you can perform in that domain by one, or unlock a third domain starting at Minor.</li></ul>",
           "hint": "",
           "fields": [
-            "{\"key\":\"furtherMasteryChoice\",\"type\":\"select\",\"label\":\"Choice\",\"choices\":[\"New Rule\",\"A Great Rule - One rule can be pushed slightly without Risk\",\"Extra Mastery (Once) - Two stacks of Mastery per session\",\"Multimaster - Second Master type at Minor cheats\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+            "{\"key\":\"furtherMasteryChoice\",\"type\":\"select\",\"label\":\"Choice\",\"choices\":[\"New Rule\",\"A Great Rule\",\"Extra Mastery (Pick Once)\",\"Multimaster\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
             "{\"key\":\"greatRuleSelected\",\"type\":\"text\",\"label\":\"Great Rule (if chosen)\",\"initial\":\"\",\"hint\":\"Which rule can be pushed without Risk?\",\"description\":\"\"}",
             "{\"key\":\"multimasterDomains\",\"type\":\"html\",\"label\":\"Multimaster Domains\",\"initial\":\"\",\"hint\":\"Track your domains and their cheat tiers.\",\"description\":\"\"}"
           ]
@@ -270,12 +270,12 @@
           "key": "dungeonOfOnesOwn",
           "type": "group",
           "label": "A Dungeon of One's Own",
-          "description": "Create your own dungeon in a pocket dimension. You have Mastery over it and can use Realm Master cheats within.",
+          "description": "<p>The Master creates their own dungeon in a pocket dimension. Choose how it's accessed:</p><ul><li><strong>Via a real doorway.</strong> Pro: no-one can enter unless invited. Con: fixed in place.</li><li><strong>Via a small magical object (lamp, coin).</strong> Pro: Portable. Con: Can be taken from you.</li><li><strong>Via a series of magical words or methods.</strong> Pro, Con: Can be accessed by anyone who knows the method.</li></ul><p>You have <strong>Mastery</strong> over the dungeon, and can use <strong>Realm Master</strong> cheats within it. You are free to design the layout of the dungeon, with a number of rooms up to your level. It takes up no more space than can fit on a physical sheet of graph paper, with each square forming a 10 foot cube. You can make a digital version of your dungeon, but you must have a piece of physical graph paper to show how big it can be. Every time you go up a level you can add a room, and between adventures you can delete a room and draw up to your level total.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"dungeonAccess\",\"type\":\"select\",\"label\":\"How is it accessed?\",\"choices\":[\"Via a real doorway (Pro: invitation only, Con: fixed in place)\",\"Via a small magical object (Pro: portable, Con: can be taken)\",\"Via magical words/methods (Pro/Con: anyone who knows can access)\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"dungeonRooms\",\"type\":\"number\",\"label\":\"Number of Rooms\",\"initial\":1,\"hint\":\"Up to your level. Each square = 10ft cube.\",\"description\":\"\"}",
-            "{\"key\":\"dungeonMap\",\"type\":\"html\",\"label\":\"Dungeon Layout\",\"initial\":\"\",\"hint\":\"Describe your dungeon's layout and features.\",\"description\":\"\"}"
+            "{\"key\":\"dungeonRooms\",\"type\":\"number\",\"label\":\"Number of Rooms\",\"initial\":1,\"hint\":\"Up to your level.\",\"description\":\"\"}",
+            "{\"key\":\"dungeonMap\",\"type\":\"html\",\"label\":\"Dungeon Layout\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         },
         {
@@ -292,11 +292,11 @@
           "key": "realmMastery",
           "type": "group",
           "label": "Realm Mastery",
-          "description": "Become Master of a region of Die. Within your region, gain Realm Master Hardcore Cheats. Also pick a Further Mastery ability.",
+          "description": "<p>You may now become Master of a region of Die. If an area has no Master, simply claim it. If it already has a Master, you must force them to surrender it. You can expand your dominion indefinitely if you're able to claim more terrains. Within your region, you gain access to the <strong>Realm Master Hardcore Cheats</strong>. Also, pick a <strong>FURTHER MASTERY</strong> ability.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"realmName\",\"type\":\"text\",\"label\":\"Realm Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"realmDescription\",\"type\":\"html\",\"label\":\"Realm Description\",\"initial\":\"\",\"hint\":\"Describe your domain.\",\"description\":\"\"}",
+            "{\"key\":\"realmDescription\",\"type\":\"html\",\"label\":\"Realm Description\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
             "{\"key\":\"realmMasteryAbility\",\"type\":\"select\",\"label\":\"Further Mastery Ability\",\"choices\":[\"New Rule\",\"A Great Rule\",\"Extra Mastery\",\"Multimaster\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
           ]
         },
@@ -304,7 +304,7 @@
           "key": "theGuide",
           "type": "group",
           "label": "The Guide (Writing the Rules)",
-          "description": "Add a whole new realm to the world. Requires being a Realm Master. Roll Int pool with D20: for each success, define one thing found there and what prevents people taking it.",
+          "description": "<p>Work with the GM to add a whole new realm to this world. What is it known for? What are the landmarks? What can be found there? And most importantly, why do people never go there? Select an empty region on the map of Die to be its home. Roll your <strong>Int</strong> pool with the D20: for each success, define one thing which can be found in this realm. When you define it, also define what prevents people taking it.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"newRealmName\",\"type\":\"text\",\"label\":\"New Realm Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
@@ -318,7 +318,7 @@
           "key": "theManual",
           "type": "group",
           "label": "The Manual (Writing the Rules)",
-          "description": "Add a whole new monstrous species to the world. They are a Great Power. Roll Int pool with D20: one major faction per success.",
+          "description": "<p>Work with the GM to add a whole new monstrous species to the world. What do they look like? What do they want? To whom do they owe allegiance? And, most importantly, why are they thought of as monsters? If there's an empty region in the map of DIE, this is their homeland. If not, they emerge into your realm. They are a Great Power. Roll your <strong>Int</strong> pool with the D20: there is one major faction within this Great Power per success. Define them.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"newSpeciesName\",\"type\":\"text\",\"label\":\"Species Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
@@ -333,7 +333,7 @@
           "key": "theHandbook",
           "type": "group",
           "label": "The Handbook (Writing the Rules)",
-          "description": "Add a whole new sort of adventurer to the world. Roll Int pool with D20: their greatest band has one member per success. They can perform missions via Compressed Adventure Rules.",
+          "description": "<p>Work with the GM to add a whole new sort of adventurer to the world. What do they do? What is their reputation? To whom do they owe allegiance? And, most importantly, why are they thought of as heroic? Roll your <strong>Int</strong> pool with the D20: their greatest band of heroes has one member per success. They can be sent off to perform missions as per the Compressed Adventure Rules (p. 279).</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"newAdventurerType\",\"type\":\"text\",\"label\":\"Adventurer Type Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
@@ -348,7 +348,7 @@
           "key": "theArcana",
           "type": "group",
           "label": "The Arcana (Writing the Rules)",
-          "description": "Add a whole new form of magic to the world. Create a new Rule for it. Roll Int pool with D20: select one extra Rule per success with reduced Risk thresholds.",
+          "description": "<p>Work with the GM to add a whole new form of magic to the world. What is this source of power? How do people access it? What can it do? Does it have any iconic magical creatures? And, most importantly, what has prevented its discovery until now? If you wish, work with the GM to create a new Rule to represent this new form of magic. You now possess this rule. Roll your <strong>Int</strong> pool with the D20: select one extra Rule per success. Your Risk thresholds on these rules are one step down from normal: \"massively more than the standard rule\" adds 1 Risk, \"slightly more than the standard rule\" is free.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"newMagicName\",\"type\":\"text\",\"label\":\"Magic Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
@@ -365,7 +365,7 @@
           "key": "grandmaster",
           "type": "group",
           "label": "Grandmaster (Level 20)",
-          "description": "You become all-powerful for exactly one second. Then you are consumed by DIE, forever.",
+          "description": "<p>DIE advancement assumes to end a campaign well before the Paragons reach level 20... but if you do, this is the monster lurking there for a Master. When you reach level 20, you become all powerful for exactly one second. What do you do?</p><p>You are then consumed by DIE, forever.</p>",
           "hint": "",
           "fields": [
             "{\"key\":\"grandmasterAction\",\"type\":\"html\",\"label\":\"What did you do with your one second of omnipotence?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
