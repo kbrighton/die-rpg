@@ -176,21 +176,21 @@
 					"hint": "",
 					"initial": "[]",
 					"choices": [
-						"LOVE FOOL - Once per session, you get the minimum number of successes needed to achieve a task, so long as you do it for love. Your actions should involve a protestation of adoration, especially as you don't have to be in love until this very moment. Once you've fallen in love, roleplay this until the narrative leads you to get over it.",
-						"FOOLS RUSH IN - If you start a combat with Guard, you can lose it all to take a single action before anyone else.",
-						"FOOL'S PREP - Once per session, declare an item you need. If you add a cross to your dice, you get it immediately.",
+						"LOVE FOOL: Once per session, you get the minimum number of successes needed to achieve a task, so long as you do it for love. Your actions should involve a protestation of adoration, especially as you don't have to be in love until this very moment. Once you've fallen in love, roleplay this until the narrative leads you to get over it.",
+						"FOOLS RUSH IN: If you start a combat with Guard, you can lose it all to take a single action before anyone else.",
+						"FOOL'S PREP: Once per session, declare an item you need. If you add a cross to your dice, you get it immediately.",
 						"OH, IGNORE THAT FOOL - Add a cross to your dice to make someone drastically underestimate or ignore the Fool in a situation when they really shouldn't.",
-						"FOOL'S GOLD - Add a cross to your dice to know what dumb, surprising thing someone you're talking to really wants.",
+						"FOOL'S GOLD: Add a cross to your dice to know what dumb, surprising thing someone you're talking to really wants.",
 						"NEVER TELL ME THE ODDS - In any normal game of chance, you never lose. If your opponents are cheating (magical or otherwise), add a cross to your dice to win anyway.",
-						"FOOL'S CHARM - Add a cross to your dice to make someone trust in you for just a moment, or to have everyone laugh off a social faux pas you just made.",
-						"LUCKY RABBIT'S FOOT - There's something foolhardy you can do to increase your luck. Once per encounter, choose one of the following actions and add a circle to your dice: Take a drink at a dramatic moment. Joke at someone who seems more powerful than you. Break into a rousing song. Say a catchphrase at the exact right moment. Collaborate with GM to create your own."
+						"FOOL'S CHARM: Add a cross to your dice to make someone trust in you for just a moment, or to have everyone laugh off a social faux pas you just made.",
+						"LUCKY RABBIT'S FOOT: There's something foolhardy you can do to increase your luck. Once per encounter, choose one of the following actions and add a circle to your dice: - Take a drink at a dramatic moment. - Joke at someone who seems more powerful than you. - Break into a rousing song. - Say a catchphrase at the exact right moment. - Collaborate with GM to create your own."
 					]
 				},
 				{
 					"key": "knacksAndSpells",
 					"type": "group",
 					"label": "Knacks & Spells",
-					"description": "Each time you take this advancement, choose a Knack OR a Spell:",
+					"description": "Choose either a Knack or a Spell:",
 					"hint": "",
 					"fields": [
 						{
@@ -198,7 +198,7 @@
 							"type": "html",
 							"label": "Knacks",
 							"initial": "",
-							"hint": "Things you're good at - get Advantage when doing them.",
+							"hint": "A Knack: Choose one thing you’re good at. Whenever you do it, you get an Advantage. See p. 46 for guidance and examples.",
 							"description": ""
 						},
 						{
@@ -206,7 +206,7 @@
 							"type": "itemList",
 							"label": "Spells Known",
 							"initial": "[]",
-							"hint": "Spells from Grimoire (max 15 risk). Cast with Cha pool.",
+							"hint": "A Spell: Choose any spell from the Spells Appendix (p. 370) with no more than 15 risk. Roll a <b>Cha</b> pool to cast it.",
 							"description": "",
 							"itemType": "spell"
 						}
@@ -224,16 +224,16 @@
 					"key": "jackOfAllTrades",
 					"type": "select",
 					"label": "Jack of All Trades",
-					"description": "Select a second Trade and gain all bonuses/equipment from it:",
+					"description": "Select a second <b>Trade</b> and gain all bonuses/equipment from it:",
 					"hint": "",
 					"initial": "",
 					"choices": [
 						"Swashbuckler",
-						"Trickster Wizard",
-						"Rogue",
-						"Bard",
-						"Con Artist",
-						"Hustler"
+						"A Trickster Wizard",
+						"A Rogue",
+						"A Bard",
+						"A Con Artist",
+						"A Hustler"
 					]
 				},
 				{
@@ -248,15 +248,7 @@
 					"key": "pushingIt",
 					"type": "info",
 					"label": "Pushing It",
-					"description": "<p>As in <strong>It's A Stupid Plan... But It Just Might Work</strong>, you must describe and then follow a foolish and unlikely plan and then add a cross to your D6. Unlike that advance, then you roll it.</p><p>If you don't roll a cross, the plan succeeds with the minimum number of successes required.</p><p>If you roll a cross, the plan goes desperately wrong. The GM will describe how. It could include serious loss of resources or the incapacitation (or even death) of friendly characters.</p>",
-					"hint": "",
-					"initial": ""
-				},
-				{
-					"key": "theGig",
-					"type": "info",
-					"label": "The Gig",
-					"description": "<p><em>Note: This advancement appears in the Fool's advancement map but has no description in the source material. It may share a name with the Dictator's \"The Gig\" but has different effects for the Fool.</em></p>",
+					"description": "<p>As in <strong>It's A Stupid Plan... But It Just Might Work</strong>, you must describe and then follow a foolish and unlikely plan and then add a cross to your D6. Unlike that advance, then you roll it.</p><p><b>If you don't roll a cross,</b> the plan succeeds with the minimum number of successes required.</p><p><b>If you roll a cross,</b> the plan goes desperately wrong. The GM will describe how. It could include serious loss of resources or the incapacitation (or even death) of friendly characters.</p>",
 					"hint": "",
 					"initial": ""
 				},
@@ -311,20 +303,11 @@
 				},
 				{
 					"key": "luckyBreak",
-					"type": "group",
-					"label": "Lucky Break (Level 6)",
-					"description": "<p>The Fool gets a lucky break! The GM offers you something you really want or need. <em>The location of an enemy, a secret route to a difficult destination, Nirvana's fourth album from a dimension where Cobain lived...</em></p><p>They then describe the likely consequence if you agree. <em>Your enemy will know where you are, a friendly stronghold will come under threat, you'll anger the vengeful god of Grunge...</em></p><p>If you take the risk, roll the Fool dice:</p><ul><li>If you roll a <strong>circle</strong>, you get it for free.</li><li>If you roll a <strong>cross</strong>, you don't get it, and get the consequence.</li><li>If you roll <strong>anything else</strong>, you get both what you want <em>and</em> the consequence.</li></ul>",
+					"type": "info",
+					"label": "AT LEVEL 6: LUCKY BREAK",
+					"description": "<p>The Fool gets a lucky break! The GM offers you something you really want or need. <em>The location of an enemy, a secret route to a difficult destination, Nirvana's fourth album from a dimension where Cobain lived...</em></p><p>They then describe the likely consequence if you agree. <em>Your enemy will know where you are, a friendly stronghold will come under threat, you'll anger the vengeful god of Grunge...</em></p><p><b>If you take the risk, roll the Fool dice:</b></p><ul><li><strong>If you roll a circle</strong>, you get it for free.</li><li><strong>If you roll a cross</strong>, you don't get it, and get the consequence.</li><li><strong>If you roll anything else</strong>, you get both what you want <em>and</em> the consequence.</li></ul>",
 					"hint": "",
-					"fields": [
-						{
-							"key": "luckyBreakDescription",
-							"type": "html",
-							"label": "What happened?",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						}
-					]
+					"initial": ""
 				}
 			]
 		},

@@ -719,13 +719,14 @@ h6 {
 
 .multiselect-field {
 	.checkbox-group {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: $gap-sm;
+		display: flex;
+		flex-direction: column;
+		// grid-template-columns: repeat(2, 1fr);
+		gap: $gap-md;
 
 		.checkbox-option {
 			display: flex;
-			align-items: center;
+			align-items: start;
 			gap: $gap-sm;
 			cursor: pointer;
 			user-select: none;

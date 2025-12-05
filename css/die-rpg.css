@@ -1222,13 +1222,13 @@
   cursor: not-allowed;
 }
 .die-rpg .multiselect-field .checkbox-group {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .die-rpg .multiselect-field .checkbox-group .checkbox-option {
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 5px;
   cursor: pointer;
   user-select: none;
