@@ -311,8 +311,8 @@
 				{
 					"key": "knightsConfirmation",
 					"type": "group",
-					"label": "A Knight's Confirmation (Level 8)",
-					"description": "<p>You are called to confirm your choice and enter your order. Your weapon is taken from you. You are taken to a ceremonial place—a dungeon, a labyrinth, a cave system—and you find your way through it. In the centre, your weapon... and one for each of the other seven emotions. Gain the following:</p><ul><li>Retrieve your weapon... or pick one of the other seven.</li><li>Pick a new stance or venting ability. Swap any abilities related to a given emotion.</li><li>You're now a member of this league of knights.</li></ul><p>If there is an order in the fiction already, use it. If there isn't, create one in collaboration with the GM. This order may call upon you to perform tasks. You may be able to ask them for help. This is a reciprocal relationship.</p>",
+					"label": "AT LEVEL 8: A KNIGHT’S CONFIRMATION",
+					"description": "<p><b>You are called to confirm your choice and enter your order.</b> Your weapon is taken from you. You are taken to a ceremonial place—a dungeon, a labyrinth, a cave system—and you find your way through it. In the centre, your weapon... and one for each of the other seven emotions. Gain the following:</p><ul><li>Retrieve your weapon... or pick one of the other seven.</li><li>Pick a new stance or venting ability. Swap any abilities related to a given emotion.</li><li>You're now a member of this league of knights.</li></ul><p>If there is an order in the fiction already, use it. If there isn't, create one in collaboration with the GM. This order may call upon you to perform tasks. You may be able to ask them for help. This is a reciprocal relationship.</p>",
 					"hint": "",
 					"fields": [
 						{
@@ -322,13 +322,13 @@
 							"choices": [
 								"My original weapon",
 								"Rage Knight's weapon",
-								"Joy Knight's weapon",
-								"Anticipation Knight's weapon",
-								"Disgust Knight's weapon",
-								"Sadness Knight's weapon",
-								"Surprise Knight's weapon",
-								"Fear Knight's weapon",
-								"Trust Knight's weapon"
+								"Ecstasy Knight's weapon",
+								"Vigilance Knight's weapon",
+								"Loathing Knight's weapon",
+								"Grief Knight's weapon",
+								"Amazement Knight's weapon",
+								"Terror Knight's weapon",
+								"Admiration Knight's weapon"
 							],
 							"initial": "",
 							"hint": "",
@@ -338,14 +338,6 @@
 							"key": "orderJoined",
 							"type": "text",
 							"label": "Order Joined",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						},
-						{
-							"key": "orderDuties",
-							"type": "html",
-							"label": "Order Duties & Benefits",
 							"initial": "",
 							"hint": "",
 							"description": ""
