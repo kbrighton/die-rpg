@@ -3,13 +3,13 @@
 	"type": "paragon",
 	"img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20FOOL.webp",
 	"system": {
-		"description": "<p><strong>CLASS DICE: D6</strong></p><h2>Foolhardy</h2><p>You can add your D6 to your dice pool any time you're acting in a foolish, daring or cavalier fashion. In any dice pool which includes the Fool's D6, you gain:</p><p><strong>Special:</strong> Roll another D6 and add it to the present dice pool.</p><hr /><p><em>Always look on the bright side of life, as the song goes. It's true.</em></p><p><em>If a Fool's laughing, you'll get out of this hell alive. If you get a laugh, your enemies won't be laughing for much longer. Don't take things too seriously, and it won't get too serious. At least, for the Fool.</em></p><p><em>The Fool's the swashbuckler, a romantic rogue, the life and soul of the adventuring party.</em></p><p><em>Fools rush in... and their friends have to deal with the consequences.</em></p><h2>Play a Fool if you want to...</h2><ul><li>Bound into action with a grin, knowing your luck will protect you.</li><li>Get out of any situation by the skin of your teeth, even if it means making a few sacrifices.</li><li>Deal with the chaos when pushing your powers too far inevitably bites everyone on the ass.</li></ul>",
+		"description": "<p><strong>CLASS DICE: D6</strong></p><h2>Foolhardy</h2><p>You can add your D6 to your dice pool any time you're acting in a foolish, daring or cavalier fashion. In any dice pool which includes the Fool's D6, you gain: <strong>Special:</strong> Roll another D6 and add it to the present dice pool.</p><hr /><p><em>Always look on the bright side of life, as the song goes. It's true.</em></p><p><em>If a Fool's laughing, you'll get out of this hell alive. If you get a laugh, your enemies won't be laughing for much longer. Don't take things too seriously, and it won't get too serious. At least, for the Fool.</em></p><p><em>The Fool's the swashbuckler, a romantic rogue, the life and soul of the adventuring party.</em></p><p><em>Fools rush in... and their friends have to deal with the consequences.</em></p><h2>Play a Fool if you want to...</h2><ul><li>Bound into action with a grin, knowing your luck will protect you.</li><li>Get out of any situation by the skin of your teeth, even if it means making a few sacrifices.</li><li>Deal with the chaos when pushing your powers too far inevitably bites everyone on the ass.</li></ul>",
 		"coreNature": "<p><em>Always look on the bright side of life, as the song goes. It's true.</em></p><p><em>If a Fool's laughing, you'll get out of this hell alive. If you get a laugh, your enemies won't be laughing for much longer. Don't take things too seriously, and it won't get too serious. At least, for the Fool.</em></p><p><em>The Fool's the swashbuckler, a romantic rogue, the life and soul of the adventuring party. The rest think they're irresponsible, but the Fool's abilities mean the only responsible thing to do is be irresponsible.</em></p><p><em>Screw everyone else if they can't take a joke.</em></p><p><em>Fools rush in... and their friends have to deal with the consequences.</em></p><p><strong>PLAY A FOOL IF YOU WANT TO...</strong></p><ul><li>Bound into action with a grin, knowing your luck will protect you.</li><li>Get out of any situation by the skin of your teeth, even if it means making a few sacrifices.</li><li>Deal with the chaos when pushing your powers too far inevitably bites everyone on the ass.</li></ul>",
 		"die": "d6",
 		"importantStat": "cha",
 		"coreAbility": {
 			"name": "FOOLHARDY",
-			"description": "<p>You can add your D6 to your dice pool any time you're acting in a foolish, daring or cavalier fashion. In any dice pool which includes the Fool's D6, you gain:</p><p><strong>Special:</strong> Roll another D6 and add it to the present dice pool.</p>"
+			"description": "<p>You can add your D6 to your dice pool any time you're acting in a foolish, daring or cavalier fashion. In any dice pool which includes the Fool's D6, you gain: <strong>Special:</strong> Roll another D6 and add it to the present dice pool.</p>"
 		},
 		"looks": [
 			{
@@ -45,7 +45,6 @@
 			"Compendium.die-rpg.equipment.Item.KgpRCepGWYT8l047"
 		],
 		"advancementAssignments": {
-			"row0-1": 0,
 			"row1-1": 1,
 			"row1-2": 2,
 			"row1-3": 3,
@@ -67,11 +66,6 @@
 			"row5-4": 2
 		},
 		"advancements": [
-			{
-				"id": 0,
-				"name": "START",
-				"icon": ""
-			},
 			{
 				"id": 1,
 				"name": "A Trip to Clown School",
@@ -134,25 +128,25 @@
 					"key": "trade",
 					"type": "select",
 					"label": "Your Trade",
-					"description": "<p>Choose your trade. This determines additional equipment and abilities.</p>",
+					"description": "",
 					"hint": "",
 					"initial": "",
 					"choices": [
-						"Swashbuckler - Extra equipment option",
-						"Trickster Wizard - Cast minor spells (Cha pool)",
-						"Rogue - Throwing weapons & thieves' tools",
-						"Bard - Musical instrument & songbook",
-						"Con Artist - Fake dice, marked cards, etc.",
-						"Hustler - Bag of questionable trading wares"
+						"Swashbuckler | Choose another option from your equipment list and gain any trinkets you think you need to look the part.",
+						"A Trickster Wizard | Can cast minor magical spells (max difficulty of 0). See what you can talk your GM into and use Cha as your dice pool. Check out the Appendix (p. 370) for some magic spells.",
+						"A Rogue | Add concealed throwing weapons and thieves' tools to your equipment.",
+						"A Bard | Add a musical instrument of your choice and a book of fine folk songs to your equipment.",
+						"A Con Artist | You have access to fake dice, marked cards or similar con-artist equipment.",
+						"A Hustler | Add a bag of assorted trading wares of questionable origins and variable value to your equipment."
 					]
 				},
 				{
 					"key": "flukes",
 					"type": "info",
 					"label": "Flukes",
-					"description": "",
+					"description": "Choose one face of your D6 and draw a circle on it. When you roll your D6, it has special results: <ul> <li><b>Circle:</b> describe the fluke of luck that benefits you. The GM can then choose to modify it – the more advantageous you make it, the more they'll likely tweak it. Then erase all but one circle, and add a cross to a different face.</li> <li><b>Unmarked:</b> add a circle to a different face, unless all sides are full.</li> <li><b>Cross:</b> Something unfortunate happens to you or (more likely) the people around you. Erase all crosses.</li> </ul> If you do something that is particularly foolish or entertaining, the GM may give you an additional circle on your dice.",
 					"hint": "",
-					"initial": "\"<p>Choose one face of your D6 and mark it with a circle. When you roll your D6:</p><ul><li><strong>Circle:</strong> Describe a fluke of luck that benefits you. GM may modify it. Then erase all but one circle, and add a cross to a different face.</li><li><strong>Unmarked:</strong> Add a circle to a different face (unless all sides are full).</li><li><strong>Cross:</strong> Something unfortunate happens to you or those around you. Erase all crosses.</li></ul><p>If you do something particularly foolish or entertaining, the GM may give you an additional circle.</p>\""
+					"initial": ""
 				},
 				{
 					"key": "d6Tracking",
