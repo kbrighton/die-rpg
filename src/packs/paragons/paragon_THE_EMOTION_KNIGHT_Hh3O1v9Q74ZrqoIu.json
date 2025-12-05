@@ -195,8 +195,8 @@
 					"description": "<p>After a bad night's sleep with a dream born of your Sacred Emotion, you will wake to find a magical steed beside you. Every time you have a bad (k)night's sleep, say what you dreamed about. Some dreams have been known to be prophetic.</p>",
 					"hint": "",
 					"fields": [
-						"{\"key\":\"steedAppearance\",\"type\":\"select\",\"label\":\"What does it look like?\",\"choices\":[\"A towering warhorse with burning eyes\",\"A three-humped camel with a knowing expression\",\"A cowardly cat who really doesn't want to be here\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"steedGift\",\"type\":\"select\",\"label\":\"What gift does it have? (Activates when Emotionally Engaged)\",\"choices\":[\"It can fly\",\"It is faster than any horse\",\"It can move through walls like a ghost\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"steedAppearance\",\"type\":\"select\",\"label\":\"What does it look like?\",\"allowCustom\":\"true\",\"choices\":[\"A towering warhorse with burning eyes\",\"A three-humped camel with a knowing expression\",\"A cowardly cat who really doesn't want to be here\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"steedGift\",\"type\":\"select\",\"label\":\"What gift does it have? (Activates when Emotionally Engaged)\",\"allowCustom\":\"true\",\"choices\":[\"It can fly\",\"It is faster than any horse\",\"It can move through walls like a ghost\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
 						"{\"key\":\"recentDream\",\"type\":\"html\",\"label\":\"Recent Dreams\",\"initial\":\"\",\"hint\":\"Record your prophetic dreams here.\",\"description\":\"\"}"
 					]
 				},
