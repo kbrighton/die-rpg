@@ -2434,5 +2434,54 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
   padding: 40px;
   font-style: italic;
 }
+.die-rpg .d6-net-field .d6-net {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+.die-rpg .d6-net-field .d6-net .d6-face {
+  cursor: pointer;
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face {
+  fill: var(--die-rpg-c-die-bg);
+  stroke: var(--die-rpg-c-die-border);
+  stroke-width: 2;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face:hover {
+  fill: var(--die-rpg-overlay-dark);
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face.circle {
+  fill: var(--die-rpg-c-success-bg);
+  stroke: var(--die-rpg-c-success-border);
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face.cross {
+  fill: var(--die-rpg-c-failure-bg);
+  stroke: var(--die-rpg-c-failure-border);
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face-number {
+  font-size: 18px;
+  font-weight: bold;
+  fill: var(--color-text-primary);
+  text-anchor: start;
+  dominant-baseline: hanging;
+  pointer-events: none;
+  user-select: none;
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face-symbol {
+  font-size: 48px;
+  font-weight: bold;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  user-select: none;
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face-symbol.circle {
+  fill: var(--die-rpg-c-success);
+}
+.die-rpg .d6-net-field .d6-net .d6-face .face-symbol.cross {
+  fill: var(--die-rpg-c-failure);
+}
 
 /*# sourceMappingURL=die-rpg.css.map */

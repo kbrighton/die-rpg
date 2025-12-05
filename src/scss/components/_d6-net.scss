@@ -1,0 +1,65 @@
+// D6 Net Widget Styles
+// Used by the Fool paragon for tracking flukes on each face
+
+.d6-net-field {
+  .d6-net {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+
+    .d6-face {
+      cursor: pointer;
+
+      .face {
+        fill: $c-die-bg;
+        stroke: $c-die-border;
+        stroke-width: 2;
+        transition: fill 0.2s ease, stroke 0.2s ease;
+
+        &:hover {
+          fill: $overlay-dark;
+        }
+
+        // Circle state - success/green colors
+        &.circle {
+          fill: $c-success-bg;
+          stroke: $c-success-border;
+        }
+
+        // Cross state - failure/red colors
+        &.cross {
+          fill: $c-failure-bg;
+          stroke: $c-failure-border;
+        }
+      }
+
+      .face-number {
+        font-size: 18px;
+        font-weight: bold;
+        fill: var(--color-text-primary);
+        text-anchor: start;
+        dominant-baseline: hanging;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .face-symbol {
+        font-size: 48px;
+        font-weight: bold;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        pointer-events: none;
+        user-select: none;
+
+        &.circle {
+          fill: $c-success;
+        }
+
+        &.cross {
+          fill: $c-failure;
+        }
+      }
+    }
+  }
+}

@@ -142,68 +142,11 @@
 				},
 				{
 					"key": "flukes",
-					"type": "info",
+					"type": "d6Net",
 					"label": "Flukes",
-					"description": "Choose one face of your D6 and draw a circle on it. When you roll your D6, it has special results: <ul> <li><b>Circle:</b> describe the fluke of luck that benefits you. The GM can then choose to modify it – the more advantageous you make it, the more they'll likely tweak it. Then erase all but one circle, and add a cross to a different face.</li> <li><b>Unmarked:</b> add a circle to a different face, unless all sides are full.</li> <li><b>Cross:</b> Something unfortunate happens to you or (more likely) the people around you. Erase all crosses.</li> </ul> If you do something that is particularly foolish or entertaining, the GM may give you an additional circle on your dice.",
+					"description": "Choose one face of your D6 and draw a circle on it. When you roll your D6, it has special results: <ul> <li><b>Circle (○):</b> describe the fluke of luck that benefits you. The GM can then choose to modify it – the more advantageous you make it, the more they'll likely tweak it. Then erase all but one circle, and add a cross to a different face.</li> <li><b>Unmarked:</b> add a circle to a different face, unless all sides are full.</li> <li><b>Cross (×):</b> Something unfortunate happens to you or (more likely) the people around you. Erase all crosses.</li> </ul> If you do something that is particularly foolish or entertaining, the GM may give you an additional circle on your dice.",
 					"hint": "",
-					"initial": ""
-				},
-				{
-					"key": "d6Tracking",
-					"type": "group",
-					"label": "D6 Face Tracking",
-					"description": "Track circles (○) and crosses (×) on each face of your D6.",
-					"hint": "",
-					"fields": [
-						{
-							"key": "face1",
-							"type": "text",
-							"label": "Face 1",
-							"initial": "",
-							"hint": "Use ○ for circles, × for crosses",
-							"description": ""
-						},
-						{
-							"key": "face2",
-							"type": "text",
-							"label": "Face 2",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						},
-						{
-							"key": "face3",
-							"type": "text",
-							"label": "Face 3",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						},
-						{
-							"key": "face4",
-							"type": "text",
-							"label": "Face 4",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						},
-						{
-							"key": "face5",
-							"type": "text",
-							"label": "Face 5",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						},
-						{
-							"key": "face6",
-							"type": "text",
-							"label": "Face 6",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						}
-					]
+					"initial": {}
 				},
 				{
 					"key": "ifAllElseFails",

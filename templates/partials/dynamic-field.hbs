@@ -179,6 +179,41 @@
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
+{{else if (eq field.type "d6Net")}}
+  <div class="form-group d6-net-field">
+    <h4>{{field.label}}</h4>
+    {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}
+    <svg viewBox="{{svgD6NetViewBox}}" class="d6-net" preserveAspectRatio="xMidYMid meet">
+      {{#each (d6FaceIds) as |faceId|}}
+        <g class="d6-face" data-face-id="{{faceId}}">
+          <rect
+            x="{{svgD6FaceX faceId}}"
+            y="{{svgD6FaceY faceId}}"
+            width="{{svgD6FaceWidth faceId}}"
+            height="{{svgD6FaceHeight faceId}}"
+            class="face {{lookup ../value faceId}}"
+            data-action="cycleD6Face"
+            data-path="{{../path}}"
+            data-face="{{faceId}}"
+          />
+          <text
+            x="{{svgD6NumberX faceId}}"
+            y="{{svgD6NumberY faceId}}"
+            class="face-number"
+          >{{faceId}}</text>
+          {{#if (lookup ../value faceId)}}
+            <text
+              x="{{svgD6TextX faceId}}"
+              y="{{svgD6TextY faceId}}"
+              class="face-symbol {{lookup ../value faceId}}"
+            >{{svgD6StateSymbol (lookup ../value faceId)}}</text>
+          {{/if}}
+        </g>
+      {{/each}}
+    </svg>
+    {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
+  </div>
+
 {{else}}
   {{!-- Unknown field type --}}
   <div class="form-group error-field">

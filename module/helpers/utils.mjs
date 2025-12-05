@@ -12,6 +12,14 @@ import {
   getTextPosition,
   calculateViewBox
 } from './advancement-svg.mjs';
+import {
+  getD6FaceRect,
+  getD6TextPosition,
+  getD6NumberPosition,
+  getD6NetViewBox,
+  getD6StateSymbol,
+  getD6FaceIds
+} from './d6-net-svg.mjs';
 
 /**
  * Preload Handlebars templates for partials and components
@@ -318,5 +326,106 @@ export function registerHandlebarsHelpers() {
 		if (context === null || context === undefined) return '';
 		const space = options.hash.space || 0;
 		return new Handlebars.SafeString(JSON.stringify(context, null, space));
+	});
+
+	// ========================================
+	// D6 NET SVG HELPERS (Fool's Flukes)
+	// ========================================
+
+	/**
+	 * Get the viewBox for the D6 net SVG
+	 * @returns {string} viewBox attribute value
+	 */
+	Handlebars.registerHelper('svgD6NetViewBox', function() {
+		return getD6NetViewBox();
+	});
+
+	/**
+	 * Get the rectangle x coordinate for a D6 face
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} x coordinate
+	 */
+	Handlebars.registerHelper('svgD6FaceX', function(faceId) {
+		return getD6FaceRect(faceId).x;
+	});
+
+	/**
+	 * Get the rectangle y coordinate for a D6 face
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} y coordinate
+	 */
+	Handlebars.registerHelper('svgD6FaceY', function(faceId) {
+		return getD6FaceRect(faceId).y;
+	});
+
+	/**
+	 * Get the rectangle width for a D6 face
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} width
+	 */
+	Handlebars.registerHelper('svgD6FaceWidth', function(faceId) {
+		return getD6FaceRect(faceId).width;
+	});
+
+	/**
+	 * Get the rectangle height for a D6 face
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} height
+	 */
+	Handlebars.registerHelper('svgD6FaceHeight', function(faceId) {
+		return getD6FaceRect(faceId).height;
+	});
+
+	/**
+	 * Get the text x coordinate for a D6 face
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} x coordinate
+	 */
+	Handlebars.registerHelper('svgD6TextX', function(faceId) {
+		return getD6TextPosition(faceId).x;
+	});
+
+	/**
+	 * Get the text y coordinate for a D6 face
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} y coordinate
+	 */
+	Handlebars.registerHelper('svgD6TextY', function(faceId) {
+		return getD6TextPosition(faceId).y;
+	});
+
+	/**
+	 * Get the upper-left x coordinate for a D6 face number
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} x coordinate
+	 */
+	Handlebars.registerHelper('svgD6NumberX', function(faceId) {
+		return getD6NumberPosition(faceId).x;
+	});
+
+	/**
+	 * Get the upper-left y coordinate for a D6 face number
+	 * @param {string|number} faceId - Face number (1-6)
+	 * @returns {number} y coordinate
+	 */
+	Handlebars.registerHelper('svgD6NumberY', function(faceId) {
+		return getD6NumberPosition(faceId).y;
+	});
+
+	/**
+	 * Get the symbol for a D6 face state
+	 * @param {string} state - State: "", "circle", or "cross"
+	 * @returns {string} Symbol character
+	 */
+	Handlebars.registerHelper('svgD6StateSymbol', function(state) {
+		return getD6StateSymbol(state);
+	});
+
+	/**
+	 * Get the ordered list of D6 face IDs for iteration
+	 * @returns {string[]} Array of face IDs
+	 */
+	Handlebars.registerHelper('d6FaceIds', function() {
+		return getD6FaceIds();
 	});
 }

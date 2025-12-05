@@ -45,6 +45,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       deleteSpecial: this._deleteSpecial,
       increment: this._onIncrement,
       decrement: this._onDecrement,
+      cycleD6Face: this._cycleD6Face,
     },
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
     form: {
@@ -1273,6 +1274,44 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     value = Math.max(min, value - 1);
     input.value = value;
     input.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  /**
+   * Handle cycling D6 face state for the Fool's flukes widget
+   * Cycles: empty → circle → cross → empty
+   *
+   * @this DieRpgActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _cycleD6Face(event, target) {
+    event.preventDefault();
+
+    const path = target.dataset.path;
+    const faceId = target.dataset.face;
+
+    if (!path || !faceId) {
+      console.warn('DIE RPG | Invalid D6 face data attributes');
+      return;
+    }
+
+    // Get current face data object
+    const currentData = foundry.utils.getProperty(this.actor, path) || {};
+    const currentState = currentData[faceId] || '';
+
+    // Cycle: empty → circle → cross → empty
+    const nextState = {
+      '': 'circle',
+      'circle': 'cross',
+      'cross': ''
+    }[currentState] || '';
+
+    // Create updated data object
+    const updateData = { ...currentData, [faceId]: nextState };
+
+    // Update the actor
+    await this.actor.update({ [path]: updateData });
   }
 
   /**
