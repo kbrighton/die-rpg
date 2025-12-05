@@ -6,7 +6,7 @@
 		"description": "<p><strong>CLASS DICE: D10</strong></p><h2>Gifts of the Fair</h2><p>You can add your D10 to your dice pool any time you're assisted by an activated Gift.</p><hr /><p><em>Adventurers love gold. With their propensity for taking anything that isn't nailed down makes them all thieves... which makes the classical fantasy prejudice against rogues a little odd. They're all at it. Why do rogues get the glances?</em></p><p><em>But anyone who's ever met one knows why people are suspicious about the Neo.</em></p><p><em>There's a special kind of gold, and the Neo's magical technology needs to be activated by this every day. If they can't find enough then all their gifts mean nothing.</em></p><p><em>Adventurers all want gold but no-one needs it like a Neo.</em></p><h2>Play a Neo if you want to...</h2><ul><li>Be the chromed-up cyberpunk rogue in the fantasy adventuring party.</li><li>Select from an armoury of magic-cybernetic gifts you can personalise to your heart's content.</li><li>Hunt desperately for the next score to fuel your powers.</li></ul>",
 		"coreNature": "<p><em>Adventurers love gold. With their propensity for taking anything that isn't nailed down makes them all thieves... which makes the classical fantasy prejudice against rogues a little odd. They're all at it. Why do rogues get the glances?</em></p><p><em>But anyone who's ever met one knows why people are suspicious about the Neo.</em></p><p><em>There's a special kind of gold, and the Neo's magical technology needs to be activated by this every day. If they can't find enough then all their gifts mean nothing. They can't skip between shadows, dance through the sky or punch a hole through a Fallen's head from half a mile away.</em></p><p><em>Adventurers all want gold but no-one needs it like a Neo.</em></p><p><strong>PLAY A NEO IF YOU WANT TO...</strong></p><ul><li>Be the chromed-up cyberpunk rogue in the fantasy adventuring party.</li><li>Select from an armoury of magic-cybernetic gifts you can personalise to your heart's content.</li><li>Hunt desperately for the next score to fuel your powers.</li></ul>",
 		"die": "d10",
-		"importantStat": "",
+		"importantStat": "dex",
 		"coreAbility": {
 			"name": "GIFTS OF THE FAIR",
 			"description": "<p>You can add your D10 to your dice pool any time you're assisted by an activated Gift.</p>"
@@ -28,7 +28,14 @@
 				"defenseBonus": 0
 			}
 		],
-		"specials": [],
+		"specials": [
+			{
+				"name": "NEOTECH Special",
+				"description": "actively subvert the system to perform one action.",
+				"cost": "special",
+				"mandatory": false
+			}
+		],
 		"equipmentOptions": [
 			"Compendium.die-rpg.equipment.Item.HFjfqpxAnB3t6geZ",
 			"Compendium.die-rpg.equipment.Item.ZK4Sq1gOkEQ0jR3d",
@@ -36,7 +43,6 @@
 			"Compendium.die-rpg.equipment.Item.Dg8DdFt27EK1FYAB"
 		],
 		"advancementAssignments": {
-			"row0-1": 0,
 			"row1-1": 1,
 			"row1-2": 3,
 			"row1-3": 2,
@@ -58,11 +64,6 @@
 			"row5-4": 2
 		},
 		"advancements": [
-			{
-				"id": 0,
-				"name": "START",
-				"icon": ""
-			},
 			{
 				"id": 1,
 				"name": "New Gift",
@@ -115,9 +116,28 @@
 					"key": "fairGold",
 					"type": "number",
 					"label": "Fair Gold",
-					"description": "<p>Keep track of how many <strong>Fair Gold</strong> you possess. They'll disappear at dawn.</p><p><strong>Fair Gold</strong> is the techno-magical fuel which powers your gifts. It takes the form of small coins, most commonly found in the corpses of Fallen, but you will find other sources. Your AI will tell you if any <strong>Fair Gold</strong> is nearby.</p><p>A single piece of <strong>Fair Gold</strong> will activate one of your gifts (and its upgrades) until the following Dawn, including any of its upgrades. Each Neo has a slot on their body where they can insert the coin – normally the neck, but you may vary.</p>",
-					"hint": "",
+					"description": "<p><strong>Fair Gold</strong> is the techno-magical fuel which powers your gifts. It takes the form of small coins, most commonly found in the corpses of Fallen, but you will find other sources. Your AI will tell you if any <strong>Fair Gold</strong> is nearby.</p><p>A single piece of <strong>Fair Gold</strong> will activate one of your gifts (and its upgrades) until the following Dawn, including any of its upgrades. Each Neo has a slot on their body where they can insert the coin – normally the neck, but you may vary.</p>",
+					"hint": "Keep track of how many \"Fair Gold\" you possess. They'll disappear at dawn.",
 					"initial": "0"
+				},
+				{
+					"key": "giftsOfTheFair",
+					"type": "group",
+					"label": "Gifts of the Fair",
+					"description": "<p>The Neo has access to otherworldly cyberpunk technology—robotic limbs, loyal automatons, smart weapons, and more—known as gifts. When creating your Neo, select one technomagical gift from the Gifts sheet, and one of its upgrades.</p><p>Gifts all have narrative effects in addition to mechanical ones; they allow you to perform suitable associated tasks. A jetpack lets you fly. A teleporter lets you teleport.</p><p>You can only take a single upgrade marked <strong>Defensive</strong> unless an advancement says otherwise. If not stated otherwise, Upgrades can be picked multiple times.</p>",
+					"hint": "",
+					"initial": "",
+					"fields": [
+						{
+							"key": "selectedGifts",
+							"type": "itemList",
+							"label": "NEO GIFTS",
+							"description": "",
+							"hint": "",
+							"initial": "[]",
+							"itemType": "gift"
+						}
+					]
 				},
 				{
 					"key": "neotech",
@@ -133,16 +153,7 @@
 					"label": "Overcharge",
 					"description": "",
 					"hint": "",
-					"initial": "\"<p>You can use extra <strong>Fair Gold</strong> to simulate an upgrade in a one-off fashion. To overcharge an activated gift, describe your desired effect. The GM sets a cost (in gold) to achieve this effect.</p><p>Spend the gold, and roll your D10:</p><ul><li>If the result is <strong>odd</strong>, it works perfectly.</li><li>If it's <strong>even</strong>, it mostly works but something goes amiss.</li></ul><p><strong>One gold</strong> is enough to temporarily remove a Gift's limitations, extend its capacities or ape an Upgrade.</p><p><strong>Two gold</strong> is enough to improve the gift in several ways.</p><p><strong>Three or more gold</strong> let you perform truly spectacular feats.</p>\""
-				},
-				{
-					"key": "selectedGifts",
-					"type": "itemList",
-					"label": "Gifts of the Fair",
-					"description": "<p>The Neo has access to otherworldly cyberpunk technology—robotic limbs, loyal automatons, smart weapons, and more—known as gifts. When creating your Neo, select one technomagical gift from the Gifts sheet, and one of its upgrades.</p><p>Gifts all have narrative effects in addition to mechanical ones; they allow you to perform suitable associated tasks. A jetpack lets you fly. A teleporter lets you teleport.</p><p>You can only take a single upgrade marked <strong>Defensive</strong> unless an advancement says otherwise. If not stated otherwise, Upgrades can be picked multiple times.</p>",
-					"hint": "",
-					"initial": "[]",
-					"itemType": "gift"
+					"initial": "<p>You can use extra Fair Gold to simulate an upgrade in a one-off fashion. To overcharge an activated gift, describe your desired effect. The GM sets a cost (in gold) to achieve this effect.</p><p>Spend the gold, and roll your D10:</p><ul><li><strong>If the result is odd</strong>, it works perfectly.</li><li><strong>If it's even</strong>, it mostly works but something goes amiss.</li></ul><p class=\"highlight-paragraph\"><strong>One gold</strong> is enough to temporarily remove a Gift's limitations, extend its capacities or ape an Upgrade.</p><p class=\"highlight-paragraph\"><strong>Two gold</strong> is enough to improve the gift in several ways.</p><p class=\"highlight-paragraph\"><strong>Three or more gold</strong> let you perform truly spectacular feats.</p>"
 				}
 			]
 		},
@@ -176,7 +187,7 @@
 					"key": "sickAssRide",
 					"type": "group",
 					"label": "Sick-Ass Ride",
-					"description": "<p>You can create, summon or otherwise generate a vehicle that can transport the rest of the party, and a couple of friends. When in this form, you travel as fast as a horse.</p><p>When you pick this ability, you can choose one of the following upgrades. Any time you choose an upgrade from now on, you can upgrade your <strong>SICK-ASS RIDE</strong> instead.</p>",
+					"description": "<p>You can create, summon or otherwise generate a vehicle that can transport the rest of the party, and a couple of friends. When in this form, you travel as fast as a horse.</p>",
 					"hint": "",
 					"fields": [
 						{
@@ -210,7 +221,7 @@
 						{
 							"key": "rideUpgrades",
 							"type": "multiSelect",
-							"label": "Ride Upgrades",
+							"label": "Upgrades",
 							"choices": [
 								"It can travel underwater",
 								"It can travel in a vacuum",
@@ -221,7 +232,7 @@
 							],
 							"initial": [],
 							"hint": "",
-							"description": ""
+							"description": "<p>When you pick this ability, you can choose one of the following upgrades. Any time you choose an upgrade from now on, you can upgrade your <strong>SICK-ASS RIDE</strong> instead.</p>"
 						}
 					]
 				},
@@ -229,7 +240,7 @@
 					"key": "pawnShop",
 					"type": "group",
 					"label": "Pawn Shop",
-					"description": "The Neo has an extradimensional contact who has an interest in certain objects. They've agreed to buy them in exchange for <strong>Fair Gold</strong>.",
+					"description": "The Neo has an extradimensional contact who has an interest in certain objects. They've agreed to buy them in exchange for <strong>Fair Gold</strong>; a fair price for services rendered.",
 					"hint": "",
 					"fields": [
 						{
@@ -343,7 +354,7 @@
 				{
 					"key": "interestingDecision",
 					"type": "group",
-					"label": "An Interesting Decision (Level 10)",
+					"label": "AT LEVEL 10: AN INTERESTING DECISION",
 					"description": "<p>You are confronted by two of the Fair. They explain that you're a creature of both worlds, perfectly balanced between the two. As such, the Fair will give you an interesting decision – to accept a gift or not. One Fair says that if they take the gift, if they leave Die and return to reality, there will be no consequences. The other says that if they take the gift, if they leave Die and return to reality, they will suffer a consequence as a result of this decision. You may then choose to accept the gift or not.</p><p>It is an interesting decision.</p><p>If you accept, gain access to a single gift with an upgrade of your choice. If not, you get nothing. Whatever your choice, you gain the ability to have a second <strong>Defensive</strong> upgrade.</p><p>If you return to Earth, roll a D10. If it's <strong>even</strong>, the first Fair was correct and you suffer no consequences. On an <strong>odd</strong> number, the second Fair was correct, and you suffer a consequence from having accepted this gift.</p>",
 					"hint": "",
 					"fields": [

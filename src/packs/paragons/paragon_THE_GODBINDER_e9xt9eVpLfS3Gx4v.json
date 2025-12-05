@@ -130,7 +130,7 @@
 					"key": "scripture",
 					"type": "info",
 					"label": "Scripture",
-					"description": "<p>All Godbinders gain access to three basic spells – Scripture shared between all gods:</p> <ul> <li><b><i>Noun</i> Blast:</b> Attacks a target within medium range.</li> <li><b>Heal:</b> Heals 1 <b>Health</b> to a character within a short distance. Max 1 use per character per encounter.</li> <li><b>Detect <i>Noun</i>:</b> Determines if any of the <b><i>noun</i></b> is within a short distance.</li> </ul> <p>To cast a Scripture, roll a <b>Wis</b> dice pool plus D12 with a <b>Difficulty</b> of 0 (see <b>Guidance</b>). If you succeed, the Scripture works as described in its entry.</p>",
+					"description": "<p>All Godbinders gain access to three basic spells – Scripture shared between all gods:</p> <p class=\"highlight-paragraph\"><b><i>Noun</i> Blast</b><br> Attacks a target within medium range.</p> <p class=\"highlight-paragraph\"><b>Heal</b><br> Heals 1 <b>Health</b> to a character within a short distance. Max 1 use per character per encounter.</p> <p class=\"highlight-paragraph\"><b>Detect <i>Noun</i></b><br> Determines if any of the <b><i>noun</i></b> is within a short distance.</p> <p>To cast a Scripture, roll a <b>Wis</b> dice pool plus D12 with a <b>Difficulty</b> of 0 (see <b>Guidance</b>). If you succeed, the Scripture works as described in its entry.</p>",
 					"hint": "Noun can be any noun related to the god; for example, \"The God of The Wild\" could fire thorn-blasts and detect wildlife.",
 					"initial": ""
 				},
@@ -138,9 +138,9 @@
 					"key": "godDebt",
 					"type": "info",
 					"label": "God Debt",
-					"description": "",
+					"description": "<p><strong>God Debt</strong> determines whether you owe a god, or a god owes you. For each god, you can accrue up to 5<strong>God Debt</strong>. You may also be in credit to a god up to -5 <strong>God Debt</strong>.</p> <p><strong>God Debt</strong> can be called at any time it's positive, with the god requesting a task of you:</p> <p class=\"highlight-paragraph\"><strong>If accepted and completed,</strong> The <strong>God Debt</strong> is removed and the God is satisfied the task is completed.</p> <p class=\"highlight-paragraph\"><strong>If accepted and failed,</strong> The <strong>God Debt</strong> stays the same as the God is not yet satisfied.</p> <p class=\"highlight-paragraph\"><strong>If refused,</strong> The Godbinder suffers 1 <strong>Wound</strong> for every point of <strong>God Debt</strong> the God chooses to remove.</p> <p>You can remove <strong>God Debt</strong> by acting in a manner according to the god's desires. A Godbinder may be proactive and suggest particular acts to the gods.</p>",
 					"hint": "",
-					"initial": "\"<p><strong>God Debt</strong> determines whether you owe a god, or a god owes you. For each god, you can accrue up to 5 <strong>God Debt</strong>. You may also be in credit to a god up to -5 <strong>God Debt</strong>.</p><p><strong>God Debt</strong> can be called at any time it's positive, with the god requesting a task of you:</p><ul><li><strong>If accepted and completed:</strong> The <strong>God Debt</strong> is removed and the God is satisfied the task is completed.</li><li><strong>If accepted and failed:</strong> The <strong>God Debt</strong> stays the same as the God is not yet satisfied.</li><li><strong>If refused:</strong> The Godbinder suffers 1 <strong>Wound</strong> for every point of <strong>God Debt</strong> the God chooses to remove.</li></ul><p>You can remove <strong>God Debt</strong> by acting in a manner according to the god's desires. A Godbinder may be proactive and suggest particular acts to the gods.</p>\""
+					"initial": ""
 				},
 				{
 					"key": "miracles",
@@ -148,7 +148,7 @@
 					"label": "Miracles",
 					"description": "",
 					"hint": "",
-					"initial": "\"<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the <strong>Miracle</strong>.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on <strong>God Debt</strong></li><li>Performing a specific task for them immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise you will fulfil in the future</li></ul>\""
+					"initial": "<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the <strong>Miracle</strong>.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on <strong>God Debt</strong></li><li>Performing a specific task for them immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise you will fulfil in the future</li></ul>"
 				}
 			]
 		},

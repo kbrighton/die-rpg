@@ -11,6 +11,12 @@ select {
 	border: $border-groove;
 }
 
+.highlight-paragraph {
+	background: $overlay-darker;
+	border-radius: 4px;
+	padding: $padding-md;
+}	
+
 input[type="checkbox"]::before,
 input[type="radio"]::before {
 	color: $overlay-darkest;

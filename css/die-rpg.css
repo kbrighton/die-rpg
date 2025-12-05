@@ -641,6 +641,11 @@
   background: var(--die-rpg-overlay-darker);
   border: 2px groove var(--die-rpg-c-groove);
 }
+.die-rpg .highlight-paragraph {
+  background: var(--die-rpg-overlay-darker);
+  border-radius: 4px;
+  padding: 10px;
+}
 .die-rpg input[type=checkbox]::before,
 .die-rpg input[type=radio]::before {
   color: var(--die-rpg-overlay-darkest);

@@ -32,7 +32,7 @@
 			{
 				"name": "20-Special",
 				"description": "This success counts as two successes",
-				"cost": "special",
+				"cost": "twenty",
 				"mandatory": false
 			}
 		],
@@ -42,7 +42,6 @@
 			"Compendium.die-rpg.equipment.Item.KcLQk2NqFH78iWCu"
 		],
 		"advancementAssignments": {
-			"row0-1": 0,
 			"row1-1": 1,
 			"row1-2": 2,
 			"row1-3": 3,
@@ -64,11 +63,6 @@
 			"row5-4": 11
 		},
 		"advancements": [
-			{
-				"id": 0,
-				"name": "START",
-				"icon": ""
-			},
 			{
 				"id": 1,
 				"name": "New Rule",
