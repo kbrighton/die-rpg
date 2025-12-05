@@ -988,7 +988,9 @@
 				"SpecialNotFound": "Special \"{key}\" not found in paragon specials.",
 				"SpecialNotFoundHint": "Make sure the paragon has a special with key=\"{key}\"",
 				"UnknownFieldType": "Unknown field type: {type}",
-				"UnknownFieldTypeHint": "Please check the paragon item's form definition."
+				"UnknownFieldTypeHint": "Please check the paragon item's form definition.",
+				"SomethingElse": "Something else...",
+				"CustomInputLabel": "Describe:"
 			},
 			"Sections": {
 				"SelectLook": "-- Select a Look --",

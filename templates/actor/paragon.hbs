@@ -75,6 +75,7 @@
 							{{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
 								field=field
 								value=(lookup @root.actor.system.paragon.classAbilityData field.key)
+								customValue=(lookup @root.actor.system.paragon.classAbilityData (concat field.key "_custom"))
 								enrichedValue=(lookup @root.enrichedClassAbilityData field.key)
 								path=(concat "system.paragon.classAbilityData." field.key)
 								editable=@root.editable

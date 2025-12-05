@@ -3,6 +3,7 @@
 {{!--
   @param {Object} field - Field definition from paragon (with type, label, initial, etc.)
   @param {*} value - Current value from character data
+  @param {*} customValue - Custom text value for select fields with allowCustom (stored at path_custom)
   @param {String} path - Form path for name attribute (e.g., "system.paragon.classAbilityData.fairGold")
   @param {Boolean} editable - Whether the field is editable
 --}}
@@ -48,7 +49,20 @@
       {{#each field.choices as |choice|}}
         <option value="{{choice}}" {{#if (eq choice ../value)}}selected{{/if}}>{{choice}}</option>
       {{/each}}
+      {{#if field.allowCustom}}
+        <option value="___CUSTOM___" {{#if (eq "___CUSTOM___" value)}}selected{{/if}}>
+          {{localize "DIE_RPG.UI.DynamicField.SomethingElse"}}
+        </option>
+      {{/if}}
     </select>
+    {{#if field.allowCustom}}
+      {{#if (eq value "___CUSTOM___")}}
+        <div class="custom-input">
+          <label>{{#if field.customLabel}}{{field.customLabel}}{{else}}{{localize "DIE_RPG.UI.DynamicField.CustomInputLabel"}}{{/if}}</label>
+          <input type="text" name="{{path}}_custom" value="{{customValue}}" data-dtype="String" {{#unless editable}}disabled{{/unless}} />
+        </div>
+      {{/if}}
+    {{/if}}
     {{#if field.hint}}<p class="hint">{{field.hint}}</p>{{/if}}
   </div>
 
@@ -125,6 +139,7 @@
       {{> "systems/die-rpg/templates/partials/dynamic-field.hbs"
           field=subfield
           value=(lookup ../value subfield.key)
+          customValue=(lookup ../value (concat subfield.key "_custom"))
           enrichedValue=(lookup ../enrichedValue subfield.key)
           path=(concat ../path "." subfield.key)
           editable=../editable

@@ -1,299 +1,292 @@
 {
-  "name": "THE EMOTION KNIGHT",
-  "type": "paragon",
-  "img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20KNIGHT.webp",
-  "system": {
-    "description": "<p><strong>CLASS DICE: D8</strong></p><h2>Emotionally Engaged</h2><p>When you're feeling your sacred emotion (at 1 or above on your scale), you may add your D8 to any attack made with your Arcane Weapon.</p><hr /><p><em>These orders of Knights are the world's greatest warriors, each devoted to one of the eight sacred emotions. Whether it be joy, hate, or fear: if they feel it, they can use it to fuel the power of their sentient, arcane weapons.</em></p><p><em>When consumed by their sacred sensation, they're incomparable warriors, capable of miraculous feats. Nothing can stand against their blades–armies, mountains, not even ideas. They can defeat anything.</em></p><p><em>Except the passion which drives them.</em></p><h2>Play an Emotion Knight if you want to...</h2><ul><li>Be the most powerful fighter in the land, capable of fighting armies single-handedly.</li><li>Develop a bond with a signature weapon born of your psyche.</li><li>Process your tumultuous emotions by using them as incendiary fuel for your powers.</li></ul>",
-    "coreNature": "<p><em>These orders of Knights are the world's greatest warriors, each devoted to one of the eight sacred emotions. Whether it be joy, hate, or fear: if they feel it, they can use it to fuel the power of their sentient, arcane weapons.</em></p><p><em>When consumed by their sacred sensation, they're incomparable warriors, capable of miraculous feats. Nothing can stand against their blades–armies, mountains, not even ideas. They can defeat anything.</em></p><p><em>Except the passion which drives them.</em></p><p><strong>PLAY AN EMOTION KNIGHT IF YOU WANT TO...</strong></p><ul><li>Be the most powerful fighter in the land, capable of fighting armies single-handedly.</li><li>Develop a bond with a signature weapon born of your psyche.</li><li>Process your tumultuous emotions by using them as incendiary fuel for your powers.</li></ul>",
-    "die": "d8",
-    "importantStat": "str",
-    "coreAbility": {
-      "name": "EMOTIONALLY ENGAGED",
-      "description": "<p>When you're feeling your sacred emotion (at 1 or above on your scale), you may add your D8 to any attack made with your Arcane Weapon.</p>"
-    },
-    "looks": [
-      {
-        "name": "Worn leather, a long cloak and a scowl",
-        "description": "",
-        "defenseBonus": 1
-      },
-      {
-        "name": "Gladiator gear, all skin, spikes and black leather",
-        "description": "",
-        "defenseBonus": 1
-      },
-      {
-        "name": "Covered head to foot, with a full helm showing only your eyes",
-        "description": "",
-        "defenseBonus": 1
-      }
-    ],
-    "specials": [],
-    "equipmentOptions": [],
-    "advancementAssignments": {
-      "row1-1": 1,
-      "row1-2": 2,
-      "row1-3": 3,
-      "row1-4": 7,
-      "row1-5": 6,
-      "row2-1": 4,
-      "row2-2": 5,
-      "row3-1": 7,
-      "row3-2": 6,
-      "row3-3": 7,
-      "row4-1": 7,
-      "row4-2": 8,
-      "row4-3": 9,
-      "row4-4": 3,
-      "row4-5": 6,
-      "row5-1": 10,
-      "row5-2": 11,
-      "row5-3": 12,
-      "row5-4": 7
-    },
-    "advancements": [
-      {
-        "id": 1,
-        "name": "New Stance: Combat",
-        "icon": ""
-      },
-      {
-        "id": 2,
-        "name": "Emotion Draining",
-        "icon": ""
-      },
-      {
-        "id": 3,
-        "name": "Advance Creative Violence",
-        "icon": ""
-      },
-      {
-        "id": 4,
-        "name": "Knightmare",
-        "icon": ""
-      },
-      {
-        "id": 5,
-        "name": "New Stance: Social",
-        "icon": ""
-      },
-      {
-        "id": 6,
-        "name": "New Venting Ability",
-        "icon": ""
-      },
-      {
-        "id": 7,
-        "name": "New Stance: Any",
-        "icon": ""
-      },
-      {
-        "id": 8,
-        "name": "Second Active Stance",
-        "icon": ""
-      },
-      {
-        "id": 9,
-        "name": "Emotional Vampire",
-        "icon": ""
-      },
-      {
-        "id": 10,
-        "name": "Single-Minded",
-        "icon": ""
-      },
-      {
-        "id": 11,
-        "name": "Master of the Order",
-        "icon": ""
-      },
-      {
-        "id": 12,
-        "name": "Dual Wield",
-        "icon": ""
-      }
-    ],
-    "classAbilities": {
-      "fields": [
-        {
-          "key": "sacredEmotion",
-          "type": "select",
-          "label": "Your Sacred Emotion",
-          "description": "As an Emotion Knight, your powers are driven by you feeling a specific, <b>Sacred Emotion</b>. Choose a word from the list below that best fits that emotion and write it into the blank space at the top of this sheet.",
-          "hint": "All three of the words on the same line are aspects of your Sacred Emotion. You feed off them all.",
-          "initial": "",
-          "choices": [
-            "Rage, Anger, Annoyance",
-            "Ecstasy, Joy, Serenity",
-            "Vigilance, Anticipation, Interest",
-            "Loathing, Disgust, Boredom",
-            "Grief, Sadness, Pensiveness",
-            "Amazement, Surprise, Distraction",
-            "Terror, Fear, Apprehension",
-            "Admiration, Trust, Acceptance"
-          ]
-        },
-        {
-          "key": "emotionalScale",
-          "type": "number",
-          "label": "Your Emotional Scale",
-          "numberLabel": "Emotional Intensity:",
-          "description": "<p>Emotion Knights keep track of their Sacred Emotion on the emotional scale, using your D12 as a counter. Depending how intensely your character is feeling this emotion in the fiction, move the counter up or down the scale. Discuss with your GM if you feel it would have changed. Your GM will also prompt you. If the emotional intensity ever meets or exceeds your <b>Willpower</b>, you are overwhelmed by it.</p><p><b>Creative Violence:</b> At 2+ on the scale, you can expend all of it to defeat your foe, so long as they fit one of the nouns at your current intensity or below. To begin with, you can't access any effects stronger than level 3.</p><p>Roll your D8. If it beats your current emotional intensity, you succeed. If not, you do it but you or someone else close to you suffers <b>Wounds</b> equal to the result and the GM adds complications to your success. Either way, reset your intensity to level 0.</p><ol><li><b>Strong</b>: <b>Emotionally Engaged:</b> Can use <b>Venting</b> abilities and <b>Stances</b>.</li><li><b>Intense</b>: Can use <b>Creative Violence</b> to defeat: a mob, a blockage, a village, a strength.</li><li><b>Overwhelming</b>: Can defeat: an army, a town, a mountain range, a weakness.</li><li><b>Lost</b>: Can defeat: despair, a city, your true love.</li><li><b>Consumed</b>: Can defeat: a country, a religion.</li><li><b>Inhuman</b>: Can defeat: a god, hope, yourself.</li></ol>",
-          "hint": "",
-          "initial": 0
-        },
-        {
-          "key": "ventingAbilities",
-          "type": "itemList",
-          "label": "Venting Abilities",
-          "description": "If you are <b>emotionally engaged</b>, you can <b>vent</b>. This reduces your emotional scale by one and triggers the vent ability.",
-          "hint": "",
-          "initial": "[]",
-          "itemType": "venting"
-        },
-        {
-          "key": "stances",
-          "type": "itemList",
-          "label": "Stances",
-          "description": "Stances are passive abilities. If you have more than one, you can change them with an action in combat, or at-will outside of combat.",
-          "hint": "",
-          "initial": "[]",
-          "itemType": "stance"
-        }
-      ]
-    },
-    "advancementForms": {
-      "fields": [
-        {
-          "key": "emotionDraining",
-          "type": "info",
-          "label": "Emotion Draining",
-          "description": "<p>You learn to channel your Arcane Weapon&#39;s hunger to siphon their Sacred Emotion from a target character. The GM ascertains how strong an emotion the target was feeling. If it&#39;s 0, this ability has no effect; otherwise, this is the maximum level of emotion that can be siphoned. If the target is willing, the Emotion Knight gains that level of emotion and the target loses it. The character can resist with <strong>Cha</strong> roll (difficulty 0):</p> <ul> <li>For each success, a level of emotion is transferred from them to the Emotion Knight. Their behaviour changes proportionally.</li> <li>On a failure, the target&#39;s emotion stays the same and the Emotion Knight gains no levels of emotion.</li> <li>On a critical failure, the target can never feel emotion towards that source ever again. However, the Knight gets all the emotion the target presently feels.</li> </ul>",
-          "hint": "",
+	"name": "THE EMOTION KNIGHT",
+	"type": "paragon",
+	"img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20KNIGHT.webp",
+	"system": {
+		"description": "<p><strong>CLASS DICE: D8</strong></p><h2>Emotionally Engaged</h2><p>When you're feeling your sacred emotion (at 1 or above on your scale), you may add your D8 to any attack made with your Arcane Weapon.</p><hr /><p><em>These orders of Knights are the world's greatest warriors, each devoted to one of the eight sacred emotions. Whether it be joy, hate, or fear: if they feel it, they can use it to fuel the power of their sentient, arcane weapons.</em></p><p><em>When consumed by their sacred sensation, they're incomparable warriors, capable of miraculous feats. Nothing can stand against their blades–armies, mountains, not even ideas. They can defeat anything.</em></p><p><em>Except the passion which drives them.</em></p><h2>Play an Emotion Knight if you want to...</h2><ul><li>Be the most powerful fighter in the land, capable of fighting armies single-handedly.</li><li>Develop a bond with a signature weapon born of your psyche.</li><li>Process your tumultuous emotions by using them as incendiary fuel for your powers.</li></ul>",
+		"coreNature": "<p><em>These orders of Knights are the world's greatest warriors, each devoted to one of the eight sacred emotions. Whether it be joy, hate, or fear: if they feel it, they can use it to fuel the power of their sentient, arcane weapons.</em></p><p><em>When consumed by their sacred sensation, they're incomparable warriors, capable of miraculous feats. Nothing can stand against their blades–armies, mountains, not even ideas. They can defeat anything.</em></p><p><em>Except the passion which drives them.</em></p><p><strong>PLAY AN EMOTION KNIGHT IF YOU WANT TO...</strong></p><ul><li>Be the most powerful fighter in the land, capable of fighting armies single-handedly.</li><li>Develop a bond with a signature weapon born of your psyche.</li><li>Process your tumultuous emotions by using them as incendiary fuel for your powers.</li></ul>",
+		"die": "d8",
+		"importantStat": "str",
+		"coreAbility": {
+			"name": "EMOTIONALLY ENGAGED",
+			"description": "<p>When you're feeling your sacred emotion (at 1 or above on your scale), you may add your D8 to any attack made with your Arcane Weapon.</p>"
+		},
+		"looks": [
+			{
+				"name": "Worn leather, a long cloak and a scowl",
+				"description": "",
+				"defenseBonus": 1
+			},
+			{
+				"name": "Gladiator gear, all skin, spikes and black leather",
+				"description": "",
+				"defenseBonus": 1
+			},
+			{
+				"name": "Covered head to foot, with a full helm showing only your eyes",
+				"description": "",
+				"defenseBonus": 1
+			}
+		],
+		"specials": [],
+		"equipmentOptions": [],
+		"advancementAssignments": {
+			"row1-1": 1,
+			"row1-2": 2,
+			"row1-3": 3,
+			"row1-4": 7,
+			"row1-5": 6,
+			"row2-1": 4,
+			"row2-2": 5,
+			"row3-1": 7,
+			"row3-2": 6,
+			"row3-3": 7,
+			"row4-1": 7,
+			"row4-2": 8,
+			"row4-3": 9,
+			"row4-4": 3,
+			"row4-5": 6,
+			"row5-1": 10,
+			"row5-2": 11,
+			"row5-3": 12,
+			"row5-4": 7
+		},
+		"advancements": [
+			{
+				"id": 1,
+				"name": "New Stance: Combat",
+				"icon": ""
+			},
+			{
+				"id": 2,
+				"name": "Emotion Draining",
+				"icon": ""
+			},
+			{
+				"id": 3,
+				"name": "Advance Creative Violence",
+				"icon": ""
+			},
+			{
+				"id": 4,
+				"name": "Knightmare",
+				"icon": ""
+			},
+			{
+				"id": 5,
+				"name": "New Stance: Social",
+				"icon": ""
+			},
+			{
+				"id": 6,
+				"name": "New Venting Ability",
+				"icon": ""
+			},
+			{
+				"id": 7,
+				"name": "New Stance: Any",
+				"icon": ""
+			},
+			{
+				"id": 8,
+				"name": "Second Active Stance",
+				"icon": ""
+			},
+			{
+				"id": 9,
+				"name": "Emotional Vampire",
+				"icon": ""
+			},
+			{
+				"id": 10,
+				"name": "Single-Minded",
+				"icon": ""
+			},
+			{
+				"id": 11,
+				"name": "Master of the Order",
+				"icon": ""
+			},
+			{
+				"id": 12,
+				"name": "Dual Wield",
+				"icon": ""
+			}
+		],
+		"classAbilities": {
+			"fields": [
+				{
+					"key": "sacredEmotion",
+					"type": "select",
+					"label": "Your Sacred Emotion",
+					"description": "As an Emotion Knight, your powers are driven by you feeling a specific, <b>Sacred Emotion</b>. Choose a word from the list below that best fits that emotion and write it into the blank space at the top of this sheet.",
+					"hint": "All three of the words on the same line are aspects of your Sacred Emotion. You feed off them all.",
+					"initial": "",
+					"choices": [
+						"Rage, Anger, Annoyance",
+						"Ecstasy, Joy, Serenity",
+						"Vigilance, Anticipation, Interest",
+						"Loathing, Disgust, Boredom",
+						"Grief, Sadness, Pensiveness",
+						"Amazement, Surprise, Distraction",
+						"Terror, Fear, Apprehension",
+						"Admiration, Trust, Acceptance"
+					]
+				},
+				{
+					"key": "emotionalScale",
+					"type": "number",
+					"label": "Your Emotional Scale",
+					"numberLabel": "Emotional Intensity:",
+					"description": "<p>Emotion Knights keep track of their Sacred Emotion on the emotional scale, using your D12 as a counter. Depending how intensely your character is feeling this emotion in the fiction, move the counter up or down the scale. Discuss with your GM if you feel it would have changed. Your GM will also prompt you. If the emotional intensity ever meets or exceeds your <b>Willpower</b>, you are overwhelmed by it.</p><p><b>Creative Violence:</b> At 2+ on the scale, you can expend all of it to defeat your foe, so long as they fit one of the nouns at your current intensity or below. To begin with, you can't access any effects stronger than level 3.</p><p>Roll your D8. If it beats your current emotional intensity, you succeed. If not, you do it but you or someone else close to you suffers <b>Wounds</b> equal to the result and the GM adds complications to your success. Either way, reset your intensity to level 0.</p><ol><li><b>Strong</b>: <b>Emotionally Engaged:</b> Can use <b>Venting</b> abilities and <b>Stances</b>.</li><li><b>Intense</b>: Can use <b>Creative Violence</b> to defeat: a mob, a blockage, a village, a strength.</li><li><b>Overwhelming</b>: Can defeat: an army, a town, a mountain range, a weakness.</li><li><b>Lost</b>: Can defeat: despair, a city, your true love.</li><li><b>Consumed</b>: Can defeat: a country, a religion.</li><li><b>Inhuman</b>: Can defeat: a god, hope, yourself.</li></ol>",
+					"hint": "",
+					"initial": 0
+				},
+				{
+					"key": "ventingAbilities",
+					"type": "itemList",
+					"label": "Venting Abilities",
+					"description": "If you are <b>emotionally engaged</b>, you can <b>vent</b>. This reduces your emotional scale by one and triggers the vent ability.",
+					"hint": "",
+					"initial": "[]",
+					"itemType": "venting"
+				},
+				{
+					"key": "stances",
+					"type": "itemList",
+					"label": "Stances",
+					"description": "Stances are passive abilities. If you have more than one, you can change them with an action in combat, or at-will outside of combat.",
+					"hint": "",
+					"initial": "[]",
+					"itemType": "stance"
+				}
+			]
+		},
+		"advancementForms": {
+			"fields": [
+				{
+					"key": "emotionDraining",
+					"type": "info",
+					"label": "Emotion Draining",
+					"description": "<p>You learn to channel your Arcane Weapon&#39;s hunger to siphon their Sacred Emotion from a target character. The GM ascertains how strong an emotion the target was feeling. If it&#39;s 0, this ability has no effect; otherwise, this is the maximum level of emotion that can be siphoned. If the target is willing, the Emotion Knight gains that level of emotion and the target loses it. The character can resist with <strong>Cha</strong> roll (difficulty 0):</p> <ul> <li>For each success, a level of emotion is transferred from them to the Emotion Knight. Their behaviour changes proportionally.</li> <li>On a failure, the target&#39;s emotion stays the same and the Emotion Knight gains no levels of emotion.</li> <li>On a critical failure, the target can never feel emotion towards that source ever again. However, the Knight gets all the emotion the target presently feels.</li> </ul>",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "newStanceCombat",
+					"type": "info",
+					"label": "New Stance: TYPE",
+					"description": "Pick a new stance of the indicated type.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "newVentingAbility",
+					"type": "info",
+					"label": "New Venting Ability",
+					"description": "Pick a new venting ability.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "knightmare",
+					"type": "group",
+					"label": "Knightmare",
+					"description": "<p>After a bad night's sleep with a dream born of your Sacred Emotion, you will wake to find a magical steed beside you. Every time you have a bad (k)night's sleep, say what you dreamed about. Some dreams have been known to be prophetic.</p>",
+					"hint": "",
+					"fields": [
+						"{\"key\":\"steedAppearance\",\"type\":\"select\",\"label\":\"What does it look like?\",\"choices\":[\"A towering warhorse with burning eyes\",\"A three-humped camel with a knowing expression\",\"A cowardly cat who really doesn't want to be here\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"steedGift\",\"type\":\"select\",\"label\":\"What gift does it have? (Activates when Emotionally Engaged)\",\"choices\":[\"It can fly\",\"It is faster than any horse\",\"It can move through walls like a ghost\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"recentDream\",\"type\":\"html\",\"label\":\"Recent Dreams\",\"initial\":\"\",\"hint\":\"Record your prophetic dreams here.\",\"description\":\"\"}"
+					]
+				},
+				{
+					"key": "advanceCreativeViolence",
+					"type": "info",
+					"label": "Advance Creative Violence",
+					"description": "For each time you take this ability, your maximum level of <b>Creative Violence</b> is increased by 1, and your <b>Willpower</b> is treated as 1 higher for the puposes of resisting being overwhelmed by your Sacred Emotion.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "secondActiveStance",
+					"type": "info",
+					"label": "Second Active Stance",
+					"description": "<p>Stances are common among many martial arts, and a warrior chooses which stance to position themself carefully. One stance at any time. That’s how it works. However, Emotion Knights are the greatest warriors in the land. When this advance is chosen, the Emotion Knight may have two stances active simultaneously. Each stance can be changed independently exactly like normal.</p>",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "emotionalVampire",
+					"type": "info",
+					"label": "Emotional Vampire",
+					"description": "<p>The Arcane Weapon’s hunger can get out of control, and some Emotion Knights choose to chase that. When you use <b>Emotion Draining</b> on a being who has either submitted or is incapable of resisting, an Emotion Knight can choose to feed on the target’s potential to feel that emotion. Gain a single level of the emotion while removing the victim’s ability to ever feel this emotion again. If the victim is currently feeling this emotion, gain an additional level of the emotion alongside those you would normally drain.</p> <p>This is primarily an ability for antagonists and villains. Characters who see this power in use will fear and hate its user in the same way they would a Dictator.</p>",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "singleMinded",
+					"type": "info",
+					"label": "Single-Minded",
+					"description": "<p>When your emotion has you, you're very difficult to divert. Increase the difficulty to mentally dominate you by your present emotional level. This includes a Dictator's abilities.</p>",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "masterOfTheOrder",
+					"type": "info",
+					"label": "Master of the Order",
+					"description": "<p>You are accepted as the worldwide Master of your Order of Knights. If you're using the Great Game rules, they count as at least one faction, and perhaps more. If you gain <strong>Dual Wield</strong>, you immediately forfeit this advance.</p>",
+					"hint": "",
           "initial": ""
-        },
-        {
-          "key": "newStanceCombat",
-          "type": "info",
-          "label": "New Stance: TYPE",
-          "description": "Pick a new stance of the indicated type.",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "newVentingAbility",
-          "type": "info",
-          "label": "New Venting Ability",
-          "description": "Pick a new venting ability.",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "advanceCreativeViolence",
-          "type": "info",
-          "label": "Advance Creative Violence",
-          "description": "Your maximum level of <strong>Creative Violence</strong> increases by 1. Your <strong>Willpower</strong> is treated as 1 higher for resisting being overwhelmed by your Sacred Emotion.",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "knightmare",
-          "type": "group",
-          "label": "Knightmare",
-          "description": "<p>After a bad night's sleep with a dream born of your Sacred Emotion, you will wake to find a magical steed beside you. Every time you have a bad (k)night's sleep, say what you dreamed about. Some dreams have been known to be prophetic.</p>",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"steedAppearance\",\"type\":\"select\",\"label\":\"What does it look like?\",\"choices\":[\"A towering warhorse with burning eyes\",\"A three-humped camel with a knowing expression\",\"A cowardly cat who really doesn't want to be here\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"steedGift\",\"type\":\"select\",\"label\":\"What gift does it have? (Activates when Emotionally Engaged)\",\"choices\":[\"It can fly\",\"It is faster than any horse\",\"It can move through walls like a ghost\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"recentDream\",\"type\":\"html\",\"label\":\"Recent Dreams\",\"initial\":\"\",\"hint\":\"Record your prophetic dreams here.\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "secondActiveStance",
-          "type": "info",
-          "label": "Second Active Stance",
-          "description": "<p>Stances are common among many martial arts, and a warrior chooses which stance to position themself carefully. One stance at any time. That's how it works. However, Emotion Knights are the greatest warriors in the land. When this advance is chosen, the Emotion Knight may have two stances active simultaneously. Each stance can be changed independently exactly like normal.</p>",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "emotionalVampire",
-          "type": "info",
-          "label": "Emotional Vampire",
-          "description": "<p>When using <strong>Emotion Draining</strong> on a being who has submitted or cannot resist, you can feed on their <em>potential</em> to feel that emotion. Gain 1 level while permanently removing their ability to feel this emotion. If they're currently feeling it, gain an additional level plus normal drain.</p><p><em>This is primarily for antagonists and villains. Witnesses will fear and hate its user like they would a Dictator.</em></p>",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "singleMinded",
-          "type": "info",
-          "label": "Single-Minded",
-          "description": "<p>When your emotion has you, you're very difficult to divert. Increase the difficulty to mentally dominate you by your present emotional level. This includes a Dictator's abilities.</p>",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "masterOfTheOrder",
-          "type": "group",
-          "label": "Master of the Order",
-          "description": "<p>You are accepted as the worldwide Master of your Order of Knights. If you're using the Great Game rules, they count as at least one faction, and perhaps more. If you gain <strong>Dual Wield</strong>, you immediately forfeit this advance.</p>",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"orderName\",\"type\":\"text\",\"label\":\"Order Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"orderDescription\",\"type\":\"html\",\"label\":\"Order Description\",\"initial\":\"\",\"hint\":\"Describe your order of knights.\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "dualWield",
-          "type": "group",
-          "label": "Dual Wield",
-          "description": "<p>Choose a second emotion and gain a second weapon with its own personality. You now track this emotional scale separately. If you have an Emotional Stance from this new emotion, you can only activate that stance if its emotion is above zero. If you have two Emotion Stances, you may change one to an emotion stance from your new emotion. You can never select the advance <strong>Master Of The Order</strong>.</p>",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"secondEmotion\",\"type\":\"select\",\"label\":\"Second Sacred Emotion\",\"choices\":[\"Rage, Anger, Annoyance\",\"Ecstasy, Joy, Serenity\",\"Vigilance, Anticipation, Interest\",\"Loathing, Disgust, Boredom\",\"Grief, Sadness, Pensiveness\",\"Amazement, Surprise, Distraction\",\"Terror, Fear, Apprehension\",\"Admiration, Trust, Acceptance\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"secondEmotionLevel\",\"type\":\"number\",\"label\":\"Second Emotion Intensity\",\"initial\":0,\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"secondWeaponName\",\"type\":\"text\",\"label\":\"Second Weapon Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"secondWeaponType\",\"type\":\"select\",\"label\":\"Second Weapon Type\",\"choices\":[\"Sharp (sword, machete, rapier)\",\"Heavy (greataxe, hammer, gauntlet)\",\"Esoteric (chain, trident, whip)\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"secondWeaponPersonality\",\"type\":\"select\",\"label\":\"Second Weapon Personality\",\"choices\":[\"Aggressively determined to pursue its Sacred Emotion\",\"A critical voice, doubting the Knight's worthiness\",\"The adorable opposite of what you'd expect from it\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"secondWeaponTrait\",\"type\":\"select\",\"label\":\"Second Weapon Trait\",\"choices\":[\"Brutal - Special: If this hit Wounds, it deals two instead\",\"Fast - Special: If this hit removes Guard, remove two instead of one\",\"Elegant - Uses Dex instead of Str. Special: Recover two Guard\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "knightsConfirmation",
-          "type": "group",
-          "label": "A Knight's Confirmation (Level 8)",
-          "description": "<p>You are called to confirm your choice and enter your order. Your weapon is taken from you. You are taken to a ceremonial place—a dungeon, a labyrinth, a cave system—and you find your way through it. In the centre, your weapon... and one for each of the other seven emotions. Gain the following:</p><ul><li>Retrieve your weapon... or pick one of the other seven.</li><li>Pick a new stance or venting ability. Swap any abilities related to a given emotion.</li><li>You're now a member of this league of knights.</li></ul><p>If there is an order in the fiction already, use it. If there isn't, create one in collaboration with the GM. This order may call upon you to perform tasks. You may be able to ask them for help. This is a reciprocal relationship.</p>",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"confirmationChoice\",\"type\":\"select\",\"label\":\"Which weapon did you retrieve?\",\"choices\":[\"My original weapon\",\"Rage Knight's weapon\",\"Joy Knight's weapon\",\"Anticipation Knight's weapon\",\"Disgust Knight's weapon\",\"Sadness Knight's weapon\",\"Surprise Knight's weapon\",\"Fear Knight's weapon\",\"Trust Knight's weapon\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"orderJoined\",\"type\":\"text\",\"label\":\"Order Joined\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"orderDuties\",\"type\":\"html\",\"label\":\"Order Duties & Benefits\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
-          ]
-        }
-      ]
-    },
-    "classDiceImage": "systems/die-rpg/assets/DIE/dice/d8-exploded.svg",
-    "portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20KNIGHT.webp",
-    "tokenImage": "systems/die-rpg/assets/DIE/tokens/paragons/THE%20KNIGHT.webp"
-  },
-  "effects": [],
-  "folder": null,
-  "ownership": {
-    "default": 0
-  },
-  "flags": {},
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "exportSource": null,
-    "coreVersion": "13.350",
-    "systemId": "die-rpg",
-    "systemVersion": "#{VERSION}#",
-    "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
-    "lastModifiedBy": "UGCccSsgt9XaEKG6"
-  },
-  "_id": "Hh3O1v9Q74ZrqoIu",
-  "sort": 0,
-  "_key": "!items!Hh3O1v9Q74ZrqoIu"
+				},
+				{
+					"key": "dualWield",
+					"type": "group",
+					"label": "Dual Wield",
+					"description": "<p>Choose a second emotion and gain a second weapon with its own personality. You now track this emotional scale separately. If you have an Emotional Stance from this new emotion, you can only activate that stance if its emotion is above zero. If you have two Emotion Stances, you may change one to an emotion stance from your new emotion. You can never select the advance <strong>Master Of The Order</strong>.</p>",
+					"hint": "",
+					"fields": [
+						"{\"key\":\"secondEmotion\",\"type\":\"select\",\"label\":\"Second Sacred Emotion\",\"choices\":[\"Rage, Anger, Annoyance\",\"Ecstasy, Joy, Serenity\",\"Vigilance, Anticipation, Interest\",\"Loathing, Disgust, Boredom\",\"Grief, Sadness, Pensiveness\",\"Amazement, Surprise, Distraction\",\"Terror, Fear, Apprehension\",\"Admiration, Trust, Acceptance\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"secondEmotionLevel\",\"type\":\"number\",\"label\":\"Second Emotion Intensity\",\"initial\":0,\"hint\":\"\",\"description\":\"\"}"
+					]
+				},
+				{
+					"key": "knightsConfirmation",
+					"type": "group",
+					"label": "A Knight's Confirmation (Level 8)",
+					"description": "<p>You are called to confirm your choice and enter your order. Your weapon is taken from you. You are taken to a ceremonial place—a dungeon, a labyrinth, a cave system—and you find your way through it. In the centre, your weapon... and one for each of the other seven emotions. Gain the following:</p><ul><li>Retrieve your weapon... or pick one of the other seven.</li><li>Pick a new stance or venting ability. Swap any abilities related to a given emotion.</li><li>You're now a member of this league of knights.</li></ul><p>If there is an order in the fiction already, use it. If there isn't, create one in collaboration with the GM. This order may call upon you to perform tasks. You may be able to ask them for help. This is a reciprocal relationship.</p>",
+					"hint": "",
+					"fields": [
+						"{\"key\":\"confirmationChoice\",\"type\":\"select\",\"label\":\"Which weapon did you retrieve?\",\"choices\":[\"My original weapon\",\"Rage Knight's weapon\",\"Joy Knight's weapon\",\"Anticipation Knight's weapon\",\"Disgust Knight's weapon\",\"Sadness Knight's weapon\",\"Surprise Knight's weapon\",\"Fear Knight's weapon\",\"Trust Knight's weapon\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"orderJoined\",\"type\":\"text\",\"label\":\"Order Joined\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
+						"{\"key\":\"orderDuties\",\"type\":\"html\",\"label\":\"Order Duties & Benefits\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
+					]
+				}
+			]
+		},
+		"classDiceImage": "systems/die-rpg/assets/DIE/dice/d8-exploded.svg",
+		"portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20KNIGHT.webp",
+		"tokenImage": "systems/die-rpg/assets/DIE/tokens/paragons/THE%20KNIGHT.webp"
+	},
+	"effects": [],
+	"folder": null,
+	"ownership": {
+		"default": 0
+	},
+	"flags": {},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null,
+		"coreVersion": "13.350",
+		"systemId": "die-rpg",
+		"systemVersion": "#{VERSION}#",
+		"createdTime": 1764106396710,
+		"modifiedTime": 1764106398546,
+		"lastModifiedBy": "UGCccSsgt9XaEKG6"
+	},
+	"_id": "Hh3O1v9Q74ZrqoIu",
+	"sort": 0,
+	"_key": "!items!Hh3O1v9Q74ZrqoIu"
 }
