@@ -1,280 +1,371 @@
 {
-  "name": "THE GODBINDER",
-  "type": "paragon",
-  "img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20GODBINDER.webp",
-  "system": {
-    "description": "<p><strong>CLASS DICE: D12</strong></p><h2>Guidance</h2><p>You can add your D12 to your dice pool any time a god's power is influencing it, whether Scripture or Miracle. If it rolls a 1 on a Scripture, gain <strong>God Debt</strong>.</p><hr /><p><em>You don't believe in gods.</em></p><p><em>They exist, obviously. You owe the Fire God for that time he burned that fortress, and you've got that favour from the God of the Wild when you saved her rainforest. But believe? That's a strong word.</em></p><p><em>You don't believe in gods. You believe in tools. Useful tools.</em></p><p><em>Because if you think about it, the difference between \"cleric\" and \"demonologist\" is the same as the one between \"freedom fighter\" and \"terrorist.\"</em></p><h2>Play a Godbinder if you want to...</h2><ul><li>Unleash the power of a pantheon of your own design on the world.</li><li>Barter with your gods for anything you want... for a price.</li><li>Deal with the awful costs of the deals.</li></ul>",
-    "coreNature": "<p><em>You don't believe in gods.</em></p><p><em>They exist, obviously. You owe the Fire God for that time he burned that fortress, and you've got that favour from the God of the Wild when you saved her rainforest. But believe? That's a strong word.</em></p><p><em>You don't believe in gods. You believe in tools. Useful tools.</em></p><p><em>Because if you think about it, the difference between \"cleric\" and \"demonologist\" is the same as the one between \"freedom fighter\" and \"terrorist.\"</em></p><p><strong>PLAY A GODBINDER IF YOU WANT TO...</strong></p><ul><li>Unleash the power of a pantheon of your own design on the world.</li><li>Barter with your gods for anything you want... for a price.</li><li>Deal with the awful costs of the deals.</li></ul>",
-    "die": "d12",
-    "importantStat": "wis",
-    "coreAbility": {
-      "name": "GUIDANCE",
-      "description": "<p>You can add your D12 to your dice pool any time a god's power is influencing it, whether Scripture or Miracle. If it rolls a 1 on a Scripture, gain <strong>God Debt</strong>.</p>"
-    },
-    "looks": [
-      {
-        "name": "Heavy-metal holy crusader, looking for trouble",
-        "description": "",
-        "defenseBonus": 0
-      },
-      {
-        "name": "Beatific holy seer, looking for peace",
-        "description": "",
-        "defenseBonus": 0
-      },
-      {
-        "name": "Wild tattoos, frenzied eyes, looking for drugs",
-        "description": "",
-        "defenseBonus": 0
-      },
-      {
-        "name": "Urbane street magician, looking for the gold in someone's pocket",
-        "description": "",
-        "defenseBonus": 0
-      }
-    ],
-    "specials": [],
-    "equipmentOptions": [
-      "Compendium.die-rpg.equipment.Item.z1P08FKHcSQydhZN",
-      "Compendium.die-rpg.equipment.Item.dL25KoMocOr9Nogt",
-      "Compendium.die-rpg.equipment.Item.KUYR8o2nxCDpHGXb"
-    ],
-    "advancementAssignments": {
-      "row0-1": 0,
-      "row1-1": 1,
-      "row1-2": 2,
-      "row1-3": 3,
-      "row1-4": 1,
-      "row1-5": 2,
-      "row2-1": 1,
-      "row2-2": 1,
-      "row3-1": 1,
-      "row3-2": 4,
-      "row3-3": 1,
-      "row4-1": 1,
-      "row4-2": 5,
-      "row4-3": 1,
-      "row4-4": 1,
-      "row4-5": 6,
-      "row5-1": 1,
-      "row5-2": 8,
-      "row5-3": 9,
-      "row5-4": 1
-    },
-    "advancements": [
-      {
-        "id": 0,
-        "name": "START",
-        "icon": ""
-      },
-      {
-        "id": 1,
-        "name": "New Level in God",
-        "icon": ""
-      },
-      {
-        "id": 2,
-        "name": "Mysterious Ways",
-        "icon": ""
-      },
-      {
-        "id": 3,
-        "name": "Higher Scripture",
-        "icon": ""
-      },
-      {
-        "id": 4,
-        "name": "Going Rogue",
-        "icon": ""
-      },
-      {
-        "id": 5,
-        "name": "Heretic",
-        "icon": ""
-      },
-      {
-        "id": 6,
-        "name": "God Banking",
-        "icon": ""
-      },
-      {
-        "id": 7,
-        "name": "Wicked or Divine",
-        "icon": ""
-      },
-      {
-        "id": 8,
-        "name": "A New Covenant",
-        "icon": ""
-      },
-      {
-        "id": 9,
-        "name": "Head of Religion",
-        "icon": ""
-      }
-    ],
-    "classAbilities": {
-      "fields": [
-        {
-          "key": "scripture",
-          "type": "info",
-          "label": "Scripture",
-          "description": "",
-          "hint": "",
-          "initial": "\"<p>All Godbinders gain access to three basic spells – Scripture shared between all gods:</p><h4>&lt;Noun&gt; Blast</h4><p>Attacks a target within medium range.</p><h4>Heal</h4><p>Heals 1 <strong>Health</strong> to a character within a short distance. Max 1 use per character per encounter.</p><h4>Detect &lt;Noun&gt;</h4><p>Determines if any of the &lt;noun&gt; is within a short distance.</p><p><em>&lt;Noun&gt; can be any noun related to the god; for example, \"The God of The Wild\" could fire thorn-blasts and detect wildlife.</em></p><p>To cast a Scripture, roll a <strong>Wis</strong> dice pool plus D12 with a <strong>Difficulty</strong> of 0 (see <strong>Guidance</strong>). If you succeed, the Scripture works as described in its entry.</p>\""
-        },
-        {
-          "key": "godDebt",
-          "type": "info",
-          "label": "God Debt",
-          "description": "",
-          "hint": "",
-          "initial": "\"<p><strong>God Debt</strong> determines whether you owe a god, or a god owes you. For each god, you can accrue up to 5 <strong>God Debt</strong>. You may also be in credit to a god up to -5 <strong>God Debt</strong>.</p><p><strong>God Debt</strong> can be called at any time it's positive, with the god requesting a task of you:</p><ul><li><strong>If accepted and completed:</strong> The <strong>God Debt</strong> is removed and the God is satisfied the task is completed.</li><li><strong>If accepted and failed:</strong> The <strong>God Debt</strong> stays the same as the God is not yet satisfied.</li><li><strong>If refused:</strong> The Godbinder suffers 1 <strong>Wound</strong> for every point of <strong>God Debt</strong> the God chooses to remove.</li></ul><p>You can remove <strong>God Debt</strong> by acting in a manner according to the god's desires. A Godbinder may be proactive and suggest particular acts to the gods.</p>\""
-        },
-        {
-          "key": "miracles",
-          "type": "info",
-          "label": "Miracles",
-          "description": "",
-          "hint": "",
-          "initial": "\"<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the <strong>Miracle</strong>.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on <strong>God Debt</strong></li><li>Performing a specific task for them immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise you will fulfil in the future</li></ul>\""
-        },
-        {
-          "key": "selectedGods",
-          "type": "itemList",
-          "label": "Your Gods",
-          "description": "<p>Choose one of the gods to start: this is the god you have a special relationship with. What's their name? You have the first level of a relationship with the god.</p>",
-          "hint": "Track levels (1-3+), debt (-5 to +5), and trust (1 per level above 3) for each god.",
-          "initial": "[]",
-          "itemType": "god"
-        }
-      ]
-    },
-    "advancementForms": {
-      "fields": [
-        {
-          "key": "newLevelInGod",
-          "type": "info",
-          "label": "New Level in God",
-          "description": "Add a level in an existing or new god. Describe how you bettered or founded your relationship with this god.",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "mysteriousWays",
-          "type": "group",
-          "label": "Mysterious Ways",
-          "description": "Choose one:",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"godlyCommandment\",\"type\":\"text\",\"label\":\"Godly Commandment\",\"initial\":\"\",\"hint\":\"A specific repeatable task. Every time you fulfil it, reduce God Debt by one.\",\"description\":\"\"}",
-            "{\"key\":\"goodWorks\",\"type\":\"boolean\",\"label\":\"Good Works\",\"initial\":false,\"hint\":\"Between adventures, automatically reduce God Debt by one. Describe the act of devotion.\",\"description\":\"\"}",
-            "{\"key\":\"uncoveringScripture\",\"type\":\"text\",\"label\":\"Uncovering Scripture\",\"initial\":\"\",\"hint\":\"A lost scripture (spell from Grimoire, Risk ≤ god level × 5). Was it lost, hidden or destroyed?\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "higherScripture",
-          "type": "info",
-          "label": "Higher Scripture",
-          "description": "You gain access to higher level scriptures for your gods. Each god has scriptures at levels 1, 2, and 3.",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "goingRogue",
-          "type": "info",
-          "label": "Going Rogue",
-          "description": "<p>When a god calls in debt and you don't pay, you may break contact with them rather than suffer the punishment. Instead:</p><ul><li>Double your debt to that god; if you ever make contact with that god again, the god will call in the increased debt for one <strong>Wound</strong> per debt remaining, as per usual. This will likely kill you.</li><li>You lose access to all the scriptures for that god, and are unable to use <strong>Good Works</strong> or <strong>Godly Commandments</strong> to reduce the <strong>God Debt</strong>. Any <strong>God Debt</strong> reduction will solely come from the narrative.</li><li>The god will do the godly equivalent of sending bailiffs. A GM may spend the player's debt to have unfortunate events related to the god's area of power occur - one debt per event. This will target you and likely anyone or anything you hold dear.</li></ul><p>If the debt is paid off, the relationship returns to normal, and you regain all your powers.</p>",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "heretic",
-          "type": "group",
-          "label": "Heretic",
-          "description": "Choose one of your gods. You understand a fundamental truth that all other believers deny.",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"hereticGod\",\"type\":\"text\",\"label\":\"Which god?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"hereticTruth\",\"type\":\"html\",\"label\":\"What is the truth?\",\"initial\":\"\",\"hint\":\"Gain 2 Trust in that god. Mainstream believers view you with suspicion or hatred.\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "godBanking",
-          "type": "info",
-          "label": "God Banking",
-          "description": "Between sessions you can broker a deal between two of your gods, and move debt from one to the other. Describe how this deal works.",
-          "hint": "",
-          "initial": ""
-        },
-        {
-          "key": "wickedOrDivine",
-          "type": "group",
-          "label": "Wicked or Divine",
-          "description": "You've gained a reputation - for better or worse. Choose one:",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"divineTeaching\",\"type\":\"html\",\"label\":\"Divine - Your Teaching\",\"initial\":\"\",\"hint\":\"Become a holy figure. What is your teaching? What do they call you?\",\"description\":\"\"}",
-            "{\"key\":\"wickedServant\",\"type\":\"html\",\"label\":\"Wicked - Debt-bonded Servant\",\"initial\":\"\",\"hint\":\"A god gives you a servant. Describe them.\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "aNewCovenant",
-          "type": "group",
-          "label": "A New Covenant",
-          "description": "You make a new god. It can be a creation based on your personality, an NPC who ascends, or something else.",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"newGodName\",\"type\":\"text\",\"label\":\"New God's Name\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"newGodNature\",\"type\":\"html\",\"label\":\"New God's Nature\",\"initial\":\"\",\"hint\":\"Gain a level in the new god. May move existing levels to this god.\",\"description\":\"\"}",
-            "{\"key\":\"newGodScriptures\",\"type\":\"html\",\"label\":\"New God's Scriptures\",\"initial\":\"\",\"hint\":\"Collaborate with GM to design three scriptures.\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "headOfReligion",
-          "type": "group",
-          "label": "Head of Religion",
-          "description": "<p>You're the head (official or otherwise) of a god's worship. If there's a suitable cult in the fiction, use it. If not, there's a new cult; collaborate with the GM to define it. Any Believers from <strong>Wicked or Divine</strong> will convert to your faith. You may move any or all of their levels in gods to the god whose religion you are now in charge of. Any unpaid debt to each god is kept and paid off as per <strong>Going Rogue</strong>.</p><p>The religion is a faction in the Great Game. If you make it act in a way that's against the tenets of its religion, roll a <strong>Wis</strong> dice pool, with <strong>Difficulty</strong> equal to your total levels in other gods. If you took <strong>Heretic</strong>, increase this <strong>Difficulty</strong> by 2.</p><p>If you take <strong>A New Covenant</strong>, immediately forfeit all this power.</p>",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"religionGod\",\"type\":\"text\",\"label\":\"Which god's religion?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-            "{\"key\":\"religionDescription\",\"type\":\"html\",\"label\":\"Describe the religion/cult\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
-          ]
-        },
-        {
-          "key": "heresyNoted",
-          "type": "group",
-          "label": "Your Heresy is Noted (Level 12)",
-          "description": "<p>At level 12, your heresy is noted. A god who you have no levels in gets jealous. <em>How can you not care about me at all? Why don't you slip into <strong>my</strong> DMs!</em> Your other gods glare. <em>Don't you dare pay <strong>them</strong> attention.</em></p><p>You may re-arrange all the levels you have in your gods. To work out how each god feels about your decision, go down this list. Entries further down the list overrule those higher up.</p><ol><li>If a god's level is higher than when they started, they're <strong>happy</strong>.</li><li>If a god's level is lower than when they started, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is the highest, they're <strong>happy</strong>.</li><li>If a god's level was highest and now they're not, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is zero, they're <strong>furious</strong>. Gain two <strong>God Debt</strong>.</li></ol>",
-          "hint": "",
-          "fields": [
-            "{\"key\":\"heresyRearrangement\",\"type\":\"html\",\"label\":\"How did you rearrange your levels?\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
-          ]
-        }
-      ]
-    },
-    "classDiceImage": "systems/die-rpg/assets/DIE/dice/d12-exploded.svg",
-    "portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20GODBINDER.webp",
-    "tokenImage": "systems/die-rpg/assets/DIE/tokens/paragons/THE%20GODBINDER.webp"
-  },
-  "effects": [],
-  "folder": null,
-  "ownership": {
-    "default": 0
-  },
-  "flags": {},
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "exportSource": null,
-    "coreVersion": "13.350",
-    "systemId": "die-rpg",
-    "systemVersion": "#{VERSION}#",
-    "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
-    "lastModifiedBy": "UGCccSsgt9XaEKG6"
-  },
-  "_id": "e9xt9eVpLfS3Gx4v",
-  "sort": 0,
-  "_key": "!items!e9xt9eVpLfS3Gx4v"
+	"name": "THE GODBINDER",
+	"type": "paragon",
+	"img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20GODBINDER.webp",
+	"system": {
+		"description": "<p><strong>CLASS DICE: D12</strong></p><h2>Guidance</h2><p>You can add your D12 to your dice pool any time a god's power is influencing it, whether Scripture or Miracle. If it rolls a 1 on a Scripture, gain <strong>God Debt</strong>.</p><hr /><p><em>You don't believe in gods.</em></p><p><em>They exist, obviously. You owe the Fire God for that time he burned that fortress, and you've got that favour from the God of the Wild when you saved her rainforest. But believe? That's a strong word.</em></p><p><em>You don't believe in gods. You believe in tools. Useful tools.</em></p><p><em>Because if you think about it, the difference between \"cleric\" and \"demonologist\" is the same as the one between \"freedom fighter\" and \"terrorist.\"</em></p><h2>Play a Godbinder if you want to...</h2><ul><li>Unleash the power of a pantheon of your own design on the world.</li><li>Barter with your gods for anything you want... for a price.</li><li>Deal with the awful costs of the deals.</li></ul>",
+		"coreNature": "<p><em>You don't believe in gods.</em></p><p><em>They exist, obviously. You owe the Fire God for that time he burned that fortress, and you've got that favour from the God of the Wild when you saved her rainforest. But believe? That's a strong word.</em></p><p><em>You don't believe in gods. You believe in tools. Useful tools.</em></p><p><em>Because if you think about it, the difference between \"cleric\" and \"demonologist\" is the same as the one between \"freedom fighter\" and \"terrorist.\"</em></p><p><strong>PLAY A GODBINDER IF YOU WANT TO...</strong></p><ul><li>Unleash the power of a pantheon of your own design on the world.</li><li>Barter with your gods for anything you want... for a price.</li><li>Deal with the awful costs of the deals.</li></ul>",
+		"die": "d12",
+		"importantStat": "wis",
+		"coreAbility": {
+			"name": "GUIDANCE",
+			"description": "<p>You can add your D12 to your dice pool any time a god's power is influencing it, whether Scripture or Miracle. If it rolls a 1 on a Scripture, gain <strong>God Debt</strong>.</p>"
+		},
+		"looks": [
+			{
+				"name": "Heavy-metal holy crusader, looking for trouble",
+				"description": "",
+				"defenseBonus": 0
+			},
+			{
+				"name": "Beatific holy seer, looking for peace",
+				"description": "",
+				"defenseBonus": 0
+			},
+			{
+				"name": "Wild tattoos, frenzied eyes, looking for drugs",
+				"description": "",
+				"defenseBonus": 0
+			},
+			{
+				"name": "Urbane street magician, looking for the gold in someone's pocket",
+				"description": "",
+				"defenseBonus": 0
+			}
+		],
+		"specials": [],
+		"equipmentOptions": [
+			"Compendium.die-rpg.equipment.Item.z1P08FKHcSQydhZN",
+			"Compendium.die-rpg.equipment.Item.dL25KoMocOr9Nogt",
+			"Compendium.die-rpg.equipment.Item.KUYR8o2nxCDpHGXb"
+		],
+		"advancementAssignments": {
+			"row0-1": 0,
+			"row1-1": 1,
+			"row1-2": 2,
+			"row1-3": 3,
+			"row1-4": 1,
+			"row1-5": 2,
+			"row2-1": 1,
+			"row2-2": 1,
+			"row3-1": 1,
+			"row3-2": 4,
+			"row3-3": 1,
+			"row4-1": 1,
+			"row4-2": 5,
+			"row4-3": 1,
+			"row4-4": 1,
+			"row4-5": 6,
+			"row5-1": 1,
+			"row5-2": 8,
+			"row5-3": 9,
+			"row5-4": 1
+		},
+		"advancements": [
+			{
+				"id": 0,
+				"name": "START",
+				"icon": ""
+			},
+			{
+				"id": 1,
+				"name": "New Level in God",
+				"icon": ""
+			},
+			{
+				"id": 2,
+				"name": "Mysterious Ways",
+				"icon": ""
+			},
+			{
+				"id": 3,
+				"name": "Higher Scripture",
+				"icon": ""
+			},
+			{
+				"id": 4,
+				"name": "Going Rogue",
+				"icon": ""
+			},
+			{
+				"id": 5,
+				"name": "Heretic",
+				"icon": ""
+			},
+			{
+				"id": 6,
+				"name": "God Banking",
+				"icon": ""
+			},
+			{
+				"id": 7,
+				"name": "Wicked or Divine",
+				"icon": ""
+			},
+			{
+				"id": 8,
+				"name": "A New Covenant",
+				"icon": ""
+			},
+			{
+				"id": 9,
+				"name": "Head of Religion",
+				"icon": ""
+			}
+		],
+		"classAbilities": {
+			"fields": [
+				{
+					"key": "scripture",
+					"type": "info",
+					"label": "Scripture",
+					"description": "",
+					"hint": "",
+					"initial": "\"<p>All Godbinders gain access to three basic spells – Scripture shared between all gods:</p><h4>&lt;Noun&gt; Blast</h4><p>Attacks a target within medium range.</p><h4>Heal</h4><p>Heals 1 <strong>Health</strong> to a character within a short distance. Max 1 use per character per encounter.</p><h4>Detect &lt;Noun&gt;</h4><p>Determines if any of the &lt;noun&gt; is within a short distance.</p><p><em>&lt;Noun&gt; can be any noun related to the god; for example, \"The God of The Wild\" could fire thorn-blasts and detect wildlife.</em></p><p>To cast a Scripture, roll a <strong>Wis</strong> dice pool plus D12 with a <strong>Difficulty</strong> of 0 (see <strong>Guidance</strong>). If you succeed, the Scripture works as described in its entry.</p>\""
+				},
+				{
+					"key": "godDebt",
+					"type": "info",
+					"label": "God Debt",
+					"description": "",
+					"hint": "",
+					"initial": "\"<p><strong>God Debt</strong> determines whether you owe a god, or a god owes you. For each god, you can accrue up to 5 <strong>God Debt</strong>. You may also be in credit to a god up to -5 <strong>God Debt</strong>.</p><p><strong>God Debt</strong> can be called at any time it's positive, with the god requesting a task of you:</p><ul><li><strong>If accepted and completed:</strong> The <strong>God Debt</strong> is removed and the God is satisfied the task is completed.</li><li><strong>If accepted and failed:</strong> The <strong>God Debt</strong> stays the same as the God is not yet satisfied.</li><li><strong>If refused:</strong> The Godbinder suffers 1 <strong>Wound</strong> for every point of <strong>God Debt</strong> the God chooses to remove.</li></ul><p>You can remove <strong>God Debt</strong> by acting in a manner according to the god's desires. A Godbinder may be proactive and suggest particular acts to the gods.</p>\""
+				},
+				{
+					"key": "miracles",
+					"type": "info",
+					"label": "Miracles",
+					"description": "",
+					"hint": "",
+					"initial": "\"<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the <strong>Miracle</strong>.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on <strong>God Debt</strong></li><li>Performing a specific task for them immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise you will fulfil in the future</li></ul>\""
+				},
+				{
+					"key": "selectedGods",
+					"type": "itemList",
+					"label": "Your Gods",
+					"description": "<p>Choose one of the gods to start: this is the god you have a special relationship with. What's their name? You have the first level of a relationship with the god.</p>",
+					"hint": "Track levels (1-3+), debt (-5 to +5), and trust (1 per level above 3) for each god.",
+					"initial": "[]",
+					"itemType": "god"
+				}
+			]
+		},
+		"advancementForms": {
+			"fields": [
+				{
+					"key": "newLevelInGod",
+					"type": "info",
+					"label": "New Level in God",
+					"description": "Add a level in an existing or new god. Describe how you bettered or founded your relationship with this god.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "mysteriousWays",
+					"type": "group",
+					"label": "Mysterious Ways",
+					"description": "Choose one:",
+					"hint": "",
+					"fields": [
+						{
+							"key": "godlyCommandment",
+							"type": "text",
+							"label": "Godly Commandment",
+							"initial": "",
+							"hint": "A specific repeatable task. Every time you fulfil it, reduce God Debt by one.",
+							"description": ""
+						},
+						{
+							"key": "goodWorks",
+							"type": "boolean",
+							"label": "Good Works",
+							"initial": false,
+							"hint": "Between adventures, automatically reduce God Debt by one. Describe the act of devotion.",
+							"description": ""
+						},
+						{
+							"key": "uncoveringScripture",
+							"type": "text",
+							"label": "Uncovering Scripture",
+							"initial": "",
+							"hint": "A lost scripture (spell from Grimoire, Risk ≤ god level × 5). Was it lost, hidden or destroyed?",
+							"description": ""
+						}
+					]
+				},
+				{
+					"key": "higherScripture",
+					"type": "info",
+					"label": "Higher Scripture",
+					"description": "You gain access to higher level scriptures for your gods. Each god has scriptures at levels 1, 2, and 3.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "goingRogue",
+					"type": "info",
+					"label": "Going Rogue",
+					"description": "<p>When a god calls in debt and you don't pay, you may break contact with them rather than suffer the punishment. Instead:</p><ul><li>Double your debt to that god; if you ever make contact with that god again, the god will call in the increased debt for one <strong>Wound</strong> per debt remaining, as per usual. This will likely kill you.</li><li>You lose access to all the scriptures for that god, and are unable to use <strong>Good Works</strong> or <strong>Godly Commandments</strong> to reduce the <strong>God Debt</strong>. Any <strong>God Debt</strong> reduction will solely come from the narrative.</li><li>The god will do the godly equivalent of sending bailiffs. A GM may spend the player's debt to have unfortunate events related to the god's area of power occur - one debt per event. This will target you and likely anyone or anything you hold dear.</li></ul><p>If the debt is paid off, the relationship returns to normal, and you regain all your powers.</p>",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "heretic",
+					"type": "group",
+					"label": "Heretic",
+					"description": "Choose one of your gods. You understand a fundamental truth that all other believers deny.",
+					"hint": "",
+					"fields": [
+						{
+							"key": "hereticGod",
+							"type": "text",
+							"label": "Which god?",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "hereticTruth",
+							"type": "html",
+							"label": "What is the truth?",
+							"initial": "",
+							"hint": "Gain 2 Trust in that god. Mainstream believers view you with suspicion or hatred.",
+							"description": ""
+						}
+					]
+				},
+				{
+					"key": "godBanking",
+					"type": "info",
+					"label": "God Banking",
+					"description": "Between sessions you can broker a deal between two of your gods, and move debt from one to the other. Describe how this deal works.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "wickedOrDivine",
+					"type": "group",
+					"label": "Wicked or Divine",
+					"description": "You've gained a reputation - for better or worse. Choose one:",
+					"hint": "",
+					"fields": [
+						{
+							"key": "divineTeaching",
+							"type": "html",
+							"label": "Divine - Your Teaching",
+							"initial": "",
+							"hint": "Become a holy figure. What is your teaching? What do they call you?",
+							"description": ""
+						},
+						{
+							"key": "wickedServant",
+							"type": "html",
+							"label": "Wicked - Debt-bonded Servant",
+							"initial": "",
+							"hint": "A god gives you a servant. Describe them.",
+							"description": ""
+						}
+					]
+				},
+				{
+					"key": "aNewCovenant",
+					"type": "group",
+					"label": "A New Covenant",
+					"description": "You make a new god. It can be a creation based on your personality, an NPC who ascends, or something else.",
+					"hint": "",
+					"fields": [
+						{
+							"key": "newGodName",
+							"type": "text",
+							"label": "New God's Name",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "newGodNature",
+							"type": "html",
+							"label": "New God's Nature",
+							"initial": "",
+							"hint": "Gain a level in the new god. May move existing levels to this god.",
+							"description": ""
+						},
+						{
+							"key": "newGodScriptures",
+							"type": "html",
+							"label": "New God's Scriptures",
+							"initial": "",
+							"hint": "Collaborate with GM to design three scriptures.",
+							"description": ""
+						}
+					]
+				},
+				{
+					"key": "headOfReligion",
+					"type": "group",
+					"label": "Head of Religion",
+					"description": "<p>You're the head (official or otherwise) of a god's worship. If there's a suitable cult in the fiction, use it. If not, there's a new cult; collaborate with the GM to define it. Any Believers from <strong>Wicked or Divine</strong> will convert to your faith. You may move any or all of their levels in gods to the god whose religion you are now in charge of. Any unpaid debt to each god is kept and paid off as per <strong>Going Rogue</strong>.</p><p>The religion is a faction in the Great Game. If you make it act in a way that's against the tenets of its religion, roll a <strong>Wis</strong> dice pool, with <strong>Difficulty</strong> equal to your total levels in other gods. If you took <strong>Heretic</strong>, increase this <strong>Difficulty</strong> by 2.</p><p>If you take <strong>A New Covenant</strong>, immediately forfeit all this power.</p>",
+					"hint": "",
+					"fields": [
+						{
+							"key": "religionGod",
+							"type": "text",
+							"label": "Which god's religion?",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "religionDescription",
+							"type": "html",
+							"label": "Describe the religion/cult",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						}
+					]
+				},
+				{
+					"key": "heresyNoted",
+					"type": "group",
+					"label": "Your Heresy is Noted (Level 12)",
+					"description": "<p>At level 12, your heresy is noted. A god who you have no levels in gets jealous. <em>How can you not care about me at all? Why don't you slip into <strong>my</strong> DMs!</em> Your other gods glare. <em>Don't you dare pay <strong>them</strong> attention.</em></p><p>You may re-arrange all the levels you have in your gods. To work out how each god feels about your decision, go down this list. Entries further down the list overrule those higher up.</p><ol><li>If a god's level is higher than when they started, they're <strong>happy</strong>.</li><li>If a god's level is lower than when they started, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is the highest, they're <strong>happy</strong>.</li><li>If a god's level was highest and now they're not, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is zero, they're <strong>furious</strong>. Gain two <strong>God Debt</strong>.</li></ol>",
+					"hint": "",
+					"fields": [
+						{
+							"key": "heresyRearrangement",
+							"type": "html",
+							"label": "How did you rearrange your levels?",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						}
+					]
+				}
+			]
+		},
+		"classDiceImage": "systems/die-rpg/assets/DIE/dice/d12-exploded.svg",
+		"portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20GODBINDER.webp",
+		"tokenImage": "systems/die-rpg/assets/DIE/tokens/paragons/THE%20GODBINDER.webp"
+	},
+	"effects": [],
+	"folder": null,
+	"ownership": {
+		"default": 0
+	},
+	"flags": {},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null,
+		"coreVersion": "13.350",
+		"systemId": "die-rpg",
+		"systemVersion": "#{VERSION}#",
+		"createdTime": 1764106396710,
+		"modifiedTime": 1764106398546,
+		"lastModifiedBy": "UGCccSsgt9XaEKG6"
+	},
+	"_id": "e9xt9eVpLfS3Gx4v",
+	"sort": 0,
+	"_key": "!items!e9xt9eVpLfS3Gx4v"
 }

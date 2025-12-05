@@ -16,6 +16,29 @@ export default class DieRpgParagon extends DieRpgItemBase {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
+    // Helper: Schema for nested subfields inside group-type fields
+    // Does not support nested groups (no deep recursion)
+    const subfieldSchema = () => new fields.SchemaField({
+      key: new fields.StringField({ required: true, blank: false }),
+      type: new fields.StringField({
+        required: true,
+        choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'info', 'itemList', 'special'],
+        initial: 'text'
+      }),
+      label: new fields.StringField({ required: true, blank: false }),
+      description: new fields.StringField({ required: false, blank: true, initial: '' }),
+      hint: new fields.StringField({ required: false, blank: true, initial: '' }),
+      initial: new fields.JSONField({ required: false, nullable: true }),
+      choices: new fields.ArrayField(new fields.StringField(), { required: false }),
+      min: new fields.NumberField({ required: false, nullable: true }),
+      max: new fields.NumberField({ required: false, nullable: true }),
+      itemType: new fields.StringField({ required: false, blank: true }),
+      specialKey: new fields.StringField({ required: false, blank: true }),
+      numberLabel: new fields.StringField({ required: false, blank: true }),
+      allowCustom: new fields.BooleanField({ required: false, initial: false }),
+      customLabel: new fields.StringField({ required: false, blank: true })
+    });
+
     // ========================================
     // CORE PARAGON FIELDS
     // ========================================
@@ -235,8 +258,26 @@ export default class DieRpgParagon extends DieRpgItemBase {
             label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.specialKey.label',
             hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.specialKey.hint'
           }),
+          numberLabel: new fields.StringField({
+            required: false,
+            blank: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.numberLabel.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.numberLabel.hint'
+          }),
+          allowCustom: new fields.BooleanField({
+            required: false,
+            initial: false,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.allowCustom.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.allowCustom.hint'
+          }),
+          customLabel: new fields.StringField({
+            required: false,
+            blank: true,
+            label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.customLabel.label',
+            hint: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.customLabel.hint'
+          }),
           fields: new fields.ArrayField(
-            new fields.JSONField(),
+            subfieldSchema(),
             {
               required: false,
               label: 'DIE_RPG.Item.Paragon.FIELDS.classAbilities.field.fields.label',
@@ -275,7 +316,10 @@ export default class DieRpgParagon extends DieRpgItemBase {
           max: new fields.NumberField({ required: false, nullable: true }),
           itemType: new fields.StringField({ required: false, blank: true }),
           specialKey: new fields.StringField({ required: false, blank: true }),
-          fields: new fields.ArrayField(new fields.JSONField(), { required: false })
+          numberLabel: new fields.StringField({ required: false, blank: true }),
+          allowCustom: new fields.BooleanField({ required: false, initial: false }),
+          customLabel: new fields.StringField({ required: false, blank: true }),
+          fields: new fields.ArrayField(subfieldSchema(), { required: false })
         }),
         {
           label: 'DIE_RPG.Item.Paragon.FIELDS.advancementForms.fields.label',

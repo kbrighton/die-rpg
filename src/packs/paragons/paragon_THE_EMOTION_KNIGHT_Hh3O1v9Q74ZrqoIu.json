@@ -195,9 +195,42 @@
 					"description": "<p>After a bad night's sleep with a dream born of your Sacred Emotion, you will wake to find a magical steed beside you. Every time you have a bad (k)night's sleep, say what you dreamed about. Some dreams have been known to be prophetic.</p>",
 					"hint": "",
 					"fields": [
-						"{\"key\":\"steedAppearance\",\"type\":\"select\",\"label\":\"What does it look like?\",\"allowCustom\":\"true\",\"choices\":[\"A towering warhorse with burning eyes\",\"A three-humped camel with a knowing expression\",\"A cowardly cat who really doesn't want to be here\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"steedGift\",\"type\":\"select\",\"label\":\"What gift does it have? (Activates when Emotionally Engaged)\",\"allowCustom\":\"true\",\"choices\":[\"It can fly\",\"It is faster than any horse\",\"It can move through walls like a ghost\",\"Something else\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"recentDream\",\"type\":\"html\",\"label\":\"Recent Dreams\",\"initial\":\"\",\"hint\":\"Record your prophetic dreams here.\",\"description\":\"\"}"
+						{
+							"key": "steedAppearance",
+							"type": "select",
+							"label": "What does it look like?",
+							"allowCustom": true,
+							"choices": [
+								"A towering warhorse with burning eyes",
+								"A three-humped camel with a knowing expression",
+								"A cowardly cat who really doesn't want to be here"
+							],
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "steedGift",
+							"type": "select",
+							"label": "What gift does it have? (Activates when Emotionally Engaged)",
+							"allowCustom": true,
+							"choices": [
+								"It can fly",
+								"It is faster than any horse",
+								"It can move through walls like a ghost"
+							],
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "recentDream",
+							"type": "html",
+							"label": "Recent Dreams",
+							"initial": "",
+							"hint": "Record your prophetic dreams here.",
+							"description": ""
+						}
 					]
 				},
 				{
@@ -238,7 +271,7 @@
 					"label": "Master of the Order",
 					"description": "<p>You are accepted as the worldwide Master of your Order of Knights. If you're using the Great Game rules, they count as at least one faction, and perhaps more. If you gain <strong>Dual Wield</strong>, you immediately forfeit this advance.</p>",
 					"hint": "",
-          "initial": ""
+					"initial": ""
 				},
 				{
 					"key": "dualWield",
@@ -247,8 +280,32 @@
 					"description": "<p>Choose a second emotion and gain a second weapon with its own personality. You now track this emotional scale separately. If you have an Emotional Stance from this new emotion, you can only activate that stance if its emotion is above zero. If you have two Emotion Stances, you may change one to an emotion stance from your new emotion. You can never select the advance <strong>Master Of The Order</strong>.</p>",
 					"hint": "",
 					"fields": [
-						"{\"key\":\"secondEmotion\",\"type\":\"select\",\"label\":\"Second Sacred Emotion\",\"choices\":[\"Rage, Anger, Annoyance\",\"Ecstasy, Joy, Serenity\",\"Vigilance, Anticipation, Interest\",\"Loathing, Disgust, Boredom\",\"Grief, Sadness, Pensiveness\",\"Amazement, Surprise, Distraction\",\"Terror, Fear, Apprehension\",\"Admiration, Trust, Acceptance\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"secondEmotionLevel\",\"type\":\"number\",\"label\":\"Second Emotion Intensity\",\"initial\":0,\"hint\":\"\",\"description\":\"\"}"
+						{
+							"key": "secondEmotion",
+							"type": "select",
+							"label": "Second Sacred Emotion",
+							"choices": [
+								"Rage, Anger, Annoyance",
+								"Ecstasy, Joy, Serenity",
+								"Vigilance, Anticipation, Interest",
+								"Loathing, Disgust, Boredom",
+								"Grief, Sadness, Pensiveness",
+								"Amazement, Surprise, Distraction",
+								"Terror, Fear, Apprehension",
+								"Admiration, Trust, Acceptance"
+							],
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "secondEmotionLevel",
+							"type": "number",
+							"label": "Second Emotion Intensity",
+							"initial": 0,
+							"hint": "",
+							"description": ""
+						}
 					]
 				},
 				{
@@ -258,9 +315,41 @@
 					"description": "<p>You are called to confirm your choice and enter your order. Your weapon is taken from you. You are taken to a ceremonial place—a dungeon, a labyrinth, a cave system—and you find your way through it. In the centre, your weapon... and one for each of the other seven emotions. Gain the following:</p><ul><li>Retrieve your weapon... or pick one of the other seven.</li><li>Pick a new stance or venting ability. Swap any abilities related to a given emotion.</li><li>You're now a member of this league of knights.</li></ul><p>If there is an order in the fiction already, use it. If there isn't, create one in collaboration with the GM. This order may call upon you to perform tasks. You may be able to ask them for help. This is a reciprocal relationship.</p>",
 					"hint": "",
 					"fields": [
-						"{\"key\":\"confirmationChoice\",\"type\":\"select\",\"label\":\"Which weapon did you retrieve?\",\"choices\":[\"My original weapon\",\"Rage Knight's weapon\",\"Joy Knight's weapon\",\"Anticipation Knight's weapon\",\"Disgust Knight's weapon\",\"Sadness Knight's weapon\",\"Surprise Knight's weapon\",\"Fear Knight's weapon\",\"Trust Knight's weapon\"],\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"orderJoined\",\"type\":\"text\",\"label\":\"Order Joined\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"orderDuties\",\"type\":\"html\",\"label\":\"Order Duties & Benefits\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
+						{
+							"key": "confirmationChoice",
+							"type": "select",
+							"label": "Which weapon did you retrieve?",
+							"choices": [
+								"My original weapon",
+								"Rage Knight's weapon",
+								"Joy Knight's weapon",
+								"Anticipation Knight's weapon",
+								"Disgust Knight's weapon",
+								"Sadness Knight's weapon",
+								"Surprise Knight's weapon",
+								"Fear Knight's weapon",
+								"Trust Knight's weapon"
+							],
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "orderJoined",
+							"type": "text",
+							"label": "Order Joined",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "orderDuties",
+							"type": "html",
+							"label": "Order Duties & Benefits",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						}
 					]
 				}
 			]
