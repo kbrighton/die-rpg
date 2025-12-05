@@ -40,7 +40,6 @@
 			"Compendium.die-rpg.equipment.Item.KUYR8o2nxCDpHGXb"
 		],
 		"advancementAssignments": {
-			"row0-1": 0,
 			"row1-1": 1,
 			"row1-2": 2,
 			"row1-3": 3,
@@ -53,7 +52,7 @@
 			"row3-3": 1,
 			"row4-1": 1,
 			"row4-2": 5,
-			"row4-3": 1,
+			"row4-3": 7,
 			"row4-4": 1,
 			"row4-5": 6,
 			"row5-1": 1,
@@ -62,11 +61,6 @@
 			"row5-4": 1
 		},
 		"advancements": [
-			{
-				"id": 0,
-				"name": "START",
-				"icon": ""
-			},
 			{
 				"id": 1,
 				"name": "New Level in God",
@@ -116,12 +110,29 @@
 		"classAbilities": {
 			"fields": [
 				{
+					"key": "contractWithGod",
+					"type": "info",
+					"label": "Contract With God",
+					"description": "Choose one of the gods from the Gods sheet: this is the god you have a special relationship with. What's their name? You have the first level of a relationship with the god, with all the benefits described in its entry.",
+					"hint": "",
+					"initial": ""
+				},
+				{
+					"key": "selectedGods",
+					"type": "itemList",
+					"label": "Gods",
+					"description": "",
+					"hint": "Gain 1 Trust for every level above 3. Each point of Trust gives you a free God Debt 1/session.",
+					"initial": "[]",
+					"itemType": "god"
+				},
+				{
 					"key": "scripture",
 					"type": "info",
 					"label": "Scripture",
-					"description": "",
-					"hint": "",
-					"initial": "\"<p>All Godbinders gain access to three basic spells – Scripture shared between all gods:</p><h4>&lt;Noun&gt; Blast</h4><p>Attacks a target within medium range.</p><h4>Heal</h4><p>Heals 1 <strong>Health</strong> to a character within a short distance. Max 1 use per character per encounter.</p><h4>Detect &lt;Noun&gt;</h4><p>Determines if any of the &lt;noun&gt; is within a short distance.</p><p><em>&lt;Noun&gt; can be any noun related to the god; for example, \"The God of The Wild\" could fire thorn-blasts and detect wildlife.</em></p><p>To cast a Scripture, roll a <strong>Wis</strong> dice pool plus D12 with a <strong>Difficulty</strong> of 0 (see <strong>Guidance</strong>). If you succeed, the Scripture works as described in its entry.</p>\""
+					"description": "<p>All Godbinders gain access to three basic spells – Scripture shared between all gods:</p> <ul> <li><b><i>Noun</i> Blast:</b> Attacks a target within medium range.</li> <li><b>Heal:</b> Heals 1 <b>Health</b> to a character within a short distance. Max 1 use per character per encounter.</li> <li><b>Detect <i>Noun</i>:</b> Determines if any of the <b><i>noun</i></b> is within a short distance.</li> </ul> <p>To cast a Scripture, roll a <b>Wis</b> dice pool plus D12 with a <b>Difficulty</b> of 0 (see <b>Guidance</b>). If you succeed, the Scripture works as described in its entry.</p>",
+					"hint": "Noun can be any noun related to the god; for example, \"The God of The Wild\" could fire thorn-blasts and detect wildlife.",
+					"initial": ""
 				},
 				{
 					"key": "godDebt",
@@ -138,15 +149,6 @@
 					"description": "",
 					"hint": "",
 					"initial": "\"<p>At any point, you can speak to a god and request a <strong>Miracle</strong>. If the god is willing, they'll give you a cost in exchange for the miracle. If you agree, the miracle happens. If not, it doesn't. If you break a promise made here, the spurned god immediately gets <strong>God Debt</strong> according to the scale of the <strong>Miracle</strong>.</p><p><strong>Costs might include:</strong></p><ul><li>Taking on <strong>God Debt</strong></li><li>Performing a specific task for them immediately</li><li>Owing them an open ended favour</li><li>Making a specific promise you will fulfil in the future</li></ul>\""
-				},
-				{
-					"key": "selectedGods",
-					"type": "itemList",
-					"label": "Your Gods",
-					"description": "<p>Choose one of the gods to start: this is the god you have a special relationship with. What's their name? You have the first level of a relationship with the god.</p>",
-					"hint": "Track levels (1-3+), debt (-5 to +5), and trust (1 per level above 3) for each god.",
-					"initial": "[]",
-					"itemType": "god"
 				}
 			]
 		},
@@ -169,27 +171,36 @@
 					"fields": [
 						{
 							"key": "godlyCommandment",
-							"type": "text",
+							"type": "boolean",
 							"label": "Godly Commandment",
 							"initial": "",
-							"hint": "A specific repeatable task. Every time you fulfil it, reduce God Debt by one.",
-							"description": ""
+							"hint": "",
+							"description": "One of your gods gives you a specific repeatable task to fulfil. You and your GM collaborate to decide what this is. Every time you fulfil this task, reduce your <b>God Debt</b> by one."
 						},
 						{
 							"key": "goodWorks",
 							"type": "boolean",
 							"label": "Good Works",
 							"initial": false,
-							"hint": "Between adventures, automatically reduce God Debt by one. Describe the act of devotion.",
-							"description": ""
+							"hint": "",
+							"description": "Between adventures you automatically reduce your <b>God Debt</b> by one. Describe the act of devotion or servitude you did to do so."
 						},
 						{
 							"key": "uncoveringScripture",
-							"type": "text",
+							"type": "boolean",
 							"label": "Uncovering Scripture",
 							"initial": "",
-							"hint": "A lost scripture (spell from Grimoire, Risk ≤ god level × 5). Was it lost, hidden or destroyed?",
-							"description": ""
+							"hint": "",
+							"description": "You uncover a lost scripture of a god. Look in the Master's Grimoire (p. 370) for a spell whose Risk is no higher than your levels in the god multiplied by 5. This can now be cast as Scripture for that god. Decide: was this scripture lost, hidden or destroyed, and why?"
+						},
+						{
+							"key": "lostScripture",
+							"type": "itemList",
+							"label": "Lost Scripture of a God",
+							"description": "",
+							"hint": "",
+							"initial": "[]",
+							"itemType": "spell"
 						}
 					]
 				},
@@ -210,10 +221,18 @@
 					"initial": ""
 				},
 				{
+					"key": "godBanking",
+					"type": "info",
+					"label": "God Banking",
+					"description": "Between sessions you can broker a deal between two of your gods, and move debt from one to the other. Describe how this deal works.",
+					"hint": "",
+					"initial": ""
+				},
+				{
 					"key": "heretic",
 					"type": "group",
 					"label": "Heretic",
-					"description": "Choose one of your gods. You understand a fundamental truth that all other believers deny.",
+					"description": "<p>Choose one of your gods. You now understand a fundamental truth about this god that all other believers in the religion deny. What is it?</p> <p>Gain two Trust in that god. All believers of the mainstream faith view you with suspicion at best and hatred at worst.</p>",
 					"hint": "",
 					"fields": [
 						{
@@ -229,24 +248,16 @@
 							"type": "html",
 							"label": "What is the truth?",
 							"initial": "",
-							"hint": "Gain 2 Trust in that god. Mainstream believers view you with suspicion or hatred.",
+							"hint": "",
 							"description": ""
 						}
 					]
 				},
 				{
-					"key": "godBanking",
-					"type": "info",
-					"label": "God Banking",
-					"description": "Between sessions you can broker a deal between two of your gods, and move debt from one to the other. Describe how this deal works.",
-					"hint": "",
-					"initial": ""
-				},
-				{
 					"key": "wickedOrDivine",
 					"type": "group",
 					"label": "Wicked or Divine",
-					"description": "You've gained a reputation - for better or worse. Choose one:",
+					"description": "You’ve been working in the realm of the gods for a while and gained a reputation - for better or worse. Choose one:",
 					"hint": "",
 					"fields": [
 						{
@@ -254,49 +265,16 @@
 							"type": "html",
 							"label": "Divine - Your Teaching",
 							"initial": "",
-							"hint": "Become a holy figure. What is your teaching? What do they call you?",
-							"description": ""
+							"hint": "",
+							"description": "You become known as a holy figure. You are widely respected by those who believe in this religion and have a specific group of Believers. What is your teaching? How did people come to know of it? What do they call you?"
 						},
 						{
 							"key": "wickedServant",
 							"type": "html",
 							"label": "Wicked - Debt-bonded Servant",
 							"initial": "",
-							"hint": "A god gives you a servant. Describe them.",
-							"description": ""
-						}
-					]
-				},
-				{
-					"key": "aNewCovenant",
-					"type": "group",
-					"label": "A New Covenant",
-					"description": "You make a new god. It can be a creation based on your personality, an NPC who ascends, or something else.",
-					"hint": "",
-					"fields": [
-						{
-							"key": "newGodName",
-							"type": "text",
-							"label": "New God's Name",
-							"initial": "",
 							"hint": "",
-							"description": ""
-						},
-						{
-							"key": "newGodNature",
-							"type": "html",
-							"label": "New God's Nature",
-							"initial": "",
-							"hint": "Gain a level in the new god. May move existing levels to this god.",
-							"description": ""
-						},
-						{
-							"key": "newGodScriptures",
-							"type": "html",
-							"label": "New God's Scriptures",
-							"initial": "",
-							"hint": "Collaborate with GM to design three scriptures.",
-							"description": ""
+							"description": "One of your gods gives you a debt-bonded servant. Choose an existing NPC (or steed) to fill the role, or collab- orate with GM to invent someone new using the secondary character rules (p. 280)"
 						}
 					]
 				},
@@ -326,21 +304,20 @@
 					]
 				},
 				{
+					"key": "aNewCovenant",
+					"type": "info",
+					"label": "A New Covenant",
+					"description": "You make a new god. Collaborate with GM to create its nature. It can be a whole-cloth creation based on your personality, an NPC who ascends to the position, or something else. You gain a level in the new god and may immediately move any of your existing levels into this new god. Collaborate with the GM to select or design its three scriptures. Any Believers from <b>Wicked or Divine</b> will convert to this new faith.",
+					"hint": "",
+					"initial": ""
+				},
+				{
 					"key": "heresyNoted",
-					"type": "group",
-					"label": "Your Heresy is Noted (Level 12)",
+					"type": "info",
+					"label": "At Level 12: Your Heresy is Noted",
 					"description": "<p>At level 12, your heresy is noted. A god who you have no levels in gets jealous. <em>How can you not care about me at all? Why don't you slip into <strong>my</strong> DMs!</em> Your other gods glare. <em>Don't you dare pay <strong>them</strong> attention.</em></p><p>You may re-arrange all the levels you have in your gods. To work out how each god feels about your decision, go down this list. Entries further down the list overrule those higher up.</p><ol><li>If a god's level is higher than when they started, they're <strong>happy</strong>.</li><li>If a god's level is lower than when they started, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is the highest, they're <strong>happy</strong>.</li><li>If a god's level was highest and now they're not, they're <strong>unhappy</strong>. Gain one <strong>God Debt</strong>.</li><li>If a god's level is zero, they're <strong>furious</strong>. Gain two <strong>God Debt</strong>.</li></ol>",
 					"hint": "",
-					"fields": [
-						{
-							"key": "heresyRearrangement",
-							"type": "html",
-							"label": "How did you rearrange your levels?",
-							"initial": "",
-							"hint": "",
-							"description": ""
-						}
-					]
+					"initial": ""
 				}
 			]
 		},
