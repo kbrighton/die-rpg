@@ -72,6 +72,16 @@ export default class DieRpgParagon extends DieRpgItemBase {
       hint: 'DIE_RPG.Item.Paragon.FIELDS.importantStat.hint'
     });
 
+    // Secondary Important Stat - Optional second important stat for this paragon
+    schema.importantStat2 = new fields.StringField({
+      required: false,
+      blank: true,
+      initial: '',
+      choices: ['', 'str', 'dex', 'con', 'int', 'wis', 'cha'],
+      label: 'DIE_RPG.Item.Paragon.FIELDS.importantStat2.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.importantStat2.hint'
+    });
+
     // Core Ability - The paragon's signature ability
     schema.coreAbility = new fields.SchemaField({
       name: new fields.StringField({

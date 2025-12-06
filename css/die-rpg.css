@@ -1843,6 +1843,7 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 }
 .die-rpg .important-stat {
   font-weight: 900 !important;
+  text-decoration: underline;
 }
 .die-rpg fieldset {
   margin-bottom: 20px;

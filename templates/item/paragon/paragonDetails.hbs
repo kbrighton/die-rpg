@@ -53,6 +53,22 @@
 			}}</p>
 	</div>
 
+	{{! Secondary Important Stat }}
+	<div class="form-group">
+		<label>{{localize "DIE_RPG.Item.Paragon.FIELDS.importantStat2.label"}}</label>
+		<select name="system.importantStat2">
+			{{selectOptions
+				config.stats
+				selected=system.importantStat2
+				localize=true
+				blank=""
+			}}
+		</select>
+		<p class="hint">{{localize
+				"DIE_RPG.Item.Paragon.FIELDS.importantStat2.hint"
+			}}</p>
+	</div>
+
 	{{! Core Ability }}
 	<fieldset class="core-ability">
 		<legend>{{localize "DIE_RPG.Item.Paragon.FIELDS.coreAbility.label"}}</legend>

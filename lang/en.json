@@ -398,6 +398,10 @@
 						"label": "Important Stat",
 						"hint": "The primary stat for this paragon"
 					},
+					"importantStat2": {
+						"label": "Secondary Important Stat",
+						"hint": "Optional secondary stat for this paragon (leave blank if none)"
+					},
 					"coreAbility": {
 						"label": "Core Ability",
 						"name": { "label": "Ability Name" },
