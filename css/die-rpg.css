@@ -1747,7 +1747,7 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 }
 .die-rpg .tab.advancements .triangle {
   stroke: var(--die-rpg-c-black);
-  stroke-width: 4;
+  stroke-width: 1;
   fill: transparent;
   cursor: pointer;
   transition: fill 0.2s ease, stroke 0.2s ease;
@@ -1764,6 +1764,10 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 .die-rpg .tab.advancements .triangle.selected:not(.start-node) {
   fill: var(--die-rpg-c-selected-bg);
   stroke: var(--die-rpg-c-selected-border);
+}
+.die-rpg .tab.advancements .triangle.selected:not(.start-node):hover {
+  fill: var(--die-rpg-c-selected-bg);
+  stroke: var(--die-rpg-c-selected-border);
   stroke-width: 5;
 }
 .die-rpg .tab.advancements .triangle.locked {
@@ -1777,7 +1781,6 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 .die-rpg .tab.advancements .triangle.level-locked {
   fill: var(--die-rpg-c-warning-bg);
   stroke: var(--die-rpg-c-warning);
-  stroke-width: 5;
   cursor: not-allowed;
 }
 .die-rpg .tab.advancements .triangle.level-locked:hover {
@@ -1786,11 +1789,10 @@ body.game .die-rpg.actor .window-content .tab, body.game .die-rpg.item .window-c
 .die-rpg .tab.advancements .triangle.available {
   fill: var(--die-rpg-c-info-bg);
   stroke: var(--die-rpg-c-info-bright);
-  stroke-width: 4;
 }
-.die-rpg .tab.advancements .triangle:not(.locked):not(.level-locked):not([data-disabled=true]):not(.start-node):hover {
-  fill: var(--die-rpg-overlay-darker);
-  stroke: var(--die-rpg-c-white);
+.die-rpg .tab.advancements .triangle.available:hover {
+  fill: var(--die-rpg-c-info-bg);
+  stroke: var(--die-rpg-c-info-bright);
   stroke-width: 5;
 }
 .die-rpg .tab.advancements .triangle[data-disabled=true] {

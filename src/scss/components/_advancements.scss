@@ -94,7 +94,7 @@
 
 	.triangle {
 		stroke: $c-black;
-		stroke-width: 4;
+		stroke-width: 1;
 		fill: transparent;
 		cursor: pointer;
 		transition: fill 0.2s ease, stroke 0.2s ease;
@@ -115,7 +115,12 @@
 		&.selected:not(.start-node) {
 			fill: $c-selected-bg;
 			stroke: $c-selected-border;
-			stroke-width: 5;
+
+			&:hover {
+				fill: $c-selected-bg;
+				stroke: $c-selected-border;
+				stroke-width: 5;
+			}
 		}
 
 		// Locked nodes
@@ -133,7 +138,6 @@
 		&.level-locked {
 			fill: $c-warning-bg;
 			stroke: $c-warning;
-			stroke-width: 5;
 			cursor: not-allowed;
 
 			&:hover {
@@ -145,16 +149,12 @@
 		&.available {
 			fill: $c-info-bg;
 			stroke: $c-info-bright;
-			stroke-width: 4;
-		}
 
-		// Hover state for selectable nodes (exclude start node)
-		&:not(.locked):not(.level-locked):not([data-disabled="true"]):not(
-				.start-node
-			):hover {
-			fill: $overlay-darker;
-			stroke: $c-white;
-			stroke-width: 5;
+			&:hover {
+				fill: $c-info-bg;
+				stroke: $c-info-bright;
+				stroke-width: 5;
+			}
 		}
 
 		// Disabled nodes
