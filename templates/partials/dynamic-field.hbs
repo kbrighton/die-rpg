@@ -33,7 +33,7 @@
 {{else if (eq field.type "boolean")}}
   <div class="form-group checkbox-field">
     <label>
-      <input type="checkbox" name="{{path}}" data-dtype="Boolean" {{checked value}} {{#unless editable}}disabled{{/unless}} />
+      <input type="checkbox" name="{{path}}" data-dtype="Boolean" {{checked (default value field.initial)}} {{#unless editable}}disabled{{/unless}} />
       {{field.label}}
     </label>
     {{#if field.enrichedDescription}}<div class="field-description">{{{field.enrichedDescription}}}</div>{{/if}}

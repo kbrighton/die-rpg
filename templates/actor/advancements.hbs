@@ -14,6 +14,7 @@
         min=1
         max=20
       }}
+      {{#unless paragonItem.system.hideAdvancementMap}}
       {{! Advancement Position List }}
       <div class="advancement-positions">
         <ul>
@@ -35,8 +36,10 @@
           {{/each}}
         </ul>
       </div>
+      {{/unless}}
     </div>
 
+    {{#unless paragonItem.system.hideAdvancementMap}}
     <svg viewBox="{{svgViewBox}}" class="advancement-map" preserveAspectRatio="xMidYMid meet">
       <defs>
         {{! Lock icon }}
@@ -127,6 +130,7 @@
       </g>
     {{/each}}
     </svg>
+    {{/unless}}
   </div>
 
   {{! Advancement Forms Section - Dynamic Fields from Paragon }}

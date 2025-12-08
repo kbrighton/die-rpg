@@ -402,6 +402,10 @@
 						"label": "Secondary Important Stat",
 						"hint": "Optional secondary stat for this paragon (leave blank if none)"
 					},
+					"hideAdvancementMap": {
+						"label": "Hide Advancement Map",
+						"hint": "Check for paragons that don't use the standard advancement map (e.g., GM Master)"
+					},
 					"coreAbility": {
 						"label": "Core Ability",
 						"name": { "label": "Ability Name" },

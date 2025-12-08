@@ -1025,11 +1025,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 5px;
+  margin: 20px 0 5px 0;
 }
 .die-rpg .item-list-component .itemlist-header label {
   margin: 0;
   flex: 1;
+}
+.die-rpg .item-list-component .itemlist-header h5 {
+  margin: 0;
 }
 .die-rpg .item-list-component .itemlist-header .create-item-btn {
   display: flex;

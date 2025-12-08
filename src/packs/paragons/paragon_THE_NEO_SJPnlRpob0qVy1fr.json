@@ -358,8 +358,22 @@
 					"description": "<p>You are confronted by two of the Fair. They explain that you're a creature of both worlds, perfectly balanced between the two. As such, the Fair will give you an interesting decision – to accept a gift or not. One Fair says that if they take the gift, if they leave Die and return to reality, there will be no consequences. The other says that if they take the gift, if they leave Die and return to reality, they will suffer a consequence as a result of this decision. You may then choose to accept the gift or not.</p><p>It is an interesting decision.</p><p>If you accept, gain access to a single gift with an upgrade of your choice. If not, you get nothing. Whatever your choice, you gain the ability to have a second <strong>Defensive</strong> upgrade.</p><p>If you return to Earth, roll a D10. If it's <strong>even</strong>, the first Fair was correct and you suffer no consequences. On an <strong>odd</strong> number, the second Fair was correct, and you suffer a consequence from having accepted this gift.</p>",
 					"hint": "",
 					"fields": [
-						"{\"key\":\"acceptedGift\",\"type\":\"boolean\",\"label\":\"Accepted the gift?\",\"initial\":false,\"hint\":\"\",\"description\":\"\"}",
-						"{\"key\":\"level10Gift\",\"type\":\"text\",\"label\":\"Gift & Upgrade chosen (if accepted)\",\"initial\":\"\",\"hint\":\"\",\"description\":\"\"}"
+						{
+							"key": "acceptedGift",
+							"type": "boolean",
+							"label": "Accepted the gift?",
+							"initial": false,
+							"hint": "",
+							"description": ""
+						},
+						{
+							"key": "level10Gift",
+							"type": "text",
+							"label": "Gift & Upgrade chosen (if accepted)",
+							"initial": "",
+							"hint": "",
+							"description": ""
+						}
 					]
 				}
 			]

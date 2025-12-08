@@ -498,11 +498,15 @@ h6 {
 		align-items: center;
 		justify-content: space-between;
 		gap: $gap-md;
-		margin-bottom: $margin-sm;
+		margin: $margin-lg 0 $margin-sm 0;
 
 		label {
 			margin: 0;
 			flex: 1;
+		}
+
+		h5 {
+			margin: 0;
 		}
 
 		.create-item-btn {

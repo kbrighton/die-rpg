@@ -25,7 +25,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
         choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'info', 'itemList', 'special'],
         initial: 'text'
       }),
-      label: new fields.StringField({ required: true, blank: false }),
+      label: new fields.StringField({ required: false, blank: true, initial: '' }),
       description: new fields.StringField({ required: false, blank: true, initial: '' }),
       hint: new fields.StringField({ required: false, blank: true, initial: '' }),
       initial: new fields.JSONField({ required: false, nullable: true }),
@@ -80,6 +80,14 @@ export default class DieRpgParagon extends DieRpgItemBase {
       choices: ['', 'str', 'dex', 'con', 'int', 'wis', 'cha'],
       label: 'DIE_RPG.Item.Paragon.FIELDS.importantStat2.label',
       hint: 'DIE_RPG.Item.Paragon.FIELDS.importantStat2.hint'
+    });
+
+    // Hide Advancement Map - For paragons that don't use the standard advancement system (e.g., GM Master)
+    schema.hideAdvancementMap = new fields.BooleanField({
+      required: false,
+      initial: false,
+      label: 'DIE_RPG.Item.Paragon.FIELDS.hideAdvancementMap.label',
+      hint: 'DIE_RPG.Item.Paragon.FIELDS.hideAdvancementMap.hint'
     });
 
     // Core Ability - The paragon's signature ability
@@ -317,7 +325,7 @@ export default class DieRpgParagon extends DieRpgItemBase {
             choices: ['text', 'number', 'boolean', 'select', 'multiSelect', 'html', 'info', 'itemList', 'group', 'special', 'd6Net'],
             initial: 'text'
           }),
-          label: new fields.StringField({ required: true, blank: false }),
+          label: new fields.StringField({ required: false, blank: true, initial: '' }),
           description: new fields.StringField({ required: false, blank: true, initial: '' }),
           hint: new fields.StringField({ required: false, blank: true, initial: '' }),
           initial: new fields.JSONField({ required: false, nullable: true }),
