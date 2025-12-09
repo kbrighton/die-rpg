@@ -26,4 +26,26 @@ Hand of god icon by Delapouite under CC BY 3.0\
 Gift trap icon by Lorc under CC BY 3.0\
 High punch icon by Delapouite under CC BY 3.0\ 
 Shouting icon by Lorc under CC BY 3.0\
-Battle gear icon by Lorc under CC BY 3.0\ 
+Battle gear icon by Lorc under CC BY 3.0\
+Thrown daggers icon by Lorc under CC BY 3.0\
+Crossed sabers icon by Lorc under CC BY 3.0\
+Plain dagger icon by Lorc under CC BY 3.0\
+Revolver icon by Delapouite under CC BY 3.0\
+Broadsword icon by Lorc under CC BY 3.0\
+Spell book icon by Delapouite under CC BY 3.0\
+High kick icon by Delapouite under CC BY 3.0\
+Pistol gun icon by John Colburn under CC BY 3.0\
+Bo icon by Delapouite under CC BY 3.0\
+Winchester rifle icon by Skoll under CC BY 3.0\
+Gladius icon by Skoll under CC BY 3.0\
+Warhammer icon by Delapouite under CC BY 3.0\
+Leather vest icon by Lorc under CC BY 3.0\
+Teleport icon by Lorc under CC BY 3.0\
+Cyborg face icon by Delapouite under CC BY 3.0\
+Fragmented sword icon by Lorc under CC BY 3.0\
+Aura icon by Lorc under CC BY 3.0\
+Artificial intelligence icon by Lord Berandas under CC BY 3.0\
+Ray gun icon by Lorc under CC BY 3.0\
+Explosive materials icon by Lorc under CC BY 3.0\
+Hound icon by Lorc under CC BY 3.0\
+Cloak and Dagger icon by Lorc under CC BY 3.0\
