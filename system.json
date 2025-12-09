@@ -70,7 +70,7 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 13,
-    "verified": 13.350,
+    "verified": 13.351,
     "maximum": 13
   },
   "esmodules": ["module/die-rpg.mjs"],
@@ -168,7 +168,7 @@
 	"download": "#{DOWNLOAD}#",
   "background": "systems/die-rpg/assets/cover.webp",
   "primaryTokenAttribute": "resources.health",
-  "secondaryTokenAttribute": "resources.guard",
+  "secondaryTokenAttribute": "",
   "media": [
     {
       "type": "setup",

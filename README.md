@@ -41,19 +41,23 @@ If you’ve enjoyed my work and find value in what I create, please consider sup
 
 ## Screenshots
 ![Screenshot](./assets/screenshot.webp)
+![Screenshot](./assets/screenshot-master.webp)
+![Screenshot](./assets/screenshot-compendium.webp)
 
 ## How to Install
 You can install the latest released version of the system by using this manifest link in Foundry VTT. [Instructions](https://foundryvtt.com/article/tutorial/): 
 https://github.com/philote/die-rpg/releases/latest/download/system.json
 
 ## Features
+- TBD
 
 ### TODO
+- TBD
 
 # License & Acknowledgements
 DIE: The Roleplaying Game for Foundry VTT is an independent production by Joseph Hopson (ephson) and is not affiliated with [Rowan, Rook, and Decard](https://rowanrookanddecard.com/), Lemon Ink Ltd, Kieron Gillen, Stephanie Hans Studio, or Stephanie Hans. It is published under the [RR&D Community License](https://rowanrookanddecard.com/rrd-community-licence). All names, characters, organisations, events, and places herein are entirely fictional, and any resemblance to actual persons, organisations, events, or places is coincidental.”
 
-### Icons used
+### Icon Credits
 Icons used from game-icons.net and are released under a [Creative Commons Attribution 3.0 Unported license](http://creativecommons.org/licenses/by/3.0/).\
 Dice 4 icon by Skoll under CC BY 3.0\
 Perspective dice 6 faces 6 icon by Delapouite under CC BY 3.0\
@@ -64,9 +68,9 @@ Fencer icon by Delapouite under CC BY 3.0\
 Saber and pistol icon by Delapouite under CC BY 3.0\
 Glowing hands icon by Lorc under CC BY 3.0\
 Scroll unfurled icon by Lorc under CC BY 3.0\
-Hand of god icon by Delapouite under CC BY 3.0\ 
+Hand of god icon by Delapouite under CC BY 3.0\
 Gift trap icon by Lorc under CC BY 3.0\
-High punch icon by Delapouite under CC BY 3.0\ 
+High punch icon by Delapouite under CC BY 3.0\
 Shouting icon by Lorc under CC BY 3.0\
 Battle gear icon by Lorc under CC BY 3.0\
 Thrown daggers icon by Lorc under CC BY 3.0\
@@ -90,4 +94,4 @@ Artificial intelligence icon by Lord Berandas under CC BY 3.0\
 Ray gun icon by Lorc under CC BY 3.0\
 Explosive materials icon by Lorc under CC BY 3.0\
 Hound icon by Lorc under CC BY 3.0\
-Cloak and Dagger icon by Lorc under CC BY 3.0\
+Cloak and Dagger icon by Lorc under CC BY 3.0
