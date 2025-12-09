@@ -1,7 +1,7 @@
 {
   "name": "Pet",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/hound.svg",
   "system": {
     "description": "<p>You have an awesome cybernetic pet. When summoned, it's also autonomous and capable of following instructions. Its <strong>Defence</strong> is the same as yours. Any <strong>Wound</strong> inflicted on your pet is transferred to you. When <strong>Wounded</strong>, it dematerialises and reappears beside you.</p>",
     "activated": false,
@@ -66,7 +66,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238896960,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "tyz2IcGqc9H29bGq",

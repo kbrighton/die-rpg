@@ -1,7 +1,7 @@
 {
   "name": "Light Field Projector",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/explosive-materials.svg",
   "system": {
     "description": "<p>You can generate an utterly convincing visual illusion or make yourself practically invisible.</p>",
     "activated": false,
@@ -58,7 +58,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238833881,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "76jaEKUima88UUg3",

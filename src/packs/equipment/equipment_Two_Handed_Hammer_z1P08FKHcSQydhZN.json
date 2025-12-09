@@ -1,7 +1,7 @@
 {
   "name": "Two-Handed Hammer",
   "type": "equipment",
-  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "img": "systems/die-rpg/assets/icons/warhammer.svg",
   "system": {
     "description": "<p>A heavy two-handed weapon that provides protection. Comes with heavy protection.</p>",
     "quantity": 1,
@@ -25,7 +25,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238302780,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "z1P08FKHcSQydhZN",

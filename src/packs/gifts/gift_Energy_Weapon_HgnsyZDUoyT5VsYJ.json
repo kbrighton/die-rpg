@@ -1,7 +1,7 @@
 {
   "name": "Energy Weapon",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/fragmented-sword.svg",
   "system": {
     "description": "<p>You have a searing energy weapon. If you wish, you may use <strong>Dex</strong> for its dice pool instead of <strong>Str</strong>. Works as a normal blade without being activated.</p>",
     "activated": false,
@@ -93,7 +93,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238581272,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "HgnsyZDUoyT5VsYJ",

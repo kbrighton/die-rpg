@@ -1,7 +1,7 @@
 {
   "name": "Pistol",
   "type": "equipment",
-  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "img": "systems/die-rpg/assets/icons/pistol-gun.svg",
   "system": {
     "description": "<p>A ranged weapon for medium distance engagements.</p>",
     "quantity": 1,
@@ -25,7 +25,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238089928,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "A6YjZGvnRQLrMNo4",

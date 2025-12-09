@@ -1,7 +1,7 @@
 {
   "name": "Full AI Enhancement",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/artificial-intelligence.svg",
   "system": {
     "description": "<p>You augment your AI to access the full potential of the gift. When you're hacking, include your D10 in the roll.</p>",
     "activated": false,
@@ -52,7 +52,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238676793,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "H1sFZuJfBXcPkYDR",

@@ -1,7 +1,7 @@
 {
   "name": "Wetwork",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/cloak-dagger.svg",
   "system": {
     "description": "<p>Your body and blood have been upgraded. You heal quicker, tire slower, can perform feats of physical strength and endurance, and have active control of your body's systems.</p>",
     "activated": false,
@@ -72,7 +72,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238971476,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "GPWLr2SS4U4X5iN9",

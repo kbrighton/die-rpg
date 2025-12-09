@@ -1,0 +1,136 @@
+{
+  "name": "THE MASTER - GM",
+  "type": "paragon",
+  "img": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20MASTER.webp",
+  "system": {
+    "description": "<p><strong>CLASS DICE: D20</strong></p><h2>Mastery</h2><p>Your Master has <strong>Mastery</strong>: they can add their D20 when casting spells. If they do, the dice roll includes the 20-special (activated on a 20).</p><p><strong>20-Special:</strong> this success counts as two successes.</p><hr /><p><em>Who rules?</em></p><p><em>The Master is the magic user as a reality manipulator. Sometimes you change the laws of physics. Sometimes you change the laws of the game. Sometimes you change the laws of fiction.</em></p><p><em>The Rules rule, and you rule the Rules. And you never, ever cheat.</em></p><p><em>Ever.</em></p><p><em>Oh, this is the GM section. We can be honest.</em></p><p><em>They cheat all the time.</em></p><h2>Play the Master if you want to...</h2><ul><li>Facilitate the game.</li><li>Break the rules of space, time and narrative to cast powerful magic</li><li>Cheat reality to get what you want at great risk</li></ul>",
+    "coreNature": "<p><em>Who rules?</em></p><p><em>The Master is the magic user as a reality manipulator. Sometimes you change the laws of physics. Sometimes you change the laws of the game. Sometimes you change the laws of fiction.</em></p><p><em>The Rules rule, and you rule the Rules. And you never, ever cheat.</em></p><p><em>Ever.</em></p><p><em>Oh, this is the GM section. We can be honest.</em></p><p><em>They cheat all the time.</em></p><p><strong>PLAY THE MASTER IF YOU WANT TO...</strong></p><ul><li>Facilitate the game.</li><li>Break the rules of space, time and narrative to cast powerful magic</li><li>Cheat reality to get what you want at great risk</li></ul>",
+    "die": "d20",
+    "importantStat": "con",
+    "importantStat2": "int",
+    "hideAdvancementMap": true,
+    "coreAbility": {
+      "name": "MASTERY",
+      "description": "<p>Your Master has <strong>Mastery</strong>: they can add their D20 when casting spells. If they do, the dice roll includes the 20-special (activated on a 20).</p><p><strong>20-Special:</strong> this success counts as two successes.</p>"
+    },
+    "looks": [
+      {
+        "name": "Wizard robes straight out of a 1980s kids fantasy cartoon",
+        "description": "",
+        "defenseBonus": 0
+      },
+      {
+        "name": "Killer suits straight off a 1980s corporate bad guy",
+        "description": "",
+        "defenseBonus": 0
+      },
+      {
+        "name": "Fetish-wear straight out of a 1990s vampire LARP",
+        "description": "",
+        "defenseBonus": 0
+      }
+    ],
+    "specials": [
+      {
+        "name": "20-Special",
+        "description": "This success counts as two successes",
+        "cost": "twenty",
+        "mandatory": false
+      },
+      {
+        "name": "Ignite",
+        "description": "Ignite opponent, inflicting 1 hit per round until extinguished",
+        "cost": "twenty",
+        "mandatory": false
+      }
+    ],
+    "equipmentOptions": [
+      "Compendium.die-rpg.equipment.Item.dL25KoMocOr9Nogt",
+      "Compendium.die-rpg.equipment.Item.mDfD07mnHBnptkBp",
+      "Compendium.die-rpg.equipment.Item.KcLQk2NqFH78iWCu"
+    ],
+    "advancementAssignments": {},
+    "advancements": [],
+    "classAbilities": {
+      "fields": [
+        {
+          "key": "hardcoreCheating",
+          "type": "group",
+          "label": "Hardcore Cheating",
+          "description": "",
+          "hint": "",
+          "fields": [
+            {
+              "key": "hardcoreCheatingOne",
+              "type": "info",
+              "label": "",
+              "description": "<p>The Master's control of the rules is such they can actively break them. This is called <strong>Cheating</strong> – altering the game in a special way. You can only safely use these abilities by spending <strong>Cheat Tokens</strong>.</p>",
+              "hint": "",
+              "initial": ""
+            },
+            {
+              "key": "cheatTokens",
+              "type": "number",
+              "label": "Cheat Tokens",
+              "description": "<p>At the start of each session, gain <strong>Cheat Tokens</strong> equivalent to the number of other players in the game. When a combat begins, check the number of players who are opposing the Master. If you have more <strong>Cheat Tokens</strong> than players who are opposing you, reduce your <strong>Cheat Tokens</strong> to that number.</p>",
+              "hint": "",
+              "initial": 0,
+              "min": 0
+            },
+            {
+              "key": "hardcoreCheatingTwo",
+              "type": "info",
+              "label": "",
+              "description": "<p>To cheat, spend a <strong>Cheat Token</strong> (and in combat, use an action), then pick an effect:</p><ul><li><strong>A miraculous event:</strong> Teleport to escape. Create a temptation that fulfills a desire. Summon a hugely powerful monster. Create a fortress. Regain your mastery. Bend a rule.</li><li><strong>Undo the effects of what has just happened:</strong> Uniquely, this can be done as an instant response (I.E. if you are killed, you regenerate from the harm.)</li></ul><p>If you have no cheat tokens remaining, you can still Cheat, but are risking your existence. Hide your D20 in one of two identical hiding places (e.g. your hands). Another player picks a hiding place.</p><ul><li><strong>If they choose incorrectly</strong>, you get away with it and the effect happens.</li><li><strong>If they find it</strong>, the powers that be notice you. These are the judges of all reality, and do not approve of Masters cheating. Your Master will not survive their attention.</li></ul>",
+              "hint": "",
+              "initial": ""
+            }
+          ]
+        },
+        {
+          "key": "myWorldMyRules",
+          "type": "info",
+          "label": "My World, My Rules",
+          "description": "",
+          "hint": "Any attack they make can have \"Special:\" ignite opponent, inflicting 1 hit per round until extinguished.",
+          "initial": "<p>The Master has control over the nature of reality in the world they're visiting—both the rules of the world, the rules of the game and the rules of narrative. This means they can easily perform magical effects equivalent to anything a powerful wizard can do.</p><p>Like any NPC, the Master can perform any spell you think reasonable and likely, based upon character conception. They can fly, throw fireballs, turn invisible, heal people, create incredible firework displays and generally be a wizard. The exception to this is any magical effect potent enough to match the <strong>Hardcore Cheats</strong>.</p>"
+        }
+      ]
+    },
+    "advancementForms": {
+      "fields": [
+        {
+          "key": "masterAdvancement",
+          "type": "info",
+          "label": "Master Advancement",
+          "description": "",
+          "hint": "",
+          "initial": "<p>If your game is including advancement, Masters advance whenever players do. The only advance in the basic Master is to gain a statistic point any time the rest of the group does. They gain no other abilities. They're already brutally powerful thanks to the cheat tokens.</p>"
+        }
+      ]
+    },
+    "classDiceImage": "systems/die-rpg/assets/DIE/dice/d20-exploded.svg",
+    "portraitImage": "systems/die-rpg/assets/DIE/avatars/paragons/THE%20MASTER.webp",
+    "tokenImage": "systems/die-rpg/assets/DIE/tokens/paragons/THE%20MASTER.webp"
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "die-rpg",
+    "systemVersion": "#{VERSION}#",
+    "createdTime": 1733617200000,
+    "modifiedTime": 1733617200000,
+    "lastModifiedBy": "UGCccSsgt9XaEKG6"
+  },
+  "_id": "3wwQZAR6reaE544B",
+  "sort": 0,
+  "_key": "!items!3wwQZAR6reaE544B"
+}

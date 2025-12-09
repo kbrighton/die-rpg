@@ -1,7 +1,7 @@
 {
   "name": "Force Field",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/aura.svg",
   "system": {
     "description": "<p>You're able to create and reshape an energy field around you. This force field has <strong>Health</strong> equal to your <strong>Int</strong>.</p>",
     "activated": false,
@@ -53,7 +53,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238640887,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "FFvIafKeRouBCo3Z",

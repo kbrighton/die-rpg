@@ -1,7 +1,7 @@
 {
   "name": "Quarterstaff",
   "type": "equipment",
-  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "img": "systems/die-rpg/assets/icons/bo.svg",
   "system": {
     "description": "<p>A simple wooden staff, effective for both offense and defense.</p>",
     "quantity": 1,
@@ -32,7 +32,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238219564,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "dL25KoMocOr9Nogt",

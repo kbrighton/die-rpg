@@ -1,7 +1,7 @@
 {
   "name": "Blink Teleporter",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/teleport.svg",
   "system": {
     "description": "<p>You can chain together short-distance teleports, about as far as you could jump with a run up.</p>",
     "activated": false,
@@ -65,7 +65,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238394065,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "qSqzle62d0ZBApV1",

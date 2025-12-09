@@ -1,7 +1,7 @@
 {
   "name": "Fine Noble Longsword",
   "type": "equipment",
-  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "img": "systems/die-rpg/assets/icons/broadsword.svg",
   "system": {
     "description": "<p>An elegant longsword befitting nobility. Its fine craftsmanship impresses those of high standing.</p>",
     "quantity": 1,
@@ -32,7 +32,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765237969215,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "iIm2cGhM7YZhOAz9",

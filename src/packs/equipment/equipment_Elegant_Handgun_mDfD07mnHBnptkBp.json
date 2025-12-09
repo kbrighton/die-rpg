@@ -1,7 +1,7 @@
 {
   "name": "Elegant Handgun",
   "type": "equipment",
-  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "img": "systems/die-rpg/assets/icons/revolver.svg",
   "system": {
     "description": "<p>A finely crafted firearm, as much a work of art as a weapon. Devastating against unprotected targets.</p>",
     "quantity": 1,
@@ -32,7 +32,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765237876753,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "mDfD07mnHBnptkBp",

@@ -1,7 +1,7 @@
 {
   "name": "Gun",
   "type": "gift",
-  "img": "systems/die-rpg/assets/icons/gift-trap.svg",
+  "img": "systems/die-rpg/assets/icons/ray-gun.svg",
   "system": {
     "description": "<p>The Fair have gifted you with an arcane firearm. Works as a normal ranged weapon without being activated.</p>",
     "activated": false,
@@ -91,7 +91,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765238779545,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "EzWHGeD4dBZia7w2",

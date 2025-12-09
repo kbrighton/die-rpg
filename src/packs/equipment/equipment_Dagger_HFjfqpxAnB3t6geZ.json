@@ -1,7 +1,7 @@
 {
   "name": "Dagger",
   "type": "equipment",
-  "img": "systems/die-rpg/assets/icons/battle-gear.svg",
+  "img": "systems/die-rpg/assets/icons/plain-dagger.svg",
   "system": {
     "description": "<p>A simple but effective stabbing weapon.</p>",
     "quantity": 1,
@@ -25,7 +25,7 @@
     "systemId": "die-rpg",
     "systemVersion": "#{VERSION}#",
     "createdTime": 1764106396710,
-    "modifiedTime": 1764106398546,
+    "modifiedTime": 1765237822217,
     "lastModifiedBy": "UGCccSsgt9XaEKG6"
   },
   "_id": "HFjfqpxAnB3t6geZ",
