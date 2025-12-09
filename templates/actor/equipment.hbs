@@ -11,7 +11,7 @@
 			<h6>{{localize "DIE_RPG.UI.Headers.StartingEquipment"}}</h6>
 			<p class="hint">{{localize "DIE_RPG.UI.Hints.SelectStartingEquipment"}}</p>
 			<div class="equipment-selector">
-				<select id="equipment-select" name="equipment-select">
+				<select id="equipment-select">
 					<option value="">{{localize "DIE_RPG.UI.Labels.SelectEquipment"}}</option>
 					{{#each availableEquipment as |eq|}}
 						<option value="{{eq.uuid}}">

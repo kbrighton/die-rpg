@@ -658,6 +658,12 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
     // Update header button states after render
     this._updateHeaderButtons();
+
+    // Prevent equipment select from triggering form re-render
+    const equipmentSelect = this.element.querySelector('#equipment-select');
+    if (equipmentSelect) {
+      equipmentSelect.addEventListener('change', (e) => e.stopPropagation());
+    }
   }
 
   /**
@@ -1078,7 +1084,7 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
   static async _addEquipmentFromParagon(event, target) {
     event.preventDefault();
 
-    const select = this.element.querySelector('#equipment-select');
+    const select = target.closest('.equipment-selector')?.querySelector('select');
     const selectedUuid = select?.value;
 
     if (!selectedUuid) {

@@ -3,7 +3,9 @@
 > [!WARNING]
 > This System is still in progress and not ready for use.
 
-![Cover](./assets/DIE/Compatible_with_DIE_Logo.png)
+<p align="center">
+   	<img src='https://github.com/philote/die-rpg/blob/c0ae1bb65a8666bc90e6abc82d5de0954a1ae428/assets/DIE/Compatible_with_DIE_Logo.png'/>
+</p>
 
 <p align="center">
     <img alt="Foundry Version 13 support" src="https://img.shields.io/badge/Foundry-v13-informational">
