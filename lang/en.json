@@ -30,8 +30,7 @@
 		},
 		"SheetLabels": {
 			"Actor": "DieRpg Actor Sheet",
-			"Item": "DieRpg Item Sheet",
-			"Paragon": "DieRpg Paragon Sheet"
+			"Item": "DieRpg Item Sheet"
 		},
 		"Actor": {
 			"Tabs": {
@@ -100,42 +99,33 @@
 				"FIELDS": {
 					"attributes": {
 						"npcType": {
-							"label": "NPC Type",
-							"hint": "The category of NPC (Paragon, Echo, Fallen, The Fair, or Creature)"
+							"label": "NPC Type"
 						},
 						"paragonSubtype": {
-							"label": "Paragon Class",
-							"hint": "Which paragon class this NPC represents"
+							"label": "Paragon Class"
 						},
 						"paragonPowerLevel": {
-							"label": "Power Level",
-							"hint": "The strength tier of this paragon NPC"
+							"label": "Power Level"
 						},
 						"echoLevel": {
-							"label": "Echo Level",
-							"hint": "How complete is this echo's connection to the Persona"
+							"label": "Echo Level"
 						},
 						"creatureType": {
-							"label": "Creature Type",
-							"hint": "The specific type of creature"
+							"label": "Creature Type"
 						},
 						"fallenSubtype": {
-							"label": "Fallen Type",
-							"hint": "The strength tier of this Fallen entity"
+							"label": "Fallen Type"
 						}
 					},
 					"description": {
-						"label": "Description",
-						"hint": "General NPC description and flavor text"
+						"label": "Description"
 					},
 					"specials": {
-						"label": "NPC Specials",
-						"hint": "Always-available special abilities for this NPC"
+						"label": "NPC Specials"
 					},
 					"ability": {
 						"specials": {
-							"label": "Ability Specials",
-							"hint": "Special effects that trigger when rolling 6s"
+							"label": "Ability Specials"
 						}
 					}
 				},
@@ -161,40 +151,6 @@
 					"Elite": "Elite",
 					"Assassin": "Assassin",
 					"Epic": "Epic"
-				},
-				"AbilitiesTitle": "NPC Abilities",
-				"AddAbility": "Add Ability",
-				"NewAbility": "New Ability",
-				"DeleteAbility": "Delete Ability",
-				"AbilityName": "Ability Name",
-				"AbilityDescription": "Description",
-				"AddSpecial": "Add Special",
-				"NewSpecial": "New Special",
-				"DeleteSpecial": "Delete Special",
-				"FairNote": "The Fair do not use traditional stats. Use coin flips for all rolls instead of dice pools. They always appear in pairs and have Defence 3."
-			},
-			"NPCSheet": {
-				"Type": {
-					"Basic": {
-						"label": "Basic Creature"
-					},
-					"Fallen": {
-						"label": "The Fallen",
-						"Subtype": {
-							"Basic": "Basic Fallen",
-							"Elite": "Elite Fallen",
-							"Assassin": "Fallen Assassin",
-							"Epic": "Epic Fallen"
-						}
-					},
-					"Paragon": {
-						"label": "Native Paragon",
-						"PowerLevel": {
-							"Basic": "Basic",
-							"Elite": "Elite",
-							"Hero": "Hero"
-						}
-					}
 				},
 				"CreatureTypes": {
 					"automatons": "Automatons",
@@ -241,7 +197,16 @@
 					"wraiths": "Wraiths",
 					"wyverns": "Wyverns",
 					"zombies": "Zombies"
-				}
+				},
+				"AbilitiesTitle": "NPC Abilities",
+				"AddAbility": "Add Ability",
+				"NewAbility": "New Ability",
+				"DeleteAbility": "Delete Ability",
+				"AbilityName": "Ability Name",
+				"AbilityDescription": "Description",
+				"AddSpecial": "Add Special",
+				"NewSpecial": "New Special",
+				"FairNote": "The Fair do not use traditional stats. Use coin flips for all rolls instead of dice pools. They always appear in pairs and have Defence 3."
 			}
 		},
 		"Item": {
@@ -564,13 +529,6 @@
 				}
 			}
 		},
-		"Effect": {
-			"Source": "Source",
-			"Toggle": "Toggle Effect",
-			"Temporary": "Temporary Effects",
-			"Passive": "Passive Effects",
-			"Inactive": "Inactive Effects"
-		},
 		"FallenMode": {
 			"LabelLiving": "Living",
 			"LabelFallen": "Fallen",
@@ -637,14 +595,6 @@
 				"customizationPrompt": "<p><em>Decide what your tell is, no matter your form:</em></p><ul><li>Your voice remains an awful undead crackle</li><li>You smell like the rotting flesh you are</li><li>All animals view you with fear and suspicion</li><li>Something else</li></ul>"
 			}
 		},
-		"Class": {
-			"Dictator": "Dictator",
-			"Fool": "Fool",
-			"EmotionKnight": "Emotion Knight",
-			"Godbinder": "Godbinder",
-			"Neo": "Neo",
-			"Master": "Master"
-		},
 		"Paragon": {
 			"Dictator": "Dictator",
 			"Fool": "Fool",
@@ -653,51 +603,6 @@
 			"Neo": "Neo",
 			"Master": "Master",
 			"Fallen": "Fallen"
-		},
-		"AbilityType": {
-			"general": "General",
-			"scripture": "Scripture (Godbinder)",
-			"gift": "Gift (Neo)",
-			"stance": "Stance (EK)",
-			"venting": "Venting (EK)",
-			"knack": "Knack (Fool)",
-			"fool_spell": "Spell (Fool)",
-			"dictator_performance": "Performance (Dictator)",
-			"signature_piece": "Signature Piece (Dictator)",
-			"master_rule": "Rule (Master)",
-			"cheat": "Cheat (Master)",
-			"attack": "Basic Attack",
-			"passive": "Passive",
-			"other": "Other"
-		},
-		"CostType": {
-			"none": "None",
-			"action": "Action",
-			"resource": "Resource",
-			"condition": "Condition"
-		},
-		"ActionCost": {
-			"action": "Action",
-			"reaction": "Reaction",
-			"free": "Free Action",
-			"passive": "Passive",
-			"special": "Special"
-		},
-		"ResourceCost": {
-			"none": "None",
-			"fair_gold": "Fair Gold",
-			"god_debt": "God Debt",
-			"ek_scale": "Emotion Scale",
-			"cheat_token": "Cheat Token",
-			"health": "Health",
-			"guard": "Guard",
-			"willpower": "Willpower"
-		},
-		"AttackType": {
-			"none": "None",
-			"melee": "Melee",
-			"ranged": "Ranged",
-			"spell": "Spell"
 		},
 		"RollModType": {
 			"none": "None",
@@ -746,7 +651,6 @@
 				}
 			}
 		},
-		"None": "None",
 		"Chat": {
 			"RollMessage": {
 				"Rolled": "Rolled",
@@ -802,38 +706,17 @@
 			}
 		},
 		"Notifications": {
-			"Success": {
-				"ParagonSelected": "Paragon \"{name}\" selected.",
-				"FlashbackReset": "Flashback has been reset.",
-				"ParagonCleared": "Paragon cleared.",
-				"OrphanedAdvancementsRemoved": "Removed {count} orphaned advancement(s).",
-				"EquipmentOptionAdded": "{name} added to equipment options",
-				"EquipmentOptionRemoved": "Equipment option removed",
-				"EquipmentAddedToInventory": "{name} added to inventory",
-				"FallenModeEnabled": "Character has fallen. They are now undead.",
-				"FallenModeDisabled": "Character returned to life.",
-				"AbilityAdded": "Ability added successfully.",
-				"AbilityDeleted": "Ability deleted successfully.",
-				"MonstrousAbilityAdded": "Monstrous ability added successfully.",
-				"MonstrousAbilityDeleted": "Monstrous ability deleted successfully.",
-				"SpecialAdded": "Special added successfully.",
-				"SpecialDeleted": "Special deleted successfully."
-			},
 			"Info": {
 				"FlashbackAlreadyAvailable": "Flashback is already available.",
-				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again.",
-				"DiceInteractionComingSoon": "Dice interaction is not yet enabled. Coming soon!"
+				"PartialSaveOtherFieldsSaved": "Your other changes have been saved. Please fix the JSON and save again."
 			},
 			"Warning": {
-				"NoParagon": "No paragon item found.",
-				"CannotSelectAdvancement": "Cannot select this advancement. Check level and adjacency requirements.",
 				"NoItemType": "No item type specified for creation.",
 				"InvalidItem": "Invalid item",
 				"OnlyEquipment": "Only equipment items can be added to this list",
 				"EquipmentAlreadyInList": "This equipment is already in the list",
 				"SelectEquipment": "Please select equipment first",
-				"NoPermissionToModifyRoll": "You do not have permission to modify this roll.",
-				"CanOnlyCrossOutSuccessDice": "You can only cross out success dice (4+)."
+				"NoPermissionToModifyRoll": "You do not have permission to modify this roll."
 			},
 			"Error": {
 				"ParagonNotFound": "Could not find selected paragon item.",
@@ -854,15 +737,12 @@
 				"Specials": "Specials",
 				"AdvancementForms": "Advancement Forms",
 				"DerivedStats": "Derived Stats",
-				"Name": "Name",
 				"EquipmentOptions": "Starting Equipment Options",
 				"StartingEquipment": "Starting Equipment",
 				"EquipmentList": "Equipment List",
-				"Equipment": "Equipment",
 				"Sidebar": "Sidebar"
 			},
 			"Labels": {
-				"Flashback": "Flashback:",
 				"ClassDice": "Class Dice:",
 				"CustomLook": "Custom Look",
 				"Description": "Description:",
@@ -870,7 +750,6 @@
 				"EnterCustomLook": "Enter Custom Look:",
 				"Source": "Source:",
 				"Level": "Level:",
-				"PositionsOnMap": "Positions on Map:",
 				"TotalDefense": "Total Defense:",
 				"TotalGuard": "Total Guard:",
 				"Separator": " / ",
@@ -878,13 +757,11 @@
 				"AddEquipment": "Add"
 			},
 			"Buttons": {
-				"OpenParagonSheet": "Open Paragon Sheet",
 				"DeleteLook": "Delete Look",
 				"Delete": "Delete",
 				"AddSpecial": "Add Special",
 				"DeleteScripture": "Delete Scripture",
-				"DeleteUpgrade": "Delete Upgrade",
-				"RemoveEquipment": "Remove Equipment Option"
+				"DeleteUpgrade": "Delete Upgrade"
 			},
 			"Tooltips": {
 				"OpenParagonSheet": "Open Paragon Sheet",
@@ -918,7 +795,6 @@
 				"AbilityName": "e.g., Flaming Breath, Criminal Cunning"
 			},
 			"EmptyStates": {
-				"NoParagonSelected": "No Paragon Selected",
 				"PleaseSelectParagon": "Please select a paragon to see class dice and core ability",
 				"NoSpecials": "No specials available. Specials will appear here from your paragon, equipment, and other sources.",
 				"SelectParagonForClassInfo": "No paragon selected. Please select a paragon from the dropdown in the header to view class information.",
@@ -926,17 +802,11 @@
 				"NoSpecialsDefined": "No specials defined. Add one below.",
 				"NoScriptures": "No scriptures defined. Add one below.",
 				"NoUpgrades": "No upgrades defined. Add one below.",
-				"NoEquipmentOptions": "No equipment options defined. Drag equipment items here from compendiums.",
 				"NoAbilities": "No abilities defined for this NPC.",
 				"ClickAddAbility": "Click 'Add Ability' to create a new ability for this NPC.",
 				"SelectParagonViewDescription": "Select a paragon to view its description."
 			},
 			"Status": {
-				"Used": "Used",
-				"Available": "Available",
-				"Selected": "Selected",
-				"Locked": "Locked",
-				"LevelRequired": "Level Required",
 				"Start": "START"
 			},
 			"Hints": {
@@ -1002,7 +872,6 @@
 			},
 			"Sections": {
 				"SelectLook": "-- Select a Look --",
-				"LookDefenseBonus": " (+{defenseBonus} Defense)",
 				"SpecialsForItem": "Specials for {name}"
 			}
 		}

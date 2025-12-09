@@ -30,70 +30,51 @@ DIE_RPG.resources = {
 	defense: "DIE_RPG.Resource.def.long",
 };
 
-DIE_RPG.npcTypes = {
-	basic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Basic.label",
-	fallen: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.label",
-	paragon: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.label",
-};
-
-DIE_RPG.npcFallenSubtypes = {
-	basic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Basic",
-	elite: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Elite",
-	assassin: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Assassin",
-	epic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Fallen.Subtype.Epic",
-};
-
-DIE_RPG.npcParagonPowerLevel = {
-	basic: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Basic",
-	elite: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Elite",
-	hero: "DIE_RPG.Actor.NPC.NPCSheet.Type.Paragon.PowerLevel.Hero",
-};
-
 DIE_RPG.creatureTypes = {
-	automatons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.automatons",
-	bandits: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.bandits",
-	basilisks: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.basilisks",
-	bears: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.bears",
-	centaurs: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.centaurs",
-	chimeras: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.chimeras",
-	cockatrices: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.cockatrices",
-	"demon-lesser": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.demon-lesser",
-	"demon-greater": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.demon-greater",
-	"doppelgängers": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.doppelgängers",
-	dragons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.dragons",
-	dwarves: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.dwarves",
-	"elementals-air-fire": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.elementals-air-fire",
-	"elementals-earth-water": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.elementals-earth-water",
-	elves: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.elves",
-	gargoyles: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.gargoyles",
-	ghouls: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.ghouls",
-	"giant-worms": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.giant-worms",
-	giants: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.giants",
-	goblins: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.goblins",
-	gorgons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.gorgons",
-	griffins: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.griffins",
-	guards: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.guards",
-	halflings: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.halflings",
-	hounds: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.hounds",
-	hydras: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.hydras",
-	liches: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.liches",
-	minotaurs: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.minotaurs",
-	ogres: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.ogres",
-	orcs: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.orcs",
-	rats: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.rats",
-	sirens: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.sirens",
-	skeletons: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.skeletons",
-	snakes: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.snakes",
-	spiders: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.spiders",
-	"tree-spirits": "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.tree-spirits",
-	trolls: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.trolls",
-	unicorns: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.unicorns",
-	vampires: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.vampires",
-	werewolves: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.werewolves",
-	wizards: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.wizards",
-	wraiths: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.wraiths",
-	wyverns: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.wyverns",
-	zombies: "DIE_RPG.Actor.NPC.NPCSheet.CreatureTypes.zombies"
+	automatons: "DIE_RPG.Actor.NPC.CreatureTypes.automatons",
+	bandits: "DIE_RPG.Actor.NPC.CreatureTypes.bandits",
+	basilisks: "DIE_RPG.Actor.NPC.CreatureTypes.basilisks",
+	bears: "DIE_RPG.Actor.NPC.CreatureTypes.bears",
+	centaurs: "DIE_RPG.Actor.NPC.CreatureTypes.centaurs",
+	chimeras: "DIE_RPG.Actor.NPC.CreatureTypes.chimeras",
+	cockatrices: "DIE_RPG.Actor.NPC.CreatureTypes.cockatrices",
+	demonLesser: "DIE_RPG.Actor.NPC.CreatureTypes.demon-lesser",
+	demonGreater: "DIE_RPG.Actor.NPC.CreatureTypes.demon-greater",
+	doppelgängers: "DIE_RPG.Actor.NPC.CreatureTypes.doppelgängers",
+	dragons: "DIE_RPG.Actor.NPC.CreatureTypes.dragons",
+	dwarves: "DIE_RPG.Actor.NPC.CreatureTypes.dwarves",
+	elementalsAirFire: "DIE_RPG.Actor.NPC.CreatureTypes.elementals-air-fire",
+	elementalsEarthWater: "DIE_RPG.Actor.NPC.CreatureTypes.elementals-earth-water",
+	elves: "DIE_RPG.Actor.NPC.CreatureTypes.elves",
+	gargoyles: "DIE_RPG.Actor.NPC.CreatureTypes.gargoyles",
+	ghouls: "DIE_RPG.Actor.NPC.CreatureTypes.ghouls",
+	giantWorms: "DIE_RPG.Actor.NPC.CreatureTypes.giant-worms",
+	giants: "DIE_RPG.Actor.NPC.CreatureTypes.giants",
+	goblins: "DIE_RPG.Actor.NPC.CreatureTypes.goblins",
+	gorgons: "DIE_RPG.Actor.NPC.CreatureTypes.gorgons",
+	griffins: "DIE_RPG.Actor.NPC.CreatureTypes.griffins",
+	guards: "DIE_RPG.Actor.NPC.CreatureTypes.guards",
+	halflings: "DIE_RPG.Actor.NPC.CreatureTypes.halflings",
+	hounds: "DIE_RPG.Actor.NPC.CreatureTypes.hounds",
+	hydras: "DIE_RPG.Actor.NPC.CreatureTypes.hydras",
+	liches: "DIE_RPG.Actor.NPC.CreatureTypes.liches",
+	minotaurs: "DIE_RPG.Actor.NPC.CreatureTypes.minotaurs",
+	ogres: "DIE_RPG.Actor.NPC.CreatureTypes.ogres",
+	orcs: "DIE_RPG.Actor.NPC.CreatureTypes.orcs",
+	rats: "DIE_RPG.Actor.NPC.CreatureTypes.rats",
+	sirens: "DIE_RPG.Actor.NPC.CreatureTypes.sirens",
+	skeletons: "DIE_RPG.Actor.NPC.CreatureTypes.skeletons",
+	snakes: "DIE_RPG.Actor.NPC.CreatureTypes.snakes",
+	spiders: "DIE_RPG.Actor.NPC.CreatureTypes.spiders",
+	treeSpirits: "DIE_RPG.Actor.NPC.CreatureTypes.tree-spirits",
+	trolls: "DIE_RPG.Actor.NPC.CreatureTypes.trolls",
+	unicorns: "DIE_RPG.Actor.NPC.CreatureTypes.unicorns",
+	vampires: "DIE_RPG.Actor.NPC.CreatureTypes.vampires",
+	werewolves: "DIE_RPG.Actor.NPC.CreatureTypes.werewolves",
+	wizards: "DIE_RPG.Actor.NPC.CreatureTypes.wizards",
+	wraiths: "DIE_RPG.Actor.NPC.CreatureTypes.wraiths",
+	wyverns: "DIE_RPG.Actor.NPC.CreatureTypes.wyverns",
+	zombies: "DIE_RPG.Actor.NPC.CreatureTypes.zombies"
 };
 
 DIE_RPG.classDice = {
@@ -118,69 +99,10 @@ DIE_RPG.dieTypes = {
 	d20: "D20",
 };
 
-DIE_RPG.classBaseTypes = {
-	dictator: "DIE_RPG.Class.Dictator",
-	fool: "DIE_RPG.Class.Fool",
-	emotion_knight: "DIE_RPG.Class.EmotionKnight",
-	godbinder: "DIE_RPG.Class.Godbinder",
-	neo: "DIE_RPG.Class.Neo",
-	master: "DIE_RPG.Class.Master",
-};
-
-DIE_RPG.abilityTypes = {
-	general: "DIE_RPG.AbilityType.general",
-	scripture: "DIE_RPG.AbilityType.scripture",
-	gift: "DIE_RPG.AbilityType.gift",
-	stance: "DIE_RPG.AbilityType.stance",
-	venting: "DIE_RPG.AbilityType.venting",
-	knack: "DIE_RPG.AbilityType.knack",
-	fool_spell: "DIE_RPG.AbilityType.fool_spell",
-	dictator_performance: "DIE_RPG.AbilityType.dictator_performance",
-	signature_piece: "DIE_RPG.AbilityType.signature_piece",
-	master_rule: "DIE_RPG.AbilityType.master_rule",
-	cheat: "DIE_RPG.AbilityType.cheat",
-	attack: "DIE_RPG.AbilityType.attack",
-	passive: "DIE_RPG.AbilityType.passive",
-	other: "DIE_RPG.AbilityType.other",
-};
-
 DIE_RPG.stanceTypes = {
 	COMBAT: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.combat",
 	SOCIAL: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.social",
 	EMOTION: "DIE_RPG.Item.Stance.FIELDS.stanceTypes.emotion"
-};
-
-DIE_RPG.costTypes = {
-	none: "DIE_RPG.CostType.none",
-	action: "DIE_RPG.CostType.action",
-	resource: "DIE_RPG.CostType.resource",
-	condition: "DIE_RPG.CostType.condition",
-};
-
-DIE_RPG.actionCosts = {
-	action: "DIE_RPG.ActionCost.action",
-	reaction: "DIE_RPG.ActionCost.reaction",
-	free: "DIE_RPG.ActionCost.free",
-	passive: "DIE_RPG.ActionCost.passive",
-	special: "DIE_RPG.ActionCost.special",
-};
-
-DIE_RPG.resourceCosts = {
-	none: "DIE_RPG.ResourceCost.none",
-	fair_gold: "DIE_RPG.ResourceCost.fair_gold",
-	god_debt: "DIE_RPG.ResourceCost.god_debt",
-	ek_scale: "DIE_RPG.ResourceCost.ek_scale",
-	cheat_token: "DIE_RPG.ResourceCost.cheat_token",
-	health: "DIE_RPG.ResourceCost.health",
-	guard: "DIE_RPG.ResourceCost.guard",
-	willpower: "DIE_RPG.ResourceCost.willpower",
-};
-
-DIE_RPG.attackTypes = {
-	none: "DIE_RPG.AttackType.none",
-	melee: "DIE_RPG.AttackType.melee",
-	ranged: "DIE_RPG.AttackType.ranged",
-	spell: "DIE_RPG.AttackType.spell",
 };
 
 DIE_RPG.rollModTypes = {
@@ -216,23 +138,6 @@ DIE_RPG.getSpecialCostValue = function(costType) {
 		twenty: 1  // 20-Special requires one nat 20, treated as cost 1 for 6+ counting
 	};
 	return costMap[costType] || 1;
-};
-
-/**
- * Field types for dynamic form rendering in paragon templates
- * @type {Object}
- */
-DIE_RPG.fieldTypes = {
-	text: 'Text Input',
-	number: 'Number Input',
-	boolean: 'Checkbox',
-	select: 'Dropdown',
-	multiSelect: 'Multi-Select',
-	html: 'Rich Text Editor',
-	info: 'Info/Display (Read-Only)',
-	itemList: 'Item List',
-	group: 'Grouped Fields',
-	special: 'Special Reference'
 };
 
 // Paragon Advancement Map

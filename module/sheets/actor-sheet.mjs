@@ -838,8 +838,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     const paragonItem = this.actor.items.find(i => i.type === 'paragon');
     if (paragonItem) {
       paragonItem.sheet.render(true);
-    } else {
-      ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.NoParagon"));
     }
   }
 
@@ -886,17 +884,12 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       for (const orphanId of orphanedNodes) {
         currentAdvancements.delete(orphanId);
       }
-
-      if (orphanedNodes.size > 0) {
-        ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.OrphanedAdvancementsRemoved", {count: orphanedNodes.size}));
-      }
     } else {
       // Validate before adding
       const { canSelectNode } = await import('../helpers/advancements.mjs');
       if (canSelectNode(this.actor, nodeId)) {
         currentAdvancements.add(nodeId);
       } else {
-        ui.notifications.warn(game.i18n.localize("DIE_RPG.Notifications.Warning.CannotSelectAdvancement"));
         return;
       }
     }
@@ -926,7 +919,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
     // Reset flashback
     await this.actor.update({ 'system.flashbackUsed': false });
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.FlashbackReset"));
     // Update header button states
     this._updateHeaderButtons();
   }
@@ -943,11 +935,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     event.preventDefault();
     const newState = !this.actor.system.fallenMode;
     await this.actor.update({ 'system.fallenMode': newState });
-
-    const messageKey = newState
-      ? "DIE_RPG.Notifications.Success.FallenModeEnabled"
-      : "DIE_RPG.Notifications.Success.FallenModeDisabled";
-    ui.notifications.info(game.i18n.localize(messageKey));
 
     // Re-render sheet (tabs change based on fallen mode)
     // Header buttons will update via _onRender -> _updateHeaderButtons
@@ -976,8 +963,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.monstrousAbilities': [...abilities, newAbility]
     });
-
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.MonstrousAbilityAdded"));
   }
 
   /**
@@ -1003,8 +988,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.monstrousAbilities': abilities
     });
-
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.MonstrousAbilityDeleted"));
   }
 
   /**
@@ -1104,8 +1087,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
 
     // Reset dropdown
     select.value = "";
-
-    ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.EquipmentAddedToInventory", {name: equipment.name}));
   }
 
   /**
@@ -1129,8 +1110,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.abilities': [...abilities, newAbility]
     });
-
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.AbilityAdded"));
   }
 
   /**
@@ -1156,8 +1135,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.abilities': abilities
     });
-
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.AbilityDeleted"));
   }
 
   /**
@@ -1200,8 +1177,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.abilities': abilities
     });
-
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.SpecialAdded"));
   }
 
   /**
@@ -1236,8 +1211,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
     await this.actor.update({
       'system.abilities': abilities
     });
-
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.SpecialDeleted"));
   }
 
   /**
@@ -1346,7 +1319,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
           await existingParagon.delete();
         }
         await this.actor.update({ 'system.paragon.uuid': '' });
-        ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.ParagonCleared"));
       } catch (error) {
         console.error('DIE RPG | Error clearing paragon:', error);
         ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonClearFailed"));
@@ -1402,8 +1374,6 @@ export class DieRpgActorSheet extends api.HandlebarsApplicationMixin(
       if (Object.keys(updates).length > 0) {
         await this.actor.update(updates);
       }
-
-      ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.ParagonSelected", {name: paragonDoc.name}));
     } catch (error) {
       console.error('DIE RPG | Error selecting paragon:', error);
       ui.notifications.error(game.i18n.localize("DIE_RPG.Notifications.Error.ParagonSelectionFailed"));

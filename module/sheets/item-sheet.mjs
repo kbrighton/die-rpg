@@ -568,7 +568,6 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
     const options = [...(this.item.system.equipmentOptions || [])];
     const filtered = options.filter(uuid => uuid !== uuidToRemove);
     await this.item.update({ 'system.equipmentOptions': filtered });
-    ui.notifications.info(game.i18n.localize("DIE_RPG.Notifications.Success.EquipmentOptionRemoved"));
   }
 
   /**
@@ -925,8 +924,7 @@ export class DieRpgItemSheet extends api.HandlebarsApplicationMixin(
       await this.item.update({
         'system.equipmentOptions': [...options, item.uuid]
       });
-
-      ui.notifications.info(game.i18n.format("DIE_RPG.Notifications.Success.EquipmentOptionAdded", {name: item.name}));
+      
       return true;
     }
 
