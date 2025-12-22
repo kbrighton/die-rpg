@@ -4,7 +4,7 @@
 > This System is in Alpha testing, and may have bugs.
 
 <p align="center">
-   	<img src='https://github.com/philote/die-rpg/blob/c0ae1bb65a8666bc90e6abc82d5de0954a1ae428/assets/DIE/Compatible_with_DIE_Logo.webp'/>
+   	<img src='https://raw.githubusercontent.com/philote/die-rpg/refs/heads/main/assets/DIE/Compatible_with_DIE_Logo_wbg.webp'/>
 </p>
 
 <p align="center">
