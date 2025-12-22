@@ -4,7 +4,7 @@
 > This System is still in progress and not ready for use.
 
 <p align="center">
-   	<img src='https://github.com/philote/die-rpg/blob/c0ae1bb65a8666bc90e6abc82d5de0954a1ae428/assets/DIE/Compatible_with_DIE_Logo.png'/>
+   	<img src='https://github.com/philote/die-rpg/blob/c0ae1bb65a8666bc90e6abc82d5de0954a1ae428/assets/DIE/Compatible_with_DIE_Logo.webp'/>
 </p>
 
 <p align="center">
