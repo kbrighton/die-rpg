@@ -166,14 +166,6 @@
   "url": "#{URL}#",
 	"manifest": "#{MANIFEST}#",
 	"download": "#{DOWNLOAD}#",
-  "background": "systems/die-rpg/assets/cover.webp",
   "primaryTokenAttribute": "resources.health",
-  "secondaryTokenAttribute": "",
-  "media": [
-    {
-      "type": "setup",
-      "url": "systems/die-rpg/assets/package_image.webp",
-      "thumbnail": "systems/die-rpg/assets/package_image_thumb.webp"
-    }
-  ]
+  "secondaryTokenAttribute": ""
 }
