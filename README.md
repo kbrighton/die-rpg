@@ -49,10 +49,70 @@ You can install the latest released version of the system by using this manifest
 https://github.com/philote/die-rpg/releases/latest/download/system.json
 
 ## Features
-- TBD
+Core Mechanics
+
+- d6 dice pool system with 4+ success threshold
+- Class Dice (d4-d20) based on paragon type
+- Advantage/Disadvantage mechanics
+- Critical Failures (0 successes + rolling a 1)
+- Specials triggered on rolling 6s
+
+Actor Types
+
+- Characters - Full PC support with level progression, flashback mechanic, Fallen Mode
+- NPCs - Multiple types (Paragon, Echo, Fallen, Fair, Creature) with 40+ creature subtypes
+
+9 Item Types
+- Paragon: Character classes (Dictator, Neo, Godbinder, Fool, Emotion Knight, Master, Fallen)
+- Equipment: Weapons, armor, gear with defense/roll modifiers
+- Look: Appearance options with defense bonuses
+- Spell: Magical abilities with specials
+- God: Bound deities for Godbinders (trust/debt tracking, scriptures)
+- Gift: Gifts of the Fair for Neos (upgradeable)
+- Stance: Combat/Social/Emotion stances for Emotion Knights
+- Venting: Emotion venting abilities
+- Arcane Weapon: Emotion Knight's signature weapon
+
+Advancement System
+
+- 20-node triangular map with SVG visualization
+- Adjacent node unlocking
+- Level-gated selection
+- Interactive UI with tooltips
+
+Template-Driven Paragon System
+
+- GMs can create custom paragons without coding
+- 9 dynamic field types (text, number, select, itemList, etc.)
+- Custom class ability forms render on character sheets
+
+Specials Aggregation
+
+- Collects specials from paragon, equipment, stances, gifts, gods, spells
+- State-aware (only active/equipped items contribute)
+- Source tracking for each special
+
+Character Sheet
+
+- Tabs: Class, Advancements, Persona, Equipment, Abilities, Notes
+- Interactive stat rolling
+- Resource tracking with increment/decrement
+- Look selection from paragon options
+
+7 Compendium Packs
+
+- Equipment, Paragons, Gods, Gifts, Stances, Venting Abilities, Spells
+
+World Settings
+
+- Failing Forward toggle
+- Critical Failures toggle
+- Dice Interaction mode
+- Fallen Game Mode (Rituals/Campaign)
 
 ### TODO
-- TBD
+- CodeMirror integration - Rich JSON editor for paragon form definitions (currently plain textarea)
+- fix the alignment of triangles on the advancement map
 
 # License & Acknowledgements
 DIE: The Roleplaying Game for Foundry VTT is an independent production by Joseph Hopson (ephson) and is not affiliated with [Rowan, Rook, and Decard](https://rowanrookanddecard.com/), Lemon Ink Ltd, Kieron Gillen, Stephanie Hans Studio, or Stephanie Hans. It is published under the [RR&D Community License](https://rowanrookanddecard.com/rrd-community-licence). All names, characters, organisations, events, and places herein are entirely fictional, and any resemblance to actual persons, organisations, events, or places is coincidental.”

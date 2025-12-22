@@ -795,6 +795,7 @@
 				"AbilityName": "e.g., Flaming Breath, Criminal Cunning"
 			},
 			"EmptyStates": {
+				"NoParagonSelected": "No Paragon Selected",
 				"PleaseSelectParagon": "Please select a paragon to see class dice and core ability",
 				"NoSpecials": "No specials available. Specials will appear here from your paragon, equipment, and other sources.",
 				"SelectParagonForClassInfo": "No paragon selected. Please select a paragon from the dropdown in the header to view class information.",
