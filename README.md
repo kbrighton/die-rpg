@@ -1,7 +1,7 @@
 # DIE: The Roleplaying Game System (Unofficial)
 
 > [!WARNING]
-> This System is still in progress and not ready for use.
+> This System is in Alpha testing, and may have bugs.
 
 <p align="center">
    	<img src='https://github.com/philote/die-rpg/blob/c0ae1bb65a8666bc90e6abc82d5de0954a1ae428/assets/DIE/Compatible_with_DIE_Logo.webp'/>
