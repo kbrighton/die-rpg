@@ -9,6 +9,16 @@ input[type="file"],
 select {
 	background: $overlay-darker;
 	border: $border-groove;
+	color: $c-black;
+}
+
+// Fix for Windows Chrome dropdown styling
+select {
+	// Ensure option elements have proper contrast
+	option {
+		background-color: var(--die-rpg-c-white);
+		color: var(--die-rpg-c-black);
+	}
 }
 
 .highlight-paragraph {

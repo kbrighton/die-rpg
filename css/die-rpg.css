@@ -640,6 +640,11 @@
 .die-rpg select {
   background: var(--die-rpg-overlay-darker);
   border: 2px groove var(--die-rpg-c-groove);
+  color: var(--die-rpg-c-black);
+}
+.die-rpg select option {
+  background-color: var(--die-rpg-c-white);
+  color: var(--die-rpg-c-black);
 }
 .die-rpg .highlight-paragraph {
   background: var(--die-rpg-overlay-darker);
